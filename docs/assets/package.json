@@ -1,0 +1,17 @@
+{
+    "private": "true",
+    "name": "@innorules/assets",
+    "version": "1.0.0-a3.29",
+    "description": "> TODO: description",
+    "author": "이노룰스 기술본부 <charles.lee@innorules.com>",
+    "homepage": "",
+    "license": "MIT",
+    "publishConfig": {
+        "registry": "http://172.16.10.21:5050/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://172.16.10.21/innorules/web-framework"
+    },
+    "scripts": {}
+}
