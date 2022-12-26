@@ -1,16 +1,16 @@
 import {
   Logger
-} from "./chunks/chunk-JQSLBQEDjs.js";
+} from "./chunks/chunk-FECRS6ATjs.js";
 import {
   require_lodash
-} from "./chunks/chunk-XRII76FAjs.js";
+} from "./chunks/chunk-H4BZVVDUjs.js";
 import {
   IRComponent,
   __async,
   __spreadProps,
   __spreadValues,
   __toESM
-} from "./chunks/chunk-GM7SH55Tjs.js";
+} from "./chunks/chunk-ZK6IOW44js.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@2.0.0/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -5538,8 +5538,8 @@ var ConnectionRenderer = class extends BaseRenderer {
 
 // src/js-components/flowchart/render/direct.js
 var DirectConnectionRenderer = class extends ConnectionRenderer {
-  constructor(data, icontainer) {
-    super(data, "direct", icontainer);
+  constructor(data, iContainer) {
+    super(data, "direct", iContainer);
   }
   _create() {
     this.objects.line = this.group.append("line").attr("marker-end", `url(#${this.markerId})`);
@@ -5594,8 +5594,8 @@ var MINIMUM_GAP = 20;
 var ADJUSTER_SIZE = 10;
 var ADJUSTER_ADJ = ADJUSTER_SIZE / 2;
 var ElbowConnectionRenderer = class extends ConnectionRenderer {
-  constructor(data, icontainer) {
-    super(data, "elbow", icontainer);
+  constructor(data, iContainer) {
+    super(data, "elbow", iContainer);
     this.adjusterList = [];
     this.elbowMap = {
       top: this._topTo,
@@ -5852,12 +5852,11 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
     const points = [];
     const func = this.elbowMap[srcPos];
     points.push({ x: srcLoc.x, y: srcLoc.y });
-    if (func === void 0) {
+    if (func === void 0)
       console.error(`unknown position value '${srcPos}'`);
-    } else {
-      for (const p of func(srcLoc, desLoc, srcNext, desNext, desPos)) {
+    else {
+      for (const p of func(srcLoc, desLoc, srcNext, desNext, desPos))
         points.push(p);
-      }
     }
     points.push({ x: desLoc.x, y: desLoc.y });
     return points;
@@ -5919,7 +5918,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
       let lastY = 0;
       let tmpPoints = null;
       flag = !flag;
-      const point = this.group.append("rect").attr("x", p.x - ADJUSTER_SIZE / 2).attr("y", p.y - ADJUSTER_SIZE / 2).attr("width", ADJUSTER_SIZE).attr("height", ADJUSTER_SIZE).attr("class", "adjuster").attr("cursor", "move").call(drag_default().filter(() => this.icontainer.getReadOnly() === false).on("start", (ev) => {
+      const point = this.group.append("rect").attr("x", p.x - ADJUSTER_SIZE / 2).attr("y", p.y - ADJUSTER_SIZE / 2).attr("width", ADJUSTER_SIZE).attr("height", ADJUSTER_SIZE).attr("class", "adjuster").attr("cursor", "move").call(drag_default().filter(() => this.iContainer.getReadOnly() === false).on("start", (ev) => {
         lastX = ev.x;
         lastY = ev.y;
         tmpPoints = deepCopy(this.data["connection.points"]);
@@ -5947,7 +5946,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
         }
         this._render();
       }).on("end", () => {
-        this.icontainer.adjDragCallback(
+        this.iContainer.adjDragCallback(
           this.data,
           tmpPoints,
           deepCopy(this.data["connection.points"])

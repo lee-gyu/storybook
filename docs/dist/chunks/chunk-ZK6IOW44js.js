@@ -43,6 +43,10 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -186,8 +190,9 @@ export {
   __require,
   __commonJS,
   __toESM,
+  __publicField,
   __async,
   v4_default,
   IRComponent
 };
-//# sourceMappingURL=chunk-GM7SH55Tjs.js.map
+//# sourceMappingURL=chunk-ZK6IOW44js.js.map

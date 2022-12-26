@@ -8,10 +8,10 @@ import {
   input_classNames_default,
   require_moment,
   select_classNames_default
-} from "./chunks/chunk-JF6NT4DXjs.js";
+} from "./chunks/chunk-WYBL4JB5js.js";
 import {
   i18n_default
-} from "./chunks/chunk-UTVAQNRKjs.js";
+} from "./chunks/chunk-6HRIDFJDjs.js";
 import {
   BEMClass,
   ClipboardManager,
@@ -21,403 +21,456 @@ import {
   getCssText,
   getMinMaxBetween,
   getTextWidthContext
-} from "./chunks/chunk-JQSLBQEDjs.js";
+} from "./chunks/chunk-FECRS6ATjs.js";
 import {
   require_lodash
-} from "./chunks/chunk-XRII76FAjs.js";
+} from "./chunks/chunk-H4BZVVDUjs.js";
 import {
   IRComponent,
   __async,
-  __commonJS,
   __spreadProps,
   __spreadValues,
   __toESM,
   v4_default
-} from "./chunks/chunk-GM7SH55Tjs.js";
+} from "./chunks/chunk-ZK6IOW44js.js";
 
-// ../../node_modules/.pnpm/emittery@0.10.2/node_modules/emittery/index.js
-var require_emittery = __commonJS({
-  "../../node_modules/.pnpm/emittery@0.10.2/node_modules/emittery/index.js"(exports, module) {
-    "use strict";
-    var anyMap = /* @__PURE__ */ new WeakMap();
-    var eventsMap = /* @__PURE__ */ new WeakMap();
-    var producersMap = /* @__PURE__ */ new WeakMap();
-    var anyProducer = Symbol("anyProducer");
-    var resolvedPromise = Promise.resolve();
-    var listenerAdded = Symbol("listenerAdded");
-    var listenerRemoved = Symbol("listenerRemoved");
-    var isGlobalDebugEnabled = false;
-    function assertEventName(eventName) {
-      if (typeof eventName !== "string" && typeof eventName !== "symbol") {
-        throw new TypeError("eventName must be a string or a symbol");
-      }
+// ../../node_modules/.pnpm/emittery@1.0.1/node_modules/emittery/maps.js
+var anyMap = /* @__PURE__ */ new WeakMap();
+var eventsMap = /* @__PURE__ */ new WeakMap();
+var producersMap = /* @__PURE__ */ new WeakMap();
+
+// ../../node_modules/.pnpm/emittery@1.0.1/node_modules/emittery/index.js
+var anyProducer = Symbol("anyProducer");
+var resolvedPromise = Promise.resolve();
+var listenerAdded = Symbol("listenerAdded");
+var listenerRemoved = Symbol("listenerRemoved");
+var canEmitMetaEvents = false;
+var isGlobalDebugEnabled = false;
+function assertEventName(eventName) {
+  if (typeof eventName !== "string" && typeof eventName !== "symbol" && typeof eventName !== "number") {
+    throw new TypeError("`eventName` must be a string, symbol, or number");
+  }
+}
+function assertListener(listener) {
+  if (typeof listener !== "function") {
+    throw new TypeError("listener must be a function");
+  }
+}
+function getListeners(instance, eventName) {
+  const events = eventsMap.get(instance);
+  if (!events.has(eventName)) {
+    return;
+  }
+  return events.get(eventName);
+}
+function getEventProducers(instance, eventName) {
+  const key = typeof eventName === "string" || typeof eventName === "symbol" || typeof eventName === "number" ? eventName : anyProducer;
+  const producers = producersMap.get(instance);
+  if (!producers.has(key)) {
+    return;
+  }
+  return producers.get(key);
+}
+function enqueueProducers(instance, eventName, eventData) {
+  const producers = producersMap.get(instance);
+  if (producers.has(eventName)) {
+    for (const producer of producers.get(eventName)) {
+      producer.enqueue(eventData);
     }
-    function assertListener(listener) {
-      if (typeof listener !== "function") {
-        throw new TypeError("listener must be a function");
-      }
+  }
+  if (producers.has(anyProducer)) {
+    const item = Promise.all([eventName, eventData]);
+    for (const producer of producers.get(anyProducer)) {
+      producer.enqueue(item);
     }
-    function getListeners(instance, eventName) {
-      const events = eventsMap.get(instance);
-      if (!events.has(eventName)) {
-        events.set(eventName, /* @__PURE__ */ new Set());
-      }
-      return events.get(eventName);
+  }
+}
+function iterator(instance, eventNames) {
+  eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+  let isFinished = false;
+  let flush = () => {
+  };
+  let queue = [];
+  const producer = {
+    enqueue(item) {
+      queue.push(item);
+      flush();
+    },
+    finish() {
+      isFinished = true;
+      flush();
     }
-    function getEventProducers(instance, eventName) {
-      const key = typeof eventName === "string" || typeof eventName === "symbol" ? eventName : anyProducer;
+  };
+  for (const eventName of eventNames) {
+    let set = getEventProducers(instance, eventName);
+    if (!set) {
+      set = /* @__PURE__ */ new Set();
       const producers = producersMap.get(instance);
-      if (!producers.has(key)) {
-        producers.set(key, /* @__PURE__ */ new Set());
-      }
-      return producers.get(key);
+      producers.set(eventName, set);
     }
-    function enqueueProducers(instance, eventName, eventData) {
-      const producers = producersMap.get(instance);
-      if (producers.has(eventName)) {
-        for (const producer of producers.get(eventName)) {
-          producer.enqueue(eventData);
+    set.add(producer);
+  }
+  return {
+    next() {
+      return __async(this, null, function* () {
+        if (!queue) {
+          return { done: true };
         }
-      }
-      if (producers.has(anyProducer)) {
-        const item = Promise.all([eventName, eventData]);
-        for (const producer of producers.get(anyProducer)) {
-          producer.enqueue(item);
-        }
-      }
-    }
-    function iterator(instance, eventNames) {
-      eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-      let isFinished = false;
-      let flush = () => {
-      };
-      let queue = [];
-      const producer = {
-        enqueue(item) {
-          queue.push(item);
-          flush();
-        },
-        finish() {
-          isFinished = true;
-          flush();
-        }
-      };
-      for (const eventName of eventNames) {
-        getEventProducers(instance, eventName).add(producer);
-      }
-      return {
-        next() {
-          return __async(this, null, function* () {
-            if (!queue) {
-              return { done: true };
-            }
-            if (queue.length === 0) {
-              if (isFinished) {
-                queue = void 0;
-                return this.next();
-              }
-              yield new Promise((resolve) => {
-                flush = resolve;
-              });
-              return this.next();
-            }
-            return {
-              done: false,
-              value: yield queue.shift()
-            };
-          });
-        },
-        return(_0) {
-          return __async(this, arguments, function* (value) {
+        if (queue.length === 0) {
+          if (isFinished) {
             queue = void 0;
-            for (const eventName of eventNames) {
-              getEventProducers(instance, eventName).delete(producer);
-            }
-            flush();
-            return arguments.length > 0 ? { done: true, value: yield value } : { done: true };
+            return this.next();
+          }
+          yield new Promise((resolve) => {
+            flush = resolve;
           });
-        },
-        [Symbol.asyncIterator]() {
-          return this;
+          return this.next();
         }
-      };
+        return {
+          done: false,
+          value: yield queue.shift()
+        };
+      });
+    },
+    return(_0) {
+      return __async(this, arguments, function* (value) {
+        queue = void 0;
+        for (const eventName of eventNames) {
+          const set = getEventProducers(instance, eventName);
+          if (set) {
+            set.delete(producer);
+            if (set.size === 0) {
+              const producers = producersMap.get(instance);
+              producers.delete(eventName);
+            }
+          }
+        }
+        flush();
+        return arguments.length > 0 ? { done: true, value: yield value } : { done: true };
+      });
+    },
+    [Symbol.asyncIterator]() {
+      return this;
     }
-    function defaultMethodNamesOrAssert(methodNames) {
-      if (methodNames === void 0) {
-        return allEmitteryMethods;
+  };
+}
+function defaultMethodNamesOrAssert(methodNames) {
+  if (methodNames === void 0) {
+    return allEmitteryMethods;
+  }
+  if (!Array.isArray(methodNames)) {
+    throw new TypeError("`methodNames` must be an array of strings");
+  }
+  for (const methodName of methodNames) {
+    if (!allEmitteryMethods.includes(methodName)) {
+      if (typeof methodName !== "string") {
+        throw new TypeError("`methodNames` element must be a string");
       }
-      if (!Array.isArray(methodNames)) {
-        throw new TypeError("`methodNames` must be an array of strings");
+      throw new Error(`${methodName} is not Emittery method`);
+    }
+  }
+  return methodNames;
+}
+var isMetaEvent = (eventName) => eventName === listenerAdded || eventName === listenerRemoved;
+function emitMetaEvent(emitter, eventName, eventData) {
+  if (isMetaEvent(eventName)) {
+    try {
+      canEmitMetaEvents = true;
+      emitter.emit(eventName, eventData);
+    } finally {
+      canEmitMetaEvents = false;
+    }
+  }
+}
+var Emittery = class {
+  static mixin(emitteryPropertyName, methodNames) {
+    methodNames = defaultMethodNamesOrAssert(methodNames);
+    return (target) => {
+      if (typeof target !== "function") {
+        throw new TypeError("`target` must be function");
       }
       for (const methodName of methodNames) {
-        if (!allEmitteryMethods.includes(methodName)) {
-          if (typeof methodName !== "string") {
-            throw new TypeError("`methodNames` element must be a string");
-          }
-          throw new Error(`${methodName} is not Emittery method`);
+        if (target.prototype[methodName] !== void 0) {
+          throw new Error(`The property \`${methodName}\` already exists on \`target\``);
         }
       }
-      return methodNames;
-    }
-    var isListenerSymbol = (symbol) => symbol === listenerAdded || symbol === listenerRemoved;
-    var Emittery2 = class {
-      static mixin(emitteryPropertyName, methodNames) {
-        methodNames = defaultMethodNamesOrAssert(methodNames);
-        return (target) => {
-          if (typeof target !== "function") {
-            throw new TypeError("`target` must be function");
-          }
-          for (const methodName of methodNames) {
-            if (target.prototype[methodName] !== void 0) {
-              throw new Error(`The property \`${methodName}\` already exists on \`target\``);
-            }
-          }
-          function getEmitteryProperty() {
-            Object.defineProperty(this, emitteryPropertyName, {
-              enumerable: false,
-              value: new Emittery2()
-            });
-            return this[emitteryPropertyName];
-          }
-          Object.defineProperty(target.prototype, emitteryPropertyName, {
-            enumerable: false,
-            get: getEmitteryProperty
-          });
-          const emitteryMethodCaller = (methodName) => function(...args) {
-            return this[emitteryPropertyName][methodName](...args);
-          };
-          for (const methodName of methodNames) {
-            Object.defineProperty(target.prototype, methodName, {
-              enumerable: false,
-              value: emitteryMethodCaller(methodName)
-            });
-          }
-          return target;
-        };
+      function getEmitteryProperty() {
+        Object.defineProperty(this, emitteryPropertyName, {
+          enumerable: false,
+          value: new Emittery()
+        });
+        return this[emitteryPropertyName];
       }
-      static get isDebugEnabled() {
-        if (typeof process !== "object") {
-          return isGlobalDebugEnabled;
-        }
-        const { env } = process || { env: {} };
-        return env.DEBUG === "emittery" || env.DEBUG === "*" || isGlobalDebugEnabled;
-      }
-      static set isDebugEnabled(newValue) {
-        isGlobalDebugEnabled = newValue;
-      }
-      constructor(options = {}) {
-        anyMap.set(this, /* @__PURE__ */ new Set());
-        eventsMap.set(this, /* @__PURE__ */ new Map());
-        producersMap.set(this, /* @__PURE__ */ new Map());
-        this.debug = options.debug || {};
-        if (this.debug.enabled === void 0) {
-          this.debug.enabled = false;
-        }
-        if (!this.debug.logger) {
-          this.debug.logger = (type, debugName, eventName, eventData) => {
-            try {
-              eventData = JSON.stringify(eventData);
-            } catch (e) {
-              eventData = `Object with the following keys failed to stringify: ${Object.keys(eventData).join(",")}`;
-            }
-            if (typeof eventName === "symbol") {
-              eventName = eventName.toString();
-            }
-            const currentTime = new Date();
-            const logTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}.${currentTime.getMilliseconds()}`;
-            console.log(`[${logTime}][emittery:${type}][${debugName}] Event Name: ${eventName}
-	data: ${eventData}`);
-          };
-        }
-      }
-      logIfDebugEnabled(type, eventName, eventData) {
-        if (Emittery2.isDebugEnabled || this.debug.enabled) {
-          this.debug.logger(type, this.debug.name, eventName, eventData);
-        }
-      }
-      on(eventNames, listener) {
-        assertListener(listener);
-        eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-        for (const eventName of eventNames) {
-          assertEventName(eventName);
-          getListeners(this, eventName).add(listener);
-          this.logIfDebugEnabled("subscribe", eventName, void 0);
-          if (!isListenerSymbol(eventName)) {
-            this.emit(listenerAdded, { eventName, listener });
-          }
-        }
-        return this.off.bind(this, eventNames, listener);
-      }
-      off(eventNames, listener) {
-        assertListener(listener);
-        eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-        for (const eventName of eventNames) {
-          assertEventName(eventName);
-          getListeners(this, eventName).delete(listener);
-          this.logIfDebugEnabled("unsubscribe", eventName, void 0);
-          if (!isListenerSymbol(eventName)) {
-            this.emit(listenerRemoved, { eventName, listener });
-          }
-        }
-      }
-      once(eventNames) {
-        return new Promise((resolve) => {
-          const off = this.on(eventNames, (data) => {
-            off();
-            resolve(data);
-          });
+      Object.defineProperty(target.prototype, emitteryPropertyName, {
+        enumerable: false,
+        get: getEmitteryProperty
+      });
+      const emitteryMethodCaller = (methodName) => function(...args) {
+        return this[emitteryPropertyName][methodName](...args);
+      };
+      for (const methodName of methodNames) {
+        Object.defineProperty(target.prototype, methodName, {
+          enumerable: false,
+          value: emitteryMethodCaller(methodName)
         });
       }
-      events(eventNames) {
-        eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-        for (const eventName of eventNames) {
-          assertEventName(eventName);
-        }
-        return iterator(this, eventNames);
-      }
-      emit(eventName, eventData) {
-        return __async(this, null, function* () {
-          assertEventName(eventName);
-          this.logIfDebugEnabled("emit", eventName, eventData);
-          enqueueProducers(this, eventName, eventData);
-          const listeners = getListeners(this, eventName);
-          const anyListeners = anyMap.get(this);
-          const staticListeners = [...listeners];
-          const staticAnyListeners = isListenerSymbol(eventName) ? [] : [...anyListeners];
-          yield resolvedPromise;
-          yield Promise.all([
-            ...staticListeners.map((listener) => __async(this, null, function* () {
-              if (listeners.has(listener)) {
-                return listener(eventData);
-              }
-            })),
-            ...staticAnyListeners.map((listener) => __async(this, null, function* () {
-              if (anyListeners.has(listener)) {
-                return listener(eventName, eventData);
-              }
-            }))
-          ]);
-        });
-      }
-      emitSerial(eventName, eventData) {
-        return __async(this, null, function* () {
-          assertEventName(eventName);
-          this.logIfDebugEnabled("emitSerial", eventName, eventData);
-          const listeners = getListeners(this, eventName);
-          const anyListeners = anyMap.get(this);
-          const staticListeners = [...listeners];
-          const staticAnyListeners = [...anyListeners];
-          yield resolvedPromise;
-          for (const listener of staticListeners) {
-            if (listeners.has(listener)) {
-              yield listener(eventData);
-            }
-          }
-          for (const listener of staticAnyListeners) {
-            if (anyListeners.has(listener)) {
-              yield listener(eventName, eventData);
-            }
-          }
-        });
-      }
-      onAny(listener) {
-        assertListener(listener);
-        this.logIfDebugEnabled("subscribeAny", void 0, void 0);
-        anyMap.get(this).add(listener);
-        this.emit(listenerAdded, { listener });
-        return this.offAny.bind(this, listener);
-      }
-      anyEvent() {
-        return iterator(this);
-      }
-      offAny(listener) {
-        assertListener(listener);
-        this.logIfDebugEnabled("unsubscribeAny", void 0, void 0);
-        this.emit(listenerRemoved, { listener });
-        anyMap.get(this).delete(listener);
-      }
-      clearListeners(eventNames) {
-        eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-        for (const eventName of eventNames) {
-          this.logIfDebugEnabled("clear", eventName, void 0);
-          if (typeof eventName === "string" || typeof eventName === "symbol") {
-            getListeners(this, eventName).clear();
-            const producers = getEventProducers(this, eventName);
-            for (const producer of producers) {
-              producer.finish();
-            }
-            producers.clear();
-          } else {
-            anyMap.get(this).clear();
-            for (const listeners of eventsMap.get(this).values()) {
-              listeners.clear();
-            }
-            for (const producers of producersMap.get(this).values()) {
-              for (const producer of producers) {
-                producer.finish();
-              }
-              producers.clear();
-            }
-          }
-        }
-      }
-      listenerCount(eventNames) {
-        eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-        let count = 0;
-        for (const eventName of eventNames) {
-          if (typeof eventName === "string") {
-            count += anyMap.get(this).size + getListeners(this, eventName).size + getEventProducers(this, eventName).size + getEventProducers(this).size;
-            continue;
-          }
-          if (typeof eventName !== "undefined") {
-            assertEventName(eventName);
-          }
-          count += anyMap.get(this).size;
-          for (const value of eventsMap.get(this).values()) {
-            count += value.size;
-          }
-          for (const value of producersMap.get(this).values()) {
-            count += value.size;
-          }
-        }
-        return count;
-      }
-      bindMethods(target, methodNames) {
-        if (typeof target !== "object" || target === null) {
-          throw new TypeError("`target` must be an object");
-        }
-        methodNames = defaultMethodNamesOrAssert(methodNames);
-        for (const methodName of methodNames) {
-          if (target[methodName] !== void 0) {
-            throw new Error(`The property \`${methodName}\` already exists on \`target\``);
-          }
-          Object.defineProperty(target, methodName, {
-            enumerable: false,
-            value: this[methodName].bind(this)
-          });
-        }
-      }
+      return target;
     };
-    var allEmitteryMethods = Object.getOwnPropertyNames(Emittery2.prototype).filter((v) => v !== "constructor");
-    Object.defineProperty(Emittery2, "listenerAdded", {
-      value: listenerAdded,
-      writable: false,
-      enumerable: true,
-      configurable: false
-    });
-    Object.defineProperty(Emittery2, "listenerRemoved", {
-      value: listenerRemoved,
-      writable: false,
-      enumerable: true,
-      configurable: false
-    });
-    module.exports = Emittery2;
   }
+  static get isDebugEnabled() {
+    var _a, _b;
+    if (typeof ((_a = globalThis.process) == null ? void 0 : _a.env) !== "object") {
+      return isGlobalDebugEnabled;
+    }
+    const { env } = (_b = globalThis.process) != null ? _b : { env: {} };
+    return env.DEBUG === "emittery" || env.DEBUG === "*" || isGlobalDebugEnabled;
+  }
+  static set isDebugEnabled(newValue) {
+    isGlobalDebugEnabled = newValue;
+  }
+  constructor(options = {}) {
+    var _a;
+    anyMap.set(this, /* @__PURE__ */ new Set());
+    eventsMap.set(this, /* @__PURE__ */ new Map());
+    producersMap.set(this, /* @__PURE__ */ new Map());
+    producersMap.get(this).set(anyProducer, /* @__PURE__ */ new Set());
+    this.debug = (_a = options.debug) != null ? _a : {};
+    if (this.debug.enabled === void 0) {
+      this.debug.enabled = false;
+    }
+    if (!this.debug.logger) {
+      this.debug.logger = (type, debugName, eventName, eventData) => {
+        try {
+          eventData = JSON.stringify(eventData);
+        } catch (e) {
+          eventData = `Object with the following keys failed to stringify: ${Object.keys(eventData).join(",")}`;
+        }
+        if (typeof eventName === "symbol" || typeof eventName === "number") {
+          eventName = eventName.toString();
+        }
+        const currentTime = new Date();
+        const logTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}.${currentTime.getMilliseconds()}`;
+        console.log(`[${logTime}][emittery:${type}][${debugName}] Event Name: ${eventName}
+	data: ${eventData}`);
+      };
+    }
+  }
+  logIfDebugEnabled(type, eventName, eventData) {
+    if (Emittery.isDebugEnabled || this.debug.enabled) {
+      this.debug.logger(type, this.debug.name, eventName, eventData);
+    }
+  }
+  on(eventNames, listener) {
+    assertListener(listener);
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      assertEventName(eventName);
+      let set = getListeners(this, eventName);
+      if (!set) {
+        set = /* @__PURE__ */ new Set();
+        const events = eventsMap.get(this);
+        events.set(eventName, set);
+      }
+      set.add(listener);
+      this.logIfDebugEnabled("subscribe", eventName, void 0);
+      if (!isMetaEvent(eventName)) {
+        emitMetaEvent(this, listenerAdded, { eventName, listener });
+      }
+    }
+    return this.off.bind(this, eventNames, listener);
+  }
+  off(eventNames, listener) {
+    assertListener(listener);
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      assertEventName(eventName);
+      const set = getListeners(this, eventName);
+      if (set) {
+        set.delete(listener);
+        if (set.size === 0) {
+          const events = eventsMap.get(this);
+          events.delete(eventName);
+        }
+      }
+      this.logIfDebugEnabled("unsubscribe", eventName, void 0);
+      if (!isMetaEvent(eventName)) {
+        emitMetaEvent(this, listenerRemoved, { eventName, listener });
+      }
+    }
+  }
+  once(eventNames) {
+    let off_;
+    const promise = new Promise((resolve) => {
+      off_ = this.on(eventNames, (data) => {
+        off_();
+        resolve(data);
+      });
+    });
+    promise.off = off_;
+    return promise;
+  }
+  events(eventNames) {
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      assertEventName(eventName);
+    }
+    return iterator(this, eventNames);
+  }
+  emit(eventName, eventData) {
+    return __async(this, null, function* () {
+      var _a;
+      assertEventName(eventName);
+      if (isMetaEvent(eventName) && !canEmitMetaEvents) {
+        throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
+      }
+      this.logIfDebugEnabled("emit", eventName, eventData);
+      enqueueProducers(this, eventName, eventData);
+      const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
+      const anyListeners = anyMap.get(this);
+      const staticListeners = [...listeners];
+      const staticAnyListeners = isMetaEvent(eventName) ? [] : [...anyListeners];
+      yield resolvedPromise;
+      yield Promise.all([
+        ...staticListeners.map((listener) => __async(this, null, function* () {
+          if (listeners.has(listener)) {
+            return listener(eventData);
+          }
+        })),
+        ...staticAnyListeners.map((listener) => __async(this, null, function* () {
+          if (anyListeners.has(listener)) {
+            return listener(eventName, eventData);
+          }
+        }))
+      ]);
+    });
+  }
+  emitSerial(eventName, eventData) {
+    return __async(this, null, function* () {
+      var _a;
+      assertEventName(eventName);
+      if (isMetaEvent(eventName) && !canEmitMetaEvents) {
+        throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
+      }
+      this.logIfDebugEnabled("emitSerial", eventName, eventData);
+      const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
+      const anyListeners = anyMap.get(this);
+      const staticListeners = [...listeners];
+      const staticAnyListeners = [...anyListeners];
+      yield resolvedPromise;
+      for (const listener of staticListeners) {
+        if (listeners.has(listener)) {
+          yield listener(eventData);
+        }
+      }
+      for (const listener of staticAnyListeners) {
+        if (anyListeners.has(listener)) {
+          yield listener(eventName, eventData);
+        }
+      }
+    });
+  }
+  onAny(listener) {
+    assertListener(listener);
+    this.logIfDebugEnabled("subscribeAny", void 0, void 0);
+    anyMap.get(this).add(listener);
+    emitMetaEvent(this, listenerAdded, { listener });
+    return this.offAny.bind(this, listener);
+  }
+  anyEvent() {
+    return iterator(this);
+  }
+  offAny(listener) {
+    assertListener(listener);
+    this.logIfDebugEnabled("unsubscribeAny", void 0, void 0);
+    emitMetaEvent(this, listenerRemoved, { listener });
+    anyMap.get(this).delete(listener);
+  }
+  clearListeners(eventNames) {
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      this.logIfDebugEnabled("clear", eventName, void 0);
+      if (typeof eventName === "string" || typeof eventName === "symbol" || typeof eventName === "number") {
+        const set = getListeners(this, eventName);
+        if (set) {
+          set.clear();
+        }
+        const producers = getEventProducers(this, eventName);
+        if (producers) {
+          for (const producer of producers) {
+            producer.finish();
+          }
+          producers.clear();
+        }
+      } else {
+        anyMap.get(this).clear();
+        for (const [eventName2, listeners] of eventsMap.get(this).entries()) {
+          listeners.clear();
+          eventsMap.get(this).delete(eventName2);
+        }
+        for (const [eventName2, producers] of producersMap.get(this).entries()) {
+          for (const producer of producers) {
+            producer.finish();
+          }
+          producers.clear();
+          producersMap.get(this).delete(eventName2);
+        }
+      }
+    }
+  }
+  listenerCount(eventNames) {
+    var _a, _b, _c, _d, _e, _f;
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    let count = 0;
+    for (const eventName of eventNames) {
+      if (typeof eventName === "string") {
+        count += anyMap.get(this).size + ((_b = (_a = getListeners(this, eventName)) == null ? void 0 : _a.size) != null ? _b : 0) + ((_d = (_c = getEventProducers(this, eventName)) == null ? void 0 : _c.size) != null ? _d : 0) + ((_f = (_e = getEventProducers(this)) == null ? void 0 : _e.size) != null ? _f : 0);
+        continue;
+      }
+      if (typeof eventName !== "undefined") {
+        assertEventName(eventName);
+      }
+      count += anyMap.get(this).size;
+      for (const value of eventsMap.get(this).values()) {
+        count += value.size;
+      }
+      for (const value of producersMap.get(this).values()) {
+        count += value.size;
+      }
+    }
+    return count;
+  }
+  bindMethods(target, methodNames) {
+    if (typeof target !== "object" || target === null) {
+      throw new TypeError("`target` must be an object");
+    }
+    methodNames = defaultMethodNamesOrAssert(methodNames);
+    for (const methodName of methodNames) {
+      if (target[methodName] !== void 0) {
+        throw new Error(`The property \`${methodName}\` already exists on \`target\``);
+      }
+      Object.defineProperty(target, methodName, {
+        enumerable: false,
+        value: this[methodName].bind(this)
+      });
+    }
+  }
+};
+var allEmitteryMethods = Object.getOwnPropertyNames(Emittery.prototype).filter((v) => v !== "constructor");
+Object.defineProperty(Emittery, "listenerAdded", {
+  value: listenerAdded,
+  writable: false,
+  enumerable: true,
+  configurable: false
+});
+Object.defineProperty(Emittery, "listenerRemoved", {
+  value: listenerRemoved,
+  writable: false,
+  enumerable: true,
+  configurable: false
 });
 
 // src/js-components/grid/grid.ts
-var import_emittery = __toESM(require_emittery());
-var import_lodash8 = __toESM(require_lodash());
+var import_lodash9 = __toESM(require_lodash());
 
 // src/js-components/grid/cell.ts
 var import_lodash2 = __toESM(require_lodash());
@@ -585,7 +638,10 @@ var IRGridRow = class {
       this.cells.forEach((cell) => cell.render());
   }
   getCell(col) {
-    return this.cells[col];
+    const cell = this.cells[col];
+    if (!cell)
+      throw new Error(`Not found cell ${this.row}, ${col}`);
+    return cell;
   }
   *getCellGenerator(left = 0, right = this.cells.length - 1) {
     for (let c = left; c <= right; ++c) {
@@ -690,7 +746,7 @@ var calculateCellInnerHeight = (cell, _metaInfo) => {
 };
 var calculateCellInnerWidth = (cell, metaInfo) => {
   const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
-  const iconWidth = [metaInfo.icon, metaInfo.sortOrder].reduce((count, icon) => icon ? count + 1 : count, 0) * 20;
+  const iconWidth = [metaInfo.icon, metaInfo.sortOrder].reduce((count, icon) => icon ? count + 1 : count, 0) * 25;
   const lines = `${metaInfo.text || ""}`.split("\n");
   const firstLine = lines[0] || "";
   return (0, import_lodash2.default)(lines).drop(1).reduce(
@@ -716,6 +772,7 @@ var IRGridCell = class {
     this._element.colSpan = 1;
     this._metaInfo = __spreadValues({}, metaInfo);
     this._cellRenderer = cellRenderer;
+    this._uuid = v4_default();
     this.row = row;
     this.col = col;
     this._element.onclick = () => this.onClick(this);
@@ -729,6 +786,9 @@ var IRGridCell = class {
   }
   get isFreezed() {
     return this._element.classList.contains(grid_classNames_default.cellSticky.blockElementName) || this._element.tagName === "TH";
+  }
+  get uuid() {
+    return this._uuid;
   }
   get dropDisabled() {
     return this._metaInfo.dropDisabled;
@@ -1800,14 +1860,14 @@ function createIRGridFinder(grid, args) {
 // src/js-components/grid/iterator.ts
 function createGridCellGenerator(grid) {
   return {
-    getSelectionGenerator: function* ({ top, left, bottom, right }) {
+    *getSelectionGenerator({ top, left, bottom, right }) {
       right = Math.min(right, grid.getColCount() - 1);
       bottom = Math.min(bottom, grid.getRowCount() - 1);
       for (let r = top; r <= bottom; r++)
         for (let c = left; c <= right; c++)
           yield grid.cell(r, c);
     },
-    getSelectionHeaderIterator: function* ({ top, left, bottom, right }) {
+    *getSelectionHeaderIterator({ top, left, bottom, right }) {
       right = Math.min(right, grid.getColCount() - 1);
       bottom = Math.min(bottom, grid.getRowCount() - 1);
       for (let r = 0; r < grid.headerRows; ++r)
@@ -1817,7 +1877,7 @@ function createGridCellGenerator(grid) {
         for (let c = 0; c < grid.headerColumns; ++c)
           yield grid.cell(r, c);
     },
-    getSelectionHeaderBorderRight: function* ({ top, bottom }) {
+    *getSelectionHeaderBorderRight({ top, bottom }) {
       bottom = Math.min(bottom, grid.getRowCount() - 1);
       for (let r = top; r <= bottom; ++r)
         for (let c = grid.headerColumns - 1; c >= 0; --c) {
@@ -1828,7 +1888,7 @@ function createGridCellGenerator(grid) {
           }
         }
     },
-    getSelectionHeaderBorderBottom: function* ({ left, right }) {
+    *getSelectionHeaderBorderBottom({ left, right }) {
       right = Math.min(right, grid.getColCount() - 1);
       for (let c = left; c <= right; ++c)
         for (let r = grid.headerRows - 1; r >= 0; --r) {
@@ -1897,6 +1957,7 @@ var createCommandManager = (grid, undoManager) => {
       for (const cell of cellGenerator.getSelectionGenerator(range)) {
         if (cell.metaInfo.disabled !== true && cell.onCheckReadonly() !== true && cell.metaInfo.cellType !== "select" && cell.text) {
           cellInfoList.push({
+            cellUUID: cell.uuid,
             row: cell.row,
             col: cell.col,
             key: "text",
@@ -1914,10 +1975,12 @@ var createCommandManager = (grid, undoManager) => {
       });
     },
     DONE_CELL_EDIT({ row, col, beforeText, text }) {
+      const cell = grid.cell(row, col);
       undoManager.pushCommand({
         type: "UPDATE_CELLS",
         context: {
           cellInfoList: [{
+            cellUUID: cell.uuid,
             row,
             col,
             key: "text",
@@ -1929,11 +1992,13 @@ var createCommandManager = (grid, undoManager) => {
     },
     SET_TEXT({ row, col, text }) {
       const beforeText = grid.getText(row, col);
+      const cell = grid.cell(row, col);
       grid.setText(row, col, text);
       undoManager.pushCommand({
         type: "UPDATE_CELLS",
         context: {
           cellInfoList: [{
+            cellUUID: cell.uuid,
             row,
             col,
             key: "text",
@@ -1956,29 +2021,29 @@ var import_lodash5 = __toESM(require_lodash());
 function createMergeHandler(grid) {
   const mergeList = [];
   const generator = createGridCellGenerator(grid);
-  function isValidatedMerging({ top, left, bottom, right }) {
+  const isValidatedMerging = ({ top, left, bottom, right }) => {
     return (0, import_lodash5.default)(mergeList).some(({ mergeArea }) => {
       return left <= mergeArea.right && right >= mergeArea.left && top <= mergeArea.bottom && bottom >= mergeArea.top;
     }) === false;
-  }
-  function getRowSpanCount(top, bottom) {
+  };
+  const getRowSpanCount = (top, bottom) => {
     return import_lodash5.default.range(top, bottom + 1).filter((r) => grid.getRowVisible(r)).reduce((cnt) => cnt + 1, 0);
-  }
-  function getColSpanCount(left, right) {
+  };
+  const getColSpanCount = (left, right) => {
     return import_lodash5.default.range(left, right + 1).filter((c) => grid.getColumnVisible(c)).reduce((cnt) => cnt + 1, 0);
-  }
-  function isContainedHiddenCell({ top, left, bottom, right }) {
+  };
+  const isContainedHiddenCell = ({ top, left, bottom, right }) => {
     if (import_lodash5.default.range(top, bottom + 1).some((row) => grid.getRowVisible(row) === false) || import_lodash5.default.range(left, right + 1).some((col) => grid.getColumnVisible(col) === false))
       return true;
     return false;
-  }
-  function getMergeCell(row, col) {
+  };
+  const getMergeCell = (row, col) => {
     const cell = grid.cell(row, col);
     const id = mergeList.indexOf(cell);
     if (id >= 0)
       return mergeList[id];
     return void 0;
-  }
+  };
   const handler = {
     isValidatedMerging,
     getMergedRowHeight: (top, bottom) => {
@@ -2068,31 +2133,31 @@ function createMergeHandler(grid) {
 // src/js-components/grid/plugins/resizer.ts
 var COL_INTERACTION_SIZE = 12;
 var ROW_INTERACTION_SIZE = 8;
-function getColumnNo(cell) {
+var getColumnNo = (cell) => {
   if (cell.mergeInfo)
     return cell.col + cell.mergeInfo.colSpan - 1;
   else
     return cell.col;
-}
-function getRowNo(cell) {
+};
+var getRowNo = (cell) => {
   if (cell.mergeInfo)
     return cell.row + cell.mergeInfo.rowSpan - 1;
   else
     return cell.row;
-}
-function Resizer({ grid, context, enabledColResizer, enabledRowResizer }) {
+};
+var Resizer = ({ grid, context, enabledColResizer, enabledRowResizer }) => {
   (function mount() {
     const divGuide = document.createElement("div");
     let isResizing = false;
     let latestContextDownHandler = null;
     let latestClickedTime = 0;
-    function resetCursor() {
+    const resetCursor = () => {
       context.classList.remove(grid_classNames_default.grid["col-resizing"]);
       context.classList.remove(grid_classNames_default.grid["row-resizing"]);
       context.classList.remove(grid_classNames_default.grid["is-resizing"]);
       latestContextDownHandler && context.removeEventListener("mousedown", latestContextDownHandler);
-    }
-    function setCursor(eventCell, clsResizing) {
+    };
+    const setCursor = (eventCell, clsResizing) => {
       latestContextDownHandler && context.removeEventListener("mousedown", latestContextDownHandler);
       context.classList.remove(grid_classNames_default.grid["col-resizing"]);
       context.classList.remove(grid_classNames_default.grid["row-resizing"]);
@@ -2103,18 +2168,18 @@ function Resizer({ grid, context, enabledColResizer, enabledRowResizer }) {
       let maxXY = 0;
       let startXY = 0;
       let size = 0;
-      function getGuideX() {
+      const getGuideX = () => {
         if (eventCell.col < grid.getFreezedColumnCount())
           return grid.scrollLeft + startXY;
         else
           return startXY;
-      }
-      function getGuideY() {
+      };
+      const getGuideY = () => {
         if (eventCell.row < grid.getFreezedRowCount())
           return grid.scrollTop + startXY;
         else
           return startXY;
-      }
+      };
       latestContextDownHandler = (ev) => {
         const curTime = new Date().getTime();
         if (curTime - latestClickedTime <= 500) {
@@ -2205,7 +2270,7 @@ function Resizer({ grid, context, enabledColResizer, enabledRowResizer }) {
           removeAllEvents();
       };
       grid.addGlobalEventListener(context, "mousedown", latestContextDownHandler);
-    }
+    };
     const contextMouseMoveHandler = (ev) => {
       if (isResizing)
         return;
@@ -2226,7 +2291,7 @@ function Resizer({ grid, context, enabledColResizer, enabledRowResizer }) {
     grid.addGlobalEventListener(context, "mousemove", contextMouseMoveHandler);
     grid.addGlobalEventListener(context, "mouseout", contextMouseOutHandler);
   })();
-  function getHeaderCellOrNull(ev) {
+  const getHeaderCellOrNull = (ev) => {
     const curCell = ev.target.closest("th");
     if (!curCell)
       return null;
@@ -2235,8 +2300,8 @@ function Resizer({ grid, context, enabledColResizer, enabledRowResizer }) {
       parseInt(curCell.getAttribute("data-col") || "-1")
     ];
     return grid.cell(row, col);
-  }
-  function getMouseCursorTypeOrNull(ev, cell) {
+  };
+  const getMouseCursorTypeOrNull = (ev, cell) => {
     if (cell.cellType === "body-cell")
       return null;
     if (enabledColResizer && Math.abs(grid.getCellWidth(cell) - ev.offsetX) <= COL_INTERACTION_SIZE)
@@ -2245,14 +2310,14 @@ function Resizer({ grid, context, enabledColResizer, enabledRowResizer }) {
       return "row-resizing";
     else
       return null;
-  }
+  };
   return grid;
-}
-function ResizerPlugin(options) {
+};
+var ResizerPlugin = (options) => {
   return (grid, table, context) => {
     return Resizer(__spreadValues({ grid, table, context }, options));
   };
-}
+};
 
 // src/js-components/grid/plugins/cell-selector.ts
 var import_lodash7 = __toESM(require_lodash());
@@ -2334,7 +2399,7 @@ function createGridSelector(grid) {
 }
 
 // src/js-components/grid/plugins/cell-selector.ts
-function MouseCellSelector(grid, table) {
+var MouseCellSelector = (grid, table) => {
   let startCell = null;
   const selector = createGridSelector(grid);
   table.addEventListener("mousedown", (ev) => {
@@ -2378,10 +2443,10 @@ function MouseCellSelector(grid, table) {
       grid.selectRange(extendRange.top, extendRange.left, extendRange.bottom, extendRange.right, startCell);
   });
   grid.addGlobalEventListener(document, "mouseup", () => startCell = null);
-}
-function MouseCellSelectorPlugin() {
+};
+var MouseCellSelectorPlugin = () => {
   return MouseCellSelector;
-}
+};
 
 // src/js-components/grid/plugins/default-key.ts
 var DefaultKey = (grid, _table, context) => {
@@ -2395,7 +2460,9 @@ var DefaultKey = (grid, _table, context) => {
     if (document.activeElement !== textArea)
       textArea.focus();
   });
-  grid.addGlobalEventListener(context, "mouseup", () => textArea.focus());
+  grid.addGlobalEventListener(context, "mouseup", () => {
+    textArea.focus();
+  });
   grid.addGlobalEventListener(context, "input", (ev) => {
     var _a;
     if (!grid.activeCell)
@@ -2465,14 +2532,14 @@ var DefaultKey = (grid, _table, context) => {
       if (ev.ctrlKey)
         grid.redo();
     },
-    F2: (_9) => {
+    F2: (_10) => {
       var _a;
       if (grid.activeCell === null)
         return;
       const mainCell = (_a = grid.activeCell.mergeMain) != null ? _a : grid.activeCell;
       mainCell.doEditMode();
     },
-    Delete: (_9) => {
+    Delete: (_10) => {
       const selection = grid.getSelection();
       if (!selection)
         return;
@@ -2512,7 +2579,7 @@ var DefaultKeyPlugin = () => {
 };
 
 // src/js-components/grid/plugins/row-selection.ts
-function RowSelection(grid, table) {
+var RowSelection = (grid, table) => {
   let startCell = null;
   const selector = createGridSelector(grid);
   table.addEventListener("mousedown", (ev) => {
@@ -2527,31 +2594,38 @@ function RowSelection(grid, table) {
   });
   grid.addGlobalEventListener(document, "mouseup", () => startCell = null);
   return grid;
-}
-function RowSelectionPlugin() {
+};
+var RowSelectionPlugin = () => {
   return RowSelection;
-}
+};
 
 // src/js-components/grid/plugins/column-fill.ts
-function ColumnFill(grid, table, contextElement) {
-  function fillColumns(from) {
-    const { display, width } = getComputedStyle(contextElement);
-    if (display === "none") {
-      console.warn("IR_GRID_COLUMN_FILL_PLUGIN::Could not be the column-fill plugin because display is none!");
-      return;
-    }
-    console.log(width);
-  }
-  grid.emitter.on("onContextResized", () => fillColumns(-1));
-  grid.emitter.on("onColumnResized", ({ col }) => fillColumns(col));
+var import_lodash8 = __toESM(require_lodash());
+var ColumnFill = (grid, _table, _contextElement) => {
+  let scheduled = -1;
+  const fillColumns = () => {
+    const { width } = grid;
+    const columnsRatio = import_lodash8.default.range(grid.getColCount()).map((id) => grid.getColumnWidth(id) / width);
+    console.log(columnsRatio, width);
+  };
+  const scheduleColumnFill = () => {
+    if (scheduled !== -1)
+      clearTimeout(scheduled);
+    scheduled = window.setTimeout(() => {
+      fillColumns();
+    }, 10);
+  };
+  grid.emitter.on("onColumnResized", ({ col }) => {
+    scheduleColumnFill();
+  });
   return grid;
-}
-function ColumnFillPlugin() {
+};
+var ColumnFillPlugin = () => {
   return ColumnFill;
-}
+};
 
 // src/js-components/grid/plugins/cell-observer.ts
-function CellObserver(grid, { onCellInfoChanged }) {
+var CellObserver = (grid, { onCellInfoChanged }) => {
   const handler = ({ row = -1, col = -1 }) => {
     onCellInfoChanged(grid, row, col);
   };
@@ -2561,38 +2635,38 @@ function CellObserver(grid, { onCellInfoChanged }) {
   };
   pluginController.turnOn();
   return pluginController;
-}
-function CellObserverPlugin(option) {
+};
+var CellObserverPlugin = (option) => {
   return (grid) => {
     return CellObserver(grid, option);
   };
-}
+};
 
 // src/js-components/grid/plugins/cell-drop.ts
 var DEFAULT_VALUES = {
   enabledOnHeader: false
 };
-function CellDrop(grid, table, { enabledOnHeader }) {
+var CellDrop = (grid, table, { enabledOnHeader }) => {
   const dragStatus = {
     latestDragOverCell: null
   };
-  function endDrag() {
+  const endDrag = () => {
     table.classList.remove("is-dragging");
     removeDraggingBorder();
-  }
-  function removeDraggingBorder() {
+  };
+  const removeDraggingBorder = () => {
     if (!dragStatus.latestDragOverCell)
       return;
     dragStatus.latestDragOverCell.isDragOver = false;
-  }
-  function setDragCell(cell) {
+  };
+  const setDragCell = (cell) => {
     removeDraggingBorder();
     dragStatus.latestDragOverCell = cell;
     cell.isDragOver = true;
-  }
-  function isDragging() {
+  };
+  const isDragging = () => {
     return table.classList.contains("is-dragging");
-  }
+  };
   table.addEventListener("mouseup", () => isDragging() && endDrag());
   table.addEventListener("dragenter", () => {
     table.classList.add("is-dragging");
@@ -2603,7 +2677,6 @@ function CellDrop(grid, table, { enabledOnHeader }) {
     const cell = grid.findCellOrNull(ev.offsetY, ev.offsetX);
     if (!cell)
       return null;
-    console.log(cell.dropDisabled);
     if (cell.dropDisabled !== false && (cell.isHeaderCell && enabledOnHeader === false || cell.metaInfo.disabled === true || cell.onCheckReadonly() === true || cell.dropDisabled === true)) {
       removeDraggingBorder();
       return null;
@@ -2625,26 +2698,26 @@ function CellDrop(grid, table, { enabledOnHeader }) {
       endDrag();
     }
   });
-}
-function CellDropPlugin(args = DEFAULT_VALUES) {
+};
+var CellDropPlugin = (args = DEFAULT_VALUES) => {
   return (grid, table) => {
     return CellDrop(grid, table, args);
   };
-}
+};
 
 // src/js-components/grid/plugins/single-cell-drag.ts
-function SingleCellDrag(grid, table) {
+var SingleCellDrag = (grid, table) => {
   const dragStatus = {
     cell: null
   };
-  function releaseDragging() {
+  const releaseDragging = () => {
     dragStatus.cell = null;
     table.draggable = false;
-  }
-  function setDragging(cell) {
+  };
+  const setDragging = (cell) => {
     table.draggable = true;
     dragStatus.cell = cell;
-  }
+  };
   table.addEventListener("mousedown", (ev) => {
     if (ev.button !== 0)
       return;
@@ -2669,10 +2742,10 @@ function SingleCellDrag(grid, table) {
     }
     ev.dataTransfer.setDragImage(dragStatus.cell.element, 10, 10);
   });
-}
-function SingleCellDragPlugin() {
+};
+var SingleCellDragPlugin = () => {
   return SingleCellDrag;
-}
+};
 
 // src/js-components/grid/undo-redo.ts
 var UndoManager = class {
@@ -2687,10 +2760,22 @@ var UndoManager = class {
       UPDATE_CELLS: ({ cellInfoList }) => {
         return {
           undo: () => {
-            cellInfoList.forEach(({ row, col, key, oldValue }) => this.grid.setCell(row, col, { [key]: oldValue }));
+            cellInfoList.forEach(({ row, col, key, oldValue, cellUUID }) => {
+              const cell = grid.cell(row, col);
+              if (cell.uuid === cellUUID)
+                this.grid.setCell(row, col, { [key]: oldValue });
+              else
+                console.warn("Could not execute undo, because it has another cell uuid!");
+            });
           },
           redo: () => {
-            cellInfoList.forEach(({ row, col, key, newValue }) => this.grid.setCell(row, col, { [key]: newValue }));
+            cellInfoList.forEach(({ row, col, key, newValue, cellUUID }) => {
+              const cell = grid.cell(row, col);
+              if (cell.uuid === cellUUID)
+                this.grid.setCell(row, col, { [key]: newValue });
+              else
+                console.warn("Could not execute redo, because it has another cell uuid!");
+            });
           }
         };
       },
@@ -2749,7 +2834,11 @@ var UndoManager = class {
   undo() {
     const pop = this.undoStack.pop();
     if (pop) {
-      pop.commandRunner.undo();
+      try {
+        pop.commandRunner.undo();
+      } catch (err) {
+        console.error(err);
+      }
       this.redoStack.push(pop);
       return pop;
     }
@@ -2757,7 +2846,11 @@ var UndoManager = class {
   redo() {
     const pop = this.redoStack.pop();
     if (pop) {
-      pop.commandRunner.redo();
+      try {
+        pop.commandRunner.redo();
+      } catch (err) {
+        console.error(err);
+      }
       this.undoStack.push(pop);
       return pop;
     }
@@ -2765,16 +2858,17 @@ var UndoManager = class {
 };
 
 // src/js-components/grid/virtual.ts
-function createVirtualRenderer(grid, tbody) {
+var ADJUST_SIZE = 200;
+var createVirtualRenderer = (grid, tbody) => {
   const tmpRow = document.createElement("tr");
   tmpRow.setAttribute("data-row", "temp");
   return {
     render: () => {
-      const scrollBottom = grid.scrollBottom + 200;
+      const scrollBottom = grid.scrollBottom + ADJUST_SIZE;
       grid.getRowLodash().takeWhile((row) => row.top <= scrollBottom).filter((row) => !row.isMounted).forEach((row) => row.mount(tbody));
     }
   };
-}
+};
 
 // src/js-components/grid/grid.ts
 var ROW_BORDER_SIZE = 1;
@@ -2789,8 +2883,9 @@ var IRGrid = class extends IRComponent {
     this.totalHeight = 0;
     this.totalWidth = 0;
     this._readonly = false;
-    this._isScheduledRender = false;
+    this._isScheduledRender = -1;
     this._scheduledUpdateRowStart = -1;
+    this._scheduledTasks = [];
     this._copyOptions = {
       rowSpan: true,
       colSpan: true
@@ -2847,6 +2942,7 @@ var IRGrid = class extends IRComponent {
     this.colgroup = document.createElement("colgroup");
     this.tbody = document.createElement("tbody");
     this.divWrapper.className = grid_classNames_default.wrapper.blockElementName;
+    this.divWrapper.tabIndex = -1;
     this.fixedTopTable.appendChild(this.colgroup);
     this.fixedTopTable.appendChild(this.tbody);
     this.divWrapper.appendChild(this.fixedTopTable);
@@ -2871,21 +2967,25 @@ var IRGrid = class extends IRComponent {
     this.virtualRenderer = createVirtualRenderer(this, this.tbody);
     this.clipboardManager = createGridClipboardManager(this);
     this.selector = createGridSelector(this);
-    this._emitter = new import_emittery.default({ debug: { name: this.uuid } });
+    this._emitter = new Emittery({ debug: { name: this.uuid } });
     initIRGridEmitter(this, this._emitter);
     this.initTableRowCol();
-    this.fixedTopTable.addEventListener("contextmenu", (ev) => {
+    this.addGlobalEventListener(this.contextElement, "contextmenu", (ev) => {
       let offsetX = ev.offsetX;
       let offsetY = ev.offsetY;
       let target = ev.target;
-      while (target.tagName !== "TABLE") {
+      while (target !== this.contextElement) {
         offsetX += target.offsetLeft;
         offsetY += target.offsetTop;
         target = target.parentElement;
       }
-      console.log(offsetY, offsetX, this.findCellOrNull(offsetY, offsetX));
-      this.onContextMenu(ev, this.findCellOrNull(offsetY, offsetX));
-      ev.preventDefault();
+      try {
+        this.onContextMenu(ev, this.findCellOrNull(offsetY, offsetX));
+      } catch (err) {
+        console.error(err);
+      } finally {
+        ev.preventDefault();
+      }
     });
   }
   get emitter() {
@@ -2900,6 +3000,9 @@ var IRGrid = class extends IRComponent {
   get lastColumnId() {
     return this.colgroup.children.length - 1;
   }
+  get wrapperWidth() {
+    return this.contextElement.offsetWidth;
+  }
   get width() {
     return this.totalWidth;
   }
@@ -2907,11 +3010,11 @@ var IRGrid = class extends IRComponent {
     return this.totalHeight;
   }
   get fixedRowHeight() {
-    const lastFixedRow = (0, import_lodash8.default)(this._rowList).takeWhile((row) => row.isFreezed).last();
+    const lastFixedRow = (0, import_lodash9.default)(this._rowList).takeWhile((row) => row.isFreezed).last();
     return lastFixedRow ? lastFixedRow.bottom : 0;
   }
   get fixedColumnWidth() {
-    return import_lodash8.default.range(this.rowHeader.colCount).reduce((width, col) => width + this.getColumnWidth(col), 0);
+    return import_lodash9.default.range(this.rowHeader.colCount).reduce((width, col) => width + this.getColumnWidth(col), 0);
   }
   get scrollArea() {
     return {
@@ -2952,10 +3055,10 @@ var IRGrid = class extends IRComponent {
     return this._headerColumns;
   }
   get headerWidth() {
-    return import_lodash8.default.range(this.headerColumns).reduce((width, col) => width + this.getColumnWidth(col), 0);
+    return import_lodash9.default.range(this.headerColumns).reduce((width, col) => width + this.getColumnWidth(col), 0);
   }
   get headerHeight() {
-    return import_lodash8.default.range(this.headerRows).reduce((height, row) => height + this.getRowHeight(row), 0);
+    return import_lodash9.default.range(this.headerRows).reduce((height, row) => height + this.getRowHeight(row), 0);
   }
   get activeCell() {
     return this._activeCell;
@@ -2973,7 +3076,7 @@ var IRGrid = class extends IRComponent {
   set readonly(flag) {
     this._readonly = flag;
     this._rowList.forEach((row) => {
-      import_lodash8.default.range(this.getColCount()).forEach((col) => {
+      import_lodash9.default.range(this.getColCount()).forEach((col) => {
         row.getCell(col).updateReadonlyStatus();
       });
     });
@@ -3094,9 +3197,9 @@ var IRGrid = class extends IRComponent {
     this.scheduleRender();
   }
   getColumnLeft(col) {
-    return import_lodash8.default.range(col).filter((col2) => this.getColumnVisible(col2)).reduce((sum, c) => sum + this.getColumnWidth(c), 0);
+    return import_lodash9.default.range(col).filter((col2) => this.getColumnVisible(col2)).reduce((sum, c) => sum + this.getColumnWidth(c), 0);
   }
-  selectRange(top, left, bottom, right, cell) {
+  selectRange(top, left, bottom, right, cell = null) {
     this.releaseCells();
     this.lastSelection = this.selector.selectRange({ top, left, bottom, right });
     this.onSelectChanged(this.lastSelection);
@@ -3104,22 +3207,23 @@ var IRGrid = class extends IRComponent {
     return this.lastSelection;
   }
   selectAll() {
-    return this.selectRange(this.headerRows, this.headerColumns, this.getRowCount() - 1, this.getColCount() - 1, this.activeCell || void 0);
+    var _a;
+    return this.selectRange(this.headerRows, this.headerColumns, this.getRowCount() - 1, this.getColCount() - 1, (_a = this.activeCell) != null ? _a : null);
   }
   getCellWidth(cell) {
     if (cell.mergeInfo)
-      return import_lodash8.default.range(cell.mergeInfo.colSpan).filter((id) => this.getColumnVisible(cell.col + id)).reduce((width, id) => width + this.getColumnWidth(cell.col + id), 0);
+      return import_lodash9.default.range(cell.mergeInfo.colSpan).filter((id) => this.getColumnVisible(cell.col + id)).reduce((width, id) => width + this.getColumnWidth(cell.col + id), 0);
     else
       return this.getColumnWidth(cell.col);
   }
   getCellHeight(cell) {
     if (cell.mergeInfo)
-      return import_lodash8.default.range(cell.mergeInfo.rowSpan).filter((id) => this.getRowVisible(cell.row + id)).reduce((height, id) => height + this.getRowHeight(cell.row + id), 0);
+      return import_lodash9.default.range(cell.mergeInfo.rowSpan).filter((id) => this.getRowVisible(cell.row + id)).reduce((height, id) => height + this.getRowHeight(cell.row + id), 0);
     else
       return this.getRowHeight(cell.col);
   }
   getSelection() {
-    return import_lodash8.default.clone(this.lastSelection);
+    return import_lodash9.default.clone(this.lastSelection);
   }
   scrollOnRow(row) {
     const targetRow = this.getRow(row);
@@ -3161,6 +3265,10 @@ var IRGrid = class extends IRComponent {
   getText(row, col) {
     return this.cell(row, col).text;
   }
+  getCellUUID(row, col) {
+    var _a;
+    return (_a = this.cell(row, col)) == null ? void 0 : _a.uuid;
+  }
   getValue(row, col) {
     return this.cell(row, col).value;
   }
@@ -3176,15 +3284,16 @@ var IRGrid = class extends IRComponent {
     this.setTableWidth(this.totalWidth + w);
     colElement.style.width = `${w}px`;
     if (col < this.getFreezedColumnCount()) {
-      (0, import_lodash8.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
+      (0, import_lodash9.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
       this.updateCurrentScrollBodyRowsLeft();
     }
     this._emitter.emit("onColumnResized", { col });
+    this.generateScrollBar();
     this.onResizeColumn(col);
   }
   getRowHeight(row) {
     if (!this._rowList[row])
-      throw new Error(`Not found column at ${row}`);
+      throw new Error(`Not found row at ${row}`);
     else
       return this._rowList[row].height;
   }
@@ -3201,16 +3310,10 @@ var IRGrid = class extends IRComponent {
     this._rowList[row].textColor = color;
   }
   getObject(row, col) {
-    if (this.cell(row, col))
-      return this.cell(row, col).object;
-    else
-      throw new Error(`Not found cell ${row}, ${col}`);
+    return this.cell(row, col).object;
   }
-  setObject(row, col, obj) {
-    if (this.cell(row, col))
-      this.setCell(row, col, { object: obj });
-    else
-      throw new Error(`Not found cell ${row}, ${col}`);
+  setObject(row, col, object) {
+    this.cell(row, col).cellInfo = { object };
   }
   cell(row, col) {
     return this.getRow(row).getCell(col);
@@ -3219,11 +3322,9 @@ var IRGrid = class extends IRComponent {
     return this.cell(row, col).mergeMain === void 0;
   }
   getCell(row, col) {
-    return this.getRow(row).getCell(col).metaInfo;
+    return this.cell(row, col).metaInfo;
   }
   setCell(row, col, cellInfo) {
-    if (!this.cell(row, col))
-      throw new Error(`Not found cell ${row}, ${col}`);
     this.cell(row, col).cellInfo = cellInfo;
   }
   selectCell(row, col) {
@@ -3245,13 +3346,13 @@ var IRGrid = class extends IRComponent {
     return this._rowList[row];
   }
   getRowLodash() {
-    return (0, import_lodash8.default)(this._rowList);
+    return (0, import_lodash9.default)(this._rowList);
   }
   addRow(height = this.rowHeader.defaultSize) {
     const row = this._rowList.length;
     const gridRow = this.createIRGridRow(row, this.totalHeight, height);
     this._rowList.push(gridRow);
-    this.onResized();
+    this.scheduleRender();
     return row;
   }
   removeRow(row) {
@@ -3263,11 +3364,11 @@ var IRGrid = class extends IRComponent {
   removeRows(top, bottom) {
     if (top < this.headerRows)
       throw new Error(`Could not remove rows at header!`);
-    if (bottom > this.getRowCount())
+    if (bottom >= this.getRowCount())
       throw new Error(`Out of index. maximum bottom values is ${this.getRowCount()}. If you wanna clear all rows, please call clearRows()`);
     if (this.mergeManager.checkConflictingInRows(top, bottom))
       return false;
-    import_lodash8.default.range(top, bottom + 1).forEach((id) => {
+    import_lodash9.default.range(top, bottom + 1).forEach((id) => {
       const row = this._rowList[id];
       row.unmount();
       this.setTableHeight(this.totalHeight - (row.height + ROW_BORDER_SIZE));
@@ -3288,7 +3389,7 @@ var IRGrid = class extends IRComponent {
         ++tmp;
       }
     }
-    this.onResized();
+    this.updateLastSectionProperly();
     return true;
   }
   removeColumns(left, right) {
@@ -3298,31 +3399,32 @@ var IRGrid = class extends IRComponent {
       throw new Error(`Out of index. maximum bottom values is ${this.getColCount()}`);
     if (this.mergeManager.checkConflictingInColumns(left, right))
       return false;
-    (0, import_lodash8.default)(this._rowList).forEach((row) => {
+    (0, import_lodash9.default)(this._rowList).forEach((row) => {
       for (const cell of row.getCellGenerator(left, right)) {
         if (cell.isMerged)
           this.mergeManager.removeMergeCell(cell.row, cell.col);
       }
       row.removeCells(left, right);
     });
-    import_lodash8.default.range(left, right + 1).forEach(() => {
+    import_lodash9.default.range(left, right + 1).forEach(() => {
       this.setTableWidth(this.totalWidth - this.getColumnWidth(left));
       this.colgroup.removeChild(this.colgroup.children[left]);
     });
-    this.onResized();
+    this.updateLastSectionProperly();
     return true;
   }
   addColumn(width = this.colHeader.defaultSize) {
     const col = this.addColGroup(width);
-    (0, import_lodash8.default)(this._rowList).forEach((row) => row.addCell(this.createIRGridCell(row.rowId, col)));
+    (0, import_lodash9.default)(this._rowList).forEach((row) => row.addCell(this.createIRGridCell(row.rowId, col)));
     ++this.colHeader.colCount;
-    this.onResized();
     return col;
   }
   insertRow(row, height) {
     return this.insertRows(row, 1, height);
   }
   insertRows(row, count, height) {
+    if (!count)
+      throw new Error(`count cannot be 0 or undefined!`);
     if (row < this.headerRows)
       throw new Error(`Could not insert rows in column header`);
     else if (!this.mergeManager.checkCanInsertRow(row))
@@ -3331,32 +3433,36 @@ var IRGrid = class extends IRComponent {
     const tmpRowList = [];
     const tmpHeight = size * tmpRowList.length + tmpRowList.length;
     const target = this._rowList[row];
-    const lastSelection = import_lodash8.default.cloneDeep(this.lastSelection);
+    const lastSelection = import_lodash9.default.cloneDeep(this.lastSelection);
     this.releaseCells();
-    import_lodash8.default.range(count).forEach((id) => tmpRowList.push(this.createIRGridRow(row + id, target.top, size)));
-    import_lodash8.default.range(row, this._rowList.length).forEach((id) => {
+    import_lodash9.default.range(count).forEach((id) => tmpRowList.push(this.createIRGridRow(row + id, target.top, size)));
+    import_lodash9.default.range(row, this._rowList.length).forEach((id) => {
       this._rowList[id].rowId += count;
       this._rowList[id].top += tmpHeight + ROW_BORDER_SIZE;
     });
     this._rowList.splice(row, 0, ...tmpRowList);
+    if (row < this.fixedRowCount)
+      this.freezeRows(this.fixedRowCount - this.headerRows + count);
     this.updateRowsTopFrom(row);
     if (target.isMounted)
       tmpRowList.forEach((row2) => row2.mount(this.tbody, target.element));
     if (lastSelection)
       this.selectRange(lastSelection.top, lastSelection.left, lastSelection.bottom, lastSelection.right);
-    this.onResized();
+    this.scheduleRender();
     return true;
   }
   insertColumn(col, width) {
     return this.insertColumns(col, 1, width);
   }
   insertColumns(col, count, width = this.colHeader.defaultSize) {
+    if (!count)
+      throw new Error(`count cannot be 0 or undefined!`);
     if (col < this.headerColumns)
       throw new Error(`Could not insert rows in row header`);
     else if (!this.mergeManager.checkCanInsertColumn(col))
       return false;
-    const lastSelection = import_lodash8.default.cloneDeep(this.lastSelection);
-    import_lodash8.default.range(count).forEach(() => {
+    const lastSelection = import_lodash9.default.cloneDeep(this.lastSelection);
+    import_lodash9.default.range(count).forEach(() => {
       this.createColElement(col);
       this.colgroup.children[col].style.width = `${width}px`;
       this.setTableWidth(this.width + width);
@@ -3364,39 +3470,38 @@ var IRGrid = class extends IRComponent {
     this.releaseCells();
     this._rowList.forEach((row) => {
       const tmpCellList = [];
-      import_lodash8.default.range(count).forEach((id) => tmpCellList.push(this.createIRGridCell(row.rowId, col + id)));
+      import_lodash9.default.range(count).forEach((id) => tmpCellList.push(this.createIRGridCell(row.rowId, col + id)));
       row.insertCells(tmpCellList, col);
     });
+    if (col < this.fixedColumnCount)
+      this.freezeColumn(this.fixedColumnCount - this.headerColumns + count);
     if (lastSelection)
       this.selectRange(lastSelection.top, lastSelection.left, lastSelection.bottom, lastSelection.right);
-    this.onResized();
     return true;
   }
   autoSizeColumn(col) {
     this.autoSizeColumns(col, col);
   }
   autoSizeColumns(left, right) {
-    const isChanged = import_lodash8.default.range(left, right + 1).reduce((changed, col) => {
-      const maxWidth = (0, import_lodash8.default)(this._rowList).map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => cell.innerWidth).reduce((a, b) => Math.max(a, b), 0);
+    import_lodash9.default.range(left, right + 1).reduce((changed, col) => {
+      const maxWidth = (0, import_lodash9.default)(this._rowList).map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => cell.innerWidth).reduce((a, b) => Math.max(a, b), 0);
       const checkIsChanged = maxWidth !== this.getColumnWidth(col);
       if (checkIsChanged)
         this.setColumnWidth(col, getMinMaxBetween(Math.ceil(maxWidth + CELL_WIDTH_PADDING), this.colHeader.minSize, this.colHeader.maxSize));
       return changed || checkIsChanged;
     }, false);
-    if (isChanged)
-      this.onResized();
   }
   autoSizeRow(row) {
     this.autoSizeRows(row, row);
   }
   autoSizeRows(top, bottom) {
-    const isChanged = import_lodash8.default.range(top, bottom + 1).reduce((changed, r) => {
+    const isChanged = import_lodash9.default.range(top, bottom + 1).reduce((changed, r) => {
       const checkIsChanged = this._rowList[r].setAutoHeight(this.rowHeader.minSize, this.rowHeader.maxSize);
       return changed || checkIsChanged;
     }, false);
     if (isChanged) {
       this.updateRowsTopFrom(top);
-      this.onResized();
+      this.scheduleRender();
     }
   }
   copyToClipboard() {
@@ -3489,6 +3594,7 @@ var IRGrid = class extends IRComponent {
     this.setTableHeight(this.totalHeight + (visible ? this.getRowHeight(row) : -this.getRowHeight(row)));
     this.updateRowsTopFrom(row);
     this.scheduleRender();
+    this.updateLastSectionProperly();
     return true;
   }
   getRowVisible(row) {
@@ -3497,12 +3603,13 @@ var IRGrid = class extends IRComponent {
   setColumnVisible(col, visible) {
     if (this.mergeManager.checkConflictingInColumns(col, col))
       return false;
-    else if (visible === this.getColumnVisible(col))
-      return false;
+    if (visible === this.getColumnVisible(col))
+      return true;
     this._rowList.forEach((row) => row.setColumnVisible(col, visible));
     this.colgroup.children[col].style.display = visible ? "" : "none";
     this.setTableWidth(this.totalWidth + (visible ? this.getColumnWidth(col) : -this.getColumnWidth(col)));
     this.updateCurrentScrollBodyRowsLeft();
+    this.updateLastSectionProperly();
     return true;
   }
   getColumnVisible(col) {
@@ -3531,21 +3638,28 @@ var IRGrid = class extends IRComponent {
   freezeRows(freezingRowCount) {
     const { headerRows } = this;
     this.colHeader.rowCount = freezingRowCount + headerRows;
-    (0, import_lodash8.default)(this._rowList).drop(this.headerRows).takeWhile((row) => row.isFreezed).forEach((row) => {
+    (0, import_lodash9.default)(this._rowList).drop(this.headerRows).takeWhile((row) => row.isFreezed).forEach((row) => {
       row.unfreeze();
       row.unmount();
     });
-    const firstRowElement = import_lodash8.default.range(headerRows).reduce((element) => {
+    const firstRowElement = import_lodash9.default.range(headerRows).reduce((element) => {
       return element == null ? void 0 : element.nextElementSibling;
     }, this.tbody.firstElementChild);
-    (0, import_lodash8.default)(this._rowList).drop(headerRows).take(freezingRowCount).forEach((row) => {
+    (0, import_lodash9.default)(this._rowList).drop(headerRows).take(freezingRowCount).forEach((row) => {
       row.freeze();
       row.mount(this.tbody, firstRowElement);
     });
   }
   freezeColumns(columnId) {
-    this.rowHeader.colCount = columnId + 1;
-    (0, import_lodash8.default)(this._rowList).forEach((row) => row.setStickyHeader(this.rowHeader.colCount));
+    if (columnId <= this.headerColumns)
+      throw new Error("Could not be freezing after header columns");
+    this.freezeColumn(columnId + 1 - this.headerColumns);
+  }
+  freezeColumn(freezingColumnCount) {
+    if (freezingColumnCount < 0)
+      throw new Error("Could not be freezing minus columns!");
+    this.rowHeader.colCount = this.headerColumns + freezingColumnCount;
+    (0, import_lodash9.default)(this._rowList).forEach((row) => row.setStickyHeader(this.rowHeader.colCount));
     this.updateCurrentScrollBodyRowsLeft();
   }
   clearUndoStack() {
@@ -3578,6 +3692,13 @@ var IRGrid = class extends IRComponent {
     this._rowList.push(...cloneRows);
     this.setTableHeight(tmpHeight);
     this.virtualRenderer.render();
+  }
+  sortExceptHeaderRows() {
+  }
+  sortExceptFooterRows() {
+  }
+  afterRender(task) {
+    this._scheduledTasks.push(task);
   }
   onSelectCell(_cell) {
   }
@@ -3711,13 +3832,13 @@ var IRGrid = class extends IRComponent {
     }
   }
   initTableRowCol() {
-    import_lodash8.default.range(this.colHeader.colCount).forEach(() => this.addColGroup(this.colHeader.defaultSize));
-    import_lodash8.default.range(this.colHeader.rowCount).forEach(() => {
+    import_lodash9.default.range(this.colHeader.colCount).forEach(() => this.addColGroup(this.colHeader.defaultSize));
+    import_lodash9.default.range(this.colHeader.rowCount).forEach(() => {
       const headerRow = this.getRow(this.addRow());
       headerRow.mount(this.tbody);
       headerRow.freezeHeader();
     });
-    import_lodash8.default.range(this.body.rowCount).forEach(() => this.addRow());
+    import_lodash9.default.range(this.body.rowCount).forEach(() => this.addRow());
   }
   updateLastSectionProperly() {
     if (this.lastSelection) {
@@ -3757,8 +3878,8 @@ var IRGrid = class extends IRComponent {
   updateCurrentScrollBodyRowsLeft() {
     const top = this.contextElement.scrollTop - this.contextElement.scrollHeight;
     const { scrollBottom } = this;
-    (0, import_lodash8.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
-    (0, import_lodash8.default)(this._rowList).drop(this.getFreezedRowCount()).filter((row) => row.top >= top && row.top <= scrollBottom).forEach((row) => this.updateRowLeft(row));
+    (0, import_lodash9.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
+    (0, import_lodash9.default)(this._rowList).drop(this.getFreezedRowCount()).filter((row) => row.top >= top && row.top <= scrollBottom).forEach((row) => this.updateRowLeft(row));
   }
   initColumnHeaderCell(cell) {
     cell.cellType = "col-header";
@@ -3774,7 +3895,7 @@ var IRGrid = class extends IRComponent {
     cell.onMoveUpOnEdit = () => this._cursorManager.selectNextSelection(-1, 0, false);
     cell.onMoveRightOnEdit = () => this._cursorManager.selectNextSelection(0, 1, false);
     cell.onMoveDownOnEdit = () => this._cursorManager.selectNextSelection(1, 0, false);
-    cell.onTabOnEdit = (_9, shiftKey) => {
+    cell.onTabOnEdit = (_10, shiftKey) => {
       if (shiftKey)
         this._cursorManager.selectBeforeActiveCell();
       else
@@ -3803,6 +3924,7 @@ var IRGrid = class extends IRComponent {
   createIRGridCell(row, col) {
     const isColHeader = row < this.headerRows;
     const isRowHeader = !isColHeader && col < this.headerColumns;
+    const isBody = !isColHeader && !isRowHeader;
     const tag = isColHeader || isRowHeader ? "th" : "td";
     const cellRenderer = isColHeader ? this.colHeader.cellRenderer : isRowHeader ? this.rowHeader.cellRenderer : this.body.cellRenderer;
     const cell = new IRGridCell({
@@ -3810,7 +3932,7 @@ var IRGrid = class extends IRComponent {
       col,
       tag,
       cellRenderer,
-      metaInfo: __spreadProps(__spreadValues(__spreadValues({}, this.defaultColumnCellFormat.all), this.defaultColumnCellFormat[col]), {
+      metaInfo: __spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, this.defaultColumnCellFormat.all), this.defaultColumnCellFormat[col]), isColHeader ? this.defaultColumnCellFormat[`col_header_${col}`] : void 0), isRowHeader ? this.defaultColumnCellFormat[`row_header_${col}`] : void 0), isBody ? this.defaultColumnCellFormat[`body_${col}`] : void 0), {
         emitter: this._emitter
       })
     });
@@ -3831,7 +3953,7 @@ var IRGrid = class extends IRComponent {
     return cell;
   }
   updateRowLeft(row) {
-    import_lodash8.default.range(this.getFreezedColumnCount()).filter((col) => this.getColumnVisible(col)).reduce((width, col) => {
+    import_lodash9.default.range(this.getFreezedColumnCount()).filter((col) => this.getColumnVisible(col)).reduce((width, col) => {
       row.setCellLeft(col, width);
       return width + this.getColumnWidth(col);
     }, 0);
@@ -3843,13 +3965,17 @@ var IRGrid = class extends IRComponent {
       this._scheduledUpdateRowStart = start;
       setTimeout(() => {
         const startRow = this._rowList[this._scheduledUpdateRowStart];
-        const maxHeight = (0, import_lodash8.default)(this._rowList).drop(this._scheduledUpdateRowStart).filter((row) => row.visible).reduce((top, row) => {
+        const maxHeight = (0, import_lodash9.default)(this._rowList).drop(this._scheduledUpdateRowStart).reduce((top, row) => {
           row.top = top;
-          return top + row.height + ROW_BORDER_SIZE;
+          return row.visible ? top + row.height + ROW_BORDER_SIZE : top;
         }, startRow.top);
         this.setTableHeight(maxHeight);
         this._scheduledUpdateRowStart = -1;
       }, 0);
+      if (this._isScheduledRender !== -1) {
+        this.clearScheduleRender();
+        this.scheduleRender();
+      }
     }
   }
   getColElement(id) {
@@ -3864,21 +3990,20 @@ var IRGrid = class extends IRComponent {
     this.divWrapper.style.height = `${this.totalHeight}px`;
   }
   onResized() {
-    this.updateLastSectionProperly();
-    this._emitter.emit("onContextResized");
+    this._emitter.emit("onColumnResized", { col: -1 });
     this.onResizeContext();
     this.scheduleRender();
   }
   createIRGridRow(row, top, height) {
     const gridRow = new IRGridRow({ row, height, top, rowType: row < this.headerRows ? "col-header" : "body" });
-    import_lodash8.default.range(this.getColCount()).forEach((col) => gridRow.addCell(this.createIRGridCell(row, col)));
-    import_lodash8.default.range(this.getColCount()).filter((col) => this.getColumnVisible(col) === false).forEach((col) => gridRow.setColumnVisible(col, false));
+    import_lodash9.default.range(this.getColCount()).forEach((col) => gridRow.addCell(this.createIRGridCell(row, col)));
+    import_lodash9.default.range(this.getColCount()).filter((col) => this.getColumnVisible(col) === false).forEach((col) => gridRow.setColumnVisible(col, false));
     gridRow.onMounted = () => {
       gridRow.setStickyHeader(this.rowHeader.colCount);
       this.onMountedRow(gridRow.rowId);
     };
     gridRow.onChangedHeight = () => {
-      import_lodash8.default.range(this.getColCount()).forEach((col) => {
+      import_lodash9.default.range(this.getColCount()).forEach((col) => {
         const cell = gridRow.getCell(col);
         const mergeMain = cell.mergeMain ? cell.mergeMain : cell.mergeInfo.rowSpan > 1 ? cell : null;
         if (mergeMain)
@@ -3888,16 +4013,29 @@ var IRGrid = class extends IRComponent {
     this.setTableHeight(this.totalHeight + height + ROW_BORDER_SIZE);
     return gridRow;
   }
-  scheduleRender() {
-    if (this._isScheduledRender)
+  clearScheduleRender() {
+    if (this._isScheduledRender === -1)
       return;
-    this._isScheduledRender = true;
-    requestAnimationFrame(() => {
+    clearTimeout(this._isScheduledRender);
+    this._isScheduledRender = -1;
+  }
+  scheduleRender() {
+    if (this._isScheduledRender !== -1)
+      return;
+    this._isScheduledRender = window.setTimeout(() => {
       this.updateCurrentScrollBodyRowsLeft();
       this.generateScrollBar();
       this.virtualRenderer.render();
-      this._isScheduledRender = false;
-    });
+      this._isScheduledRender = -1;
+      this._scheduledTasks.forEach((task) => {
+        try {
+          task();
+        } catch (err) {
+          console.error("Occurred Scheduled Task Error!", err);
+        }
+      });
+      this._scheduledTasks.length = 0;
+    }, 0);
   }
 };
 
@@ -3943,11 +4081,12 @@ var renderGridCheckbox = ({ onCheckboxClick }) => {
 
 // src/js-components/grid/sub-ui/select.ts
 var DEFAULT_MARGIN = 30;
-var renderGridSelect = ({ items, onChange }) => {
+var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
   const { divDropdown, ulItems } = createDropdownDiv();
   const dropDownItemList = [];
   let beforeValue;
   let beforeText;
+  let popper = null;
   for (const { value, text } of items) {
     const { item, button } = createDropdownItem(value, text);
     dropDownItemList.push({ value, text, buttonElement: button, itemWrapperElement: item });
@@ -3959,6 +4098,7 @@ var renderGridSelect = ({ items, onChange }) => {
     return DEFAULT_MARGIN + max;
   };
   return (row, col, data) => {
+    var _a;
     const div = document.createElement("div");
     const input = document.createElement("input");
     const icon = document.createElement("i");
@@ -3970,27 +4110,33 @@ var renderGridSelect = ({ items, onChange }) => {
     icon.classList.add(select_classNames_default.selectInputIcon.blockElementName, "ir-icon", "ir-icon--chevron-down");
     input.type = "text";
     input.readOnly = true;
-    dropDownItemList.filter((item) => item.text === data.text).forEach((item) => {
+    let isMapped = false;
+    dropDownItemList.filter((item) => item.text === data.text).slice(0, 1).forEach((item) => {
       input.value = item.text;
       data.value = item.value;
+      isMapped = true;
     });
-    const popper = createPopper(div, divDropdown, {
-      placement: "bottom-end",
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset: [0, 8]
-          }
-        }
-      ]
-    });
+    if (allowCustomText && !isMapped) {
+      input.value = (_a = data.text) != null ? _a : "";
+      data.value = data.text;
+    }
     const outsideHandler = createClickOutsideHandler({
       eventElements: [div, divDropdown],
       clickOutsideFunc: () => objHandler.hide()
     });
     const objHandler = {
       show: () => {
+        popper = createPopper(div, divDropdown, {
+          placement: "bottom-end",
+          modifiers: [
+            {
+              name: "offset",
+              options: {
+                offset: [0, 8]
+              }
+            }
+          ]
+        });
         escController.create();
         outsideHandler.create();
         beforeValue = data.value;
@@ -4014,9 +4160,10 @@ var renderGridSelect = ({ items, onChange }) => {
         divDropdown.setAttribute("data-row", row.toString());
         divDropdown.setAttribute("data-col", col.toString());
         document.body.appendChild(divDropdown);
-        popper.forceUpdate();
         div.classList.add(select_classNames_default.select["is-expanded"]);
-        divDropdown.classList.add(select_classNames_default.select["is-expanded"]);
+        requestAnimationFrame(() => {
+          divDropdown.classList.add(select_classNames_default.select["is-expanded"]);
+        });
       },
       hide: () => {
         escController.destroy();
@@ -4025,6 +4172,7 @@ var renderGridSelect = ({ items, onChange }) => {
         divDropdown.classList.remove(select_classNames_default.select["is-expanded"]);
         divDropdown.addEventListener("transitionend", () => {
           if (divDropdown.getAttribute("data-row") === row.toString() && divDropdown.getAttribute("data-col") === col.toString()) {
+            popper == null ? void 0 : popper.destroy();
             divDropdown.remove();
           }
         }, { once: true });
@@ -4047,7 +4195,9 @@ var renderGridSelect = ({ items, onChange }) => {
 // src/js-components/grid/sub-ui/datePicker.ts
 var import_moment = __toESM(require_moment());
 var DEFAULT_MARGIN2 = 24;
-var renderGridDatePicker = ({ onDateClick, format = i18n_default.datePicker.dateFormat, minDate = new Date(0), maxDate = new Date("9999-12-31") }) => {
+var DEFAULT_MIN_DATE = (0, import_moment.default)("1970-01-01").toDate();
+var DEFAULT_MAX_DATE = (0, import_moment.default)("9999-12-31").toDate();
+var renderGridDatePicker = ({ onDateClick, format = i18n_default.datePicker.dateFormat, minDate = DEFAULT_MIN_DATE, maxDate = DEFAULT_MAX_DATE }) => {
   const datePickerCellInnerWidth = (cell, metaInfo) => {
     const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
     return context.calculateWidth(metaInfo.text || format) + DEFAULT_MARGIN2;
@@ -4069,9 +4219,11 @@ var renderGridDatePicker = ({ onDateClick, format = i18n_default.datePicker.date
     input.placeholder = format;
     if ((0, import_moment.default)(data.text, format, true).isValid() === false)
       data.text = "";
-    const dt = (0, import_moment.default)(data.text, format).toDate();
-    if (dt < minDate || dt > maxDate)
-      data.text = "";
+    else {
+      const textMoment = (0, import_moment.default)(data.text, format);
+      if (textMoment.isBefore(minDate) || textMoment.isAfter(maxDate))
+        data.text = "";
+    }
     input.value = data.text || "";
     btn.appendChild(icon);
     div.appendChild(input);
@@ -4081,8 +4233,8 @@ var renderGridDatePicker = ({ onDateClick, format = i18n_default.datePicker.date
       refElement: div,
       minDate,
       maxDate,
-      onClick: (dt2) => {
-        const text = (0, import_moment.default)(dt2).format(format);
+      onClick: (dt) => {
+        const text = (0, import_moment.default)(dt).format(format);
         input.value = text;
         data.text = text;
         onDateClick == null ? void 0 : onDateClick.call(null, row, col, text);
@@ -4132,7 +4284,7 @@ var renderGridProgress = ({ min = 0, max = 100, defaultIntent, afterDecimalLen =
       return context.calculateWidth(progress.style.getPropertyValue(progress_classNames_default.VALUE_PROPERTY)) + DEFAULT_MARGIN3;
     };
     const value = getMinMaxBetween(parseFloat(data.text || "0"), min, max);
-    const percent = (value - min) / max * 100;
+    const percent = (value - min) / (max - min) * 100;
     progress.style.setProperty(progress_classNames_default.VALUE_PROPERTY, `'${percent.toFixed(afterDecimalLen)}%'`);
     progress.style.setProperty(progress_classNames_default.PERCENT_PROPERTY, `${percent}%`);
     wrapper.appendChild(progress);
@@ -4304,6 +4456,16 @@ var createIRGridColumnSortManager = (grid) => {
     }
   };
 };
+
+// src/js-components/grid/sort-infer.ts
+var createIRGridInferSorting = (options) => {
+  return {
+    sortExceptHeaderRows(col, headerRowCount) {
+    },
+    sortExceptFooterRows(col, footerRowCount) {
+    }
+  };
+};
 export {
   CellDropPlugin,
   CellObserverPlugin,
@@ -4315,6 +4477,7 @@ export {
   RowSelectionPlugin,
   SingleCellDragPlugin,
   createIRGridColumnSortManager,
+  createIRGridInferSorting,
   renderGridButton,
   renderGridCellDefault,
   renderGridCellIconButton,

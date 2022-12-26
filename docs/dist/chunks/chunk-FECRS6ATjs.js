@@ -1,10 +1,10 @@
 import {
   require_lodash
-} from "./chunk-XRII76FAjs.js";
+} from "./chunk-H4BZVVDUjs.js";
 import {
   __async,
   __toESM
-} from "./chunk-GM7SH55Tjs.js";
+} from "./chunk-ZK6IOW44js.js";
 
 // src/utils/dom.ts
 function appendElement(parent, tagName, ...classes) {
@@ -312,22 +312,24 @@ var createCustomIcon = (...iconList) => {
     const className = `.ir-icon--${name}`;
     const varName = `--ir-icon--${name}`;
     buffer.push(`
-[class^="ir-icon"], [class*=" ir-icon"], [class^="ir-icon"]::before, [class*=" ir-icon"]::before {
+.ir-icon {
     ${varName}: url("data:image/svg+xml;base64,${base64}")
 }`);
     if (masked) {
       buffer.push(`
-${className}::before {
+${className} {
     -webkit-mask-image: var(${varName});
     mask-image: var(${varName});
     background-image: none;
+    background-color: none;
 }`);
     } else {
       buffer.push(`
-${className}::before {
+${className} {
     background: var(${varName}) 0 / cover;
     -webkit-mask-image: none;
     mask-image: none;
+    --ir-icon-foreground-color: transparent;
 }`);
     }
   });
@@ -434,4 +436,4 @@ export {
   Logger,
   createCustomIcon
 };
-//# sourceMappingURL=chunk-JQSLBQEDjs.js.map
+//# sourceMappingURL=chunk-FECRS6ATjs.js.map

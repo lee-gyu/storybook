@@ -1,6 +1,6 @@
 import {
   i18n_default
-} from "./chunk-UTVAQNRKjs.js";
+} from "./chunk-6HRIDFJDjs.js";
 import {
   BEMClass,
   appendElement,
@@ -10,17 +10,17 @@ import {
   registerGlobalKeyListener,
   unregisterGlobalKeyListener,
   z_index_classNames_default
-} from "./chunk-JQSLBQEDjs.js";
+} from "./chunk-FECRS6ATjs.js";
 import {
   require_lodash
-} from "./chunk-XRII76FAjs.js";
+} from "./chunk-H4BZVVDUjs.js";
 import {
   IRComponent,
   __commonJS,
   __require,
   __spreadValues,
   __toESM
-} from "./chunk-GM7SH55Tjs.js";
+} from "./chunk-ZK6IOW44js.js";
 
 // ../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js
 var require_moment = __commonJS({
@@ -5940,6 +5940,7 @@ var IRSelect = class extends IRComponent {
     super({
       contextElement: args instanceof HTMLSelectElement ? args : args.contextElement
     });
+    this.popper = null;
     this.divSelect = document.createElement("div");
     this.divInput = document.createElement("div");
     this.inputValue = document.createElement("input");
@@ -5979,23 +5980,14 @@ var IRSelect = class extends IRComponent {
       this.disabled = (_a = args.disabled) != null ? _a : false;
       if (args.defaultValue !== null)
         this.value = args.defaultValue || defaultValue;
+      if (args.placeholder)
+        this.inputValue.placeholder = args.placeholder;
     } else
       this.value = defaultValue;
     this.select.insertAdjacentElement("beforebegin", this.divSelect);
     this.select.style.display = "none";
     this.divInput.onclick = () => this.toggle();
     this.addCoreElement(this.divSelect);
-    this.popper = createPopper(this.divSelect, this.divDropDown, {
-      placement: "bottom-end",
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset: [0, 8]
-          }
-        }
-      ]
-    });
     this.escController = createESCHideController(this);
     this.outsideHandler = createClickOutsideHandler({
       eventElements: [this.divSelect, this.divDropDown],
@@ -6051,7 +6043,17 @@ var IRSelect = class extends IRComponent {
       return;
     this.divDropDown.style.width = `${this.divSelect.offsetWidth}px`;
     document.body.appendChild(this.divDropDown);
-    this.popper.forceUpdate();
+    this.popper = createPopper(this.divSelect, this.divDropDown, {
+      placement: "bottom-end",
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [0, 8]
+          }
+        }
+      ]
+    });
     this.divSelect.classList.add(select_classNames_default.select["is-expanded"]);
     this.divDropDown.classList.add(select_classNames_default.select["is-expanded"]);
     this.escController.create();
@@ -6062,7 +6064,11 @@ var IRSelect = class extends IRComponent {
     this.outsideHandler.destroy();
     this.divSelect.classList.remove(select_classNames_default.select["is-expanded"]);
     this.divDropDown.classList.remove(select_classNames_default.select["is-expanded"]);
-    this.divDropDown.addEventListener("transitionend", () => this.divDropDown.remove(), { once: true });
+    this.divDropDown.addEventListener("transitionend", () => {
+      var _a;
+      (_a = this.popper) == null ? void 0 : _a.destroy();
+      this.divDropDown.remove();
+    }, { once: true });
   }
   toggle() {
     if (this.divSelect.classList.contains(select_classNames_default.select["is-expanded"]))
@@ -6193,10 +6199,10 @@ footer.appendChild(todayButton);
 datePicker.appendChild(header);
 datePicker.appendChild(content);
 datePicker.appendChild(footer);
-function updateI18n() {
+var updateI18n = () => {
   todayButton.innerHTML = ` <i class="button__icon-prefix ir-icon ir-icon--check"></i>${i18n_default.datePicker.btnToday}`;
   WeekdayList.forEach((w) => weekdayCells[w].innerText = i18n_default.common[w]);
-}
+};
 var datePicker_elements_default = {
   datePicker,
   headerTitle,
@@ -6210,28 +6216,18 @@ var datePicker_elements_default = {
 };
 
 // src/js-components/datePicker/datePicker.handler.ts
-function setTimeZero(date) {
+var setTimeZero = (date) => {
   date.setHours(0);
   date.setMinutes(0);
   date.setSeconds(0);
   date.setMilliseconds(0);
   return date;
-}
-function createDatePickerHandler({ uuid, refElement, onClick, minDate, maxDate }) {
+};
+var createDatePickerHandler = ({ uuid, refElement, onClick, minDate, maxDate }) => {
   let visible = false;
+  let popper2 = null;
   setTimeZero(minDate);
   setTimeZero(maxDate);
-  const popper2 = createPopper(refElement, datePicker_elements_default.datePicker, {
-    placement: "bottom-end",
-    modifiers: [
-      {
-        name: "offset",
-        options: {
-          offset: [0, 8]
-        }
-      }
-    ]
-  });
   const clickOutsideHandler = createClickOutsideHandler({
     eventElements: [datePicker_elements_default.datePicker],
     clickOutsideFunc: () => handler.hide()
@@ -6289,22 +6285,34 @@ function createDatePickerHandler({ uuid, refElement, onClick, minDate, maxDate }
       });
     },
     show() {
+      popper2 = createPopper(refElement, datePicker_elements_default.datePicker, {
+        placement: "bottom-end",
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 8]
+            }
+          }
+        ]
+      });
       visible = true;
       document.body.appendChild(datePicker_elements_default.datePicker);
       datePicker_elements_default.datePicker.style.removeProperty("display");
       datePicker_elements_default.datePicker.setAttribute("data-for", uuid);
-      popper2.forceUpdate();
-      datePicker_elements_default.datePicker.classList.add(datePicker_classNames_default.datePicker["is-visible"]);
       clickOutsideHandler.create();
       escController.create();
+      requestAnimationFrame(() => datePicker_elements_default.datePicker.classList.add(datePicker_classNames_default.datePicker["is-visible"]));
     },
     hide() {
       clickOutsideHandler.destroy();
       escController.destroy();
       datePicker_elements_default.datePicker.addEventListener("transitionend", () => {
         visible = false;
-        if (uuid === datePicker_elements_default.datePicker.getAttribute("data-for"))
+        if (uuid === datePicker_elements_default.datePicker.getAttribute("data-for")) {
+          popper2 == null ? void 0 : popper2.destroy();
           datePicker_elements_default.datePicker.style.display = "none";
+        }
       }, { once: true });
       datePicker_elements_default.datePicker.classList.remove(datePicker_classNames_default.datePicker["is-visible"]);
     },
@@ -6312,7 +6320,7 @@ function createDatePickerHandler({ uuid, refElement, onClick, minDate, maxDate }
   };
   const escController = createESCHideController(handler);
   return handler;
-}
+};
 
 // src/components/input/input.classNames.ts
 var block4 = "input";
@@ -6376,10 +6384,8 @@ var IRDatePicker = class extends IRComponent {
     this.input.addEventListener("blur", () => {
       const dt = (0, import_moment2.default)(this.input.value, this.format, true);
       this.setDate(dt.isValid() ? dt.toDate() : null);
-      if (this.date) {
-        if (this.date < this.minDate || this.date > this.maxDate)
-          this.setDate(null);
-      }
+      if (this.date && (this.date < this.minDate || this.date > this.maxDate))
+        this.setDate(null);
     });
     this.handler = createDatePickerHandler({
       uuid: this.uuid,
@@ -6558,8 +6564,7 @@ var confirmTypeClass = {
   question: "ir-icon--question ir-icon--info",
   warning: "ir-icon--error ir-icon--warning"
 };
-var lastConfirm = null;
-var IRConfirm = class {
+var _IRConfirm = class {
   constructor({ iconType = "info", buttonType = ["ok"], messageHTML, msgMap = {}, onClick, escButton, enterButton }) {
     this.visible = false;
     this.iconType = iconType;
@@ -6573,17 +6578,17 @@ var IRConfirm = class {
       this.onClick = onClick;
   }
   show() {
-    var _a;
-    if (lastConfirm == null ? void 0 : lastConfirm.visible)
+    var _a, _b;
+    if ((_a = _IRConfirm.lastConfirm) == null ? void 0 : _a.visible)
       return;
-    lastConfirm = this;
+    _IRConfirm.lastConfirm = this;
     this.visible = true;
     elements.confirmContent.innerHTML = this.messageHTML;
     elements.confirmIcon.className = `${confirm_classNames_default.confirmIcon} ir-icon ${confirmTypeClass[this.iconType] || ""}`;
     elements.closeButton.onclick = () => this.hide();
     for (const key of ConfirmButtonTypeList) {
       elements.buttonMap[key].remove();
-      elements.buttonMap[key].innerText = (_a = this.msgMap[key]) != null ? _a : i18n_default.confirm[key];
+      elements.buttonMap[key].innerText = (_b = this.msgMap[key]) != null ? _b : i18n_default.confirm[key];
       elements.buttonMap[key].onclick = () => {
         this.hide();
         this.onClick(key);
@@ -6615,7 +6620,7 @@ var IRConfirm = class {
     if (this.visible === false)
       return;
     this.escController.destroy();
-    lastConfirm = null;
+    _IRConfirm.lastConfirm = null;
     this.visible = false;
     elements.dialog.classList.remove(dialog_classNames_default.dialog["is-visible"]);
     this.enterHandler && unregisterGlobalKeyListener("Enter", this.enterHandler);
@@ -6623,6 +6628,8 @@ var IRConfirm = class {
   onClick(_btnType) {
   }
 };
+var IRConfirm = _IRConfirm;
+IRConfirm.lastConfirm = null;
 
 // src/js-components/timePicker/timePicker.handler.ts
 var import_moment3 = __toESM(require_moment());
@@ -6775,17 +6782,7 @@ var timePicker_elements_default = {
 // src/js-components/timePicker/timePicker.handler.ts
 function createIRTimePickerHandler({ uuid, refElement, onChange }) {
   let visible = false;
-  const popper2 = createPopper(refElement, timePicker_elements_default.timePicker, {
-    placement: "bottom-end",
-    modifiers: [
-      {
-        name: "offset",
-        options: {
-          offset: [0, 8]
-        }
-      }
-    ]
-  });
+  let popper2 = null;
   const handler = {
     setTime(value) {
       const { hour, minute } = parseTime(value);
@@ -6795,6 +6792,17 @@ function createIRTimePickerHandler({ uuid, refElement, onChange }) {
     show: () => {
       if (visible)
         return;
+      popper2 = createPopper(refElement, timePicker_elements_default.timePicker, {
+        placement: "bottom-end",
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 8]
+            }
+          }
+        ]
+      });
       updateI18n2();
       visible = true;
       escController.create();
@@ -6833,8 +6841,10 @@ function createIRTimePickerHandler({ uuid, refElement, onChange }) {
       timePicker_elements_default.timePicker.classList.remove(timePicker_classNames_default.timePicker["is-visible"]);
       timePicker_elements_default.timePicker.addEventListener("transitionend", () => {
         visible = false;
-        if (uuid === timePicker_elements_default.timePicker.getAttribute("data-uuid"))
+        if (uuid === timePicker_elements_default.timePicker.getAttribute("data-uuid")) {
+          popper2 == null ? void 0 : popper2.destroy();
           timePicker_elements_default.timePicker.style.display = "none";
+        }
       }, { once: true });
     },
     onESC: () => handler.hide(),
@@ -6964,9 +6974,14 @@ export {
   IRConfirm,
   IRTimePicker
 };
-//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
-//! license : MIT
-//! moment.js
-//! momentjs.com
-//! version : 2.29.4
-//# sourceMappingURL=chunk-JF6NT4DXjs.js.map
+/*! Bundled license information:
+
+moment/moment.js:
+  (*! moment.js *)
+  (*! version : 2.29.4 *)
+  (*! authors : Tim Wood, Iskren Chernev, Moment.js contributors *)
+  (*! license : MIT *)
+  (*! momentjs.com *)
+  (*! moment.js *)
+*/
+//# sourceMappingURL=chunk-WYBL4JB5js.js.map
