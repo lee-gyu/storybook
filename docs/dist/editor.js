@@ -1,15 +1,13 @@
 import {
   i18n_default
-} from "./chunks/chunk-6HRIDFJDjs.js";
-import {
-  require_lodash
-} from "./chunks/chunk-H4BZVVDUjs.js";
+} from "./chunks/chunk-OXAUWT7Gjs.js";
 import {
   IRComponent,
   __commonJS,
   __spreadValues,
-  __toESM
-} from "./chunks/chunk-ZK6IOW44js.js";
+  __toESM,
+  require_lodash
+} from "./chunks/chunk-IKJP23QCjs.js";
 
 // ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/lib/codemirror.js
 var require_codemirror = __commonJS({

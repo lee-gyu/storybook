@@ -4,473 +4,34 @@ import {
   createDatePickerHandler,
   createDropdownDiv,
   createDropdownItem,
-  createPopper,
   input_classNames_default,
-  require_moment,
   select_classNames_default
-} from "./chunks/chunk-WYBL4JB5js.js";
+} from "./chunks/chunk-PAG77H4Fjs.js";
 import {
-  i18n_default
-} from "./chunks/chunk-6HRIDFJDjs.js";
+  i18n_default,
+  require_moment
+} from "./chunks/chunk-OXAUWT7Gjs.js";
 import {
   BEMClass,
   ClipboardManager,
-  createClickOutsideHandler,
-  createESCHideController,
-  get2DGenerator,
-  getCssText,
-  getMinMaxBetween,
-  getTextWidthContext
-} from "./chunks/chunk-FECRS6ATjs.js";
-import {
-  require_lodash
-} from "./chunks/chunk-H4BZVVDUjs.js";
-import {
   IRComponent,
   __async,
   __spreadProps,
   __spreadValues,
   __toESM,
+  createClickOutsideHandler,
+  createESCHideController,
+  get2DGenerator,
+  getCssText,
+  getMinMaxBetween,
+  getTextWidthContext,
+  offsetBottomAutoUpdate,
+  require_lodash,
   v4_default
-} from "./chunks/chunk-ZK6IOW44js.js";
-
-// ../../node_modules/.pnpm/emittery@1.0.1/node_modules/emittery/maps.js
-var anyMap = /* @__PURE__ */ new WeakMap();
-var eventsMap = /* @__PURE__ */ new WeakMap();
-var producersMap = /* @__PURE__ */ new WeakMap();
-
-// ../../node_modules/.pnpm/emittery@1.0.1/node_modules/emittery/index.js
-var anyProducer = Symbol("anyProducer");
-var resolvedPromise = Promise.resolve();
-var listenerAdded = Symbol("listenerAdded");
-var listenerRemoved = Symbol("listenerRemoved");
-var canEmitMetaEvents = false;
-var isGlobalDebugEnabled = false;
-function assertEventName(eventName) {
-  if (typeof eventName !== "string" && typeof eventName !== "symbol" && typeof eventName !== "number") {
-    throw new TypeError("`eventName` must be a string, symbol, or number");
-  }
-}
-function assertListener(listener) {
-  if (typeof listener !== "function") {
-    throw new TypeError("listener must be a function");
-  }
-}
-function getListeners(instance, eventName) {
-  const events = eventsMap.get(instance);
-  if (!events.has(eventName)) {
-    return;
-  }
-  return events.get(eventName);
-}
-function getEventProducers(instance, eventName) {
-  const key = typeof eventName === "string" || typeof eventName === "symbol" || typeof eventName === "number" ? eventName : anyProducer;
-  const producers = producersMap.get(instance);
-  if (!producers.has(key)) {
-    return;
-  }
-  return producers.get(key);
-}
-function enqueueProducers(instance, eventName, eventData) {
-  const producers = producersMap.get(instance);
-  if (producers.has(eventName)) {
-    for (const producer of producers.get(eventName)) {
-      producer.enqueue(eventData);
-    }
-  }
-  if (producers.has(anyProducer)) {
-    const item = Promise.all([eventName, eventData]);
-    for (const producer of producers.get(anyProducer)) {
-      producer.enqueue(item);
-    }
-  }
-}
-function iterator(instance, eventNames) {
-  eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-  let isFinished = false;
-  let flush = () => {
-  };
-  let queue = [];
-  const producer = {
-    enqueue(item) {
-      queue.push(item);
-      flush();
-    },
-    finish() {
-      isFinished = true;
-      flush();
-    }
-  };
-  for (const eventName of eventNames) {
-    let set = getEventProducers(instance, eventName);
-    if (!set) {
-      set = /* @__PURE__ */ new Set();
-      const producers = producersMap.get(instance);
-      producers.set(eventName, set);
-    }
-    set.add(producer);
-  }
-  return {
-    next() {
-      return __async(this, null, function* () {
-        if (!queue) {
-          return { done: true };
-        }
-        if (queue.length === 0) {
-          if (isFinished) {
-            queue = void 0;
-            return this.next();
-          }
-          yield new Promise((resolve) => {
-            flush = resolve;
-          });
-          return this.next();
-        }
-        return {
-          done: false,
-          value: yield queue.shift()
-        };
-      });
-    },
-    return(_0) {
-      return __async(this, arguments, function* (value) {
-        queue = void 0;
-        for (const eventName of eventNames) {
-          const set = getEventProducers(instance, eventName);
-          if (set) {
-            set.delete(producer);
-            if (set.size === 0) {
-              const producers = producersMap.get(instance);
-              producers.delete(eventName);
-            }
-          }
-        }
-        flush();
-        return arguments.length > 0 ? { done: true, value: yield value } : { done: true };
-      });
-    },
-    [Symbol.asyncIterator]() {
-      return this;
-    }
-  };
-}
-function defaultMethodNamesOrAssert(methodNames) {
-  if (methodNames === void 0) {
-    return allEmitteryMethods;
-  }
-  if (!Array.isArray(methodNames)) {
-    throw new TypeError("`methodNames` must be an array of strings");
-  }
-  for (const methodName of methodNames) {
-    if (!allEmitteryMethods.includes(methodName)) {
-      if (typeof methodName !== "string") {
-        throw new TypeError("`methodNames` element must be a string");
-      }
-      throw new Error(`${methodName} is not Emittery method`);
-    }
-  }
-  return methodNames;
-}
-var isMetaEvent = (eventName) => eventName === listenerAdded || eventName === listenerRemoved;
-function emitMetaEvent(emitter, eventName, eventData) {
-  if (isMetaEvent(eventName)) {
-    try {
-      canEmitMetaEvents = true;
-      emitter.emit(eventName, eventData);
-    } finally {
-      canEmitMetaEvents = false;
-    }
-  }
-}
-var Emittery = class {
-  static mixin(emitteryPropertyName, methodNames) {
-    methodNames = defaultMethodNamesOrAssert(methodNames);
-    return (target) => {
-      if (typeof target !== "function") {
-        throw new TypeError("`target` must be function");
-      }
-      for (const methodName of methodNames) {
-        if (target.prototype[methodName] !== void 0) {
-          throw new Error(`The property \`${methodName}\` already exists on \`target\``);
-        }
-      }
-      function getEmitteryProperty() {
-        Object.defineProperty(this, emitteryPropertyName, {
-          enumerable: false,
-          value: new Emittery()
-        });
-        return this[emitteryPropertyName];
-      }
-      Object.defineProperty(target.prototype, emitteryPropertyName, {
-        enumerable: false,
-        get: getEmitteryProperty
-      });
-      const emitteryMethodCaller = (methodName) => function(...args) {
-        return this[emitteryPropertyName][methodName](...args);
-      };
-      for (const methodName of methodNames) {
-        Object.defineProperty(target.prototype, methodName, {
-          enumerable: false,
-          value: emitteryMethodCaller(methodName)
-        });
-      }
-      return target;
-    };
-  }
-  static get isDebugEnabled() {
-    var _a, _b;
-    if (typeof ((_a = globalThis.process) == null ? void 0 : _a.env) !== "object") {
-      return isGlobalDebugEnabled;
-    }
-    const { env } = (_b = globalThis.process) != null ? _b : { env: {} };
-    return env.DEBUG === "emittery" || env.DEBUG === "*" || isGlobalDebugEnabled;
-  }
-  static set isDebugEnabled(newValue) {
-    isGlobalDebugEnabled = newValue;
-  }
-  constructor(options = {}) {
-    var _a;
-    anyMap.set(this, /* @__PURE__ */ new Set());
-    eventsMap.set(this, /* @__PURE__ */ new Map());
-    producersMap.set(this, /* @__PURE__ */ new Map());
-    producersMap.get(this).set(anyProducer, /* @__PURE__ */ new Set());
-    this.debug = (_a = options.debug) != null ? _a : {};
-    if (this.debug.enabled === void 0) {
-      this.debug.enabled = false;
-    }
-    if (!this.debug.logger) {
-      this.debug.logger = (type, debugName, eventName, eventData) => {
-        try {
-          eventData = JSON.stringify(eventData);
-        } catch (e) {
-          eventData = `Object with the following keys failed to stringify: ${Object.keys(eventData).join(",")}`;
-        }
-        if (typeof eventName === "symbol" || typeof eventName === "number") {
-          eventName = eventName.toString();
-        }
-        const currentTime = new Date();
-        const logTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}.${currentTime.getMilliseconds()}`;
-        console.log(`[${logTime}][emittery:${type}][${debugName}] Event Name: ${eventName}
-	data: ${eventData}`);
-      };
-    }
-  }
-  logIfDebugEnabled(type, eventName, eventData) {
-    if (Emittery.isDebugEnabled || this.debug.enabled) {
-      this.debug.logger(type, this.debug.name, eventName, eventData);
-    }
-  }
-  on(eventNames, listener) {
-    assertListener(listener);
-    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-    for (const eventName of eventNames) {
-      assertEventName(eventName);
-      let set = getListeners(this, eventName);
-      if (!set) {
-        set = /* @__PURE__ */ new Set();
-        const events = eventsMap.get(this);
-        events.set(eventName, set);
-      }
-      set.add(listener);
-      this.logIfDebugEnabled("subscribe", eventName, void 0);
-      if (!isMetaEvent(eventName)) {
-        emitMetaEvent(this, listenerAdded, { eventName, listener });
-      }
-    }
-    return this.off.bind(this, eventNames, listener);
-  }
-  off(eventNames, listener) {
-    assertListener(listener);
-    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-    for (const eventName of eventNames) {
-      assertEventName(eventName);
-      const set = getListeners(this, eventName);
-      if (set) {
-        set.delete(listener);
-        if (set.size === 0) {
-          const events = eventsMap.get(this);
-          events.delete(eventName);
-        }
-      }
-      this.logIfDebugEnabled("unsubscribe", eventName, void 0);
-      if (!isMetaEvent(eventName)) {
-        emitMetaEvent(this, listenerRemoved, { eventName, listener });
-      }
-    }
-  }
-  once(eventNames) {
-    let off_;
-    const promise = new Promise((resolve) => {
-      off_ = this.on(eventNames, (data) => {
-        off_();
-        resolve(data);
-      });
-    });
-    promise.off = off_;
-    return promise;
-  }
-  events(eventNames) {
-    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-    for (const eventName of eventNames) {
-      assertEventName(eventName);
-    }
-    return iterator(this, eventNames);
-  }
-  emit(eventName, eventData) {
-    return __async(this, null, function* () {
-      var _a;
-      assertEventName(eventName);
-      if (isMetaEvent(eventName) && !canEmitMetaEvents) {
-        throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
-      }
-      this.logIfDebugEnabled("emit", eventName, eventData);
-      enqueueProducers(this, eventName, eventData);
-      const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
-      const anyListeners = anyMap.get(this);
-      const staticListeners = [...listeners];
-      const staticAnyListeners = isMetaEvent(eventName) ? [] : [...anyListeners];
-      yield resolvedPromise;
-      yield Promise.all([
-        ...staticListeners.map((listener) => __async(this, null, function* () {
-          if (listeners.has(listener)) {
-            return listener(eventData);
-          }
-        })),
-        ...staticAnyListeners.map((listener) => __async(this, null, function* () {
-          if (anyListeners.has(listener)) {
-            return listener(eventName, eventData);
-          }
-        }))
-      ]);
-    });
-  }
-  emitSerial(eventName, eventData) {
-    return __async(this, null, function* () {
-      var _a;
-      assertEventName(eventName);
-      if (isMetaEvent(eventName) && !canEmitMetaEvents) {
-        throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
-      }
-      this.logIfDebugEnabled("emitSerial", eventName, eventData);
-      const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
-      const anyListeners = anyMap.get(this);
-      const staticListeners = [...listeners];
-      const staticAnyListeners = [...anyListeners];
-      yield resolvedPromise;
-      for (const listener of staticListeners) {
-        if (listeners.has(listener)) {
-          yield listener(eventData);
-        }
-      }
-      for (const listener of staticAnyListeners) {
-        if (anyListeners.has(listener)) {
-          yield listener(eventName, eventData);
-        }
-      }
-    });
-  }
-  onAny(listener) {
-    assertListener(listener);
-    this.logIfDebugEnabled("subscribeAny", void 0, void 0);
-    anyMap.get(this).add(listener);
-    emitMetaEvent(this, listenerAdded, { listener });
-    return this.offAny.bind(this, listener);
-  }
-  anyEvent() {
-    return iterator(this);
-  }
-  offAny(listener) {
-    assertListener(listener);
-    this.logIfDebugEnabled("unsubscribeAny", void 0, void 0);
-    emitMetaEvent(this, listenerRemoved, { listener });
-    anyMap.get(this).delete(listener);
-  }
-  clearListeners(eventNames) {
-    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-    for (const eventName of eventNames) {
-      this.logIfDebugEnabled("clear", eventName, void 0);
-      if (typeof eventName === "string" || typeof eventName === "symbol" || typeof eventName === "number") {
-        const set = getListeners(this, eventName);
-        if (set) {
-          set.clear();
-        }
-        const producers = getEventProducers(this, eventName);
-        if (producers) {
-          for (const producer of producers) {
-            producer.finish();
-          }
-          producers.clear();
-        }
-      } else {
-        anyMap.get(this).clear();
-        for (const [eventName2, listeners] of eventsMap.get(this).entries()) {
-          listeners.clear();
-          eventsMap.get(this).delete(eventName2);
-        }
-        for (const [eventName2, producers] of producersMap.get(this).entries()) {
-          for (const producer of producers) {
-            producer.finish();
-          }
-          producers.clear();
-          producersMap.get(this).delete(eventName2);
-        }
-      }
-    }
-  }
-  listenerCount(eventNames) {
-    var _a, _b, _c, _d, _e, _f;
-    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
-    let count = 0;
-    for (const eventName of eventNames) {
-      if (typeof eventName === "string") {
-        count += anyMap.get(this).size + ((_b = (_a = getListeners(this, eventName)) == null ? void 0 : _a.size) != null ? _b : 0) + ((_d = (_c = getEventProducers(this, eventName)) == null ? void 0 : _c.size) != null ? _d : 0) + ((_f = (_e = getEventProducers(this)) == null ? void 0 : _e.size) != null ? _f : 0);
-        continue;
-      }
-      if (typeof eventName !== "undefined") {
-        assertEventName(eventName);
-      }
-      count += anyMap.get(this).size;
-      for (const value of eventsMap.get(this).values()) {
-        count += value.size;
-      }
-      for (const value of producersMap.get(this).values()) {
-        count += value.size;
-      }
-    }
-    return count;
-  }
-  bindMethods(target, methodNames) {
-    if (typeof target !== "object" || target === null) {
-      throw new TypeError("`target` must be an object");
-    }
-    methodNames = defaultMethodNamesOrAssert(methodNames);
-    for (const methodName of methodNames) {
-      if (target[methodName] !== void 0) {
-        throw new Error(`The property \`${methodName}\` already exists on \`target\``);
-      }
-      Object.defineProperty(target, methodName, {
-        enumerable: false,
-        value: this[methodName].bind(this)
-      });
-    }
-  }
-};
-var allEmitteryMethods = Object.getOwnPropertyNames(Emittery.prototype).filter((v) => v !== "constructor");
-Object.defineProperty(Emittery, "listenerAdded", {
-  value: listenerAdded,
-  writable: false,
-  enumerable: true,
-  configurable: false
-});
-Object.defineProperty(Emittery, "listenerRemoved", {
-  value: listenerRemoved,
-  writable: false,
-  enumerable: true,
-  configurable: false
-});
+} from "./chunks/chunk-IKJP23QCjs.js";
 
 // src/js-components/grid/grid.ts
-var import_lodash9 = __toESM(require_lodash());
+var import_lodash10 = __toESM(require_lodash());
 
 // src/js-components/grid/cell.ts
 var import_lodash2 = __toESM(require_lodash());
@@ -744,9 +305,11 @@ var DEFAULT_ROW_PADDING = 13;
 var calculateCellInnerHeight = (cell, _metaInfo) => {
   return DEFAULT_ROW_PADDING + getCellInnerHeight(cell);
 };
+var ICON_SIZE = 20;
+var ICON_HORIZONTAL_GAP = 5;
 var calculateCellInnerWidth = (cell, metaInfo) => {
   const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
-  const iconWidth = [metaInfo.icon, metaInfo.sortOrder].reduce((count, icon) => icon ? count + 1 : count, 0) * 25;
+  const iconWidth = [metaInfo.icon, metaInfo.sortOrder].reduce((count, icon) => icon ? count + 1 : count, 0) * (ICON_SIZE + ICON_HORIZONTAL_GAP);
   const lines = `${metaInfo.text || ""}`.split("\n");
   const firstLine = lines[0] || "";
   return (0, import_lodash2.default)(lines).drop(1).reduce(
@@ -1730,10 +1293,463 @@ function createGridCellCursorManager(grid) {
   };
 }
 
-// src/js-components/grid/emitter.ts
-function initIRGridEmitter(grid, emitter) {
-  emitter.on("updateCellStatus", (cellAddress) => grid.cell(cellAddress.row, cellAddress.col).updateCellStatus());
+// ../../node_modules/.pnpm/emittery@1.0.1/node_modules/emittery/maps.js
+var anyMap = /* @__PURE__ */ new WeakMap();
+var eventsMap = /* @__PURE__ */ new WeakMap();
+var producersMap = /* @__PURE__ */ new WeakMap();
+
+// ../../node_modules/.pnpm/emittery@1.0.1/node_modules/emittery/index.js
+var anyProducer = Symbol("anyProducer");
+var resolvedPromise = Promise.resolve();
+var listenerAdded = Symbol("listenerAdded");
+var listenerRemoved = Symbol("listenerRemoved");
+var canEmitMetaEvents = false;
+var isGlobalDebugEnabled = false;
+function assertEventName(eventName) {
+  if (typeof eventName !== "string" && typeof eventName !== "symbol" && typeof eventName !== "number") {
+    throw new TypeError("`eventName` must be a string, symbol, or number");
+  }
 }
+function assertListener(listener) {
+  if (typeof listener !== "function") {
+    throw new TypeError("listener must be a function");
+  }
+}
+function getListeners(instance, eventName) {
+  const events = eventsMap.get(instance);
+  if (!events.has(eventName)) {
+    return;
+  }
+  return events.get(eventName);
+}
+function getEventProducers(instance, eventName) {
+  const key = typeof eventName === "string" || typeof eventName === "symbol" || typeof eventName === "number" ? eventName : anyProducer;
+  const producers = producersMap.get(instance);
+  if (!producers.has(key)) {
+    return;
+  }
+  return producers.get(key);
+}
+function enqueueProducers(instance, eventName, eventData) {
+  const producers = producersMap.get(instance);
+  if (producers.has(eventName)) {
+    for (const producer of producers.get(eventName)) {
+      producer.enqueue(eventData);
+    }
+  }
+  if (producers.has(anyProducer)) {
+    const item = Promise.all([eventName, eventData]);
+    for (const producer of producers.get(anyProducer)) {
+      producer.enqueue(item);
+    }
+  }
+}
+function iterator(instance, eventNames) {
+  eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+  let isFinished = false;
+  let flush = () => {
+  };
+  let queue = [];
+  const producer = {
+    enqueue(item) {
+      queue.push(item);
+      flush();
+    },
+    finish() {
+      isFinished = true;
+      flush();
+    }
+  };
+  for (const eventName of eventNames) {
+    let set = getEventProducers(instance, eventName);
+    if (!set) {
+      set = /* @__PURE__ */ new Set();
+      const producers = producersMap.get(instance);
+      producers.set(eventName, set);
+    }
+    set.add(producer);
+  }
+  return {
+    next() {
+      return __async(this, null, function* () {
+        if (!queue) {
+          return { done: true };
+        }
+        if (queue.length === 0) {
+          if (isFinished) {
+            queue = void 0;
+            return this.next();
+          }
+          yield new Promise((resolve) => {
+            flush = resolve;
+          });
+          return this.next();
+        }
+        return {
+          done: false,
+          value: yield queue.shift()
+        };
+      });
+    },
+    return(_0) {
+      return __async(this, arguments, function* (value) {
+        queue = void 0;
+        for (const eventName of eventNames) {
+          const set = getEventProducers(instance, eventName);
+          if (set) {
+            set.delete(producer);
+            if (set.size === 0) {
+              const producers = producersMap.get(instance);
+              producers.delete(eventName);
+            }
+          }
+        }
+        flush();
+        return arguments.length > 0 ? { done: true, value: yield value } : { done: true };
+      });
+    },
+    [Symbol.asyncIterator]() {
+      return this;
+    }
+  };
+}
+function defaultMethodNamesOrAssert(methodNames) {
+  if (methodNames === void 0) {
+    return allEmitteryMethods;
+  }
+  if (!Array.isArray(methodNames)) {
+    throw new TypeError("`methodNames` must be an array of strings");
+  }
+  for (const methodName of methodNames) {
+    if (!allEmitteryMethods.includes(methodName)) {
+      if (typeof methodName !== "string") {
+        throw new TypeError("`methodNames` element must be a string");
+      }
+      throw new Error(`${methodName} is not Emittery method`);
+    }
+  }
+  return methodNames;
+}
+var isMetaEvent = (eventName) => eventName === listenerAdded || eventName === listenerRemoved;
+function emitMetaEvent(emitter, eventName, eventData) {
+  if (isMetaEvent(eventName)) {
+    try {
+      canEmitMetaEvents = true;
+      emitter.emit(eventName, eventData);
+    } finally {
+      canEmitMetaEvents = false;
+    }
+  }
+}
+var Emittery = class {
+  static mixin(emitteryPropertyName, methodNames) {
+    methodNames = defaultMethodNamesOrAssert(methodNames);
+    return (target) => {
+      if (typeof target !== "function") {
+        throw new TypeError("`target` must be function");
+      }
+      for (const methodName of methodNames) {
+        if (target.prototype[methodName] !== void 0) {
+          throw new Error(`The property \`${methodName}\` already exists on \`target\``);
+        }
+      }
+      function getEmitteryProperty() {
+        Object.defineProperty(this, emitteryPropertyName, {
+          enumerable: false,
+          value: new Emittery()
+        });
+        return this[emitteryPropertyName];
+      }
+      Object.defineProperty(target.prototype, emitteryPropertyName, {
+        enumerable: false,
+        get: getEmitteryProperty
+      });
+      const emitteryMethodCaller = (methodName) => function(...args) {
+        return this[emitteryPropertyName][methodName](...args);
+      };
+      for (const methodName of methodNames) {
+        Object.defineProperty(target.prototype, methodName, {
+          enumerable: false,
+          value: emitteryMethodCaller(methodName)
+        });
+      }
+      return target;
+    };
+  }
+  static get isDebugEnabled() {
+    var _a, _b;
+    if (typeof ((_a = globalThis.process) == null ? void 0 : _a.env) !== "object") {
+      return isGlobalDebugEnabled;
+    }
+    const { env } = (_b = globalThis.process) != null ? _b : { env: {} };
+    return env.DEBUG === "emittery" || env.DEBUG === "*" || isGlobalDebugEnabled;
+  }
+  static set isDebugEnabled(newValue) {
+    isGlobalDebugEnabled = newValue;
+  }
+  constructor(options = {}) {
+    var _a;
+    anyMap.set(this, /* @__PURE__ */ new Set());
+    eventsMap.set(this, /* @__PURE__ */ new Map());
+    producersMap.set(this, /* @__PURE__ */ new Map());
+    producersMap.get(this).set(anyProducer, /* @__PURE__ */ new Set());
+    this.debug = (_a = options.debug) != null ? _a : {};
+    if (this.debug.enabled === void 0) {
+      this.debug.enabled = false;
+    }
+    if (!this.debug.logger) {
+      this.debug.logger = (type, debugName, eventName, eventData) => {
+        try {
+          eventData = JSON.stringify(eventData);
+        } catch (e) {
+          eventData = `Object with the following keys failed to stringify: ${Object.keys(eventData).join(",")}`;
+        }
+        if (typeof eventName === "symbol" || typeof eventName === "number") {
+          eventName = eventName.toString();
+        }
+        const currentTime = new Date();
+        const logTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}.${currentTime.getMilliseconds()}`;
+        console.log(`[${logTime}][emittery:${type}][${debugName}] Event Name: ${eventName}
+	data: ${eventData}`);
+      };
+    }
+  }
+  logIfDebugEnabled(type, eventName, eventData) {
+    if (Emittery.isDebugEnabled || this.debug.enabled) {
+      this.debug.logger(type, this.debug.name, eventName, eventData);
+    }
+  }
+  on(eventNames, listener) {
+    assertListener(listener);
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      assertEventName(eventName);
+      let set = getListeners(this, eventName);
+      if (!set) {
+        set = /* @__PURE__ */ new Set();
+        const events = eventsMap.get(this);
+        events.set(eventName, set);
+      }
+      set.add(listener);
+      this.logIfDebugEnabled("subscribe", eventName, void 0);
+      if (!isMetaEvent(eventName)) {
+        emitMetaEvent(this, listenerAdded, { eventName, listener });
+      }
+    }
+    return this.off.bind(this, eventNames, listener);
+  }
+  off(eventNames, listener) {
+    assertListener(listener);
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      assertEventName(eventName);
+      const set = getListeners(this, eventName);
+      if (set) {
+        set.delete(listener);
+        if (set.size === 0) {
+          const events = eventsMap.get(this);
+          events.delete(eventName);
+        }
+      }
+      this.logIfDebugEnabled("unsubscribe", eventName, void 0);
+      if (!isMetaEvent(eventName)) {
+        emitMetaEvent(this, listenerRemoved, { eventName, listener });
+      }
+    }
+  }
+  once(eventNames) {
+    let off_;
+    const promise = new Promise((resolve) => {
+      off_ = this.on(eventNames, (data) => {
+        off_();
+        resolve(data);
+      });
+    });
+    promise.off = off_;
+    return promise;
+  }
+  events(eventNames) {
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      assertEventName(eventName);
+    }
+    return iterator(this, eventNames);
+  }
+  emit(eventName, eventData) {
+    return __async(this, null, function* () {
+      var _a;
+      assertEventName(eventName);
+      if (isMetaEvent(eventName) && !canEmitMetaEvents) {
+        throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
+      }
+      this.logIfDebugEnabled("emit", eventName, eventData);
+      enqueueProducers(this, eventName, eventData);
+      const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
+      const anyListeners = anyMap.get(this);
+      const staticListeners = [...listeners];
+      const staticAnyListeners = isMetaEvent(eventName) ? [] : [...anyListeners];
+      yield resolvedPromise;
+      yield Promise.all([
+        ...staticListeners.map((listener) => __async(this, null, function* () {
+          if (listeners.has(listener)) {
+            return listener(eventData);
+          }
+        })),
+        ...staticAnyListeners.map((listener) => __async(this, null, function* () {
+          if (anyListeners.has(listener)) {
+            return listener(eventName, eventData);
+          }
+        }))
+      ]);
+    });
+  }
+  emitSerial(eventName, eventData) {
+    return __async(this, null, function* () {
+      var _a;
+      assertEventName(eventName);
+      if (isMetaEvent(eventName) && !canEmitMetaEvents) {
+        throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
+      }
+      this.logIfDebugEnabled("emitSerial", eventName, eventData);
+      const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
+      const anyListeners = anyMap.get(this);
+      const staticListeners = [...listeners];
+      const staticAnyListeners = [...anyListeners];
+      yield resolvedPromise;
+      for (const listener of staticListeners) {
+        if (listeners.has(listener)) {
+          yield listener(eventData);
+        }
+      }
+      for (const listener of staticAnyListeners) {
+        if (anyListeners.has(listener)) {
+          yield listener(eventName, eventData);
+        }
+      }
+    });
+  }
+  onAny(listener) {
+    assertListener(listener);
+    this.logIfDebugEnabled("subscribeAny", void 0, void 0);
+    anyMap.get(this).add(listener);
+    emitMetaEvent(this, listenerAdded, { listener });
+    return this.offAny.bind(this, listener);
+  }
+  anyEvent() {
+    return iterator(this);
+  }
+  offAny(listener) {
+    assertListener(listener);
+    this.logIfDebugEnabled("unsubscribeAny", void 0, void 0);
+    emitMetaEvent(this, listenerRemoved, { listener });
+    anyMap.get(this).delete(listener);
+  }
+  clearListeners(eventNames) {
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    for (const eventName of eventNames) {
+      this.logIfDebugEnabled("clear", eventName, void 0);
+      if (typeof eventName === "string" || typeof eventName === "symbol" || typeof eventName === "number") {
+        const set = getListeners(this, eventName);
+        if (set) {
+          set.clear();
+        }
+        const producers = getEventProducers(this, eventName);
+        if (producers) {
+          for (const producer of producers) {
+            producer.finish();
+          }
+          producers.clear();
+        }
+      } else {
+        anyMap.get(this).clear();
+        for (const [eventName2, listeners] of eventsMap.get(this).entries()) {
+          listeners.clear();
+          eventsMap.get(this).delete(eventName2);
+        }
+        for (const [eventName2, producers] of producersMap.get(this).entries()) {
+          for (const producer of producers) {
+            producer.finish();
+          }
+          producers.clear();
+          producersMap.get(this).delete(eventName2);
+        }
+      }
+    }
+  }
+  listenerCount(eventNames) {
+    var _a, _b, _c, _d, _e, _f;
+    eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+    let count = 0;
+    for (const eventName of eventNames) {
+      if (typeof eventName === "string") {
+        count += anyMap.get(this).size + ((_b = (_a = getListeners(this, eventName)) == null ? void 0 : _a.size) != null ? _b : 0) + ((_d = (_c = getEventProducers(this, eventName)) == null ? void 0 : _c.size) != null ? _d : 0) + ((_f = (_e = getEventProducers(this)) == null ? void 0 : _e.size) != null ? _f : 0);
+        continue;
+      }
+      if (typeof eventName !== "undefined") {
+        assertEventName(eventName);
+      }
+      count += anyMap.get(this).size;
+      for (const value of eventsMap.get(this).values()) {
+        count += value.size;
+      }
+      for (const value of producersMap.get(this).values()) {
+        count += value.size;
+      }
+    }
+    return count;
+  }
+  bindMethods(target, methodNames) {
+    if (typeof target !== "object" || target === null) {
+      throw new TypeError("`target` must be an object");
+    }
+    methodNames = defaultMethodNamesOrAssert(methodNames);
+    for (const methodName of methodNames) {
+      if (target[methodName] !== void 0) {
+        throw new Error(`The property \`${methodName}\` already exists on \`target\``);
+      }
+      Object.defineProperty(target, methodName, {
+        enumerable: false,
+        value: this[methodName].bind(this)
+      });
+    }
+  }
+};
+var allEmitteryMethods = Object.getOwnPropertyNames(Emittery.prototype).filter((v) => v !== "constructor");
+Object.defineProperty(Emittery, "listenerAdded", {
+  value: listenerAdded,
+  writable: false,
+  enumerable: true,
+  configurable: false
+});
+Object.defineProperty(Emittery, "listenerRemoved", {
+  value: listenerRemoved,
+  writable: false,
+  enumerable: true,
+  configurable: false
+});
+
+// src/js-components/grid/emitter.ts
+var createEmitController = (grid) => {
+  const emitter = new Emittery({ debug: { name: grid.uuid } });
+  const emitLockSet = /* @__PURE__ */ new Set();
+  emitter.on("updateCellStatus", (cellAddress) => grid.cell(cellAddress.row, cellAddress.col).updateCellStatus());
+  return {
+    get emitter() {
+      return emitter;
+    },
+    emit(...args) {
+      if (emitLockSet.has(args[0]))
+        return;
+      emitter.emit(...args);
+    },
+    lockEmit(key) {
+      emitLockSet.add(key);
+    },
+    unlockEmit(key) {
+      emitLockSet.delete(key);
+    }
+  };
+};
 
 // src/js-components/grid/finder.ts
 var import_lodash4 = __toESM(require_lodash());
@@ -2145,24 +2161,24 @@ var getRowNo = (cell) => {
   else
     return cell.row;
 };
-var Resizer = ({ grid, context, enabledColResizer, enabledRowResizer }) => {
+var Resizer = ({ grid, contextElement }, { enabledColResizer, enabledRowResizer }) => {
   (function mount() {
     const divGuide = document.createElement("div");
     let isResizing = false;
     let latestContextDownHandler = null;
     let latestClickedTime = 0;
     const resetCursor = () => {
-      context.classList.remove(grid_classNames_default.grid["col-resizing"]);
-      context.classList.remove(grid_classNames_default.grid["row-resizing"]);
-      context.classList.remove(grid_classNames_default.grid["is-resizing"]);
-      latestContextDownHandler && context.removeEventListener("mousedown", latestContextDownHandler);
+      contextElement.classList.remove(grid_classNames_default.grid["col-resizing"]);
+      contextElement.classList.remove(grid_classNames_default.grid["row-resizing"]);
+      contextElement.classList.remove(grid_classNames_default.grid["is-resizing"]);
+      latestContextDownHandler && contextElement.removeEventListener("mousedown", latestContextDownHandler);
     };
     const setCursor = (eventCell, clsResizing) => {
-      latestContextDownHandler && context.removeEventListener("mousedown", latestContextDownHandler);
-      context.classList.remove(grid_classNames_default.grid["col-resizing"]);
-      context.classList.remove(grid_classNames_default.grid["row-resizing"]);
-      context.classList.add(grid_classNames_default.grid[clsResizing]);
-      context.classList.add(grid_classNames_default.grid["is-resizing"]);
+      latestContextDownHandler && contextElement.removeEventListener("mousedown", latestContextDownHandler);
+      contextElement.classList.remove(grid_classNames_default.grid["col-resizing"]);
+      contextElement.classList.remove(grid_classNames_default.grid["row-resizing"]);
+      contextElement.classList.add(grid_classNames_default.grid[clsResizing]);
+      contextElement.classList.add(grid_classNames_default.grid["is-resizing"]);
       let initXY = 0;
       let minXY = 0;
       let maxXY = 0;
@@ -2220,7 +2236,7 @@ var Resizer = ({ grid, context, enabledColResizer, enabledRowResizer }) => {
             left: "0px"
           });
         }
-        context.appendChild(divGuide);
+        contextElement.appendChild(divGuide);
         grid.addGlobalEventListener(document, "keydown", docKeyDownHandler);
         grid.addGlobalEventListener(document, "mouseup", docMouseUpHandler);
         grid.addGlobalEventListener(document, "mousemove", docMouseMoveHandler);
@@ -2269,7 +2285,7 @@ var Resizer = ({ grid, context, enabledColResizer, enabledRowResizer }) => {
         if (ev.key === "Escape")
           removeAllEvents();
       };
-      grid.addGlobalEventListener(context, "mousedown", latestContextDownHandler);
+      grid.addGlobalEventListener(contextElement, "mousedown", latestContextDownHandler);
     };
     const contextMouseMoveHandler = (ev) => {
       if (isResizing)
@@ -2288,8 +2304,8 @@ var Resizer = ({ grid, context, enabledColResizer, enabledRowResizer }) => {
     const contextMouseOutHandler = (_ev) => {
       resetCursor();
     };
-    grid.addGlobalEventListener(context, "mousemove", contextMouseMoveHandler);
-    grid.addGlobalEventListener(context, "mouseout", contextMouseOutHandler);
+    grid.addGlobalEventListener(contextElement, "mousemove", contextMouseMoveHandler);
+    grid.addGlobalEventListener(contextElement, "mouseout", contextMouseOutHandler);
   })();
   const getHeaderCellOrNull = (ev) => {
     const curCell = ev.target.closest("th");
@@ -2313,10 +2329,8 @@ var Resizer = ({ grid, context, enabledColResizer, enabledRowResizer }) => {
   };
   return grid;
 };
-var ResizerPlugin = (options) => {
-  return (grid, table, context) => {
-    return Resizer(__spreadValues({ grid, table, context }, options));
-  };
+var ResizerPlugin = (resizerOptions) => {
+  return (pluginArgs) => Resizer(pluginArgs, resizerOptions);
 };
 
 // src/js-components/grid/plugins/cell-selector.ts
@@ -2335,22 +2349,54 @@ function createGridSelector(grid) {
         continue;
       const mergeArea = cur.mergeMain ? cur.mergeMain.mergeArea : cur.mergeArea;
       if (mergeArea.top < newRange.top) {
-        for (const cell of generator.getSelectionGenerator({ top: mergeArea.top, left: newRange.left, bottom: newRange.top - 1, right: newRange.right }))
+        const selection = generator.getSelectionGenerator(
+          {
+            top: mergeArea.top,
+            left: newRange.left,
+            bottom: newRange.top - 1,
+            right: newRange.right
+          }
+        );
+        for (const cell of selection)
           stack.push(cell);
         newRange.top = mergeArea.top;
       }
       if (mergeArea.left < newRange.left) {
-        for (const cell of generator.getSelectionGenerator({ top: newRange.top, left: mergeArea.left, bottom: newRange.bottom, right: newRange.left - 1 }))
+        const selection = generator.getSelectionGenerator(
+          {
+            top: newRange.top,
+            left: mergeArea.left,
+            bottom: newRange.bottom,
+            right: newRange.left - 1
+          }
+        );
+        for (const cell of selection)
           stack.push(cell);
         newRange.left = mergeArea.left;
       }
       if (newRange.bottom < mergeArea.bottom) {
-        for (const cell of generator.getSelectionGenerator({ top: newRange.bottom + 1, left: newRange.left, bottom: mergeArea.bottom, right: newRange.right }))
+        const selection = generator.getSelectionGenerator(
+          {
+            top: newRange.bottom + 1,
+            left: newRange.left,
+            bottom: mergeArea.bottom,
+            right: newRange.right
+          }
+        );
+        for (const cell of selection)
           stack.push(cell);
         newRange.bottom = mergeArea.bottom;
       }
       if (newRange.right < mergeArea.right) {
-        for (const cell of generator.getSelectionGenerator({ top: newRange.top, left: newRange.right + 1, bottom: newRange.bottom, right: mergeArea.right }))
+        const selection = generator.getSelectionGenerator(
+          {
+            top: newRange.top,
+            left: newRange.right + 1,
+            bottom: newRange.bottom,
+            right: mergeArea.right
+          }
+        );
+        for (const cell of selection)
           stack.push(cell);
         newRange.right = mergeArea.right;
       }
@@ -2399,7 +2445,7 @@ function createGridSelector(grid) {
 }
 
 // src/js-components/grid/plugins/cell-selector.ts
-var MouseCellSelector = (grid, table) => {
+var MouseCellSelector = ({ grid, table }) => {
   let startCell = null;
   const selector = createGridSelector(grid);
   table.addEventListener("mousedown", (ev) => {
@@ -2448,22 +2494,75 @@ var MouseCellSelectorPlugin = () => {
   return MouseCellSelector;
 };
 
+// src/utils/key-controller.ts
+var import_lodash8 = __toESM(require_lodash());
+var KeyActionController = class {
+  constructor() {
+    this.keyMap = {};
+  }
+  addKeyAction(key, keyAction) {
+    if (!this.keyMap[key])
+      this.keyMap[key] = [];
+    this.keyMap[key].push(keyAction);
+  }
+  hasKeyAction(key) {
+    return this.keyMap[key] && this.keyMap[key].length > 0;
+  }
+  startKeyAction(ev) {
+    if (this.hasKeyAction(ev.key)) {
+      this.onStartKeyActionHook(ev);
+      (0, import_lodash8.default)(this.keyMap[ev.key]).forEach((action) => {
+        try {
+          return action(ev);
+        } catch (err) {
+          console.error(err);
+          return false;
+        }
+      });
+      this.onEndKeyActionHook(ev);
+    }
+  }
+  onStartKeyActionHook(_ev) {
+  }
+  onEndKeyActionHook(_ev) {
+  }
+};
+
 // src/js-components/grid/plugins/default-key.ts
-var DefaultKey = (grid, _table, context) => {
+var DEFAULT_PLUGIN_OPTIONS = {
+  keyMiddleware: []
+};
+var DefaultKey = ({ grid, contextElement }, options) => {
+  const keyController = new KeyActionController();
+  keyController.onEndKeyActionHook = (ev) => {
+    if (ev.key.length > 1) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+  };
+  options.keyMiddleware.forEach(([key, keyAction]) => keyController.addKeyAction(key, keyAction));
   const textArea = document.createElement("textarea");
   const generator = createGridCellGenerator(grid);
-  const { selectNextActiveCell, selectNextSelection, selectBeforeActiveCell, selectMoveToFirstRow, selectMoveToFirstColumn, selectMoveToLastColumn, selectMoveToLastRow } = createGridCellCursorManager(grid);
+  const {
+    selectNextActiveCell,
+    selectNextSelection,
+    selectBeforeActiveCell,
+    selectMoveToFirstRow,
+    selectMoveToFirstColumn,
+    selectMoveToLastColumn,
+    selectMoveToLastRow
+  } = createGridCellCursorManager(grid);
   textArea.className = grid_classNames_default.focus.blockElementName;
-  context.appendChild(textArea);
+  contextElement.appendChild(textArea);
   grid.addCoreElement(textArea);
-  grid.addGlobalEventListener(context, "focus", () => {
+  grid.addGlobalEventListener(contextElement, "focus", () => {
     if (document.activeElement !== textArea)
       textArea.focus();
   });
-  grid.addGlobalEventListener(context, "mouseup", () => {
+  grid.addGlobalEventListener(contextElement, "mouseup", () => {
     textArea.focus();
   });
-  grid.addGlobalEventListener(context, "input", (ev) => {
+  grid.addGlobalEventListener(contextElement, "input", (ev) => {
     var _a;
     if (!grid.activeCell)
       return;
@@ -2474,114 +2573,119 @@ var DefaultKey = (grid, _table, context) => {
   textArea.addEventListener("paste", (ev) => grid.onNativePaste(ev));
   textArea.addEventListener("copy", (ev) => grid.onNativeCopy(ev));
   textArea.addEventListener("cut", (ev) => grid.onNativeCut(ev));
-  const keyFuncMap = {
-    Tab: (ev) => {
-      if (ev.shiftKey)
-        selectBeforeActiveCell();
-      else
-        selectNextActiveCell();
-    },
-    ArrowRight: (ev) => {
-      if (ev.ctrlKey)
-        selectMoveToLastColumn(ev.shiftKey);
-      else
-        selectNextSelection(0, 1, ev.shiftKey);
-    },
-    ArrowUp: (ev) => {
-      if (ev.ctrlKey)
-        selectMoveToFirstRow(ev.shiftKey);
-      else
-        selectNextSelection(-1, 0, ev.shiftKey);
-    },
-    ArrowLeft: (ev) => {
-      if (ev.ctrlKey)
-        selectMoveToFirstColumn(ev.shiftKey);
-      else
-        selectNextSelection(0, -1, ev.shiftKey);
-    },
-    ArrowDown: (ev) => {
-      if (ev.ctrlKey)
-        selectMoveToLastRow(ev.shiftKey);
-      else
-        selectNextSelection(1, 0, ev.shiftKey);
-    },
-    Home: (ev) => {
-      selectMoveToFirstColumn(ev.shiftKey);
-    },
-    End: (ev) => {
+  keyController.addKeyAction("Tab", (ev) => {
+    if (ev.shiftKey)
+      selectBeforeActiveCell();
+    else
+      selectNextActiveCell();
+    return true;
+  });
+  keyController.addKeyAction("ArrowRight", (ev) => {
+    if (ev.ctrlKey)
       selectMoveToLastColumn(ev.shiftKey);
-    },
-    PageUp: (ev) => {
-      selectNextSelection(-10, 0, ev.shiftKey);
-    },
-    PageDown: (ev) => {
-      selectNextSelection(10, 0, ev.shiftKey);
-    },
-    Enter: () => {
-      selectNextSelection(1, 0, false);
-    },
-    a: (ev) => {
-      if (ev.ctrlKey)
-        grid.selectAll();
-    },
-    z: (ev) => {
-      if (ev.ctrlKey)
-        grid.undo();
-    },
-    y: (ev) => {
-      if (ev.ctrlKey)
-        grid.redo();
-    },
-    F2: (_10) => {
-      var _a;
-      if (grid.activeCell === null)
-        return;
-      const mainCell = (_a = grid.activeCell.mergeMain) != null ? _a : grid.activeCell;
-      mainCell.doEditMode();
-    },
-    Delete: (_10) => {
-      const selection = grid.getSelection();
-      if (!selection)
-        return;
-      grid.doCommand("CLEAR_CELLS", selection);
-    },
-    " ": (_ev) => {
-      var _a;
-      const selection = grid.getSelection();
-      if (!selection)
-        return;
-      for (const cell of generator.getSelectionGenerator(selection)) {
-        if (cell.onCheckReadonly() || cell.metaInfo.disabled)
-          continue;
-        if (cell.metaInfo.cellType === "checkbox") {
-          (_a = cell.element.querySelector("input")) == null ? void 0 : _a.click();
-        }
+    else
+      selectNextSelection(0, 1, ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("ArrowUp", (ev) => {
+    if (ev.ctrlKey)
+      selectMoveToFirstRow(ev.shiftKey);
+    else
+      selectNextSelection(-1, 0, ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("ArrowLeft", (ev) => {
+    if (ev.ctrlKey)
+      selectMoveToFirstColumn(ev.shiftKey);
+    else
+      selectNextSelection(0, -1, ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("ArrowDown", (ev) => {
+    if (ev.ctrlKey)
+      selectMoveToLastRow(ev.shiftKey);
+    else
+      selectNextSelection(1, 0, ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("Home", (ev) => {
+    selectMoveToFirstColumn(ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("End", (ev) => {
+    selectMoveToLastColumn(ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("PageUp", (ev) => {
+    selectNextSelection(-10, 0, ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("PageDown", (ev) => {
+    selectNextSelection(10, 0, ev.shiftKey);
+    return true;
+  });
+  keyController.addKeyAction("Enter", (_ev) => {
+    selectNextSelection(1, 0, false);
+    return true;
+  });
+  keyController.addKeyAction("a", (ev) => {
+    if (ev.ctrlKey)
+      grid.selectAll();
+    return true;
+  });
+  keyController.addKeyAction("z", (ev) => {
+    if (ev.ctrlKey)
+      grid.undo();
+    return true;
+  });
+  keyController.addKeyAction("y", (ev) => {
+    if (ev.ctrlKey)
+      grid.redo();
+    return true;
+  });
+  keyController.addKeyAction("F2", (_ev) => {
+    var _a;
+    if (grid.activeCell === null)
+      return true;
+    const mainCell = (_a = grid.activeCell.mergeMain) != null ? _a : grid.activeCell;
+    mainCell.doEditMode();
+    return true;
+  });
+  keyController.addKeyAction("Delete", (_ev) => {
+    const selection = grid.getSelection();
+    if (!selection)
+      return true;
+    grid.doCommand("CLEAR_CELLS", selection);
+    return true;
+  });
+  keyController.addKeyAction(" ", (_ev) => {
+    var _a;
+    const selection = grid.getSelection();
+    if (!selection)
+      return true;
+    for (const cell of generator.getSelectionGenerator(selection)) {
+      if (cell.onCheckReadonly() || cell.metaInfo.disabled)
+        continue;
+      if (cell.metaInfo.cellType === "checkbox") {
+        (_a = cell.element.querySelector("input")) == null ? void 0 : _a.click();
       }
     }
-  };
-  grid.addGlobalEventListener(context, "keydown", (ev) => {
+    return true;
+  });
+  grid.addGlobalEventListener(contextElement, "keydown", (ev) => {
     textArea.value = "";
-    if (keyFuncMap[ev.key]) {
-      try {
-        keyFuncMap[ev.key](ev);
-      } finally {
-        if (ev.key !== "a") {
-          ev.preventDefault();
-          ev.stopPropagation();
-        }
-      }
-    }
+    keyController.startKeyAction(ev);
   });
   return grid;
 };
-var DefaultKeyPlugin = () => {
-  return DefaultKey;
+var DefaultKeyPlugin = (options = {}) => {
+  const initOptions = Object.assign(DEFAULT_PLUGIN_OPTIONS, options);
+  return (args) => DefaultKey(args, initOptions);
 };
 
 // src/js-components/grid/plugins/row-selection.ts
-var RowSelection = (grid, table) => {
+var RowSelection = ({ grid, table }) => {
   let startCell = null;
-  const selector = createGridSelector(grid);
   table.addEventListener("mousedown", (ev) => {
     if (ev.button !== 0)
       return;
@@ -2600,32 +2704,65 @@ var RowSelectionPlugin = () => {
 };
 
 // src/js-components/grid/plugins/column-fill.ts
-var import_lodash8 = __toESM(require_lodash());
-var ColumnFill = (grid, _table, _contextElement) => {
-  let scheduled = -1;
+var import_lodash9 = __toESM(require_lodash());
+var DEFAULT_COLUMN_FILL_OPTIONS = {
+  columnWeight: []
+};
+var NOT_SCHEDULED = -1;
+var ColumnFill = ({ contextElement, grid, emitController }, options) => {
+  let scheduled = NOT_SCHEDULED;
   const fillColumns = () => {
-    const { width } = grid;
-    const columnsRatio = import_lodash8.default.range(grid.getColCount()).map((id) => grid.getColumnWidth(id) / width);
-    console.log(columnsRatio, width);
+    const { clientWidth } = contextElement;
+    let w = 0;
+    if (clientWidth === 0) {
+      grid.logger.warn("IRGrid.ColumnFillPlugin", "clientWidth is 0, it's probably set to 'display: none'");
+      return;
+    }
+    const totalWeight = import_lodash9.default.range(grid.getColCount()).filter((id) => grid.getColumnVisible(id)).reduce((weight, id) => {
+      var _a;
+      return weight + ((_a = options.columnWeight[id]) != null ? _a : 1);
+    }, 0);
+    import_lodash9.default.range(grid.getColCount() - 1).filter((id) => grid.getColumnVisible(id)).forEach((id) => {
+      var _a;
+      const ratio = ((_a = options.columnWeight[id]) != null ? _a : 1) / totalWeight;
+      grid.setColumnWidth(id, Math.floor(ratio * clientWidth));
+      w += grid.getColumnWidth(id);
+    });
+    import_lodash9.default.range(grid.getColCount() - 1, -1, -1).filter((id) => grid.getColumnVisible(id)).slice(0, 1).forEach((id) => {
+      grid.setColumnWidth(id, clientWidth - w);
+    });
   };
   const scheduleColumnFill = () => {
-    if (scheduled !== -1)
-      clearTimeout(scheduled);
-    scheduled = window.setTimeout(() => {
-      fillColumns();
-    }, 10);
+    if (scheduled !== NOT_SCHEDULED)
+      cancelAnimationFrame(scheduled);
+    scheduled = requestAnimationFrame(() => {
+      try {
+        emitController.lockEmit("onColumnChanged");
+        fillColumns();
+      } catch (err) {
+        console.error(err);
+      } finally {
+        emitController.unlockEmit("onColumnChanged");
+        scheduled = NOT_SCHEDULED;
+      }
+    });
   };
-  grid.emitter.on("onColumnResized", ({ col }) => {
+  grid.emitter.on("onWrapperResized", () => {
     scheduleColumnFill();
   });
+  grid.emitter.on("onColumnChanged", ({ left, right, type }) => {
+    scheduleColumnFill();
+  });
+  scheduleColumnFill();
   return grid;
 };
-var ColumnFillPlugin = () => {
-  return ColumnFill;
+var ColumnFillPlugin = (options) => {
+  const initOptions = Object.assign(DEFAULT_COLUMN_FILL_OPTIONS, options);
+  return (args) => ColumnFill(args, initOptions);
 };
 
 // src/js-components/grid/plugins/cell-observer.ts
-var CellObserver = (grid, { onCellInfoChanged }) => {
+var CellObserver = ({ grid }, { onCellInfoChanged }) => {
   const handler = ({ row = -1, col = -1 }) => {
     onCellInfoChanged(grid, row, col);
   };
@@ -2637,16 +2774,14 @@ var CellObserver = (grid, { onCellInfoChanged }) => {
   return pluginController;
 };
 var CellObserverPlugin = (option) => {
-  return (grid) => {
-    return CellObserver(grid, option);
-  };
+  return (args) => CellObserver(args, option);
 };
 
 // src/js-components/grid/plugins/cell-drop.ts
 var DEFAULT_VALUES = {
   enabledOnHeader: false
 };
-var CellDrop = (grid, table, { enabledOnHeader }) => {
+var CellDrop = ({ grid, table }, { enabledOnHeader }) => {
   const dragStatus = {
     latestDragOverCell: null
   };
@@ -2699,14 +2834,12 @@ var CellDrop = (grid, table, { enabledOnHeader }) => {
     }
   });
 };
-var CellDropPlugin = (args = DEFAULT_VALUES) => {
-  return (grid, table) => {
-    return CellDrop(grid, table, args);
-  };
+var CellDropPlugin = (cellDropArgs = DEFAULT_VALUES) => {
+  return (pluginArgs) => CellDrop(pluginArgs, cellDropArgs);
 };
 
 // src/js-components/grid/plugins/single-cell-drag.ts
-var SingleCellDrag = (grid, table) => {
+var SingleCellDrag = ({ grid, table }) => {
   const dragStatus = {
     cell: null
   };
@@ -2873,6 +3006,7 @@ var createVirtualRenderer = (grid, tbody) => {
 // src/js-components/grid/grid.ts
 var ROW_BORDER_SIZE = 1;
 var CELL_WIDTH_PADDING = 20;
+var NOT_SCHEDULED2 = -1;
 var DEFAULT_UNDO_OPTIONS = {
   stackLength: 256,
   disabled: true
@@ -2967,8 +3101,7 @@ var IRGrid = class extends IRComponent {
     this.virtualRenderer = createVirtualRenderer(this, this.tbody);
     this.clipboardManager = createGridClipboardManager(this);
     this.selector = createGridSelector(this);
-    this._emitter = new Emittery({ debug: { name: this.uuid } });
-    initIRGridEmitter(this, this._emitter);
+    this._emitterController = createEmitController(this);
     this.initTableRowCol();
     this.addGlobalEventListener(this.contextElement, "contextmenu", (ev) => {
       let offsetX = ev.offsetX;
@@ -2989,7 +3122,7 @@ var IRGrid = class extends IRComponent {
     });
   }
   get emitter() {
-    return this._emitter;
+    return this._emitterController.emitter;
   }
   get fixedRowCount() {
     return this.colHeader.rowCount;
@@ -3000,9 +3133,6 @@ var IRGrid = class extends IRComponent {
   get lastColumnId() {
     return this.colgroup.children.length - 1;
   }
-  get wrapperWidth() {
-    return this.contextElement.offsetWidth;
-  }
   get width() {
     return this.totalWidth;
   }
@@ -3010,11 +3140,11 @@ var IRGrid = class extends IRComponent {
     return this.totalHeight;
   }
   get fixedRowHeight() {
-    const lastFixedRow = (0, import_lodash9.default)(this._rowList).takeWhile((row) => row.isFreezed).last();
+    const lastFixedRow = (0, import_lodash10.default)(this._rowList).takeWhile((row) => row.isFreezed).last();
     return lastFixedRow ? lastFixedRow.bottom : 0;
   }
   get fixedColumnWidth() {
-    return import_lodash9.default.range(this.rowHeader.colCount).reduce((width, col) => width + this.getColumnWidth(col), 0);
+    return import_lodash10.default.range(this.rowHeader.colCount).reduce((width, col) => width + this.getColumnWidth(col), 0);
   }
   get scrollArea() {
     return {
@@ -3055,10 +3185,10 @@ var IRGrid = class extends IRComponent {
     return this._headerColumns;
   }
   get headerWidth() {
-    return import_lodash9.default.range(this.headerColumns).reduce((width, col) => width + this.getColumnWidth(col), 0);
+    return import_lodash10.default.range(this.headerColumns).reduce((width, col) => width + this.getColumnWidth(col), 0);
   }
   get headerHeight() {
-    return import_lodash9.default.range(this.headerRows).reduce((height, row) => height + this.getRowHeight(row), 0);
+    return import_lodash10.default.range(this.headerRows).reduce((height, row) => height + this.getRowHeight(row), 0);
   }
   get activeCell() {
     return this._activeCell;
@@ -3076,13 +3206,18 @@ var IRGrid = class extends IRComponent {
   set readonly(flag) {
     this._readonly = flag;
     this._rowList.forEach((row) => {
-      import_lodash9.default.range(this.getColCount()).forEach((col) => {
+      import_lodash10.default.range(this.getColCount()).forEach((col) => {
         row.getCell(col).updateReadonlyStatus();
       });
     });
   }
   addPlugin(plugin) {
-    return plugin(this, this.fixedTopTable, this.contextElement);
+    return plugin({
+      grid: this,
+      table: this.fixedTopTable,
+      contextElement: this.contextElement,
+      emitController: this._emitterController
+    });
   }
   getMergeArea(row, col) {
     const cell = this.cell(row, col);
@@ -3197,7 +3332,7 @@ var IRGrid = class extends IRComponent {
     this.scheduleRender();
   }
   getColumnLeft(col) {
-    return import_lodash9.default.range(col).filter((col2) => this.getColumnVisible(col2)).reduce((sum, c) => sum + this.getColumnWidth(c), 0);
+    return import_lodash10.default.range(col).filter((col2) => this.getColumnVisible(col2)).reduce((sum, c) => sum + this.getColumnWidth(c), 0);
   }
   selectRange(top, left, bottom, right, cell = null) {
     this.releaseCells();
@@ -3212,18 +3347,18 @@ var IRGrid = class extends IRComponent {
   }
   getCellWidth(cell) {
     if (cell.mergeInfo)
-      return import_lodash9.default.range(cell.mergeInfo.colSpan).filter((id) => this.getColumnVisible(cell.col + id)).reduce((width, id) => width + this.getColumnWidth(cell.col + id), 0);
+      return import_lodash10.default.range(cell.mergeInfo.colSpan).filter((id) => this.getColumnVisible(cell.col + id)).reduce((width, id) => width + this.getColumnWidth(cell.col + id), 0);
     else
       return this.getColumnWidth(cell.col);
   }
   getCellHeight(cell) {
     if (cell.mergeInfo)
-      return import_lodash9.default.range(cell.mergeInfo.rowSpan).filter((id) => this.getRowVisible(cell.row + id)).reduce((height, id) => height + this.getRowHeight(cell.row + id), 0);
+      return import_lodash10.default.range(cell.mergeInfo.rowSpan).filter((id) => this.getRowVisible(cell.row + id)).reduce((height, id) => height + this.getRowHeight(cell.row + id), 0);
     else
       return this.getRowHeight(cell.col);
   }
   getSelection() {
-    return import_lodash9.default.clone(this.lastSelection);
+    return import_lodash10.default.clone(this.lastSelection);
   }
   scrollOnRow(row) {
     const targetRow = this.getRow(row);
@@ -3284,12 +3419,12 @@ var IRGrid = class extends IRComponent {
     this.setTableWidth(this.totalWidth + w);
     colElement.style.width = `${w}px`;
     if (col < this.getFreezedColumnCount()) {
-      (0, import_lodash9.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
+      (0, import_lodash10.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
       this.updateCurrentScrollBodyRowsLeft();
     }
-    this._emitter.emit("onColumnResized", { col });
     this.generateScrollBar();
     this.onResizeColumn(col);
+    this._emitterController.emit("onColumnChanged", { left: col, right: col, type: "setWidth" });
   }
   getRowHeight(row) {
     if (!this._rowList[row])
@@ -3346,7 +3481,7 @@ var IRGrid = class extends IRComponent {
     return this._rowList[row];
   }
   getRowLodash() {
-    return (0, import_lodash9.default)(this._rowList);
+    return (0, import_lodash10.default)(this._rowList);
   }
   addRow(height = this.rowHeader.defaultSize) {
     const row = this._rowList.length;
@@ -3368,7 +3503,7 @@ var IRGrid = class extends IRComponent {
       throw new Error(`Out of index. maximum bottom values is ${this.getRowCount()}. If you wanna clear all rows, please call clearRows()`);
     if (this.mergeManager.checkConflictingInRows(top, bottom))
       return false;
-    import_lodash9.default.range(top, bottom + 1).forEach((id) => {
+    import_lodash10.default.range(top, bottom + 1).forEach((id) => {
       const row = this._rowList[id];
       row.unmount();
       this.setTableHeight(this.totalHeight - (row.height + ROW_BORDER_SIZE));
@@ -3399,24 +3534,26 @@ var IRGrid = class extends IRComponent {
       throw new Error(`Out of index. maximum bottom values is ${this.getColCount()}`);
     if (this.mergeManager.checkConflictingInColumns(left, right))
       return false;
-    (0, import_lodash9.default)(this._rowList).forEach((row) => {
+    (0, import_lodash10.default)(this._rowList).forEach((row) => {
       for (const cell of row.getCellGenerator(left, right)) {
         if (cell.isMerged)
           this.mergeManager.removeMergeCell(cell.row, cell.col);
       }
       row.removeCells(left, right);
     });
-    import_lodash9.default.range(left, right + 1).forEach(() => {
+    import_lodash10.default.range(left, right + 1).forEach(() => {
       this.setTableWidth(this.totalWidth - this.getColumnWidth(left));
       this.colgroup.removeChild(this.colgroup.children[left]);
     });
     this.updateLastSectionProperly();
+    this._emitterController.emit("onColumnChanged", { left, right, type: "removeColumns" });
     return true;
   }
   addColumn(width = this.colHeader.defaultSize) {
     const col = this.addColGroup(width);
-    (0, import_lodash9.default)(this._rowList).forEach((row) => row.addCell(this.createIRGridCell(row.rowId, col)));
+    (0, import_lodash10.default)(this._rowList).forEach((row) => row.addCell(this.createIRGridCell(row.rowId, col)));
     ++this.colHeader.colCount;
+    this._emitterController.emit("onColumnChanged", { left: col, right: col, type: "addColumn" });
     return col;
   }
   insertRow(row, height) {
@@ -3433,10 +3570,10 @@ var IRGrid = class extends IRComponent {
     const tmpRowList = [];
     const tmpHeight = size * tmpRowList.length + tmpRowList.length;
     const target = this._rowList[row];
-    const lastSelection = import_lodash9.default.cloneDeep(this.lastSelection);
+    const lastSelection = import_lodash10.default.cloneDeep(this.lastSelection);
     this.releaseCells();
-    import_lodash9.default.range(count).forEach((id) => tmpRowList.push(this.createIRGridRow(row + id, target.top, size)));
-    import_lodash9.default.range(row, this._rowList.length).forEach((id) => {
+    import_lodash10.default.range(count).forEach((id) => tmpRowList.push(this.createIRGridRow(row + id, target.top, size)));
+    import_lodash10.default.range(row, this._rowList.length).forEach((id) => {
       this._rowList[id].rowId += count;
       this._rowList[id].top += tmpHeight + ROW_BORDER_SIZE;
     });
@@ -3461,8 +3598,8 @@ var IRGrid = class extends IRComponent {
       throw new Error(`Could not insert rows in row header`);
     else if (!this.mergeManager.checkCanInsertColumn(col))
       return false;
-    const lastSelection = import_lodash9.default.cloneDeep(this.lastSelection);
-    import_lodash9.default.range(count).forEach(() => {
+    const lastSelection = import_lodash10.default.cloneDeep(this.lastSelection);
+    import_lodash10.default.range(count).forEach(() => {
       this.createColElement(col);
       this.colgroup.children[col].style.width = `${width}px`;
       this.setTableWidth(this.width + width);
@@ -3470,21 +3607,22 @@ var IRGrid = class extends IRComponent {
     this.releaseCells();
     this._rowList.forEach((row) => {
       const tmpCellList = [];
-      import_lodash9.default.range(count).forEach((id) => tmpCellList.push(this.createIRGridCell(row.rowId, col + id)));
+      import_lodash10.default.range(count).forEach((id) => tmpCellList.push(this.createIRGridCell(row.rowId, col + id)));
       row.insertCells(tmpCellList, col);
     });
     if (col < this.fixedColumnCount)
       this.freezeColumn(this.fixedColumnCount - this.headerColumns + count);
     if (lastSelection)
       this.selectRange(lastSelection.top, lastSelection.left, lastSelection.bottom, lastSelection.right);
+    this._emitterController.emit("onColumnChanged", { left: col, right: col + count, type: "insertColumns" });
     return true;
   }
   autoSizeColumn(col) {
     this.autoSizeColumns(col, col);
   }
   autoSizeColumns(left, right) {
-    import_lodash9.default.range(left, right + 1).reduce((changed, col) => {
-      const maxWidth = (0, import_lodash9.default)(this._rowList).map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => cell.innerWidth).reduce((a, b) => Math.max(a, b), 0);
+    import_lodash10.default.range(left, right + 1).reduce((changed, col) => {
+      const maxWidth = (0, import_lodash10.default)(this._rowList).map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => cell.innerWidth).reduce((a, b) => Math.max(a, b), 0);
       const checkIsChanged = maxWidth !== this.getColumnWidth(col);
       if (checkIsChanged)
         this.setColumnWidth(col, getMinMaxBetween(Math.ceil(maxWidth + CELL_WIDTH_PADDING), this.colHeader.minSize, this.colHeader.maxSize));
@@ -3495,7 +3633,7 @@ var IRGrid = class extends IRComponent {
     this.autoSizeRows(row, row);
   }
   autoSizeRows(top, bottom) {
-    const isChanged = import_lodash9.default.range(top, bottom + 1).reduce((changed, r) => {
+    const isChanged = import_lodash10.default.range(top, bottom + 1).reduce((changed, r) => {
       const checkIsChanged = this._rowList[r].setAutoHeight(this.rowHeader.minSize, this.rowHeader.maxSize);
       return changed || checkIsChanged;
     }, false);
@@ -3610,6 +3748,7 @@ var IRGrid = class extends IRComponent {
     this.setTableWidth(this.totalWidth + (visible ? this.getColumnWidth(col) : -this.getColumnWidth(col)));
     this.updateCurrentScrollBodyRowsLeft();
     this.updateLastSectionProperly();
+    this._emitterController.emit("onColumnChanged", { left: col, right: col, type: "setVisible" });
     return true;
   }
   getColumnVisible(col) {
@@ -3638,16 +3777,11 @@ var IRGrid = class extends IRComponent {
   freezeRows(freezingRowCount) {
     const { headerRows } = this;
     this.colHeader.rowCount = freezingRowCount + headerRows;
-    (0, import_lodash9.default)(this._rowList).drop(this.headerRows).takeWhile((row) => row.isFreezed).forEach((row) => {
+    (0, import_lodash10.default)(this._rowList).drop(this.headerRows).takeWhile((row) => row.isFreezed).forEach((row) => {
       row.unfreeze();
-      row.unmount();
     });
-    const firstRowElement = import_lodash9.default.range(headerRows).reduce((element) => {
-      return element == null ? void 0 : element.nextElementSibling;
-    }, this.tbody.firstElementChild);
-    (0, import_lodash9.default)(this._rowList).drop(headerRows).take(freezingRowCount).forEach((row) => {
+    (0, import_lodash10.default)(this._rowList).drop(headerRows).take(freezingRowCount).forEach((row) => {
       row.freeze();
-      row.mount(this.tbody, firstRowElement);
     });
   }
   freezeColumns(columnId) {
@@ -3659,7 +3793,7 @@ var IRGrid = class extends IRComponent {
     if (freezingColumnCount < 0)
       throw new Error("Could not be freezing minus columns!");
     this.rowHeader.colCount = this.headerColumns + freezingColumnCount;
-    (0, import_lodash9.default)(this._rowList).forEach((row) => row.setStickyHeader(this.rowHeader.colCount));
+    (0, import_lodash10.default)(this._rowList).forEach((row) => row.setStickyHeader(this.rowHeader.colCount));
     this.updateCurrentScrollBodyRowsLeft();
   }
   clearUndoStack() {
@@ -3671,31 +3805,34 @@ var IRGrid = class extends IRComponent {
   doCommand(commandKey, args) {
     return this._commandManager.doCommand(commandKey, args);
   }
-  sort(compareFunc, order) {
-    const cloneRows = this._rowList.slice(this.headerRows);
+  sort(compareFunc, order, rowRange) {
+    const [startRow, endRow] = rowRange != null ? rowRange : [this.headerRows, this.getRowCount()];
+    const notSortedTopRows = this._rowList.slice(this.headerRows, startRow);
+    const sortingRows = this._rowList.slice(startRow, endRow);
+    const notSortedBottomRows = this._rowList.slice(endRow);
     const tmpHeight = this.height;
     this.releaseCells();
-    cloneRows.sort((a, b) => {
+    sortingRows.sort((a, b) => {
       if (order === "ASC")
         return compareFunc(a, b);
       else
         return -compareFunc(a, b);
     });
     this.clearRows();
-    cloneRows.reduce((state, row) => {
+    sortingRows.reduce((state, row) => {
       row.top = state.top;
       row.rowId = state.id;
       state.top += row.height;
       ++state.id;
       return state;
     }, { id: this.headerRows, top: this.fixedRowHeight });
-    this._rowList.push(...cloneRows);
+    this._rowList.push(
+      ...notSortedTopRows,
+      ...sortingRows,
+      ...notSortedBottomRows
+    );
     this.setTableHeight(tmpHeight);
     this.virtualRenderer.render();
-  }
-  sortExceptHeaderRows() {
-  }
-  sortExceptFooterRows() {
   }
   afterRender(task) {
     this._scheduledTasks.push(task);
@@ -3825,20 +3962,25 @@ var IRGrid = class extends IRComponent {
   initPlugins(plugins) {
     try {
       for (const plugin of plugins) {
-        plugin(this, this.fixedTopTable, this.contextElement);
+        plugin({
+          grid: this,
+          table: this.fixedTopTable,
+          contextElement: this.contextElement,
+          emitController: this._emitterController
+        });
       }
     } catch (err) {
       console.error("Plugin init error", err);
     }
   }
   initTableRowCol() {
-    import_lodash9.default.range(this.colHeader.colCount).forEach(() => this.addColGroup(this.colHeader.defaultSize));
-    import_lodash9.default.range(this.colHeader.rowCount).forEach(() => {
+    import_lodash10.default.range(this.colHeader.colCount).forEach(() => this.addColGroup(this.colHeader.defaultSize));
+    import_lodash10.default.range(this.colHeader.rowCount).forEach(() => {
       const headerRow = this.getRow(this.addRow());
       headerRow.mount(this.tbody);
       headerRow.freezeHeader();
     });
-    import_lodash9.default.range(this.body.rowCount).forEach(() => this.addRow());
+    import_lodash10.default.range(this.body.rowCount).forEach(() => this.addRow());
   }
   updateLastSectionProperly() {
     if (this.lastSelection) {
@@ -3878,8 +4020,8 @@ var IRGrid = class extends IRComponent {
   updateCurrentScrollBodyRowsLeft() {
     const top = this.contextElement.scrollTop - this.contextElement.scrollHeight;
     const { scrollBottom } = this;
-    (0, import_lodash9.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
-    (0, import_lodash9.default)(this._rowList).drop(this.getFreezedRowCount()).filter((row) => row.top >= top && row.top <= scrollBottom).forEach((row) => this.updateRowLeft(row));
+    (0, import_lodash10.default)(this._rowList).take(this.getFreezedRowCount()).forEach((row) => this.updateRowLeft(row));
+    (0, import_lodash10.default)(this._rowList).drop(this.getFreezedRowCount()).filter((row) => row.top >= top && row.top <= scrollBottom).forEach((row) => this.updateRowLeft(row));
   }
   initColumnHeaderCell(cell) {
     cell.cellType = "col-header";
@@ -3895,7 +4037,7 @@ var IRGrid = class extends IRComponent {
     cell.onMoveUpOnEdit = () => this._cursorManager.selectNextSelection(-1, 0, false);
     cell.onMoveRightOnEdit = () => this._cursorManager.selectNextSelection(0, 1, false);
     cell.onMoveDownOnEdit = () => this._cursorManager.selectNextSelection(1, 0, false);
-    cell.onTabOnEdit = (_10, shiftKey) => {
+    cell.onTabOnEdit = (_11, shiftKey) => {
       if (shiftKey)
         this._cursorManager.selectBeforeActiveCell();
       else
@@ -3905,10 +4047,10 @@ var IRGrid = class extends IRComponent {
       const nextRow = this._cursorManager.getNextYBelow(cell.row, cell.col, 1);
       if (cell.row === nextRow)
         return;
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         this.selectCell(nextRow, cell.col);
         this.cell(nextRow, cell.col).doEditMode();
-      }, 0);
+      });
     };
     cell.onClear = () => this.onClearCell(cell);
     cell.onDblClick = () => this.onDoubleClickCell(cell);
@@ -3933,7 +4075,7 @@ var IRGrid = class extends IRComponent {
       tag,
       cellRenderer,
       metaInfo: __spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, this.defaultColumnCellFormat.all), this.defaultColumnCellFormat[col]), isColHeader ? this.defaultColumnCellFormat[`col_header_${col}`] : void 0), isRowHeader ? this.defaultColumnCellFormat[`row_header_${col}`] : void 0), isBody ? this.defaultColumnCellFormat[`body_${col}`] : void 0), {
-        emitter: this._emitter
+        emitter: this._emitterController.emitter
       })
     });
     cell.onRightClick = (c, ev) => this.onCellRightClick(c, ev);
@@ -3953,26 +4095,26 @@ var IRGrid = class extends IRComponent {
     return cell;
   }
   updateRowLeft(row) {
-    import_lodash9.default.range(this.getFreezedColumnCount()).filter((col) => this.getColumnVisible(col)).reduce((width, col) => {
+    import_lodash10.default.range(this.getFreezedColumnCount()).filter((col) => this.getColumnVisible(col)).reduce((width, col) => {
       row.setCellLeft(col, width);
       return width + this.getColumnWidth(col);
     }, 0);
   }
   updateRowsTopFrom(start) {
-    if (this._scheduledUpdateRowStart !== -1 && this._scheduledUpdateRowStart > start)
+    if (this._scheduledUpdateRowStart !== NOT_SCHEDULED2 && this._scheduledUpdateRowStart > start)
       this._scheduledUpdateRowStart = start;
-    else if (this._scheduledUpdateRowStart === -1) {
+    else if (this._scheduledUpdateRowStart === NOT_SCHEDULED2) {
       this._scheduledUpdateRowStart = start;
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         const startRow = this._rowList[this._scheduledUpdateRowStart];
-        const maxHeight = (0, import_lodash9.default)(this._rowList).drop(this._scheduledUpdateRowStart).reduce((top, row) => {
+        const maxHeight = (0, import_lodash10.default)(this._rowList).drop(this._scheduledUpdateRowStart).reduce((top, row) => {
           row.top = top;
           return row.visible ? top + row.height + ROW_BORDER_SIZE : top;
         }, startRow.top);
         this.setTableHeight(maxHeight);
-        this._scheduledUpdateRowStart = -1;
-      }, 0);
-      if (this._isScheduledRender !== -1) {
+        this._scheduledUpdateRowStart = NOT_SCHEDULED2;
+      });
+      if (this._isScheduledRender !== NOT_SCHEDULED2) {
         this.clearScheduleRender();
         this.scheduleRender();
       }
@@ -3990,20 +4132,20 @@ var IRGrid = class extends IRComponent {
     this.divWrapper.style.height = `${this.totalHeight}px`;
   }
   onResized() {
-    this._emitter.emit("onColumnResized", { col: -1 });
+    this._emitterController.emit("onWrapperResized", {});
     this.onResizeContext();
     this.scheduleRender();
   }
   createIRGridRow(row, top, height) {
     const gridRow = new IRGridRow({ row, height, top, rowType: row < this.headerRows ? "col-header" : "body" });
-    import_lodash9.default.range(this.getColCount()).forEach((col) => gridRow.addCell(this.createIRGridCell(row, col)));
-    import_lodash9.default.range(this.getColCount()).filter((col) => this.getColumnVisible(col) === false).forEach((col) => gridRow.setColumnVisible(col, false));
+    import_lodash10.default.range(this.getColCount()).forEach((col) => gridRow.addCell(this.createIRGridCell(row, col)));
+    import_lodash10.default.range(this.getColCount()).filter((col) => this.getColumnVisible(col) === false).forEach((col) => gridRow.setColumnVisible(col, false));
     gridRow.onMounted = () => {
       gridRow.setStickyHeader(this.rowHeader.colCount);
       this.onMountedRow(gridRow.rowId);
     };
     gridRow.onChangedHeight = () => {
-      import_lodash9.default.range(this.getColCount()).forEach((col) => {
+      import_lodash10.default.range(this.getColCount()).forEach((col) => {
         const cell = gridRow.getCell(col);
         const mergeMain = cell.mergeMain ? cell.mergeMain : cell.mergeInfo.rowSpan > 1 ? cell : null;
         if (mergeMain)
@@ -4016,17 +4158,16 @@ var IRGrid = class extends IRComponent {
   clearScheduleRender() {
     if (this._isScheduledRender === -1)
       return;
-    clearTimeout(this._isScheduledRender);
+    cancelAnimationFrame(this._isScheduledRender);
     this._isScheduledRender = -1;
   }
   scheduleRender() {
-    if (this._isScheduledRender !== -1)
+    if (this._isScheduledRender !== NOT_SCHEDULED2)
       return;
-    this._isScheduledRender = window.setTimeout(() => {
+    this._isScheduledRender = requestAnimationFrame(() => {
       this.updateCurrentScrollBodyRowsLeft();
       this.generateScrollBar();
       this.virtualRenderer.render();
-      this._isScheduledRender = -1;
       this._scheduledTasks.forEach((task) => {
         try {
           task();
@@ -4034,8 +4175,9 @@ var IRGrid = class extends IRComponent {
           console.error("Occurred Scheduled Task Error!", err);
         }
       });
+      this._isScheduledRender = NOT_SCHEDULED2;
       this._scheduledTasks.length = 0;
-    }, 0);
+    });
   }
 };
 
@@ -4086,7 +4228,7 @@ var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
   const dropDownItemList = [];
   let beforeValue;
   let beforeText;
-  let popper = null;
+  let floatingCleanup = () => void 0;
   for (const { value, text } of items) {
     const { item, button } = createDropdownItem(value, text);
     dropDownItemList.push({ value, text, buttonElement: button, itemWrapperElement: item });
@@ -4116,9 +4258,14 @@ var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
       data.value = item.value;
       isMapped = true;
     });
-    if (allowCustomText && !isMapped) {
-      input.value = (_a = data.text) != null ? _a : "";
-      data.value = data.text;
+    if (!isMapped) {
+      if (allowCustomText) {
+        input.value = (_a = data.text) != null ? _a : "";
+        data.value = data.text;
+      } else {
+        input.value = "";
+        data.value = "";
+      }
     }
     const outsideHandler = createClickOutsideHandler({
       eventElements: [div, divDropdown],
@@ -4126,17 +4273,6 @@ var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
     });
     const objHandler = {
       show: () => {
-        popper = createPopper(div, divDropdown, {
-          placement: "bottom-end",
-          modifiers: [
-            {
-              name: "offset",
-              options: {
-                offset: [0, 8]
-              }
-            }
-          ]
-        });
         escController.create();
         outsideHandler.create();
         beforeValue = data.value;
@@ -4161,9 +4297,11 @@ var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
         divDropdown.setAttribute("data-col", col.toString());
         document.body.appendChild(divDropdown);
         div.classList.add(select_classNames_default.select["is-expanded"]);
-        requestAnimationFrame(() => {
+        setTimeout(() => {
           divDropdown.classList.add(select_classNames_default.select["is-expanded"]);
-        });
+          floatingCleanup();
+          floatingCleanup = offsetBottomAutoUpdate(div, divDropdown);
+        }, 0);
       },
       hide: () => {
         escController.destroy();
@@ -4172,7 +4310,7 @@ var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
         divDropdown.classList.remove(select_classNames_default.select["is-expanded"]);
         divDropdown.addEventListener("transitionend", () => {
           if (divDropdown.getAttribute("data-row") === row.toString() && divDropdown.getAttribute("data-col") === col.toString()) {
-            popper == null ? void 0 : popper.destroy();
+            floatingCleanup();
             divDropdown.remove();
           }
         }, { once: true });
@@ -4295,6 +4433,7 @@ var renderGridProgress = ({ min = 0, max = 100, defaultIntent, afterDecimalLen =
 // src/js-components/grid/sub-ui/button.ts
 var DEFAULT_MARGIN4 = 14;
 var DEFAULT_ICON_SIZE = 26;
+var DEFAULT_BUTTON_HEIGHT = 24;
 var renderGridButton = ({ onClick, defaultColor = "transparent", defaultLabel, defaultIcon }) => {
   const buttonCellInnerWidth = (cell, metaInfo) => {
     const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
@@ -4309,7 +4448,7 @@ var renderGridButton = ({ onClick, defaultColor = "transparent", defaultLabel, d
     const button = document.createElement("button");
     wrapper.className = grid_classNames_default.cell.button;
     data.editable = false;
-    data.onCalculateHeight = () => 24;
+    data.onCalculateHeight = () => DEFAULT_BUTTON_HEIGHT;
     data.onCalculateWidth = buttonCellInnerWidth;
     button.className = button_classNames_default.button.blockElementName;
     const color = (_a = data.intent) != null ? _a : defaultColor;
@@ -4321,13 +4460,14 @@ var renderGridButton = ({ onClick, defaultColor = "transparent", defaultLabel, d
     const text = ((_b = data.label) != null ? _b : defaultLabel) || "";
     if (icon) {
       const iconElement = document.createElement("i");
-      const span = document.createElement("span");
       iconElement.classList.add(button_classNames_default.buttonIcon.blockElementName, "ir-icon", `ir-icon--${icon}`);
-      span.innerText = text;
       button.appendChild(iconElement);
+    }
+    if (text) {
+      const span = document.createElement("span");
+      span.innerText = text;
       button.appendChild(span);
-    } else
-      button.innerText = text;
+    }
     wrapper.appendChild(button);
     return wrapper;
   };
@@ -4457,14 +4597,9 @@ var createIRGridColumnSortManager = (grid) => {
   };
 };
 
-// src/js-components/grid/sort-infer.ts
+// src/js-components/grid/row-sort-manager.ts
 var createIRGridInferSorting = (options) => {
-  return {
-    sortExceptHeaderRows(col, headerRowCount) {
-    },
-    sortExceptFooterRows(col, footerRowCount) {
-    }
-  };
+  return {};
 };
 export {
   CellDropPlugin,

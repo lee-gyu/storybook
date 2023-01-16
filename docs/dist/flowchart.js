@@ -1,30 +1,26 @@
 import {
-  Logger
-} from "./chunks/chunk-FECRS6ATjs.js";
-import {
-  require_lodash
-} from "./chunks/chunk-H4BZVVDUjs.js";
-import {
   IRComponent,
+  Logger,
   __async,
   __spreadProps,
   __spreadValues,
-  __toESM
-} from "./chunks/chunk-ZK6IOW44js.js";
+  __toESM,
+  require_lodash
+} from "./chunks/chunk-IKJP23QCjs.js";
 
-// ../../node_modules/.pnpm/d3-dispatch@2.0.0/node_modules/d3-dispatch/src/dispatch.js
+// ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
 } };
 function dispatch() {
-  for (var i = 0, n = arguments.length, _7 = {}, t; i < n; ++i) {
-    if (!(t = arguments[i] + "") || t in _7 || /[\s.]/.test(t))
+  for (var i = 0, n = arguments.length, _6 = {}, t; i < n; ++i) {
+    if (!(t = arguments[i] + "") || t in _6 || /[\s.]/.test(t))
       throw new Error("illegal type: " + t);
-    _7[t] = [];
+    _6[t] = [];
   }
-  return new Dispatch(_7);
+  return new Dispatch(_6);
 }
-function Dispatch(_7) {
-  this._ = _7;
+function Dispatch(_6) {
+  this._ = _6;
 }
 function parseTypenames(typenames, types) {
   return typenames.trim().split(/^|\s+/).map(function(t) {
@@ -39,10 +35,10 @@ function parseTypenames(typenames, types) {
 Dispatch.prototype = dispatch.prototype = {
   constructor: Dispatch,
   on: function(typename, callback) {
-    var _7 = this._, T = parseTypenames(typename + "", _7), t, i = -1, n = T.length;
+    var _6 = this._, T = parseTypenames(typename + "", _6), t, i = -1, n = T.length;
     if (arguments.length < 2) {
       while (++i < n)
-        if ((t = (typename = T[i]).type) && (t = get(_7[t], typename.name)))
+        if ((t = (typename = T[i]).type) && (t = get(_6[t], typename.name)))
           return t;
       return;
     }
@@ -50,17 +46,17 @@ Dispatch.prototype = dispatch.prototype = {
       throw new Error("invalid callback: " + callback);
     while (++i < n) {
       if (t = (typename = T[i]).type)
-        _7[t] = set(_7[t], typename.name, callback);
+        _6[t] = set(_6[t], typename.name, callback);
       else if (callback == null)
-        for (t in _7)
-          _7[t] = set(_7[t], typename.name, null);
+        for (t in _6)
+          _6[t] = set(_6[t], typename.name, null);
     }
     return this;
   },
   copy: function() {
-    var copy = {}, _7 = this._;
-    for (var t in _7)
-      copy[t] = _7[t].slice();
+    var copy = {}, _6 = this._;
+    for (var t in _6)
+      copy[t] = _6[t].slice();
     return new Dispatch(copy);
   },
   call: function(type2, that) {
@@ -99,7 +95,7 @@ function set(type2, name, callback) {
 }
 var dispatch_default = dispatch;
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/namespaces.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/namespaces.js
 var xhtml = "http://www.w3.org/1999/xhtml";
 var namespaces_default = {
   svg: "http://www.w3.org/2000/svg",
@@ -109,7 +105,7 @@ var namespaces_default = {
   xmlns: "http://www.w3.org/2000/xmlns/"
 };
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/namespace.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/namespace.js
 function namespace_default(name) {
   var prefix = name += "", i = prefix.indexOf(":");
   if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns")
@@ -117,7 +113,7 @@ function namespace_default(name) {
   return namespaces_default.hasOwnProperty(prefix) ? { space: namespaces_default[prefix], local: name } : name;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/creator.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/creator.js
 function creatorInherit(name) {
   return function() {
     var document2 = this.ownerDocument, uri = this.namespaceURI;
@@ -134,7 +130,7 @@ function creator_default(name) {
   return (fullname.local ? creatorFixed : creatorInherit)(fullname);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selector.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selector.js
 function none() {
 }
 function selector_default(selector) {
@@ -143,7 +139,7 @@ function selector_default(selector) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/select.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/select.js
 function select_default(select) {
   if (typeof select !== "function")
     select = selector_default(select);
@@ -159,12 +155,12 @@ function select_default(select) {
   return new Selection(subgroups, this._parents);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/array.js
-function array_default(x) {
-  return typeof x === "object" && "length" in x ? x : Array.from(x);
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/array.js
+function array(x) {
+  return x == null ? [] : Array.isArray(x) ? x : Array.from(x);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selectorAll.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selectorAll.js
 function empty() {
   return [];
 }
@@ -174,11 +170,10 @@ function selectorAll_default(selector) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/selectAll.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/selectAll.js
 function arrayAll(select) {
   return function() {
-    var group = select.apply(this, arguments);
-    return group == null ? [] : array_default(group);
+    return array(select.apply(this, arguments));
   };
 }
 function selectAll_default(select) {
@@ -197,7 +192,7 @@ function selectAll_default(select) {
   return new Selection(subgroups, parents);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/matcher.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/matcher.js
 function matcher_default(selector) {
   return function() {
     return this.matches(selector);
@@ -209,7 +204,7 @@ function childMatcher(selector) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/selectChild.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/selectChild.js
 var find = Array.prototype.find;
 function childFind(match) {
   return function() {
@@ -223,10 +218,10 @@ function selectChild_default(match) {
   return this.select(match == null ? childFirst : childFind(typeof match === "function" ? match : childMatcher(match)));
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/selectChildren.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/selectChildren.js
 var filter = Array.prototype.filter;
 function children() {
-  return this.children;
+  return Array.from(this.children);
 }
 function childrenFilter(match) {
   return function() {
@@ -237,7 +232,7 @@ function selectChildren_default(match) {
   return this.selectAll(match == null ? children : childrenFilter(typeof match === "function" ? match : childMatcher(match)));
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/filter.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/filter.js
 function filter_default(match) {
   if (typeof match !== "function")
     match = matcher_default(match);
@@ -251,12 +246,12 @@ function filter_default(match) {
   return new Selection(subgroups, this._parents);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/sparse.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/sparse.js
 function sparse_default(update) {
   return new Array(update.length);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/enter.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/enter.js
 function enter_default() {
   return new Selection(this._enter || this._groups.map(sparse_default), this._parents);
 }
@@ -283,14 +278,14 @@ EnterNode.prototype = {
   }
 };
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/constant.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/constant.js
 function constant_default(x) {
   return function() {
     return x;
   };
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/data.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/data.js
 function bindIndex(parent, group, enter, update, exit, data) {
   var i = 0, node, groupLength = group.length, dataLength = data.length;
   for (; i < dataLength; ++i) {
@@ -345,7 +340,7 @@ function data_default(value, key) {
   if (typeof value !== "function")
     value = constant_default(value);
   for (var m = groups.length, update = new Array(m), enter = new Array(m), exit = new Array(m), j = 0; j < m; ++j) {
-    var parent = parents[j], group = groups[j], groupLength = group.length, data = array_default(value.call(parent, parent && parent.__data__, j, parents)), dataLength = data.length, enterGroup = enter[j] = new Array(dataLength), updateGroup = update[j] = new Array(dataLength), exitGroup = exit[j] = new Array(groupLength);
+    var parent = parents[j], group = groups[j], groupLength = group.length, data = arraylike(value.call(parent, parent && parent.__data__, j, parents)), dataLength = data.length, enterGroup = enter[j] = new Array(dataLength), updateGroup = update[j] = new Array(dataLength), exitGroup = exit[j] = new Array(groupLength);
     bind(parent, group, enterGroup, updateGroup, exitGroup, data, key);
     for (var i0 = 0, i1 = 0, previous, next; i0 < dataLength; ++i0) {
       if (previous = enterGroup[i0]) {
@@ -362,18 +357,30 @@ function data_default(value, key) {
   update._exit = exit;
   return update;
 }
+function arraylike(data) {
+  return typeof data === "object" && "length" in data ? data : Array.from(data);
+}
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/exit.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/exit.js
 function exit_default() {
   return new Selection(this._exit || this._groups.map(sparse_default), this._parents);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/join.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/join.js
 function join_default(onenter, onupdate, onexit) {
   var enter = this.enter(), update = this, exit = this.exit();
-  enter = typeof onenter === "function" ? onenter(enter) : enter.append(onenter + "");
-  if (onupdate != null)
+  if (typeof onenter === "function") {
+    enter = onenter(enter);
+    if (enter)
+      enter = enter.selection();
+  } else {
+    enter = enter.append(onenter + "");
+  }
+  if (onupdate != null) {
     update = onupdate(update);
+    if (update)
+      update = update.selection();
+  }
   if (onexit == null)
     exit.remove();
   else
@@ -381,10 +388,9 @@ function join_default(onenter, onupdate, onexit) {
   return enter && update ? enter.merge(update).order() : update;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/merge.js
-function merge_default(selection2) {
-  if (!(selection2 instanceof Selection))
-    throw new Error("invalid merge");
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/merge.js
+function merge_default(context2) {
+  var selection2 = context2.selection ? context2.selection() : context2;
   for (var groups0 = this._groups, groups1 = selection2._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
     for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
       if (node = group0[i] || group1[i]) {
@@ -398,7 +404,7 @@ function merge_default(selection2) {
   return new Selection(merges, this._parents);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/order.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/order.js
 function order_default() {
   for (var groups = this._groups, j = -1, m = groups.length; ++j < m; ) {
     for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0; ) {
@@ -412,7 +418,7 @@ function order_default() {
   return this;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/sort.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/sort.js
 function sort_default(compare) {
   if (!compare)
     compare = ascending;
@@ -433,7 +439,7 @@ function ascending(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/call.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/call.js
 function call_default() {
   var callback = arguments[0];
   arguments[0] = this;
@@ -441,12 +447,12 @@ function call_default() {
   return this;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/nodes.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/nodes.js
 function nodes_default() {
   return Array.from(this);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/node.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/node.js
 function node_default() {
   for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
     for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
@@ -458,7 +464,7 @@ function node_default() {
   return null;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/size.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/size.js
 function size_default() {
   let size = 0;
   for (const node of this)
@@ -466,12 +472,12 @@ function size_default() {
   return size;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/empty.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/empty.js
 function empty_default() {
   return !this.node();
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/each.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/each.js
 function each_default(callback) {
   for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
     for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) {
@@ -482,7 +488,7 @@ function each_default(callback) {
   return this;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/attr.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/attr.js
 function attrRemove(name) {
   return function() {
     this.removeAttribute(name);
@@ -530,12 +536,12 @@ function attr_default(name, value) {
   return this.each((value == null ? fullname.local ? attrRemoveNS : attrRemove : typeof value === "function" ? fullname.local ? attrFunctionNS : attrFunction : fullname.local ? attrConstantNS : attrConstant)(fullname, value));
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/window.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/window.js
 function window_default(node) {
   return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/style.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/style.js
 function styleRemove(name) {
   return function() {
     this.style.removeProperty(name);
@@ -562,7 +568,7 @@ function styleValue(node, name) {
   return node.style.getPropertyValue(name) || window_default(node).getComputedStyle(node, null).getPropertyValue(name);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/property.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/property.js
 function propertyRemove(name) {
   return function() {
     delete this[name];
@@ -586,7 +592,7 @@ function property_default(name, value) {
   return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/classed.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/classed.js
 function classArray(string) {
   return string.trim().split(/^|\s+/);
 }
@@ -653,7 +659,7 @@ function classed_default(name, value) {
   return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/text.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/text.js
 function textRemove() {
   this.textContent = "";
 }
@@ -672,7 +678,7 @@ function text_default(value) {
   return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction : textConstant)(value)) : this.node().textContent;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/html.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/html.js
 function htmlRemove() {
   this.innerHTML = "";
 }
@@ -691,7 +697,7 @@ function html_default(value) {
   return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/raise.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/raise.js
 function raise() {
   if (this.nextSibling)
     this.parentNode.appendChild(this);
@@ -700,7 +706,7 @@ function raise_default() {
   return this.each(raise);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/lower.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/lower.js
 function lower() {
   if (this.previousSibling)
     this.parentNode.insertBefore(this, this.parentNode.firstChild);
@@ -709,7 +715,7 @@ function lower_default() {
   return this.each(lower);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/append.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/append.js
 function append_default(name) {
   var create2 = typeof name === "function" ? name : creator_default(name);
   return this.select(function() {
@@ -717,7 +723,7 @@ function append_default(name) {
   });
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/insert.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/insert.js
 function constantNull() {
   return null;
 }
@@ -728,7 +734,7 @@ function insert_default(name, before) {
   });
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/remove.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/remove.js
 function remove() {
   var parent = this.parentNode;
   if (parent)
@@ -738,7 +744,7 @@ function remove_default() {
   return this.each(remove);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/clone.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/clone.js
 function selection_cloneShallow() {
   var clone = this.cloneNode(false), parent = this.parentNode;
   return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
@@ -751,12 +757,12 @@ function clone_default(deep) {
   return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/datum.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/datum.js
 function datum_default(value) {
   return arguments.length ? this.property("__data__", value) : this.node().__data__;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/on.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/on.js
 function contextListener(listener) {
   return function(event) {
     listener.call(this, event, this.__data__);
@@ -828,7 +834,7 @@ function on_default(typename, value, options) {
   return this;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/dispatch.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/dispatch.js
 function dispatchEvent(node, type2, params) {
   var window2 = window_default(node), event = window2.CustomEvent;
   if (typeof event === "function") {
@@ -856,7 +862,7 @@ function dispatch_default2(type2, params) {
   return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type2, params));
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/iterator.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/iterator.js
 function* iterator_default() {
   for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
     for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) {
@@ -866,7 +872,7 @@ function* iterator_default() {
   }
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/selection/index.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/index.js
 var root = [null];
 function Selection(groups, parents) {
   this._groups = groups;
@@ -918,12 +924,12 @@ Selection.prototype = selection.prototype = {
 };
 var selection_default = selection;
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/select.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/select.js
 function select_default2(selector) {
   return typeof selector === "string" ? new Selection([[document.querySelector(selector)]], [document.documentElement]) : new Selection([[selector]], root);
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/sourceEvent.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/sourceEvent.js
 function sourceEvent_default(event) {
   let sourceEvent;
   while (sourceEvent = event.sourceEvent)
@@ -931,7 +937,7 @@ function sourceEvent_default(event) {
   return event;
 }
 
-// ../../node_modules/.pnpm/d3-selection@2.0.0/node_modules/d3-selection/src/pointer.js
+// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/pointer.js
 function pointer_default(event, node) {
   event = sourceEvent_default(event);
   if (node === void 0)
@@ -952,7 +958,9 @@ function pointer_default(event, node) {
   return [event.pageX, event.pageY];
 }
 
-// ../../node_modules/.pnpm/d3-drag@2.0.0/node_modules/d3-drag/src/noevent.js
+// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/noevent.js
+var nonpassive = { passive: false };
+var nonpassivecapture = { capture: true, passive: false };
 function nopropagation(event) {
   event.stopImmediatePropagation();
 }
@@ -961,11 +969,11 @@ function noevent_default(event) {
   event.stopImmediatePropagation();
 }
 
-// ../../node_modules/.pnpm/d3-drag@2.0.0/node_modules/d3-drag/src/nodrag.js
+// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/nodrag.js
 function nodrag_default(view) {
-  var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", noevent_default, true);
+  var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", noevent_default, nonpassivecapture);
   if ("onselectstart" in root2) {
-    selection2.on("selectstart.drag", noevent_default, true);
+    selection2.on("selectstart.drag", noevent_default, nonpassivecapture);
   } else {
     root2.__noselect = root2.style.MozUserSelect;
     root2.style.MozUserSelect = "none";
@@ -974,7 +982,7 @@ function nodrag_default(view) {
 function yesdrag(view, noclick) {
   var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", null);
   if (noclick) {
-    selection2.on("click.drag", noevent_default, true);
+    selection2.on("click.drag", noevent_default, nonpassivecapture);
     setTimeout(function() {
       selection2.on("click.drag", null);
     }, 0);
@@ -987,10 +995,10 @@ function yesdrag(view, noclick) {
   }
 }
 
-// ../../node_modules/.pnpm/d3-drag@2.0.0/node_modules/d3-drag/src/constant.js
+// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/constant.js
 var constant_default2 = (x) => () => x;
 
-// ../../node_modules/.pnpm/d3-drag@2.0.0/node_modules/d3-drag/src/event.js
+// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/event.js
 function DragEvent(type2, {
   sourceEvent,
   subject,
@@ -1022,7 +1030,7 @@ DragEvent.prototype.on = function() {
   return value === this._ ? this : value;
 };
 
-// ../../node_modules/.pnpm/d3-drag@2.0.0/node_modules/d3-drag/src/drag.js
+// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/drag.js
 function defaultFilter(event) {
   return !event.ctrlKey && !event.button;
 }
@@ -1038,7 +1046,7 @@ function defaultTouchable() {
 function drag_default() {
   var filter2 = defaultFilter, container = defaultContainer, subject = defaultSubject, touchable = defaultTouchable, gestures = {}, listeners = dispatch_default("start", "drag", "end"), active = 0, mousedownx, mousedowny, mousemoving, touchending, clickDistance2 = 0;
   function drag(selection2) {
-    selection2.on("mousedown.drag", mousedowned).filter(touchable).on("touchstart.drag", touchstarted).on("touchmove.drag", touchmoved).on("touchend.drag touchcancel.drag", touchended).style("touch-action", "none").style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
+    selection2.on("mousedown.drag", mousedowned).filter(touchable).on("touchstart.drag", touchstarted).on("touchmove.drag", touchmoved, nonpassive).on("touchend.drag touchcancel.drag", touchended).style("touch-action", "none").style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
   }
   function mousedowned(event, d) {
     if (touchending || !filter2.call(this, event, d))
@@ -1046,7 +1054,7 @@ function drag_default() {
     var gesture = beforestart(this, container.call(this, event, d), event, d, "mouse");
     if (!gesture)
       return;
-    select_default2(event.view).on("mousemove.drag", mousemoved, true).on("mouseup.drag", mouseupped, true);
+    select_default2(event.view).on("mousemove.drag", mousemoved, nonpassivecapture).on("mouseup.drag", mouseupped, nonpassivecapture);
     nodrag_default(event.view);
     nopropagation(event);
     mousemoving = false;
@@ -1149,29 +1157,29 @@ function drag_default() {
       );
     };
   }
-  drag.filter = function(_7) {
-    return arguments.length ? (filter2 = typeof _7 === "function" ? _7 : constant_default2(!!_7), drag) : filter2;
+  drag.filter = function(_6) {
+    return arguments.length ? (filter2 = typeof _6 === "function" ? _6 : constant_default2(!!_6), drag) : filter2;
   };
-  drag.container = function(_7) {
-    return arguments.length ? (container = typeof _7 === "function" ? _7 : constant_default2(_7), drag) : container;
+  drag.container = function(_6) {
+    return arguments.length ? (container = typeof _6 === "function" ? _6 : constant_default2(_6), drag) : container;
   };
-  drag.subject = function(_7) {
-    return arguments.length ? (subject = typeof _7 === "function" ? _7 : constant_default2(_7), drag) : subject;
+  drag.subject = function(_6) {
+    return arguments.length ? (subject = typeof _6 === "function" ? _6 : constant_default2(_6), drag) : subject;
   };
-  drag.touchable = function(_7) {
-    return arguments.length ? (touchable = typeof _7 === "function" ? _7 : constant_default2(!!_7), drag) : touchable;
+  drag.touchable = function(_6) {
+    return arguments.length ? (touchable = typeof _6 === "function" ? _6 : constant_default2(!!_6), drag) : touchable;
   };
   drag.on = function() {
     var value = listeners.on.apply(listeners, arguments);
     return value === listeners ? drag : value;
   };
-  drag.clickDistance = function(_7) {
-    return arguments.length ? (clickDistance2 = (_7 = +_7) * _7, drag) : Math.sqrt(clickDistance2);
+  drag.clickDistance = function(_6) {
+    return arguments.length ? (clickDistance2 = (_6 = +_6) * _6, drag) : Math.sqrt(clickDistance2);
   };
   return drag;
 }
 
-// ../../node_modules/.pnpm/d3-color@2.0.0/node_modules/d3-color/src/define.js
+// ../../node_modules/.pnpm/d3-color@3.1.0/node_modules/d3-color/src/define.js
 function define_default(constructor, factory, prototype) {
   constructor.prototype = factory.prototype = prototype;
   prototype.constructor = constructor;
@@ -1183,21 +1191,21 @@ function extend(parent, definition) {
   return prototype;
 }
 
-// ../../node_modules/.pnpm/d3-color@2.0.0/node_modules/d3-color/src/color.js
+// ../../node_modules/.pnpm/d3-color@3.1.0/node_modules/d3-color/src/color.js
 function Color() {
 }
 var darker = 0.7;
 var brighter = 1 / darker;
 var reI = "\\s*([+-]?\\d+)\\s*";
-var reN = "\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)\\s*";
-var reP = "\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)%\\s*";
+var reN = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)\\s*";
+var reP = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)%\\s*";
 var reHex = /^#([0-9a-f]{3,8})$/;
-var reRgbInteger = new RegExp("^rgb\\(" + [reI, reI, reI] + "\\)$");
-var reRgbPercent = new RegExp("^rgb\\(" + [reP, reP, reP] + "\\)$");
-var reRgbaInteger = new RegExp("^rgba\\(" + [reI, reI, reI, reN] + "\\)$");
-var reRgbaPercent = new RegExp("^rgba\\(" + [reP, reP, reP, reN] + "\\)$");
-var reHslPercent = new RegExp("^hsl\\(" + [reN, reP, reP] + "\\)$");
-var reHslaPercent = new RegExp("^hsla\\(" + [reN, reP, reP, reN] + "\\)$");
+var reRgbInteger = new RegExp(`^rgb\\(${reI},${reI},${reI}\\)$`);
+var reRgbPercent = new RegExp(`^rgb\\(${reP},${reP},${reP}\\)$`);
+var reRgbaInteger = new RegExp(`^rgba\\(${reI},${reI},${reI},${reN}\\)$`);
+var reRgbaPercent = new RegExp(`^rgba\\(${reP},${reP},${reP},${reN}\\)$`);
+var reHslPercent = new RegExp(`^hsl\\(${reN},${reP},${reP}\\)$`);
+var reHslaPercent = new RegExp(`^hsla\\(${reN},${reP},${reP},${reN}\\)$`);
 var named = {
   aliceblue: 15792383,
   antiquewhite: 16444375,
@@ -1349,20 +1357,24 @@ var named = {
   yellowgreen: 10145074
 };
 define_default(Color, color, {
-  copy: function(channels) {
+  copy(channels) {
     return Object.assign(new this.constructor(), this, channels);
   },
-  displayable: function() {
+  displayable() {
     return this.rgb().displayable();
   },
   hex: color_formatHex,
   formatHex: color_formatHex,
+  formatHex8: color_formatHex8,
   formatHsl: color_formatHsl,
   formatRgb: color_formatRgb,
   toString: color_formatRgb
 });
 function color_formatHex() {
   return this.rgb().formatHex();
+}
+function color_formatHex8() {
+  return this.rgb().formatHex8();
 }
 function color_formatHsl() {
   return hslConvert(this).formatHsl();
@@ -1401,35 +1413,47 @@ function Rgb(r, g, b, opacity) {
   this.opacity = +opacity;
 }
 define_default(Rgb, rgb, extend(Color, {
-  brighter: function(k) {
+  brighter(k) {
     k = k == null ? brighter : Math.pow(brighter, k);
     return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
   },
-  darker: function(k) {
+  darker(k) {
     k = k == null ? darker : Math.pow(darker, k);
     return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
   },
-  rgb: function() {
+  rgb() {
     return this;
   },
-  displayable: function() {
+  clamp() {
+    return new Rgb(clampi(this.r), clampi(this.g), clampi(this.b), clampa(this.opacity));
+  },
+  displayable() {
     return -0.5 <= this.r && this.r < 255.5 && (-0.5 <= this.g && this.g < 255.5) && (-0.5 <= this.b && this.b < 255.5) && (0 <= this.opacity && this.opacity <= 1);
   },
   hex: rgb_formatHex,
   formatHex: rgb_formatHex,
+  formatHex8: rgb_formatHex8,
   formatRgb: rgb_formatRgb,
   toString: rgb_formatRgb
 }));
 function rgb_formatHex() {
-  return "#" + hex(this.r) + hex(this.g) + hex(this.b);
+  return `#${hex(this.r)}${hex(this.g)}${hex(this.b)}`;
+}
+function rgb_formatHex8() {
+  return `#${hex(this.r)}${hex(this.g)}${hex(this.b)}${hex((isNaN(this.opacity) ? 1 : this.opacity) * 255)}`;
 }
 function rgb_formatRgb() {
-  var a = this.opacity;
-  a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
-  return (a === 1 ? "rgb(" : "rgba(") + Math.max(0, Math.min(255, Math.round(this.r) || 0)) + ", " + Math.max(0, Math.min(255, Math.round(this.g) || 0)) + ", " + Math.max(0, Math.min(255, Math.round(this.b) || 0)) + (a === 1 ? ")" : ", " + a + ")");
+  const a = clampa(this.opacity);
+  return `${a === 1 ? "rgb(" : "rgba("}${clampi(this.r)}, ${clampi(this.g)}, ${clampi(this.b)}${a === 1 ? ")" : `, ${a})`}`;
+}
+function clampa(opacity) {
+  return isNaN(opacity) ? 1 : Math.max(0, Math.min(1, opacity));
+}
+function clampi(value) {
+  return Math.max(0, Math.min(255, Math.round(value) || 0));
 }
 function hex(value) {
-  value = Math.max(0, Math.min(255, Math.round(value) || 0));
+  value = clampi(value);
   return (value < 16 ? "0" : "") + value.toString(16);
 }
 function hsla(h, s, l, a) {
@@ -1476,15 +1500,15 @@ function Hsl(h, s, l, opacity) {
   this.opacity = +opacity;
 }
 define_default(Hsl, hsl, extend(Color, {
-  brighter: function(k) {
+  brighter(k) {
     k = k == null ? brighter : Math.pow(brighter, k);
     return new Hsl(this.h, this.s, this.l * k, this.opacity);
   },
-  darker: function(k) {
+  darker(k) {
     k = k == null ? darker : Math.pow(darker, k);
     return new Hsl(this.h, this.s, this.l * k, this.opacity);
   },
-  rgb: function() {
+  rgb() {
     var h = this.h % 360 + (this.h < 0) * 360, s = isNaN(h) || isNaN(this.s) ? 0 : this.s, l = this.l, m2 = l + (l < 0.5 ? l : 1 - l) * s, m1 = 2 * l - m2;
     return new Rgb(
       hsl2rgb(h >= 240 ? h - 240 : h + 120, m1, m2),
@@ -1493,20 +1517,29 @@ define_default(Hsl, hsl, extend(Color, {
       this.opacity
     );
   },
-  displayable: function() {
+  clamp() {
+    return new Hsl(clamph(this.h), clampt(this.s), clampt(this.l), clampa(this.opacity));
+  },
+  displayable() {
     return (0 <= this.s && this.s <= 1 || isNaN(this.s)) && (0 <= this.l && this.l <= 1) && (0 <= this.opacity && this.opacity <= 1);
   },
-  formatHsl: function() {
-    var a = this.opacity;
-    a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
-    return (a === 1 ? "hsl(" : "hsla(") + (this.h || 0) + ", " + (this.s || 0) * 100 + "%, " + (this.l || 0) * 100 + "%" + (a === 1 ? ")" : ", " + a + ")");
+  formatHsl() {
+    const a = clampa(this.opacity);
+    return `${a === 1 ? "hsl(" : "hsla("}${clamph(this.h)}, ${clampt(this.s) * 100}%, ${clampt(this.l) * 100}%${a === 1 ? ")" : `, ${a})`}`;
   }
 }));
+function clamph(value) {
+  value = (value || 0) % 360;
+  return value < 0 ? value + 360 : value;
+}
+function clampt(value) {
+  return Math.max(0, Math.min(1, value || 0));
+}
 function hsl2rgb(h, m1, m2) {
   return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/basis.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/basis.js
 function basis(t1, v0, v1, v2, v3) {
   var t2 = t1 * t1, t3 = t2 * t1;
   return ((1 - 3 * t1 + 3 * t2 - t3) * v0 + (4 - 6 * t2 + 3 * t3) * v1 + (1 + 3 * t1 + 3 * t2 - 3 * t3) * v2 + t3 * v3) / 6;
@@ -1519,7 +1552,7 @@ function basis_default(values) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/basisClosed.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/basisClosed.js
 function basisClosed_default(values) {
   var n = values.length;
   return function(t) {
@@ -1528,10 +1561,10 @@ function basisClosed_default(values) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/constant.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/constant.js
 var constant_default3 = (x) => () => x;
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/color.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/color.js
 function linear(a, d) {
   return function(t) {
     return a + t * d;
@@ -1552,7 +1585,7 @@ function nogamma(a, b) {
   return d ? linear(a, d) : constant_default3(isNaN(a) ? b : a);
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/rgb.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/rgb.js
 var rgb_default = function rgbGamma(y) {
   var color2 = gamma(y);
   function rgb2(start2, end) {
@@ -1592,14 +1625,14 @@ function rgbSpline(spline) {
 var rgbBasis = rgbSpline(basis_default);
 var rgbBasisClosed = rgbSpline(basisClosed_default);
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/number.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/number.js
 function number_default(a, b) {
   return a = +a, b = +b, function(t) {
     return a * (1 - t) + b * t;
   };
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/string.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/string.js
 var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g;
 var reB = new RegExp(reA.source, "g");
 function zero(b) {
@@ -1648,7 +1681,7 @@ function string_default(a, b) {
   });
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/transform/decompose.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/transform/decompose.js
 var degrees = 180 / Math.PI;
 var identity = {
   translateX: 0,
@@ -1678,7 +1711,7 @@ function decompose_default(a, b, c, d, e, f) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/transform/parse.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/transform/parse.js
 var svgNode;
 function parseCss(value) {
   const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
@@ -1696,7 +1729,7 @@ function parseSvg(value) {
   return decompose_default(value.a, value.b, value.c, value.d, value.e, value.f);
 }
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/transform/index.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/transform/index.js
 function interpolateTransform(parse, pxComma, pxParen, degParen) {
   function pop(s) {
     return s.length ? s.pop() + " " : "";
@@ -1754,7 +1787,7 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
 var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
 var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
 
-// ../../node_modules/.pnpm/d3-interpolate@2.0.1/node_modules/d3-interpolate/src/zoom.js
+// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/zoom.js
 var epsilon2 = 1e-12;
 function cosh(x) {
   return ((x = Math.exp(x)) + 1 / x) / 2;
@@ -1792,14 +1825,14 @@ var zoom_default = function zoomRho(rho, rho2, rho4) {
     i.duration = S * 1e3 * rho / Math.SQRT2;
     return i;
   }
-  zoom.rho = function(_7) {
-    var _1 = Math.max(1e-3, +_7), _22 = _1 * _1, _42 = _22 * _22;
+  zoom.rho = function(_6) {
+    var _1 = Math.max(1e-3, +_6), _22 = _1 * _1, _42 = _22 * _22;
     return zoomRho(_1, _22, _42);
   };
   return zoom;
 }(Math.SQRT2, 2, 4);
 
-// ../../node_modules/.pnpm/d3-timer@2.0.0/node_modules/d3-timer/src/timer.js
+// ../../node_modules/.pnpm/d3-timer@3.0.1/node_modules/d3-timer/src/timer.js
 var frame = 0;
 var timeout = 0;
 var interval = 0;
@@ -1858,7 +1891,7 @@ function timerFlush() {
   var t = taskHead, e;
   while (t) {
     if ((e = clockNow - t._time) >= 0)
-      t._call.call(null, e);
+      t._call.call(void 0, e);
     t = t._next;
   }
   --frame;
@@ -1912,7 +1945,7 @@ function sleep(time) {
   }
 }
 
-// ../../node_modules/.pnpm/d3-timer@2.0.0/node_modules/d3-timer/src/timeout.js
+// ../../node_modules/.pnpm/d3-timer@3.0.1/node_modules/d3-timer/src/timeout.js
 function timeout_default(callback, delay, time) {
   var t = new Timer();
   delay = delay == null ? 0 : +delay;
@@ -1923,7 +1956,7 @@ function timeout_default(callback, delay, time) {
   return t;
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/schedule.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/schedule.js
 var emptyOn = dispatch_default("start", "end", "cancel", "interrupt");
 var emptyTween = [];
 var CREATED = 0;
@@ -2043,7 +2076,7 @@ function create(node, id2, self) {
   }
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/interrupt.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/interrupt.js
 function interrupt_default(node, name) {
   var schedules = node.__transition, schedule, active, empty2 = true, i;
   if (!schedules)
@@ -2064,14 +2097,14 @@ function interrupt_default(node, name) {
     delete node.__transition;
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/selection/interrupt.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/interrupt.js
 function interrupt_default2(name) {
   return this.each(function() {
     interrupt_default(this, name);
   });
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/tween.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/tween.js
 function tweenRemove(id2, name) {
   var tween0, tween1;
   return function() {
@@ -2134,13 +2167,13 @@ function tweenValue(transition2, name, value) {
   };
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/interpolate.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/interpolate.js
 function interpolate_default(a, b) {
   var c;
   return (typeof b === "number" ? number_default : b instanceof color ? rgb_default : (c = color(b)) ? (b = c, rgb_default) : string_default)(a, b);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/attr.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/attr.js
 function attrRemove2(name) {
   return function() {
     this.removeAttribute(name);
@@ -2192,7 +2225,7 @@ function attr_default2(name, value) {
   return this.attrTween(name, typeof value === "function" ? (fullname.local ? attrFunctionNS2 : attrFunction2)(fullname, i, tweenValue(this, "attr." + name, value)) : value == null ? (fullname.local ? attrRemoveNS2 : attrRemove2)(fullname) : (fullname.local ? attrConstantNS2 : attrConstant2)(fullname, i, value));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/attrTween.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/attrTween.js
 function attrInterpolate(name, i) {
   return function(t) {
     this.setAttribute(name, i.call(this, t));
@@ -2237,7 +2270,7 @@ function attrTween_default(name, value) {
   return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/delay.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/delay.js
 function delayFunction(id2, value) {
   return function() {
     init(this, id2).delay = +value.apply(this, arguments);
@@ -2253,7 +2286,7 @@ function delay_default(value) {
   return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id2, value)) : get2(this.node(), id2).delay;
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/duration.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/duration.js
 function durationFunction(id2, value) {
   return function() {
     set2(this, id2).duration = +value.apply(this, arguments);
@@ -2269,7 +2302,7 @@ function duration_default(value) {
   return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id2, value)) : get2(this.node(), id2).duration;
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/ease.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/ease.js
 function easeConstant(id2, value) {
   if (typeof value !== "function")
     throw new Error();
@@ -2282,7 +2315,7 @@ function ease_default(value) {
   return arguments.length ? this.each(easeConstant(id2, value)) : get2(this.node(), id2).ease;
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/easeVarying.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/easeVarying.js
 function easeVarying(id2, value) {
   return function() {
     var v = value.apply(this, arguments);
@@ -2297,7 +2330,7 @@ function easeVarying_default(value) {
   return this.each(easeVarying(this._id, value));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/filter.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/filter.js
 function filter_default2(match) {
   if (typeof match !== "function")
     match = matcher_default(match);
@@ -2311,7 +2344,7 @@ function filter_default2(match) {
   return new Transition(subgroups, this._parents, this._name, this._id);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/merge.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/merge.js
 function merge_default2(transition2) {
   if (transition2._id !== this._id)
     throw new Error();
@@ -2328,7 +2361,7 @@ function merge_default2(transition2) {
   return new Transition(merges, this._parents, this._name, this._id);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/on.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/on.js
 function start(name) {
   return (name + "").trim().split(/^|\s+/).every(function(t) {
     var i = t.indexOf(".");
@@ -2351,7 +2384,7 @@ function on_default2(name, listener) {
   return arguments.length < 2 ? get2(this.node(), id2).on.on(name) : this.each(onFunction(id2, name, listener));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/remove.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/remove.js
 function removeFunction(id2) {
   return function() {
     var parent = this.parentNode;
@@ -2366,7 +2399,7 @@ function remove_default2() {
   return this.on("end.remove", removeFunction(this._id));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/select.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/select.js
 function select_default3(select) {
   var name = this._name, id2 = this._id;
   if (typeof select !== "function")
@@ -2384,7 +2417,7 @@ function select_default3(select) {
   return new Transition(subgroups, this._parents, name, id2);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/selectAll.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/selectAll.js
 function selectAll_default2(select) {
   var name = this._name, id2 = this._id;
   if (typeof select !== "function")
@@ -2405,13 +2438,13 @@ function selectAll_default2(select) {
   return new Transition(subgroups, parents, name, id2);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/selection.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/selection.js
 var Selection2 = selection_default.prototype.constructor;
 function selection_default2() {
   return new Selection2(this._groups, this._parents);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/style.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/style.js
 function styleNull(name, interpolate) {
   var string00, string10, interpolate0;
   return function() {
@@ -2454,7 +2487,7 @@ function style_default2(name, value, priority) {
   return value == null ? this.styleTween(name, styleNull(name, i)).on("end.style." + name, styleRemove2(name)) : typeof value === "function" ? this.styleTween(name, styleFunction2(name, i, tweenValue(this, "style." + name, value))).each(styleMaybeRemove(this._id, name)) : this.styleTween(name, styleConstant2(name, i, value), priority).on("end.style." + name, null);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/styleTween.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/styleTween.js
 function styleInterpolate(name, i, priority) {
   return function(t) {
     this.style.setProperty(name, i.call(this, t), priority);
@@ -2482,7 +2515,7 @@ function styleTween_default(name, value, priority) {
   return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/text.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/text.js
 function textConstant2(value) {
   return function() {
     this.textContent = value;
@@ -2498,7 +2531,7 @@ function text_default2(value) {
   return this.tween("text", typeof value === "function" ? textFunction2(tweenValue(this, "text", value)) : textConstant2(value == null ? "" : value + ""));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/textTween.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/textTween.js
 function textInterpolate(i) {
   return function(t) {
     this.textContent = i.call(this, t);
@@ -2526,7 +2559,7 @@ function textTween_default(value) {
   return this.tween(key, textTween(value));
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/transition.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/transition.js
 function transition_default() {
   var name = this._name, id0 = this._id, id1 = newId();
   for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
@@ -2545,7 +2578,7 @@ function transition_default() {
   return new Transition(groups, this._parents, name, id1);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/end.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/end.js
 function end_default() {
   var on0, on1, that = this, id2 = that._id, size = that.size();
   return new Promise(function(resolve, reject) {
@@ -2568,7 +2601,7 @@ function end_default() {
   });
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/transition/index.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/index.js
 var id = 0;
 function Transition(groups, parents, name, id2) {
   this._groups = groups;
@@ -2587,6 +2620,8 @@ Transition.prototype = transition.prototype = {
   constructor: Transition,
   select: select_default3,
   selectAll: selectAll_default2,
+  selectChild: selection_prototype.selectChild,
+  selectChildren: selection_prototype.selectChildren,
   filter: filter_default2,
   merge: merge_default2,
   selection: selection_default2,
@@ -2614,12 +2649,12 @@ Transition.prototype = transition.prototype = {
   [Symbol.iterator]: selection_prototype[Symbol.iterator]
 };
 
-// ../../node_modules/.pnpm/d3-ease@2.0.0/node_modules/d3-ease/src/cubic.js
+// ../../node_modules/.pnpm/d3-ease@3.0.1/node_modules/d3-ease/src/cubic.js
 function cubicInOut(t) {
   return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/selection/transition.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/transition.js
 var defaultTiming = {
   time: null,
   delay: 0,
@@ -2652,11 +2687,11 @@ function transition_default2(name) {
   return new Transition(groups, this._parents, name, id2);
 }
 
-// ../../node_modules/.pnpm/d3-transition@2.0.0_d3-selection@2.0.0/node_modules/d3-transition/src/selection/index.js
+// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/index.js
 selection_default.prototype.interrupt = interrupt_default2;
 selection_default.prototype.transition = transition_default2;
 
-// ../../node_modules/.pnpm/d3-brush@2.1.0/node_modules/d3-brush/src/brush.js
+// ../../node_modules/.pnpm/d3-brush@3.0.0/node_modules/d3-brush/src/brush.js
 var { abs, max, min } = Math;
 function number1(e) {
   return [+e[0], +e[1]];
@@ -2698,10 +2733,10 @@ function type(t) {
   return { type: t };
 }
 
-// ../../node_modules/.pnpm/d3-zoom@2.0.0/node_modules/d3-zoom/src/constant.js
+// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/constant.js
 var constant_default5 = (x) => () => x;
 
-// ../../node_modules/.pnpm/d3-zoom@2.0.0/node_modules/d3-zoom/src/event.js
+// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/event.js
 function ZoomEvent(type2, {
   sourceEvent,
   target,
@@ -2717,7 +2752,7 @@ function ZoomEvent(type2, {
   });
 }
 
-// ../../node_modules/.pnpm/d3-zoom@2.0.0/node_modules/d3-zoom/src/transform.js
+// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/transform.js
 function Transform(k, x, y) {
   this.k = k;
   this.x = x;
@@ -2768,7 +2803,7 @@ function transform(node) {
   return node.__zoom;
 }
 
-// ../../node_modules/.pnpm/d3-zoom@2.0.0/node_modules/d3-zoom/src/noevent.js
+// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/noevent.js
 function nopropagation3(event) {
   event.stopImmediatePropagation();
 }
@@ -2777,7 +2812,7 @@ function noevent_default3(event) {
   event.stopImmediatePropagation();
 }
 
-// ../../node_modules/.pnpm/d3-zoom@2.0.0/node_modules/d3-zoom/src/zoom.js
+// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/zoom.js
 function defaultFilter2(event) {
   return (!event.ctrlKey || event.type === "wheel") && !event.button;
 }
@@ -2812,7 +2847,7 @@ function defaultConstrain(transform2, extent, translateExtent) {
 function zoom_default2() {
   var filter2 = defaultFilter2, extent = defaultExtent, constrain = defaultConstrain, wheelDelta = defaultWheelDelta, touchable = defaultTouchable2, scaleExtent = [0, Infinity], translateExtent = [[-Infinity, -Infinity], [Infinity, Infinity]], duration = 250, interpolate = zoom_default, listeners = dispatch_default("start", "zoom", "end"), touchstarting, touchfirst, touchending, touchDelay = 500, wheelDelay = 150, clickDistance2 = 0, tapDistance = 10;
   function zoom(selection2) {
-    selection2.property("__zoom", defaultTransform).on("wheel.zoom", wheeled).on("mousedown.zoom", mousedowned).on("dblclick.zoom", dblclicked).filter(touchable).on("touchstart.zoom", touchstarted).on("touchmove.zoom", touchmoved).on("touchend.zoom touchcancel.zoom", touchended).style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
+    selection2.property("__zoom", defaultTransform).on("wheel.zoom", wheeled, { passive: false }).on("mousedown.zoom", mousedowned).on("dblclick.zoom", dblclicked).filter(touchable).on("touchstart.zoom", touchstarted).on("touchmove.zoom", touchmoved).on("touchend.zoom touchcancel.zoom", touchended).style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
   }
   zoom.transform = function(collection, transform2, point, event) {
     var selection2 = collection.selection ? collection.selection() : collection;
@@ -2968,7 +3003,7 @@ function zoom_default2() {
   function mousedowned(event, ...args) {
     if (touchending || !filter2.apply(this, arguments))
       return;
-    var g = gesture(this, args, true).event(event), v = select_default2(event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true), p = pointer_default(event, currentTarget), currentTarget = event.currentTarget, x0 = event.clientX, y0 = event.clientY;
+    var currentTarget = event.currentTarget, g = gesture(this, args, true).event(event), v = select_default2(event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true), p = pointer_default(event, currentTarget), x0 = event.clientX, y0 = event.clientY;
     nodrag_default(event.view);
     nopropagation3(event);
     g.mouse = [p, this.__zoom.invert(p)];
@@ -3080,42 +3115,42 @@ function zoom_default2() {
       }
     }
   }
-  zoom.wheelDelta = function(_7) {
-    return arguments.length ? (wheelDelta = typeof _7 === "function" ? _7 : constant_default5(+_7), zoom) : wheelDelta;
+  zoom.wheelDelta = function(_6) {
+    return arguments.length ? (wheelDelta = typeof _6 === "function" ? _6 : constant_default5(+_6), zoom) : wheelDelta;
   };
-  zoom.filter = function(_7) {
-    return arguments.length ? (filter2 = typeof _7 === "function" ? _7 : constant_default5(!!_7), zoom) : filter2;
+  zoom.filter = function(_6) {
+    return arguments.length ? (filter2 = typeof _6 === "function" ? _6 : constant_default5(!!_6), zoom) : filter2;
   };
-  zoom.touchable = function(_7) {
-    return arguments.length ? (touchable = typeof _7 === "function" ? _7 : constant_default5(!!_7), zoom) : touchable;
+  zoom.touchable = function(_6) {
+    return arguments.length ? (touchable = typeof _6 === "function" ? _6 : constant_default5(!!_6), zoom) : touchable;
   };
-  zoom.extent = function(_7) {
-    return arguments.length ? (extent = typeof _7 === "function" ? _7 : constant_default5([[+_7[0][0], +_7[0][1]], [+_7[1][0], +_7[1][1]]]), zoom) : extent;
+  zoom.extent = function(_6) {
+    return arguments.length ? (extent = typeof _6 === "function" ? _6 : constant_default5([[+_6[0][0], +_6[0][1]], [+_6[1][0], +_6[1][1]]]), zoom) : extent;
   };
-  zoom.scaleExtent = function(_7) {
-    return arguments.length ? (scaleExtent[0] = +_7[0], scaleExtent[1] = +_7[1], zoom) : [scaleExtent[0], scaleExtent[1]];
+  zoom.scaleExtent = function(_6) {
+    return arguments.length ? (scaleExtent[0] = +_6[0], scaleExtent[1] = +_6[1], zoom) : [scaleExtent[0], scaleExtent[1]];
   };
-  zoom.translateExtent = function(_7) {
-    return arguments.length ? (translateExtent[0][0] = +_7[0][0], translateExtent[1][0] = +_7[1][0], translateExtent[0][1] = +_7[0][1], translateExtent[1][1] = +_7[1][1], zoom) : [[translateExtent[0][0], translateExtent[0][1]], [translateExtent[1][0], translateExtent[1][1]]];
+  zoom.translateExtent = function(_6) {
+    return arguments.length ? (translateExtent[0][0] = +_6[0][0], translateExtent[1][0] = +_6[1][0], translateExtent[0][1] = +_6[0][1], translateExtent[1][1] = +_6[1][1], zoom) : [[translateExtent[0][0], translateExtent[0][1]], [translateExtent[1][0], translateExtent[1][1]]];
   };
-  zoom.constrain = function(_7) {
-    return arguments.length ? (constrain = _7, zoom) : constrain;
+  zoom.constrain = function(_6) {
+    return arguments.length ? (constrain = _6, zoom) : constrain;
   };
-  zoom.duration = function(_7) {
-    return arguments.length ? (duration = +_7, zoom) : duration;
+  zoom.duration = function(_6) {
+    return arguments.length ? (duration = +_6, zoom) : duration;
   };
-  zoom.interpolate = function(_7) {
-    return arguments.length ? (interpolate = _7, zoom) : interpolate;
+  zoom.interpolate = function(_6) {
+    return arguments.length ? (interpolate = _6, zoom) : interpolate;
   };
   zoom.on = function() {
     var value = listeners.on.apply(listeners, arguments);
     return value === listeners ? zoom : value;
   };
-  zoom.clickDistance = function(_7) {
-    return arguments.length ? (clickDistance2 = (_7 = +_7) * _7, zoom) : Math.sqrt(clickDistance2);
+  zoom.clickDistance = function(_6) {
+    return arguments.length ? (clickDistance2 = (_6 = +_6) * _6, zoom) : Math.sqrt(clickDistance2);
   };
-  zoom.tapDistance = function(_7) {
-    return arguments.length ? (tapDistance = +_7, zoom) : tapDistance;
+  zoom.tapDistance = function(_6) {
+    return arguments.length ? (tapDistance = +_6, zoom) : tapDistance;
   };
   return zoom;
 }
@@ -3123,159 +3158,152 @@ function zoom_default2() {
 // src/js-components/flowchart/flowchart.js
 var import_lodash = __toESM(require_lodash());
 
-// src/js-components/flowchart/data/styledata.js
-var StyleData = class {
-  constructor() {
-    this.type = null;
-    this.render = null;
-    this.text = "";
-    this.editable = true;
-    this.foreColor = "black";
-    this.fontSize = 16;
-    this.fontFamily = "Malgun Gothic";
-    this.textDecoration = "none";
-    this.visibleOverText = true;
-    this.opacity = 1;
-    this.cursor = "move";
-    this.borderColor = "black";
-    this.borderWidth = 1;
-    this.borderDash = 0;
-    this.isSelected = false;
-    this.isMonitoring = true;
-    this.isHovered = false;
-    this.tooltipText = "";
-    this.tooltipFontSize = 12;
-    this.tooltipForeColor = "black";
-    this.tooltipFontFamily = "Malgun Gothic";
-    this.tooltipFill = "white";
-    this.tooltipMaxWidth = 380;
-    this.tooltipBorderColor = "#bbb";
-    this.tooltipBorderWidth = 1;
-    this.tooltipBorderDash = 0;
-    this.tooltipPadding = 10;
-    this.tooltipTextDecoration = "none";
-    this.tooltipVisible = true;
-    this["borderWidth.selected"] = 2;
-    this["borderColor.selected"] = "blue";
+// src/js-components/flowchart/util/container-interface.ts
+var InterfaceInstance = class {
+  constructor(api) {
+    Object.assign(this, api);
   }
 };
 
-// src/js-components/flowchart/data/wrapper.js
-var FIXED_KEYS = /* @__PURE__ */ new Set([
-  "id",
-  "type",
-  "render",
-  "text",
-  "editable",
-  "isSelected",
-  "isMonitoring",
-  "isHovered",
-  "node.width",
-  "node.height",
-  "node.x",
-  "node.y",
-  "node.connectorEnabled",
-  "node.resizerEnabled",
-  "connection.points",
-  "connection.sourceObjId",
-  "connection.sourcePos",
-  "connection.destinationObjId",
-  "connection.destinationPos",
-  "group.borderAlwaysAppearance",
-  "group.margin"
-]);
-var StyleDataWrapper = class {
-  constructor(data) {
-    this.data = data;
+// src/js-components/flowchart/action/command/base.js
+var BaseCommand = class {
+  constructor(command, icontainer) {
+    this.command = command;
+    this.icontainer = icontainer;
   }
-  _getPostFix() {
-    if (this.data.isSelected) {
-      return ".selected";
-    } else if (this.data.isHovered) {
-      return ".hovered";
-    } else {
-      return "";
-    }
+  undo() {
+    return this;
   }
-  get(key) {
-    if (FIXED_KEYS.has(key)) {
-      return this.data[key];
-    } else {
-      const pkey = `${key}${this._getPostFix()}`;
-      if (this.data[pkey] !== void 0) {
-        return this.data[pkey];
-      } else {
-        return this.data[key];
-      }
-    }
+  redo() {
+    return this;
   }
 };
 
-// src/js-components/flowchart/util/functions.js
+// src/js-components/flowchart/action/command/add.js
+var AddCommand = class extends BaseCommand {
+  constructor(objDataList, icontainer) {
+    super("add", icontainer);
+    this.objDataList = objDataList;
+  }
+  undo() {
+    this.objDataList.forEach((data) => this.icontainer.removeObject(data.id));
+    return super.undo();
+  }
+  redo() {
+    this.objDataList.forEach((data) => this.icontainer.addRenderObj(data));
+    return super.redo();
+  }
+};
+
+// src/js-components/flowchart/action/command/delete.js
+var DeleteCommand = class extends AddCommand {
+  constructor(objDataList, icontainer) {
+    super(objDataList, icontainer);
+    this.command = "delete";
+  }
+  undo() {
+    return super.redo();
+  }
+  redo() {
+    return super.undo();
+  }
+};
+
+// src/js-components/flowchart/util/functions.ts
 var _ = __toESM(require_lodash());
 
-// src/js-components/flowchart/data/connection.js
-var ConnectionStyleData = class extends StyleData {
-  constructor() {
-    super();
-    this["connection.points"] = [];
-    this["connection.sourceObjId"] = null;
-    this["connection.sourcePos"] = null;
-    this["connection.destinationObjId"] = null;
-    this["connection.destinationPos"] = null;
-    this["connection.width"] = 200;
-    this["connection.arrowFill"] = "black";
-    this["connection.arrowSize"] = 10;
-    this["connection.textBorderColor"] = "black";
-    this["connection.textBorderWidth"] = 1;
-    this["connection.textBorderDash"] = 0;
-    this["connection.textBorderFill"] = "white";
-    this["connection.connectorFill"] = "black";
-    this["connection.connectorSize"] = 3;
-    this["connection.adjusterSize"] = 7;
-    this["connection.adjusterFill"] = "black";
-    this["connection.arrowBorderColor"] = "black";
-    this["connection.arrowBorderWidth"] = 1;
-  }
+// src/js-components/flowchart/data/style-data.ts
+var DEFAULT_STYLE_DATA = {
+  id: "",
+  temp: false,
+  type: "",
+  render: "",
+  text: "",
+  editable: true,
+  foreColor: "black",
+  fontSize: 16,
+  fontFamily: "Noto Sans KR",
+  textDecoration: "none",
+  visibleOverText: true,
+  opacity: 1,
+  cursor: "move",
+  borderColor: "black",
+  borderWidth: 1,
+  borderDash: 0,
+  isSelected: false,
+  isMonitoring: true,
+  isHovered: false,
+  tooltipText: "",
+  tooltipFontSize: 12,
+  tooltipForeColor: "black",
+  tooltipFontFamily: "Noto Sans KR",
+  tooltipFill: "white",
+  tooltipMaxWidth: 380,
+  tooltipBorderColor: "#bbb",
+  tooltipBorderWidth: 1,
+  tooltipBorderDash: 0,
+  tooltipPadding: 10,
+  tooltipTextDecoration: "none",
+  tooltipVisible: true,
+  "borderWidth.selected": 2,
+  "borderColor.selected": "blue"
 };
 
-// src/js-components/flowchart/data/group.js
-var GroupStyleData = class extends StyleData {
-  constructor() {
-    super();
-    this["group.margin"] = 20;
-    this["group.borderAlwaysAppearance"] = false;
-  }
-};
+// src/js-components/flowchart/data/connection.ts
+var DEFAULT_CONNECTION_STYLE_DATA = __spreadProps(__spreadValues({}, DEFAULT_STYLE_DATA), {
+  "connection.points": [],
+  "connection.sourceObjId": null,
+  "connection.sourcePos": null,
+  "connection.destinationObjId": null,
+  "connection.destinationPos": null,
+  "connection.width": 200,
+  "connection.arrowFill": "black",
+  "connection.arrowSize": 10,
+  "connection.textBorderColor": "black",
+  "connection.textBorderWidth": 1,
+  "connection.textBorderDash": 0,
+  "connection.textBorderFill": "white",
+  "connection.connectorFill": "black",
+  "connection.connectorSize": 3,
+  "connection.adjusterSize": 7,
+  "connection.adjusterFill": "black",
+  "connection.arrowBorderColor": "black",
+  "connection.arrowBorderWidth": 1
+});
 
-// src/js-components/flowchart/data/node.js
-var NodeStyleData = class extends StyleData {
-  constructor() {
-    super();
-    this["node.width"] = 120;
-    this["node.height"] = 60;
-    this["node.fill"] = "white";
-    this["node.x"] = 0;
-    this["node.y"] = 0;
-    this["node.connectorGap"] = 15;
-    this["node.connectorSize"] = 5;
-    this["node.resizerEnabled"] = true;
-    this["node.connectorEnabled"] = true;
-    this["node.commentTopLeft"] = "";
-    this["node.commentTopCenter"] = "";
-    this["node.commentTopRight"] = "";
-    this["node.commentBottomLeft"] = "";
-    this["node.commentBottomCenter"] = "";
-    this["node.commentBottomRight"] = "";
-    this["node.commentFontSize"] = 10;
-    this["node.commentForeColor"] = "black";
-    this["node.commentFontFamily"] = "Noto Sans KR";
-  }
-};
+// src/js-components/flowchart/data/group.ts
+var DEFAULT_GROUP_STYLE_DATA = __spreadProps(__spreadValues({}, DEFAULT_STYLE_DATA), {
+  "group.margin": 20,
+  "group.borderAlwaysAppearance": false
+});
 
-// src/js-components/flowchart/util/text-metrics.js
+// src/js-components/flowchart/data/node.ts
+var DEFAULT_NODE_STYLE_DATA = __spreadProps(__spreadValues({}, DEFAULT_STYLE_DATA), {
+  "node.width": 120,
+  "node.height": 60,
+  "node.fill": "white",
+  "node.x": 0,
+  "node.y": 0,
+  "node.connectorGap": 0,
+  "node.connectorSize": 5,
+  "node.resizerEnabled": true,
+  "node.connectorEnabled": true,
+  "node.commentTopLeft": "",
+  "node.commentTopCenter": "",
+  "node.commentTopRight": "",
+  "node.commentBottomLeft": "",
+  "node.commentBottomCenter": "",
+  "node.commentBottomRight": "",
+  "node.commentFontSize": 10,
+  "node.commentForeColor": "black",
+  "node.commentFontFamily": "Noto Sans KR"
+});
+
+// src/js-components/flowchart/util/text-metrics.ts
 var canvas = document.createElement("canvas");
 var context = canvas.getContext("2d");
+if (!context)
+  throw new Error(`Can't init canvas context`);
 var TEXT_ROW_SPACE = 2;
 var TEXT_PADDING = 10;
 var getTextMetrics = (text, style) => {
@@ -3332,7 +3360,7 @@ var getCroppedText = (data, height) => {
   const wrapperInfo = getWrappedText(data);
   const wrapHeight = wrapperInfo.lineHeight * wrapperInfo.length;
   if (height < wrapHeight) {
-    const diff = parseInt(Math.ceil((wrapHeight - height) / wrapperInfo.lineHeight));
+    const diff = Math.ceil((wrapHeight - height) / wrapperInfo.lineHeight);
     wrapperInfo.lines = wrapperInfo.lines.splice(0, wrapperInfo.length - diff);
     wrapperInfo.length = wrapperInfo.lines.length;
     wrapperInfo.lines[wrapperInfo.length - 1] += "...";
@@ -3340,38 +3368,7 @@ var getCroppedText = (data, height) => {
   return wrapperInfo;
 };
 
-// src/js-components/flowchart/util/textcache.js
-var TextCache = class {
-  constructor() {
-    this.text = "";
-    this.length = 0;
-    this.width = 0;
-    this.height = 0;
-    this.x = 0;
-    this.y = 0;
-  }
-  compareTo(data) {
-    return this.text === data.text && this.length === data.length && this.width === data.width && this.height === data.height && this.x === data.x && this.y === data.y;
-  }
-  update(data) {
-    this.text = data.text;
-    this.length = data.length;
-    this.width = data.width;
-    this.height = data.height;
-    this.x = data.x;
-    this.y = data.y;
-  }
-  clear() {
-    this.text = "";
-    this.length = 0;
-    this.width = 0;
-    this.height = 0;
-    this.x = 0;
-    this.y = 0;
-  }
-};
-
-// src/js-components/flowchart/util/functions.js
+// src/js-components/flowchart/util/functions.ts
 var TRANSLATE_REGEX = /translate\((-?[\d.]+),\s*?(-?[\d.]+)\)/;
 var SCALE_REGEX = /scale\(([\d.]+),\s*?([\d.]+)\)/;
 var POSITION_MAP = {
@@ -3382,11 +3379,11 @@ var POSITION_MAP = {
 };
 var DEFAULT_CONNECTION_LENGTH = 45;
 var TMP_STYLE_MAP = {
-  node: new NodeStyleData(),
-  group: new GroupStyleData(),
-  connection: new ConnectionStyleData()
+  node: __spreadValues({}, DEFAULT_NODE_STYLE_DATA),
+  group: __spreadValues({}, DEFAULT_GROUP_STYLE_DATA),
+  connection: __spreadValues({}, DEFAULT_CONNECTION_STYLE_DATA)
 };
-function getConnectedPositionId(node, con) {
+var getConnectedPositionId = (node, con) => {
   switch (node.id) {
     case con.sourceObjId:
       return POSITION_MAP[con.sourcePos];
@@ -3395,21 +3392,19 @@ function getConnectedPositionId(node, con) {
     default:
       throw new Error(`It's not connected.`);
   }
-}
-function getPosition(clsName) {
-  if (clsName.indexOf("left") !== -1) {
+};
+var getPosition = (clsName) => {
+  if (clsName.indexOf("left") !== -1)
     return "left";
-  } else if (clsName.indexOf("right") !== -1) {
+  else if (clsName.indexOf("right") !== -1)
     return "right";
-  } else if (clsName.indexOf("top") !== -1) {
+  else if (clsName.indexOf("top") !== -1)
     return "top";
-  } else if (clsName.indexOf("bottom") !== -1) {
+  else if (clsName.indexOf("bottom") !== -1)
     return "bottom";
-  } else {
-    throw new Error(`Invalid argument '${clsName}'`);
-  }
-}
-function getTransformData(transform2) {
+  throw new Error(`Invalid argument '${clsName}'`);
+};
+var getTransformData = (transform2) => {
   const translateExec = TRANSLATE_REGEX.exec(transform2);
   const scaleExec = SCALE_REGEX.exec(transform2);
   let translateX = 0;
@@ -3427,13 +3422,12 @@ function getTransformData(transform2) {
     translateY,
     scale
   };
-}
-function setStyleValue(data, key, value) {
-  if (data[key] === void 0) {
+};
+var setStyleValue = (data, key, value) => {
+  if (data[key] === void 0)
     data[key] = value;
-  }
-}
-function defaultNodeRule(data) {
+};
+var defaultNodeRule = (data) => {
   setStyleValue(data, "cursor", "move");
   if (data.temp) {
     setStyleValue(data, "node.resizerEnabled", false);
@@ -3458,33 +3452,31 @@ function defaultNodeRule(data) {
     default:
       break;
   }
-}
-function defaultConnectionRule(data) {
+};
+var defaultConnectionRule = (data) => {
   setStyleValue(data, "cursor", "pointer");
-  if (data["connection.points"] === null || data["connection.points"] == void 0) {
+  if (data["connection.points"] === null || data["connection.points"] === void 0) {
     data["connection.points"] = [];
   }
   const points = data["connection.points"];
   for (let i = points.length; i < 2; i++) {
     points.push({ x: 0, y: 0 });
   }
-}
-function getDistance(pos1, pos2) {
+};
+var getDistance = (pos1, pos2) => {
   return Math.sqrt(Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2));
-}
-function combineStyle(data, theme) {
+};
+var combineStyle = (data, theme) => {
   const tmpStyle = TMP_STYLE_MAP[data.type];
-  if (tmpStyle === void 0) {
+  if (tmpStyle === void 0)
     throw new Error(`Unknown type '${data.type}'`);
-  }
   for (const key of Object.keys(tmpStyle)) {
-    if (data[key] === void 0) {
+    if (data[key] === void 0)
       data[key] = theme[key];
-    }
   }
   return data;
-}
-function defaultRule(data) {
+};
+var defaultRule = (data) => {
   switch (data.type) {
     case "node": {
       defaultNodeRule(data);
@@ -3501,8 +3493,8 @@ function defaultRule(data) {
     default:
       break;
   }
-}
-function getDefaultConnection(appendingObj) {
+};
+var getDefaultConnection = (appendingObj) => {
   const data = __spreadValues({}, appendingObj.data);
   const firstPoint = appendingObj.firstPoint;
   switch (appendingObj.sourcePos) {
@@ -3611,18 +3603,18 @@ function getDefaultConnection(appendingObj) {
       break;
   }
   return data;
-}
-function cloneObjDataList(objList) {
+};
+var cloneObjDataList = (objList) => {
   const dataList = [];
   objList.forEach((obj) => {
     dataList.push(_.cloneDeep(obj.data));
   });
   return dataList;
-}
-function deepCopy(data) {
+};
+var deepCopy = (data) => {
   return _.cloneDeep(data);
-}
-function* getMovePropIterator(objData) {
+};
+var getMovePropIterator = function* (objData) {
   switch (objData.type) {
     case "node":
       yield {
@@ -3661,7 +3653,7 @@ function* getMovePropIterator(objData) {
     default:
       throw new Error(`Unknow type '${objData.type}'`);
   }
-}
+};
 function updateTextStyle(textObj, x, y, style) {
   textObj.attr("x", x).attr("y", y).attr("fill", style.foreColor).attr("font-family", style.fontFamily).attr("font-size", style.fontSize).attr("text-decoration", style.textDecoration);
 }
@@ -3674,176 +3666,79 @@ function createTextLines(textObj, textLines, x, y, style) {
     }
   });
 }
-function removeText(textObj, cache) {
+var removeText = (textObj, cache) => {
   textObj.selectAll("tspan").remove();
   cache.clear();
-}
-function createLogger(id2) {
+};
+var createLogger = (id2) => {
   return new Logger(id2);
-}
+};
 
-// src/js-components/flowchart/render/base.js
-var BaseRenderer = class {
-  constructor(data, className, iContainer) {
-    this.data = data;
-    this.className = className;
-    this.iContainer = iContainer;
-    this.textCache = new TextCache();
-    this.dataWrapper = new StyleDataWrapper(data);
-    this.container = iContainer.getSvg().select(".container");
-    this.group = this.container.append("g").attr("class", `${data.type} ${className}`);
-    this.objects = {
-      foreignObj: null,
-      textarea: null,
-      text: this.group.append("text").attr("class", "unselectable text--whitespace-pre").attr("text-anchor", "middle")
-    };
+// src/js-components/flowchart/action/command/edit.js
+var SIZE_PROP_LIST = ["node.width", "node.height"];
+var ChangedInfo = class {
+  constructor(objData, propList) {
+    this.objData = objData;
+    this.propList = propList || [];
   }
-  get width() {
-    throw new Error("Not implemented!");
-  }
-  get height() {
-    throw new Error("Not implemented!");
-  }
-  get subUiVisilbility() {
-    return this.data.isSelected && this.iContainer.getReadOnly() === false ? "visible" : "hidden";
-  }
-  get isHovered() {
-    return this.data.isHovered;
-  }
-  _getLabelRect() {
-    return {
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0
-    };
-  }
-  _repositionTextarea() {
-    const rect = this._getLabelRect();
-    this.objects.foreignObj.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height);
-    this.objects.textarea.style("width", `${rect.width - 22}px`).style("height", `${rect.height}px`).style("border", "1px solid var(--border-color)").style("background-color", "transparent");
-  }
-  removeLabelEdit() {
-    if (this.objects.foreignObj) {
-      this.objects.text.attr("visibility", "visible");
-      this.objects.textarea = null;
-      this.objects.foreignObj.remove();
-      this.objects.foreignObj = null;
-      this.iContainer.setEditMode(false);
+  addMoveOldValues() {
+    for (const prop of getMovePropIterator(this.objData)) {
+      this.propList.push({
+        key: prop.key,
+        oldValue: prop.value
+      });
     }
   }
-  cancelLabelEdit(oldText) {
-    this.removeLabelEdit();
-    this.data.text = oldText;
-  }
-  editLabelMode() {
-    if (!this.data.editable || this.objects.foreignObj || this.data.render == "bridge") {
-      return;
+  addSizeOldValues() {
+    for (const key of SIZE_PROP_LIST) {
+      this.propList.push({
+        key,
+        oldValue: this.objData[key],
+        newValue: this.objData[key]
+      });
     }
-    const oldText = this.data.text;
-    this.group.classed("edit", true);
-    this.iContainer.setEditMode(true);
-    this.objects.text.attr("visibility", "hidden");
-    this.objects.foreignObj = this.group.append("foreignObject");
-    this.objects.textarea = this.objects.foreignObj.append("xhtml:div").style("overflow", "auto").append("textarea").style("resize", "none").style("text-align", "center").style("border", "none").style("font-family", this.data.fontFamily).style("font-size", `${this.data.fontSize}px`).on("keyup", (ev) => {
-      if (ev.key === "Escape") {
-        this.cancelLabelEdit(oldText);
-        this.iContainer.getSvg().node().parentElement.focus();
-      } else {
-        this.data.text = this.objects.textarea.node().value;
-        this._repositionTextarea();
+  }
+  updateSizeNewValues() {
+    for (const key of SIZE_PROP_LIST) {
+      const find2 = this.propList.filter((x) => x.key === key)[0];
+      find2.newValue = this.objData[key];
+    }
+  }
+  updateMoveNewValues() {
+    for (const prop of getMovePropIterator(this.objData)) {
+      const find2 = this.propList.filter((x) => x.key === prop.key)[0];
+      find2.newValue = prop.value;
+    }
+  }
+};
+var EditCommand = class extends BaseCommand {
+  constructor(changeInfoList, icontainer) {
+    super("edit", icontainer);
+    this.changeInfoList = changeInfoList;
+  }
+  _setValue(prop) {
+    this.changeInfoList.forEach((info) => {
+      const obj = this.icontainer.getObjectOrNull(info.objData.id);
+      if (obj !== null) {
+        obj.editProp(() => {
+          for (const propData of info.propList) {
+            obj.data[propData.key] = propData[prop];
+          }
+        });
       }
-    }).on("focusout", () => {
-      if (this.objects.textarea) {
-        this.data.text = this.objects.textarea.node().value;
-        this.iContainer.editTextCallback(this.data, oldText, this.data.text);
-        this.removeLabelEdit();
-      }
-      this.group.classed("edit", false);
-      this.render();
     });
-    this._repositionTextarea();
-    this.objects.textarea.node().value = this.data.text || "";
-    this.objects.textarea.node().focus();
-    this.iContainer.editTextModeCallback(this.data);
   }
-  bringToFrontElement(element) {
-    this.group.node().appendChild(element);
+  undo() {
+    this._setValue("oldValue");
+    return super.undo();
   }
-  create() {
-    this._create();
-    this.bringToFrontElement(this.objects.text.node());
-    this.render();
-  }
-  _create() {
-    throw new Error("Not implemented method!");
-  }
-  render() {
-    this._render();
-    this.group.attr("cursor", this.dataWrapper.get("cursor"));
-    this.group.attr("opacity", this.dataWrapper.get("opacity"));
-  }
-  _render() {
-    throw new Error("Not implemented method!");
-  }
-  _getLabelXY(info) {
-    return {
-      x: 0,
-      y: 0
-    };
-  }
-  _createText(x = 0, y = 0) {
-    const style = {
-      width: this.width - TEXT_PADDING,
-      text: this.dataWrapper.get("text"),
-      fontFamily: this.dataWrapper.get("fontFamily"),
-      fontSize: this.dataWrapper.get("fontSize"),
-      foreColor: this.dataWrapper.get("foreColor"),
-      textDecoration: this.dataWrapper.get("textDecoration")
-    };
-    const visibleOverText = this.dataWrapper.get("visibleOverText");
-    const wrappedInfo = visibleOverText ? getWrappedText(style) : getCroppedText(
-      style,
-      this.height - TEXT_PADDING
-    );
-    const labelXY = this._getLabelXY(wrappedInfo);
-    const data = {
-      text: style.text,
-      width: this.width,
-      height: this.height,
-      length: wrappedInfo.lines.length,
-      x: labelXY.x,
-      y: labelXY.y,
-      fontFamily: style.fontFamily,
-      fontSize: style.fontSize,
-      foreColor: style.foreColor,
-      textDecoration: style.textDecoration
-    };
-    if (this.textCache.compareTo(data)) {
-      updateTextStyle(
-        this.objects.text,
-        labelXY.x + x,
-        labelXY.y + y,
-        style
-      );
-      return;
-    }
-    removeText(this.objects.text, this.textCache);
-    createTextLines(
-      this.objects.text,
-      wrappedInfo,
-      labelXY.x + x,
-      labelXY.y + y,
-      style
-    );
-    this.textCache.update(data);
-  }
-  destroy() {
-    this.group.remove();
+  redo() {
+    this._setValue("newValue");
+    return super.redo();
   }
 };
 
-// src/js-components/flowchart/util/observe.js
+// src/js-components/flowchart/util/observe.ts
 var ObserverArg = class {
   constructor(renderObj, key, newValue, oldValue) {
     this.renderObj = renderObj;
@@ -3853,21 +3748,19 @@ var ObserverArg = class {
   }
 };
 
-// src/js-components/flowchart/obj/base.js
+// src/js-components/flowchart/obj/base.ts
 var RenderObject = class {
-  constructor(data, renderer, icontainer) {
+  constructor(data, renderer, containerInterface) {
+    this._clickedSeq = 0;
     this.data = data;
     this.renderer = renderer;
-    this.icontainer = icontainer;
-    this.temp = {
-      clickedSeq: 0
-    };
+    this.containerInterface = containerInterface;
   }
   get onEditing() {
     return this.renderer.objects.foreignObj !== null;
   }
   get clickedSeq() {
-    return this.temp.clickedSeq;
+    return this._clickedSeq;
   }
   get tooltipText() {
     return this.getDataOrNull("tooltipText");
@@ -3963,16 +3856,17 @@ var RenderObject = class {
     this.data.isHovered = value;
   }
   set clickedSeq(value) {
-    this.temp.clickedSeq = value;
+    this._clickedSeq = value;
   }
   set zIndex(id2) {
     const container = this.renderer.container.node();
     const g = this.renderer.group.node();
-    if (id2 === null || id2 === void 0 || id2 >= container.children.length) {
+    if (!container || !g)
+      throw new Error("container or graphic element is null");
+    if (id2 === null || id2 === void 0 || id2 >= container.children.length)
       container.appendChild(g);
-    } else {
+    else
       container.insertBefore(g, container.children[id2]);
-    }
   }
   observeProperties() {
     Object.keys(this.data).forEach((key) => {
@@ -3984,7 +3878,7 @@ var RenderObject = class {
           const oldValue = value;
           value = newValue;
           if (this.data.isMonitoring) {
-            this.icontainer.observerCallback(new ObserverArg(this, key, newValue, oldValue));
+            this.containerInterface.observerCallback(new ObserverArg(this, key, newValue, oldValue));
             this.render();
           }
         }
@@ -4006,7 +3900,7 @@ var RenderObject = class {
   }
   render() {
     this.renderer.render();
-    this.icontainer.renderCallback(this);
+    this.containerInterface.renderCallback(this);
   }
   moveTo(x, y) {
     this.editProp(() => {
@@ -4017,13 +3911,13 @@ var RenderObject = class {
   select(userInteraction = false, typeClick = "") {
     if (this.data.isSelected === false) {
       this.data.isSelected = true;
-      this.icontainer.selectCallback(this, userInteraction, typeClick);
+      this.containerInterface.selectCallback(this, userInteraction, typeClick);
     }
   }
   release(userInteraction = false) {
     if (this.data.isSelected) {
       this.data.isSelected = false;
-      this.icontainer.releaseCallback(this, userInteraction);
+      this.containerInterface.releaseCallback(this, userInteraction);
     }
   }
   editLabel() {
@@ -4039,165 +3933,6 @@ var RenderObject = class {
     } finally {
       this.data.isMonitoring = true;
     }
-  }
-};
-
-// src/js-components/flowchart/util/icontainer.js
-var ContainerInterface = class {
-  constructor({
-    observerCallback,
-    getObjectOrNull,
-    setEditMode,
-    removeObject,
-    renderCallback,
-    addRenderObj,
-    adjDragCallback,
-    editTextCallback,
-    selectCallback,
-    releaseCallback,
-    getReadOnly,
-    getLogger,
-    editTextModeCallback,
-    initDrag,
-    terminateDrag,
-    getTooltipHidden,
-    getSelectNodeOnHover,
-    getSvg,
-    releaseAllObjects,
-    changeObjRender,
-    isAppending,
-    getUUID
-  }) {
-    this.observerCallback = observerCallback;
-    this.getObjectOrNull = getObjectOrNull;
-    this.setEditMode = setEditMode;
-    this.removeObject = removeObject;
-    this.renderCallback = renderCallback;
-    this.addRenderObj = addRenderObj;
-    this.adjDragCallback = adjDragCallback;
-    this.editTextCallback = editTextCallback;
-    this.selectCallback = selectCallback;
-    this.releaseCallback = releaseCallback;
-    this.getReadOnly = getReadOnly;
-    this.getLogger = getLogger;
-    this.editTextModeCallback = editTextModeCallback;
-    this.initDrag = initDrag;
-    this.terminateDrag = terminateDrag;
-    this.getTooltipHidden = getTooltipHidden;
-    this.getSelectNodeOnHover = getSelectNodeOnHover;
-    this.getSvg = getSvg;
-    this.releaseAllObjects = releaseAllObjects;
-    this.changeObjRender = changeObjRender;
-    this.isAppending = isAppending;
-    this.getUUID = getUUID;
-  }
-};
-
-// src/js-components/flowchart/action/command/base.js
-var BaseCommand = class {
-  constructor(command, icontainer) {
-    this.command = command;
-    this.icontainer = icontainer;
-  }
-  undo() {
-    return this;
-  }
-  redo() {
-    return this;
-  }
-};
-
-// src/js-components/flowchart/action/command/add.js
-var AddCommand = class extends BaseCommand {
-  constructor(objDataList, icontainer) {
-    super("add", icontainer);
-    this.objDataList = objDataList;
-  }
-  undo() {
-    this.objDataList.forEach((data) => this.icontainer.removeObject(data.id));
-    return super.undo();
-  }
-  redo() {
-    this.objDataList.forEach((data) => this.icontainer.addRenderObj(data));
-    return super.redo();
-  }
-};
-
-// src/js-components/flowchart/action/command/delete.js
-var DeleteCommand = class extends AddCommand {
-  constructor(objDataList, icontainer) {
-    super(objDataList, icontainer);
-    this.command = "delete";
-  }
-  undo() {
-    return super.redo();
-  }
-  redo() {
-    return super.undo();
-  }
-};
-
-// src/js-components/flowchart/action/command/edit.js
-var SIZE_PROP_LIST = ["node.width", "node.height"];
-var ChangedInfo = class {
-  constructor(objData, propList) {
-    this.objData = objData;
-    this.propList = propList || [];
-  }
-  addMoveOldValues() {
-    for (const prop of getMovePropIterator(this.objData)) {
-      this.propList.push({
-        key: prop.key,
-        oldValue: prop.value
-      });
-    }
-  }
-  addSizeOldValues() {
-    for (const key of SIZE_PROP_LIST) {
-      this.propList.push({
-        key,
-        oldValue: this.objData[key],
-        newValue: this.objData[key]
-      });
-    }
-  }
-  updateSizeNewValues() {
-    for (const key of SIZE_PROP_LIST) {
-      const find2 = this.propList.filter((x) => x.key === key)[0];
-      find2.newValue = this.objData[key];
-    }
-  }
-  updateMoveNewValues() {
-    for (const prop of getMovePropIterator(this.objData)) {
-      const find2 = this.propList.filter((x) => x.key === prop.key)[0];
-      find2.newValue = prop.value;
-    }
-  }
-};
-var EditCommand = class extends BaseCommand {
-  constructor(changeInfoList, icontainer) {
-    super("edit", icontainer);
-    this.changeInfoList = changeInfoList;
-  }
-  _setValue(prop) {
-    this.changeInfoList.forEach((info) => {
-      const obj = this.icontainer.getObjectOrNull(info.objData.id);
-      if (obj !== null) {
-        obj.editProp(() => {
-          for (const propData of info.propList) {
-            obj.data[propData.key] = propData[prop];
-          }
-        });
-      }
-    });
-  }
-  undo() {
-    this._setValue("oldValue");
-    return super.undo();
-  }
-  redo() {
-    this._setValue("newValue");
-    return super.redo();
   }
 };
 
@@ -4296,268 +4031,356 @@ var ActionController = class {
 };
 
 // src/js-components/flowchart/action/movehandler.js
-var _4 = __toESM(require_lodash());
-
-// src/js-components/flowchart/util/objmng.js
 var _3 = __toESM(require_lodash());
 
-// src/js-components/flowchart/obj/connection.js
-var Connection = class extends RenderObject {
-  get points() {
-    return this.data["connection.points"];
+// src/js-components/flowchart/util/objmng.ts
+var objMngLogger = new Logger("Flowchart::ObjectManager");
+var ObjectManager = class {
+  constructor() {
+    this.objMap = {
+      node: /* @__PURE__ */ new Map(),
+      connection: /* @__PURE__ */ new Map(),
+      group: /* @__PURE__ */ new Map()
+    };
   }
-  get endX() {
-    return this.points.reduce((a, b) => Math.max(a, b.x), 0);
-  }
-  get endY() {
-    return this.points.reduce((a, b) => Math.max(a, b.y), 0);
-  }
-  get sourceObjId() {
-    return this.data["connection.sourceObjId"] || null;
-  }
-  get sourceObj() {
-    return this.icontainer.getObjectOrNull(this.data["connection.sourceObjId"]);
-  }
-  get destinationObj() {
-    return this.icontainer.getObjectOrNull(this.data["connection.destinationObjId"]);
-  }
-  get destinationObjId() {
-    return this.data["connection.destinationObjId"] || null;
-  }
-  get sourcePos() {
-    return this.data["connection.sourcePos"] || null;
-  }
-  get destinationPos() {
-    return this.data["connection.destinationPos"] || null;
-  }
-  get firstPoint() {
-    return this.points[0];
-  }
-  get endPoint() {
-    return this.points[this.points.length - 1];
-  }
-  get startX() {
-    return this.points.reduce((a, b) => Math.min(a, b.x), Number.MAX_VALUE);
-  }
-  get startY() {
-    return this.points.reduce((a, b) => Math.min(a, b.y), Number.MAX_VALUE);
-  }
-  get width() {
-    if (!this.points) {
-      return NaN;
+  getMap(type2) {
+    const map = this.objMap[type2];
+    if (map === void 0) {
+      objMngLogger.error("ObjectManager.getMap()", `Unknown '${type2}' type`);
+      throw new Error(`Unknown '${type2}' type`);
     }
-    const reduce = this.points.reduce(
-      (a, b) => {
-        return {
-          min: Math.min(a.min, b.x),
-          max: Math.max(a.max, b.x)
-        };
-      },
-      {
-        min: Number.MAX_VALUE,
-        max: Number.MIN_VALUE
-      }
-    );
-    return reduce.max - reduce.min;
+    return map;
   }
-  get height() {
-    if (!this.points) {
-      return NaN;
+  getObjCount() {
+    return this.objMap.node.size + this.objMap.connection.size + this.objMap.group.size;
+  }
+  add(obj) {
+    const map = this.getMap(obj.type);
+    if (map.has(obj.id)) {
+      throw new Error(`Already has objId '${obj.id}'`);
     }
-    const reduce = this.points.reduce(
-      (a, b) => {
-        return {
-          min: Math.min(a.min, b.y),
-          max: Math.max(a.max, b.y)
-        };
-      },
-      {
-        min: Number.MAX_VALUE,
-        max: Number.MIN_VALUE
-      }
-    );
-    return reduce.max - reduce.min;
+    map.set(obj.id, obj);
   }
-  get x() {
-    const point = this.firstPoint;
-    return point !== null ? point.x : null;
-  }
-  get y() {
-    const point = this.firstPoint;
-    return point !== null ? point.y : null;
-  }
-  set sourceObjId(value) {
-    this.data["connection.sourceObjId"] = value || null;
-  }
-  set destinationObjId(value) {
-    this.data["connection.destinationObjId"] = value || null;
-  }
-  set sourcePos(value) {
-    this.data["connection.sourcePos"] = value || null;
-  }
-  set destinationPos(value) {
-    this.data["connection.destinationPos"] = value || null;
-  }
-  set x(value) {
-    if (this.sourceObjId !== null) {
-      return;
-    }
-    const point = this.firstPoint;
-    if (point !== null) {
-      point.x = value;
-      this.render();
+  remove(obj) {
+    const map = this.getMap(obj.type);
+    if (map.has(obj.id)) {
+      map.delete(obj.id);
     }
   }
-  set y(value) {
-    if (this.sourceObjId !== null) {
-      return;
+  *getMapIterator() {
+    yield* Object.values(this.objMap);
+  }
+  getNodeIterator() {
+    return this.objMap.node.values();
+  }
+  getConnectionIterator() {
+    return this.objMap.connection.values();
+  }
+  getGroupIterator() {
+    return this.objMap.group.values();
+  }
+  findOrNull(objId) {
+    for (const map of this.getMapIterator()) {
+      if (map.has(objId))
+        return map.get(objId);
     }
-    const point = this.firstPoint;
-    if (point !== null) {
-      point.y = value;
-      this.render();
+    return null;
+  }
+  clear() {
+    Object.values(this.objMap).forEach((map) => map.clear());
+  }
+  *getAllObjIterator() {
+    for (const map of Object.values(this.objMap))
+      yield* map.values();
+  }
+  *getSelectedObjIterator() {
+    for (const obj of this.getAllObjIterator()) {
+      if (obj.isSelected)
+        yield obj;
     }
   }
-  setLastPointXY(x, y) {
-    this.data["connection.points"][this.renderer.lastPointId].x = x;
-    this.data["connection.points"][this.renderer.lastPointId].y = y;
-    this.render();
-  }
-  moveTo(x, y) {
-    if (this.sourceObj && this.destinationObj) {
-      return;
-    }
-    const startId = this.sourceObj === null ? 0 : 1;
-    const endId = this.points.length - (this.destinationObj === null ? 0 : 1);
-    this.editProp(() => {
-      this.points.slice(startId, endId).forEach((pt) => {
-        pt.x += x;
-        pt.y += y;
-      });
-    });
-  }
-  comparePoints(points) {
-    if (!this.points || !points || this.points.length !== points.length) {
-      return false;
-    }
-    for (let i = 0; i < points.length; i++) {
-      if (this.points[i].x !== points[i].x && this.points[i].y !== points[i].y) {
-        return false;
+  getParentGroupOrNull(obj) {
+    for (const group of this.getGroupIterator()) {
+      if (group.hasObjId(obj.id)) {
+        return group;
       }
     }
-    return true;
+    return null;
+  }
+  *getConnectedConnections(nodeId) {
+    for (const con of this.getConnectionIterator()) {
+      if (!con.isTempObj && (con.sourceObjId === nodeId || con.destinationObjId === nodeId)) {
+        yield con;
+      }
+    }
+  }
+  reassignId(obj, oldId, newId2) {
+    const map = this.getMap(obj.type);
+    map.delete(oldId);
+    map.set(newId2, obj);
   }
 };
 
-// src/js-components/flowchart/obj/group.js
-var Group = class extends RenderObject {
-  constructor(data, renderer, icontainer) {
-    super(data, renderer, icontainer);
-    this.objectSet = new Set(this.data.objectList || []);
-    this.rect = {
+// src/js-components/flowchart/action/movehandler.js
+var MoveHandler = class {
+  constructor(actionController, objectManager, icontainer) {
+    this.actionController = actionController;
+    this.objectManager = objectManager;
+    this.icontainer = icontainer;
+    this.movedInfo = [];
+  }
+  moveStartHandler() {
+    this.icontainer.getLogger().debug("MoveHandler.moveStartHandler()", "start");
+    this.movedInfo = [];
+    for (const obj of this.objectManager.getSelectedObjIterator()) {
+      const info = new ChangedInfo(obj.data);
+      info.addMoveOldValues();
+      this.movedInfo.push(info);
+    }
+  }
+  moveEndHandler() {
+    this.icontainer.getLogger().debug("MoveHandler.moveEndHandler()", "end");
+    this.movedInfo.forEach((x) => x.updateMoveNewValues());
+    const tmp = this.movedInfo.filter((info) => info.propList.some((x) => _3.isEqual(x.oldValue, x.newValue) === false));
+    if (tmp.length > 0) {
+      this.actionController.addAction(new EditCommand(this.movedInfo, this.icontainer));
+    }
+  }
+};
+
+// src/js-components/flowchart/action/resizehandler.js
+var _4 = __toESM(require_lodash());
+
+// src/js-components/flowchart/data/wrapper.ts
+var FIXED_KEYS = /* @__PURE__ */ new Set([
+  "id",
+  "type",
+  "render",
+  "text",
+  "editable",
+  "isSelected",
+  "isMonitoring",
+  "isHovered",
+  "node.width",
+  "node.height",
+  "node.x",
+  "node.y",
+  "node.connectorEnabled",
+  "node.resizerEnabled",
+  "connection.points",
+  "connection.sourceObjId",
+  "connection.sourcePos",
+  "connection.destinationObjId",
+  "connection.destinationPos",
+  "group.borderAlwaysAppearance",
+  "group.margin"
+]);
+var StyleDataWrapper = class {
+  constructor(data) {
+    this.data = data;
+  }
+  get(key) {
+    var _a;
+    if (FIXED_KEYS.has(key))
+      return this.data[key];
+    return (_a = this.data[`${key}${this._getPostFix()}`]) != null ? _a : this.data[key];
+  }
+  _getPostFix() {
+    if (this.data.isSelected)
+      return ".selected";
+    if (this.data.isHovered)
+      return ".hovered";
+    return "";
+  }
+};
+
+// src/js-components/flowchart/util/text-cache.ts
+var CacheData = class {
+  constructor() {
+    this.text = "";
+    this.length = 0;
+    this.width = 0;
+    this.height = 0;
+    this.x = 0;
+    this.y = 0;
+  }
+};
+var TextCache = class extends CacheData {
+  compareTo(data) {
+    return this.text === data.text && this.length === data.length && this.width === data.width && this.height === data.height && this.x === data.x && this.y === data.y;
+  }
+  update(data) {
+    this.text = data.text;
+    this.length = data.length;
+    this.width = data.width;
+    this.height = data.height;
+    this.x = data.x;
+    this.y = data.y;
+  }
+  clear() {
+    this.text = "";
+    this.length = 0;
+    this.width = 0;
+    this.height = 0;
+    this.x = 0;
+    this.y = 0;
+  }
+};
+
+// src/js-components/flowchart/render/base.ts
+var BaseRenderer = class {
+  constructor(data, className, containerInterface) {
+    this.data = data;
+    this.className = className;
+    this.containerInterface = containerInterface;
+    this.textCache = new TextCache();
+    this.dataWrapper = new StyleDataWrapper(data);
+    this.container = containerInterface.getSvg().select(".container");
+    this.group = this.container.append("g").attr("class", `${data.type} ${className}`);
+    this.objects = {
+      foreignObj: null,
+      textarea: null,
+      text: this.group.append("text").attr("class", "unselectable text--whitespace-pre").attr("text-anchor", "middle")
+    };
+  }
+  get width() {
+    throw new Error("Not implemented!");
+  }
+  get height() {
+    throw new Error("Not implemented!");
+  }
+  get subUiVisibility() {
+    return this.data.isSelected && this.containerInterface.getReadOnly() === false ? "visible" : "hidden";
+  }
+  get isHovered() {
+    return this.data.isHovered;
+  }
+  _getLabelRect() {
+    return {
       x: 0,
       y: 0,
       width: 0,
       height: 0
     };
   }
-  get startX() {
-    return this.x;
+  _repositionTextarea() {
+    if (!this.objects.foreignObj || !this.objects.textarea)
+      throw new Error("foreignObj, textarea is null!");
+    const rect = this._getLabelRect();
+    this.objects.foreignObj.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height);
+    this.objects.textarea.style("width", `${rect.width - 22}px`).style("height", `${rect.height}px`).style("border", "1px solid var(--border-color)").style("background-color", "transparent");
   }
-  get startY() {
-    return this.y;
+  removeLabelEdit() {
+    if (this.objects.foreignObj) {
+      this.objects.text.attr("visibility", "visible");
+      this.objects.textarea = null;
+      this.objects.foreignObj.remove();
+      this.objects.foreignObj = null;
+      this.containerInterface.setEditMode(false);
+    }
   }
-  get x() {
-    return this.rect.x;
+  cancelLabelEdit(oldText) {
+    this.removeLabelEdit();
+    this.data.text = oldText;
   }
-  get y() {
-    return this.rect.y;
-  }
-  get width() {
-    return this.rect.width;
-  }
-  get height() {
-    return this.rect.height;
-  }
-  get endX() {
-    return this.x + this.width;
-  }
-  get endY() {
-    return this.y + this.height;
-  }
-  select(userInteraction, typeClick = "") {
-    this.objectSet.forEach((id2) => {
-      const obj = this.icontainer.getObjectOrNull(id2);
-      if (obj != null) {
-        if (typeClick == "" || typeClick != "" && typeClick == obj.renderType)
-          obj.data.isSelected = true;
+  editLabelMode() {
+    if (!this.data.editable || this.objects.foreignObj || this.data.render === "bridge") {
+      return;
+    }
+    const oldText = this.data.text;
+    this.group.classed("edit", true);
+    this.containerInterface.setEditMode(true);
+    this.objects.text.attr("visibility", "hidden");
+    this.objects.foreignObj = this.group.append("foreignObject");
+    this.objects.textarea = this.objects.foreignObj.append("xhtml:div").style("overflow", "auto").append("textarea").style("resize", "none").style("text-align", "center").style("border", "none").style("font-family", this.data.fontFamily).style("font-size", `${this.data.fontSize}px`).on("keyup", (ev) => {
+      if (ev.key === "Escape") {
+        this.cancelLabelEdit(oldText);
+        this.containerInterface.getSvg().node().parentElement.focus();
+      } else {
+        this.data.text = this.objects.textarea.node().value;
+        this._repositionTextarea();
       }
-    });
-    super.select(userInteraction);
-  }
-  release(userInteraction = false) {
-    this.objectSet.forEach((id2) => {
-      const obj = this.icontainer.getObjectOrNull(id2);
-      obj != null && obj.release(userInteraction);
-    });
-    super.release(userInteraction);
-  }
-  resize() {
-    const margin = this.data["group.margin"];
-    let minX = Number.MAX_VALUE;
-    let minY = Number.MAX_VALUE;
-    let maxX = Number.MIN_VALUE;
-    let maxY = Number.MIN_VALUE;
-    this.objectSet.forEach((v) => {
-      const obj = this.icontainer.getObjectOrNull(v);
-      if (obj !== null) {
-        minX = Math.min(obj.startX - margin, minX);
-        maxX = Math.max(obj.endX + margin, maxX);
-        minY = Math.min(obj.startY - margin, minY);
-        maxY = Math.max(obj.endY + margin, maxY);
+    }).on("focusout", () => {
+      if (this.objects.textarea) {
+        this.data.text = this.objects.textarea.node().value;
+        this.containerInterface.editTextCallback(this.data, oldText, this.data.text);
+        this.removeLabelEdit();
       }
+      this.group.classed("edit", false);
+      this.render();
     });
-    this.data["group.rect"] = this.rect;
-    this.rect.x = minX;
-    this.rect.y = minY;
-    this.rect.width = maxX - minX;
-    this.rect.height = maxY - minY;
+    this._repositionTextarea();
+    this.objects.textarea.node().value = this.data.text || "";
+    this.objects.textarea.node().focus();
+    this.containerInterface.editTextModeCallback(this.data);
   }
-  moveTo() {
+  bringToFrontElement(element) {
+    this.group.node().appendChild(element);
+  }
+  create() {
+    this._create();
+    this.bringToFrontElement(this.objects.text.node());
     this.render();
   }
-  hasObjId(objId) {
-    return this.objectSet.has(objId);
+  _create() {
+    throw new Error("Not implemented method!");
+  }
+  render() {
+    this._render();
+    this.group.attr("cursor", this.dataWrapper.get("cursor"));
+    this.group.attr("opacity", this.dataWrapper.get("opacity"));
+  }
+  _render() {
+    throw new Error("Not implemented method!");
+  }
+  _getLabelXY(_info) {
+    throw new Error("Not implemented!");
+  }
+  _createText(x = 0, y = 0) {
+    const style = {
+      width: this.width - TEXT_PADDING,
+      text: this.dataWrapper.get("text"),
+      fontFamily: this.dataWrapper.get("fontFamily"),
+      fontSize: this.dataWrapper.get("fontSize"),
+      foreColor: this.dataWrapper.get("foreColor"),
+      textDecoration: this.dataWrapper.get("textDecoration")
+    };
+    const visibleOverText = this.dataWrapper.get("visibleOverText");
+    const wrappedInfo = visibleOverText ? getWrappedText(style) : getCroppedText(style, this.height - TEXT_PADDING);
+    const labelXY = this._getLabelXY(wrappedInfo);
+    const data = {
+      text: style.text,
+      width: this.width,
+      height: this.height,
+      length: wrappedInfo.lines.length,
+      x: labelXY.x,
+      y: labelXY.y,
+      fontFamily: style.fontFamily,
+      fontSize: style.fontSize,
+      foreColor: style.foreColor,
+      textDecoration: style.textDecoration
+    };
+    if (this.textCache.compareTo(data)) {
+      updateTextStyle(
+        this.objects.text,
+        labelXY.x + x,
+        labelXY.y + y,
+        style
+      );
+      return;
+    }
+    removeText(this.objects.text, this.textCache);
+    createTextLines(
+      this.objects.text,
+      wrappedInfo,
+      labelXY.x + x,
+      labelXY.y + y,
+      style
+    );
+    this.textCache.update(data);
   }
   destroy() {
-    this.objectSet.clear();
-    super.destroy();
-  }
-  destroyAll() {
-    this.objectSet.forEach((id2) => {
-      const obj = this.icontainer.getObjectOrNull(id2);
-      obj != null && this.icontainer.removeObject(obj);
-    });
-    this.destroy();
-  }
-  clear() {
-    this.objectSet.clear();
-  }
-  addObject(id2) {
-    if (this.objectSet.has(id2) === false) {
-      this.objectSet.add(id2);
-      this.resize();
-    } else {
-      throw new Error(`Already has added id! '${id2}'`);
-    }
-  }
-  removeObject(id2) {
-    if (this.objectSet.has(id2)) {
-      this.objectSet.delete(id2);
-      this.resize();
-    } else {
-      throw new Error(`There is no id you received in this group!'${id2}'`);
-    }
+    this.group.remove();
   }
 };
 
@@ -4575,7 +4398,7 @@ var COMMENTS_POS = [
 var NodeRenderer = class extends BaseRenderer {
   constructor(data, className, icontainer) {
     super(data, className, icontainer);
-    this.svg = this.iContainer.getSvg();
+    this.svg = this.containerInterface.getSvg();
     this.connectors = [];
     this.resizers = [];
     this.comments = [];
@@ -4587,7 +4410,7 @@ var NodeRenderer = class extends BaseRenderer {
     return this.data["node.height"];
   }
   get connectorVisibility() {
-    return this.data["node.connectorEnabled"] && this.iContainer.isAppending();
+    return this.data["node.connectorEnabled"] && this.containerInterface.isAppending();
   }
   get resizerVisibility() {
     return this.data["node.resizerEnabled"] === true && this.data.isSelected;
@@ -4654,13 +4477,13 @@ var NodeRenderer = class extends BaseRenderer {
   _renderConnector() {
     let index = 0;
     for (const pos of this.getConnectorPosition()) {
-      if (this.isHovered && this.connectorVisibility && this.iContainer.getReadOnly() === false) {
+      if (this.isHovered && this.connectorVisibility && this.containerInterface.getReadOnly() === false) {
         this.bringToFrontElement(this.connectors[index].node());
         this.connectors[index++].attr("cx", pos.x).attr("cy", pos.y).attr("visibility", "visible").attr("r", this.dataWrapper.get("node.connectorSize")).classed("active", true);
       } else {
         this.connectors[index++].classed("active", false).attr(
           "visibility",
-          this.connectorVisibility && this.iContainer.getReadOnly() === false ? "visible" : "hidden"
+          this.connectorVisibility && this.containerInterface.getReadOnly() === false ? "visible" : "hidden"
         );
       }
     }
@@ -4670,13 +4493,13 @@ var NodeRenderer = class extends BaseRenderer {
       return;
     let index = 0;
     for (const pos of this.getResizerPosition()) {
-      if (this.isHovered && this.resizerVisibility && this.iContainer.getReadOnly() === false) {
+      if (this.isHovered && this.resizerVisibility && this.containerInterface.getReadOnly() === false) {
         this.bringToFrontElement(this.resizers[index].node());
         this.resizers[index++].attr("x", pos[0] - RESIZER_SIZE / 2).attr("y", pos[1] - RESIZER_SIZE / 2).attr("class", "resizer").attr("visibility", "visible").classed("active", true);
       } else {
         this.resizers[index++].classed("active", false).attr(
           "visibility",
-          this.resizerVisibility && this.iContainer.getReadOnly() === false ? "visible" : "hidden"
+          this.resizerVisibility && this.containerInterface.getReadOnly() === false ? "visible" : "hidden"
         );
       }
     }
@@ -4747,8 +4570,8 @@ var COMMENT_POS = /* @__PURE__ */ new Set([
   "BottomRight"
 ]);
 var Node = class extends RenderObject {
-  constructor(data, renderer, icontainer) {
-    super(data, renderer, icontainer);
+  constructor(data, renderer, containerInterface) {
+    super(data, renderer, containerInterface);
     this.renderer = renderer;
   }
   get startX() {
@@ -4874,127 +4697,7 @@ var Node = class extends RenderObject {
   }
 };
 
-// src/js-components/flowchart/util/objmng.js
-var objMngger = new Logger("Flowchart::ObjectManager");
-var ObjectManager = class {
-  constructor() {
-    this.mapList = _3.range(0, 3).map(() => /* @__PURE__ */ new Map());
-    this.objMap = {
-      node: this.mapList[0],
-      connection: this.mapList[1],
-      group: this.mapList[2]
-    };
-  }
-  getMap(type2) {
-    const map = this.objMap[type2];
-    if (map === void 0) {
-      objMngLogger.error("ObjectManager.getMap()", `Unknown '${type2}' type`);
-      throw new Error(`Unknown '${type2}' type`);
-    }
-    return map;
-  }
-  getObjCount() {
-    return this.mapList.reduce((a, b) => a + b.size, 0);
-  }
-  add(obj) {
-    const map = this.getMap(obj.type);
-    if (map.has(obj.id)) {
-      throw new Error(`Already has objId '${obj.id}'`);
-    }
-    map.set(obj.id, obj);
-  }
-  remove(obj) {
-    const map = this.getMap(obj.type);
-    if (map.has(obj.id)) {
-      map.delete(obj.id);
-    }
-  }
-  *getMapIterator() {
-    yield* this.mapList;
-  }
-  getNodeIterator() {
-    return this.mapList[0].values();
-  }
-  getConnectionIterator() {
-    return this.mapList[1].values();
-  }
-  getGroupIterator() {
-    return this.mapList[2].values();
-  }
-  findOrNull(objId) {
-    for (const map of this.getMapIterator()) {
-      if (map.has(objId)) {
-        return map.get(objId);
-      }
-    }
-    return null;
-  }
-  clear() {
-    this.mapList.forEach((map) => map.clear());
-  }
-  *getAllObjIterator() {
-    for (const map of this.mapList) {
-      yield* map.values();
-    }
-  }
-  *getSelectedObjIterator() {
-    for (const obj of this.getAllObjIterator()) {
-      if (obj.isSelected) {
-        yield obj;
-      }
-    }
-  }
-  getParentGroupOrNull(obj) {
-    for (const group of this.getGroupIterator()) {
-      if (group.hasObjId(obj.id)) {
-        return group;
-      }
-    }
-    return null;
-  }
-  *getConnectedConnections(nodeId) {
-    for (const con of this.getConnectionIterator()) {
-      if (!con.isTempObj && (con.sourceObjId === nodeId || con.destinationObjId === nodeId)) {
-        yield con;
-      }
-    }
-  }
-  reassignId(obj, oldId, newId2) {
-    const map = this.getMap(obj.type);
-    map.delete(oldId);
-    map.set(newId2, obj);
-  }
-};
-
-// src/js-components/flowchart/action/movehandler.js
-var MoveHandler = class {
-  constructor(actionController, objectManager, icontainer) {
-    this.actionController = actionController;
-    this.objectManager = objectManager;
-    this.icontainer = icontainer;
-    this.movedInfo = [];
-  }
-  moveStartHandler() {
-    this.icontainer.getLogger().debug("MoveHandler.moveStartHandler()", "start");
-    this.movedInfo = [];
-    for (const obj of this.objectManager.getSelectedObjIterator()) {
-      const info = new ChangedInfo(obj.data);
-      info.addMoveOldValues();
-      this.movedInfo.push(info);
-    }
-  }
-  moveEndHandler() {
-    this.icontainer.getLogger().debug("MoveHandler.moveEndHandler()", "end");
-    this.movedInfo.forEach((x) => x.updateMoveNewValues());
-    const tmp = this.movedInfo.filter((info) => info.propList.some((x) => _4.isEqual(x.oldValue, x.newValue) === false));
-    if (tmp.length > 0) {
-      this.actionController.addAction(new EditCommand(this.movedInfo, this.icontainer));
-    }
-  }
-};
-
 // src/js-components/flowchart/action/resizehandler.js
-var _5 = __toESM(require_lodash());
 var ResizeHandler = class {
   constructor(actionController, objectManager, icontainer) {
     this.actionController = actionController;
@@ -5059,7 +4762,7 @@ var ResizeHandler = class {
   resizeDragEnd() {
     this.icontainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end");
     this.resizeInfo.forEach((info) => info.updateSizeNewValues());
-    const tmp = this.resizeInfo.filter((info) => info.propList.some((x) => _5.isEqual(x.oldValue, x.newValue) === false));
+    const tmp = this.resizeInfo.filter((info) => info.propList.some((x) => _4.isEqual(x.oldValue, x.newValue) === false));
     if (tmp.length > 0) {
       this.actionController.addAction(new EditCommand(this.resizeInfo, this.icontainer));
     }
@@ -5118,6 +4821,254 @@ var ResizeHandler = class {
   }
 };
 
+// src/js-components/flowchart/obj/connection.js
+var Connection = class extends RenderObject {
+  get points() {
+    return this.data["connection.points"];
+  }
+  get endX() {
+    return this.points.reduce((a, b) => Math.max(a, b.x), 0);
+  }
+  get endY() {
+    return this.points.reduce((a, b) => Math.max(a, b.y), 0);
+  }
+  get sourceObjId() {
+    return this.data["connection.sourceObjId"] || null;
+  }
+  get sourceObj() {
+    return this.containerInterface.getObjectOrNull(this.data["connection.sourceObjId"]);
+  }
+  get destinationObj() {
+    return this.containerInterface.getObjectOrNull(this.data["connection.destinationObjId"]);
+  }
+  get destinationObjId() {
+    return this.data["connection.destinationObjId"] || null;
+  }
+  get sourcePos() {
+    return this.data["connection.sourcePos"] || null;
+  }
+  get destinationPos() {
+    return this.data["connection.destinationPos"] || null;
+  }
+  get firstPoint() {
+    return this.points[0];
+  }
+  get endPoint() {
+    return this.points[this.points.length - 1];
+  }
+  get startX() {
+    return this.points.reduce((a, b) => Math.min(a, b.x), Number.MAX_VALUE);
+  }
+  get startY() {
+    return this.points.reduce((a, b) => Math.min(a, b.y), Number.MAX_VALUE);
+  }
+  get width() {
+    if (!this.points) {
+      return NaN;
+    }
+    const reduce = this.points.reduce((a, b) => {
+      return {
+        min: Math.min(a.min, b.x),
+        max: Math.max(a.max, b.x)
+      };
+    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
+    return reduce.max - reduce.min;
+  }
+  get height() {
+    if (!this.points) {
+      return NaN;
+    }
+    const reduce = this.points.reduce((a, b) => {
+      return {
+        min: Math.min(a.min, b.y),
+        max: Math.max(a.max, b.y)
+      };
+    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
+    return reduce.max - reduce.min;
+  }
+  get x() {
+    const point = this.firstPoint;
+    return point !== null ? point.x : null;
+  }
+  get y() {
+    const point = this.firstPoint;
+    return point !== null ? point.y : null;
+  }
+  set sourceObjId(value) {
+    this.data["connection.sourceObjId"] = value || null;
+  }
+  set destinationObjId(value) {
+    this.data["connection.destinationObjId"] = value || null;
+  }
+  set sourcePos(value) {
+    this.data["connection.sourcePos"] = value || null;
+  }
+  set destinationPos(value) {
+    this.data["connection.destinationPos"] = value || null;
+  }
+  set x(value) {
+    if (this.sourceObjId !== null) {
+      return;
+    }
+    const point = this.firstPoint;
+    if (point !== null) {
+      point.x = value;
+      this.render();
+    }
+  }
+  set y(value) {
+    if (this.sourceObjId !== null) {
+      return;
+    }
+    const point = this.firstPoint;
+    if (point !== null) {
+      point.y = value;
+      this.render();
+    }
+  }
+  setLastPointXY(x, y) {
+    this.data["connection.points"][this.renderer.lastPointId].x = x;
+    this.data["connection.points"][this.renderer.lastPointId].y = y;
+    this.render();
+  }
+  moveTo(x, y) {
+    if (this.sourceObj && this.destinationObj) {
+      return;
+    }
+    const startId = this.sourceObj === null ? 0 : 1;
+    const endId = this.points.length - (this.destinationObj === null ? 0 : 1);
+    this.editProp(() => {
+      this.points.slice(startId, endId).forEach((pt) => {
+        pt.x += x;
+        pt.y += y;
+      });
+    });
+  }
+  comparePoints(points) {
+    if (!this.points || !points || this.points.length !== points.length) {
+      return false;
+    }
+    for (let i = 0; i < points.length; i++) {
+      if (this.points[i].x !== points[i].x && this.points[i].y !== points[i].y) {
+        return false;
+      }
+    }
+    return true;
+  }
+};
+
+// src/js-components/flowchart/obj/group.js
+var Group = class extends RenderObject {
+  constructor(data, renderer, containerInterface) {
+    super(data, renderer, containerInterface);
+    this.objectSet = new Set(this.data.objectList || []);
+    this.rect = {
+      x: 0,
+      y: 0,
+      width: 0,
+      height: 0
+    };
+  }
+  get startX() {
+    return this.x;
+  }
+  get startY() {
+    return this.y;
+  }
+  get x() {
+    return this.rect.x;
+  }
+  get y() {
+    return this.rect.y;
+  }
+  get width() {
+    return this.rect.width;
+  }
+  get height() {
+    return this.rect.height;
+  }
+  get endX() {
+    return this.x + this.width;
+  }
+  get endY() {
+    return this.y + this.height;
+  }
+  select(userInteraction, typeClick = "") {
+    this.objectSet.forEach((id2) => {
+      const obj = this.containerInterface.getObjectOrNull(id2);
+      if (obj != null) {
+        if (typeClick == "" || typeClick != "" && typeClick == obj.renderType)
+          obj.data.isSelected = true;
+      }
+    });
+    super.select(userInteraction);
+  }
+  release(userInteraction = false) {
+    this.objectSet.forEach((id2) => {
+      const obj = this.containerInterface.getObjectOrNull(id2);
+      obj != null && obj.release(userInteraction);
+    });
+    super.release(userInteraction);
+  }
+  resize() {
+    const margin = this.data["group.margin"];
+    let minX = Number.MAX_VALUE;
+    let minY = Number.MAX_VALUE;
+    let maxX = Number.MIN_VALUE;
+    let maxY = Number.MIN_VALUE;
+    this.objectSet.forEach((v) => {
+      const obj = this.containerInterface.getObjectOrNull(v);
+      if (obj !== null) {
+        minX = Math.min(obj.startX - margin, minX);
+        maxX = Math.max(obj.endX + margin, maxX);
+        minY = Math.min(obj.startY - margin, minY);
+        maxY = Math.max(obj.endY + margin, maxY);
+      }
+    });
+    this.data["group.rect"] = this.rect;
+    this.rect.x = minX;
+    this.rect.y = minY;
+    this.rect.width = maxX - minX;
+    this.rect.height = maxY - minY;
+  }
+  moveTo() {
+    this.render();
+  }
+  hasObjId(objId) {
+    return this.objectSet.has(objId);
+  }
+  destroy() {
+    this.objectSet.clear();
+    super.destroy();
+  }
+  destroyAll() {
+    this.objectSet.forEach((id2) => {
+      const obj = this.containerInterface.getObjectOrNull(id2);
+      obj != null && this.containerInterface.removeObject(obj);
+    });
+    this.destroy();
+  }
+  clear() {
+    this.objectSet.clear();
+  }
+  addObject(id2) {
+    if (this.objectSet.has(id2) === false) {
+      this.objectSet.add(id2);
+      this.resize();
+    } else {
+      throw new Error(`Already has added id! '${id2}'`);
+    }
+  }
+  removeObject(id2) {
+    if (this.objectSet.has(id2)) {
+      this.objectSet.delete(id2);
+      this.resize();
+    } else {
+      throw new Error(`There is no id you received in this group!'${id2}'`);
+    }
+  }
+};
+
 // src/js-components/flowchart/util/clipboard.ts
 var TMP_CLIPBOARD = {
   text: ""
@@ -5149,13 +5100,15 @@ var clipboard_default = {
   }
 };
 
-// src/js-components/flowchart/util/objmousehandler.js
+// src/js-components/flowchart/util/objmousehandler.ts
 var MARGIN_X = 10;
 var MARGIN_Y = 10;
+var TOOLTIP_DURATION = 500;
+var DEFAULT_MOUSEOUT_DURATION = 200;
 var ObjectMouseHandler = class {
-  constructor(icontainer) {
-    this.icontainer = icontainer;
+  constructor(api) {
     this.tmpOut = false;
+    this.containerInterface = api;
     this.tooltip = {
       objId: null,
       mouseOverTimer: null,
@@ -5163,33 +5116,33 @@ var ObjectMouseHandler = class {
       g: null,
       textCache: new TextCache()
     };
-    this.isfirefox = window.navigator.userAgent.toLowerCase().indexOf("firefox") > -1 ? true : false;
+    this.isFirefox = window.navigator.userAgent.toLowerCase().indexOf("firefox") > -1 ? true : false;
   }
   commonOverOutAction(obj) {
     let x = 0;
     let y = 0;
     obj.g.on("mousemove", (ev) => {
-      x = (this.isfirefox ? ev.layerX : ev.offsetX) + MARGIN_X;
-      y = (this.isfirefox ? ev.layerY : ev.offsetY) + MARGIN_Y;
+      x = ev.offsetX + MARGIN_X;
+      y = ev.offsetY + MARGIN_Y;
     }).on("mouseover", () => {
       obj.isHovered = true;
-      if (this.icontainer.getSelectNodeOnHover() && obj.type === "node") {
-        this.icontainer.releaseAllObjects();
+      if (this.containerInterface.getSelectNodeOnHover() && obj.type === "node" && !this.containerInterface.isDragging()) {
+        this.containerInterface.releaseAllObjects();
         obj.select(true);
       }
-      if (this.icontainer.getTooltipHidden() || !obj.canShowTooltip) {
+      if (this.containerInterface.getTooltipHidden() || !obj.canShowTooltip) {
         return;
       }
       if (this.tooltip.mouseOutTimer != null) {
         this.tooltip.mouseOutTimer.stop();
       }
       this.tooltip.mouseOverTimer = timeout_default(() => {
-        if (obj.isHovered && obj.onEditing === false && obj.id !== this.tooltip.objId && !this.icontainer.getTooltipHidden())
+        if (obj.isHovered && obj.onEditing === false && obj.id !== this.tooltip.objId && !this.containerInterface.getTooltipHidden())
           this.createTooltipObj(obj.data, x, y);
-      }, 500);
+      }, TOOLTIP_DURATION);
     }).on("mouseout", () => {
       obj.isHovered = false;
-      if (this.icontainer.getTooltipHidden() || !obj.canShowTooltip) {
+      if (this.containerInterface.getTooltipHidden() || !obj.canShowTooltip) {
         return;
       }
       if (this.tooltip.mouseOverTimer != null) {
@@ -5199,14 +5152,14 @@ var ObjectMouseHandler = class {
         if (!obj.isHovered) {
           this.removeTooltipObj();
         }
-      }, 200);
+      }, DEFAULT_MOUSEOUT_DURATION);
     });
   }
   createTooltipObj(objData, x, y) {
     this.removeTooltipObj();
     this.tooltip.objId = objData.id;
-    this.tooltip.g = this.icontainer.getSvg().append("g").attr("class", "tooltip");
-    const obj = this.icontainer.getObjectOrNull(this.tooltip.objId);
+    this.tooltip.g = this.containerInterface.getSvg().append("g").attr("class", "tooltip");
+    const obj = this.containerInterface.getObjectOrNull(this.tooltip.objId);
     if (obj === null) {
       return;
     }
@@ -5368,7 +5321,7 @@ var DBRenderer = class extends NodeRenderer {
 var ConnectionRenderer = class extends BaseRenderer {
   constructor(data, className, iContainer) {
     super(data, className, iContainer);
-    this.markerId = `${this.iContainer.getUUID()}_marker_${this.data.id}`;
+    this.markerId = `${this.containerInterface.getUUID()}_marker_${this.data.id}`;
     this.objects.marker = this.group.append("svg:defs").append("svg:marker").attr("id", this.markerId);
     this.objects.markerPath = this.objects.marker.append("path");
     this.checkChanged = {
@@ -5456,8 +5409,8 @@ var ConnectionRenderer = class extends BaseRenderer {
       size: wrapper.get("connection.connectorSize"),
       fill: wrapper.get("connection.connectorFill")
     };
-    this.objects.sourceConnector.attr("cx", sourceLoc.x).attr("cy", sourceLoc.y).attr("r", style.size).attr("fill", style.fill).attr("visibility", this.subUiVisilbility);
-    this.objects.destinationConnector.attr("cx", destinationLoc.x).attr("cy", destinationLoc.y).attr("r", style.size).attr("fill", style.fill).attr("visibility", this.subUiVisilbility);
+    this.objects.sourceConnector.attr("cx", sourceLoc.x).attr("cy", sourceLoc.y).attr("r", style.size).attr("fill", style.fill).attr("visibility", this.subUiVisibility);
+    this.objects.destinationConnector.attr("cx", destinationLoc.x).attr("cy", destinationLoc.y).attr("r", style.size).attr("fill", style.fill).attr("visibility", this.subUiVisibility);
   }
   _getSourceLoc() {
     return this._getNodePositionLoc(
@@ -5504,7 +5457,7 @@ var ConnectionRenderer = class extends BaseRenderer {
   }
   _getNodePositionLoc(objId, pos, pointId) {
     if (objId && pos) {
-      const node = this.iContainer.getObjectOrNull(objId);
+      const node = this.containerInterface.getObjectOrNull(objId);
       if (node === null) {
         if (this.data["connection.points"] && this.data["connection.points"].length > pointId) {
           return {
@@ -5918,7 +5871,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
       let lastY = 0;
       let tmpPoints = null;
       flag = !flag;
-      const point = this.group.append("rect").attr("x", p.x - ADJUSTER_SIZE / 2).attr("y", p.y - ADJUSTER_SIZE / 2).attr("width", ADJUSTER_SIZE).attr("height", ADJUSTER_SIZE).attr("class", "adjuster").attr("cursor", "move").call(drag_default().filter(() => this.iContainer.getReadOnly() === false).on("start", (ev) => {
+      const point = this.group.append("rect").attr("x", p.x - ADJUSTER_SIZE / 2).attr("y", p.y - ADJUSTER_SIZE / 2).attr("width", ADJUSTER_SIZE).attr("height", ADJUSTER_SIZE).attr("class", "adjuster").attr("cursor", "move").call(drag_default().filter(() => this.containerInterface.getReadOnly() === false).on("start", (ev) => {
         lastX = ev.x;
         lastY = ev.y;
         tmpPoints = deepCopy(this.data["connection.points"]);
@@ -5946,7 +5899,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
         }
         this._render();
       }).on("end", () => {
-        this.iContainer.adjDragCallback(
+        this.containerInterface.adjDragCallback(
           this.data,
           tmpPoints,
           deepCopy(this.data["connection.points"])
@@ -6002,10 +5955,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
     this.adjusterList.forEach((adj, id2) => {
       const curPt = this.data["connection.points"][id2 + 1];
       adj.attr("x", curPt.x - ADJUSTER_ADJ).attr("y", curPt.y - ADJUSTER_ADJ);
-      adj.attr(
-        "visibility",
-        this.group.classed("edit") === false ? this.subUiVisilbility : "hidden"
-      );
+      adj.attr("visibility", this.group.classed("edit") === false ? this.subUiVisibility : "hidden");
       this.bringToFrontElement(adj.node());
     });
   }
@@ -6176,12 +6126,12 @@ var RenderManager = class {
   }
 };
 
-// src/js-components/flowchart/util/seqmng.js
+// src/js-components/flowchart/util/seqmng.ts
 var SequenceManager = class {
-  constructor(icontainer) {
+  constructor(iContainer) {
     this.objSeq = 0;
     this.clickSeq = 0;
-    this.icontainer = icontainer;
+    this.iContainer = iContainer;
     this.clear();
   }
   clear() {
@@ -6195,7 +6145,7 @@ var SequenceManager = class {
     this.clickSeq = 0;
   }
   getObjSeqId() {
-    while (this.icontainer.getObjectOrNull(this.objSeq) !== null) {
+    while (this.iContainer.getObjectOrNull(this.objSeq) !== null) {
       ++this.objSeq;
     }
     return this.objSeq;
@@ -6206,78 +6156,7 @@ var SequenceManager = class {
 };
 
 // src/js-components/flowchart/util/theme.ts
-var DefaultTheme = {
-  id: null,
-  type: "",
-  render: "",
-  text: "",
-  editable: true,
-  foreColor: "black",
-  fontSize: 16,
-  fontFamily: "Noto Sans KR",
-  textDecoration: "none",
-  visibleOverText: true,
-  opacity: 1,
-  cursor: "move",
-  borderColor: "black",
-  borderWidth: 1,
-  borderDash: 0,
-  isSelected: false,
-  isMonitoring: true,
-  isHovered: false,
-  tooltipText: "",
-  tooltipFontFamily: "Noto Sans KR",
-  tooltipFontSize: 12,
-  tooltipForeColor: "black",
-  tooltipFill: "white",
-  tooltipBorderColor: "#bbb",
-  tooltipBorderWidth: 1,
-  tooltipBorderDash: 0,
-  tooltipMaxWidth: 380,
-  tooltipPadding: 10,
-  tooltipTextDecoration: "none",
-  tooltipVisible: true,
-  "borderWidth.selected": 2,
-  "borderColor.selected": "blue",
-  "node.width": 120,
-  "node.height": 60,
-  "node.fill": "white",
-  "node.x": 0,
-  "node.y": 0,
-  "node.connectorGap": 0,
-  "node.connectorSize": 5,
-  "node.resizerEnabled": true,
-  "node.connectorEnabled": true,
-  "node.commentTopLeft": "",
-  "node.commentTopCenter": "",
-  "node.commentTopRight": "",
-  "node.commentBottomLeft": "",
-  "node.commentBottomCenter": "",
-  "node.commentBottomRight": "",
-  "node.commentFontSize": 10,
-  "node.commentForeColor": "black",
-  "node.commentFontFamily": "Noto Sans KR",
-  "connection.points": [],
-  "connection.sourceObjId": null,
-  "connection.sourcePos": null,
-  "connection.destinationObjId": null,
-  "connection.destinationPos": null,
-  "connection.width": 200,
-  "connection.arrowBorderColor": "black",
-  "connection.arrowBorderWidth": 1,
-  "connection.arrowFill": "black",
-  "connection.arrowSize": 10,
-  "connection.textBorderColor": "black",
-  "connection.textBorderWidth": 1,
-  "connection.textBorderDash": 1,
-  "connection.textBorderFill": "white",
-  "connection.connectorFill": "black",
-  "connection.connectorSize": 3,
-  "connection.adjusterSize": 7,
-  "connection.adjusterFill": "black",
-  "group.margin": 20,
-  "group.borderAlwaysAppearance": false
-};
+var DefaultTheme = __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, DEFAULT_CONNECTION_STYLE_DATA), DEFAULT_GROUP_STYLE_DATA), DEFAULT_NODE_STYLE_DATA), DEFAULT_STYLE_DATA);
 
 // src/js-components/flowchart/flowchart.js
 var DETECTING_SIZE = 10;
@@ -6333,7 +6212,7 @@ var createFlowchartTemplate = (id2) => {
   const div = document.createElement("div");
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   div.classList.add("flowchart");
-  div.tabIndex = 0;
+  div.tabIndex = -1;
   svg.innerHTML = `<defs>
     <pattern
         id="${id2}_small_grid"
@@ -6365,6 +6244,7 @@ var createFlowchartTemplate = (id2) => {
   div.appendChild(svg);
   return { div, svg };
 };
+var DEFAULT_MOVEMENT_UNIT = 10;
 var IRFlowchart = class extends IRComponent {
   constructor({ contextElement, width, height }) {
     super({ contextElement });
@@ -6379,11 +6259,12 @@ var IRFlowchart = class extends IRComponent {
     this._traceMode = false;
     this._singleSelection = false;
     this._isChanged = false;
+    this._isDragging = false;
     this.keyMap = {};
-    this.keyMap.ArrowLeft = () => this.handleKeydownArrows(-10, 0);
-    this.keyMap.ArrowRight = () => this.handleKeydownArrows(10, 0);
-    this.keyMap.ArrowDown = () => this.handleKeydownArrows(0, 10);
-    this.keyMap.ArrowUp = () => this.handleKeydownArrows(0, -10);
+    this.keyMap.ArrowLeft = () => this.handleKeydownArrows(-DEFAULT_MOVEMENT_UNIT, 0);
+    this.keyMap.ArrowRight = () => this.handleKeydownArrows(DEFAULT_MOVEMENT_UNIT, 0);
+    this.keyMap.ArrowDown = () => this.handleKeydownArrows(0, DEFAULT_MOVEMENT_UNIT);
+    this.keyMap.ArrowUp = () => this.handleKeydownArrows(0, -DEFAULT_MOVEMENT_UNIT);
     this.keyMap.Delete = () => this.handleKeydownDelete();
     this.keyMap.Escape = () => this.handleKeydownEscape();
     this.keyMap.F2 = () => this.handleKeydownF2();
@@ -6417,7 +6298,7 @@ var IRFlowchart = class extends IRComponent {
     this.div = div;
     div.addEventListener("keydown", (ev) => {
       if (this._editMode || this._readonly) {
-        this.logger.debug("InnoFlowchart.handleKeydown()", "Cancel because of editMode or readonly mode");
+        this._logger.debug("InnoFlowchart.handleKeydown()", "Cancel because of editMode or readonly mode");
         return;
       }
       const keyName = `${ev.ctrlKey ? "^" : ""}${ev.key}`;
@@ -6429,12 +6310,13 @@ var IRFlowchart = class extends IRComponent {
     this.addCoreElement(div);
     contextElement.appendChild(div);
     this._initD3Elements(div, svg, width, height);
-    this._iContainer = new ContainerInterface({
+    this._containerInterface = new InterfaceInstance({
       releaseAllObjects: () => this.releaseAllObjects(),
       addRenderObj: (data) => this.add(data),
       removeObject: (obj) => this.remove(obj),
       initDrag: (dragEvent) => this._initDrag(dragEvent),
       terminateDrag: (dragEvent) => this._terminateDrag(dragEvent),
+      isDragging: () => this._isDragging,
       changeObjRender: (obj, render) => this._changeObjRender(obj, render),
       adjDragCallback: (data, oldPoints, newPoints) => this._adjDragCallbackHandler(data, oldPoints, newPoints),
       editTextCallback: (data, oldText, newText) => this._editTextCallbackHandler(data, oldText, newText),
@@ -6444,7 +6326,7 @@ var IRFlowchart = class extends IRComponent {
       selectCallback: (obj, userInteraction, typeClick) => this._selectCallbackHandler(obj, userInteraction, typeClick),
       releaseCallback: (obj, userInteraction) => this._releaseCallbackHandler(obj, userInteraction),
       setEditMode: (flag) => this._editMode = flag,
-      getLogger: () => this.logger,
+      getLogger: () => this._logger,
       getSvg: () => this.d3Svg,
       getObjectOrNull: (id2) => this.getObjectOrNull(id2),
       getSelectNodeOnHover: () => this._selectNodeOnHover,
@@ -6453,21 +6335,13 @@ var IRFlowchart = class extends IRComponent {
       isAppending: () => this._appendMode.mode === "append",
       getUUID: () => this.uuid
     });
-    this._seqMng = new SequenceManager(this._iContainer);
+    this._seqMng = new SequenceManager(this._containerInterface);
     this._objectManager = new ObjectManager();
     this._actionController = new ActionController(ACTION_LIMIT);
-    this._moveHandler = new MoveHandler(
-      this._actionController,
-      this._objectManager,
-      this._iContainer
-    );
-    this._resizeHandler = new ResizeHandler(
-      this._actionController,
-      this._objectManager,
-      this._iContainer
-    );
+    this._moveHandler = new MoveHandler(this._actionController, this._objectManager, this._containerInterface);
+    this._resizeHandler = new ResizeHandler(this._actionController, this._objectManager, this._containerInterface);
     this._renderManager = new RenderManager();
-    this._objMouseHandler = new ObjectMouseHandler(this._iContainer);
+    this._objMouseHandler = new ObjectMouseHandler(this._containerInterface);
     this.theme = __spreadValues({}, DefaultTheme);
     this.defaultRule = defaultRule;
     this.zoomTo(1);
@@ -6506,62 +6380,62 @@ var IRFlowchart = class extends IRComponent {
   set readonly(boolean) {
     this._readonly = boolean;
     this.classedOnSvg(boolean, "readonly");
-    this.logger.info(`readonly property is changed to '${boolean}'`);
+    this._logger.info(`readonly property is changed to '${boolean}'`);
   }
   set simpleConnectingMode(boolean) {
     this._simpleConnectingMode = boolean;
     this.classedOnSvg(boolean, "simple");
-    this.logger.info(`simpleConnectingMode property is changed to '${boolean}'`);
+    this._logger.info(`simpleConnectingMode property is changed to '${boolean}'`);
   }
   set editMode(boolean) {
     this._editMode = boolean;
     this.classedOnSvg(boolean, "edit-mode");
-    this.logger.info(`editMode property is changed to '${boolean}'`);
+    this._logger.info(`editMode property is changed to '${boolean}'`);
   }
   set gridMode(boolean) {
     this._gridMode = boolean;
     this.d3Grid.attr("visibility", this._gridMode ? "visible" : "hidden");
     this.classedOnSvg(boolean, "grid");
-    this.logger.info(`gridMode property is changed to '${boolean}'`);
+    this._logger.info(`gridMode property is changed to '${boolean}'`);
     this.render();
   }
   set tooltipHidden(boolean) {
     this._tooltipHidden = boolean;
     this.classedOnSvg(boolean, "tooltip-hidden");
-    this.logger.info(`tooltipHidden property is changed to '${boolean}'`);
+    this._logger.info(`tooltipHidden property is changed to '${boolean}'`);
   }
   set moveScreenOnSelect(boolean) {
     this._moveScreenOnSelect = boolean;
     this.classedOnSvg(boolean, "move-screen-on-select");
-    this.logger.info(`moveScreenOnSelect property is changed to '${boolean}'`);
+    this._logger.info(`moveScreenOnSelect property is changed to '${boolean}'`);
   }
   set selectNodeOnHover(boolean) {
     this._selectNodeOnHover = boolean;
     this.classedOnSvg(boolean, "select-node-on-hover");
-    this.logger.info(`selectNodeOnHover property is changed to '${boolean}'`);
+    this._logger.info(`selectNodeOnHover property is changed to '${boolean}'`);
   }
   set wheelZoom(boolean) {
     this._wheelZoom = boolean;
     this.classedOnSvg(boolean, "wheel-zoom");
-    this.logger.info(`wheelZoom property is changed to '${boolean}'`);
+    this._logger.info(`wheelZoom property is changed to '${boolean}'`);
   }
   set traceMode(boolean) {
-    this.logger.logLevel = boolean ? "INFO" : "ERROR";
+    this._logger.logLevel = boolean ? "INFO" : "ERROR";
     this._traceMode = boolean;
     this.classedOnSvg(boolean, "trace");
-    this.logger.info(`traceMode property is changed to '${boolean}'`);
+    this._logger.info(`traceMode property is changed to '${boolean}'`);
   }
   set singleSelection(boolean) {
     this._singleSelection = boolean;
     this.classedOnSvg(boolean, "single-select");
-    this.logger.info(`singleSelection property is changed to '${boolean}'`);
+    this._logger.info(`singleSelection property is changed to '${boolean}'`);
   }
   _initD3Elements(div, svg, width, height) {
-    this.logger = createLogger(this.uuid);
+    this._logger = createLogger(this.uuid);
     div.addEventListener("contextmenu", (e) => e.preventDefault());
     const w = isNaN(width) ? width : `${width}px`;
     const h = isNaN(height) ? height : `${height}px`;
-    this.d3Div = select_default2(div).style("width", w).style("height", h).style("overflow", "auto").style("position", "relative").style("scrollbar-width", "thin").style("outline", 0);
+    this.d3Div = select_default2(div).style("width", w).style("height", h);
     this.d3Svg = select_default2(svg).on("mousemove", (ev) => this._mouseMoveOnSheetHandler(ev)).on("click", (ev) => this._clickOnSheetHandler(ev)).call(drag_default().filter(() => this._editMode === false).on("start", (ev) => this._dragController(ev)).on("drag", (ev) => this._dragController(ev)).on("end", (ev) => this._dragController(ev)));
     this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden");
     this.d3Container = this.d3Svg.append("g").attr("class", "container");
@@ -6616,7 +6490,7 @@ var IRFlowchart = class extends IRComponent {
   add(data, zIndex = void 0) {
     switch (data.type) {
       case void 0:
-        this.logger.error("InnoFlowchart.add()", "undefined type prop");
+        this._logger.error("InnoFlowchart.add()", "undefined type prop");
         throw new Error("Object that you added needs 'type' property! (node or connection)");
       case "group":
         data.render = "group";
@@ -6625,7 +6499,7 @@ var IRFlowchart = class extends IRComponent {
         break;
     }
     if (data.render === void 0) {
-      this.logger.error("InnoFlowchart.add()", "undefined render prop");
+      this._logger.error("InnoFlowchart.add()", "undefined render prop");
       throw new Error("Object that you added needs 'render' property!");
     }
     if (data.id === void 0 || data.id === null) {
@@ -6636,7 +6510,7 @@ var IRFlowchart = class extends IRComponent {
         case "string":
           break;
         default:
-          this.logger.error(
+          this._logger.error(
             "InnoFlowchart.add()",
             "Not allowed id type (USE STRING OR NUMBER)"
           );
@@ -6644,7 +6518,7 @@ var IRFlowchart = class extends IRComponent {
       }
     }
     if (this._objectManager.findOrNull(data.id) !== null) {
-      this.logger.error("InnoFlowchart.add()", "duplicated object id");
+      this._logger.error("InnoFlowchart.add()", "duplicated object id");
       throw new Error(`Object's id is already created! (${data.id})`);
     }
     this.defaultRule(data);
@@ -6654,16 +6528,16 @@ var IRFlowchart = class extends IRComponent {
       data.type,
       data.render
     );
-    const renderer = new rendererConstructor(data, this._iContainer);
+    const renderer = new rendererConstructor(data, this._containerInterface);
     switch (data.type) {
       case "connection":
-        obj = new Connection(data, renderer, this._iContainer);
+        obj = new Connection(data, renderer, this._containerInterface);
         break;
       case "node":
-        obj = new Node(data, renderer, this._iContainer);
+        obj = new Node(data, renderer, this._containerInterface);
         break;
       case "group":
-        obj = new Group(data, renderer, this._iContainer);
+        obj = new Group(data, renderer, this._containerInterface);
         break;
       default:
         throw Error(`unkown data type '${data.type}'`);
@@ -6678,9 +6552,9 @@ var IRFlowchart = class extends IRComponent {
       this._addObjectEvent(obj);
       this.emitChangedStatus();
       this.$emit(EVENT_TYPE.NEW_OBJECT, obj);
-      this.logger.debug("InnoFlowchart.add()", `created obj id is '${obj.id}'`);
+      this._logger.debug("InnoFlowchart.add()", `created obj id is '${obj.id}'`);
     } else {
-      this.logger.debug(
+      this._logger.debug(
         "InnoFlowchart.add()",
         `created temp obj id is '${obj.id}'`
       );
@@ -6689,7 +6563,7 @@ var IRFlowchart = class extends IRComponent {
   }
   remove(object) {
     if (object === null || object === void 0) {
-      this.logger.error(
+      this._logger.error(
         "InnoFlowchart.remove()",
         "Object could not be null or undefined to remove!"
       );
@@ -6715,12 +6589,12 @@ var IRFlowchart = class extends IRComponent {
       this._objMouseHandler.removeTooltipObj();
       if (!obj.isTempObj) {
         this.$emit(EVENT_TYPE.REMOVE_OBJECT, obj);
-        this.logger.debug(
+        this._logger.debug(
           "InnoFlowchart.remove()",
           `Removed obj id is '${obj.id}'`
         );
       } else {
-        this.logger.debug(
+        this._logger.debug(
           "InnoFlowchart.remove()",
           `Removed temp obj id is '${obj.id}'`
         );
@@ -6733,7 +6607,7 @@ var IRFlowchart = class extends IRComponent {
     if (scale < MIN_ZOOM || scale > MAX_ZOOM) {
       return;
     }
-    this.logger.info("InnoFlowchart.zoomTo", `scale is changed to ${scale}`);
+    this._logger.info("InnoFlowchart.zoomTo", `scale is changed to ${scale}`);
     this.d3Div.node().__zoom.k = scale;
     this.d3Container.attr("transform", `scale(${scale})`);
     const gridScale = `${1 / scale * 100}%`;
@@ -6741,7 +6615,7 @@ var IRFlowchart = class extends IRComponent {
     this.updateSvgSize();
   }
   recordNewObjectsAction(...objects) {
-    this._actionController.addAction(new AddCommand(cloneObjDataList(objects), this._iContainer));
+    this._actionController.addAction(new AddCommand(cloneObjDataList(objects), this._containerInterface));
     this._updateNegativePos();
   }
   emitChangedStatus() {
@@ -6755,10 +6629,9 @@ var IRFlowchart = class extends IRComponent {
   }
   getSelectedConnections(sorted = true) {
     const connections = [];
-    for (const con of this._objectManager.getConnectionIterator()) {
+    for (const con of this._objectManager.getConnectionIterator())
       con.isSelected && connections.push(con);
-    }
-    sorted && connections.sort((a, b) => a.temp.clickedSeq - b.temp.clickedSeq);
+    sorted && connections.sort((a, b) => a.clickedSeq - b.clickedSeq);
     return connections;
   }
   _editObjProp(changedInfoList) {
@@ -6770,7 +6643,7 @@ var IRFlowchart = class extends IRComponent {
         info.objData[prop.key] = prop.newValue;
       }
     });
-    this._actionController.addAction(new EditCommand(changedInfoList, this._iContainer));
+    this._actionController.addAction(new EditCommand(changedInfoList, this._containerInterface));
   }
   editSelectedObjProp(key, newValue) {
     const list = [];
@@ -6788,7 +6661,7 @@ var IRFlowchart = class extends IRComponent {
   }
   append(mode, data) {
     if (this._readonly) {
-      this.logger.info(
+      this._logger.info(
         "InnoFlowchart.append()",
         "Preventing append (readonly: true)"
       );
@@ -6798,13 +6671,13 @@ var IRFlowchart = class extends IRComponent {
       this.clearAppendMode();
       this._appendMode.mode = mode;
       this._appendMode.data = data;
-      this.logger.info(
+      this._logger.info(
         "InnoFlowchart.append()",
         "Append Mode",
         this._appendMode.mode
       );
     } else {
-      this.logger.error("InnoFlowchart.append()", "Invalid append info!");
+      this._logger.error("InnoFlowchart.append()", "Invalid append info!");
       throw new Error("Invalid append info!");
     }
   }
@@ -6856,7 +6729,7 @@ var IRFlowchart = class extends IRComponent {
     rect.maxY = Math.max(this._wrapperSize.height, rect.maxY);
     this._svgSize.width = rect.maxX;
     this._svgSize.height = rect.maxY;
-    this.logger.info("InnoFlowchart.refreshSvgSize()", rect);
+    this._logger.info("InnoFlowchart.refreshSvgSize()", rect);
     this.updateSvgSize();
   }
   render() {
@@ -6870,19 +6743,16 @@ var IRFlowchart = class extends IRComponent {
     return objList;
   }
   clearActionList() {
-    this.logger.info("InnoFlowchart.clearActionList()");
+    this._logger.info("InnoFlowchart.clearActionList()");
     this._actionController.clear();
   }
   undoAction() {
     if (this._readonly) {
-      this.logger.info(
-        "InnoFlowchart.undoAction()",
-        "Preventing undo (readonly: true)"
-      );
+      this._logger.info("InnoFlowchart.undoAction()", "Preventing undo (readonly: true)");
       return;
     }
     const undoCommand = this._actionController.undo();
-    this.logger.debug("InnoFlowchart.undoAction()", undoCommand);
+    this._logger.debug("InnoFlowchart.undoAction()", undoCommand);
     if (undoCommand !== null) {
       this.refreshSvgSize();
       this.$emit(EVENT_TYPE.UNDO, undoCommand);
@@ -6890,21 +6760,18 @@ var IRFlowchart = class extends IRComponent {
   }
   redoAction() {
     if (this._readonly) {
-      this.logger.info(
-        "InnoFlowchart.redoAction()",
-        "Preventing redo (readonly: true)"
-      );
+      this._logger.info("InnoFlowchart.redoAction()", "Preventing redo (readonly: true)");
       return;
     }
     const redoCommand = this._actionController.redo();
-    this.logger.debug("InnoFlowchart.redoAction()", redoCommand);
+    this._logger.debug("InnoFlowchart.redoAction()", redoCommand);
     if (redoCommand !== null) {
       this.refreshSvgSize();
       this.$emit(EVENT_TYPE.REDO, redoCommand);
     }
   }
   _objectClickHandler(obj, event) {
-    this.logger.info(`InnoFlowchart.event.emit.${event}`, obj);
+    this._logger.info(`InnoFlowchart.event.emit.${event}`, obj);
     obj.select(true);
     this.$emit(event, obj);
   }
@@ -6912,15 +6779,13 @@ var IRFlowchart = class extends IRComponent {
     switch (arg.key) {
       case "id": {
         const obj = this.getObjectOrNull(arg.oldValue);
-        if (obj !== null) {
+        if (obj !== null)
           this._objectManager.reassignId(obj, arg.oldValue, arg.newValue);
-        }
         break;
       }
       case "isSelected": {
-        if (arg.newValue) {
+        if (arg.newValue)
           arg.renderObj.clickedSeq = this._seqMng.increaseClickSeq();
-        }
         break;
       }
       default:
@@ -6931,24 +6796,20 @@ var IRFlowchart = class extends IRComponent {
     const obj = arg.renderObj;
     switch (arg.key) {
       case "connection.sourceObjId":
-        if (arg.oldValue !== null && arg.newValue === null) {
+        if (arg.oldValue !== null && arg.newValue === null)
           this.$emit(EVENT_TYPE.DISCONNECT_NODE, obj, arg.key);
-        }
         break;
       case "connection.sourcePos":
-        if (obj.sourceObjId !== null) {
+        if (obj.sourceObjId !== null)
           this.$emit(EVENT_TYPE.CONNECT_NODE, obj, arg.key);
-        }
         break;
       case "connection.destinationObjId":
-        if (arg.oldValue !== null && arg.newValue === null) {
+        if (arg.oldValue !== null && arg.newValue === null)
           this.$emit(EVENT_TYPE.DISCONNECT_NODE, obj, arg.key);
-        }
         break;
       case "connection.destinationPos":
-        if (obj.destinationObjId !== null) {
+        if (obj.destinationObjId !== null)
           this.$emit(EVENT_TYPE.CONNECT_NODE, obj, arg.key);
-        }
         break;
       default:
         break;
@@ -6958,9 +6819,8 @@ var IRFlowchart = class extends IRComponent {
     if (arg.newValue === arg.oldValue) {
       return;
     }
-    if (!this._isChanged && !NOT_CHANGING_PROPERTY_SET.has(arg.key)) {
+    if (!this._isChanged && !NOT_CHANGING_PROPERTY_SET.has(arg.key))
       this.emitChangedStatus();
-    }
     this._commonObserveCallback(arg);
     arg.renderObj.type === "connection" && this._connectionObserveCallback(arg);
   }
@@ -6981,7 +6841,7 @@ var IRFlowchart = class extends IRComponent {
     if (parent !== null) {
       parent.select(false, typeClick);
     }
-    this.logger.info("InnoFlowchart._selectCallbackHandler()", obj);
+    this._logger.info("InnoFlowchart._selectCallbackHandler()", obj);
     this.$emit(EVENT_TYPE.SELECT_OBJECT, obj);
   }
   _releaseCallbackHandler(obj, userInteraction) {
@@ -7055,15 +6915,16 @@ var IRFlowchart = class extends IRComponent {
     }
   }
   _mouseMoveOnSheetHandler(ev) {
-    const x = ev.layerX;
-    const y = ev.layerY;
+    const x = ev.offsetX;
+    const y = ev.offsetY;
     if (!this._validateAppendMode(this._appendMode))
       return;
     switch (this._appendMode.mode) {
       case "append":
         if (this._appendingObject === null)
           this._initAppendObj();
-        this._moveAppendingNode(x, y);
+        else if (this._appendingObject.type === "node")
+          this._moveAppendingNode(x, y);
         break;
       default:
         break;
@@ -7073,7 +6934,7 @@ var IRFlowchart = class extends IRComponent {
   _setZIndexOnSelected(command) {
     const dataList = [];
     const newValue = command === "front" ? this._objectManager.getObjCount() : 0;
-    this.logger.info("InnoFlowchart.setZIndex()", `new z-index = ${newValue}`);
+    this._logger.info("InnoFlowchart.setZIndex()", `new z-index = ${newValue}`);
     for (const obj of this.getSelectedObjects()) {
       dataList.push({
         objId: obj.id,
@@ -7083,14 +6944,14 @@ var IRFlowchart = class extends IRComponent {
       obj.zIndex = newValue;
     }
     this.emitChangedStatus();
-    this._actionController.addAction(new ZIndexCommand(dataList, this._iContainer));
+    this._actionController.addAction(new ZIndexCommand(dataList, this._containerInterface));
   }
   bringToFront() {
-    this.logger.info("InnoFlowchart.bringToFront()");
+    this._logger.info("InnoFlowchart.bringToFront()");
     this._setZIndexOnSelected("front");
   }
   bringToBack() {
-    this.logger.info("InnoFlowchart.bringToBack()");
+    this._logger.info("InnoFlowchart.bringToBack()");
     this._setZIndexOnSelected("back");
   }
   _moveSelectedObjects(x, y) {
@@ -7125,7 +6986,7 @@ var IRFlowchart = class extends IRComponent {
     }).on("dblclick", () => {
       if (node.data.editable && this._readonly === false)
         node.renderer.editLabelMode();
-      this.logger.info("InnoFlowchart.event.emit.dblClickNode", node);
+      this._logger.info("InnoFlowchart.event.emit.dblClickNode", node);
       this.$emit(EVENT_TYPE.DOUBLE_CLICK_NODE, node);
     });
   }
@@ -7215,7 +7076,7 @@ var IRFlowchart = class extends IRComponent {
       if (con.data.editable && this._readonly === false) {
         con.renderer.editLabelMode();
       }
-      this.logger.info("InnoFlowchart.event.emit.dblClickConnection", con);
+      this._logger.info("InnoFlowchart.event.emit.dblClickConnection", con);
       this.$emit(EVENT_TYPE.DOUBLE_CLICK_CONNECTION, con);
     });
   }
@@ -7280,11 +7141,10 @@ var IRFlowchart = class extends IRComponent {
           point.y = ev.y;
         } else {
           con[objProp] = detecting.node.id;
-          if (this._simpleConnectingMode) {
+          if (this._simpleConnectingMode)
             this._setShortestPosition(con);
-          } else {
+          else
             con[posProp] = detecting.pos;
-          }
         }
         if (con.renderType === "elbow")
           con.renderer.refreshAdjustList();
@@ -7352,11 +7212,13 @@ var IRFlowchart = class extends IRComponent {
     }
   }
   _initDrag(dragEvent) {
+    this._isDragging = true;
     this._appendMode.dragged = false;
     this._objMouseHandler.removeTooltipObj();
     this.classedOnSvg(true, dragEvent);
   }
   _terminateDrag(dragEvent) {
+    this._isDragging = false;
     this._appendMode.dragged = false;
     this.classedOnSvg(false, dragEvent);
     this.clearAppendMode();
@@ -7406,7 +7268,7 @@ var IRFlowchart = class extends IRComponent {
       for (const group of this._objectManager.getGroupIterator())
         group.render();
       if (lastCommand) {
-        lastCommand.unshift(new EditCommand(changedInfoList, this._iContainer));
+        lastCommand.unshift(new EditCommand(changedInfoList, this._containerInterface));
         this._actionController.addAction(...lastCommand);
       }
       this.refreshSvgSize();
@@ -7504,7 +7366,7 @@ var IRFlowchart = class extends IRComponent {
   }
   getSelectedObjects(sorted = true) {
     const objList = Array.from(this._objectManager.getSelectedObjIterator());
-    sorted && objList.sort((a, b) => a.temp.clickedSeq - b.temp.clickedSeq);
+    sorted && objList.sort((a, b) => a.clickedSeq - b.clickedSeq);
     return objList;
   }
   removeSelected() {
@@ -7512,7 +7374,7 @@ var IRFlowchart = class extends IRComponent {
     selectedObjList.forEach((obj) => this.remove(obj));
     this._actionController.addAction(new DeleteCommand(
       cloneObjDataList(selectedObjList),
-      this._iContainer
+      this._containerInterface
     ));
   }
   _getChildElementOrNull(index) {
@@ -7609,7 +7471,7 @@ var IRFlowchart = class extends IRComponent {
   }
   cut() {
     return __async(this, null, function* () {
-      this.logger.info("InnoFlowchart.cut()");
+      this._logger.info("InnoFlowchart.cut()");
       if (this.getSelectedObjects().length === 0)
         return;
       yield clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
@@ -7618,7 +7480,7 @@ var IRFlowchart = class extends IRComponent {
   }
   copy() {
     return __async(this, null, function* () {
-      this.logger.info("InnoFlowchart.copy()");
+      this._logger.info("InnoFlowchart.copy()");
       yield clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
     });
   }
@@ -7632,7 +7494,7 @@ var IRFlowchart = class extends IRComponent {
         let id2 = newId2 + cnt;
         while (this.getObjectOrNull(id2) !== null || this.getObjectOrNull(id2) !== null && this.getObjectOrNull(id2).type === "connection" && (this.getObjectOrNull(id2).sourceObjId === id2 || this.getObjectOrNull(id2).destinationObjId === id2)) {
           id2 = newId2 + ++cnt;
-          this.logger.info("id", id2);
+          this._logger.info("id", id2);
         }
         ++cnt;
         tmpIdMap.set(data.id, id2);
@@ -7654,10 +7516,10 @@ var IRFlowchart = class extends IRComponent {
         }
         case "connection": {
           const points = this._getProperlyPointsToCreate(data);
-          if (data["connection.sourceObjId"] != void 0 && data["connection.sourceObjId"] != null && tmpIdMap.has(data["connection.sourceObjId"])) {
+          if (data["connection.sourceObjId"] !== void 0 && data["connection.sourceObjId"] != null && tmpIdMap.has(data["connection.sourceObjId"])) {
             data["connection.sourceObjId"] = tmpIdMap.get(data["connection.sourceObjId"]);
           }
-          if (data["connection.destinationObjId"] != void 0 && data["connection.destinationObjId"] != null && tmpIdMap.has(data["connection.destinationObjId"])) {
+          if (data["connection.destinationObjId"] !== void 0 && data["connection.destinationObjId"] != null && tmpIdMap.has(data["connection.destinationObjId"])) {
             data["connection.destinationObjId"] = tmpIdMap.get(data["connection.destinationObjId"]);
           }
           newObjs.push(this.add(__spreadProps(__spreadValues({}, data), {
@@ -7684,23 +7546,23 @@ var IRFlowchart = class extends IRComponent {
     newObjs.forEach((data) => {
       data.select();
     });
-    this._actionController.addAction(new AddCommand(cloneObjDataList(newObjs), this._iContainer));
+    this._actionController.addAction(new AddCommand(cloneObjDataList(newObjs), this._containerInterface));
   }
   paste() {
     return __async(this, null, function* () {
       if (this._editMode || this._appendMode.mode != null) {
-        this.logger.debug(
+        this._logger.debug(
           "InnoFlowchart.paste()",
           "Could not paste because of edit or append mode"
         );
         return;
       }
-      this.logger.info("InnoFlowchart.paste()");
+      this._logger.info("InnoFlowchart.paste()");
       this._createPastingObjs(JSON.parse(yield clipboard_default.loadData()));
     });
   }
   fitSizeOnText() {
-    this.logger.info("InnoFlowchart.fitSizeOnText()");
+    this._logger.info("InnoFlowchart.fitSizeOnText()");
     this._resizeHandler.resizeDragStart();
     this.getSelectedNodes(false).forEach((node) => {
       node.resizerEnabled && node.fitSizeOnText();
@@ -7734,20 +7596,12 @@ var IRFlowchart = class extends IRComponent {
     const oldDesPos = con.destinationPos;
     if (source !== null && destination !== null) {
       const pos = this._getShortestPositions(source, destination);
-      con.editProp(() => {
-        con.sourcePos = pos.sourcePos;
-        con.destinationPos = pos.destinationPos;
-      });
-    } else if (source === null) {
-      const point = con.firstPoint;
-      con.destinationPos = this._getPositionOnSimpleConnecting(
-        point,
-        destination
-      );
-    } else {
-      const point = con.endPoint;
-      con.sourcePos = this._getPositionOnSimpleConnecting(point, source);
-    }
+      con.sourcePos = pos.sourcePos;
+      con.destinationPos = pos.destinationPos;
+    } else if (source === null)
+      con.destinationPos = this._getPositionOnSimpleConnecting(con.firstPoint, destination);
+    else
+      con.sourcePos = this._getPositionOnSimpleConnecting(con.endPoint, source);
     if (oldSrcPos !== con.sourcePos || oldDesPos !== con.destinationPos) {
       const changedInfo = new ChangedInfo(con.data, [
         {
@@ -7761,15 +7615,14 @@ var IRFlowchart = class extends IRComponent {
           newValue: con.destinationPos
         }
       ]);
-      this._actionController.addAction(new EditCommand([changedInfo], this._iContainer));
+      this._actionController.addAction(new EditCommand([changedInfo], this._containerInterface));
     }
   }
   updateShortestConnections() {
-    this.logger.info("InnoFlowchart.updateShortestConnections()");
+    this._logger.info("InnoFlowchart.updateShortestConnections()");
     for (const con of this._objectManager.getConnectionIterator()) {
-      if (con.isSelected) {
+      if (con.isSelected)
         this._setShortestPosition(con);
-      }
     }
   }
   updateShortestNodes() {
@@ -7802,7 +7655,7 @@ var IRFlowchart = class extends IRComponent {
     return minDist.pos;
   }
   selectType(render) {
-    this.logger.info("InnoFlowchart.selectType()", render);
+    this._logger.info("InnoFlowchart.selectType()", render);
     const temp = render.toLowerCase();
     this.releaseAllObjects();
     for (const obj of this._objectManager.getAllObjIterator()) {
@@ -7836,7 +7689,7 @@ var IRFlowchart = class extends IRComponent {
     const group = this.add(temp);
     group.resize();
     group.select();
-    this._actionController.addAction(new AddCommand(cloneObjDataList([group]), this._iContainer));
+    this._actionController.addAction(new AddCommand(cloneObjDataList([group]), this._containerInterface));
   }
   ungroup() {
     const tmpObjs = [];
@@ -7847,7 +7700,7 @@ var IRFlowchart = class extends IRComponent {
         this.remove(obj);
       }
     }
-    this._actionController.addAction(new DeleteCommand(cloneObjDataList(tmpObjs), this._iContainer));
+    this._actionController.addAction(new DeleteCommand(cloneObjDataList(tmpObjs), this._containerInterface));
   }
   _moveAppendingNode(x, y) {
     const cursorXY = this._getXYOnSheet(x, y);
@@ -7924,7 +7777,7 @@ var IRFlowchart = class extends IRComponent {
           "node.x": this._appendingObject.x,
           "node.y": this._appendingObject.y
         }, this._appendMode.data));
-        this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._iContainer));
+        this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._containerInterface));
         break;
       }
       default:
@@ -7951,7 +7804,7 @@ var IRFlowchart = class extends IRComponent {
       if (this._appendMode.data.type === "node") {
         switch (ev.type) {
           case "drag":
-            this._moveAppendingNode(ev.x, ev.y);
+            this._moveAppendingNode(ev.x + this.div.scrollLeft, ev.y + this.div.scrollTop);
             break;
           case "end":
             this._createAppendObj();
@@ -7963,23 +7816,13 @@ var IRFlowchart = class extends IRComponent {
         switch (ev.type) {
           case "start": {
             const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
-            this._createAppendingConnection(
-              pos.x,
-              pos.y,
-              pos.x,
-              pos.y,
-              this._appendMode.data
-            );
+            this._createAppendingConnection(pos.x, pos.y, pos.x, pos.y, this._appendMode.data);
             this._appendMode.dragged = false;
             break;
           }
           case "drag": {
             const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
-            this._moveAppendingConnection(
-              pos.x,
-              pos.y,
-              this._appendingObject.renderType
-            );
+            this._moveAppendingConnection(pos.x, pos.y, this._appendingObject.renderType);
             this._appendMode.dragged = true;
             break;
           }
@@ -8000,16 +7843,16 @@ var IRFlowchart = class extends IRComponent {
     this.clearAppendMode();
   }
   _changeObjRender(obj, render) {
-    this._renderManager.changeRender(obj, render, this._iContainer);
+    this._renderManager.changeRender(obj, render, this._containerInterface);
     this._addObjectEvent(obj);
   }
   changeRender(obj, render) {
     const oldRender = obj.renderType;
     this._changeObjRender(obj, render);
-    this._actionController.addAction(new RenderCommand(obj, oldRender, render, this._iContainer));
+    this._actionController.addAction(new RenderCommand(obj, oldRender, render, this._containerInterface));
   }
   _editTextCallbackHandler(objData, oldText, newText) {
-    this.logger.debug(
+    this._logger.debug(
       "InnoFlowchart._editTextCallbackHandler()",
       `oldText = '${oldText}'`,
       `newText = '${newText}'`
@@ -8024,7 +7867,7 @@ var IRFlowchart = class extends IRComponent {
           }
         ])
       ],
-      this._iContainer
+      this._containerInterface
     ));
   }
   _moveAppendingConnection(x, y) {
@@ -8039,15 +7882,14 @@ var IRFlowchart = class extends IRComponent {
       this._appendingObject.destinationPos = null;
     } else {
       this._appendingObject.destinationObjId = detecting.node.id;
-      if (this._simpleConnectingMode) {
-        this.setShortestPosition(this._appendingObject);
-      } else {
+      if (this._simpleConnectingMode)
+        this._setShortestPosition(this._appendingObject);
+      else
         this._appendingObject.destinationPos = detecting.pos;
-      }
     }
   }
   _adjDragCallbackHandler(objData, oldPoints, newPoints) {
-    this.logger.debug(
+    this._logger.debug(
       "InnoFlowchart.adjDragCallbackHandler()",
       "record undo action"
     );
@@ -8061,7 +7903,7 @@ var IRFlowchart = class extends IRComponent {
           }
         ])
       ],
-      this._iContainer
+      this._containerInterface
     ));
     this._updateNegativePos();
   }
@@ -8079,7 +7921,7 @@ var IRFlowchart = class extends IRComponent {
     group !== null && group.resize();
   }
   _clickOnSheetHandler(ev) {
-    this.$emit(EVENT_TYPE.CLICK, this._getXYOnSheet(ev.layerX, ev.layerY));
+    this.$emit(EVENT_TYPE.CLICK, this._getXYOnSheet(ev.offsetX, ev.offsetY));
   }
   _createAppendingConnection(x, y, toX, toY, data) {
     if (this._appendingObject !== null) {
@@ -8114,7 +7956,7 @@ var IRFlowchart = class extends IRComponent {
       temp: false,
       opacity: 1
     }));
-    this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._iContainer));
+    this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._containerInterface));
   }
   handleKeydownF2() {
     if (!this._editMode && this.getCountOfSelectedObject() === 1) {
@@ -8142,13 +7984,13 @@ var IRFlowchart = class extends IRComponent {
     const appendMode = this._appendMode;
     const appendingObject = this._appendingObject;
     if (appendMode.mode === null && appendingObject !== null) {
-      this.logger.info("InnoFlowchart.handleKeydownEscape()", "Cancel Creating Connection");
+      this._logger.info("InnoFlowchart.handleKeydownEscape()", "Cancel Creating Connection");
       this.cancelCreatingConnection();
     } else if (appendMode.mode !== null) {
-      this.logger.info("InnoFlowchart.handleKeydownEscape()", "Clear Appending Data");
+      this._logger.info("InnoFlowchart.handleKeydownEscape()", "Clear Appending Data");
       this.clearAppendMode();
     } else {
-      this.logger.info("InnoFlowchart.handleKeydownEscape()", "releaseAllObj");
+      this._logger.info("InnoFlowchart.handleKeydownEscape()", "releaseAllObj");
       this.releaseAllObjects();
     }
   }

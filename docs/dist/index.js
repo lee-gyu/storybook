@@ -1,4 +1,6 @@
 import {
+  IRComponentPanel,
+  IRComponentPanelItem,
   IRConfirm,
   IRDatePicker,
   IRSelect,
@@ -7,11 +9,12 @@ import {
   createDropdownDiv,
   createDropdownItem,
   renderCheckboxTreeNode,
-  renderDefaultTreeNode
-} from "./chunks/chunk-WYBL4JB5js.js";
+  renderDefaultTreeNode,
+  setTreeDragDropReorder
+} from "./chunks/chunk-PAG77H4Fjs.js";
 import {
   i18n_default
-} from "./chunks/chunk-6HRIDFJDjs.js";
+} from "./chunks/chunk-OXAUWT7Gjs.js";
 import {
   BEMClass,
   ClipboardManager,
@@ -31,12 +34,11 @@ import {
   getMinMaxBetween,
   getTextWidthContext,
   hasClass,
+  offsetBottomAutoUpdate,
   registerGlobalKeyListener,
   unregisterGlobalKeyListener,
   z_index_classNames_default
-} from "./chunks/chunk-FECRS6ATjs.js";
-import "./chunks/chunk-H4BZVVDUjs.js";
-import "./chunks/chunk-ZK6IOW44js.js";
+} from "./chunks/chunk-IKJP23QCjs.js";
 
 // src/types/color.ts
 var IRStyleColorList = ["primary", "secondary", "tertiary", "transparent"];
@@ -49,6 +51,8 @@ export {
   BEMClass,
   ClipboardManager,
   HorizontalAlignmentList,
+  IRComponentPanel,
+  IRComponentPanelItem,
   IRConfirm,
   IRDatePicker,
   IRIntentList,
@@ -77,9 +81,11 @@ export {
   getTextWidthContext,
   hasClass,
   i18n_default as i18n,
+  offsetBottomAutoUpdate,
   registerGlobalKeyListener,
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
+  setTreeDragDropReorder,
   unregisterGlobalKeyListener
 };
 //# sourceMappingURL=index.js.map
