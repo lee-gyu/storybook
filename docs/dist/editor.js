@@ -1,13 +1,13 @@
 import {
   i18n_default
-} from "./chunks/chunk-OXAUWT7Gjs.js";
+} from "./chunks/chunk-KXB5YW37js.js";
 import {
   IRComponent,
   __commonJS,
   __spreadValues,
   __toESM,
   require_lodash
-} from "./chunks/chunk-IKJP23QCjs.js";
+} from "./chunks/chunk-MYVB4YV4js.js";
 
 // ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/lib/codemirror.js
 var require_codemirror = __commonJS({
@@ -14029,8 +14029,37 @@ var editorModeMap = {
   "sql-oracle": "text/x-plsql",
   "xml": "text/html"
 };
+var IREditorGutterManager = class {
+  constructor(editor, gutters) {
+    this._gutterSet = new Set(gutters.map((gutter) => typeof gutter === "string" ? gutter : gutter.className));
+    this._editor = editor;
+  }
+  hasKey(key) {
+    return this._gutterSet.has(key);
+  }
+  clear(key) {
+    this._editor.clearGutter(key);
+  }
+  add(lineNumber, key, marker) {
+    if (!this.hasKey(key))
+      throw new Error(`Not allowed key '${key}'`);
+    this._editor.setGutterMarker(lineNumber, key, marker);
+  }
+  remove(lineNumber, key) {
+    if (!this.hasKey(key))
+      throw new Error(`Not allowed key '${key}'`);
+    this._editor.setGutterMarker(lineNumber, key, null);
+  }
+};
+var DEFAULT_GUTTERS = ["CodeMirror-linenumbers"];
 var IREditor = class extends IRComponent {
-  constructor({ contextElement, mode = "ir-db-rule", code = "", keyEvents, gutters }) {
+  constructor({
+    contextElement,
+    mode = "ir-db-rule",
+    code = "",
+    keyEvents,
+    gutters = DEFAULT_GUTTERS
+  }) {
     var _a;
     super({ contextElement });
     this._showWhitespace = false;
@@ -14038,7 +14067,7 @@ var IREditor = class extends IRComponent {
     contextElement.classList.add("editor");
     this.editor = (0, import_codemirror2.default)(contextElement, {
       lineNumbers: true,
-      gutters: gutters != null ? gutters : ["CodeMirror-linenumbers"],
+      gutters,
       mode: (_a = editorModeMap[mode]) != null ? _a : "text/plain",
       theme: "idea",
       tabSize: 4,
@@ -14071,6 +14100,7 @@ var IREditor = class extends IRComponent {
     this.editor.on("gutterClick", (cm, n) => {
       this.onGutterClick(n);
     });
+    this._gutterManager = new IREditorGutterManager(this.editor, gutters);
     this.editor.setSize("100%", "100%");
     this.code = code;
     this.onDestroy = () => this.editor.getWrapperElement().remove();
@@ -14124,11 +14154,33 @@ var IREditor = class extends IRComponent {
     }
     this._showWhitespace = visible;
   }
+  replaceLineText(converter) {
+    const lastLine = this.editor.lastLine();
+    import_lodash2.default.range(lastLine + 1).forEach((line) => {
+      const text = this.editor.getLine(line);
+      this.editor.replaceRange(converter(text), { line, ch: 0 }, { line, ch: text.length });
+    });
+  }
+  toLowerCase() {
+    this.replaceLineText((text) => text.toLowerCase());
+  }
+  toUpperCase() {
+    this.replaceLineText((text) => text.toUpperCase());
+  }
+  hasLineGutter(lineNumber, key) {
+    const info = this.editor.lineInfo(lineNumber);
+    if (!info)
+      return false;
+    return info.gutterMarkers && info.gutterMarkers[key] !== void 0;
+  }
+  clearGutters(key) {
+    this._gutterManager.clear(key);
+  }
   addLineGutter(lineNumber, key, marker) {
-    this.editor.setGutterMarker(lineNumber, key, marker);
+    this._gutterManager.add(lineNumber, key, marker);
   }
   removeLineGutter(lineNumber, key) {
-    this.editor.setGutterMarker(lineNumber, key, null);
+    this._gutterManager.remove(lineNumber, key);
   }
   addLineClass(lineNumber, key, cls) {
     this.editor.addLineClass(lineNumber, key, cls);

@@ -1,7 +1,7 @@
 import {
   i18n_default,
   require_moment
-} from "./chunk-OXAUWT7Gjs.js";
+} from "./chunk-KXB5YW37js.js";
 import {
   BEMClass,
   IRComponent,
@@ -16,7 +16,7 @@ import {
   require_lodash,
   unregisterGlobalKeyListener,
   z_index_classNames_default
-} from "./chunk-IKJP23QCjs.js";
+} from "./chunk-MYVB4YV4js.js";
 
 // src/js-components/tree/tree.classNames.ts
 var block = "tree";
@@ -79,7 +79,6 @@ var renderCheckboxTreeNode = ({ onCheck }) => {
     label.classList.add(checkbox_classNames_default.checkboxWrapper.blockElementName);
     checkbox.classList.add(checkbox_classNames_default.checkboxInput.blockElementName);
     content2.template.insertAdjacentElement("afterbegin", label);
-    label.addEventListener("dblclick", (ev) => ev.stopPropagation());
     label.appendChild(checkbox);
     checkbox.addEventListener("click", () => {
       var _a;
@@ -125,7 +124,8 @@ var IRTreeNode = class {
     this.liTreeItem = document.createElement("li");
     this.liTreeItem.classList.add(tree_classNames_default.treeItem.blockElementName);
     this.divTreeItemContent = appendElement(this.liTreeItem, "div", tree_classNames_default.treeItemContent.blockElementName);
-    this.ulTreeList = appendElement(this.liTreeItem, "ul", tree_classNames_default.treeList.blockElementName);
+    this.ulTreeList = document.createElement("ul");
+    this.ulTreeList.classList.add(tree_classNames_default.treeList.blockElementName);
     this.iconExpand = appendElement(this.divTreeItemContent, "i", tree_classNames_default.treeIconExpand.blockElementName, "ir-icon", statusIcon);
     this.divTreeItemContent.appendChild(this._template.template);
     this.divTreeItemContent.draggable = true;
@@ -244,9 +244,12 @@ var IRTreeNode = class {
       this._parentItem.removeChildNode(this);
   }
   collapse() {
+    if (!this.hasChildren)
+      return;
     if (this.expanded) {
       if (this.onCollapsing(this)) {
         this.liTreeItem.classList.remove(tree_classNames_default.treeItem["is-expanded"]);
+        this.ulTreeList.remove();
         this.onCollapse(this);
       }
     }
@@ -255,9 +258,12 @@ var IRTreeNode = class {
     this.divTreeItemContent.scrollIntoView();
   }
   expand() {
+    if (!this.hasChildren)
+      return;
     if (!this.expanded) {
       if (this.onExpanding(this)) {
         this.liTreeItem.classList.add(tree_classNames_default.treeItem["is-expanded"]);
+        this.liTreeItem.appendChild(this.ulTreeList);
         this.onExpand(this);
       }
     }
@@ -415,12 +421,12 @@ var IRTree = class extends IRComponent {
       parent.addNode(node);
     this.nodes.push(node);
     node.divTreeItemContent.ondblclick = (ev) => {
+      if (ev.target.classList.contains("checkbox__wrapper"))
+        return;
       this.onDblClick(node);
-      ev.stopPropagation();
     };
-    node.divTreeItemContent.onmousedown = (ev) => {
+    node.divTreeItemContent.onclick = (ev) => {
       this.onLabelClick(node);
-      ev.stopPropagation();
     };
     node.iconExpand.onclick = () => this.onToggleClick(node);
     node.onSelect = () => this.selected = node;
@@ -561,15 +567,15 @@ var select_classNames_default = {
 };
 
 // src/js-components/select/select.ts
-function createDropdownDiv() {
+var createDropdownDiv = () => {
   const divDropdown = document.createElement("div");
   const ulItems = document.createElement("ul");
   divDropdown.classList.add(select_classNames_default.selectDropdown.blockElementName, z_index_classNames_default.zIndex.popover);
   ulItems.className = select_classNames_default.selectDropdownList.blockElementName;
   divDropdown.appendChild(ulItems);
   return { divDropdown, ulItems };
-}
-function createDropdownItem(value, text) {
+};
+var createDropdownItem = (value, text) => {
   const item = document.createElement("li");
   const button = document.createElement("button");
   const icon = document.createElement("i");
@@ -584,7 +590,7 @@ function createDropdownItem(value, text) {
   button.append(span);
   item.append(button);
   return { item, button, icon, span };
-}
+};
 var IRSelect = class extends IRComponent {
   constructor(args) {
     var _a;
@@ -693,12 +699,13 @@ var IRSelect = class extends IRComponent {
     if (this.disabled)
       return;
     this.divDropDown.style.width = `${this.divSelect.offsetWidth}px`;
-    document.body.appendChild(this.divDropDown);
-    this.divSelect.classList.add(select_classNames_default.select["is-expanded"]);
-    this.divDropDown.classList.add(select_classNames_default.select["is-expanded"]);
+    if (!this.divDropDown.isConnected)
+      document.body.appendChild(this.divDropDown);
     this.escController.create();
     this.outsideHandler.create();
     setTimeout(() => {
+      this.divSelect.classList.add(select_classNames_default.select["is-expanded"]);
+      this.divDropDown.classList.add(select_classNames_default.select["is-expanded"]);
       this.floatingCleanup();
       this.floatingCleanup = offsetBottomAutoUpdate(this.divSelect, this.divDropDown);
     }, 0);
@@ -708,7 +715,9 @@ var IRSelect = class extends IRComponent {
     this.outsideHandler.destroy();
     this.divSelect.classList.remove(select_classNames_default.select["is-expanded"]);
     this.divDropDown.classList.remove(select_classNames_default.select["is-expanded"]);
-    this.divDropDown.addEventListener("transitionend", () => {
+    this.divDropDown.addEventListener("transitionend", (ev) => {
+      if (ev.currentTarget !== ev.target)
+        return;
       this.floatingCleanup();
       this.divDropDown.remove();
     }, { once: true });
@@ -933,7 +942,8 @@ var createDatePickerHandler = ({ uuid, refElement, onClick, minDate, maxDate }) 
     },
     show() {
       visible = true;
-      document.body.appendChild(datePicker_elements_default.datePicker);
+      if (!datePicker_elements_default.datePicker.isConnected)
+        document.body.appendChild(datePicker_elements_default.datePicker);
       datePicker_elements_default.datePicker.style.removeProperty("display");
       datePicker_elements_default.datePicker.setAttribute("data-for", uuid);
       clickOutsideHandler.create();
@@ -947,12 +957,13 @@ var createDatePickerHandler = ({ uuid, refElement, onClick, minDate, maxDate }) 
     hide() {
       clickOutsideHandler.destroy();
       escController.destroy();
-      datePicker_elements_default.datePicker.addEventListener("transitionend", () => {
+      datePicker_elements_default.datePicker.addEventListener("transitionend", (ev) => {
+        if (ev.currentTarget !== ev.target)
+          return;
         visible = false;
         if (uuid === datePicker_elements_default.datePicker.getAttribute("data-for")) {
-          console.log("hide", refElement, datePicker_elements_default.datePicker);
           floatingCleanup();
-          datePicker_elements_default.datePicker.style.display = "none";
+          datePicker_elements_default.datePicker.remove();
         }
       }, { once: true });
       datePicker_elements_default.datePicker.classList.remove(datePicker_classNames_default.datePicker["is-visible"]);
@@ -973,6 +984,13 @@ var input_classNames_default = {
 };
 
 // src/js-components/datePicker/datePicker.ts
+var convertToMomentFromStrOrDate = (defaultDate, format) => {
+  if (defaultDate instanceof Date)
+    return (0, import_moment2.default)(defaultDate).startOf("D");
+  else if (typeof defaultDate === "string")
+    return (0, import_moment2.default)(defaultDate, format);
+  return import_moment2.default.invalid();
+};
 var IRDatePicker = class extends IRComponent {
   constructor({
     div,
@@ -989,18 +1007,12 @@ var IRDatePicker = class extends IRComponent {
     this.selectedDate = null;
     this.calendarDate = new Date();
     if (defaultDate) {
-      if (defaultDate instanceof Date) {
-        this.calendarDate = defaultDate;
-        this.selectedDate = defaultDate;
-      } else if (typeof defaultDate === "string") {
-        const defaultMoment = (0, import_moment2.default)(defaultDate, format);
-        if (defaultMoment.isValid()) {
-          this.calendarDate = defaultMoment.toDate();
-          this.selectedDate = defaultMoment.toDate();
-        } else
-          console.error(`defaultDate must follow ${format}`);
+      const defaultMoment = convertToMomentFromStrOrDate(defaultDate, format);
+      if (defaultMoment.isValid()) {
+        this.calendarDate = defaultMoment.toDate();
+        this.selectedDate = defaultMoment.toDate();
       } else
-        console.error("unknown defaultDate, defaultDate must be date or string");
+        console.error(`invalid defaultDate format. it must follow ${format}`);
     }
     this.format = format;
     this.div = div;
@@ -1013,6 +1025,7 @@ var IRDatePicker = class extends IRComponent {
     this.input.setAttribute("placeHolder", this.format);
     this.input.className = input_classNames_default.inputNative.blockElementName;
     this.button.className = input_classNames_default.inputSuffix.blockElementName;
+    this.button.type = "button";
     this._minDate = minDate;
     this._maxDate = maxDate;
     if (onSelect)
@@ -1184,6 +1197,7 @@ var buttonMap = {
 };
 var closeIcon = document.createElement("i");
 var closeButton = document.createElement("button");
+dialog.tabIndex = -1;
 dialog.classList.add(dialog_classNames_default.dialog.blockElementName, z_index_classNames_default.zIndex.message);
 dialogWrapper.className = dialog_classNames_default.dialogWrapper.blockElementName;
 dialogContent.className = dialog_classNames_default.dialogContent.blockElementName;
@@ -1263,6 +1277,7 @@ var _IRConfirm = class {
     if (!elements.dialog.isConnected)
       document.body.appendChild(elements.dialog);
     elements.dialog.classList.add(dialog_classNames_default.dialog["is-visible"]);
+    elements.dialog.focus();
     elements.dialog.addEventListener("transitionend", () => {
       this.enterHandler = () => {
         if (this.enterButton)
@@ -1480,11 +1495,14 @@ function createIRTimePickerHandler({ uuid, refElement, onChange }) {
           setMinuteId(id);
           onChange(ev, getCurrentTime());
         };
-      document.body.appendChild(timePicker_elements_default.timePicker);
-      timePicker_elements_default.timePicker.classList.add(timePicker_classNames_default.timePicker["is-visible"]);
-      timePicker_elements_default.timePicker.style.removeProperty("display");
+      if (!timePicker_elements_default.timePicker.isConnected)
+        document.body.appendChild(timePicker_elements_default.timePicker);
       timePicker_elements_default.timePicker.setAttribute("data-uuid", uuid);
-      floatingCleanup = offsetBottomAutoUpdate(refElement, timePicker_elements_default.timePicker);
+      setTimeout(() => {
+        timePicker_elements_default.timePicker.classList.add(timePicker_classNames_default.timePicker["is-visible"]);
+        floatingCleanup();
+        floatingCleanup = offsetBottomAutoUpdate(refElement, timePicker_elements_default.timePicker);
+      }, 0);
     },
     hide: () => {
       if (!visible)
@@ -1492,11 +1510,13 @@ function createIRTimePickerHandler({ uuid, refElement, onChange }) {
       escController.destroy();
       outsideHandler.destroy();
       timePicker_elements_default.timePicker.classList.remove(timePicker_classNames_default.timePicker["is-visible"]);
-      timePicker_elements_default.timePicker.addEventListener("transitionend", () => {
+      timePicker_elements_default.timePicker.addEventListener("transitionend", (ev) => {
+        if (ev.currentTarget !== ev.target)
+          return;
         visible = false;
         if (uuid === timePicker_elements_default.timePicker.getAttribute("data-uuid")) {
           floatingCleanup();
-          timePicker_elements_default.timePicker.style.display = "none";
+          timePicker_elements_default.timePicker.remove();
         }
       }, { once: true });
     },
@@ -1610,57 +1630,6 @@ var IRTimePicker = class extends IRComponent {
   }
 };
 
-// src/js-components/component-panel/component-panel.ts
-var DEFAULT_OPTIONS = {
-  margin: 8,
-  rowGap: 8,
-  colGap: 8,
-  xTicks: 40,
-  yTicks: 40
-};
-var IRComponentPanel = class extends IRComponent {
-  constructor({
-    contextElement,
-    rows,
-    cols,
-    margin = DEFAULT_OPTIONS.margin,
-    rowGap = DEFAULT_OPTIONS.rowGap,
-    colGap = DEFAULT_OPTIONS.colGap,
-    xTicks = DEFAULT_OPTIONS.xTicks,
-    yTicks = DEFAULT_OPTIONS.yTicks
-  }) {
-    super({ contextElement });
-    this._panelItems = [];
-  }
-  addPanelItem(componentItem) {
-  }
-  removePanelItem(componentItem) {
-  }
-  removeWithUUID(uuid) {
-  }
-  removeAtOrder(order) {
-  }
-};
-
-// src/js-components/component-panel/component-item.ts
-var IRComponentPanelItem = class extends IRComponent {
-  constructor({ contextElement }) {
-    super({ contextElement });
-  }
-  onAttaching() {
-    return true;
-  }
-  onAttached() {
-  }
-  onDragging() {
-    return true;
-  }
-  onDragStart() {
-  }
-  onDrop() {
-  }
-};
-
 export {
   checkbox_classNames_default,
   renderDefaultTreeNode,
@@ -1676,8 +1645,6 @@ export {
   IRDatePicker,
   button_classNames_default,
   IRConfirm,
-  IRTimePicker,
-  IRComponentPanel,
-  IRComponentPanelItem
+  IRTimePicker
 };
-//# sourceMappingURL=chunk-PAG77H4Fjs.js.map
+//# sourceMappingURL=chunk-XJ2WW44Gjs.js.map

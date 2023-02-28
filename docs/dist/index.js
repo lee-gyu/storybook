@@ -1,6 +1,4 @@
 import {
-  IRComponentPanel,
-  IRComponentPanelItem,
   IRConfirm,
   IRDatePicker,
   IRSelect,
@@ -11,10 +9,10 @@ import {
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
   setTreeDragDropReorder
-} from "./chunks/chunk-PAG77H4Fjs.js";
+} from "./chunks/chunk-XJ2WW44Gjs.js";
 import {
   i18n_default
-} from "./chunks/chunk-OXAUWT7Gjs.js";
+} from "./chunks/chunk-KXB5YW37js.js";
 import {
   BEMClass,
   ClipboardManager,
@@ -28,17 +26,29 @@ import {
   createESCHideController,
   createLoadingHandler,
   createPopover,
+  createSessionBroadcastChannel,
   get2DGenerator,
-  getCssText,
   getElement,
   getMinMaxBetween,
+  getSessionBroadcastChannel,
+  getSessionId,
   getTextWidthContext,
+  getTopLevelWindow,
   hasClass,
+  initSessionId,
+  makeCssText,
   offsetBottomAutoUpdate,
+  openNewSessionTab,
+  openNewSessionTabByForm,
+  postClear,
+  postRemoveItem,
+  postSetItem,
   registerGlobalKeyListener,
+  removeSessionBroadcastChannel,
   unregisterGlobalKeyListener,
+  uuid,
   z_index_classNames_default
-} from "./chunks/chunk-IKJP23QCjs.js";
+} from "./chunks/chunk-MYVB4YV4js.js";
 
 // src/types/color.ts
 var IRStyleColorList = ["primary", "secondary", "tertiary", "transparent"];
@@ -51,8 +61,6 @@ export {
   BEMClass,
   ClipboardManager,
   HorizontalAlignmentList,
-  IRComponentPanel,
-  IRComponentPanelItem,
   IRConfirm,
   IRDatePicker,
   IRIntentList,
@@ -74,18 +82,30 @@ export {
   createESCHideController,
   createLoadingHandler,
   createPopover,
+  createSessionBroadcastChannel,
   get2DGenerator,
-  getCssText,
   getElement,
   getMinMaxBetween,
+  getSessionBroadcastChannel,
+  getSessionId,
   getTextWidthContext,
+  getTopLevelWindow,
   hasClass,
   i18n_default as i18n,
+  initSessionId,
+  makeCssText,
   offsetBottomAutoUpdate,
+  openNewSessionTab,
+  openNewSessionTabByForm,
+  postClear,
+  postRemoveItem,
+  postSetItem,
   registerGlobalKeyListener,
+  removeSessionBroadcastChannel,
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
   setTreeDragDropReorder,
-  unregisterGlobalKeyListener
+  unregisterGlobalKeyListener,
+  uuid
 };
 //# sourceMappingURL=index.js.map

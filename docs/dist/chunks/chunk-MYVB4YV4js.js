@@ -5765,9 +5765,9 @@ var ClipboardManager = {
 };
 
 // src/utils/css.ts
-function getCssText(css) {
+var makeCssText = (css) => {
   return Object.entries(css).map(([k2, v3]) => `${k2}: ${v3}`).join(";");
-}
+};
 
 // src/utils/loading.ts
 var import_lodash = __toESM(require_lodash());
@@ -6258,6 +6258,173 @@ var offsetBottomAutoUpdate = (refElement, floatingElement) => {
   return z(refElement, floatingElement, offsetBottomUpdate);
 };
 
+// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/rng.js
+var getRandomValues;
+var rnds8 = new Uint8Array(16);
+function rng() {
+  if (!getRandomValues) {
+    getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== "undefined" && typeof msCrypto.getRandomValues === "function" && msCrypto.getRandomValues.bind(msCrypto);
+    if (!getRandomValues) {
+      throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+    }
+  }
+  return getRandomValues(rnds8);
+}
+
+// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/regex.js
+var regex_default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+
+// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/validate.js
+function validate(uuid2) {
+  return typeof uuid2 === "string" && regex_default.test(uuid2);
+}
+var validate_default = validate;
+
+// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/stringify.js
+var byteToHex = [];
+for (i3 = 0; i3 < 256; ++i3) {
+  byteToHex.push((i3 + 256).toString(16).substr(1));
+}
+var i3;
+function stringify(arr) {
+  var offset = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+  var uuid2 = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+  if (!validate_default(uuid2)) {
+    throw TypeError("Stringified UUID is invalid");
+  }
+  return uuid2;
+}
+var stringify_default = stringify;
+
+// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/v4.js
+function v4(options, buf, offset) {
+  options = options || {};
+  var rnds = options.random || (options.rng || rng)();
+  rnds[6] = rnds[6] & 15 | 64;
+  rnds[8] = rnds[8] & 63 | 128;
+  if (buf) {
+    offset = offset || 0;
+    for (var i3 = 0; i3 < 16; ++i3) {
+      buf[offset + i3] = rnds[i3];
+    }
+    return buf;
+  }
+  return stringify_default(rnds);
+}
+var v4_default = v4;
+
+// src/utils/uuid.ts
+var uuid = () => v4_default();
+
+// src/utils/session.ts
+var openNewSessionTab = (url, features) => {
+  const target = v4_default();
+  const newWindow = window.open(url, target);
+  if (!newWindow)
+    throw new Error("Could not open a new window!");
+  return newWindow;
+};
+var SEEK_INTERVAL = 100;
+var MAX_TRYING_COUNT = 50;
+var openNewSessionTabByForm = ({ method = "post", action, param = {} }) => {
+  const target = v4_default();
+  const form = document.createElement("form");
+  form.method = method;
+  form.action = action;
+  form.target = target;
+  Object.entries(param).filter(([_2, value]) => value !== void 0).forEach(([key, value]) => {
+    const input = document.createElement("input");
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  });
+  document.body.appendChild(form);
+  form.submit();
+  form.remove();
+  let tryCount = 0;
+  return new Promise((resolve, reject) => {
+    const intervalHandler = setInterval(() => {
+      const newWindow = window.open(void 0, target);
+      ++tryCount;
+      if (newWindow) {
+        resolve(newWindow);
+        clearInterval(intervalHandler);
+      } else if (tryCount >= MAX_TRYING_COUNT) {
+        reject("Could not found form window!");
+        clearInterval(intervalHandler);
+      }
+    }, SEEK_INTERVAL);
+  });
+};
+var getTopLevelWindow = () => {
+  let curWnd = window;
+  if (!curWnd)
+    throw new Error("not found top level window.");
+  while (curWnd.opener)
+    curWnd = curWnd.opener;
+  return curWnd;
+};
+var sessionStorageChannel = null;
+var createSessionBroadcastChannel = () => {
+  if (!sessionStorageChannel) {
+    sessionStorageChannel = getSessionBroadcastChannel();
+    sessionStorageChannel.onmessage = (ev) => {
+      if (!ev.data)
+        return;
+      const { type, key, value } = ev.data;
+      if (type === "set-item")
+        sessionStorage.setItem(key, value);
+      else if (type === "remove-item")
+        sessionStorage.removeItem(key);
+      else if (type === "clear")
+        sessionStorage.clear();
+      else if (type === "refresh-session-id" && window.opener)
+        initSessionId();
+    };
+  }
+  return sessionStorageChannel;
+};
+var removeSessionBroadcastChannel = () => {
+  if (sessionStorageChannel) {
+    sessionStorageChannel.close();
+    sessionStorageChannel = null;
+  }
+};
+var initSessionId = () => {
+  const parentWindow = getTopLevelWindow();
+  if (!parentWindow.IR_SESSION_ID) {
+    parentWindow.IR_SESSION_ID = v4_default();
+    new BroadcastChannel("refresh-session-id").postMessage({ message: "refresh" });
+  }
+  window.IR_SESSION_ID = parentWindow.IR_SESSION_ID;
+  removeSessionBroadcastChannel();
+  createSessionBroadcastChannel();
+};
+var getSessionId = () => {
+  if (!window.IR_SESSION_ID)
+    initSessionId();
+  return window.IR_SESSION_ID;
+};
+var getSessionBroadcastChannel = () => {
+  return new BroadcastChannel(getSessionId());
+};
+var postSetItem = (key, value) => {
+  getSessionBroadcastChannel().postMessage({ type: "set-item", key, value });
+};
+var postRemoveItem = (key) => {
+  getSessionBroadcastChannel().postMessage({ type: "remove-item", key });
+};
+var postClear = () => {
+  getSessionBroadcastChannel().postMessage({ type: "clear" });
+};
+initSessionId();
+createSessionBroadcastChannel();
+var refreshSessionChannel = new BroadcastChannel("refresh-session-id");
+refreshSessionChannel.onmessage = (ev) => {
+  if (ev.data.message === "refresh" && window.opener)
+    initSessionId();
+};
+
 // src/components/loading/loading.classNames.ts
 var block2 = "loading";
 var loading_classNames_default = {
@@ -6267,12 +6434,13 @@ var loading_classNames_default = {
 };
 
 // src/utils/loading.ts
+var LOADING_CIRCLE_COUNT = 4;
 var createLoading = () => {
   const loading = document.createElement("div");
   const items = document.createElement("div");
   loading.className = loading_classNames_default.loading.blockElementName;
   items.className = loading_classNames_default.loadingItems.blockElementName;
-  import_lodash.default.range(4).forEach(() => {
+  import_lodash.default.range(LOADING_CIRCLE_COUNT).forEach(() => {
     const i3 = document.createElement("i");
     i3.className = loading_classNames_default.loadingDotItem.blockElementName;
     items.appendChild(i3);
@@ -6292,7 +6460,7 @@ var createLoadingHandler = ({ contextElement, onClick, animated = false, startDe
   const handler = {
     updatePos: () => {
       const rect = contextElement.getBoundingClientRect();
-      loading.style.cssText = getCssText({
+      loading.style.cssText = makeCssText({
         top: `${rect.y}px`,
         left: `${rect.x}px`,
         width: `${rect.width}px`,
@@ -6333,63 +6501,13 @@ var createLoadingHandler = ({ contextElement, onClick, animated = false, startDe
   return handler;
 };
 
-// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/rng.js
-var getRandomValues;
-var rnds8 = new Uint8Array(16);
-function rng() {
-  if (!getRandomValues) {
-    getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== "undefined" && typeof msCrypto.getRandomValues === "function" && msCrypto.getRandomValues.bind(msCrypto);
-    if (!getRandomValues) {
-      throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
-    }
-  }
-  return getRandomValues(rnds8);
-}
-
-// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/regex.js
-var regex_default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-
-// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/validate.js
-function validate(uuid) {
-  return typeof uuid === "string" && regex_default.test(uuid);
-}
-var validate_default = validate;
-
-// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/stringify.js
-var byteToHex = [];
-for (i3 = 0; i3 < 256; ++i3) {
-  byteToHex.push((i3 + 256).toString(16).substr(1));
-}
-var i3;
-function stringify(arr) {
-  var offset = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
-  var uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
-  if (!validate_default(uuid)) {
-    throw TypeError("Stringified UUID is invalid");
-  }
-  return uuid;
-}
-var stringify_default = stringify;
-
-// ../../node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/v4.js
-function v4(options, buf, offset) {
-  options = options || {};
-  var rnds = options.random || (options.rng || rng)();
-  rnds[6] = rnds[6] & 15 | 64;
-  rnds[8] = rnds[8] & 63 | 128;
-  if (buf) {
-    offset = offset || 0;
-    for (var i3 = 0; i3 < 16; ++i3) {
-      buf[offset + i3] = rnds[i3];
-    }
-    return buf;
-  }
-  return stringify_default(rnds);
-}
-var v4_default = v4;
-
 // src/js-components/base/index.ts
 var uuidIRComponentMap = {};
+var SCROLL_CLASS = [
+  "has-both-scroll",
+  "has-vertical-scroll",
+  "has-horizontal-scroll"
+];
 var IRComponent = class {
   constructor({ contextElement }) {
     this.contextElement = contextElement;
@@ -6412,6 +6530,12 @@ var IRComponent = class {
   get logger() {
     return this._logger;
   }
+  get contextWidth() {
+    return this.contextElement.scrollWidth;
+  }
+  get contextHeight() {
+    return this.contextElement.scrollHeight;
+  }
   destroy() {
     var _a;
     this.coreElements.forEach((e2) => e2.remove());
@@ -6432,18 +6556,22 @@ var IRComponent = class {
   }
   onDestroy() {
   }
-  generateScrollBar() {
-    const hasVertical = this.contextElement.scrollHeight > this.contextElement.clientHeight + 1;
-    const hasHorizontal = this.contextElement.scrollWidth > this.contextElement.clientWidth + 1;
-    this.contextElement.classList.remove("has-both-scroll");
-    this.contextElement.classList.remove("has-vertical-scroll");
-    this.contextElement.classList.remove("has-horizontal-scroll");
+  getScrollCls(hasVertical, hasHorizontal) {
     if (hasVertical && hasHorizontal)
-      this.contextElement.classList.add("has-both-scroll");
+      return "has-both-scroll";
     else if (hasVertical)
-      this.contextElement.classList.add("has-vertical-scroll");
+      return "has-vertical-scroll";
     else if (hasHorizontal)
-      this.contextElement.classList.add("has-horizontal-scroll");
+      return "has-horizontal-scroll";
+    return "";
+  }
+  generateScrollBar() {
+    const hasVertical = this.contextHeight > this.contextElement.clientHeight + 1;
+    const hasHorizontal = this.contextWidth > this.contextElement.clientWidth + 1;
+    const scrollClass = this.getScrollCls(hasVertical, hasHorizontal);
+    SCROLL_CLASS.filter((cls) => !scrollClass.includes(cls)).forEach((cls) => this.contextElement.classList.remove(cls));
+    if (scrollClass !== "" && !this.contextElement.classList.contains(scrollClass))
+      this.contextElement.classList.add(scrollClass);
   }
   initUUID() {
     if (!this.hasUUID) {
@@ -6478,7 +6606,7 @@ export {
   getTextWidthContext,
   getMinMaxBetween,
   ClipboardManager,
-  getCssText,
+  makeCssText,
   require_lodash,
   createLoadingHandler,
   get2DGenerator,
@@ -6486,6 +6614,18 @@ export {
   createCustomIcon,
   offsetBottomAutoUpdate,
   v4_default,
+  uuid,
+  openNewSessionTab,
+  openNewSessionTabByForm,
+  getTopLevelWindow,
+  createSessionBroadcastChannel,
+  removeSessionBroadcastChannel,
+  initSessionId,
+  getSessionId,
+  getSessionBroadcastChannel,
+  postSetItem,
+  postRemoveItem,
+  postClear,
   IRComponent
 };
 /*! Bundled license information:
@@ -6500,4 +6640,4 @@ lodash/lodash.js:
    * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
    *)
 */
-//# sourceMappingURL=chunk-IKJP23QCjs.js.map
+//# sourceMappingURL=chunk-MYVB4YV4js.js.map

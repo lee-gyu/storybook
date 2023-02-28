@@ -6,7 +6,7 @@ import {
   __spreadValues,
   __toESM,
   require_lodash
-} from "./chunks/chunk-IKJP23QCjs.js";
+} from "./chunks/chunk-MYVB4YV4js.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -6395,7 +6395,7 @@ var IRFlowchart = class extends IRComponent {
   set gridMode(boolean) {
     this._gridMode = boolean;
     this.d3Grid.attr("visibility", this._gridMode ? "visible" : "hidden");
-    this.classedOnSvg(boolean, "grid");
+    this.classedOnSvg(boolean, "flowchart-grid");
     this._logger.info(`gridMode property is changed to '${boolean}'`);
     this.render();
   }
@@ -6437,7 +6437,7 @@ var IRFlowchart = class extends IRComponent {
     const h = isNaN(height) ? height : `${height}px`;
     this.d3Div = select_default2(div).style("width", w).style("height", h);
     this.d3Svg = select_default2(svg).on("mousemove", (ev) => this._mouseMoveOnSheetHandler(ev)).on("click", (ev) => this._clickOnSheetHandler(ev)).call(drag_default().filter(() => this._editMode === false).on("start", (ev) => this._dragController(ev)).on("drag", (ev) => this._dragController(ev)).on("end", (ev) => this._dragController(ev)));
-    this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden");
+    this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "flowchart-grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden");
     this.d3Container = this.d3Svg.append("g").attr("class", "container");
     const zoom = zoom_default2().filter((ev) => {
       return this._wheelZoom && ev.type === "wheel" && ev.ctrlKey;
