@@ -6316,7 +6316,9 @@ var v4_default = v4;
 // src/utils/uuid.ts
 var uuid = () => v4_default();
 
-// src/utils/session.ts
+// src/utils/session/open.ts
+var SEEK_INTERVAL = 100;
+var MAX_TRYING_COUNT = 30;
 var openNewSessionTab = (url, features) => {
   const target = v4_default();
   const newWindow = window.open(url, target);
@@ -6324,8 +6326,6 @@ var openNewSessionTab = (url, features) => {
     throw new Error("Could not open a new window!");
   return newWindow;
 };
-var SEEK_INTERVAL = 100;
-var MAX_TRYING_COUNT = 50;
 var openNewSessionTabByForm = ({ method = "post", action, param = {} }) => {
   const target = v4_default();
   const form = document.createElement("form");
@@ -6350,11 +6350,29 @@ var openNewSessionTabByForm = ({ method = "post", action, param = {} }) => {
         resolve(newWindow);
         clearInterval(intervalHandler);
       } else if (tryCount >= MAX_TRYING_COUNT) {
-        reject("Could not found form window!");
+        reject("Could not found the new window from form!");
         clearInterval(intervalHandler);
       }
     }, SEEK_INTERVAL);
   });
+};
+
+// src/utils/session/common-channel.ts
+var commonChannel = new BroadcastChannel("ir-style-common");
+var messageListenerList = [];
+commonChannel.onmessage = (ev) => {
+  messageListenerList.forEach((listener) => listener(ev));
+};
+var addMessageEventListener = (listener) => {
+  messageListenerList.push(listener);
+};
+var postMessageOnCommonChannel = (message) => {
+  commonChannel.postMessage(message);
+};
+
+// src/utils/session/utils.ts
+var isTopLevelWindow = () => {
+  return window.opener === null;
 };
 var getTopLevelWindow = () => {
   let curWnd = window;
@@ -6364,65 +6382,70 @@ var getTopLevelWindow = () => {
     curWnd = curWnd.opener;
   return curWnd;
 };
-var sessionStorageChannel = null;
-var createSessionBroadcastChannel = () => {
-  if (!sessionStorageChannel) {
-    sessionStorageChannel = getSessionBroadcastChannel();
-    sessionStorageChannel.onmessage = (ev) => {
-      if (!ev.data)
-        return;
-      const { type, key, value } = ev.data;
-      if (type === "set-item")
-        sessionStorage.setItem(key, value);
-      else if (type === "remove-item")
-        sessionStorage.removeItem(key);
-      else if (type === "clear")
-        sessionStorage.clear();
-      else if (type === "refresh-session-id" && window.opener)
-        initSessionId();
-    };
-  }
-  return sessionStorageChannel;
-};
-var removeSessionBroadcastChannel = () => {
-  if (sessionStorageChannel) {
-    sessionStorageChannel.close();
-    sessionStorageChannel = null;
-  }
+var refreshSessionId = () => {
+  const parentWindow = getTopLevelWindow();
+  if (!parentWindow.IR_SESSION_ID)
+    throw new Error("No session id on top-level window!");
+  window.IR_SESSION_ID = parentWindow.IR_SESSION_ID;
 };
 var initSessionId = () => {
-  const parentWindow = getTopLevelWindow();
-  if (!parentWindow.IR_SESSION_ID) {
-    parentWindow.IR_SESSION_ID = v4_default();
-    new BroadcastChannel("refresh-session-id").postMessage({ message: "refresh" });
+  if (window.opener) {
+    refreshSessionId();
+  } else {
+    window.IR_SESSION_ID = v4_default();
+    postMessageOnCommonChannel({ message: "session-refresh" });
   }
-  window.IR_SESSION_ID = parentWindow.IR_SESSION_ID;
-  removeSessionBroadcastChannel();
-  createSessionBroadcastChannel();
 };
 var getSessionId = () => {
   if (!window.IR_SESSION_ID)
-    initSessionId();
+    throw new Error("No session ID!");
   return window.IR_SESSION_ID;
 };
-var getSessionBroadcastChannel = () => {
-  return new BroadcastChannel(getSessionId());
+initSessionId();
+
+// src/utils/session/session.ts
+var sessionStorageChannel = null;
+var refreshSessionBroadcastChannel = () => {
+  if (sessionStorageChannel)
+    sessionStorageChannel.close();
+  refreshSessionId();
+  sessionStorageChannel = new BroadcastChannel(getSessionId());
+  sessionStorageChannel.onmessage = (ev) => {
+    if (!ev.data)
+      return;
+    const { type, key, value } = ev.data;
+    if (type === "set-item")
+      sessionStorage.setItem(key, value);
+    else if (type === "remove-item")
+      sessionStorage.removeItem(key);
+    else if (type === "clear")
+      sessionStorage.clear();
+  };
+  return sessionStorageChannel;
 };
+refreshSessionBroadcastChannel();
+addMessageEventListener((ev) => {
+  if (ev.data.message !== "session-refresh" || isTopLevelWindow())
+    return;
+  refreshSessionBroadcastChannel();
+});
 var postSetItem = (key, value) => {
-  getSessionBroadcastChannel().postMessage({ type: "set-item", key, value });
+  if (!sessionStorageChannel)
+    throw new Error("No session channel");
+  sessionStorage.setItem(key, value);
+  sessionStorageChannel.postMessage({ type: "set-item", key, value });
 };
 var postRemoveItem = (key) => {
-  getSessionBroadcastChannel().postMessage({ type: "remove-item", key });
+  if (!sessionStorageChannel)
+    throw new Error("No session channel");
+  sessionStorage.removeItem(key);
+  sessionStorageChannel.postMessage({ type: "remove-item", key });
 };
 var postClear = () => {
-  getSessionBroadcastChannel().postMessage({ type: "clear" });
-};
-initSessionId();
-createSessionBroadcastChannel();
-var refreshSessionChannel = new BroadcastChannel("refresh-session-id");
-refreshSessionChannel.onmessage = (ev) => {
-  if (ev.data.message === "refresh" && window.opener)
-    initSessionId();
+  if (!sessionStorageChannel)
+    throw new Error("No session channel");
+  sessionStorage.clear();
+  sessionStorageChannel.postMessage({ type: "clear" });
 };
 
 // src/components/loading/loading.classNames.ts
@@ -6617,12 +6640,9 @@ export {
   uuid,
   openNewSessionTab,
   openNewSessionTabByForm,
-  getTopLevelWindow,
-  createSessionBroadcastChannel,
-  removeSessionBroadcastChannel,
-  initSessionId,
-  getSessionId,
-  getSessionBroadcastChannel,
+  addMessageEventListener,
+  postMessageOnCommonChannel,
+  refreshSessionBroadcastChannel,
   postSetItem,
   postRemoveItem,
   postClear,
@@ -6640,4 +6660,4 @@ lodash/lodash.js:
    * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
    *)
 */
-//# sourceMappingURL=chunk-MYVB4YV4js.js.map
+//# sourceMappingURL=chunk-HQIA5YZYjs.js.map

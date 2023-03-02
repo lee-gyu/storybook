@@ -9,16 +9,17 @@ import {
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
   setTreeDragDropReorder
-} from "./chunks/chunk-XJ2WW44Gjs.js";
+} from "./chunks/chunk-THWP4QHJjs.js";
 import {
   i18n_default
-} from "./chunks/chunk-KXB5YW37js.js";
+} from "./chunks/chunk-2D4BOB5Fjs.js";
 import {
   BEMClass,
   ClipboardManager,
   Logger,
   Palette,
   StateList,
+  addMessageEventListener,
   appendElement,
   clearGlobalKeyListener,
   createClickOutsideHandler,
@@ -26,29 +27,25 @@ import {
   createESCHideController,
   createLoadingHandler,
   createPopover,
-  createSessionBroadcastChannel,
   get2DGenerator,
   getElement,
   getMinMaxBetween,
-  getSessionBroadcastChannel,
-  getSessionId,
   getTextWidthContext,
-  getTopLevelWindow,
   hasClass,
-  initSessionId,
   makeCssText,
   offsetBottomAutoUpdate,
   openNewSessionTab,
   openNewSessionTabByForm,
   postClear,
+  postMessageOnCommonChannel,
   postRemoveItem,
   postSetItem,
+  refreshSessionBroadcastChannel,
   registerGlobalKeyListener,
-  removeSessionBroadcastChannel,
   unregisterGlobalKeyListener,
   uuid,
   z_index_classNames_default
-} from "./chunks/chunk-MYVB4YV4js.js";
+} from "./chunks/chunk-HQIA5YZYjs.js";
 
 // src/types/color.ts
 var IRStyleColorList = ["primary", "secondary", "tertiary", "transparent"];
@@ -72,6 +69,7 @@ export {
   Palette,
   StateList,
   VerticalAlignmentList,
+  addMessageEventListener,
   appendElement,
   clearGlobalKeyListener,
   z_index_classNames_default as clsZId,
@@ -82,26 +80,22 @@ export {
   createESCHideController,
   createLoadingHandler,
   createPopover,
-  createSessionBroadcastChannel,
   get2DGenerator,
   getElement,
   getMinMaxBetween,
-  getSessionBroadcastChannel,
-  getSessionId,
   getTextWidthContext,
-  getTopLevelWindow,
   hasClass,
   i18n_default as i18n,
-  initSessionId,
   makeCssText,
   offsetBottomAutoUpdate,
   openNewSessionTab,
   openNewSessionTabByForm,
   postClear,
+  postMessageOnCommonChannel,
   postRemoveItem,
   postSetItem,
+  refreshSessionBroadcastChannel,
   registerGlobalKeyListener,
-  removeSessionBroadcastChannel,
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
   setTreeDragDropReorder,

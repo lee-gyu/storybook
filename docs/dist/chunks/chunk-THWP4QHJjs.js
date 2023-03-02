@@ -1,7 +1,7 @@
 import {
   i18n_default,
   require_moment
-} from "./chunk-KXB5YW37js.js";
+} from "./chunk-2D4BOB5Fjs.js";
 import {
   BEMClass,
   IRComponent,
@@ -16,7 +16,7 @@ import {
   require_lodash,
   unregisterGlobalKeyListener,
   z_index_classNames_default
-} from "./chunk-MYVB4YV4js.js";
+} from "./chunk-HQIA5YZYjs.js";
 
 // src/js-components/tree/tree.classNames.ts
 var block = "tree";
@@ -892,29 +892,29 @@ var createDatePickerHandler = ({ uuid, refElement, onClick, minDate, maxDate }) 
     get visible() {
       return visible;
     },
-    update(calendarDate, selectedDate) {
+    update: function(calendarDate, selectedDate) {
       const tmp = setTimeZero(new Date(calendarDate));
       const curMon = tmp.getMonth();
       datePicker_elements_default.headerPrev.onclick = () => {
         calendarDate.setDate(PREV_MONTH_DAYS);
-        handler.update(calendarDate, selectedDate);
+        this.update(calendarDate, selectedDate);
       };
       datePicker_elements_default.headerNext.onclick = () => {
         calendarDate.setDate(NEXT_MONTH_DAYS);
-        handler.update(calendarDate, selectedDate);
+        this.update(calendarDate, selectedDate);
       };
       datePicker_elements_default.headerPrevYear.onclick = () => {
         calendarDate.setFullYear(calendarDate.getFullYear() - 1);
-        handler.update(calendarDate, selectedDate);
+        this.update(calendarDate, selectedDate);
       };
       datePicker_elements_default.headerNextYear.onclick = () => {
         calendarDate.setFullYear(calendarDate.getFullYear() + 1);
-        handler.update(calendarDate, selectedDate);
+        this.update(calendarDate, selectedDate);
       };
       datePicker_elements_default.todayButton.onclick = () => {
         const today = new Date();
         onClick.call(null, today);
-        handler.update(today, today);
+        this.update(today, today);
       };
       datePicker_elements_default.updateI18n();
       datePicker_elements_default.headerTitle.innerText = (0, import_moment.default)(tmp).format(i18n_default.datePicker.titleFormat);
@@ -940,7 +940,7 @@ var createDatePickerHandler = ({ uuid, refElement, onClick, minDate, maxDate }) 
         datePicker_elements_default.contentTableTbody.appendChild(row);
       });
     },
-    show() {
+    show: function() {
       visible = true;
       if (!datePicker_elements_default.datePicker.isConnected)
         document.body.appendChild(datePicker_elements_default.datePicker);
@@ -954,18 +954,20 @@ var createDatePickerHandler = ({ uuid, refElement, onClick, minDate, maxDate }) 
         floatingCleanup = offsetBottomAutoUpdate(refElement, datePicker_elements_default.datePicker);
       }, 0);
     },
-    hide() {
+    hide: function() {
       clickOutsideHandler.destroy();
       escController.destroy();
-      datePicker_elements_default.datePicker.addEventListener("transitionend", (ev) => {
+      const hideHandler = (ev) => {
         if (ev.currentTarget !== ev.target)
           return;
         visible = false;
+        datePicker_elements_default.datePicker.removeEventListener("transitionend", hideHandler);
         if (uuid === datePicker_elements_default.datePicker.getAttribute("data-for")) {
           floatingCleanup();
           datePicker_elements_default.datePicker.remove();
         }
-      }, { once: true });
+      };
+      datePicker_elements_default.datePicker.addEventListener("transitionend", hideHandler);
       datePicker_elements_default.datePicker.classList.remove(datePicker_classNames_default.datePicker["is-visible"]);
     },
     onESC: () => handler.hide()
@@ -1647,4 +1649,4 @@ export {
   IRConfirm,
   IRTimePicker
 };
-//# sourceMappingURL=chunk-XJ2WW44Gjs.js.map
+//# sourceMappingURL=chunk-THWP4QHJjs.js.map
