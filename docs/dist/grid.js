@@ -6,11 +6,11 @@ import {
   createDropdownItem,
   input_classNames_default,
   select_classNames_default
-} from "./chunks/chunk-THWP4QHJjs.js";
+} from "./chunks/chunk-3RH2R2XHjs.js";
 import {
   i18n_default,
   require_moment
-} from "./chunks/chunk-2D4BOB5Fjs.js";
+} from "./chunks/chunk-JCRV6IXZjs.js";
 import {
   BEMClass,
   ClipboardManager,
@@ -28,7 +28,7 @@ import {
   offsetBottomAutoUpdate,
   require_lodash,
   v4_default
-} from "./chunks/chunk-HQIA5YZYjs.js";
+} from "./chunks/chunk-4T2IZUBIjs.js";
 
 // src/js-components/grid/grid.ts
 var import_lodash10 = __toESM(require_lodash());
@@ -3008,17 +3008,18 @@ var UndoManager = class {
 };
 
 // src/js-components/grid/virtual.ts
-var ADJUST_SIZE = 200;
-var createVirtualRenderer = (grid, tbody) => {
+function createVirtualRenderer(grid, tbody) {
   const tmpRow = document.createElement("tr");
   tmpRow.setAttribute("data-row", "temp");
   return {
+    initTempRow: () => {
+    },
     render: () => {
-      const scrollBottom = grid.scrollBottom + ADJUST_SIZE;
+      const scrollBottom = grid.scrollBottom + 200;
       grid.getRowLodash().takeWhile((row) => row.top <= scrollBottom).filter((row) => !row.isMounted).forEach((row) => row.mount(tbody));
     }
   };
-};
+}
 
 // src/js-components/grid/grid.ts
 var BORDER_SIZE = 1;
