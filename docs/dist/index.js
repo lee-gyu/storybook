@@ -1,18 +1,23 @@
 import {
+  IRCommandBlock,
+  IRCommandManager,
+  IRComponentModule,
   IRConfirm,
   IRDatePicker,
+  IRPageControl,
   IRSelect,
   IRTimePicker,
   IRTree,
   createDropdownDiv,
   createDropdownItem,
+  hasDisplayedConfirm,
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
   setTreeDragDropReorder
-} from "./chunks/chunk-3RH2R2XHjs.js";
+} from "./chunks/chunk-SCINQERVjs.js";
 import {
   i18n_default
-} from "./chunks/chunk-JCRV6IXZjs.js";
+} from "./chunks/chunk-YUYUP727js.js";
 import {
   BEMClass,
   ClipboardManager,
@@ -27,6 +32,8 @@ import {
   createESCHideController,
   createLoadingHandler,
   createPopover,
+  createTooltip,
+  createTooltipBySelector,
   get2DGenerator,
   getElement,
   getMinMaxBetween,
@@ -35,6 +42,8 @@ import {
   hasClass,
   makeCssText,
   offsetBottomAutoUpdate,
+  openNewSessionTab,
+  openNewSessionTabByForm,
   openNewWindow,
   postClear,
   postMessageOnCommonChannel,
@@ -46,7 +55,7 @@ import {
   unregisterGlobalKeyListener,
   uuid,
   z_index_classNames_default
-} from "./chunks/chunk-4T2IZUBIjs.js";
+} from "./chunks/chunk-LTWBM3BUjs.js";
 
 // src/types/color.ts
 var IRStyleColorList = ["primary", "secondary", "tertiary", "transparent"];
@@ -59,9 +68,13 @@ export {
   BEMClass,
   ClipboardManager,
   HorizontalAlignmentList,
+  IRCommandBlock,
+  IRCommandManager,
+  IRComponentModule,
   IRConfirm,
   IRDatePicker,
   IRIntentList,
+  IRPageControl,
   IRSelect,
   IRStyleColorList,
   IRTimePicker,
@@ -81,15 +94,20 @@ export {
   createESCHideController,
   createLoadingHandler,
   createPopover,
+  createTooltip,
+  createTooltipBySelector,
   get2DGenerator,
   getElement,
   getMinMaxBetween,
   getPageParam,
   getTextWidthContext,
   hasClass,
+  hasDisplayedConfirm,
   i18n_default as i18n,
   makeCssText,
   offsetBottomAutoUpdate,
+  openNewSessionTab,
+  openNewSessionTabByForm,
   openNewWindow,
   postClear,
   postMessageOnCommonChannel,
