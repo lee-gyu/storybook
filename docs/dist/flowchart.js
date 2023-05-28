@@ -1,12 +1,11 @@
 import {
-  IRComponent,
+  IRComponent
+} from "./chunks/chunk-BI23OIPF.js";
+import {
   Logger,
-  __async,
-  __spreadProps,
-  __spreadValues,
   __toESM,
   require_lodash
-} from "./chunks/chunk-LTWBM3BUjs.js";
+} from "./chunks/chunk-JYMTCUXI.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -1364,6 +1363,7 @@ define_default(Color, color, {
     return this.rgb().displayable();
   },
   hex: color_formatHex,
+  // Deprecated! Use color.formatHex.
   formatHex: color_formatHex,
   formatHex8: color_formatHex8,
   formatHsl: color_formatHsl,
@@ -1431,6 +1431,7 @@ define_default(Rgb, rgb, extend(Color, {
     return -0.5 <= this.r && this.r < 255.5 && (-0.5 <= this.g && this.g < 255.5) && (-0.5 <= this.b && this.b < 255.5) && (0 <= this.opacity && this.opacity <= 1);
   },
   hex: rgb_formatHex,
+  // Deprecated! Use color.formatHex.
   formatHex: rgb_formatHex,
   formatHex8: rgb_formatHex8,
   formatRgb: rgb_formatRgb,
@@ -1975,7 +1976,9 @@ function schedule_default(node, name, id2, index, group, timing) {
   create(node, id2, {
     name,
     index,
+    // For context during callback.
     group,
+    // For context during callback.
     on: emptyOn,
     tween: emptyTween,
     time: timing.time,
@@ -2657,6 +2660,7 @@ function cubicInOut(t) {
 // ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/transition.js
 var defaultTiming = {
   time: null,
+  // Set on use.
   delay: 0,
   duration: 250,
   ease: cubicInOut
@@ -3167,6 +3171,11 @@ var InterfaceInstance = class {
 
 // src/js-components/flowchart/action/command/base.js
 var BaseCommand = class {
+  /**
+  *
+  * @param {String} command
+  * @param {ContainerInterface} icontainer
+  */
   constructor(command, icontainer) {
     this.command = command;
     this.icontainer = icontainer;
@@ -3181,6 +3190,10 @@ var BaseCommand = class {
 
 // src/js-components/flowchart/action/command/add.js
 var AddCommand = class extends BaseCommand {
+  /**
+  *
+  * @param {{}[]} objDataList
+  */
   constructor(objDataList, icontainer) {
     super("add", icontainer);
     this.objDataList = objDataList;
@@ -3211,93 +3224,6 @@ var DeleteCommand = class extends AddCommand {
 
 // src/js-components/flowchart/util/functions.ts
 var _ = __toESM(require_lodash());
-
-// src/js-components/flowchart/data/style-data.ts
-var DEFAULT_STYLE_DATA = {
-  id: "",
-  temp: false,
-  type: "",
-  render: "",
-  text: "",
-  editable: true,
-  foreColor: "black",
-  fontSize: 16,
-  fontFamily: "Noto Sans KR",
-  textDecoration: "none",
-  visibleOverText: true,
-  opacity: 1,
-  cursor: "move",
-  borderColor: "black",
-  borderWidth: 1,
-  borderDash: 0,
-  isSelected: false,
-  isMonitoring: true,
-  isHovered: false,
-  tooltipText: "",
-  tooltipFontSize: 12,
-  tooltipForeColor: "black",
-  tooltipFontFamily: "Noto Sans KR",
-  tooltipFill: "white",
-  tooltipMaxWidth: 380,
-  tooltipBorderColor: "#bbb",
-  tooltipBorderWidth: 1,
-  tooltipBorderDash: 0,
-  tooltipPadding: 10,
-  tooltipTextDecoration: "none",
-  tooltipVisible: true,
-  "borderWidth.selected": 2,
-  "borderColor.selected": "blue"
-};
-
-// src/js-components/flowchart/data/connection.ts
-var DEFAULT_CONNECTION_STYLE_DATA = __spreadProps(__spreadValues({}, DEFAULT_STYLE_DATA), {
-  "connection.points": [],
-  "connection.sourceObjId": null,
-  "connection.sourcePos": null,
-  "connection.destinationObjId": null,
-  "connection.destinationPos": null,
-  "connection.width": 200,
-  "connection.arrowFill": "black",
-  "connection.arrowSize": 10,
-  "connection.textBorderColor": "black",
-  "connection.textBorderWidth": 1,
-  "connection.textBorderDash": 0,
-  "connection.textBorderFill": "white",
-  "connection.connectorFill": "black",
-  "connection.connectorSize": 3,
-  "connection.adjusterSize": 7,
-  "connection.adjusterFill": "black",
-  "connection.arrowBorderColor": "black",
-  "connection.arrowBorderWidth": 1
-});
-
-// src/js-components/flowchart/data/group.ts
-var DEFAULT_GROUP_STYLE_DATA = __spreadProps(__spreadValues({}, DEFAULT_STYLE_DATA), {
-  "group.margin": 20,
-  "group.borderAlwaysAppearance": false
-});
-
-// src/js-components/flowchart/data/node.ts
-var DEFAULT_NODE_STYLE_DATA = __spreadProps(__spreadValues({}, DEFAULT_STYLE_DATA), {
-  "node.width": 120,
-  "node.height": 60,
-  "node.fill": "white",
-  "node.x": 0,
-  "node.y": 0,
-  "node.connectorGap": 0,
-  "node.connectorSize": 5,
-  "node.resizerEnabled": true,
-  "node.connectorEnabled": true,
-  "node.commentTopLeft": "",
-  "node.commentTopCenter": "",
-  "node.commentTopRight": "",
-  "node.commentBottomLeft": "",
-  "node.commentBottomCenter": "",
-  "node.commentBottomRight": "",
-  "node.commentFontSize": 10,
-  "node.commentForeColor": "black",
-  "node.commentFontFamily": "Noto Sans KR"
-});
 
 // src/js-components/flowchart/util/text-metrics.ts
 var canvas = document.createElement("canvas");
@@ -3368,6 +3294,97 @@ var getCroppedText = (data, height) => {
   return wrapperInfo;
 };
 
+// src/js-components/flowchart/data/style-data.ts
+var DEFAULT_FONT_FAMILY = "Noto Sans KR";
+var DEFAULT_STYLE_DATA = {
+  id: "",
+  temp: false,
+  type: "",
+  render: "",
+  text: "",
+  editable: true,
+  foreColor: "black",
+  fontSize: 16,
+  fontFamily: DEFAULT_FONT_FAMILY,
+  textDecoration: "none",
+  visibleOverText: true,
+  opacity: 1,
+  cursor: "move",
+  borderColor: "black",
+  borderWidth: 1,
+  borderDash: 0,
+  isSelected: false,
+  isMonitoring: true,
+  isHovered: false,
+  tooltipText: "",
+  tooltipFontSize: 12,
+  tooltipForeColor: "black",
+  tooltipFontFamily: DEFAULT_FONT_FAMILY,
+  tooltipFill: "white",
+  tooltipMaxWidth: 380,
+  tooltipBorderColor: "#bbb",
+  tooltipBorderWidth: 1,
+  tooltipBorderDash: 0,
+  tooltipPadding: 10,
+  tooltipTextDecoration: "none",
+  tooltipVisible: true,
+  "borderWidth.selected": 2,
+  "borderColor.selected": "blue"
+};
+
+// src/js-components/flowchart/data/connection.ts
+var DEFAULT_CONNECTION_STYLE_DATA = {
+  ...DEFAULT_STYLE_DATA,
+  "connection.points": [],
+  "connection.sourceObjId": null,
+  "connection.sourcePos": null,
+  "connection.destinationObjId": null,
+  "connection.destinationPos": null,
+  "connection.width": 200,
+  "connection.arrowFill": "black",
+  "connection.arrowSize": 10,
+  "connection.textBorderColor": "black",
+  "connection.textBorderWidth": 1,
+  "connection.textBorderDash": 0,
+  "connection.textBorderFill": "white",
+  "connection.connectorFill": "black",
+  "connection.connectorSize": 3,
+  "connection.adjusterSize": 7,
+  "connection.adjusterFill": "black",
+  "connection.arrowBorderColor": "black",
+  "connection.arrowBorderWidth": 1
+};
+
+// src/js-components/flowchart/data/group.ts
+var DEFAULT_GROUP_STYLE_DATA = {
+  ...DEFAULT_STYLE_DATA,
+  "group.margin": 20,
+  "group.borderAlwaysAppearance": false
+};
+
+// src/js-components/flowchart/data/node.ts
+var DEFAULT_NODE_STYLE_DATA = {
+  ...DEFAULT_STYLE_DATA,
+  "node.width": 120,
+  "node.height": 60,
+  "node.fill": "white",
+  "node.x": 0,
+  "node.y": 0,
+  "node.connectorGap": 0,
+  "node.connectorSize": 5,
+  "node.resizerEnabled": true,
+  "node.connectorEnabled": true,
+  "node.commentTopLeft": "",
+  "node.commentTopCenter": "",
+  "node.commentTopRight": "",
+  "node.commentBottomLeft": "",
+  "node.commentBottomCenter": "",
+  "node.commentBottomRight": "",
+  "node.commentFontSize": 10,
+  "node.commentForeColor": "black",
+  "node.commentFontFamily": "Noto Sans KR"
+};
+
 // src/js-components/flowchart/util/functions.ts
 var TRANSLATE_REGEX = /translate\((-?[\d.]+),\s*?(-?[\d.]+)\)/;
 var SCALE_REGEX = /scale\(([\d.]+),\s*?([\d.]+)\)/;
@@ -3379,9 +3396,9 @@ var POSITION_MAP = {
 };
 var DEFAULT_CONNECTION_LENGTH = 45;
 var TMP_STYLE_MAP = {
-  node: __spreadValues({}, DEFAULT_NODE_STYLE_DATA),
-  group: __spreadValues({}, DEFAULT_GROUP_STYLE_DATA),
-  connection: __spreadValues({}, DEFAULT_CONNECTION_STYLE_DATA)
+  node: { ...DEFAULT_NODE_STYLE_DATA },
+  group: { ...DEFAULT_GROUP_STYLE_DATA },
+  connection: { ...DEFAULT_CONNECTION_STYLE_DATA }
 };
 var getConnectedPositionId = (node, con) => {
   switch (node.id) {
@@ -3495,7 +3512,9 @@ var defaultRule = (data) => {
   }
 };
 var getDefaultConnection = (appendingObj) => {
-  const data = __spreadValues({}, appendingObj.data);
+  const data = {
+    ...appendingObj.data
+  };
   const firstPoint = appendingObj.firstPoint;
   switch (appendingObj.sourcePos) {
     case "top": {
@@ -3677,6 +3696,11 @@ var createLogger = (id2) => {
 // src/js-components/flowchart/action/command/edit.js
 var SIZE_PROP_LIST = ["node.width", "node.height"];
 var ChangedInfo = class {
+  /**
+  *
+  * @param {{}} objData
+  * @param {{key: String, newValue, oldValue}[]} propList
+  */
   constructor(objData, propList) {
     this.objData = objData;
     this.propList = propList || [];
@@ -3712,6 +3736,10 @@ var ChangedInfo = class {
   }
 };
 var EditCommand = class extends BaseCommand {
+  /**
+  * @param {ChangedInfo[]} changeInfoList
+  * @param {ContainerInterface} icontainer
+  */
   constructor(changeInfoList, icontainer) {
     super("edit", icontainer);
     this.changeInfoList = changeInfoList;
@@ -3771,6 +3799,9 @@ var RenderObject = class {
   get isSelected() {
     return this.data.isSelected;
   }
+  /**
+  * @returns {'node' | 'connection' | 'group'}
+  */
   get type() {
     return this.data.type;
   }
@@ -3786,9 +3817,15 @@ var RenderObject = class {
   get id() {
     return this.data.id;
   }
+  /**
+  * the start X of this object
+  */
   get startX() {
     throw new Error("Not Implemented!");
   }
+  /**
+  * the start Y of this object
+  */
   get startY() {
     throw new Error("Not Implemented!");
   }
@@ -3858,6 +3895,10 @@ var RenderObject = class {
   set clickedSeq(value) {
     this._clickedSeq = value;
   }
+  /**
+  *
+  * @param {Number | Null} id it will be on front if id is null
+  */
   set zIndex(id2) {
     const container = this.renderer.container.node();
     const g = this.renderer.group.node();
@@ -3938,6 +3979,12 @@ var RenderObject = class {
 
 // src/js-components/flowchart/action/command/render.js
 var RenderCommand = class extends BaseCommand {
+  /**
+  * @param {RenderObject} renderObj
+  * @param {String} oldRender
+  * @param {String} newRender
+  * @param {*} icontainer
+  */
   constructor(renderObj, oldRender, newRender, icontainer) {
     super("render", icontainer);
     this.renderObj = renderObj;
@@ -3957,10 +4004,18 @@ var RenderCommand = class extends BaseCommand {
 // src/js-components/flowchart/action/command/zindex.js
 var _2 = __toESM(require_lodash());
 var ZIndexCommand = class extends BaseCommand {
+  /**
+  *
+  * @param {{objId: String | Number, oldValue: Number | null, newValue: Number | null}[]} dataList
+  */
   constructor(dataList, icontainer) {
     super("front", icontainer);
     this.dataList = dataList;
   }
+  /**
+  *
+  * @param {(obj: RenderObject, oldVlaue: Number | null, newValue: Number | null) => void} func
+  */
   _setZId(prop, reverse) {
     const func = (data) => {
       const obj = this.icontainer.getObjectOrNull(data.objId);
@@ -3996,6 +4051,10 @@ var ActionController = class {
     this.undoStackList = [];
     this.redoStackList = [];
   }
+  /**
+  *
+  * @param {...BaseCommand} commands
+  */
   addAction(...commands) {
     if (this.undoStackList.length === this.actionLimit) {
       this.undoStackList.splice(0, 1);
@@ -4123,6 +4182,11 @@ var ObjectManager = class {
 
 // src/js-components/flowchart/action/movehandler.js
 var MoveHandler = class {
+  /**
+  * @param {ActionController} actionController
+  * @param {ObjectManager} objectManager
+  * @param {ContainerInterface} icontainer
+  */
   constructor(actionController, objectManager, icontainer) {
     this.actionController = actionController;
     this.objectManager = objectManager;
@@ -4153,6 +4217,7 @@ var _4 = __toESM(require_lodash());
 
 // src/js-components/flowchart/data/wrapper.ts
 var FIXED_KEYS = /* @__PURE__ */ new Set([
+  // 공용
   "id",
   "type",
   "render",
@@ -4161,17 +4226,20 @@ var FIXED_KEYS = /* @__PURE__ */ new Set([
   "isSelected",
   "isMonitoring",
   "isHovered",
+  // 노드
   "node.width",
   "node.height",
   "node.x",
   "node.y",
   "node.connectorEnabled",
   "node.resizerEnabled",
+  // 연결선
   "connection.points",
   "connection.sourceObjId",
   "connection.sourcePos",
   "connection.destinationObjId",
   "connection.destinationPos",
+  // 그룹
   "group.borderAlwaysAppearance",
   "group.margin"
 ]);
@@ -4180,10 +4248,9 @@ var StyleDataWrapper = class {
     this.data = data;
   }
   get(key) {
-    var _a;
     if (FIXED_KEYS.has(key))
       return this.data[key];
-    return (_a = this.data[`${key}${this._getPostFix()}`]) != null ? _a : this.data[key];
+    return this.data[`${key}${this._getPostFix()}`] ?? this.data[key];
   }
   _getPostFix() {
     if (this.data.isSelected)
@@ -4268,7 +4335,7 @@ var BaseRenderer = class {
       throw new Error("foreignObj, textarea is null!");
     const rect = this._getLabelRect();
     this.objects.foreignObj.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height);
-    this.objects.textarea.style("width", `${rect.width - 22}px`).style("height", `${rect.height}px`).style("border", "1px solid var(--border-color)").style("background-color", "transparent");
+    this.objects.textarea.style("width", `${rect.width - 22}px`).style("height", `${rect.height}px`).style("border", "1px solid #717171").style("background-color", "transparent");
   }
   removeLabelEdit() {
     if (this.objects.foreignObj) {
@@ -4379,6 +4446,9 @@ var BaseRenderer = class {
     );
     this.textCache.update(data);
   }
+  /**
+   * svg 컨테이너에서 삭제
+   */
   destroy() {
     this.group.remove();
   }
@@ -4570,6 +4640,9 @@ var COMMENT_POS = /* @__PURE__ */ new Set([
   "BottomRight"
 ]);
 var Node = class extends RenderObject {
+  /**
+  * @param {NodeRenderer} renderer
+  */
   constructor(data, renderer, containerInterface) {
     super(data, renderer, containerInterface);
     this.renderer = renderer;
@@ -4699,6 +4772,11 @@ var Node = class extends RenderObject {
 
 // src/js-components/flowchart/action/resizehandler.js
 var ResizeHandler = class {
+  /**
+  * @param {ActionController} actionController
+  * @param {ObjectManager} objectManager
+  * @param {ContainerInterface} icontainer
+  */
   constructor(actionController, objectManager, icontainer) {
     this.actionController = actionController;
     this.objectManager = objectManager;
@@ -4767,6 +4845,9 @@ var ResizeHandler = class {
       this.actionController.addAction(new EditCommand(this.resizeInfo, this.icontainer));
     }
   }
+  /**
+  * @param {Node} node
+  */
   addDragActionOnResizer(node) {
     node.renderer.resizers.forEach((resizer) => {
       const cursor = resizer.attr("cursor");
@@ -4819,6 +4900,27 @@ var ResizeHandler = class {
       }));
     });
   }
+};
+
+// src/js-components/flowchart/flowchart.types.ts
+var EVENT_TYPE = {
+  CLICK: "click",
+  CLICK_NODE: "clickNode",
+  DOUBLE_CLICK_NODE: "dblClickNode",
+  CLICK_CONNECTION: "clickConnection",
+  DOUBLE_CLICK_CONNECTION: "dblClickConnection",
+  NEW_OBJECT: "newObject",
+  REMOVE_OBJECT: "removeObject",
+  SELECT_OBJECT: "selectObject",
+  RELEASE_OBJECT: "releaseObject",
+  UNDO: "undo",
+  REDO: "redo",
+  COMMAND: "command",
+  CHANGE_CLASS: "changeClass",
+  DISCONNECT_NODE: "disconnectNode",
+  CONNECT_NODE: "connectNode",
+  MOUSEUP_SHEET: "mouseUpSheet",
+  CONTEXT_MENU: "contextmenu"
 };
 
 // src/js-components/flowchart/obj/connection.js
@@ -5048,6 +5150,7 @@ var Group = class extends RenderObject {
     });
     this.destroy();
   }
+  // clear all items in this
   clear() {
     this.objectSet.clear();
   }
@@ -5071,7 +5174,7 @@ var Group = class extends RenderObject {
 
 // src/js-components/flowchart/util/clipboard.ts
 var TMP_CLIPBOARD = {
-  text: ""
+  text: `{"objects": []}`
 };
 var clipboard_default = {
   _queryPermission(name) {
@@ -5081,22 +5184,21 @@ var clipboard_default = {
       };
     });
   },
-  checkClipboardPermission() {
-    return __async(this, null, function* () {
-      try {
-        const write = yield this._queryPermission("clipboard-write");
-        const read = yield this._queryPermission("clipboard-read");
-        return write.state === "granted" && read.state === "granted";
-      } catch (e) {
-        return false;
-      }
-    });
+  async checkClipboardPermission() {
+    try {
+      const write = await this._queryPermission("clipboard-write");
+      const read = await this._queryPermission("clipboard-read");
+      return write.state === "granted" && read.state === "granted";
+    } catch {
+      return false;
+    }
   },
   saveData(data) {
     TMP_CLIPBOARD.text = data;
+    return Promise.resolve();
   },
   loadData() {
-    return TMP_CLIPBOARD.text;
+    return Promise.resolve(TMP_CLIPBOARD.text);
   }
 };
 
@@ -5319,6 +5421,13 @@ var DBRenderer = class extends NodeRenderer {
 
 // src/js-components/flowchart/render/connection.js
 var ConnectionRenderer = class extends BaseRenderer {
+  /**
+  *
+  * @param {*} container
+  * @param {*} data
+  * @param {*} className
+  * @param {IContainer} iContainer
+  */
   constructor(data, className, iContainer) {
     super(data, className, iContainer);
     this.markerId = `${this.containerInterface.getUUID()}_marker_${this.data.id}`;
@@ -5814,6 +5923,11 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
     points.push({ x: desLoc.x, y: desLoc.y });
     return points;
   }
+  /**
+  *
+  * @param {[]} points
+  * @returns {String}
+  */
   _getPolylinePath(points) {
     const path = [];
     let x = points[0].x;
@@ -6088,9 +6202,20 @@ var RenderManager = class {
     this.connectionRenderMap.set("elbow", ElbowConnectionRenderer);
     this.etcRenderMap.set("group", GroupRenderer);
   }
+  /**
+  *
+  * @param {Map<String, BaseRenderer>} map
+  * @param {string} render
+  * @param {() => BaseRenderer} constructor
+  */
   _add(map, render, constructor) {
     map.set(render, constructor);
   }
+  /**
+  *
+  * @param {Map<String, BaseRenderer>} map
+  * @param {String} key
+  */
   _get(map, key) {
     if (map.has(key)) {
       return map.get(key);
@@ -6109,6 +6234,11 @@ var RenderManager = class {
         throw new Error(`Unknown type '${type2}'`);
     }
   }
+  /**
+  * @param {String} type
+  * @param {String} render
+  * @returns
+  */
   getRenderConstructor(type2, render) {
     switch (type2) {
       case "node":
@@ -6156,7 +6286,12 @@ var SequenceManager = class {
 };
 
 // src/js-components/flowchart/util/theme.ts
-var DefaultTheme = __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, DEFAULT_CONNECTION_STYLE_DATA), DEFAULT_GROUP_STYLE_DATA), DEFAULT_NODE_STYLE_DATA), DEFAULT_STYLE_DATA);
+var DefaultTheme = {
+  ...DEFAULT_CONNECTION_STYLE_DATA,
+  ...DEFAULT_GROUP_STYLE_DATA,
+  ...DEFAULT_NODE_STYLE_DATA,
+  ...DEFAULT_STYLE_DATA
+};
 
 // src/js-components/flowchart/flowchart.js
 var DETECTING_SIZE = 10;
@@ -6165,24 +6300,6 @@ var POSITION_LIST = ["left", "right", "top", "bottom"];
 var MIN_ZOOM = 0.4;
 var MAX_ZOOM = 3;
 var NOT_CHANGING_PROPERTY_SET = /* @__PURE__ */ new Set(["isHovered", "isSelected"]);
-var EVENT_TYPE = {
-  CLICK: "click",
-  CLICK_NODE: "clickNode",
-  DOUBLE_CLICK_NODE: "dblClickNode",
-  CLICK_CONNECTION: "clickConnection",
-  DOUBLE_CLICK_CONNECTION: "dblClickConnection",
-  NEW_OBJECT: "newObject",
-  REMOVE_OBJECT: "removeObject",
-  SELECT_OBJECT: "selectObject",
-  RELEASE_OBJECT: "releaseObject",
-  UNDO: "undo",
-  REDO: "redo",
-  COMMAND: "command",
-  CHANGE_CLASS: "changeClass",
-  DISCONNECT_NODE: "disconnectNode",
-  CONNECT_NODE: "connectNode",
-  MOUSEUP_SHEET: "mouseUpSheet"
-};
 var createEmitter = (flowchart) => {
   const eventMap = {};
   return {
@@ -6246,6 +6363,12 @@ var createFlowchartTemplate = (id2) => {
 };
 var DEFAULT_MOVEMENT_UNIT = 10;
 var IRFlowchart = class extends IRComponent {
+  /**
+   * @param {Object} param
+   * @param {HTMLDivElement} param.contextElement
+   * @param {String} param.width
+   * @param {String} param.height
+   */
   constructor({ contextElement, width, height }) {
     super({ contextElement });
     this._wheelZoom = true;
@@ -6311,6 +6434,7 @@ var IRFlowchart = class extends IRComponent {
     contextElement.appendChild(div);
     this._initD3Elements(div, svg, width, height);
     this._containerInterface = new InterfaceInstance({
+      // Manipulation API
       releaseAllObjects: () => this.releaseAllObjects(),
       addRenderObj: (data) => this.add(data),
       removeObject: (obj) => this.remove(obj),
@@ -6318,6 +6442,7 @@ var IRFlowchart = class extends IRComponent {
       terminateDrag: (dragEvent) => this._terminateDrag(dragEvent),
       isDragging: () => this._isDragging,
       changeObjRender: (obj, render) => this._changeObjRender(obj, render),
+      // Callback
       adjDragCallback: (data, oldPoints, newPoints) => this._adjDragCallbackHandler(data, oldPoints, newPoints),
       editTextCallback: (data, oldText, newText) => this._editTextCallbackHandler(data, oldText, newText),
       editTextModeCallback: (data) => this._editTextModeCallback(data),
@@ -6325,6 +6450,7 @@ var IRFlowchart = class extends IRComponent {
       observerCallback: (arg) => this._observerCallback(arg),
       selectCallback: (obj, userInteraction, typeClick) => this._selectCallbackHandler(obj, userInteraction, typeClick),
       releaseCallback: (obj, userInteraction) => this._releaseCallbackHandler(obj, userInteraction),
+      // getter / setter
       setEditMode: (flag) => this._editMode = flag,
       getLogger: () => this._logger,
       getSvg: () => this.d3Svg,
@@ -6342,7 +6468,7 @@ var IRFlowchart = class extends IRComponent {
     this._resizeHandler = new ResizeHandler(this._actionController, this._objectManager, this._containerInterface);
     this._renderManager = new RenderManager();
     this._objMouseHandler = new ObjectMouseHandler(this._containerInterface);
-    this.theme = __spreadValues({}, DefaultTheme);
+    this.theme = { ...DefaultTheme };
     this.defaultRule = defaultRule;
     this.zoomTo(1);
     this.render();
@@ -6432,7 +6558,10 @@ var IRFlowchart = class extends IRComponent {
   }
   _initD3Elements(div, svg, width, height) {
     this._logger = createLogger(this.uuid);
-    div.addEventListener("contextmenu", (e) => e.preventDefault());
+    div.addEventListener("contextmenu", (e) => {
+      this.$emit(EVENT_TYPE.CONTEXT_MENU, e);
+      e.preventDefault();
+    });
     const w = isNaN(width) ? width : `${width}px`;
     const h = isNaN(height) ? height : `${height}px`;
     this.d3Div = select_default2(div).style("width", w).style("height", h);
@@ -6444,20 +6573,39 @@ var IRFlowchart = class extends IRComponent {
     }).wheelDelta((ev) => -ev.deltaY * (ev.deltaMode === 1 ? 0.05 : ev.deltaMode ? 1 : 2e-3)).scaleExtent([MIN_ZOOM, MAX_ZOOM]).on("zoom", (ev) => this.zoomTo(ev.transform.k));
     this.d3Div.call(zoom).on("dblclick.zoom", null);
     this.selection = {
+      /** @type {d3.Selection | null} */
       rect: null,
       startX: 0,
       startY: 0
     };
   }
+  /**
+  *
+  * @param {import("./flowchart.types").EventType} event
+  * @param  {...any} args
+  */
   $emit(event, ...args) {
     this.emitter.emit(event, args);
   }
+  /**
+  * 신규 이벤트를 등록합니다.
+  * @param {import("./flowchart.types").EventType} event
+  * @param {Function} callback
+  */
   $on(event, callback) {
     return this.emitter.on(event, callback);
   }
+  /**
+  * 이벤트를 제거합니다.
+  * @param {import("./flowchart.types").EventType} event
+  * @param {Function?} callback
+  */
   $off(event, callback) {
     return this.emitter.off(event, callback);
   }
+  /**
+  * @param {() => void} func
+  */
   moveWrapper(func) {
     try {
       this._moveHandler.moveStartHandler();
@@ -6468,9 +6616,20 @@ var IRFlowchart = class extends IRComponent {
       this.refreshSvgSize();
     }
   }
+  /**
+   *
+   * @param {SVGElement} defsElement
+   */
   addSvgDefs(defsElement) {
     this.d3Svg.node().appendChild(defsElement);
   }
+  /**
+   *
+   * @param {string} id
+   * @param {number} rotate
+   * @param {string[]} offsets
+   * @param {string[]} colors
+   */
   addLinearGradientDefs(id2, rotate, offsets, colors) {
     if (typeof offsets.length !== "number" || typeof colors.length !== "number")
       throw new Error("it must be an array type both offsets and colors!");
@@ -6487,6 +6646,11 @@ var IRFlowchart = class extends IRComponent {
     defs.appendChild(linearGradient);
     this.addSvgDefs(defs);
   }
+  /**
+  * @param {DefaultTheme} data
+  * @param {Number} zIndex
+  * @returns
+  */
   add(data, zIndex = void 0) {
     switch (data.type) {
       case void 0:
@@ -6502,9 +6666,9 @@ var IRFlowchart = class extends IRComponent {
       this._logger.error("InnoFlowchart.add()", "undefined render prop");
       throw new Error("Object that you added needs 'render' property!");
     }
-    if (data.id === void 0 || data.id === null) {
+    if (!data.id)
       data.id = this._seqMng.getObjSeqId();
-    } else {
+    else {
       switch (typeof data.id) {
         case "number":
         case "string":
@@ -6603,6 +6767,10 @@ var IRFlowchart = class extends IRComponent {
       throw new Error("There is no such as object you received in this flowchart!");
     }
   }
+  /**
+  * zoom in/out by scale
+  * @param {Number} scale
+  */
   zoomTo(scale) {
     if (scale < MIN_ZOOM || scale > MAX_ZOOM) {
       return;
@@ -6614,6 +6782,11 @@ var IRFlowchart = class extends IRComponent {
     this.d3Grid.attr("transform", `scale(${scale})`).attr("width", gridScale).attr("height", gridScale);
     this.updateSvgSize();
   }
+  /**
+   * 신규로 추가한 개체 집합을 undo에 기록하고,
+   * 음수 좌표가 있는 경우에는 해당 좌표를 조정합니다.
+   * @param  {...RenderObject} objects
+   */
   recordNewObjectsAction(...objects) {
     this._actionController.addAction(new AddCommand(cloneObjDataList(objects), this._containerInterface));
     this._updateNegativePos();
@@ -6627,6 +6800,10 @@ var IRFlowchart = class extends IRComponent {
   getScale() {
     return this.getTransform().k;
   }
+  /**
+   * @param {Boolean} [sorted=true]
+   * @returns {Connection[]}
+   */
   getSelectedConnections(sorted = true) {
     const connections = [];
     for (const con of this._objectManager.getConnectionIterator())
@@ -6634,6 +6811,9 @@ var IRFlowchart = class extends IRComponent {
     sorted && connections.sort((a, b) => a.clickedSeq - b.clickedSeq);
     return connections;
   }
+  /**
+   * @param {ChangedInfo[]} changedInfoList
+   */
   _editObjProp(changedInfoList) {
     changedInfoList.forEach((info) => {
       for (const prop of info.propList) {
@@ -6645,6 +6825,10 @@ var IRFlowchart = class extends IRComponent {
     });
     this._actionController.addAction(new EditCommand(changedInfoList, this._containerInterface));
   }
+  /**
+   * @param {String} key
+   * @param {any} newValue
+   */
   editSelectedObjProp(key, newValue) {
     const list = [];
     for (const obj of this._objectManager.getSelectedObjIterator()) {
@@ -6659,6 +6843,12 @@ var IRFlowchart = class extends IRComponent {
     }
     this._editObjProp(list);
   }
+  /**
+   * append 모드로 전환
+   * @param {String} mode
+   * @param {{}} data
+   * @returns
+   */
   append(mode, data) {
     if (this._readonly) {
       this._logger.info(
@@ -6681,6 +6871,9 @@ var IRFlowchart = class extends IRComponent {
       throw new Error("Invalid append info!");
     }
   }
+  /**
+   * 카메라 0,0 이동
+   */
   resetScreen() {
     const div = this.d3Div.node();
     div.scrollLeft = 0;
@@ -6732,9 +6925,15 @@ var IRFlowchart = class extends IRComponent {
     this._logger.info("InnoFlowchart.refreshSvgSize()", rect);
     this.updateSvgSize();
   }
+  /**
+  * Re-render this flowchart
+  */
   render() {
     this.updateMinimumSvgSize();
   }
+  /**
+  * @returns {RenderObject[]}
+  */
   getObjectList() {
     const objList = [];
     for (const obj of this._objectManager.getAllObjIterator()) {
@@ -6742,10 +6941,16 @@ var IRFlowchart = class extends IRComponent {
     }
     return objList;
   }
+  /**
+  * clear all actions of actionController
+  */
   clearActionList() {
     this._logger.info("InnoFlowchart.clearActionList()");
     this._actionController.clear();
   }
+  /**
+  * Undo last action through actionController
+  */
   undoAction() {
     if (this._readonly) {
       this._logger.info("InnoFlowchart.undoAction()", "Preventing undo (readonly: true)");
@@ -6758,6 +6963,9 @@ var IRFlowchart = class extends IRComponent {
       this.$emit(EVENT_TYPE.UNDO, undoCommand);
     }
   }
+  /**
+  * Redo recently undone action through actionController
+  */
   redoAction() {
     if (this._readonly) {
       this._logger.info("InnoFlowchart.redoAction()", "Preventing redo (readonly: true)");
@@ -6770,11 +6978,18 @@ var IRFlowchart = class extends IRComponent {
       this.$emit(EVENT_TYPE.REDO, redoCommand);
     }
   }
+  /**
+  * @param {RenderObject} obj
+  * @param {String} event
+  */
   _objectClickHandler(obj, event) {
     this._logger.info(`InnoFlowchart.event.emit.${event}`, obj);
     obj.select(true);
     this.$emit(event, obj);
   }
+  /**
+  * @param {ObserverArg} arg
+  */
   _commonObserveCallback(arg) {
     switch (arg.key) {
       case "id": {
@@ -6792,6 +7007,9 @@ var IRFlowchart = class extends IRComponent {
         break;
     }
   }
+  /**
+  * @param {ObserverArg} arg
+  */
   _connectionObserveCallback(arg) {
     const obj = arg.renderObj;
     switch (arg.key) {
@@ -6815,6 +7033,9 @@ var IRFlowchart = class extends IRComponent {
         break;
     }
   }
+  /**
+  * @param {ObserverArg} arg
+  */
   _observerCallback(arg) {
     if (arg.newValue === arg.oldValue) {
       return;
@@ -6824,6 +7045,11 @@ var IRFlowchart = class extends IRComponent {
     this._commonObserveCallback(arg);
     arg.renderObj.type === "connection" && this._connectionObserveCallback(arg);
   }
+  /**
+  *
+  * @param {RenderObject} obj
+  * @param {Boolean} userInteraction
+  */
   _selectCallbackHandler(obj, userInteraction, typeClick) {
     const parent = this._objectManager.getParentGroupOrNull(obj);
     if (userInteraction) {
@@ -6844,12 +7070,22 @@ var IRFlowchart = class extends IRComponent {
     this._logger.info("InnoFlowchart._selectCallbackHandler()", obj);
     this.$emit(EVENT_TYPE.SELECT_OBJECT, obj);
   }
+  /**
+  *
+  * @param {RenderObject} obj
+  * @param {Boolean} userInteraction
+  */
+  // eslint-disable-next-line no-unused-vars
   _releaseCallbackHandler(obj, userInteraction) {
     this.$emit(EVENT_TYPE.RELEASE_OBJECT, obj);
   }
   _editTextModeCallback() {
     this._objMouseHandler.removeTooltipObj();
   }
+  /**
+  * @param {Number} x
+  * @param {Number} y
+  */
   _getXYOnSheet(x, y) {
     const scale = 1 / this.getTransform().k;
     return {
@@ -6857,6 +7093,13 @@ var IRFlowchart = class extends IRComponent {
       y: y * scale
     };
   }
+  /**
+  *
+  * @param {Object} param
+  * @param {String} param.mode
+  * @param {{}} param.data
+  * @returns
+  */
   _validateAppendMode({ mode, data }) {
     switch (mode) {
       case "append": {
@@ -6903,11 +7146,12 @@ var IRFlowchart = class extends IRComponent {
   _initAppendObj() {
     switch (this._appendMode.data.type) {
       case "node": {
-        this._appendingObject = this.add(__spreadProps(__spreadValues({}, this._appendMode.data), {
+        this._appendingObject = this.add({
+          ...this._appendMode.data,
           temp: true,
           id: "appending_temp_obj",
           opacity: 0.5
-        }));
+        });
         break;
       }
       default:
@@ -6946,22 +7190,41 @@ var IRFlowchart = class extends IRComponent {
     this.emitChangedStatus();
     this._actionController.addAction(new ZIndexCommand(dataList, this._containerInterface));
   }
+  /**
+  * bring selected objects to front
+  */
   bringToFront() {
     this._logger.info("InnoFlowchart.bringToFront()");
     this._setZIndexOnSelected("front");
   }
+  /**
+  * bring selected objects to back
+  */
   bringToBack() {
     this._logger.info("InnoFlowchart.bringToBack()");
     this._setZIndexOnSelected("back");
   }
+  /**
+   * move selected objects by x, y
+   * @param {Number} x
+   * @param {Number} y
+   */
   _moveSelectedObjects(x, y) {
     for (const obj of this._objectManager.getSelectedObjIterator()) {
       obj.moveTo(x, y);
     }
   }
+  /**
+   * @param {String | Number} id the object's id
+   * @returns {RenderObject | null}
+   */
   getObjectOrNull(id2) {
     return this._objectManager.findOrNull(id2);
   }
+  /**
+   * select an object by id
+   * @param {String | Number} id the object's id
+   */
   selectObjectById(id2) {
     const obj = this.getObjectOrNull(id2);
     if (obj != null) {
@@ -6970,12 +7233,23 @@ var IRFlowchart = class extends IRComponent {
       throw new Error(`Not found obj id '${id2}'`);
     }
   }
+  /**
+   * @param {RenderObject} obj
+   */
   _addCommonMouseAction(obj) {
     this._objMouseHandler.addMouseAction(obj);
   }
+  /**
+   *
+   * @param {Boolean} Key
+   * @returns
+   */
   _isSingleSelection(Key) {
     return this._singleSelection || !Key;
   }
+  /**
+   * @param {Node} node
+   */
   _addClickActionOnNode(node) {
     node.g.on("click", (ev) => {
       if (this._editMode)
@@ -6990,10 +7264,18 @@ var IRFlowchart = class extends IRComponent {
       this.$emit(EVENT_TYPE.DOUBLE_CLICK_NODE, node);
     });
   }
+  /**
+   *
+   * @param {Boolean} flag
+   * @param  {...String} classes
+   */
   classedOnSvg(flag, ...classes) {
     classes.forEach((cls) => this.d3Svg.classed(cls, flag));
     this.$emit(EVENT_TYPE.CHANGE_CLASS, this.d3Svg.attr("class"));
   }
+  /**
+   * @param {Node} node
+   */
   _addDragActionOnNode(node) {
     let moved = false;
     let lastX = 0;
@@ -7027,6 +7309,9 @@ var IRFlowchart = class extends IRComponent {
       this._terminateDrag("drag-node-move");
     }));
   }
+  /**
+  * @param {Node} node
+  */
   _addDragActionOnConnector(node) {
     for (const connector of node.renderer.connectors) {
       const pos = getPosition(connector.attr("class"));
@@ -7059,12 +7344,18 @@ var IRFlowchart = class extends IRComponent {
       }));
     }
   }
+  /**
+  * @param {Node} node
+  */
   _addNodeEvent(node) {
     this._addClickActionOnNode(node);
     this._addDragActionOnNode(node);
     this._addDragActionOnConnector(node);
     this._resizeHandler.addDragActionOnResizer(node);
   }
+  /**
+  * @param {Connection} con
+  */
   _addClickActionOnConnection(con) {
     con.g.on("click", (ev) => {
       if (this._isSingleSelection(ev.ctrlKey)) {
@@ -7080,6 +7371,9 @@ var IRFlowchart = class extends IRComponent {
       this.$emit(EVENT_TYPE.DOUBLE_CLICK_CONNECTION, con);
     });
   }
+  /**
+  * @param {Connection} con
+  */
   _addDragActionOnConnection(con) {
     let x = 0;
     let y = 0;
@@ -7157,11 +7451,18 @@ var IRFlowchart = class extends IRComponent {
     con.renderer.objects.sourceConnector.call(dragCreator("sourceObjId", "sourcePos", "start"));
     con.renderer.objects.destinationConnector.call(dragCreator("destinationObjId", "destinationPos", "end"));
   }
+  /**
+  * @param {Connection} con
+  */
   _addConnectionEvent(con) {
     this._addClickActionOnConnection(con);
     this._addDragActionOnConnection(con);
     this._addDragActionOnConnectionConnector(con);
   }
+  /**
+  *
+  * @param {Group} group
+  */
   _addGroupEvent(group) {
     let moved = false;
     let startX = 0;
@@ -7194,6 +7495,9 @@ var IRFlowchart = class extends IRComponent {
       this._terminateDrag("drag-group-move");
     }));
   }
+  /**
+  * @param {RenderObject} obj
+  */
   _addObjectEvent(obj) {
     this._addCommonMouseAction(obj);
     switch (obj.type) {
@@ -7211,12 +7515,18 @@ var IRFlowchart = class extends IRComponent {
         throw new Error(`Unknown data type '${obj.type}'`);
     }
   }
+  /**
+  * @param {String} dragEvent
+  */
   _initDrag(dragEvent) {
     this._isDragging = true;
     this._appendMode.dragged = false;
     this._objMouseHandler.removeTooltipObj();
     this.classedOnSvg(true, dragEvent);
   }
+  /**
+  * @param {String} dragEvent
+  */
   _terminateDrag(dragEvent) {
     this._isDragging = false;
     this._appendMode.dragged = false;
@@ -7290,10 +7600,18 @@ var IRFlowchart = class extends IRComponent {
       obj.type !== "group" && obj.select(true);
     }
   }
+  /**
+  * @param {RenderObject | null} clickObj
+  */
   releaseAllObjects(clickObj) {
     for (const obj of this._objectManager.getAllObjIterator())
       clickObj !== obj && obj.release(true);
   }
+  /**
+  *
+  * @param {'top' | 'left' | 'bottom' | 'right' | 'center' | 'middle'} direction
+  * @param {Node[] | null} nodeList
+  */
   align(direction, nodeList) {
     const tmp = nodeList || this.getSelectedNodes();
     if (tmp.length <= 1) {
@@ -7336,6 +7654,10 @@ var IRFlowchart = class extends IRComponent {
     }
     this._moveHandler.moveEndHandler();
   }
+  /**
+  * @param {'v' | 'h'} direction
+  * @param {Node[] | null} nodeList
+  */
   distribute(direction, nodeList) {
     const tmp = nodeList || this.getSelectedNodes(false);
     if (tmp.length <= 1) {
@@ -7364,6 +7686,10 @@ var IRFlowchart = class extends IRComponent {
     }, min2 + gap);
     this._moveHandler.moveEndHandler();
   }
+  /**
+  * @param {Boolean} [sorted=true]
+  * @returns {RenderObject[]}
+  */
   getSelectedObjects(sorted = true) {
     const objList = Array.from(this._objectManager.getSelectedObjIterator());
     sorted && objList.sort((a, b) => a.clickedSeq - b.clickedSeq);
@@ -7372,11 +7698,17 @@ var IRFlowchart = class extends IRComponent {
   removeSelected() {
     const selectedObjList = this.getSelectedObjects(false);
     selectedObjList.forEach((obj) => this.remove(obj));
-    this._actionController.addAction(new DeleteCommand(
-      cloneObjDataList(selectedObjList),
-      this._containerInterface
-    ));
+    this._actionController.addAction(
+      new DeleteCommand(
+        cloneObjDataList(selectedObjList),
+        this._containerInterface
+      )
+    );
   }
+  /**
+  * get child element on container in order
+  * @param {Number} index
+  */
   _getChildElementOrNull(index) {
     const container = this.d3Container.node();
     if (index >= container.children.length) {
@@ -7384,6 +7716,13 @@ var IRFlowchart = class extends IRComponent {
     }
     return container.children[index];
   }
+  /**
+  *
+  * @param {Number} curPosX
+  * @param {Number} curPosY
+  * @param {Boolean} simpleMode
+  * @returns
+  */
   _getNodeAndPosUnderXY(curPosX, curPosY, simpleMode = false) {
     for (const node of this._objectManager.getNodeIterator()) {
       if (!node.isConnectorEnabled)
@@ -7427,6 +7766,11 @@ var IRFlowchart = class extends IRComponent {
       }
     }
   }
+  /**
+  * get selected nodes
+  * @param {Boolean} [sorted=true]
+  * @returns {Node[]}
+  */
   getSelectedNodes(sorted = true) {
     const nodes = [];
     for (const node of this._objectManager.getNodeIterator()) {
@@ -7435,6 +7779,11 @@ var IRFlowchart = class extends IRComponent {
     sorted && nodes.sort((a, b) => a.clickedSeq - b.clickedSeq);
     return nodes;
   }
+  /**
+  * get connected connections on the node
+  * @param {Node} node
+  * @returns {Connection[]}
+  */
   getNodeConnections(node) {
     const nodeId = node.observeProperties ? node.id : node;
     const nodeObj = this.getObjectOrNull(nodeId);
@@ -7444,11 +7793,18 @@ var IRFlowchart = class extends IRComponent {
     });
     return connections;
   }
+  /**
+  * move screen by obj's location
+  * @param {RenderObject} obj
+  */
   moveScreenByObject(obj) {
     const scale = this.getTransform().k;
     this.d3Div.node().scrollLeft = obj.centerX * scale - this._wrapperSize.width / 2;
     this.d3Div.node().scrollTop = obj.centerY * scale - this._wrapperSize.height / 2;
   }
+  /**
+  * clear info for appending or pasting objects
+  */
   clearAppendMode() {
     this._appendingObject !== null && this.remove(this._appendingObject);
     this._appendMode.mode = null;
@@ -7465,26 +7821,24 @@ var IRFlowchart = class extends IRComponent {
       objects.push(obj.data);
     }
     return {
-      copyDateTime: new Date(),
+      copyDateTime: /* @__PURE__ */ new Date(),
       objects
     };
   }
-  cut() {
-    return __async(this, null, function* () {
-      this._logger.info("InnoFlowchart.cut()");
-      if (this.getSelectedObjects().length === 0)
-        return;
-      yield clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
-      this.removeSelected();
-    });
+  async cut() {
+    this._logger.info("InnoFlowchart.cut()");
+    if (this.getSelectedObjects().length === 0)
+      return;
+    await clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
+    this.removeSelected();
   }
-  copy() {
-    return __async(this, null, function* () {
-      this._logger.info("InnoFlowchart.copy()");
-      yield clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
-    });
+  async copy() {
+    this._logger.info("InnoFlowchart.copy()");
+    await clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
   }
   _createPastingObjs(clipData) {
+    if (clipData.objects.length === 0)
+      return;
     const tmpIdMap = /* @__PURE__ */ new Map();
     let cnt = 0;
     const newId2 = this._seqMng.getObjSeqId();
@@ -7507,11 +7861,13 @@ var IRFlowchart = class extends IRComponent {
       switch (data.type) {
         case "node": {
           const pos = this._getProperlyNodePosToCreate(data);
-          newObjs.push(this.add(__spreadProps(__spreadValues(__spreadValues({}, data), pos), {
+          newObjs.push(this.add({
+            ...data,
+            ...pos,
             id: id2,
             isSelected: false,
             isHovered: false
-          })));
+          }));
           break;
         }
         case "connection": {
@@ -7522,19 +7878,21 @@ var IRFlowchart = class extends IRComponent {
           if (data["connection.destinationObjId"] !== void 0 && data["connection.destinationObjId"] != null && tmpIdMap.has(data["connection.destinationObjId"])) {
             data["connection.destinationObjId"] = tmpIdMap.get(data["connection.destinationObjId"]);
           }
-          newObjs.push(this.add(__spreadProps(__spreadValues({}, data), {
+          newObjs.push(this.add({
+            ...data,
             id: id2,
             isSelected: false,
             points
-          })));
+          }));
           break;
         }
         case "group": {
-          newObjs.push(this.add(__spreadProps(__spreadValues({}, data), {
+          newObjs.push(this.add({
+            ...data,
             id: id2,
             isSelected: false,
             objectList: data.objectList.map((id3) => tmpIdMap.get(id3))
-          })));
+          }));
           break;
         }
         default:
@@ -7548,19 +7906,20 @@ var IRFlowchart = class extends IRComponent {
     });
     this._actionController.addAction(new AddCommand(cloneObjDataList(newObjs), this._containerInterface));
   }
-  paste() {
-    return __async(this, null, function* () {
-      if (this._editMode || this._appendMode.mode != null) {
-        this._logger.debug(
-          "InnoFlowchart.paste()",
-          "Could not paste because of edit or append mode"
-        );
-        return;
-      }
-      this._logger.info("InnoFlowchart.paste()");
-      this._createPastingObjs(JSON.parse(yield clipboard_default.loadData()));
-    });
+  async paste() {
+    if (this._editMode || this._appendMode.mode != null) {
+      this._logger.debug(
+        "InnoFlowchart.paste()",
+        "Could not paste because of edit or append mode"
+      );
+      return;
+    }
+    this._logger.info("InnoFlowchart.paste()");
+    this._createPastingObjs(JSON.parse(await clipboard_default.loadData()));
   }
+  /**
+  * TODO: write some comment..
+  */
   fitSizeOnText() {
     this._logger.info("InnoFlowchart.fitSizeOnText()");
     this._resizeHandler.resizeDragStart();
@@ -7569,6 +7928,11 @@ var IRFlowchart = class extends IRComponent {
     });
     this._resizeHandler.resizeDragEnd();
   }
+  /**
+  *
+  * @param {Node} source
+  * @param {Node} target
+  */
   _getShortestPositions(source, target) {
     const minPos = {
       dist: Number.MAX_VALUE,
@@ -7589,6 +7953,9 @@ var IRFlowchart = class extends IRComponent {
     }
     return minPos;
   }
+  /**
+  * @param {Connection} con
+  */
   _setShortestPosition(con) {
     const source = this.getObjectOrNull(con.sourceObjId);
     const destination = this.getObjectOrNull(con.destinationObjId);
@@ -7618,6 +7985,9 @@ var IRFlowchart = class extends IRComponent {
       this._actionController.addAction(new EditCommand([changedInfo], this._containerInterface));
     }
   }
+  /**
+  * 현재 선택된 연결선들을 최단 경로로 맞춥니다.
+  */
   updateShortestConnections() {
     this._logger.info("InnoFlowchart.updateShortestConnections()");
     for (const con of this._objectManager.getConnectionIterator()) {
@@ -7625,6 +7995,9 @@ var IRFlowchart = class extends IRComponent {
         this._setShortestPosition(con);
     }
   }
+  /**
+  * 현재 선택된 노드들의 연결선들을 최단 경로로 맞춥니다.
+  */
   updateShortestNodes() {
     const conList = [];
     for (const node of this._objectManager.getNodeIterator()) {
@@ -7639,6 +8012,11 @@ var IRFlowchart = class extends IRComponent {
     }
     conList.forEach((con) => this._setShortestPosition(con));
   }
+  /**
+  * @param {{x: Number, y: Number}} startPoint
+  * @param {Node} targetNode
+  * @returns
+  */
   _getPositionOnSimpleConnecting(startPoint, targetNode) {
     const minDist = {
       dist: Number.MAX_VALUE,
@@ -7654,6 +8032,10 @@ var IRFlowchart = class extends IRComponent {
     }
     return minDist.pos;
   }
+  /**
+  * 특정 render의 개체를 모두 선택합니다.
+  * @param {String} render
+  */
   selectType(render) {
     this._logger.info("InnoFlowchart.selectType()", render);
     const temp = render.toLowerCase();
@@ -7662,12 +8044,18 @@ var IRFlowchart = class extends IRComponent {
       obj.renderType === temp && obj.select(false, temp);
     }
   }
+  /**
+  * 플로우차트 변경 상태 초기화
+  */
   clearChangedStatus() {
     if (this._isChanged) {
       this._isChanged = false;
       this.classedOnSvg(false, "changed");
     }
   }
+  /**
+  * 플로우차트 내 모든 개체 제거
+  */
   clear() {
     this.clearAppendMode();
     for (const obj of this._objectManager.getAllObjIterator()) {
@@ -7677,6 +8065,10 @@ var IRFlowchart = class extends IRComponent {
     this._seqMng.clear();
     this._actionController.clear();
   }
+  /**
+  * Creating a group object with selected objects
+  * @param {{}} data
+  */
   group(data = void 0) {
     const temp = data || {};
     temp.type = "group";
@@ -7691,6 +8083,9 @@ var IRFlowchart = class extends IRComponent {
     group.select();
     this._actionController.addAction(new AddCommand(cloneObjDataList([group]), this._containerInterface));
   }
+  /**
+  * Releasing children of selected groups and deleting the groups
+  */
   ungroup() {
     const tmpObjs = [];
     for (const obj of this._objectManager.getGroupIterator()) {
@@ -7702,6 +8097,11 @@ var IRFlowchart = class extends IRComponent {
     }
     this._actionController.addAction(new DeleteCommand(cloneObjDataList(tmpObjs), this._containerInterface));
   }
+  /**
+  *
+  * @param {Number} x
+  * @param {Number} y
+  */
   _moveAppendingNode(x, y) {
     const cursorXY = this._getXYOnSheet(x, y);
     this._appendingObject.x = cursorXY.x - this._appendingObject.width / 2;
@@ -7773,10 +8173,11 @@ var IRFlowchart = class extends IRComponent {
   _createAppendObj() {
     switch (this._appendMode.mode) {
       case "append": {
-        const newObj = this.add(__spreadValues({
+        const newObj = this.add({
           "node.x": this._appendingObject.x,
-          "node.y": this._appendingObject.y
-        }, this._appendMode.data));
+          "node.y": this._appendingObject.y,
+          ...this._appendMode.data
+        });
         this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._containerInterface));
         break;
       }
@@ -7846,11 +8247,21 @@ var IRFlowchart = class extends IRComponent {
     this._renderManager.changeRender(obj, render, this._containerInterface);
     this._addObjectEvent(obj);
   }
+  /**
+  * 개체의 렌더링 타입을 변경합니다.
+  * @param {RenderObject} obj
+  * @param {String} render
+  */
   changeRender(obj, render) {
     const oldRender = obj.renderType;
     this._changeObjRender(obj, render);
     this._actionController.addAction(new RenderCommand(obj, oldRender, render, this._containerInterface));
   }
+  /**
+  * @param {{}} objData
+  * @param {String} oldText
+  * @param {String} newText
+  */
   _editTextCallbackHandler(objData, oldText, newText) {
     this._logger.debug(
       "InnoFlowchart._editTextCallbackHandler()",
@@ -7870,6 +8281,10 @@ var IRFlowchart = class extends IRComponent {
       this._containerInterface
     ));
   }
+  /**
+  * @param {Number} x
+  * @param {Number} y
+  */
   _moveAppendingConnection(x, y) {
     const detecting = this._getNodeAndPosUnderXY(
       x,
@@ -7888,25 +8303,35 @@ var IRFlowchart = class extends IRComponent {
         this._appendingObject.destinationPos = detecting.pos;
     }
   }
+  /**
+  * @param {{}} objData
+  * @param {[]} oldPoints
+  * @param {[]} newPoints
+  */
   _adjDragCallbackHandler(objData, oldPoints, newPoints) {
     this._logger.debug(
       "InnoFlowchart.adjDragCallbackHandler()",
       "record undo action"
     );
-    this._actionController.addAction(new EditCommand(
-      [
-        new ChangedInfo(objData, [
-          {
-            key: "connection.points",
-            oldValue: oldPoints,
-            newValue: newPoints
-          }
-        ])
-      ],
-      this._containerInterface
-    ));
+    this._actionController.addAction(
+      new EditCommand(
+        [
+          new ChangedInfo(objData, [
+            {
+              key: "connection.points",
+              oldValue: oldPoints,
+              newValue: newPoints
+            }
+          ])
+        ],
+        this._containerInterface
+      )
+    );
     this._updateNegativePos();
   }
+  /**
+  * @param {RenderObject} obj
+  */
   _renderCallBack(obj) {
     if (obj.type === "node") {
       const set3 = /* @__PURE__ */ new Set();
@@ -7923,6 +8348,13 @@ var IRFlowchart = class extends IRComponent {
   _clickOnSheetHandler(ev) {
     this.$emit(EVENT_TYPE.CLICK, this._getXYOnSheet(ev.offsetX, ev.offsetY));
   }
+  /**
+  * @param {Number} x
+  * @param {Number} y
+  * @param {Number} toX
+  * @param {Number} toY
+  * @param {{}} data
+  */
   _createAppendingConnection(x, y, toX, toY, data) {
     if (this._appendingObject !== null) {
       throw new Error("Already created an appending obj!!");
@@ -7934,7 +8366,8 @@ var IRFlowchart = class extends IRComponent {
         data["connection.sourcePos"] = detecting.pos;
       }
     }
-    const obj = __spreadProps(__spreadValues({}, data), {
+    const obj = {
+      ...data,
       id: "#temp_appending_connection",
       type: "connection",
       opacity: 0.5,
@@ -7943,7 +8376,7 @@ var IRFlowchart = class extends IRComponent {
         { x, y },
         { x: toX, y: toY }
       ]
-    });
+    };
     this._appendingObject = this.add(obj);
   }
   _endAppendingConnection() {
@@ -7951,11 +8384,12 @@ var IRFlowchart = class extends IRComponent {
     if (this._appendMode.dragged === false) {
       data = getDefaultConnection(this._appendingObject);
     }
-    const newObj = this.add(__spreadProps(__spreadValues({}, data), {
+    const newObj = this.add({
+      ...data,
       id: void 0,
       temp: false,
       opacity: 1
-    }));
+    });
     this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._containerInterface));
   }
   handleKeydownF2() {

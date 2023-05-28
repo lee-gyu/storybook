@@ -1,11 +1,11 @@
 import {
-  IRComponent,
-  __publicField,
-  __spreadProps,
-  __spreadValues
-} from "./chunks/chunk-LTWBM3BUjs.js";
+  IRComponent
+} from "./chunks/chunk-BI23OIPF.js";
+import {
+  __publicField
+} from "./chunks/chunk-JYMTCUXI.js";
 
-// ../../node_modules/.pnpm/@kurkle+color@0.3.1/node_modules/@kurkle/color/dist/color.esm.js
+// ../../node_modules/.pnpm/@kurkle+color@0.3.2/node_modules/@kurkle/color/dist/color.esm.js
 function round(v) {
   return v + 0.5 | 0;
 }
@@ -562,7 +562,7 @@ var Color = class {
   }
 };
 
-// ../../node_modules/.pnpm/chart.js@4.1.1/node_modules/chart.js/dist/chunks/helpers.segment.js
+// ../../node_modules/.pnpm/chart.js@4.3.0/node_modules/chart.js/dist/chunks/helpers.segment.js
 function noop() {
 }
 var uid = (() => {
@@ -712,7 +712,9 @@ function _mergerIf(key, target, source) {
   }
 }
 var keyResolvers = {
+  // Chart.helpers.core resolveObjectKey should resolve empty key to root object
   "": (v) => v,
+  // default resolvers
   x: (o) => o.x,
   y: (o) => o.y
 };
@@ -971,12 +973,8 @@ function unlistenArrayEvents(array, listener) {
   delete array._chartjs;
 }
 function _arrayUnique(items) {
-  const set2 = /* @__PURE__ */ new Set();
-  let i, ilen;
-  for (i = 0, ilen = items.length; i < ilen; ++i) {
-    set2.add(items[i]);
-  }
-  if (set2.size === ilen) {
+  const set2 = new Set(items);
+  if (set2.size === items.length) {
     return items;
   }
   return Array.from(set2);
@@ -1031,13 +1029,17 @@ function _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled) {
     const { min, max, minDefined, maxDefined } = iScale.getUserBounds();
     if (minDefined) {
       start = _limitValue(Math.min(
+        // @ts-expect-error Need to type _parsed
         _lookupByKey(_parsed, iScale.axis, min).lo,
+        // @ts-expect-error Need to fix types on _lookupByKey
         animationsDisabled ? pointCount : _lookupByKey(points, axis, iScale.getPixelForValue(min)).lo
       ), 0, pointCount - 1);
     }
     if (maxDefined) {
       count = _limitValue(Math.max(
+        // @ts-expect-error Need to type _parsed
         _lookupByKey(_parsed, iScale.axis, max, true).hi + 1,
+        // @ts-expect-error Need to fix types on _lookupByKey
         animationsDisabled ? 0 : _lookupByKey(points, axis, iScale.getPixelForValue(max), true).hi + 1
       ), start, pointCount) - start;
     } else {
@@ -1169,7 +1171,7 @@ function applyAnimationsDefaults(defaults2) {
   defaults2.describe("animation", {
     _fallback: false,
     _indexable: false,
-    _scriptable: (name2) => name2 !== "onProgress" && name2 !== "onComplete" && name2 !== "fn"
+    _scriptable: (name) => name !== "onProgress" && name !== "onComplete" && name !== "fn"
   });
   defaults2.set("animations", {
     colors: {
@@ -1264,7 +1266,7 @@ var formatters = {
       delta = calculateDelta(tickValue, ticks);
     }
     const logDelta = log10(Math.abs(delta));
-    const numDecimal = Math.max(Math.min(-1 * Math.floor(logDelta), 20), 0);
+    const numDecimal = isNaN(logDelta) ? 1 : Math.max(Math.min(-1 * Math.floor(logDelta), 20), 0);
     const options = {
       notation,
       minimumFractionDigits: numDecimal,
@@ -1360,15 +1362,15 @@ function applyScaleDefaults(defaults2) {
   defaults2.route("scale.title", "color", "", "color");
   defaults2.describe("scale", {
     _fallback: false,
-    _scriptable: (name2) => !name2.startsWith("before") && !name2.startsWith("after") && name2 !== "callback" && name2 !== "parser",
-    _indexable: (name2) => name2 !== "borderDash" && name2 !== "tickBorderDash" && name2 !== "dash"
+    _scriptable: (name) => !name.startsWith("before") && !name.startsWith("after") && name !== "callback" && name !== "parser",
+    _indexable: (name) => name !== "borderDash" && name !== "tickBorderDash" && name !== "dash"
   });
   defaults2.describe("scales", {
     _fallback: "scale"
   });
   defaults2.describe("scale.ticks", {
-    _scriptable: (name2) => name2 !== "backdropPadding" && name2 !== "callback",
-    _indexable: (name2) => name2 !== "backdropPadding"
+    _scriptable: (name) => name !== "backdropPadding" && name !== "callback",
+    _indexable: (name) => name !== "backdropPadding"
   });
 }
 var overrides = /* @__PURE__ */ Object.create(null);
@@ -1448,16 +1450,16 @@ var Defaults = class {
   override(scope, values) {
     return set(overrides, scope, values);
   }
-  route(scope, name2, targetScope, targetName) {
+  route(scope, name, targetScope, targetName) {
     const scopeObject = getScope$1(this, scope);
     const targetScopeObject = getScope$1(this, targetScope);
-    const privateName = "_" + name2;
+    const privateName = "_" + name;
     Object.defineProperties(scopeObject, {
       [privateName]: {
-        value: scopeObject[name2],
+        value: scopeObject[name],
         writable: true
       },
-      [name2]: {
+      [name]: {
         enumerable: true,
         get() {
           const local = this[privateName];
@@ -1478,8 +1480,8 @@ var Defaults = class {
   }
 };
 var defaults = /* @__PURE__ */ new Defaults({
-  _scriptable: (name2) => !name2.startsWith("on"),
-  _indexable: (name2) => name2 !== "events",
+  _scriptable: (name) => !name.startsWith("on"),
+  _indexable: (name) => name !== "events",
   hover: {
     _fallback: "interaction"
   },
@@ -1525,7 +1527,7 @@ function _longestText(ctx, font, arrayOfThings, cache) {
   let i, j, jlen, thing, nestedThing;
   for (i = 0; i < ilen; i++) {
     thing = arrayOfThings[i];
-    if (thing !== void 0 && thing !== null && isArray(thing) !== true) {
+    if (thing !== void 0 && thing !== null && !isArray(thing)) {
       longest = _measureText(ctx, data, gc, longest, thing);
     } else if (isArray(thing)) {
       for (j = 0, jlen = thing.length; j < jlen; j++) {
@@ -1716,35 +1718,6 @@ function _bezierCurveTo(ctx, previous, target, flip) {
   }
   ctx.bezierCurveTo(flip ? previous.cp1x : previous.cp2x, flip ? previous.cp1y : previous.cp2y, flip ? target.cp2x : target.cp1x, flip ? target.cp2y : target.cp1y, target.x, target.y);
 }
-function renderText(ctx, text, x, y, font, opts = {}) {
-  const lines = isArray(text) ? text : [
-    text
-  ];
-  const stroke = opts.strokeWidth > 0 && opts.strokeColor !== "";
-  let i, line;
-  ctx.save();
-  ctx.font = font.string;
-  setRenderOpts(ctx, opts);
-  for (i = 0; i < lines.length; ++i) {
-    line = lines[i];
-    if (opts.backdrop) {
-      drawBackdrop(ctx, opts.backdrop);
-    }
-    if (stroke) {
-      if (opts.strokeColor) {
-        ctx.strokeStyle = opts.strokeColor;
-      }
-      if (!isNullOrUndef(opts.strokeWidth)) {
-        ctx.lineWidth = opts.strokeWidth;
-      }
-      ctx.strokeText(line, x, y, opts.maxWidth);
-    }
-    ctx.fillText(line, x, y, opts.maxWidth);
-    decorateText(ctx, x, y, line, opts);
-    y += font.lineHeight;
-  }
-  ctx.restore();
-}
 function setRenderOpts(ctx, opts) {
   if (opts.translation) {
     ctx.translate(opts.translation[0], opts.translation[1]);
@@ -1783,6 +1756,35 @@ function drawBackdrop(ctx, opts) {
   ctx.fillStyle = opts.color;
   ctx.fillRect(opts.left, opts.top, opts.width, opts.height);
   ctx.fillStyle = oldColor;
+}
+function renderText(ctx, text, x, y, font, opts = {}) {
+  const lines = isArray(text) ? text : [
+    text
+  ];
+  const stroke = opts.strokeWidth > 0 && opts.strokeColor !== "";
+  let i, line;
+  ctx.save();
+  ctx.font = font.string;
+  setRenderOpts(ctx, opts);
+  for (i = 0; i < lines.length; ++i) {
+    line = lines[i];
+    if (opts.backdrop) {
+      drawBackdrop(ctx, opts.backdrop);
+    }
+    if (stroke) {
+      if (opts.strokeColor) {
+        ctx.strokeStyle = opts.strokeColor;
+      }
+      if (!isNullOrUndef(opts.strokeWidth)) {
+        ctx.lineWidth = opts.strokeWidth;
+      }
+      ctx.strokeText(line, x, y, opts.maxWidth);
+    }
+    ctx.fillText(line, x, y, opts.maxWidth);
+    decorateText(ctx, x, y, line, opts);
+    y += Number(font.lineHeight);
+  }
+  ctx.restore();
 }
 function addRoundedRectPath(ctx, rect) {
   const { x, y, w, h, radius } = rect;
@@ -1906,44 +1908,67 @@ function createContext(parentContext, context) {
 }
 function _createResolver(scopes, prefixes = [
   ""
-], rootScopes = scopes, fallback, getTarget = () => scopes[0]) {
-  if (!defined(fallback)) {
+], rootScopes, fallback, getTarget = () => scopes[0]) {
+  const finalRootScopes = rootScopes || scopes;
+  if (typeof fallback === "undefined") {
     fallback = _resolve("_fallback", scopes);
   }
   const cache = {
     [Symbol.toStringTag]: "Object",
     _cacheable: true,
     _scopes: scopes,
-    _rootScopes: rootScopes,
+    _rootScopes: finalRootScopes,
     _fallback: fallback,
     _getTarget: getTarget,
     override: (scope) => _createResolver([
       scope,
       ...scopes
-    ], prefixes, rootScopes, fallback)
+    ], prefixes, finalRootScopes, fallback)
   };
   return new Proxy(cache, {
+    /**
+    * A trap for the delete operator.
+    */
     deleteProperty(target, prop) {
       delete target[prop];
       delete target._keys;
       delete scopes[0][prop];
       return true;
     },
+    /**
+    * A trap for getting property values.
+    */
     get(target, prop) {
       return _cached(target, prop, () => _resolveWithPrefixes(prop, prefixes, scopes, target));
     },
+    /**
+    * A trap for Object.getOwnPropertyDescriptor.
+    * Also used by Object.hasOwnProperty.
+    */
     getOwnPropertyDescriptor(target, prop) {
       return Reflect.getOwnPropertyDescriptor(target._scopes[0], prop);
     },
+    /**
+    * A trap for Object.getPrototypeOf.
+    */
     getPrototypeOf() {
       return Reflect.getPrototypeOf(scopes[0]);
     },
+    /**
+    * A trap for the in operator.
+    */
     has(target, prop) {
       return getKeysFromAllScopes(target).includes(prop);
     },
+    /**
+    * A trap for Object.getOwnPropertyNames and Object.getOwnPropertySymbols.
+    */
     ownKeys(target) {
       return getKeysFromAllScopes(target);
     },
+    /**
+    * A trap for setting property values.
+    */
     set(target, prop, value) {
       const storage = target._storage || (target._storage = getTarget());
       target[prop] = storage[prop] = value;
@@ -1964,29 +1989,51 @@ function _attachContext(proxy, context, subProxy, descriptorDefaults) {
     override: (scope) => _attachContext(proxy.override(scope), context, subProxy, descriptorDefaults)
   };
   return new Proxy(cache, {
+    /**
+    * A trap for the delete operator.
+    */
     deleteProperty(target, prop) {
       delete target[prop];
       delete proxy[prop];
       return true;
     },
+    /**
+    * A trap for getting property values.
+    */
     get(target, prop, receiver) {
       return _cached(target, prop, () => _resolveWithContext(target, prop, receiver));
     },
+    /**
+    * A trap for Object.getOwnPropertyDescriptor.
+    * Also used by Object.hasOwnProperty.
+    */
     getOwnPropertyDescriptor(target, prop) {
       return target._descriptors.allKeys ? Reflect.has(proxy, prop) ? {
         enumerable: true,
         configurable: true
       } : void 0 : Reflect.getOwnPropertyDescriptor(proxy, prop);
     },
+    /**
+    * A trap for Object.getPrototypeOf.
+    */
     getPrototypeOf() {
       return Reflect.getPrototypeOf(proxy);
     },
+    /**
+    * A trap for the in operator.
+    */
     has(target, prop) {
       return Reflect.has(proxy, prop);
     },
+    /**
+    * A trap for Object.getOwnPropertyNames and Object.getOwnPropertySymbols.
+    */
     ownKeys() {
       return Reflect.ownKeys(proxy);
     },
+    /**
+    * A trap for setting property values.
+    */
     set(target, prop, value) {
       proxy[prop] = value;
       delete target[prop];
@@ -2007,7 +2054,7 @@ function _descriptors(proxy, defaults2 = {
     isIndexable: isFunction(_indexable) ? _indexable : () => _indexable
   };
 }
-var readKey = (prefix, name2) => prefix ? prefix + _capitalize(name2) : name2;
+var readKey = (prefix, name) => prefix ? prefix + _capitalize(name) : name;
 var needsSubResolver = (prop, value) => isObject(value) && prop !== "adapters" && (Object.getPrototypeOf(value) === null || value.constructor === Object);
 function _cached(target, prop, resolve2) {
   if (Object.prototype.hasOwnProperty.call(target, prop)) {
@@ -2031,13 +2078,13 @@ function _resolveWithContext(target, prop, receiver) {
   }
   return value;
 }
-function _resolveScriptable(prop, value, target, receiver) {
+function _resolveScriptable(prop, getValue, target, receiver) {
   const { _proxy, _context, _subProxy, _stack } = target;
   if (_stack.has(prop)) {
     throw new Error("Recursion detected: " + Array.from(_stack).join("->") + "->" + prop);
   }
   _stack.add(prop);
-  value = value(_context, _subProxy || receiver);
+  let value = getValue(_context, _subProxy || receiver);
   _stack.delete(prop);
   if (needsSubResolver(prop, value)) {
     value = createSubResolver(_proxy._scopes, _proxy, prop, value);
@@ -2046,8 +2093,8 @@ function _resolveScriptable(prop, value, target, receiver) {
 }
 function _resolveArray(prop, value, target, isIndexable) {
   const { _proxy, _context, _subProxy, _descriptors: descriptors2 } = target;
-  if (defined(_context.index) && isIndexable(prop)) {
-    value = value[_context.index % value.length];
+  if (typeof _context.index !== "undefined" && isIndexable(prop)) {
+    return value[_context.index % value.length];
   } else if (isObject(value[0])) {
     const arr = value;
     const scopes = _proxy._scopes.filter((s) => s !== arr);
@@ -2069,10 +2116,10 @@ function addScopes(set2, parentScopes, key, parentFallback, value) {
     if (scope) {
       set2.add(scope);
       const fallback = resolveFallback(scope._fallback, key, value);
-      if (defined(fallback) && fallback !== key && fallback !== parentFallback) {
+      if (typeof fallback !== "undefined" && fallback !== key && fallback !== parentFallback) {
         return fallback;
       }
-    } else if (scope === false && defined(parentFallback) && key !== parentFallback) {
+    } else if (scope === false && typeof parentFallback !== "undefined" && key !== parentFallback) {
       return null;
     }
   }
@@ -2091,7 +2138,7 @@ function createSubResolver(parentScopes, resolver, prop, value) {
   if (key === null) {
     return false;
   }
-  if (defined(fallback) && fallback !== prop) {
+  if (typeof fallback !== "undefined" && fallback !== prop) {
     key = addScopesFromKey(set2, allScopes, fallback, key, value);
     if (key === null) {
       return false;
@@ -2122,7 +2169,7 @@ function _resolveWithPrefixes(prop, prefixes, scopes, proxy) {
   let value;
   for (const prefix of prefixes) {
     value = _resolve(readKey(prefix, prop), scopes);
-    if (defined(value)) {
+    if (typeof value !== "undefined") {
       return needsSubResolver(prop, value) ? createSubResolver(scopes, proxy, prop, value) : value;
     }
   }
@@ -2133,7 +2180,7 @@ function _resolve(key, scopes) {
       continue;
     }
     const value = scope[key];
-    if (defined(value)) {
+    if (typeof value !== "undefined") {
       return value;
     }
   }
@@ -2847,10 +2894,23 @@ function readStyle(options) {
   };
 }
 function styleChanged(style, prevStyle) {
-  return prevStyle && JSON.stringify(style) !== JSON.stringify(prevStyle);
+  if (!prevStyle) {
+    return false;
+  }
+  const cache = [];
+  const replacer = function(key, value) {
+    if (!isPatternOrGradient(value)) {
+      return value;
+    }
+    if (!cache.includes(value)) {
+      cache.push(value);
+    }
+    return cache.indexOf(value);
+  };
+  return JSON.stringify(style, replacer) !== JSON.stringify(prevStyle, replacer);
 }
 
-// ../../node_modules/.pnpm/chart.js@4.1.1/node_modules/chart.js/dist/chart.js
+// ../../node_modules/.pnpm/chart.js@4.3.0/node_modules/chart.js/dist/chart.js
 var Animator = class {
   constructor() {
     this._request = null;
@@ -4260,8 +4320,8 @@ __publicField(DoughnutController, "defaults", {
   indexAxis: "r"
 });
 __publicField(DoughnutController, "descriptors", {
-  _scriptable: (name2) => name2 !== "spacing",
-  _indexable: (name2) => name2 !== "spacing"
+  _scriptable: (name) => name !== "spacing",
+  _indexable: (name) => name !== "spacing" && !name.startsWith("borderDash") && !name.startsWith("hoverBorderDash")
 });
 __publicField(DoughnutController, "overrides", {
   aspectRatio: 1,
@@ -4415,12 +4475,24 @@ function abstract() {
   throw new Error("This method is not implemented: Check that a complete date adapter is provided.");
 }
 var DateAdapterBase = class {
+  /**
+  * Override default date adapter methods.
+  * Accepts type parameter to define options type.
+  * @example
+  * Chart._adapters._date.override<{myAdapterOption: string}>({
+  *   init() {
+  *     console.log(this.options.myAdapterOption);
+  *   }
+  * })
+  */
   static override(members) {
     Object.assign(DateAdapterBase.prototype, members);
   }
+  options;
   constructor(options) {
     this.options = options || {};
   }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   init() {
   }
   formats() {
@@ -4881,18 +4953,18 @@ function placeBoxes(boxes, chartArea, params, stacks) {
       stack.placed += width;
       y = box.bottom;
     } else {
-      const height1 = chartArea.h * weight;
-      const width1 = stack.size || box.width;
+      const height = chartArea.h * weight;
+      const width = stack.size || box.width;
       if (defined(stack.start)) {
         x = stack.start;
       }
       if (box.fullSize) {
-        setBoxDims(box, x, userPadding.top, width1, params.outerHeight - userPadding.bottom - userPadding.top);
+        setBoxDims(box, x, userPadding.top, width, params.outerHeight - userPadding.bottom - userPadding.top);
       } else {
-        setBoxDims(box, x, chartArea.top + stack.placed, width1, height1);
+        setBoxDims(box, x, chartArea.top + stack.placed, width, height);
       }
       stack.start = x;
-      stack.placed += height1;
+      stack.placed += height;
       x = box.right;
     }
   }
@@ -5289,9 +5361,11 @@ function _detectPlatform(canvas) {
   return DomPlatform;
 }
 var Element = class {
-  constructor() {
-    __publicField(this, "active", false);
-  }
+  x;
+  y;
+  active = false;
+  options;
+  $animations;
   tooltipPosition(useFinalPosition) {
     const { x, y } = this.getProps([
       "x",
@@ -5429,6 +5503,7 @@ function getEvenSpacing(arr) {
 }
 var reverseAlign = (align) => align === "left" ? "right" : align === "right" ? "left" : align;
 var offsetFromEdge = (scale, edge, offset) => edge === "top" || edge === "left" ? scale[edge] + offset : scale[edge] - offset;
+var getTicksLimit = (ticksLength, maxTicksLimit) => Math.min(maxTicksLimit || ticksLength, ticksLength);
 function sample(arr, numItems) {
   const result = [];
   const increment = arr.length / numItems;
@@ -5528,9 +5603,9 @@ function titleArgs(scale, offset, position, align) {
     maxWidth = right - left;
   } else {
     if (isObject(position)) {
-      const positionAxisID1 = Object.keys(position)[0];
-      const value1 = position[positionAxisID1];
-      titleX = scales[positionAxisID1].getPixelForValue(value1) - width + offset;
+      const positionAxisID = Object.keys(position)[0];
+      const value = position[positionAxisID];
+      titleX = scales[positionAxisID].getPixelForValue(value) - width + offset;
     } else if (position === "center") {
       titleX = (chartArea.left + chartArea.right) / 2 - width + offset;
     } else {
@@ -5771,9 +5846,9 @@ var Scale = class extends Element {
       this
     ]);
   }
-  _callHooks(name2) {
-    this.chart.notifyPlugins(name2, this.getContext());
-    callback(this.options[name2], [
+  _callHooks(name) {
+    this.chart.notifyPlugins(name, this.getContext());
+    callback(this.options[name], [
       this
     ]);
   }
@@ -5824,7 +5899,7 @@ var Scale = class extends Element {
   calculateLabelRotation() {
     const options = this.options;
     const tickOpts = options.ticks;
-    const numTicks = this.ticks.length;
+    const numTicks = getTicksLimit(this.ticks.length, options.ticks.maxTicksLimit);
     const minRotation = tickOpts.minRotation || 0;
     const maxRotation = tickOpts.maxRotation;
     let labelRotation = minRotation;
@@ -5983,18 +6058,19 @@ var Scale = class extends Element {
       if (sampleSize < ticks.length) {
         ticks = sample(ticks, sampleSize);
       }
-      this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length);
+      this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length, this.options.ticks.maxTicksLimit);
     }
     return labelSizes;
   }
-  _computeLabelSizes(ticks, length) {
+  _computeLabelSizes(ticks, length, maxTicksLimit) {
     const { ctx, _longestTextCache: caches } = this;
     const widths = [];
     const heights = [];
+    const increment = Math.floor(length / getTicksLimit(length, maxTicksLimit));
     let widestLabelSize = 0;
     let highestLabelSize = 0;
     let i, j, jlen, label, tickFont, fontString, cache, lineHeight, width, height, nestedLabel;
-    for (i = 0; i < length; ++i) {
+    for (i = 0; i < length; i += increment) {
       label = ticks[i].label;
       tickFont = this._resolveTickFontOptions(i);
       ctx.font = fontString = tickFont.string;
@@ -6155,9 +6231,9 @@ var Scale = class extends Element {
       if (position === "center") {
         borderValue = alignBorderValue((chartArea.left + chartArea.right) / 2);
       } else if (isObject(position)) {
-        const positionAxisID1 = Object.keys(position)[0];
-        const value1 = position[positionAxisID1];
-        borderValue = alignBorderValue(this.chart.scales[positionAxisID1].getPixelForValue(value1));
+        const positionAxisID = Object.keys(position)[0];
+        const value = position[positionAxisID];
+        borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
       }
       tx1 = borderValue - axisHalfWidth;
       tx2 = tx1 - tl;
@@ -6236,9 +6312,9 @@ var Scale = class extends Element {
       textAlign = ret.textAlign;
       x = ret.x;
     } else if (position === "right") {
-      const ret1 = this._getYAxisLabelAlignment(tl);
-      textAlign = ret1.textAlign;
-      x = ret1.x;
+      const ret = this._getYAxisLabelAlignment(tl);
+      textAlign = ret.textAlign;
+      x = ret.x;
     } else if (axis === "x") {
       if (position === "center") {
         y = (chartArea.top + chartArea.bottom) / 2 + tickAndPadding;
@@ -6252,9 +6328,9 @@ var Scale = class extends Element {
       if (position === "center") {
         x = (chartArea.left + chartArea.right) / 2 - tickAndPadding;
       } else if (isObject(position)) {
-        const positionAxisID1 = Object.keys(position)[0];
-        const value1 = position[positionAxisID1];
-        x = this.chart.scales[positionAxisID1].getPixelForValue(value1);
+        const positionAxisID = Object.keys(position)[0];
+        const value = position[positionAxisID];
+        x = this.chart.scales[positionAxisID].getPixelForValue(value);
       }
       textAlign = this._getYAxisLabelAlignment(tl).textAlign;
     }
@@ -6934,8 +7010,8 @@ function allPlugins(config) {
     plugins.push(registry.getPlugin(keys[i]));
   }
   const local = config.plugins || [];
-  for (let i1 = 0; i1 < local.length; i1++) {
-    const plugin = local[i1];
+  for (let i = 0; i < local.length; i++) {
+    const plugin = local[i];
     if (plugins.indexOf(plugin) === -1) {
       plugins.push(plugin);
       localIds[plugin.id] = true;
@@ -7005,6 +7081,11 @@ function getAxisFromDefaultScaleID(id, indexAxis) {
 function getDefaultScaleIDFromAxis(axis, indexAxis) {
   return axis === indexAxis ? "_index_" : "_value_";
 }
+function idMatchesAxis(id) {
+  if (id === "x" || id === "y" || id === "r") {
+    return id;
+  }
+}
 function axisFromPosition(position) {
   if (position === "top" || position === "bottom") {
     return "x";
@@ -7013,15 +7094,33 @@ function axisFromPosition(position) {
     return "y";
   }
 }
-function determineAxis(id, scaleOptions) {
-  if (id === "x" || id === "y" || id === "r") {
+function determineAxis(id, ...scaleOptions) {
+  if (idMatchesAxis(id)) {
     return id;
   }
-  id = scaleOptions.axis || axisFromPosition(scaleOptions.position) || id.length > 1 && determineAxis(id[0].toLowerCase(), scaleOptions);
-  if (id) {
-    return id;
+  for (const opts of scaleOptions) {
+    const axis = opts.axis || axisFromPosition(opts.position) || id.length > 1 && idMatchesAxis(id[0].toLowerCase());
+    if (axis) {
+      return axis;
+    }
   }
-  throw new Error(`Cannot determine type of '${name}' axis. Please provide 'axis' or 'position' option.`);
+  throw new Error(`Cannot determine type of '${id}' axis. Please provide 'axis' or 'position' option.`);
+}
+function getAxisFromDataset(id, axis, dataset) {
+  if (dataset[axis + "AxisID"] === id) {
+    return {
+      axis
+    };
+  }
+}
+function retrieveAxisFromDatasets(id, config) {
+  if (config.data && config.data.datasets) {
+    const boundDs = config.data.datasets.filter((d) => d.xAxisID === id || d.yAxisID === id);
+    if (boundDs.length) {
+      return getAxisFromDataset(id, "x", boundDs[0]) || getAxisFromDataset(id, "y", boundDs[0]);
+    }
+  }
+  return {};
 }
 function mergeScaleConfig(config, options) {
   const chartDefaults = overrides[config.type] || {
@@ -7038,7 +7137,7 @@ function mergeScaleConfig(config, options) {
     if (scaleConf._proxy) {
       return console.warn(`Ignoring resolver passed as options for scale: ${id}`);
     }
-    const axis = determineAxis(id, scaleConf);
+    const axis = determineAxis(id, scaleConf, retrieveAxisFromDatasets(id, config), defaults.scales[scaleConf.type]);
     const defaultId = getDefaultScaleIDFromAxis(axis, chartIndexAxis);
     const defaultScaleOptions = chartDefaults.scales || {};
     scales[id] = mergeIf(/* @__PURE__ */ Object.create(null), [
@@ -7296,7 +7395,7 @@ function needContext(proxy, names2) {
   }
   return false;
 }
-var version = "4.1.1";
+var version = "4.3.0";
 var KNOWN_POSITIONS = [
   "top",
   "bottom",
@@ -7772,9 +7871,9 @@ var Chart = class {
     for (let i = 0, ilen = this.data.datasets.length; i < ilen; ++i) {
       this.getDatasetMeta(i).controller.configure();
     }
-    for (let i1 = 0, ilen1 = this.data.datasets.length; i1 < ilen1; ++i1) {
-      this._updateDataset(i1, isFunction(mode) ? mode({
-        datasetIndex: i1
+    for (let i = 0, ilen = this.data.datasets.length; i < ilen; ++i) {
+      this._updateDataset(i, isFunction(mode) ? mode({
+        datasetIndex: i
       }) : mode);
     }
     this.notifyPlugins("afterDatasetsUpdate", {
@@ -8287,21 +8386,21 @@ function pathArc(ctx, element, offset, spacing, end, circular) {
     const p4 = rThetaToXY(innerEndAdjustedRadius, endAngle, x, y);
     ctx.lineTo(p4.x, p4.y);
     if (innerEnd > 0) {
-      const pCenter1 = rThetaToXY(innerEndAdjustedRadius, innerEndAdjustedAngle, x, y);
-      ctx.arc(pCenter1.x, pCenter1.y, innerEnd, endAngle + HALF_PI, innerEndAdjustedAngle + Math.PI);
+      const pCenter = rThetaToXY(innerEndAdjustedRadius, innerEndAdjustedAngle, x, y);
+      ctx.arc(pCenter.x, pCenter.y, innerEnd, endAngle + HALF_PI, innerEndAdjustedAngle + Math.PI);
     }
     const innerMidAdjustedAngle = (endAngle - innerEnd / innerRadius + (startAngle + innerStart / innerRadius)) / 2;
     ctx.arc(x, y, innerRadius, endAngle - innerEnd / innerRadius, innerMidAdjustedAngle, true);
     ctx.arc(x, y, innerRadius, innerMidAdjustedAngle, startAngle + innerStart / innerRadius, true);
     if (innerStart > 0) {
-      const pCenter2 = rThetaToXY(innerStartAdjustedRadius, innerStartAdjustedAngle, x, y);
-      ctx.arc(pCenter2.x, pCenter2.y, innerStart, innerStartAdjustedAngle + Math.PI, startAngle - HALF_PI);
+      const pCenter = rThetaToXY(innerStartAdjustedRadius, innerStartAdjustedAngle, x, y);
+      ctx.arc(pCenter.x, pCenter.y, innerStart, innerStartAdjustedAngle + Math.PI, startAngle - HALF_PI);
     }
     const p8 = rThetaToXY(outerStartAdjustedRadius, startAngle, x, y);
     ctx.lineTo(p8.x, p8.y);
     if (outerStart > 0) {
-      const pCenter3 = rThetaToXY(outerStartAdjustedRadius, outerStartAdjustedAngle, x, y);
-      ctx.arc(pCenter3.x, pCenter3.y, outerStart, startAngle - HALF_PI, outerStartAdjustedAngle);
+      const pCenter = rThetaToXY(outerStartAdjustedRadius, outerStartAdjustedAngle, x, y);
+      ctx.arc(pCenter.x, pCenter.y, outerStart, startAngle - HALF_PI, outerStartAdjustedAngle);
     }
   } else {
     ctx.moveTo(x, y);
@@ -8332,11 +8431,13 @@ function drawArc(ctx, element, offset, spacing, circular) {
 }
 function drawBorder(ctx, element, offset, spacing, circular) {
   const { fullCircles, startAngle, circumference, options } = element;
-  const { borderWidth, borderJoinStyle } = options;
+  const { borderWidth, borderJoinStyle, borderDash, borderDashOffset } = options;
   const inner = options.borderAlign === "inner";
   if (!borderWidth) {
     return;
   }
+  ctx.setLineDash(borderDash || []);
+  ctx.lineDashOffset = borderDashOffset;
   if (inner) {
     ctx.lineWidth = borderWidth * 2;
     ctx.lineJoin = borderJoinStyle || "round";
@@ -8363,6 +8464,13 @@ function drawBorder(ctx, element, offset, spacing, circular) {
   }
 }
 var ArcElement = class extends Element {
+  circumference;
+  endAngle;
+  fullCircles;
+  innerRadius;
+  outerRadius;
+  pixelMargin;
+  startAngle;
   constructor(cfg) {
     super();
     this.options = void 0;
@@ -8393,7 +8501,7 @@ var ArcElement = class extends Element {
       "outerRadius",
       "circumference"
     ], useFinalPosition);
-    const rAdjust = this.options.spacing / 2;
+    const rAdjust = (this.options.spacing + this.options.borderWidth) / 2;
     const _circumference = valueOrDefault(circumference, endAngle - startAngle);
     const betweenAngles = _circumference >= TAU || _angleBetween(angle, startAngle, endAngle);
     const withinRadius = _isBetween(distance, innerRadius + rAdjust, outerRadius + rAdjust);
@@ -8406,8 +8514,7 @@ var ArcElement = class extends Element {
       "startAngle",
       "endAngle",
       "innerRadius",
-      "outerRadius",
-      "circumference"
+      "outerRadius"
     ], useFinalPosition);
     const { offset, spacing } = this.options;
     const halfAngle = (startAngle + endAngle) / 2;
@@ -8446,6 +8553,8 @@ __publicField(ArcElement, "id", "arc");
 __publicField(ArcElement, "defaults", {
   borderAlign: "center",
   borderColor: "#fff",
+  borderDash: [],
+  borderDashOffset: 0,
   borderJoinStyle: void 0,
   borderRadius: 0,
   borderWidth: 2,
@@ -8456,6 +8565,10 @@ __publicField(ArcElement, "defaults", {
 });
 __publicField(ArcElement, "defaultRoutes", {
   backgroundColor: "backgroundColor"
+});
+__publicField(ArcElement, "descriptors", {
+  _scriptable: true,
+  _indexable: (name) => name !== "borderDash"
 });
 function setStyle(ctx, options, style = options) {
   ctx.lineCap = valueOrDefault(style.borderCapStyle, options.borderCapStyle);
@@ -8740,7 +8853,7 @@ __publicField(LineElement, "defaultRoutes", {
 });
 __publicField(LineElement, "descriptors", {
   _scriptable: true,
-  _indexable: (name2) => name2 !== "borderDash" && name2 !== "fill"
+  _indexable: (name) => name !== "borderDash" && name !== "fill"
 });
 function inRange$1(el, pos, axis, useFinalPosition) {
   const options = el.options;
@@ -8750,6 +8863,9 @@ function inRange$1(el, pos, axis, useFinalPosition) {
   return Math.abs(pos - value) < options.radius + options.hitRadius;
 }
 var PointElement = class extends Element {
+  parsed;
+  skip;
+  stop;
   constructor(cfg) {
     super();
     this.options = void 0;
@@ -8807,6 +8923,9 @@ var PointElement = class extends Element {
   }
 };
 __publicField(PointElement, "id", "point");
+/**
+* @type {any}
+*/
 __publicField(PointElement, "defaults", {
   borderWidth: 1,
   hitRadius: 1,
@@ -8816,6 +8935,9 @@ __publicField(PointElement, "defaults", {
   radius: 3,
   rotation: 0
 });
+/**
+* @type {any}
+*/
 __publicField(PointElement, "defaultRoutes", {
   backgroundColor: "backgroundColor",
   borderColor: "borderColor"
@@ -9009,15 +9131,15 @@ var Legend = class extends Element {
     } else {
       let col = 0;
       let top = _alignStartEnd(align, this.top + titleHeight + padding, this.bottom - this.columnSizes[col].height);
-      for (const hitbox1 of hitboxes) {
-        if (hitbox1.col !== col) {
-          col = hitbox1.col;
+      for (const hitbox of hitboxes) {
+        if (hitbox.col !== col) {
+          col = hitbox.col;
           top = _alignStartEnd(align, this.top + titleHeight + padding, this.bottom - this.columnSizes[col].height);
         }
-        hitbox1.top = top;
-        hitbox1.left += this.left + padding;
-        hitbox1.left = rtlHelper.leftForLtr(rtlHelper.x(hitbox1.left), hitbox1.width);
-        top += hitbox1.height + padding;
+        hitbox.top = top;
+        hitbox.left += this.left + padding;
+        hitbox.left = rtlHelper.leftForLtr(rtlHelper.x(hitbox.left), hitbox.width);
+        top += hitbox.height + padding;
       }
     }
   }
@@ -9360,13 +9482,13 @@ var plugin_legend = {
     }
   },
   descriptors: {
-    _scriptable: (name2) => !name2.startsWith("on"),
+    _scriptable: (name) => !name.startsWith("on"),
     labels: {
-      _scriptable: (name2) => ![
+      _scriptable: (name) => ![
         "generateLabels",
         "filter",
         "sort"
-      ].includes(name2)
+      ].includes(name)
     }
   }
 };
@@ -9808,10 +9930,10 @@ var defaultCallbacks = {
   footer: noop,
   afterFooter: noop
 };
-function invokeCallbackWithFallback(callbacks, name2, ctx, arg) {
-  const result = callbacks[name2].call(ctx, arg);
+function invokeCallbackWithFallback(callbacks, name, ctx, arg) {
+  const result = callbacks[name].call(ctx, arg);
   if (typeof result === "undefined") {
-    return defaultCallbacks[name2].call(ctx, arg);
+    return defaultCallbacks[name].call(ctx, arg);
   }
   return result;
 }
@@ -10070,9 +10192,9 @@ var Tooltip = class extends Element {
     }
   }
   _drawColorBox(ctx, pt, i, rtlHelper, options) {
-    const labelColors = this.labelColors[i];
+    const labelColor = this.labelColors[i];
     const labelPointStyle = this.labelPointStyles[i];
-    const { boxHeight, boxWidth, boxPadding } = options;
+    const { boxHeight, boxWidth } = options;
     const bodyFont = toFont(options.bodyFont);
     const colorX = getAlignedX(this, "left", options);
     const rtlColorX = rtlHelper.x(colorX);
@@ -10090,17 +10212,17 @@ var Tooltip = class extends Element {
       ctx.strokeStyle = options.multiKeyBackground;
       ctx.fillStyle = options.multiKeyBackground;
       drawPoint(ctx, drawOptions, centerX, centerY);
-      ctx.strokeStyle = labelColors.borderColor;
-      ctx.fillStyle = labelColors.backgroundColor;
+      ctx.strokeStyle = labelColor.borderColor;
+      ctx.fillStyle = labelColor.backgroundColor;
       drawPoint(ctx, drawOptions, centerX, centerY);
     } else {
-      ctx.lineWidth = isObject(labelColors.borderWidth) ? Math.max(...Object.values(labelColors.borderWidth)) : labelColors.borderWidth || 1;
-      ctx.strokeStyle = labelColors.borderColor;
-      ctx.setLineDash(labelColors.borderDash || []);
-      ctx.lineDashOffset = labelColors.borderDashOffset || 0;
-      const outerX = rtlHelper.leftForLtr(rtlColorX, boxWidth - boxPadding);
-      const innerX = rtlHelper.leftForLtr(rtlHelper.xPlus(rtlColorX, 1), boxWidth - boxPadding - 2);
-      const borderRadius = toTRBLCorners(labelColors.borderRadius);
+      ctx.lineWidth = isObject(labelColor.borderWidth) ? Math.max(...Object.values(labelColor.borderWidth)) : labelColor.borderWidth || 1;
+      ctx.strokeStyle = labelColor.borderColor;
+      ctx.setLineDash(labelColor.borderDash || []);
+      ctx.lineDashOffset = labelColor.borderDashOffset || 0;
+      const outerX = rtlHelper.leftForLtr(rtlColorX, boxWidth);
+      const innerX = rtlHelper.leftForLtr(rtlHelper.xPlus(rtlColorX, 1), boxWidth - 2);
+      const borderRadius = toTRBLCorners(labelColor.borderRadius);
       if (Object.values(borderRadius).some((v) => v !== 0)) {
         ctx.beginPath();
         ctx.fillStyle = options.multiKeyBackground;
@@ -10113,7 +10235,7 @@ var Tooltip = class extends Element {
         });
         ctx.fill();
         ctx.stroke();
-        ctx.fillStyle = labelColors.backgroundColor;
+        ctx.fillStyle = labelColor.backgroundColor;
         ctx.beginPath();
         addRoundedRectPath(ctx, {
           x: innerX,
@@ -10127,7 +10249,7 @@ var Tooltip = class extends Element {
         ctx.fillStyle = options.multiKeyBackground;
         ctx.fillRect(outerX, colorY, boxWidth, boxHeight);
         ctx.strokeRect(outerX, colorY, boxWidth, boxHeight);
-        ctx.fillStyle = labelColors.backgroundColor;
+        ctx.fillStyle = labelColor.backgroundColor;
         ctx.fillRect(innerX, colorY + 1, boxWidth - 2, boxHeight - 2);
       }
     }
@@ -10384,9 +10506,10 @@ var plugin_tooltip = {
       const args = {
         tooltip
       };
-      if (chart.notifyPlugins("beforeTooltipDraw", __spreadProps(__spreadValues({}, args), {
+      if (chart.notifyPlugins("beforeTooltipDraw", {
+        ...args,
         cancelable: true
-      })) === false) {
+      }) === false) {
         return;
       }
       tooltip.draw(chart.ctx);
@@ -10464,7 +10587,7 @@ var plugin_tooltip = {
     titleFont: "font"
   },
   descriptors: {
-    _scriptable: (name2) => name2 !== "filter" && name2 !== "itemSort" && name2 !== "external",
+    _scriptable: (name) => name !== "filter" && name !== "itemSort" && name !== "external",
     _indexable: false,
     callbacks: {
       _scriptable: false,
@@ -10679,8 +10802,12 @@ function generateTicks$1(generationOptions, dataRange) {
     }
   }
   for (; j < numSpaces; ++j) {
+    const tickValue = Math.round((niceMin + j * spacing) * factor) / factor;
+    if (maxDefined && tickValue > max) {
+      break;
+    }
     ticks.push({
-      value: Math.round((niceMin + j * spacing) * factor) / factor
+      value: tickValue
     });
   }
   if (maxDefined && includeBounds && niceMax !== max) {
@@ -11099,29 +11226,66 @@ function updateLimits(limits, orig, angle, hLimits, vLimits) {
     limits.b = Math.max(limits.b, orig.b + y);
   }
 }
+function createPointLabelItem(scale, index, itemOpts) {
+  const outerDistance = scale.drawingArea;
+  const { extra, additionalAngle, padding, size } = itemOpts;
+  const pointLabelPosition = scale.getPointPosition(index, outerDistance + extra + padding, additionalAngle);
+  const angle = Math.round(toDegrees(_normalizeAngle(pointLabelPosition.angle + HALF_PI)));
+  const y = yForAngle(pointLabelPosition.y, size.h, angle);
+  const textAlign = getTextAlignForAngle(angle);
+  const left = leftForTextAlign(pointLabelPosition.x, size.w, textAlign);
+  return {
+    visible: true,
+    x: pointLabelPosition.x,
+    y,
+    textAlign,
+    left,
+    top: y,
+    right: left + size.w,
+    bottom: y + size.h
+  };
+}
+function isNotOverlapped(item, area) {
+  if (!area) {
+    return true;
+  }
+  const { left, top, right, bottom } = item;
+  const apexesInArea = _isPointInArea({
+    x: left,
+    y: top
+  }, area) || _isPointInArea({
+    x: left,
+    y: bottom
+  }, area) || _isPointInArea({
+    x: right,
+    y: top
+  }, area) || _isPointInArea({
+    x: right,
+    y: bottom
+  }, area);
+  return !apexesInArea;
+}
 function buildPointLabelItems(scale, labelSizes, padding) {
   const items = [];
   const valueCount = scale._pointLabels.length;
   const opts = scale.options;
-  const extra = getTickBackdropHeight(opts) / 2;
-  const outerDistance = scale.drawingArea;
-  const additionalAngle = opts.pointLabels.centerPointLabels ? PI / valueCount : 0;
+  const { centerPointLabels, display } = opts.pointLabels;
+  const itemOpts = {
+    extra: getTickBackdropHeight(opts) / 2,
+    additionalAngle: centerPointLabels ? PI / valueCount : 0
+  };
+  let area;
   for (let i = 0; i < valueCount; i++) {
-    const pointLabelPosition = scale.getPointPosition(i, outerDistance + extra + padding[i], additionalAngle);
-    const angle = Math.round(toDegrees(_normalizeAngle(pointLabelPosition.angle + HALF_PI)));
-    const size = labelSizes[i];
-    const y = yForAngle(pointLabelPosition.y, size.h, angle);
-    const textAlign = getTextAlignForAngle(angle);
-    const left = leftForTextAlign(pointLabelPosition.x, size.w, textAlign);
-    items.push({
-      x: pointLabelPosition.x,
-      y,
-      textAlign,
-      left,
-      top: y,
-      right: left + size.w,
-      bottom: y + size.h
-    });
+    itemOpts.padding = padding[i];
+    itemOpts.size = labelSizes[i];
+    const item = createPointLabelItem(scale, i, itemOpts);
+    items.push(item);
+    if (display === "auto") {
+      item.visible = isNotOverlapped(item, area);
+      if (item.visible) {
+        area = item;
+      }
+    }
   }
   return items;
 }
@@ -11149,35 +11313,43 @@ function yForAngle(y, h, angle) {
   }
   return y;
 }
+function drawPointLabelBox(ctx, opts, item) {
+  const { left, top, right, bottom } = item;
+  const { backdropColor } = opts;
+  if (!isNullOrUndef(backdropColor)) {
+    const borderRadius = toTRBLCorners(opts.borderRadius);
+    const padding = toPadding(opts.backdropPadding);
+    ctx.fillStyle = backdropColor;
+    const backdropLeft = left - padding.left;
+    const backdropTop = top - padding.top;
+    const backdropWidth = right - left + padding.width;
+    const backdropHeight = bottom - top + padding.height;
+    if (Object.values(borderRadius).some((v) => v !== 0)) {
+      ctx.beginPath();
+      addRoundedRectPath(ctx, {
+        x: backdropLeft,
+        y: backdropTop,
+        w: backdropWidth,
+        h: backdropHeight,
+        radius: borderRadius
+      });
+      ctx.fill();
+    } else {
+      ctx.fillRect(backdropLeft, backdropTop, backdropWidth, backdropHeight);
+    }
+  }
+}
 function drawPointLabels(scale, labelCount) {
   const { ctx, options: { pointLabels } } = scale;
   for (let i = labelCount - 1; i >= 0; i--) {
-    const optsAtIndex = pointLabels.setContext(scale.getPointLabelContext(i));
-    const plFont = toFont(optsAtIndex.font);
-    const { x, y, textAlign, left, top, right, bottom } = scale._pointLabelItems[i];
-    const { backdropColor } = optsAtIndex;
-    if (!isNullOrUndef(backdropColor)) {
-      const borderRadius = toTRBLCorners(optsAtIndex.borderRadius);
-      const padding = toPadding(optsAtIndex.backdropPadding);
-      ctx.fillStyle = backdropColor;
-      const backdropLeft = left - padding.left;
-      const backdropTop = top - padding.top;
-      const backdropWidth = right - left + padding.width;
-      const backdropHeight = bottom - top + padding.height;
-      if (Object.values(borderRadius).some((v) => v !== 0)) {
-        ctx.beginPath();
-        addRoundedRectPath(ctx, {
-          x: backdropLeft,
-          y: backdropTop,
-          w: backdropWidth,
-          h: backdropHeight,
-          radius: borderRadius
-        });
-        ctx.fill();
-      } else {
-        ctx.fillRect(backdropLeft, backdropTop, backdropWidth, backdropHeight);
-      }
+    const item = scale._pointLabelItems[i];
+    if (!item.visible) {
+      continue;
     }
+    const optsAtIndex = pointLabels.setContext(scale.getPointLabelContext(i));
+    drawPointLabelBox(ctx, optsAtIndex, item);
+    const plFont = toFont(optsAtIndex.font);
+    const { x, y, textAlign } = item;
     renderText(ctx, scale._pointLabels[i], x, y + plFont.lineHeight / 2, plFont, {
       color: optsAtIndex.color,
       textAlign,
@@ -11763,6 +11935,13 @@ var TimeScale = class extends Scale {
     }
     return adapter.format(value, timeOpts.displayFormats.datetime);
   }
+  format(value, format) {
+    const options = this.options;
+    const formats = options.time.displayFormats;
+    const unit = this._unit;
+    const fmt = format || formats[unit];
+    return this._adapter.format(value, fmt);
+  }
   _tickFormatFunction(time, index, ticks, format) {
     const options = this.options;
     const formatter = options.ticks.callback;
@@ -11988,9 +12167,9 @@ var IRChart = class extends IRComponent {
     return this.chart;
   }
   set yAxisVisible(visible) {
-    this.chartObj.options.scales = {
-      y: { display: visible }
-    };
+    if (!this.chartObj.scales.y)
+      throw new Error(`No yAxios options`);
+    this.chartObj.scales.y.options.display = visible;
     this.update();
   }
   update() {
@@ -12060,25 +12239,25 @@ export {
 
 @kurkle/color/dist/color.esm.js:
   (*!
-   * @kurkle/color v0.3.1
+   * @kurkle/color v0.3.2
    * https://github.com/kurkle/color#readme
-   * (c) 2022 Jukka Kurkela
+   * (c) 2023 Jukka Kurkela
    * Released under the MIT License
    *)
 
 chart.js/dist/chunks/helpers.segment.js:
   (*!
-   * Chart.js v4.1.1
+   * Chart.js v4.3.0
    * https://www.chartjs.org
-   * (c) 2022 Chart.js Contributors
+   * (c) 2023 Chart.js Contributors
    * Released under the MIT License
    *)
 
 chart.js/dist/chart.js:
   (*!
-   * Chart.js v4.1.1
+   * Chart.js v4.3.0
    * https://www.chartjs.org
-   * (c) 2022 Chart.js Contributors
+   * (c) 2023 Chart.js Contributors
    * Released under the MIT License
    *)
 */

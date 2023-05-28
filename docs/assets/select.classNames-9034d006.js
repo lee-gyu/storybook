@@ -1,0 +1,2 @@
+const e="select",t="select-dropdown",n={select:{"&":e,transparent:`${e}--transparent`,"is-expanded":"is-expanded"},selectItem:{"&":`${e}__item`},selectInput:{"&":`${e}__input`},selectInputNative:{"&":`${e}__input-native`},selectInputIcon:{"&":`${e}__input-icon`},selectDropdown:{"&":t},selectDropdownList:{"&":`${t}__list`},selectDropdownButton:{"&":`${t}__button`,"is-selected":"is-selected"},selectDropdownItem:{"&":`${t}__item`},selectDropdownIcon:{"&":`${t}__icon`}};export{n as c};
+//# sourceMappingURL=select.classNames-9034d006.js.map

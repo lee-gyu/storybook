@@ -1,0 +1,2 @@
+const o="dialog",e={dialog:{"&":o,transparent:`${o}--transparent`,"is-visible":"is-visible"},dialogWrapper:{"&":`${o}__wrapper`},dialogHeader:{"&":`${o}__header`},dialogHeaderTitle:{"&":`${o}__header-title`},dialogHeaderActions:{"&":`${o}__header-actions`},dialogContent:{"&":`${o}__content`},dialogFooter:{"&":`${o}__footer`},dialogFooterLeft:{"&":`${o}__footer-left`},dialogFooterRight:{"&":`${o}__footer-right`},dialogButtonClose:{"&":`${o}__button-close`}};export{e as c};
+//# sourceMappingURL=dialog.classNames-23eb9c08.js.map

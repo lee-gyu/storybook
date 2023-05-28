@@ -1,17 +1,18 @@
 import {
   i18n_default
-} from "./chunks/chunk-YUYUP727js.js";
+} from "./chunks/chunk-ZBZVVTYW.js";
 import {
-  IRComponent,
+  IRComponent
+} from "./chunks/chunk-BI23OIPF.js";
+import {
   __commonJS,
-  __spreadValues,
   __toESM,
   require_lodash
-} from "./chunks/chunk-LTWBM3BUjs.js";
+} from "./chunks/chunk-JYMTCUXI.js";
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/lib/codemirror.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/lib/codemirror.js
 var require_codemirror = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/lib/codemirror.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/lib/codemirror.js"(exports, module) {
     (function(global, factory) {
       typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, global.CodeMirror = factory());
     })(exports, function() {
@@ -219,15 +220,15 @@ var require_codemirror = __commonJS({
       };
       Delayed.prototype.onTimeout = function(self2) {
         self2.id = 0;
-        if (self2.time <= +new Date()) {
+        if (self2.time <= +/* @__PURE__ */ new Date()) {
           self2.f();
         } else {
-          setTimeout(self2.handler, self2.time - +new Date());
+          setTimeout(self2.handler, self2.time - +/* @__PURE__ */ new Date());
         }
       };
       Delayed.prototype.set = function(ms, f) {
         this.f = f;
-        var time = +new Date() + ms;
+        var time = +/* @__PURE__ */ new Date() + ms;
         if (!this.id || time < this.time) {
           clearTimeout(this.id);
           this.id = setTimeout(this.handler, ms);
@@ -4023,21 +4024,35 @@ var require_codemirror = __commonJS({
         cm.curOp = {
           cm,
           viewChanged: false,
+          // Flag that indicates that lines might need to be redrawn
           startHeight: cm.doc.height,
+          // Used to detect need to update scrollbar
           forceUpdate: false,
+          // Used to force a redraw
           updateInput: 0,
+          // Whether to reset the input textarea
           typing: false,
+          // Whether this reset should be careful to leave existing text (for compositing)
           changeObjs: null,
+          // Accumulated changes, for firing change events
           cursorActivityHandlers: null,
+          // Set of handlers to fire cursorActivity on
           cursorActivityCalled: 0,
+          // Tracks which cursorActivity handlers have been called already
           selectionChanged: false,
+          // Whether the selection needs to be redrawn
           updateMaxLine: false,
+          // Set when the widest line needs to be determined anew
           scrollLeft: null,
           scrollTop: null,
+          // Intermediate scroll position, not pushed to DOM yet
           scrollToPos: null,
+          // Used to scroll to a specific position
           focus: false,
           id: ++nextOpId,
+          // Unique ID
           markArrays: null
+          // Used by addMarkedSpan
         };
         pushOperation(cm.curOp);
       }
@@ -4236,7 +4251,7 @@ var require_codemirror = __commonJS({
         if (doc2.highlightFrontier >= cm.display.viewTo) {
           return;
         }
-        var end = +new Date() + cm.options.workTime;
+        var end = +/* @__PURE__ */ new Date() + cm.options.workTime;
         var context = getContextBefore(cm, doc2.highlightFrontier);
         var changedLines = [];
         doc2.iter(context.line, Math.min(doc2.first + doc2.size, cm.display.viewTo + 500), function(line) {
@@ -4270,7 +4285,7 @@ var require_codemirror = __commonJS({
             line.stateAfter = context.line % 5 == 0 ? context.save() : null;
             context.nextLine();
           }
-          if (+new Date() > end) {
+          if (+/* @__PURE__ */ new Date() > end) {
             startWorker(cm, cm.options.workDelay);
             return true;
           }
@@ -5087,7 +5102,7 @@ var require_codemirror = __commonJS({
       function addChangeToHistory(doc2, change, selAfter, opId) {
         var hist = doc2.history;
         hist.undone.length = 0;
-        var time = +new Date(), cur;
+        var time = +/* @__PURE__ */ new Date(), cur;
         var last;
         if ((hist.lastOp == opId || hist.lastOrigin == change.origin && change.origin && (change.origin.charAt(0) == "+" && hist.lastModTime > time - (doc2.cm ? doc2.cm.options.historyEventDelay : 500) || change.origin.charAt(0) == "*")) && (cur = lastChangeEvent(hist, hist.lastOp == opId))) {
           last = lst(cur.changes);
@@ -5124,7 +5139,7 @@ var require_codemirror = __commonJS({
       }
       function selectionEventCanBeMerged(doc2, origin, prev, sel) {
         var ch = origin.charAt(0);
-        return ch == "*" || ch == "+" && prev.ranges.length == sel.ranges.length && prev.somethingSelected() == sel.somethingSelected() && new Date() - doc2.history.lastSelTime <= (doc2.cm ? doc2.cm.options.historyEventDelay : 500);
+        return ch == "*" || ch == "+" && prev.ranges.length == sel.ranges.length && prev.somethingSelected() == sel.somethingSelected() && /* @__PURE__ */ new Date() - doc2.history.lastSelTime <= (doc2.cm ? doc2.cm.options.historyEventDelay : 500);
       }
       function addSelectionToHistory(doc2, sel, opId, options) {
         var hist = doc2.history, origin = options && options.origin;
@@ -5133,7 +5148,7 @@ var require_codemirror = __commonJS({
         } else {
           pushSelectionToHistory(sel, hist.done);
         }
-        hist.lastSelTime = +new Date();
+        hist.lastSelTime = +/* @__PURE__ */ new Date();
         hist.lastSelOrigin = origin;
         hist.lastSelOp = opId;
         if (options && options.clearRedo !== false) {
@@ -5776,6 +5791,7 @@ var require_codemirror = __commonJS({
         chunkSize: function() {
           return this.lines.length;
         },
+        // Remove the n lines at offset 'at'.
         removeInner: function(at, n) {
           for (var i2 = at, e = at + n; i2 < e; ++i2) {
             var line = this.lines[i2];
@@ -5785,9 +5801,12 @@ var require_codemirror = __commonJS({
           }
           this.lines.splice(at, n);
         },
+        // Helper used to collapse a small branch into a single leaf.
         collapse: function(lines) {
           lines.push.apply(lines, this.lines);
         },
+        // Insert the given array of lines at offset 'at', count them as
+        // having the given height.
         insertInner: function(at, lines, height) {
           this.height += height;
           this.lines = this.lines.slice(0, at).concat(lines).concat(this.lines.slice(at));
@@ -5795,6 +5814,7 @@ var require_codemirror = __commonJS({
             lines[i2].parent = this;
           }
         },
+        // Used to iterate over a part of the tree.
         iterN: function(at, n, op) {
           for (var e = at + n; at < e; ++at) {
             if (op(this.lines[at])) {
@@ -5875,6 +5895,7 @@ var require_codemirror = __commonJS({
             at -= sz;
           }
         },
+        // When a node has grown, check whether it should be split.
         maybeSpill: function() {
           if (this.children.length <= 10) {
             return;
@@ -6331,6 +6352,10 @@ var require_codemirror = __commonJS({
       };
       Doc.prototype = createObj(BranchChunk.prototype, {
         constructor: Doc,
+        // Iterate over the document. Supports two forms -- with only one
+        // argument, it calls that for each line in the document. With
+        // three, it iterates over the range given by the first two (with
+        // the second being non-inclusive).
         iter: function(from, to, op) {
           if (op) {
             this.iterN(from - this.first, to - from, op);
@@ -6338,6 +6363,7 @@ var require_codemirror = __commonJS({
             this.iterN(this.first, this.first + this.size, from);
           }
         },
+        // Non-public interface for adding and removing lines.
         insert: function(at, lines) {
           var height = 0;
           for (var i2 = 0; i2 < lines.length; ++i2) {
@@ -6348,6 +6374,8 @@ var require_codemirror = __commonJS({
         remove: function(at, n) {
           this.removeInner(at - this.first, n);
         },
+        // From here, the methods are part of the public interface. Most
+        // are also available from CodeMirror (editor) instances.
         getValue: function(lineSep) {
           var lines = getLines(this, this.first, this.first + this.size);
           if (lineSep === false) {
@@ -6860,7 +6888,7 @@ var require_codemirror = __commonJS({
         }
         e_preventDefault(e);
         if (ie) {
-          lastDrop = +new Date();
+          lastDrop = +/* @__PURE__ */ new Date();
         }
         var pos = posFromMouse(cm, e, true), files = e.dataTransfer.files;
         if (!pos || cm.isReadOnly()) {
@@ -6939,7 +6967,7 @@ var require_codemirror = __commonJS({
         }
       }
       function onDragStart(cm, e) {
-        if (ie && (!cm.state.draggingText || +new Date() - lastDrop < 100)) {
+        if (ie && (!cm.state.draggingText || +/* @__PURE__ */ new Date() - lastDrop < 100)) {
           e_stop(e);
           return;
         }
@@ -7640,6 +7668,13 @@ var require_codemirror = __commonJS({
             cm.execCommand("insertTab");
           }
         },
+        // Swap the two chars left and right of each selection's head.
+        // Move cursor behind the two swapped characters afterwards.
+        //
+        // Doesn't consider line feeds a character.
+        // Doesn't scan more than one line above to find a character.
+        // Doesn't do anything on an empty line.
+        // Doesn't do anything with non-empty selections.
         transposeChars: function(cm) {
           return runInOp(cm, function() {
             var ranges = cm.listSelections(), newSel = [];
@@ -7903,7 +7938,7 @@ var require_codemirror = __commonJS({
       };
       var lastClick, lastDoubleClick;
       function clickRepeat(pos, button) {
-        var now = +new Date();
+        var now = +/* @__PURE__ */ new Date();
         if (lastDoubleClick && lastDoubleClick.compare(now, pos, button)) {
           lastClick = lastDoubleClick = null;
           return "triple";
@@ -8567,18 +8602,25 @@ var require_codemirror = __commonJS({
         initScrollbars(this);
         this.state = {
           keyMaps: [],
+          // stores maps added by addKeyMap
           overlays: [],
+          // highlighting overlays, as added by addOverlay
           modeGen: 0,
+          // bumped when mode/overlay changes, used to invalidate highlighting info
           overwrite: false,
           delayingBlurEvent: false,
           focused: false,
           suppressEdits: false,
+          // used to disable editing during key handlers when in readOnly mode
           pasteIncoming: -1,
           cutIncoming: -1,
+          // help recognize paste/cut edits in input.poll
           selectingText: false,
           draggingText: false,
           highlight: new Delayed(),
+          // stores highlight worker timeout
           keySeq: null,
+          // Unfinished key sequence
           specialChars: null
         };
         if (options.autofocus && !mobile) {
@@ -8658,7 +8700,7 @@ var require_codemirror = __commonJS({
               return d.activeTouch = null;
             }, 1e3);
             prevTouch = d.activeTouch;
-            prevTouch.end = +new Date();
+            prevTouch.end = +/* @__PURE__ */ new Date();
           }
         }
         function isMouseLikeTouchEvent(e) {
@@ -8679,7 +8721,7 @@ var require_codemirror = __commonJS({
           if (!signalDOMEvent(cm, e) && !isMouseLikeTouchEvent(e) && !clickInGutter(cm, e)) {
             d.input.ensurePolled();
             clearTimeout(touchFinished);
-            var now = +new Date();
+            var now = +/* @__PURE__ */ new Date();
             d.activeTouch = {
               start: now,
               moved: false,
@@ -8698,7 +8740,7 @@ var require_codemirror = __commonJS({
         });
         on(d.scroller, "touchend", function(e) {
           var touch = d.activeTouch;
-          if (touch && !eventInWidget(d, e) && touch.left != null && !touch.moved && new Date() - touch.start < 300) {
+          if (touch && !eventInWidget(d, e) && touch.left != null && !touch.moved && /* @__PURE__ */ new Date() - touch.start < 300) {
             var pos = cm.coordsChar(d.activeTouch, "page"), range2;
             if (!touch.prev || farAway(touch, touch.prev)) {
               range2 = new Range(pos, pos);
@@ -8848,7 +8890,7 @@ var require_codemirror = __commonJS({
         if (!sel) {
           sel = doc2.sel;
         }
-        var recent = +new Date() - 200;
+        var recent = +/* @__PURE__ */ new Date() - 200;
         var paste = origin == "paste" || cm.state.pasteIncoming > recent;
         var textLines = splitLinesAuto(inserted), multiPaste = null;
         if (paste && sel.ranges.length > 1) {
@@ -8949,8 +8991,8 @@ var require_codemirror = __commonJS({
         return { text, ranges };
       }
       function disableBrowserMagic(field, spellcheck, autocorrect, autocapitalize) {
-        field.setAttribute("autocorrect", autocorrect ? "" : "off");
-        field.setAttribute("autocapitalize", autocapitalize ? "" : "off");
+        field.setAttribute("autocorrect", autocorrect ? "on" : "off");
+        field.setAttribute("autocapitalize", autocapitalize ? "on" : "off");
         field.setAttribute("spellcheck", !!spellcheck);
       }
       function hiddenTextarea() {
@@ -8964,7 +9006,6 @@ var require_codemirror = __commonJS({
         if (ios) {
           te.style.border = "1px solid black";
         }
-        disableBrowserMagic(te);
         return div;
       }
       function addEditorMethods(CodeMirror3) {
@@ -9073,6 +9114,8 @@ var require_codemirror = __commonJS({
               }
             }
           }),
+          // Fetch the parser token for a given character. Useful for hacks
+          // that want to inspect the mode state (say, for completion).
           getTokenAt: function(pos, precise) {
             return takeToken(this, pos, precise);
           },
@@ -9326,6 +9369,7 @@ var require_codemirror = __commonJS({
               }
             }
           }),
+          // Find the word at the given position (as returned by coordsChar).
           findWordAt: function(pos) {
             var doc2 = this.doc, line = getLine(doc2, pos.line).text;
             var start = pos.ch, end = pos.ch;
@@ -9688,6 +9732,7 @@ var require_codemirror = __commonJS({
             }
           }
           var kludge = hiddenTextarea(), te = kludge.firstChild;
+          disableBrowserMagic(te);
           cm.display.lineSpace.insertBefore(kludge, cm.display.lineSpace.firstChild);
           te.value = lastCopied.text.join("\n");
           var hadFocus = activeElt(div.ownerDocument);
@@ -10229,7 +10274,7 @@ var require_codemirror = __commonJS({
           if (signalDOMEvent(cm, e) || handlePaste(e, cm)) {
             return;
           }
-          cm.state.pasteIncoming = +new Date();
+          cm.state.pasteIncoming = +/* @__PURE__ */ new Date();
           input.fastPoll();
         });
         function prepareCopyCut(e) {
@@ -10252,7 +10297,7 @@ var require_codemirror = __commonJS({
             }
           }
           if (e.type == "cut") {
-            cm.state.cutIncoming = +new Date();
+            cm.state.cutIncoming = +/* @__PURE__ */ new Date();
           }
         }
         on(te, "cut", prepareCopyCut);
@@ -10262,7 +10307,7 @@ var require_codemirror = __commonJS({
             return;
           }
           if (!te.dispatchEvent) {
-            cm.state.pasteIncoming = +new Date();
+            cm.state.pasteIncoming = +/* @__PURE__ */ new Date();
             input.focus();
             return;
           }
@@ -10296,6 +10341,8 @@ var require_codemirror = __commonJS({
       TextareaInput.prototype.createField = function(_display) {
         this.wrapper = hiddenTextarea();
         this.textarea = this.wrapper.firstChild;
+        var opts = this.cm.options;
+        disableBrowserMagic(this.textarea, opts.spellcheck, opts.autocorrect, opts.autocapitalize);
       };
       TextareaInput.prototype.screenReaderLabelChanged = function(label) {
         if (label) {
@@ -10700,15 +10747,15 @@ var require_codemirror = __commonJS({
       };
       CodeMirror2.fromTextArea = fromTextArea;
       addLegacyProps(CodeMirror2);
-      CodeMirror2.version = "5.65.10";
+      CodeMirror2.version = "5.65.13";
       return CodeMirror2;
     });
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/mode/sql/sql.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/sql/sql.js
 var require_sql = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/mode/sql/sql.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/sql/sql.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -10761,7 +10808,7 @@ var require_sql = __commonJS({
               return "number";
             if (stream.match(/^\.+/))
               return null;
-            if (support.ODBCdotTable && stream.match(/^[\w\d_$#]+/))
+            if (stream.match(/^[\w\d_$#]+/))
               return "variable-2";
           } else if (operatorChars.test(ch)) {
             stream.eatWhile(operatorChars);
@@ -10929,7 +10976,7 @@ var require_sql = __commonJS({
         builtin: set(defaultBuiltin),
         atoms: set("false true null unknown"),
         dateSQL: set("date time timestamp"),
-        support: set("ODBCdotTable doubleQuote binaryNumber hexNumber")
+        support: set("doubleQuote binaryNumber hexNumber")
       });
       CodeMirror2.defineMIME("text/x-mssql", {
         name: "sql",
@@ -10954,7 +11001,7 @@ var require_sql = __commonJS({
         atoms: set("false true null unknown"),
         operatorChars: /^[*+\-%<>!=&|^]/,
         dateSQL: set("date time timestamp"),
-        support: set("ODBCdotTable decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
+        support: set("decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
         hooks: {
           "@": hookVar,
           "`": hookIdentifier,
@@ -10969,7 +11016,7 @@ var require_sql = __commonJS({
         atoms: set("false true null unknown"),
         operatorChars: /^[*+\-%<>!=&|^]/,
         dateSQL: set("date time timestamp"),
-        support: set("ODBCdotTable decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
+        support: set("decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
         hooks: {
           "@": hookVar,
           "`": hookIdentifier,
@@ -10978,20 +11025,30 @@ var require_sql = __commonJS({
       });
       CodeMirror2.defineMIME("text/x-sqlite", {
         name: "sql",
+        // commands of the official SQLite client, ref: https://www.sqlite.org/cli.html#dotcmd
         client: set("auth backup bail binary changes check clone databases dbinfo dump echo eqp exit explain fullschema headers help import imposter indexes iotrace limit lint load log mode nullvalue once open output print prompt quit read restore save scanstats schema separator session shell show stats system tables testcase timeout timer trace vfsinfo vfslist vfsname width"),
+        // ref: http://sqlite.org/lang_keywords.html
         keywords: set(sqlKeywords + "abort action add after all analyze attach autoincrement before begin cascade case cast check collate column commit conflict constraint cross current_date current_time current_timestamp database default deferrable deferred detach each else end escape except exclusive exists explain fail for foreign full glob if ignore immediate index indexed initially inner instead intersect isnull key left limit match natural no notnull null of offset outer plan pragma primary query raise recursive references regexp reindex release rename replace restrict right rollback row savepoint temp temporary then to transaction trigger unique using vacuum view virtual when with without"),
+        // SQLite is weakly typed, ref: http://sqlite.org/datatype3.html. This is just a list of some common types.
         builtin: set("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text clob bigint int int2 int8 integer float double char varchar date datetime year unsigned signed numeric real"),
+        // ref: http://sqlite.org/syntax/literal-value.html
         atoms: set("null current_date current_time current_timestamp"),
+        // ref: http://sqlite.org/lang_expr.html#binaryops
         operatorChars: /^[*+\-%<>!=&|/~]/,
+        // SQLite is weakly typed, ref: http://sqlite.org/datatype3.html. This is just a list of some common types.
         dateSQL: set("date time timestamp datetime"),
         support: set("decimallessFloat zerolessFloat"),
         identifierQuote: '"',
+        //ref: http://sqlite.org/lang_keywords.html
         hooks: {
+          // bind-parameters ref:http://sqlite.org/lang_expr.html#varparam
           "@": hookVar,
           ":": hookVar,
           "?": hookVar,
           "$": hookVar,
+          // The preferred way to escape Identifiers is using double quotes, ref: http://sqlite.org/lang_keywords.html
           '"': hookIdentifierDoublequote,
+          // there is also support for backticks, ref: http://sqlite.org/lang_keywords.html
           "`": hookIdentifier
         }
       });
@@ -11022,18 +11079,21 @@ var require_sql = __commonJS({
         atoms: set("false true null unknown"),
         operatorChars: /^[*+\-%<>!=]/,
         dateSQL: set("date timestamp"),
-        support: set("ODBCdotTable doubleQuote binaryNumber hexNumber")
+        support: set("doubleQuote binaryNumber hexNumber")
       });
       CodeMirror2.defineMIME("text/x-pgsql", {
         name: "sql",
         client: set("source"),
+        // For PostgreSQL - https://www.postgresql.org/docs/11/sql-keywords-appendix.html
+        // For pl/pgsql lang - https://github.com/postgres/postgres/blob/REL_11_2/src/pl/plpgsql/src/pl_scanner.c
         keywords: set(sqlKeywords + "a abort abs absent absolute access according action ada add admin after aggregate alias all allocate also alter always analyse analyze and any are array array_agg array_max_cardinality as asc asensitive assert assertion assignment asymmetric at atomic attach attribute attributes authorization avg backward base64 before begin begin_frame begin_partition bernoulli between bigint binary bit bit_length blob blocked bom boolean both breadth by c cache call called cardinality cascade cascaded case cast catalog catalog_name ceil ceiling chain char char_length character character_length character_set_catalog character_set_name character_set_schema characteristics characters check checkpoint class class_origin clob close cluster coalesce cobol collate collation collation_catalog collation_name collation_schema collect column column_name columns command_function command_function_code comment comments commit committed concurrently condition condition_number configuration conflict connect connection connection_name constant constraint constraint_catalog constraint_name constraint_schema constraints constructor contains content continue control conversion convert copy corr corresponding cost count covar_pop covar_samp create cross csv cube cume_dist current current_catalog current_date current_default_transform_group current_path current_role current_row current_schema current_time current_timestamp current_transform_group_for_type current_user cursor cursor_name cycle data database datalink datatype date datetime_interval_code datetime_interval_precision day db deallocate debug dec decimal declare default defaults deferrable deferred defined definer degree delete delimiter delimiters dense_rank depends depth deref derived desc describe descriptor detach detail deterministic diagnostics dictionary disable discard disconnect dispatch distinct dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue do document domain double drop dump dynamic dynamic_function dynamic_function_code each element else elseif elsif empty enable encoding encrypted end end_frame end_partition endexec enforced enum equals errcode error escape event every except exception exclude excluding exclusive exec execute exists exit exp explain expression extension external extract false family fetch file filter final first first_value flag float floor following for force foreach foreign fortran forward found frame_row free freeze from fs full function functions fusion g general generated get global go goto grant granted greatest group grouping groups handler having header hex hierarchy hint hold hour id identity if ignore ilike immediate immediately immutable implementation implicit import in include including increment indent index indexes indicator info inherit inherits initially inline inner inout input insensitive insert instance instantiable instead int integer integrity intersect intersection interval into invoker is isnull isolation join k key key_member key_type label lag language large last last_value lateral lead leading leakproof least left length level library like like_regex limit link listen ln load local localtime localtimestamp location locator lock locked log logged loop lower m map mapping match matched materialized max max_cardinality maxvalue member merge message message_length message_octet_length message_text method min minute minvalue mod mode modifies module month more move multiset mumps name names namespace national natural nchar nclob nesting new next nfc nfd nfkc nfkd nil no none normalize normalized not nothing notice notify notnull nowait nth_value ntile null nullable nullif nulls number numeric object occurrences_regex octet_length octets of off offset oids old on only open operator option options or order ordering ordinality others out outer output over overlaps overlay overriding owned owner p pad parallel parameter parameter_mode parameter_name parameter_ordinal_position parameter_specific_catalog parameter_specific_name parameter_specific_schema parser partial partition pascal passing passthrough password path percent percent_rank percentile_cont percentile_disc perform period permission pg_context pg_datatype_name pg_exception_context pg_exception_detail pg_exception_hint placing plans pli policy portion position position_regex power precedes preceding precision prepare prepared preserve primary print_strict_params prior privileges procedural procedure procedures program public publication query quote raise range rank read reads real reassign recheck recovery recursive ref references referencing refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope regr_sxx regr_sxy regr_syy reindex relative release rename repeatable replace replica requiring reset respect restart restore restrict result result_oid return returned_cardinality returned_length returned_octet_length returned_sqlstate returning returns reverse revoke right role rollback rollup routine routine_catalog routine_name routine_schema routines row row_count row_number rows rowtype rule savepoint scale schema schema_name schemas scope scope_catalog scope_name scope_schema scroll search second section security select selective self sensitive sequence sequences serializable server server_name session session_user set setof sets share show similar simple size skip slice smallint snapshot some source space specific specific_name specifictype sql sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable stacked standalone start state statement static statistics stddev_pop stddev_samp stdin stdout storage strict strip structure style subclass_origin submultiset subscription substring substring_regex succeeds sum symmetric sysid system system_time system_user t table table_name tables tablesample tablespace temp template temporary text then ties time timestamp timezone_hour timezone_minute to token top_level_count trailing transaction transaction_active transactions_committed transactions_rolled_back transform transforms translate translate_regex translation treat trigger trigger_catalog trigger_name trigger_schema trim trim_array true truncate trusted type types uescape unbounded uncommitted under unencrypted union unique unknown unlink unlisten unlogged unnamed unnest until untyped update upper uri usage use_column use_variable user user_defined_type_catalog user_defined_type_code user_defined_type_name user_defined_type_schema using vacuum valid validate validator value value_of values var_pop var_samp varbinary varchar variable_conflict variadic varying verbose version versioning view views volatile warning when whenever where while whitespace width_bucket window with within without work wrapper write xml xmlagg xmlattributes xmlbinary xmlcast xmlcomment xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable xmltext xmlvalidate year yes zone"),
-        builtin: set("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time without zone with timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
+        // https://www.postgresql.org/docs/11/datatype.html
+        builtin: set("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time zone timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
         atoms: set("false true null unknown"),
         operatorChars: /^[*\/+\-%<>!=&|^\/#@?~]/,
         backslashStringEscapes: false,
         dateSQL: set("date time timestamp"),
-        support: set("ODBCdotTable decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast escapeConstant")
+        support: set("decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast escapeConstant")
       });
       CodeMirror2.defineMIME("text/x-gql", {
         name: "sql",
@@ -11045,12 +11105,13 @@ var require_sql = __commonJS({
       CodeMirror2.defineMIME("text/x-gpsql", {
         name: "sql",
         client: set("source"),
+        //https://github.com/greenplum-db/gpdb/blob/master/src/include/parser/kwlist.h
         keywords: set("abort absolute access action active add admin after aggregate all also alter always analyse analyze and any array as asc assertion assignment asymmetric at authorization backward before begin between bigint binary bit boolean both by cache called cascade cascaded case cast chain char character characteristics check checkpoint class close cluster coalesce codegen collate column comment commit committed concurrency concurrently configuration connection constraint constraints contains content continue conversion copy cost cpu_rate_limit create createdb createexttable createrole createuser cross csv cube current current_catalog current_date current_role current_schema current_time current_timestamp current_user cursor cycle data database day deallocate dec decimal declare decode default defaults deferrable deferred definer delete delimiter delimiters deny desc dictionary disable discard distinct distributed do document domain double drop dxl each else enable encoding encrypted end enum errors escape every except exchange exclude excluding exclusive execute exists explain extension external extract false family fetch fields filespace fill filter first float following for force foreign format forward freeze from full function global grant granted greatest group group_id grouping handler hash having header hold host hour identity if ignore ilike immediate immutable implicit in including inclusive increment index indexes inherit inherits initially inline inner inout input insensitive insert instead int integer intersect interval into invoker is isnull isolation join key language large last leading least left level like limit list listen load local localtime localtimestamp location lock log login mapping master match maxvalue median merge minute minvalue missing mode modifies modify month move name names national natural nchar new newline next no nocreatedb nocreateexttable nocreaterole nocreateuser noinherit nologin none noovercommit nosuperuser not nothing notify notnull nowait null nullif nulls numeric object of off offset oids old on only operator option options or order ordered others out outer over overcommit overlaps overlay owned owner parser partial partition partitions passing password percent percentile_cont percentile_disc placing plans position preceding precision prepare prepared preserve primary prior privileges procedural procedure protocol queue quote randomly range read readable reads real reassign recheck recursive ref references reindex reject relative release rename repeatable replace replica reset resource restart restrict returning returns revoke right role rollback rollup rootpartition row rows rule savepoint scatter schema scroll search second security segment select sequence serializable session session_user set setof sets share show similar simple smallint some split sql stable standalone start statement statistics stdin stdout storage strict strip subpartition subpartitions substring superuser symmetric sysid system table tablespace temp template temporary text then threshold ties time timestamp to trailing transaction treat trigger trim true truncate trusted type unbounded uncommitted unencrypted union unique unknown unlisten until update user using vacuum valid validation validator value values varchar variadic varying verbose version view volatile web when where whitespace window with within without work writable write xml xmlattributes xmlconcat xmlelement xmlexists xmlforest xmlparse xmlpi xmlroot xmlserialize year yes zone"),
         builtin: set("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time without zone with timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
         atoms: set("false true null unknown"),
         operatorChars: /^[*+\-%<>!=&|^\/#@?~]/,
         dateSQL: set("date time timestamp"),
-        support: set("ODBCdotTable decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast")
+        support: set("decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast")
       });
       CodeMirror2.defineMIME("text/x-sparksql", {
         name: "sql",
@@ -11059,11 +11120,12 @@ var require_sql = __commonJS({
         atoms: set("false true null"),
         operatorChars: /^[*\/+\-%<>!=~&|^]/,
         dateSQL: set("date time timestamp"),
-        support: set("ODBCdotTable doubleQuote zerolessFloat")
+        support: set("doubleQuote zerolessFloat")
       });
       CodeMirror2.defineMIME("text/x-esper", {
         name: "sql",
         client: set("source"),
+        // http://www.espertech.com/esper/release-5.5.0/esper-reference/html/appendix_keywords.html
         keywords: set("alter and as asc between by count create delete desc distinct drop from group having in insert into is join like not on or order select set table union update values where limit after all and as at asc avedev avg between by case cast coalesce count create current_timestamp day days delete define desc distinct else end escape events every exists false first from full group having hour hours in inner insert instanceof into irstream is istream join last lastweekday left limit like max match_recognize matches median measures metadatasql min minute minutes msec millisecond milliseconds not null offset on or order outer output partition pattern prev prior regexp retain-union retain-intersection right rstream sec second seconds select set some snapshot sql stddev sum then true unidirectional until update variable weekday when where window"),
         builtin: {},
         atoms: set("false true null"),
@@ -11073,20 +11135,29 @@ var require_sql = __commonJS({
       });
       CodeMirror2.defineMIME("text/x-trino", {
         name: "sql",
+        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/core/trino-parser/src/main/antlr4/io/trino/sql/parser/SqlBase.g4#L859-L1129
+        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/docs/src/main/sphinx/functions/list.rst
         keywords: set("abs absent acos add admin after all all_match alter analyze and any any_match approx_distinct approx_most_frequent approx_percentile approx_set arbitrary array_agg array_distinct array_except array_intersect array_join array_max array_min array_position array_remove array_sort array_union arrays_overlap as asc asin at at_timezone atan atan2 authorization avg bar bernoulli beta_cdf between bing_tile bing_tile_at bing_tile_coordinates bing_tile_polygon bing_tile_quadkey bing_tile_zoom_level bing_tiles_around bit_count bitwise_and bitwise_and_agg bitwise_left_shift bitwise_not bitwise_or bitwise_or_agg bitwise_right_shift bitwise_right_shift_arithmetic bitwise_xor bool_and bool_or both by call cardinality cascade case cast catalogs cbrt ceil ceiling char2hexint checksum chr classify coalesce codepoint column columns combinations comment commit committed concat concat_ws conditional constraint contains contains_sequence convex_hull_agg copartition corr cos cosh cosine_similarity count count_if covar_pop covar_samp crc32 create cross cube cume_dist current current_catalog current_date current_groups current_path current_role current_schema current_time current_timestamp current_timezone current_user data date_add date_diff date_format date_parse date_trunc day day_of_month day_of_week day_of_year deallocate default define definer degrees delete dense_rank deny desc describe descriptor distinct distributed dow doy drop e element_at else empty empty_approx_set encoding end error escape evaluate_classifier_predictions every except excluding execute exists exp explain extract false features fetch filter final first first_value flatten floor following for format format_datetime format_number from from_base from_base32 from_base64 from_base64url from_big_endian_32 from_big_endian_64 from_encoded_polyline from_geojson_geometry from_hex from_ieee754_32 from_ieee754_64 from_iso8601_date from_iso8601_timestamp from_iso8601_timestamp_nanos from_unixtime from_unixtime_nanos from_utf8 full functions geometric_mean geometry_from_hadoop_shape geometry_invalid_reason geometry_nearest_points geometry_to_bing_tiles geometry_union geometry_union_agg grant granted grants graphviz great_circle_distance greatest group grouping groups hamming_distance hash_counts having histogram hmac_md5 hmac_sha1 hmac_sha256 hmac_sha512 hour human_readable_seconds if ignore in including index infinity initial inner input insert intersect intersection_cardinality into inverse_beta_cdf inverse_normal_cdf invoker io is is_finite is_infinite is_json_scalar is_nan isolation jaccard_index join json_array json_array_contains json_array_get json_array_length json_exists json_extract json_extract_scalar json_format json_object json_parse json_query json_size json_value keep key keys kurtosis lag last last_day_of_month last_value lateral lead leading learn_classifier learn_libsvm_classifier learn_libsvm_regressor learn_regressor least left length level levenshtein_distance like limit line_interpolate_point line_interpolate_points line_locate_point listagg ln local localtime localtimestamp log log10 log2 logical lower lpad ltrim luhn_check make_set_digest map_agg map_concat map_entries map_filter map_from_entries map_keys map_union map_values map_zip_with match match_recognize matched matches materialized max max_by md5 measures merge merge_set_digest millisecond min min_by minute mod month multimap_agg multimap_from_entries murmur3 nan natural next nfc nfd nfkc nfkd ngrams no none none_match normal_cdf normalize not now nth_value ntile null nullif nulls numeric_histogram object objectid_timestamp of offset omit on one only option or order ordinality outer output over overflow parse_data_size parse_datetime parse_duration partition partitions passing past path pattern per percent_rank permute pi position pow power preceding prepare privileges properties prune qdigest_agg quarter quotes radians rand random range rank read recursive reduce reduce_agg refresh regexp_count regexp_extract regexp_extract_all regexp_like regexp_position regexp_replace regexp_split regr_intercept regr_slope regress rename render repeat repeatable replace reset respect restrict returning reverse revoke rgb right role roles rollback rollup round row_number rows rpad rtrim running scalar schema schemas second security seek select sequence serializable session set sets sha1 sha256 sha512 show shuffle sign simplify_geometry sin skewness skip slice some soundex spatial_partitioning spatial_partitions split split_part split_to_map split_to_multimap spooky_hash_v2_32 spooky_hash_v2_64 sqrt st_area st_asbinary st_astext st_boundary st_buffer st_centroid st_contains st_convexhull st_coorddim st_crosses st_difference st_dimension st_disjoint st_distance st_endpoint st_envelope st_envelopeaspts st_equals st_exteriorring st_geometries st_geometryfromtext st_geometryn st_geometrytype st_geomfrombinary st_interiorringn st_interiorrings st_intersection st_intersects st_isclosed st_isempty st_isring st_issimple st_isvalid st_length st_linefromtext st_linestring st_multipoint st_numgeometries st_numinteriorring st_numpoints st_overlaps st_point st_pointn st_points st_polygon st_relate st_startpoint st_symdifference st_touches st_union st_within st_x st_xmax st_xmin st_y st_ymax st_ymin start starts_with stats stddev stddev_pop stddev_samp string strpos subset substr substring sum system table tables tablesample tan tanh tdigest_agg text then ties timestamp_objectid timezone_hour timezone_minute to to_base to_base32 to_base64 to_base64url to_big_endian_32 to_big_endian_64 to_char to_date to_encoded_polyline to_geojson_geometry to_geometry to_hex to_ieee754_32 to_ieee754_64 to_iso8601 to_milliseconds to_spherical_geography to_timestamp to_unixtime to_utf8 trailing transaction transform transform_keys transform_values translate trim trim_array true truncate try try_cast type typeof uescape unbounded uncommitted unconditional union unique unknown unmatched unnest update upper url_decode url_encode url_extract_fragment url_extract_host url_extract_parameter url_extract_path url_extract_port url_extract_protocol url_extract_query use user using utf16 utf32 utf8 validate value value_at_quantile values values_at_quantiles var_pop var_samp variance verbose version view week week_of_year when where width_bucket wilson_interval_lower wilson_interval_upper window with with_timezone within without word_stem work wrapper write xxhash64 year year_of_week yow zip zip_with"),
+        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/core/trino-main/src/main/java/io/trino/metadata/TypeRegistry.java#L131-L168
+        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-ml/src/main/java/io/trino/plugin/ml/MLPlugin.java#L35
+        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-mongodb/src/main/java/io/trino/plugin/mongodb/MongoPlugin.java#L32
+        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-geospatial/src/main/java/io/trino/plugin/geospatial/GeoPlugin.java#L37
         builtin: set("array bigint bingtile boolean char codepoints color date decimal double function geometry hyperloglog int integer interval ipaddress joniregexp json json2016 jsonpath kdbtree likepattern map model objectid p4hyperloglog precision qdigest re2jregexp real regressor row setdigest smallint sphericalgeography tdigest time timestamp tinyint uuid varbinary varchar zone"),
         atoms: set("false true null unknown"),
+        // https://trino.io/docs/current/functions/list.html#id1
         operatorChars: /^[[\]|<>=!\-+*/%]/,
         dateSQL: set("date time timestamp zone"),
-        support: set("ODBCdotTable decimallessFloat zerolessFloat hexNumber")
+        // hexNumber is necessary for VARBINARY literals, e.g. X'65683F'
+        // but it also enables 0xFF hex numbers, which Trino doesn't support.
+        support: set("decimallessFloat zerolessFloat hexNumber")
       });
     });
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/hint/show-hint.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/show-hint.js
 var require_show_hint = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/hint/show-hint.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/show-hint.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -11645,9 +11716,9 @@ var require_show_hint = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/hint/sql-hint.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/sql-hint.js
 var require_sql_hint = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/hint/sql-hint.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/sql-hint.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_sql());
@@ -11669,14 +11740,14 @@ var require_sql_hint = __commonJS({
       function isArray(val) {
         return Object.prototype.toString.call(val) == "[object Array]";
       }
-      function getModeConf(editor) {
-        return editor.getModeAt(editor.getCursor()).config || CodeMirror2.resolveMode("text/x-sql");
+      function getModeConf(editor, field) {
+        return editor.getModeAt(editor.getCursor()).config[field] || CodeMirror2.resolveMode("text/x-sql")[field];
       }
       function getKeywords(editor) {
-        return getModeConf(editor).keywords || [];
+        return getModeConf(editor, "keywords") || [];
       }
       function getIdentifierQuote(editor) {
-        return getModeConf(editor).identifierQuote || "`";
+        return getModeConf(editor, "identifierQuote") || "`";
       }
       function getText(item) {
         return typeof item == "string" ? item : item.text;
@@ -11746,7 +11817,8 @@ var require_sql_hint = __commonJS({
       function insertIdentifierQuotes(name) {
         var nameParts = getText(name).split(".");
         for (var i = 0; i < nameParts.length; i++)
-          nameParts[i] = identifierQuote + nameParts[i].replace(new RegExp(identifierQuote, "g"), identifierQuote + identifierQuote) + identifierQuote;
+          nameParts[i] = identifierQuote + // duplicate identifierQuotes
+          nameParts[i].replace(new RegExp(identifierQuote, "g"), identifierQuote + identifierQuote) + identifierQuote;
         var escaped = nameParts.join(".");
         if (typeof name == "string")
           return escaped;
@@ -11916,9 +11988,9 @@ var require_sql_hint = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/dialog/dialog.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/dialog/dialog.js
 var require_dialog = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/dialog/dialog.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/dialog/dialog.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -12074,9 +12146,9 @@ var require_dialog = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/scroll/annotatescrollbar.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/scroll/annotatescrollbar.js
 var require_annotatescrollbar = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/scroll/annotatescrollbar.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/scroll/annotatescrollbar.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -12199,9 +12271,9 @@ var require_annotatescrollbar = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/searchcursor.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/searchcursor.js
 var require_searchcursor = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/searchcursor.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/searchcursor.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -12536,9 +12608,9 @@ var require_searchcursor = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/search.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/search.js
 var require_search = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/search.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/search.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_searchcursor(), require_dialog());
@@ -12899,9 +12971,9 @@ var require_search = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/jump-to-line.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/jump-to-line.js
 var require_jump_to_line = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/jump-to-line.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/jump-to-line.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_dialog());
@@ -12951,9 +13023,9 @@ var require_jump_to_line = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/matchesonscrollbar.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/matchesonscrollbar.js
 var require_matchesonscrollbar = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/search/matchesonscrollbar.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/matchesonscrollbar.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_searchcursor(), require_annotatescrollbar());
@@ -13057,9 +13129,9 @@ var require_matchesonscrollbar = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/mode/xml/xml.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/xml/xml.js
 var require_xml = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/mode/xml/xml.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/xml/xml.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -13517,9 +13589,9 @@ var require_xml = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/mode/multiplex.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/multiplex.js
 var require_multiplex = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/mode/multiplex.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/multiplex.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -13648,9 +13720,9 @@ var require_multiplex = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/mode/simple.js
+// ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/simple.js
 var require_simple = __commonJS({
-  "../../node_modules/.pnpm/codemirror@5.65.10/node_modules/codemirror/addon/mode/simple.js"(exports, module) {
+  "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/simple.js"(exports, module) {
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -13947,7 +14019,8 @@ import_codemirror.default.defineMode("ir-rule-exp", (config, options) => {
       const ch = stream.next();
       if (!ch)
         return curContext.tokenType;
-      if (curContext.end.test(ch) && !(curContext.tokenType === "ir-string" && state.lastChar === "\\")) {
+      if (curContext.end.test(ch) && // 문자열의 escape인 경우 계속 진행
+      !(curContext.tokenType === "ir-string" && state.lastChar === "\\")) {
         popContext();
         if (curContext.tokenType === "ir-number")
           stream.backUp(1);
@@ -13980,7 +14053,7 @@ import_codemirror.default.defineSimpleMode("db-rule-comment-parser", {
 });
 import_codemirror.default.defineMode("ir-db-rule", (config, _options) => {
   return import_codemirror.default.multiplexingMode(
-    import_codemirror.default.getMode(config, "text/x-mysql"),
+    import_codemirror.default.getMode(config, "text/x-plsql"),
     {
       open: "<$$",
       close: "$$>",
@@ -14060,28 +14133,27 @@ var IREditor = class extends IRComponent {
     keyEvents,
     gutters = DEFAULT_GUTTERS
   }) {
-    var _a;
     super({ contextElement });
     this._showWhitespace = false;
-    this.contextElement = contextElement;
     contextElement.classList.add("editor");
     this.editor = (0, import_codemirror2.default)(contextElement, {
       lineNumbers: true,
       gutters,
-      mode: (_a = editorModeMap[mode]) != null ? _a : "text/plain",
+      mode: editorModeMap[mode] ?? "text/plain",
       theme: "idea",
       tabSize: 4,
       indentWithTabs: false,
       smartIndent: true,
       autofocus: true,
-      extraKeys: __spreadValues({
+      extraKeys: {
         "Ctrl-Space": "autocomplete",
         "Ctrl-F": EmptyCallBack,
         "Shift-Ctrl-F": EmptyCallBack,
         "Tab": (cm) => {
           cm.replaceSelection("    ");
-        }
-      }, keyEvents),
+        },
+        ...keyEvents
+      },
       hintOptions: {},
       dragDrop: true,
       allowDropFileTypes: ["text/x-sql", "text/plain"],
@@ -14106,17 +14178,16 @@ var IREditor = class extends IRComponent {
     this.onDestroy = () => this.editor.getWrapperElement().remove();
   }
   get cursor() {
-    var _a, _b, _c;
     const cursorFrom = this.editor.getCursor("from");
     const cursorTo = this.editor.getCursor("to");
-    const cursorElement = (_a = this.contextElement.querySelector(".CodeMirror-cursor")) != null ? _a : this.contextElement.querySelector(".CodeMirror-selected");
+    const cursorElement = this.contextElement.querySelector(".CodeMirror-cursor") ?? this.contextElement.querySelector(".CodeMirror-selected");
     return {
       startY: cursorFrom.line,
       startX: cursorFrom.ch,
       endY: cursorTo.line,
       endX: cursorTo.ch,
-      x: (_b = cursorElement == null ? void 0 : cursorElement.offsetLeft) != null ? _b : 0,
-      y: (_c = cursorElement == null ? void 0 : cursorElement.offsetTop) != null ? _c : 0
+      x: (cursorElement == null ? void 0 : cursorElement.offsetLeft) ?? 0,
+      y: (cursorElement == null ? void 0 : cursorElement.offsetTop) ?? 0
     };
   }
   get lineCount() {
@@ -14229,6 +14300,7 @@ var IREditor = class extends IRComponent {
     const lastText = this.getLineText(this.lineCount - 1);
     return this.getTextWithCursor(y, x, this.lineCount - 1, lastText.length);
   }
+  /* Event */
   onGutterClick(_lineNumber) {
   }
 };
