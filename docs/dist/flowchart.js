@@ -1,11 +1,25 @@
 import {
+  readText,
+  writeText
+} from "./chunks/chunk-J7AUQGT2.js";
+import {
   IRComponent
-} from "./chunks/chunk-BI23OIPF.js";
+} from "./chunks/chunk-WLNTEPMI.js";
 import {
   Logger,
-  __toESM,
+  blobToBase64,
+  createImageFromSrcUrl,
+  downloadDataURL,
+  getBase64FromSvg,
+  getImageBlobFromImage
+} from "./chunks/chunk-ANWI2HK3.js";
+import {
   require_lodash
-} from "./chunks/chunk-JYMTCUXI.js";
+} from "./chunks/chunk-N2GALXSL.js";
+import {
+  __export,
+  __toESM
+} from "./chunks/chunk-56RD7WBD.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -3160,65 +3174,95 @@ function zoom_default2() {
 }
 
 // src/js-components/flowchart/flowchart.js
-var import_lodash = __toESM(require_lodash());
+var import_lodash4 = __toESM(require_lodash());
 
-// src/js-components/flowchart/util/container-interface.ts
-var InterfaceInstance = class {
-  constructor(api) {
-    Object.assign(this, api);
+// src/js-components/flowchart/action/action-controller.ts
+var ActionController = class {
+  constructor(containerInterface, limit) {
+    this.actionLimit = limit;
+    this.undoStackList = [];
+    this.redoStackList = [];
+    this.containerInterface = containerInterface;
   }
-};
-
-// src/js-components/flowchart/action/command/base.js
-var BaseCommand = class {
-  /**
-  *
-  * @param {String} command
-  * @param {ContainerInterface} icontainer
-  */
-  constructor(command, icontainer) {
-    this.command = command;
-    this.icontainer = icontainer;
+  addAction(...commands) {
+    if (this.undoStackList.length === this.actionLimit)
+      this.undoStackList.shift();
+    this.undoStackList.push(commands);
+    this.redoStackList.length = 0;
+  }
+  clear() {
+    this.undoStackList.length = 0;
+    this.redoStackList.length = 0;
+  }
+  popLastUndoAction() {
+    return this.undoStackList.pop();
   }
   undo() {
-    return this;
+    const topActionOnUndo = this.undoStackList.pop();
+    if (!topActionOnUndo)
+      return null;
+    topActionOnUndo.forEach((undo) => undo.undo(this.containerInterface));
+    this.redoStackList.push(topActionOnUndo.reverse());
+    return topActionOnUndo;
   }
   redo() {
+    const topActionOnRedo = this.redoStackList.pop();
+    if (!topActionOnRedo)
+      return null;
+    topActionOnRedo.forEach((undo) => undo.redo(this.containerInterface));
+    this.undoStackList.push(topActionOnRedo.reverse());
+    return topActionOnRedo;
+  }
+};
+
+// src/js-components/flowchart/action/command/base.ts
+var BaseCommand = class {
+  constructor(command) {
+    this.command = command;
+  }
+  checkHasId(obj) {
+    return "id" in obj && (typeof obj.id === "number" || typeof obj.id === "string");
+  }
+  undo(iContainer) {
+    return this;
+  }
+  redo(iContainer) {
     return this;
   }
 };
 
-// src/js-components/flowchart/action/command/add.js
+// src/js-components/flowchart/action/command/add.ts
 var AddCommand = class extends BaseCommand {
-  /**
-  *
-  * @param {{}[]} objDataList
-  */
-  constructor(objDataList, icontainer) {
-    super("add", icontainer);
+  constructor(objDataList) {
+    super("add");
     this.objDataList = objDataList;
   }
-  undo() {
-    this.objDataList.forEach((data) => this.icontainer.removeObject(data.id));
-    return super.undo();
+  undo(iContainer) {
+    this.objDataList.forEach((data) => {
+      if (this.checkHasId(data))
+        iContainer.removeObject(data.id);
+      else
+        console.error("data has no id", data);
+    });
+    return this;
   }
-  redo() {
-    this.objDataList.forEach((data) => this.icontainer.addRenderObj(data));
-    return super.redo();
+  redo(iContainer) {
+    this.objDataList.forEach((data) => iContainer.addRenderObj(data));
+    return this;
   }
 };
 
-// src/js-components/flowchart/action/command/delete.js
+// src/js-components/flowchart/action/command/delete.ts
 var DeleteCommand = class extends AddCommand {
-  constructor(objDataList, icontainer) {
-    super(objDataList, icontainer);
+  constructor(objDataList) {
+    super(objDataList);
     this.command = "delete";
   }
-  undo() {
-    return super.redo();
+  undo(iContainer) {
+    return super.redo(iContainer);
   }
-  redo() {
-    return super.undo();
+  redo(iContainer) {
+    return super.undo(iContainer);
   }
 };
 
@@ -3693,21 +3737,16 @@ var createLogger = (id2) => {
   return new Logger(id2);
 };
 
-// src/js-components/flowchart/action/command/edit.js
+// src/js-components/flowchart/action/command/edit.ts
 var SIZE_PROP_LIST = ["node.width", "node.height"];
 var ChangedInfo = class {
-  /**
-  *
-  * @param {{}} objData
-  * @param {{key: String, newValue, oldValue}[]} propList
-  */
   constructor(objData, propList) {
-    this.objData = objData;
-    this.propList = propList || [];
+    this._objData = objData;
+    this._propList = propList || [];
   }
   addMoveOldValues() {
-    for (const prop of getMovePropIterator(this.objData)) {
-      this.propList.push({
+    for (const prop of getMovePropIterator(this._objData)) {
+      this._propList.push({
         key: prop.key,
         oldValue: prop.value
       });
@@ -3715,38 +3754,40 @@ var ChangedInfo = class {
   }
   addSizeOldValues() {
     for (const key of SIZE_PROP_LIST) {
-      this.propList.push({
+      this._propList.push({
         key,
-        oldValue: this.objData[key],
-        newValue: this.objData[key]
+        oldValue: this._objData[key],
+        newValue: this._objData[key]
       });
     }
   }
   updateSizeNewValues() {
     for (const key of SIZE_PROP_LIST) {
-      const find2 = this.propList.filter((x) => x.key === key)[0];
-      find2.newValue = this.objData[key];
+      const find2 = this._propList.filter((x) => x.key === key)[0];
+      find2.newValue = this._objData[key];
     }
   }
   updateMoveNewValues() {
-    for (const prop of getMovePropIterator(this.objData)) {
-      const find2 = this.propList.filter((x) => x.key === prop.key)[0];
+    for (const prop of getMovePropIterator(this._objData)) {
+      const find2 = this._propList.filter((x) => x.key === prop.key)[0];
       find2.newValue = prop.value;
     }
   }
+  get objData() {
+    return this._objData;
+  }
+  get propList() {
+    return this._propList;
+  }
 };
 var EditCommand = class extends BaseCommand {
-  /**
-  * @param {ChangedInfo[]} changeInfoList
-  * @param {ContainerInterface} icontainer
-  */
-  constructor(changeInfoList, icontainer) {
-    super("edit", icontainer);
+  constructor(changeInfoList) {
+    super("edit");
     this.changeInfoList = changeInfoList;
   }
-  _setValue(prop) {
+  _setValue(prop, iContainer) {
     this.changeInfoList.forEach((info) => {
-      const obj = this.icontainer.getObjectOrNull(info.objData.id);
+      const obj = iContainer.getObjectOrNull(info.objData.id);
       if (obj !== null) {
         obj.editProp(() => {
           for (const propData of info.propList) {
@@ -3756,14 +3797,241 @@ var EditCommand = class extends BaseCommand {
       }
     });
   }
-  undo() {
-    this._setValue("oldValue");
-    return super.undo();
+  undo(iContainer) {
+    this._setValue("oldValue", iContainer);
+    return super.undo(iContainer);
   }
-  redo() {
-    this._setValue("newValue");
-    return super.redo();
+  redo(iContainer) {
+    this._setValue("newValue", iContainer);
+    return super.redo(iContainer);
   }
+};
+
+// src/js-components/flowchart/action/command/render.ts
+var RenderCommand = class extends BaseCommand {
+  constructor(renderObj, oldRender, newRender) {
+    super("render");
+    this.renderObj = renderObj;
+    this.oldRender = oldRender;
+    this.newRender = newRender;
+  }
+  undo(iContainer) {
+    iContainer.changeObjRender(this.renderObj, this.oldRender);
+    return super.undo(iContainer);
+  }
+  redo(iContainer) {
+    iContainer.changeObjRender(this.renderObj, this.newRender);
+    return super.redo(iContainer);
+  }
+};
+
+// src/js-components/flowchart/action/command/z-index.ts
+var import_lodash = __toESM(require_lodash());
+var ZIndexCommand = class extends BaseCommand {
+  constructor(dataList) {
+    super("front");
+    this.dataList = dataList;
+  }
+  _setZId(prop, reverse, iContainer) {
+    const func = (data) => {
+      const obj = iContainer.getObjectOrNull(data.objId);
+      if (obj === null) {
+        iContainer.getLogger().error(
+          "ZIndexCommand._setZId()",
+          `Could not find obj id '${data.objId}'`
+        );
+        return;
+      }
+      obj.zIndex = data[prop];
+    };
+    if (reverse) {
+      import_lodash.default.forEach(this.dataList, func);
+    } else {
+      import_lodash.default.forEachRight(this.dataList, func);
+    }
+  }
+  undo(iContainer) {
+    this._setZId("oldValue", false, iContainer);
+    return super.undo(iContainer);
+  }
+  redo(iContainer) {
+    this._setZId("newValue", true, iContainer);
+    return super.redo(iContainer);
+  }
+};
+
+// src/js-components/flowchart/action/move-handler.ts
+var import_lodash2 = __toESM(require_lodash());
+var MoveHandler = class {
+  constructor(actionController, objectManager, iContainer) {
+    this.actionController = actionController;
+    this.objectManager = objectManager;
+    this.iContainer = iContainer;
+    this.movedInfo = [];
+  }
+  moveStartHandler() {
+    this.iContainer.getLogger().debug("MoveHandler.moveStartHandler()", "start");
+    this.movedInfo = [];
+    for (const obj of this.objectManager.getSelectedObjIterator()) {
+      const info = new ChangedInfo(obj.data);
+      info.addMoveOldValues();
+      this.movedInfo.push(info);
+    }
+  }
+  moveEndHandler() {
+    this.iContainer.getLogger().debug("MoveHandler.moveEndHandler()", "end");
+    this.movedInfo.forEach((x) => x.updateMoveNewValues());
+    const tmp = this.movedInfo.filter((info) => info.propList.some((x) => import_lodash2.default.isEqual(x.oldValue, x.newValue) === false));
+    if (tmp.length > 0) {
+      this.actionController.addAction(new EditCommand(this.movedInfo));
+    }
+  }
+};
+
+// src/js-components/flowchart/action/resize-handler.ts
+var import_lodash3 = __toESM(require_lodash());
+var ResizeHandler = class {
+  constructor(actionController, objectManager, iContainer) {
+    this.actionController = actionController;
+    this.objectManager = objectManager;
+    this.iContainer = iContainer;
+    this.resizeInfo = [];
+  }
+  resizeCallback(objId, cursor, diffWidth, diffHeight) {
+    for (const node of this.objectManager.getNodeIterator()) {
+      if (node.isSelected && node.id !== objId && node.resizerEnabled) {
+        const centerY = node.height / 2;
+        const centerX = node.width / 2;
+        switch (cursor) {
+          case "n-resize":
+            node.resizeToNorth(-(centerY + diffHeight));
+            break;
+          case "nw-resize":
+            node.resizeToNorth(-(centerY + diffHeight));
+            node.resizeToWest(-(centerX + diffWidth));
+            break;
+          case "ne-resize":
+            node.resizeToNorth(-(centerY + diffHeight));
+            node.resizeToEast(centerX + diffWidth);
+            break;
+          case "w-resize":
+            node.resizeToWest(-(centerX + diffWidth));
+            break;
+          case "e-resize":
+            node.resizeToEast(centerX + diffWidth);
+            break;
+          case "s-resize":
+            node.resizeToSouth(centerY + diffHeight);
+            break;
+          case "sw-resize":
+            node.resizeToSouth(centerY + diffHeight);
+            node.resizeToWest(-(centerX + diffWidth));
+            break;
+          case "se-resize":
+            node.resizeToSouth(centerY + diffHeight);
+            node.resizeToEast(centerX + diffWidth);
+            break;
+          default:
+            throw new Error(`Unknown cursor type '${cursor}'`);
+        }
+      }
+    }
+    for (const group of this.objectManager.getGroupIterator()) {
+      group.isSelected && group.render();
+    }
+  }
+  resizeDragStart() {
+    this.iContainer.getLogger().debug("ResizeHandler.resizeDragStart()", "start");
+    this.resizeInfo = [];
+    for (const node of this.objectManager.getNodeIterator()) {
+      if (node.isSelected) {
+        const info = new ChangedInfo(node.data);
+        info.addSizeOldValues();
+        this.resizeInfo.push(info);
+      }
+    }
+  }
+  resizeDragEnd() {
+    this.iContainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end");
+    this.resizeInfo.forEach((info) => info.updateSizeNewValues());
+    const tmp = this.resizeInfo.filter((info) => info.propList.some((x) => import_lodash3.default.isEqual(x.oldValue, x.newValue) === false));
+    if (tmp.length > 0) {
+      this.actionController.addAction(new EditCommand(this.resizeInfo));
+    }
+  }
+  addDragActionOnResizer(node) {
+    node.renderer.resizers.forEach((resizer) => {
+      const cursor = resizer.attr("cursor");
+      resizer.call(drag_default().filter(() => this.iContainer.getReadOnly() === false).on("start", () => {
+        this.resizeDragStart();
+        this.iContainer.initDrag("drag-node-resize");
+      }).on("drag", (ev) => {
+        const dx = ev.x;
+        const dy = ev.y;
+        const curWidth = node.width;
+        const curHeight = node.height;
+        switch (cursor) {
+          case "nw-resize":
+            node.resizeToNorth(dy);
+            node.resizeToWest(dx);
+            break;
+          case "n-resize":
+            node.resizeToNorth(dy);
+            break;
+          case "ne-resize":
+            node.resizeToNorth(dy);
+            node.resizeToEast(dx);
+            break;
+          case "w-resize":
+            node.resizeToWest(dx);
+            break;
+          case "e-resize":
+            node.resizeToEast(dx);
+            break;
+          case "sw-resize":
+            node.resizeToSouth(dy);
+            node.resizeToWest(dx);
+            break;
+          case "s-resize":
+            node.resizeToSouth(dy);
+            break;
+          case "se-resize":
+            node.resizeToSouth(dy);
+            node.resizeToEast(dx);
+            break;
+          default:
+            throw new Error(`Unknown cursor type '${cursor}'`);
+        }
+        const diffWidth = node.width - curWidth;
+        const diffHeight = node.height - curHeight;
+        this.resizeCallback(node.id, cursor, diffWidth, diffHeight);
+      }).on("end", () => {
+        this.resizeDragEnd();
+        this.iContainer.terminateDrag("drag-node-resize");
+      }));
+    });
+  }
+};
+
+// src/js-components/flowchart/flowchart.types.ts
+var EVENT_TYPE = {
+  CLICK: "click",
+  CLICK_NODE: "clickNode",
+  DOUBLE_CLICK_NODE: "dblClickNode",
+  CLICK_CONNECTION: "clickConnection",
+  DOUBLE_CLICK_CONNECTION: "dblClickConnection",
+  NEW_OBJECT: "newObject",
+  REMOVE_OBJECT: "removeObject",
+  SELECT_OBJECT: "selectObject",
+  RELEASE_OBJECT: "releaseObject",
+  UNDO: "undo",
+  REDO: "redo",
+  COMMAND: "command",
+  CHANGE_CLASS: "changeClass",
+  DISCONNECT_NODE: "disconnectNode",
+  CONNECT_NODE: "connectNode",
+  MOUSEUP_SHEET: "mouseUpSheet",
+  CONTEXT_MENU: "contextmenu"
 };
 
 // src/js-components/flowchart/util/observe.ts
@@ -3833,8 +4101,11 @@ var RenderObject = class {
     return this.data.temp || false;
   }
   get zIndex() {
+    const node = this.renderer.group.node();
+    if (!node)
+      throw new Error("renderer.group.node is null!");
     let zId = 0;
-    let prev = this.renderer.group.node().previousSibling;
+    let prev = node.previousSibling;
     while (prev !== null) {
       prev = prev.previousSibling;
       ++zId;
@@ -3977,243 +4248,256 @@ var RenderObject = class {
   }
 };
 
-// src/js-components/flowchart/action/command/render.js
-var RenderCommand = class extends BaseCommand {
-  /**
-  * @param {RenderObject} renderObj
-  * @param {String} oldRender
-  * @param {String} newRender
-  * @param {*} icontainer
-  */
-  constructor(renderObj, oldRender, newRender, icontainer) {
-    super("render", icontainer);
-    this.renderObj = renderObj;
-    this.oldRender = oldRender;
-    this.newRender = newRender;
+// src/js-components/flowchart/obj/connection.js
+var Connection = class extends RenderObject {
+  get points() {
+    return this.data["connection.points"];
   }
-  undo() {
-    this.icontainer.changeObjRender(this.renderObj, this.oldRender);
-    return super.undo();
+  get endX() {
+    return this.points.reduce((a, b) => Math.max(a, b.x), 0);
   }
-  redo() {
-    this.icontainer.changeObjRender(this.renderObj, this.newRender);
-    return super.redo();
+  get endY() {
+    return this.points.reduce((a, b) => Math.max(a, b.y), 0);
+  }
+  get sourceObjId() {
+    return this.data["connection.sourceObjId"] || null;
+  }
+  get sourceObj() {
+    return this.containerInterface.getObjectOrNull(this.data["connection.sourceObjId"]);
+  }
+  get destinationObj() {
+    return this.containerInterface.getObjectOrNull(this.data["connection.destinationObjId"]);
+  }
+  get destinationObjId() {
+    return this.data["connection.destinationObjId"] || null;
+  }
+  get sourcePos() {
+    return this.data["connection.sourcePos"] || null;
+  }
+  get destinationPos() {
+    return this.data["connection.destinationPos"] || null;
+  }
+  get firstPoint() {
+    return this.points[0];
+  }
+  get endPoint() {
+    return this.points[this.points.length - 1];
+  }
+  get startX() {
+    return this.points.reduce((a, b) => Math.min(a, b.x), Number.MAX_VALUE);
+  }
+  get startY() {
+    return this.points.reduce((a, b) => Math.min(a, b.y), Number.MAX_VALUE);
+  }
+  get width() {
+    if (!this.points) {
+      return NaN;
+    }
+    const reduce = this.points.reduce((a, b) => {
+      return {
+        min: Math.min(a.min, b.x),
+        max: Math.max(a.max, b.x)
+      };
+    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
+    return reduce.max - reduce.min;
+  }
+  get height() {
+    if (!this.points) {
+      return NaN;
+    }
+    const reduce = this.points.reduce((a, b) => {
+      return {
+        min: Math.min(a.min, b.y),
+        max: Math.max(a.max, b.y)
+      };
+    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
+    return reduce.max - reduce.min;
+  }
+  get x() {
+    const point = this.firstPoint;
+    return point !== null ? point.x : null;
+  }
+  get y() {
+    const point = this.firstPoint;
+    return point !== null ? point.y : null;
+  }
+  set sourceObjId(value) {
+    this.data["connection.sourceObjId"] = value || null;
+  }
+  set destinationObjId(value) {
+    this.data["connection.destinationObjId"] = value || null;
+  }
+  set sourcePos(value) {
+    this.data["connection.sourcePos"] = value || null;
+  }
+  set destinationPos(value) {
+    this.data["connection.destinationPos"] = value || null;
+  }
+  set x(value) {
+    if (this.sourceObjId !== null) {
+      return;
+    }
+    const point = this.firstPoint;
+    if (point !== null) {
+      point.x = value;
+      this.render();
+    }
+  }
+  set y(value) {
+    if (this.sourceObjId !== null) {
+      return;
+    }
+    const point = this.firstPoint;
+    if (point !== null) {
+      point.y = value;
+      this.render();
+    }
+  }
+  setLastPointXY(x, y) {
+    this.data["connection.points"][this.renderer.lastPointId].x = x;
+    this.data["connection.points"][this.renderer.lastPointId].y = y;
+    this.render();
+  }
+  moveTo(x, y) {
+    if (this.sourceObj && this.destinationObj) {
+      return;
+    }
+    const startId = this.sourceObj === null ? 0 : 1;
+    const endId = this.points.length - (this.destinationObj === null ? 0 : 1);
+    this.editProp(() => {
+      this.points.slice(startId, endId).forEach((pt) => {
+        pt.x += x;
+        pt.y += y;
+      });
+    });
+  }
+  comparePoints(points) {
+    if (!this.points || !points || this.points.length !== points.length) {
+      return false;
+    }
+    for (let i = 0; i < points.length; i++) {
+      if (this.points[i].x !== points[i].x && this.points[i].y !== points[i].y) {
+        return false;
+      }
+    }
+    return true;
   }
 };
+var connection_default = Connection;
 
-// src/js-components/flowchart/action/command/zindex.js
-var _2 = __toESM(require_lodash());
-var ZIndexCommand = class extends BaseCommand {
-  /**
-  *
-  * @param {{objId: String | Number, oldValue: Number | null, newValue: Number | null}[]} dataList
-  */
-  constructor(dataList, icontainer) {
-    super("front", icontainer);
-    this.dataList = dataList;
-  }
-  /**
-  *
-  * @param {(obj: RenderObject, oldVlaue: Number | null, newValue: Number | null) => void} func
-  */
-  _setZId(prop, reverse) {
-    const func = (data) => {
-      const obj = this.icontainer.getObjectOrNull(data.objId);
-      if (obj === null) {
-        this.icontainer.getLogger().error(
-          "ZIndexCommand._setZId()",
-          `Could not find obj id '${data.objId}'`
-        );
-        return;
-      }
-      obj.zIndex = data[prop];
+// src/js-components/flowchart/obj/group.js
+var Group = class extends RenderObject {
+  constructor(data, renderer, containerInterface) {
+    super(data, renderer, containerInterface);
+    this.objectSet = new Set(this.data.objectList || []);
+    this.rect = {
+      x: 0,
+      y: 0,
+      width: 0,
+      height: 0
     };
-    if (reverse) {
-      _2.forEach(this.dataList, func);
+  }
+  get startX() {
+    return this.x;
+  }
+  get startY() {
+    return this.y;
+  }
+  get x() {
+    return this.rect.x;
+  }
+  get y() {
+    return this.rect.y;
+  }
+  get width() {
+    return this.rect.width;
+  }
+  get height() {
+    return this.rect.height;
+  }
+  get endX() {
+    return this.x + this.width;
+  }
+  get endY() {
+    return this.y + this.height;
+  }
+  select(userInteraction, typeClick = "") {
+    this.objectSet.forEach((id2) => {
+      const obj = this.containerInterface.getObjectOrNull(id2);
+      if (obj != null) {
+        if (typeClick == "" || typeClick != "" && typeClick == obj.renderType)
+          obj.data.isSelected = true;
+      }
+    });
+    super.select(userInteraction);
+  }
+  release(userInteraction = false) {
+    this.objectSet.forEach((id2) => {
+      const obj = this.containerInterface.getObjectOrNull(id2);
+      obj != null && obj.release(userInteraction);
+    });
+    super.release(userInteraction);
+  }
+  resize() {
+    const margin = this.data["group.margin"];
+    let minX = Number.MAX_VALUE;
+    let minY = Number.MAX_VALUE;
+    let maxX = Number.MIN_VALUE;
+    let maxY = Number.MIN_VALUE;
+    this.objectSet.forEach((v) => {
+      const obj = this.containerInterface.getObjectOrNull(v);
+      if (obj !== null) {
+        minX = Math.min(obj.startX - margin, minX);
+        maxX = Math.max(obj.endX + margin, maxX);
+        minY = Math.min(obj.startY - margin, minY);
+        maxY = Math.max(obj.endY + margin, maxY);
+      }
+    });
+    this.data["group.rect"] = this.rect;
+    this.rect.x = minX;
+    this.rect.y = minY;
+    this.rect.width = maxX - minX;
+    this.rect.height = maxY - minY;
+  }
+  moveTo() {
+    this.render();
+  }
+  hasObjId(objId) {
+    return this.objectSet.has(objId);
+  }
+  destroy() {
+    this.objectSet.clear();
+    super.destroy();
+  }
+  destroyAll() {
+    this.objectSet.forEach((id2) => {
+      const obj = this.containerInterface.getObjectOrNull(id2);
+      obj != null && this.containerInterface.removeObject(obj);
+    });
+    this.destroy();
+  }
+  // clear all items in this
+  clear() {
+    this.objectSet.clear();
+  }
+  addObject(id2) {
+    if (this.objectSet.has(id2) === false) {
+      this.objectSet.add(id2);
+      this.resize();
     } else {
-      _2.forEachRight(this.dataList, func);
+      throw new Error(`Already has added id! '${id2}'`);
     }
   }
-  undo() {
-    this._setZId("oldValue", false);
-    return super.undo();
-  }
-  redo() {
-    this._setZId("newValue", true);
-    return super.redo();
-  }
-};
-
-// src/js-components/flowchart/action/controller.js
-var ActionController = class {
-  constructor(limit) {
-    this.actionLimit = limit;
-    this.undoStackList = [];
-    this.redoStackList = [];
-  }
-  /**
-  *
-  * @param {...BaseCommand} commands
-  */
-  addAction(...commands) {
-    if (this.undoStackList.length === this.actionLimit) {
-      this.undoStackList.splice(0, 1);
-    }
-    this.undoStackList.push(commands);
-    this.redoStackList.splice(0, this.redoStackList.length);
-  }
-  clear() {
-    this.undoStackList.splice(0, this.undoStackList.length);
-    this.redoStackList.splice(0, this.redoStackList.length);
-  }
-  popLastUndoAction() {
-    return this.undoStackList.pop();
-  }
-  undo() {
-    if (this.undoStackList.length === 0) {
-      return null;
-    }
-    const topActionOnUndo = this.undoStackList.pop();
-    topActionOnUndo.forEach((undo) => undo.undo());
-    this.redoStackList.push(topActionOnUndo.reverse());
-    return topActionOnUndo;
-  }
-  redo() {
-    if (this.redoStackList.length === 0) {
-      return null;
-    }
-    const topActionOnRedo = this.redoStackList.pop();
-    topActionOnRedo.forEach((undo) => undo.redo());
-    this.undoStackList.push(topActionOnRedo.reverse());
-    return topActionOnRedo;
-  }
-};
-
-// src/js-components/flowchart/action/movehandler.js
-var _3 = __toESM(require_lodash());
-
-// src/js-components/flowchart/util/objmng.ts
-var objMngLogger = new Logger("Flowchart::ObjectManager");
-var ObjectManager = class {
-  constructor() {
-    this.objMap = {
-      node: /* @__PURE__ */ new Map(),
-      connection: /* @__PURE__ */ new Map(),
-      group: /* @__PURE__ */ new Map()
-    };
-  }
-  getMap(type2) {
-    const map = this.objMap[type2];
-    if (map === void 0) {
-      objMngLogger.error("ObjectManager.getMap()", `Unknown '${type2}' type`);
-      throw new Error(`Unknown '${type2}' type`);
-    }
-    return map;
-  }
-  getObjCount() {
-    return this.objMap.node.size + this.objMap.connection.size + this.objMap.group.size;
-  }
-  add(obj) {
-    const map = this.getMap(obj.type);
-    if (map.has(obj.id)) {
-      throw new Error(`Already has objId '${obj.id}'`);
-    }
-    map.set(obj.id, obj);
-  }
-  remove(obj) {
-    const map = this.getMap(obj.type);
-    if (map.has(obj.id)) {
-      map.delete(obj.id);
-    }
-  }
-  *getMapIterator() {
-    yield* Object.values(this.objMap);
-  }
-  getNodeIterator() {
-    return this.objMap.node.values();
-  }
-  getConnectionIterator() {
-    return this.objMap.connection.values();
-  }
-  getGroupIterator() {
-    return this.objMap.group.values();
-  }
-  findOrNull(objId) {
-    for (const map of this.getMapIterator()) {
-      if (map.has(objId))
-        return map.get(objId);
-    }
-    return null;
-  }
-  clear() {
-    Object.values(this.objMap).forEach((map) => map.clear());
-  }
-  *getAllObjIterator() {
-    for (const map of Object.values(this.objMap))
-      yield* map.values();
-  }
-  *getSelectedObjIterator() {
-    for (const obj of this.getAllObjIterator()) {
-      if (obj.isSelected)
-        yield obj;
-    }
-  }
-  getParentGroupOrNull(obj) {
-    for (const group of this.getGroupIterator()) {
-      if (group.hasObjId(obj.id)) {
-        return group;
-      }
-    }
-    return null;
-  }
-  *getConnectedConnections(nodeId) {
-    for (const con of this.getConnectionIterator()) {
-      if (!con.isTempObj && (con.sourceObjId === nodeId || con.destinationObjId === nodeId)) {
-        yield con;
-      }
-    }
-  }
-  reassignId(obj, oldId, newId2) {
-    const map = this.getMap(obj.type);
-    map.delete(oldId);
-    map.set(newId2, obj);
-  }
-};
-
-// src/js-components/flowchart/action/movehandler.js
-var MoveHandler = class {
-  /**
-  * @param {ActionController} actionController
-  * @param {ObjectManager} objectManager
-  * @param {ContainerInterface} icontainer
-  */
-  constructor(actionController, objectManager, icontainer) {
-    this.actionController = actionController;
-    this.objectManager = objectManager;
-    this.icontainer = icontainer;
-    this.movedInfo = [];
-  }
-  moveStartHandler() {
-    this.icontainer.getLogger().debug("MoveHandler.moveStartHandler()", "start");
-    this.movedInfo = [];
-    for (const obj of this.objectManager.getSelectedObjIterator()) {
-      const info = new ChangedInfo(obj.data);
-      info.addMoveOldValues();
-      this.movedInfo.push(info);
-    }
-  }
-  moveEndHandler() {
-    this.icontainer.getLogger().debug("MoveHandler.moveEndHandler()", "end");
-    this.movedInfo.forEach((x) => x.updateMoveNewValues());
-    const tmp = this.movedInfo.filter((info) => info.propList.some((x) => _3.isEqual(x.oldValue, x.newValue) === false));
-    if (tmp.length > 0) {
-      this.actionController.addAction(new EditCommand(this.movedInfo, this.icontainer));
+  removeObject(id2) {
+    if (this.objectSet.has(id2)) {
+      this.objectSet.delete(id2);
+      this.resize();
+    } else {
+      throw new Error(`There is no id you received in this group!'${id2}'`);
     }
   }
 };
-
-// src/js-components/flowchart/action/resizehandler.js
-var _4 = __toESM(require_lodash());
+var group_default = Group;
 
 // src/js-components/flowchart/data/wrapper.ts
 var FIXED_KEYS = /* @__PURE__ */ new Set([
@@ -4466,12 +4750,13 @@ var COMMENTS_POS = [
   ["BottomRight", "end"]
 ];
 var NodeRenderer = class extends BaseRenderer {
-  constructor(data, className, icontainer) {
-    super(data, className, icontainer);
+  constructor(data, className, iContainer) {
+    super(data, className, iContainer);
     this.svg = this.containerInterface.getSvg();
     this.connectors = [];
     this.resizers = [];
     this.comments = [];
+    this.backgroundRect = this.group.append("rect").attr("opacity", "0");
   }
   get width() {
     return this.data["node.width"];
@@ -4617,10 +4902,14 @@ var NodeRenderer = class extends BaseRenderer {
       height
     };
   }
+  _resizerVisibleBackgroundRect() {
+    this.backgroundRect.attr("x", -(this.width / 2)).attr("y", -(this.height / 2)).attr("width", this.width).attr("height", this.height).style("fill", "white");
+  }
   render() {
     const x = this.data["node.x"] + this.data["node.width"] / 2;
     const y = this.data["node.y"] + this.data["node.height"] / 2;
     this.group.attr("transform", `translate(${x}, ${y})`);
+    this.resizerVisibility ? this._resizerVisibleBackgroundRect() : this.backgroundRect.style("fill", "none");
     super.render();
     this._renderComments();
     this._renderResizer();
@@ -4629,6 +4918,7 @@ var NodeRenderer = class extends BaseRenderer {
 };
 
 // src/js-components/flowchart/obj/node.js
+var COMMENT_MARGIN2 = 5;
 var MINIMUM_WIDTH = 30;
 var MINIMUM_HEIGHT = 30;
 var COMMENT_POS = /* @__PURE__ */ new Set([
@@ -4651,7 +4941,9 @@ var Node = class extends RenderObject {
     return this.x;
   }
   get startY() {
-    return this.y;
+    const hasTopComment = this.data["node.commentTopLeft"] || this.data["node.commentTopCenter"] || this.data["node.commentTopRight"];
+    const topAdjust = hasTopComment ? COMMENT_MARGIN2 + this.data["node.commentFontSize"] : 0;
+    return this.y - topAdjust;
   }
   get resizerEnabled() {
     return this.data["node.resizerEnabled"] === true;
@@ -4681,7 +4973,9 @@ var Node = class extends RenderObject {
     return this.x + this.width;
   }
   get endY() {
-    return this.y + this.height;
+    const hasTopComment = this.data["node.commentBottomLeft"] || this.data["node.commentBottomCenter"] || this.data["node.commentBottomRight"];
+    const topAdjust = hasTopComment ? COMMENT_MARGIN2 + this.data["node.commentFontSize"] : 0;
+    return this.y + this.height + topAdjust;
   }
   set x(value) {
     this.data["node.x"] = value;
@@ -4734,8 +5028,8 @@ var Node = class extends RenderObject {
     const sourceY = -(this.height / 2);
     const diffY = parseInt(sourceY - dy);
     if (this.height + diffY >= MINIMUM_HEIGHT) {
-      this.y -= diffY / 2;
-      this.height = this.height + diffY / 2;
+      this.y -= diffY;
+      this.height = this.height + diffY;
     } else {
       this.y += this.height - MINIMUM_HEIGHT;
       this.height = MINIMUM_HEIGHT;
@@ -4745,8 +5039,8 @@ var Node = class extends RenderObject {
     const sourceX = -(this.width / 2);
     const diffX = parseInt(sourceX - dx);
     if (this.width + diffX >= MINIMUM_WIDTH) {
-      this.x -= diffX / 2;
-      this.width = this.width + diffX / 2;
+      this.x -= diffX;
+      this.width = this.width + diffX;
     } else {
       this.x += this.width - MINIMUM_WIDTH;
       this.width = MINIMUM_WIDTH;
@@ -4769,440 +5063,117 @@ var Node = class extends RenderObject {
     this.height = Math.max(MINIMUM_HEIGHT, parseInt(dy + this.height / 2));
   }
 };
-
-// src/js-components/flowchart/action/resizehandler.js
-var ResizeHandler = class {
-  /**
-  * @param {ActionController} actionController
-  * @param {ObjectManager} objectManager
-  * @param {ContainerInterface} icontainer
-  */
-  constructor(actionController, objectManager, icontainer) {
-    this.actionController = actionController;
-    this.objectManager = objectManager;
-    this.icontainer = icontainer;
-    this.resizeInfo = [];
-  }
-  resizeCallback(objId, cursor, diffWidth, diffHeight) {
-    for (const node of this.objectManager.getNodeIterator()) {
-      if (node.isSelected && node.id != objId && node.resizerEnabled) {
-        const centerY = node.height / 2;
-        const centerX = node.width / 2;
-        switch (cursor) {
-          case "n-resize":
-            node.resizeToNorth(-(centerY + diffHeight));
-            break;
-          case "nw-resize":
-            node.resizeToNorth(-(centerY + diffHeight));
-            node.resizeToWest(-(centerX + diffWidth));
-            break;
-          case "ne-resize":
-            node.resizeToNorth(-(centerY + diffHeight));
-            node.resizeToEast(centerX + diffWidth);
-            break;
-          case "w-resize":
-            node.resizeToWest(-(centerX + diffWidth));
-            break;
-          case "e-resize":
-            node.resizeToEast(centerX + diffWidth);
-            break;
-          case "s-resize":
-            node.resizeToSouth(centerY + diffHeight);
-            break;
-          case "sw-resize":
-            node.resizeToSouth(centerY + diffHeight);
-            node.resizeToWest(-(centerX + diffWidth));
-            break;
-          case "se-resize":
-            node.resizeToSouth(centerY + diffHeight);
-            node.resizeToEast(centerX + diffWidth);
-            break;
-          default:
-            throw new Error(`Unknown cursor type '${cursor}'`);
-        }
-      }
-    }
-    for (const group of this.objectManager.getGroupIterator()) {
-      group.isSelected && group.render();
-    }
-  }
-  resizeDragStart() {
-    this.icontainer.getLogger().debug("ResizeHandler.resizeDragStart()", "start");
-    this.resizeInfo = [];
-    for (const node of this.objectManager.getNodeIterator()) {
-      if (node.isSelected) {
-        const info = new ChangedInfo(node.data);
-        info.addSizeOldValues();
-        this.resizeInfo.push(info);
-      }
-    }
-  }
-  resizeDragEnd() {
-    this.icontainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end");
-    this.resizeInfo.forEach((info) => info.updateSizeNewValues());
-    const tmp = this.resizeInfo.filter((info) => info.propList.some((x) => _4.isEqual(x.oldValue, x.newValue) === false));
-    if (tmp.length > 0) {
-      this.actionController.addAction(new EditCommand(this.resizeInfo, this.icontainer));
-    }
-  }
-  /**
-  * @param {Node} node
-  */
-  addDragActionOnResizer(node) {
-    node.renderer.resizers.forEach((resizer) => {
-      const cursor = resizer.attr("cursor");
-      resizer.call(drag_default().filter(() => this.icontainer.getReadOnly() === false).on("start", () => {
-        this.resizeDragStart();
-        this.icontainer.initDrag("drag-node-resize");
-      }).on("drag", (ev) => {
-        const dx = ev.x;
-        const dy = ev.y;
-        const curWidth = node.width;
-        const curHeight = node.height;
-        switch (cursor) {
-          case "nw-resize":
-            node.resizeToNorth(dy);
-            node.resizeToWest(dx);
-            break;
-          case "n-resize":
-            node.resizeToNorth(dy);
-            break;
-          case "ne-resize":
-            node.resizeToNorth(dy);
-            node.resizeToEast(dx);
-            break;
-          case "w-resize":
-            node.resizeToWest(dx);
-            break;
-          case "e-resize":
-            node.resizeToEast(dx);
-            break;
-          case "sw-resize":
-            node.resizeToSouth(dy);
-            node.resizeToWest(dx);
-            break;
-          case "s-resize":
-            node.resizeToSouth(dy);
-            break;
-          case "se-resize":
-            node.resizeToSouth(dy);
-            node.resizeToEast(dx);
-            break;
-          default:
-            throw new Error(`Unknown cursor type '${cursor}'`);
-        }
-        const diffWidth = node.width - curWidth;
-        const diffHeight = node.height - curHeight;
-        this.resizeCallback(node.id, cursor, diffWidth, diffHeight);
-      }).on("end", () => {
-        this.resizeDragEnd();
-        this.icontainer.terminateDrag("drag-node-resize");
-      }));
-    });
-  }
-};
-
-// src/js-components/flowchart/flowchart.types.ts
-var EVENT_TYPE = {
-  CLICK: "click",
-  CLICK_NODE: "clickNode",
-  DOUBLE_CLICK_NODE: "dblClickNode",
-  CLICK_CONNECTION: "clickConnection",
-  DOUBLE_CLICK_CONNECTION: "dblClickConnection",
-  NEW_OBJECT: "newObject",
-  REMOVE_OBJECT: "removeObject",
-  SELECT_OBJECT: "selectObject",
-  RELEASE_OBJECT: "releaseObject",
-  UNDO: "undo",
-  REDO: "redo",
-  COMMAND: "command",
-  CHANGE_CLASS: "changeClass",
-  DISCONNECT_NODE: "disconnectNode",
-  CONNECT_NODE: "connectNode",
-  MOUSEUP_SHEET: "mouseUpSheet",
-  CONTEXT_MENU: "contextmenu"
-};
-
-// src/js-components/flowchart/obj/connection.js
-var Connection = class extends RenderObject {
-  get points() {
-    return this.data["connection.points"];
-  }
-  get endX() {
-    return this.points.reduce((a, b) => Math.max(a, b.x), 0);
-  }
-  get endY() {
-    return this.points.reduce((a, b) => Math.max(a, b.y), 0);
-  }
-  get sourceObjId() {
-    return this.data["connection.sourceObjId"] || null;
-  }
-  get sourceObj() {
-    return this.containerInterface.getObjectOrNull(this.data["connection.sourceObjId"]);
-  }
-  get destinationObj() {
-    return this.containerInterface.getObjectOrNull(this.data["connection.destinationObjId"]);
-  }
-  get destinationObjId() {
-    return this.data["connection.destinationObjId"] || null;
-  }
-  get sourcePos() {
-    return this.data["connection.sourcePos"] || null;
-  }
-  get destinationPos() {
-    return this.data["connection.destinationPos"] || null;
-  }
-  get firstPoint() {
-    return this.points[0];
-  }
-  get endPoint() {
-    return this.points[this.points.length - 1];
-  }
-  get startX() {
-    return this.points.reduce((a, b) => Math.min(a, b.x), Number.MAX_VALUE);
-  }
-  get startY() {
-    return this.points.reduce((a, b) => Math.min(a, b.y), Number.MAX_VALUE);
-  }
-  get width() {
-    if (!this.points) {
-      return NaN;
-    }
-    const reduce = this.points.reduce((a, b) => {
-      return {
-        min: Math.min(a.min, b.x),
-        max: Math.max(a.max, b.x)
-      };
-    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
-    return reduce.max - reduce.min;
-  }
-  get height() {
-    if (!this.points) {
-      return NaN;
-    }
-    const reduce = this.points.reduce((a, b) => {
-      return {
-        min: Math.min(a.min, b.y),
-        max: Math.max(a.max, b.y)
-      };
-    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
-    return reduce.max - reduce.min;
-  }
-  get x() {
-    const point = this.firstPoint;
-    return point !== null ? point.x : null;
-  }
-  get y() {
-    const point = this.firstPoint;
-    return point !== null ? point.y : null;
-  }
-  set sourceObjId(value) {
-    this.data["connection.sourceObjId"] = value || null;
-  }
-  set destinationObjId(value) {
-    this.data["connection.destinationObjId"] = value || null;
-  }
-  set sourcePos(value) {
-    this.data["connection.sourcePos"] = value || null;
-  }
-  set destinationPos(value) {
-    this.data["connection.destinationPos"] = value || null;
-  }
-  set x(value) {
-    if (this.sourceObjId !== null) {
-      return;
-    }
-    const point = this.firstPoint;
-    if (point !== null) {
-      point.x = value;
-      this.render();
-    }
-  }
-  set y(value) {
-    if (this.sourceObjId !== null) {
-      return;
-    }
-    const point = this.firstPoint;
-    if (point !== null) {
-      point.y = value;
-      this.render();
-    }
-  }
-  setLastPointXY(x, y) {
-    this.data["connection.points"][this.renderer.lastPointId].x = x;
-    this.data["connection.points"][this.renderer.lastPointId].y = y;
-    this.render();
-  }
-  moveTo(x, y) {
-    if (this.sourceObj && this.destinationObj) {
-      return;
-    }
-    const startId = this.sourceObj === null ? 0 : 1;
-    const endId = this.points.length - (this.destinationObj === null ? 0 : 1);
-    this.editProp(() => {
-      this.points.slice(startId, endId).forEach((pt) => {
-        pt.x += x;
-        pt.y += y;
-      });
-    });
-  }
-  comparePoints(points) {
-    if (!this.points || !points || this.points.length !== points.length) {
-      return false;
-    }
-    for (let i = 0; i < points.length; i++) {
-      if (this.points[i].x !== points[i].x && this.points[i].y !== points[i].y) {
-        return false;
-      }
-    }
-    return true;
-  }
-};
-
-// src/js-components/flowchart/obj/group.js
-var Group = class extends RenderObject {
-  constructor(data, renderer, containerInterface) {
-    super(data, renderer, containerInterface);
-    this.objectSet = new Set(this.data.objectList || []);
-    this.rect = {
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0
-    };
-  }
-  get startX() {
-    return this.x;
-  }
-  get startY() {
-    return this.y;
-  }
-  get x() {
-    return this.rect.x;
-  }
-  get y() {
-    return this.rect.y;
-  }
-  get width() {
-    return this.rect.width;
-  }
-  get height() {
-    return this.rect.height;
-  }
-  get endX() {
-    return this.x + this.width;
-  }
-  get endY() {
-    return this.y + this.height;
-  }
-  select(userInteraction, typeClick = "") {
-    this.objectSet.forEach((id2) => {
-      const obj = this.containerInterface.getObjectOrNull(id2);
-      if (obj != null) {
-        if (typeClick == "" || typeClick != "" && typeClick == obj.renderType)
-          obj.data.isSelected = true;
-      }
-    });
-    super.select(userInteraction);
-  }
-  release(userInteraction = false) {
-    this.objectSet.forEach((id2) => {
-      const obj = this.containerInterface.getObjectOrNull(id2);
-      obj != null && obj.release(userInteraction);
-    });
-    super.release(userInteraction);
-  }
-  resize() {
-    const margin = this.data["group.margin"];
-    let minX = Number.MAX_VALUE;
-    let minY = Number.MAX_VALUE;
-    let maxX = Number.MIN_VALUE;
-    let maxY = Number.MIN_VALUE;
-    this.objectSet.forEach((v) => {
-      const obj = this.containerInterface.getObjectOrNull(v);
-      if (obj !== null) {
-        minX = Math.min(obj.startX - margin, minX);
-        maxX = Math.max(obj.endX + margin, maxX);
-        minY = Math.min(obj.startY - margin, minY);
-        maxY = Math.max(obj.endY + margin, maxY);
-      }
-    });
-    this.data["group.rect"] = this.rect;
-    this.rect.x = minX;
-    this.rect.y = minY;
-    this.rect.width = maxX - minX;
-    this.rect.height = maxY - minY;
-  }
-  moveTo() {
-    this.render();
-  }
-  hasObjId(objId) {
-    return this.objectSet.has(objId);
-  }
-  destroy() {
-    this.objectSet.clear();
-    super.destroy();
-  }
-  destroyAll() {
-    this.objectSet.forEach((id2) => {
-      const obj = this.containerInterface.getObjectOrNull(id2);
-      obj != null && this.containerInterface.removeObject(obj);
-    });
-    this.destroy();
-  }
-  // clear all items in this
-  clear() {
-    this.objectSet.clear();
-  }
-  addObject(id2) {
-    if (this.objectSet.has(id2) === false) {
-      this.objectSet.add(id2);
-      this.resize();
-    } else {
-      throw new Error(`Already has added id! '${id2}'`);
-    }
-  }
-  removeObject(id2) {
-    if (this.objectSet.has(id2)) {
-      this.objectSet.delete(id2);
-      this.resize();
-    } else {
-      throw new Error(`There is no id you received in this group!'${id2}'`);
-    }
-  }
-};
+var node_default2 = Node;
 
 // src/js-components/flowchart/util/clipboard.ts
-var TMP_CLIPBOARD = {
-  text: `{"objects": []}`
-};
+var TMP_CLIPBOARD_DATA = `{"objects": []}`;
+var IR_FLOWCHART_WEAK_MAP_OBJ = {};
 var clipboard_default = {
-  _queryPermission(name) {
-    return navigator.permissions.query({ name }).then((result) => result).catch(() => {
-      return {
-        state: "error"
-      };
-    });
-  },
-  async checkClipboardPermission() {
-    try {
-      const write = await this._queryPermission("clipboard-write");
-      const read = await this._queryPermission("clipboard-read");
-      return write.state === "granted" && read.state === "granted";
-    } catch {
-      return false;
-    }
-  },
   saveData(data) {
-    TMP_CLIPBOARD.text = data;
-    return Promise.resolve();
+    writeText(IR_FLOWCHART_WEAK_MAP_OBJ, data);
   },
   loadData() {
-    return Promise.resolve(TMP_CLIPBOARD.text);
+    return readText(IR_FLOWCHART_WEAK_MAP_OBJ) ?? TMP_CLIPBOARD_DATA;
   }
 };
 
-// src/js-components/flowchart/util/objmousehandler.ts
+// src/js-components/flowchart/util/container-interface.ts
+var InterfaceInstance = class {
+  constructor(api) {
+    Object.assign(this, api);
+  }
+};
+
+// src/js-components/flowchart/util/obj-mng.ts
+var objMngLogger = new Logger("Flowchart::ObjectManager");
+var ObjectManager = class {
+  constructor() {
+    this.objMap = {
+      node: /* @__PURE__ */ new Map(),
+      connection: /* @__PURE__ */ new Map(),
+      group: /* @__PURE__ */ new Map()
+    };
+  }
+  getMap(type2) {
+    const map = this.objMap[type2];
+    if (map === void 0) {
+      objMngLogger.error("ObjectManager.getMap()", `Unknown '${type2}' type`);
+      throw new Error(`Unknown '${type2}' type`);
+    }
+    return map;
+  }
+  getObjCount() {
+    return this.objMap.node.size + this.objMap.connection.size + this.objMap.group.size;
+  }
+  add(obj) {
+    const map = this.getMap(obj.type);
+    if (map.has(obj.id)) {
+      throw new Error(`Already has objId '${obj.id}'`);
+    }
+    map.set(obj.id, obj);
+  }
+  remove(obj) {
+    const map = this.getMap(obj.type);
+    if (map.has(obj.id)) {
+      map.delete(obj.id);
+    }
+  }
+  *getMapIterator() {
+    yield* Object.values(this.objMap);
+  }
+  getNodeIterator() {
+    return this.objMap.node.values();
+  }
+  getConnectionIterator() {
+    return this.objMap.connection.values();
+  }
+  getGroupIterator() {
+    return this.objMap.group.values();
+  }
+  findOrNull(objId) {
+    for (const map of this.getMapIterator()) {
+      if (map.has(objId))
+        return map.get(objId);
+    }
+    return null;
+  }
+  clear() {
+    Object.values(this.objMap).forEach((map) => map.clear());
+  }
+  *getAllObjIterator() {
+    for (const map of Object.values(this.objMap))
+      yield* map.values();
+  }
+  *getSelectedObjIterator() {
+    for (const obj of this.getAllObjIterator()) {
+      if (obj.isSelected)
+        yield obj;
+    }
+  }
+  getParentGroupOrNull(obj) {
+    for (const group of this.getGroupIterator()) {
+      if (group.hasObjId(obj.id)) {
+        return group;
+      }
+    }
+    return null;
+  }
+  *getConnectedConnections(nodeId) {
+    for (const con of this.getConnectionIterator()) {
+      if (!con.isTempObj && (con.sourceObjId === nodeId || con.destinationObjId === nodeId)) {
+        yield con;
+      }
+    }
+  }
+  reassignId(obj, oldId, newId2) {
+    const map = this.getMap(obj.type);
+    map.delete(oldId);
+    map.set(newId2, obj);
+  }
+};
+var obj_mng_default = ObjectManager;
+
+// src/js-components/flowchart/util/obj-mouse-handler.ts
 var MARGIN_X = 10;
 var MARGIN_Y = 10;
 var TOOLTIP_DURATION = 500;
@@ -5319,8 +5290,8 @@ var Rect = class {
 
 // src/js-components/flowchart/render/bridge.js
 var BridgeRenderer = class extends NodeRenderer {
-  constructor(data, icontainer) {
-    super(data, "bridge", icontainer);
+  constructor(data, iContainer) {
+    super(data, "bridge", iContainer);
   }
   _create() {
     this.objects.body = this.group.append("rect");
@@ -5339,8 +5310,8 @@ var EDGE_SIZE = 15;
 var ANGLE_DIFF_X = -4;
 var ANGLE_DIFF_Y = 2;
 var CommentRenderer = class extends NodeRenderer {
-  constructor(data, icontainer) {
-    super(data, "comment", icontainer);
+  constructor(data, iContainer) {
+    super(data, "comment", iContainer);
   }
   _create() {
     this.objects.body = this.group.append("path").attr("class", "body").classed(this.data.type, true);
@@ -5373,8 +5344,8 @@ var CommentRenderer = class extends NodeRenderer {
 // src/js-components/flowchart/render/db.js
 var CIRCLE_HEIGHT_RATIO = 0.28;
 var DBRenderer = class extends NodeRenderer {
-  constructor(data, icontainer) {
-    super(data, "db", icontainer);
+  constructor(data, iContainer) {
+    super(data, "db", iContainer);
   }
   _create() {
     this.objects.circle = this.group.append("ellipse");
@@ -5989,6 +5960,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
         lastX = ev.x;
         lastY = ev.y;
         tmpPoints = deepCopy(this.data["connection.points"]);
+        this.containerInterface.adjDragStartCallback();
       }).on("drag", (ev) => {
         const points = data["connection.points"];
         const pt = points[id2 + 1];
@@ -6013,7 +5985,7 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
         }
         this._render();
       }).on("end", () => {
-        this.containerInterface.adjDragCallback(
+        this.containerInterface.adjDragEndCallback(
           this.data,
           tmpPoints,
           deepCopy(this.data["connection.points"])
@@ -6102,8 +6074,8 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
 
 // src/js-components/flowchart/render/group.js
 var GroupRenderer = class extends BaseRenderer {
-  constructor(data, icontainer) {
-    super(data, "group", icontainer);
+  constructor(data, iContainer) {
+    super(data, "group", iContainer);
   }
   _create() {
     this.objects.rect = this.group.append("rect").attr("fill", "none").attr("visibility", "hidden");
@@ -6125,8 +6097,8 @@ var GroupRenderer = class extends BaseRenderer {
 
 // src/js-components/flowchart/render/if.js
 var IfRenderer = class extends NodeRenderer {
-  constructor(data, icontainer) {
-    super(data, "if", icontainer);
+  constructor(data, iContainer) {
+    super(data, "if", iContainer);
   }
   _create() {
     this.objects.body = this.group.append("polygon");
@@ -6151,8 +6123,8 @@ var IfRenderer = class extends NodeRenderer {
 
 // src/js-components/flowchart/render/return.js
 var ReturnRenderer = class extends NodeRenderer {
-  constructor(data, icontainer) {
-    super(data, "return", icontainer);
+  constructor(data, iContainer) {
+    super(data, "return", iContainer);
   }
   _create() {
     this.objects.body = this.group.append("rect");
@@ -6169,8 +6141,8 @@ var ReturnRenderer = class extends NodeRenderer {
 
 // src/js-components/flowchart/render/start.js
 var StartRenderer = class extends NodeRenderer {
-  constructor(data, icontainer) {
-    super(data, "start", icontainer);
+  constructor(data, iContainer) {
+    super(data, "start", iContainer);
   }
   _create() {
     this.objects.body = this.group.append("rect");
@@ -6186,7 +6158,7 @@ var StartRenderer = class extends NodeRenderer {
   }
 };
 
-// src/js-components/flowchart/util/rendermng.js
+// src/js-components/flowchart/util/render-mng.js
 var RenderManager = class {
   constructor() {
     this.nodeRenderMap = /* @__PURE__ */ new Map();
@@ -6256,7 +6228,7 @@ var RenderManager = class {
   }
 };
 
-// src/js-components/flowchart/util/seqmng.ts
+// src/js-components/flowchart/util/seq-mng.ts
 var SequenceManager = class {
   constructor(iContainer) {
     this.objSeq = 0;
@@ -6293,10 +6265,35 @@ var DefaultTheme = {
   ...DEFAULT_STYLE_DATA
 };
 
+// src/utils/clipboard.ts
+function copyImageFromBase64(base64Src) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onerror = (err) => reject(err);
+    image.src = base64Src;
+    image.onload = () => {
+      const selection2 = document.getSelection();
+      if (!selection2) {
+        reject("selection is null when copying image");
+        return;
+      }
+      const range = document.createRange();
+      document.body.appendChild(image);
+      range.selectNode(image);
+      selection2.removeAllRanges();
+      selection2.addRange(range);
+      document.execCommand("copy");
+      image.remove();
+      resolve();
+    };
+  });
+}
+
 // src/js-components/flowchart/flowchart.js
 var DETECTING_SIZE = 10;
 var ACTION_LIMIT = 255;
 var POSITION_LIST = ["left", "right", "top", "bottom"];
+var EXPORT_MARGIN = 8;
 var MIN_ZOOM = 0.4;
 var MAX_ZOOM = 3;
 var NOT_CHANGING_PROPERTY_SET = /* @__PURE__ */ new Set(["isHovered", "isSelected"]);
@@ -6328,9 +6325,12 @@ var createEmitter = (flowchart) => {
 var createFlowchartTemplate = (id2) => {
   const div = document.createElement("div");
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svg.style.background = "#fff";
   div.classList.add("flowchart");
   div.tabIndex = -1;
-  svg.innerHTML = `<defs>
+  svg.innerHTML = `
+<defs>
     <pattern
         id="${id2}_small_grid"
         width="10"
@@ -6383,6 +6383,7 @@ var IRFlowchart = class extends IRComponent {
     this._singleSelection = false;
     this._isChanged = false;
     this._isDragging = false;
+    this._canvasMoveMode = false;
     this.keyMap = {};
     this.keyMap.ArrowLeft = () => this.handleKeydownArrows(-DEFAULT_MOVEMENT_UNIT, 0);
     this.keyMap.ArrowRight = () => this.handleKeydownArrows(DEFAULT_MOVEMENT_UNIT, 0);
@@ -6402,10 +6403,6 @@ var IRFlowchart = class extends IRComponent {
       mode: null,
       data: null,
       dragged: false
-    };
-    this._size = {
-      width: 0,
-      height: 0
     };
     this._wrapperSize = {
       width: 0,
@@ -6443,7 +6440,8 @@ var IRFlowchart = class extends IRComponent {
       isDragging: () => this._isDragging,
       changeObjRender: (obj, render) => this._changeObjRender(obj, render),
       // Callback
-      adjDragCallback: (data, oldPoints, newPoints) => this._adjDragCallbackHandler(data, oldPoints, newPoints),
+      adjDragStartCallback: () => this._adjDragStartCallbackHandler(),
+      adjDragEndCallback: (data, oldPoints, newPoints) => this._adjDragEndCallbackHandler(data, oldPoints, newPoints),
       editTextCallback: (data, oldText, newText) => this._editTextCallbackHandler(data, oldText, newText),
       editTextModeCallback: (data) => this._editTextModeCallback(data),
       renderCallback: (obj) => this._renderCallBack(obj),
@@ -6462,16 +6460,27 @@ var IRFlowchart = class extends IRComponent {
       getUUID: () => this.uuid
     });
     this._seqMng = new SequenceManager(this._containerInterface);
-    this._objectManager = new ObjectManager();
-    this._actionController = new ActionController(ACTION_LIMIT);
+    this._objectManager = new obj_mng_default();
+    this._actionController = new ActionController(this._containerInterface, ACTION_LIMIT);
     this._moveHandler = new MoveHandler(this._actionController, this._objectManager, this._containerInterface);
     this._resizeHandler = new ResizeHandler(this._actionController, this._objectManager, this._containerInterface);
     this._renderManager = new RenderManager();
     this._objMouseHandler = new ObjectMouseHandler(this._containerInterface);
     this.theme = { ...DefaultTheme };
     this.defaultRule = defaultRule;
+    this._cursorStatus = {
+      curPosX: 0,
+      curPosY: 0,
+      isDragging: false
+    };
     this.zoomTo(1);
     this.render();
+  }
+  get svgElement() {
+    return this.d3Svg.node();
+  }
+  get actionController() {
+    return this._actionController;
   }
   get readonly() {
     return this._readonly;
@@ -6556,6 +6565,11 @@ var IRFlowchart = class extends IRComponent {
     this.classedOnSvg(boolean, "single-select");
     this._logger.info(`singleSelection property is changed to '${boolean}'`);
   }
+  set canvasMoveMode(boolean) {
+    this._canvasMoveMode = boolean;
+    this.classedOnSvg(boolean, "canvas-move");
+    this._logger.info(`canvasMoveMode property is changed to '${boolean}'`);
+  }
   _initD3Elements(div, svg, width, height) {
     this._logger = createLogger(this.uuid);
     div.addEventListener("contextmenu", (e) => {
@@ -6637,7 +6651,7 @@ var IRFlowchart = class extends IRComponent {
     const linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradient.id = id2;
     linearGradient.setAttribute("gradientTransform", `rotate(${rotate})`);
-    import_lodash.default.zip(offsets, colors).forEach(([offset, color2]) => {
+    import_lodash4.default.zip(offsets, colors).forEach(([offset, color2]) => {
       const stop = document.createElementNS("http://www.w3.org/2000/svg", "stop");
       stop.setAttribute("offset", offset);
       stop.setAttribute("stop-color", color2);
@@ -6695,13 +6709,13 @@ var IRFlowchart = class extends IRComponent {
     const renderer = new rendererConstructor(data, this._containerInterface);
     switch (data.type) {
       case "connection":
-        obj = new Connection(data, renderer, this._containerInterface);
+        obj = new connection_default(data, renderer, this._containerInterface);
         break;
       case "node":
-        obj = new Node(data, renderer, this._containerInterface);
+        obj = new node_default2(data, renderer, this._containerInterface);
         break;
       case "group":
-        obj = new Group(data, renderer, this._containerInterface);
+        obj = new group_default(data, renderer, this._containerInterface);
         break;
       default:
         throw Error(`unkown data type '${data.type}'`);
@@ -6780,7 +6794,7 @@ var IRFlowchart = class extends IRComponent {
     this.d3Container.attr("transform", `scale(${scale})`);
     const gridScale = `${1 / scale * 100}%`;
     this.d3Grid.attr("transform", `scale(${scale})`).attr("width", gridScale).attr("height", gridScale);
-    this.updateSvgSize();
+    this.refreshSvgSize();
   }
   /**
    * 신규로 추가한 개체 집합을 undo에 기록하고,
@@ -6788,7 +6802,7 @@ var IRFlowchart = class extends IRComponent {
    * @param  {...RenderObject} objects
    */
   recordNewObjectsAction(...objects) {
-    this._actionController.addAction(new AddCommand(cloneObjDataList(objects), this._containerInterface));
+    this._actionController.addAction(new AddCommand(cloneObjDataList(objects)));
     this._updateNegativePos();
   }
   emitChangedStatus() {
@@ -6823,7 +6837,7 @@ var IRFlowchart = class extends IRComponent {
         info.objData[prop.key] = prop.newValue;
       }
     });
-    this._actionController.addAction(new EditCommand(changedInfoList, this._containerInterface));
+    this._actionController.addAction(new EditCommand(changedInfoList));
   }
   /**
    * @param {String} key
@@ -6861,6 +6875,7 @@ var IRFlowchart = class extends IRComponent {
       this.clearAppendMode();
       this._appendMode.mode = mode;
       this._appendMode.data = data;
+      this.classedOnSvg(true, `is-appending-${data.type}`);
       this._logger.info(
         "InnoFlowchart.append()",
         "Append Mode",
@@ -6895,33 +6910,35 @@ var IRFlowchart = class extends IRComponent {
     this._wrapperSize.height = parseInt(size.height);
     this.refreshSvgSize();
   }
-  updateSvgSize() {
+  _getFlowchartAvailableRect() {
     const scale = this.getTransform().k;
-    const scaledWidth = Math.max(
-      this._wrapperSize.width,
-      this._svgSize.width * scale
-    );
-    const scaledHeight = Math.max(
-      this._wrapperSize.height,
-      this._svgSize.height * scale
-    );
-    this.d3Svg.attr("width", scaledWidth).attr("height", scaledHeight);
-  }
-  refreshSvgSize() {
     const rect = {
-      maxX: 0,
-      maxY: 0
+      top: 999999999,
+      left: 999999999,
+      right: 0,
+      bottom: 0
     };
     for (const obj of this._objectManager.getAllObjIterator()) {
-      rect.maxX = Math.max(rect.maxX, obj.endX);
-      rect.maxY = Math.max(rect.maxY, obj.endY);
+      rect.top = Math.min(rect.top, obj.startY);
+      rect.left = Math.min(rect.left, obj.startX);
+      rect.right = Math.max(rect.right, obj.endX);
+      rect.bottom = Math.max(rect.bottom, obj.endY);
     }
-    rect.maxX += this._wrapperSize.width / 2;
-    rect.maxY += this._wrapperSize.height / 2;
-    rect.maxX = Math.max(this._wrapperSize.width, rect.maxX);
-    rect.maxY = Math.max(this._wrapperSize.height, rect.maxY);
-    this._svgSize.width = rect.maxX;
-    this._svgSize.height = rect.maxY;
+    rect.top *= scale;
+    rect.left *= scale;
+    rect.right *= scale;
+    rect.bottom *= scale;
+    return rect;
+  }
+  updateSvgSize() {
+    const scaledWidth = this._svgSize.width + this._wrapperSize.width / 2;
+    const scaledHeight = this._svgSize.height + this._wrapperSize.height / 2;
+    this.d3Svg.attr("width", Math.max(this._wrapperSize.width, scaledWidth)).attr("height", Math.max(this._wrapperSize.height, scaledHeight));
+  }
+  refreshSvgSize() {
+    const rect = this._getFlowchartAvailableRect();
+    this._svgSize.width = rect.right;
+    this._svgSize.height = rect.bottom;
     this._logger.info("InnoFlowchart.refreshSvgSize()", rect);
     this.updateSvgSize();
   }
@@ -7188,7 +7205,7 @@ var IRFlowchart = class extends IRComponent {
       obj.zIndex = newValue;
     }
     this.emitChangedStatus();
-    this._actionController.addAction(new ZIndexCommand(dataList, this._containerInterface));
+    this._actionController.addAction(new ZIndexCommand(dataList));
   }
   /**
   * bring selected objects to front
@@ -7280,6 +7297,8 @@ var IRFlowchart = class extends IRComponent {
     let moved = false;
     let lastX = 0;
     let lastY = 0;
+    let nodeOffsetX = 0;
+    let nodeOffsetY = 0;
     node.g.call(drag_default().filter(() => this._editMode === false).on("start", (ev) => {
       if (this._isSingleSelection(ev.sourceEvent.ctrlKey) && !node.isSelected) {
         this.releaseAllObjects(node);
@@ -7287,13 +7306,15 @@ var IRFlowchart = class extends IRComponent {
       moved = false;
       lastX = ev.x;
       lastY = ev.y;
+      nodeOffsetX = node.width - (node.endX - ev.x);
+      nodeOffsetY = node.height - (node.endY - ev.y);
       node.select(false);
     }).on("drag", (ev) => {
       if (this._readonly) {
         return;
       }
-      const nextX = ev.x - node.width / 2;
-      const nextY = ev.y - node.height / 2;
+      const nextX = ev.x - nodeOffsetX;
+      const nextY = ev.y - nodeOffsetY;
       const diffX = nextX - node.x;
       const diffY = nextY - node.y;
       if (!moved && Math.abs(lastX - ev.x) + Math.abs(lastY - ev.y) > 8) {
@@ -7578,7 +7599,7 @@ var IRFlowchart = class extends IRComponent {
       for (const group of this._objectManager.getGroupIterator())
         group.render();
       if (lastCommand) {
-        lastCommand.unshift(new EditCommand(changedInfoList, this._containerInterface));
+        lastCommand.unshift(new EditCommand(changedInfoList));
         this._actionController.addAction(...lastCommand);
       }
       this.refreshSvgSize();
@@ -7699,10 +7720,7 @@ var IRFlowchart = class extends IRComponent {
     const selectedObjList = this.getSelectedObjects(false);
     selectedObjList.forEach((obj) => this.remove(obj));
     this._actionController.addAction(
-      new DeleteCommand(
-        cloneObjDataList(selectedObjList),
-        this._containerInterface
-      )
+      new DeleteCommand(cloneObjDataList(selectedObjList))
     );
   }
   /**
@@ -7803,9 +7821,51 @@ var IRFlowchart = class extends IRComponent {
     this.d3Div.node().scrollTop = obj.centerY * scale - this._wrapperSize.height / 2;
   }
   /**
+   * @param {import("../../utils").ImageType} imgType
+   */
+  async copyToClipboard(imgType = "image/png") {
+    this.releaseAllObjects();
+    const image = await createImageFromSrcUrl(getBase64FromSvg(this.svgElement));
+    const blob = await getImageBlobFromImage(image, imgType, this._getFlowchartRect(), EXPORT_MARGIN);
+    const base64 = await blobToBase64(blob);
+    await copyImageFromBase64(base64);
+  }
+  _getFlowchartRect() {
+    const { top, left, bottom, right } = this._getFlowchartAvailableRect();
+    return {
+      x: left - 1,
+      y: top - 1,
+      width: right - left + 2,
+      height: bottom - top + 2
+    };
+  }
+  /**
+   * @param {string} fileName
+   * @param {import("../../utils").ImageType} imgType
+   */
+  async saveAsImageFile(fileName, imgType = "image/png") {
+    this.releaseAllObjects();
+    const blob = await this.getBlob(imgType);
+    const objectURL = URL.createObjectURL(blob);
+    try {
+      downloadDataURL(objectURL, fileName);
+    } finally {
+      URL.revokeObjectURL(objectURL);
+    }
+  }
+  /**
+   * @param {import("../../utils").ImageType} imgType
+   */
+  async getBlob(imgType = "image/png") {
+    const image = await createImageFromSrcUrl(getBase64FromSvg(this.svgElement));
+    return await getImageBlobFromImage(image, imgType, this._getFlowchartRect(), EXPORT_MARGIN);
+  }
+  /**
   * clear info for appending or pasting objects
   */
   clearAppendMode() {
+    if (this._appendMode.data)
+      this.classedOnSvg(false, `is-appending-${this._appendMode.data.type}`);
     this._appendingObject !== null && this.remove(this._appendingObject);
     this._appendMode.mode = null;
     this._appendMode.data = null;
@@ -7825,16 +7885,16 @@ var IRFlowchart = class extends IRComponent {
       objects
     };
   }
-  async cut() {
+  cut() {
     this._logger.info("InnoFlowchart.cut()");
     if (this.getSelectedObjects().length === 0)
       return;
-    await clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
+    clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
     this.removeSelected();
   }
-  async copy() {
+  copy() {
     this._logger.info("InnoFlowchart.copy()");
-    await clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
+    clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
   }
   _createPastingObjs(clipData) {
     if (clipData.objects.length === 0)
@@ -7904,9 +7964,9 @@ var IRFlowchart = class extends IRComponent {
     newObjs.forEach((data) => {
       data.select();
     });
-    this._actionController.addAction(new AddCommand(cloneObjDataList(newObjs), this._containerInterface));
+    this._actionController.addAction(new AddCommand(cloneObjDataList(newObjs)));
   }
-  async paste() {
+  paste() {
     if (this._editMode || this._appendMode.mode != null) {
       this._logger.debug(
         "InnoFlowchart.paste()",
@@ -7915,7 +7975,7 @@ var IRFlowchart = class extends IRComponent {
       return;
     }
     this._logger.info("InnoFlowchart.paste()");
-    this._createPastingObjs(JSON.parse(await clipboard_default.loadData()));
+    this._createPastingObjs(JSON.parse(clipboard_default.loadData()));
   }
   /**
   * TODO: write some comment..
@@ -7982,7 +8042,7 @@ var IRFlowchart = class extends IRComponent {
           newValue: con.destinationPos
         }
       ]);
-      this._actionController.addAction(new EditCommand([changedInfo], this._containerInterface));
+      this._actionController.addAction(new EditCommand([changedInfo]));
     }
   }
   /**
@@ -8081,7 +8141,7 @@ var IRFlowchart = class extends IRComponent {
     const group = this.add(temp);
     group.resize();
     group.select();
-    this._actionController.addAction(new AddCommand(cloneObjDataList([group]), this._containerInterface));
+    this._actionController.addAction(new AddCommand(cloneObjDataList([group])));
   }
   /**
   * Releasing children of selected groups and deleting the groups
@@ -8095,7 +8155,7 @@ var IRFlowchart = class extends IRComponent {
         this.remove(obj);
       }
     }
-    this._actionController.addAction(new DeleteCommand(cloneObjDataList(tmpObjs), this._containerInterface));
+    this._actionController.addAction(new DeleteCommand(cloneObjDataList(tmpObjs)));
   }
   /**
   *
@@ -8170,6 +8230,29 @@ var IRFlowchart = class extends IRComponent {
       this.$emit(EVENT_TYPE.MOUSEUP_SHEET, this._getSvgXYOnDrag(ev.x, ev.y));
     }
   }
+  _canvasMoveStartHandler(ev) {
+    const { offsetX, offsetY } = ev.sourceEvent;
+    this.classedOnSvg(true, "is-grabbing");
+    this._cursorStatus = {
+      curPosX: offsetX,
+      curPosY: offsetY,
+      isDragging: true
+    };
+  }
+  _canvasMoveHandler(ev) {
+    const { curPosX, curPosY, isDragging } = this._cursorStatus;
+    if (!isDragging)
+      return;
+    const { target, offsetX, offsetY } = ev.sourceEvent;
+    if (target !== this.d3Svg.node())
+      return;
+    this.div.scrollBy(curPosX - offsetX, curPosY - offsetY);
+  }
+  _canvasMoveEndHandler(ev) {
+    this._cursorStatus.isDragging = false;
+    this.classedOnSvg(false, "is-grabbing");
+    ev.sourceEvent.target === this.d3Svg.node() && this.releaseAllObjects();
+  }
   _createAppendObj() {
     switch (this._appendMode.mode) {
       case "append": {
@@ -8178,7 +8261,7 @@ var IRFlowchart = class extends IRComponent {
           "node.y": this._appendingObject.y,
           ...this._appendMode.data
         });
-        this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._containerInterface));
+        this._actionController.addAction(new AddCommand(cloneObjDataList([newObj])));
         break;
       }
       default:
@@ -8186,56 +8269,57 @@ var IRFlowchart = class extends IRComponent {
     }
     this.clearAppendMode();
   }
+  _getAppendNodeDragEventHandler(ev) {
+    return {
+      start: () => {
+      },
+      drag: () => this._moveAppendingNode(ev.x + this.div.scrollLeft, ev.y + this.div.scrollTop),
+      end: () => this._createAppendObj()
+    };
+  }
+  _getAppendConnectionDragEventHandler(ev) {
+    return {
+      start: () => {
+        const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
+        this._createAppendingConnection(pos.x, pos.y, pos.x, pos.y, this._appendMode.data);
+        this._appendMode.dragged = false;
+      },
+      drag: () => {
+        const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
+        this._moveAppendingConnection(pos.x, pos.y, this._appendingObject.renderType);
+        this._appendMode.dragged = true;
+      },
+      end: () => {
+        this._endAppendingConnection();
+        this.clearAppendMode();
+      }
+    };
+  }
+  _getAppendModeHandler(ev) {
+    return {
+      start: () => this._dragStartHandlerOnSelection(ev),
+      drag: () => this._dragHandlerOnSelection(ev),
+      end: () => this._dragEndHandlerOnSelection(ev)
+    };
+  }
+  _getCanvasMoveModeHandler(ev) {
+    return {
+      start: () => this._canvasMoveStartHandler(ev),
+      drag: () => this._canvasMoveHandler(ev),
+      end: () => this._canvasMoveEndHandler(ev)
+    };
+  }
   _dragController(ev) {
-    if (this._appendMode.mode === null) {
-      switch (ev.type) {
-        case "start":
-          this._dragStartHandlerOnSelection(ev);
-          break;
-        case "drag":
-          this._dragHandlerOnSelection(ev);
-          break;
-        case "end":
-          this._dragEndHandlerOnSelection(ev);
-          break;
-        default:
-          break;
-      }
-    } else if (this._appendMode.mode === "append") {
-      if (this._appendMode.data.type === "node") {
-        switch (ev.type) {
-          case "drag":
-            this._moveAppendingNode(ev.x + this.div.scrollLeft, ev.y + this.div.scrollTop);
-            break;
-          case "end":
-            this._createAppendObj();
-            break;
-          default:
-            break;
-        }
-      } else {
-        switch (ev.type) {
-          case "start": {
-            const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
-            this._createAppendingConnection(pos.x, pos.y, pos.x, pos.y, this._appendMode.data);
-            this._appendMode.dragged = false;
-            break;
-          }
-          case "drag": {
-            const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
-            this._moveAppendingConnection(pos.x, pos.y, this._appendingObject.renderType);
-            this._appendMode.dragged = true;
-            break;
-          }
-          case "end":
-            this._endAppendingConnection();
-            this.clearAppendMode();
-            break;
-          default:
-            break;
-        }
-      }
-    }
+    const dragHandler = (() => {
+      if (this._appendMode.mode === "append") {
+        return this._appendMode.data.type === "node" ? this._getAppendNodeDragEventHandler(ev) : this._getAppendConnectionDragEventHandler(ev);
+      } else if (this._canvasMoveMode)
+        return this._getCanvasMoveModeHandler(ev);
+      else if (this._appendMode.mode === null)
+        return this._getAppendModeHandler(ev);
+      throw new Error(`unknown drag handler`);
+    })();
+    dragHandler[ev.type]();
   }
   cancelCreatingConnection() {
     if (this._appendingObject === null) {
@@ -8255,7 +8339,7 @@ var IRFlowchart = class extends IRComponent {
   changeRender(obj, render) {
     const oldRender = obj.renderType;
     this._changeObjRender(obj, render);
-    this._actionController.addAction(new RenderCommand(obj, oldRender, render, this._containerInterface));
+    this._actionController.addAction(new RenderCommand(obj, oldRender, render));
   }
   /**
   * @param {{}} objData
@@ -8268,18 +8352,15 @@ var IRFlowchart = class extends IRComponent {
       `oldText = '${oldText}'`,
       `newText = '${newText}'`
     );
-    this._actionController.addAction(new EditCommand(
-      [
-        new ChangedInfo(objData, [
-          {
-            key: "text",
-            oldValue: oldText,
-            newValue: newText
-          }
-        ])
-      ],
-      this._containerInterface
-    ));
+    this._actionController.addAction(new EditCommand([
+      new ChangedInfo(objData, [
+        {
+          key: "text",
+          oldValue: oldText,
+          newValue: newText
+        }
+      ])
+    ]));
   }
   /**
   * @param {Number} x
@@ -8303,31 +8384,24 @@ var IRFlowchart = class extends IRComponent {
         this._appendingObject.destinationPos = detecting.pos;
     }
   }
+  _adjDragStartCallbackHandler() {
+    this._logger.debug("InnoFlowchart.adjDragStartCallbackHandler()");
+    this._initDrag("drag-adj-move");
+  }
   /**
   * @param {{}} objData
   * @param {[]} oldPoints
   * @param {[]} newPoints
   */
-  _adjDragCallbackHandler(objData, oldPoints, newPoints) {
+  _adjDragEndCallbackHandler(objData, oldPoints, newPoints) {
     this._logger.debug(
-      "InnoFlowchart.adjDragCallbackHandler()",
+      "InnoFlowchart.adjDragEndCallbackHandler()",
       "record undo action"
     );
     this._actionController.addAction(
-      new EditCommand(
-        [
-          new ChangedInfo(objData, [
-            {
-              key: "connection.points",
-              oldValue: oldPoints,
-              newValue: newPoints
-            }
-          ])
-        ],
-        this._containerInterface
-      )
+      new EditCommand([new ChangedInfo(objData, [{ key: "connection.points", oldValue: oldPoints, newValue: newPoints }])])
     );
-    this._updateNegativePos();
+    this._terminateDrag("drag-adj-move");
   }
   /**
   * @param {RenderObject} obj
@@ -8390,7 +8464,7 @@ var IRFlowchart = class extends IRComponent {
       temp: false,
       opacity: 1
     });
-    this._actionController.addAction(new AddCommand(cloneObjDataList([newObj]), this._containerInterface));
+    this._actionController.addAction(new AddCommand(cloneObjDataList([newObj])));
   }
   handleKeydownF2() {
     if (!this._editMode && this.getCountOfSelectedObject() === 1) {
@@ -8429,8 +8503,20 @@ var IRFlowchart = class extends IRComponent {
     }
   }
 };
+
+// src/js-components/flowchart/action/commands.ts
+var commands_exports = {};
+__export(commands_exports, {
+  AddCommand: () => AddCommand,
+  ChangedInfo: () => ChangedInfo,
+  DeleteCommand: () => DeleteCommand,
+  EditCommand: () => EditCommand,
+  RenderCommand: () => RenderCommand,
+  ZIndexCommand: () => ZIndexCommand
+});
 export {
   EVENT_TYPE,
-  IRFlowchart
+  IRFlowchart,
+  commands_exports as IRFlowchartCommands
 };
 //# sourceMappingURL=flowchart.js.map

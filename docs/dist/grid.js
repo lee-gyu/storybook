@@ -8,33 +8,44 @@ import {
   createDropdownItem,
   input_classNames_default,
   select_classNames_default
-} from "./chunks/chunk-5ZXDNNQJ.js";
+} from "./chunks/chunk-METI5NWH.js";
 import {
-  i18n_default,
-  require_dayjs_min
-} from "./chunks/chunk-ZBZVVTYW.js";
+  i18n_default
+} from "./chunks/chunk-QWQ3YZPD.js";
+import {
+  readText,
+  writeText
+} from "./chunks/chunk-J7AUQGT2.js";
 import {
   IRComponent
-} from "./chunks/chunk-BI23OIPF.js";
+} from "./chunks/chunk-WLNTEPMI.js";
 import {
+  ClipboardManager,
   ReactiveState,
-  __decorateClass,
-  __toESM,
+  blobToStr,
   checkTargetIsHTMLElement,
   createClickOutsideHandler,
-  createESCHideController,
   get2DGenerator,
   getMinMaxBetween,
   getTextWidthContext,
-  makeCssText,
   map,
-  offsetBottomAutoUpdate,
+  offsetBottomAutoUpdate
+} from "./chunks/chunk-ANWI2HK3.js";
+import {
   require_lodash,
   v4_default
-} from "./chunks/chunk-JYMTCUXI.js";
+} from "./chunks/chunk-N2GALXSL.js";
+import {
+  IR_STYLE_CONFIG,
+  __decorateClass,
+  __toESM,
+  createESCHideController,
+  getLayerElement,
+  require_dayjs_min
+} from "./chunks/chunk-56RD7WBD.js";
 
 // src/js-components/grid/grid.ts
-var import_lodash15 = __toESM(require_lodash());
+var import_lodash14 = __toESM(require_lodash());
 
 // src/js-components/grid/cell-renderer/cell-renderer.ts
 var import_lodash = __toESM(require_lodash());
@@ -433,12 +444,12 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
         divDropdown.style.width = `${div.offsetWidth}px`;
         divDropdown.setAttribute("data-row", row.toString());
         divDropdown.setAttribute("data-col", col.toString());
-        document.body.appendChild(divDropdown);
+        getLayerElement("popover").appendChild(divDropdown);
         div.classList.add(select_classNames_default.select["is-expanded"]);
         setTimeout(() => {
           divDropdown.classList.add(select_classNames_default.select["is-expanded"]);
           this._floatingCleanup();
-          this._floatingCleanup = offsetBottomAutoUpdate(div, divDropdown);
+          this._floatingCleanup = offsetBottomAutoUpdate(div.parentElement, divDropdown);
         }, 0);
       },
       hide: () => {
@@ -446,12 +457,12 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
         outsideHandler.destroy();
         div.classList.remove(select_classNames_default.select["is-expanded"]);
         divDropdown.classList.remove(select_classNames_default.select["is-expanded"]);
-        divDropdown.addEventListener("transitionend", () => {
+        setTimeout(() => {
           if (divDropdown.getAttribute("data-row") === row.toString() && divDropdown.getAttribute("data-col") === col.toString()) {
             this._floatingCleanup();
             divDropdown.remove();
           }
-        }, { once: true });
+        }, 150);
       }
     };
     const escController = createESCHideController(objHandler);
@@ -482,14 +493,13 @@ var renderGridSelect = ({ items, onChange, allowCustomText = false }) => {
 // src/js-components/grid/cell-renderer/datePicker.ts
 var import_dayjs = __toESM(require_dayjs_min());
 var DEFAULT_MARGIN2 = 24;
-var DEFAULT_MIN_DATE = (0, import_dayjs.default)("1970-01-01").toDate();
-var DEFAULT_MAX_DATE = (0, import_dayjs.default)("9999-12-31").toDate();
+var lastDateTextCache = /* @__PURE__ */ new WeakMap();
 var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
   constructor({
     onDateClick,
     format = i18n_default.datePicker.dateFormat,
-    minDate = DEFAULT_MIN_DATE,
-    maxDate = DEFAULT_MAX_DATE
+    minDate = IR_STYLE_CONFIG.datePicker.minDate,
+    maxDate = IR_STYLE_CONFIG.datePicker.maxDate
   }) {
     super();
     this._format = format;
@@ -524,13 +534,14 @@ var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
     input.type = "text";
     input.placeholder = format;
     if ((0, import_dayjs.default)(data.text, format, true).isValid() === false)
-      data.text = "";
+      data.text = lastDateTextCache.get(data);
     else {
       const textMoment = (0, import_dayjs.default)(data.text, format);
       if (textMoment.isBefore(minDate) || textMoment.isAfter(maxDate))
-        data.text = "";
+        data.text = lastDateTextCache.get(data);
     }
     input.value = data.text || "";
+    lastDateTextCache.set(data, data.text ?? "");
     btn.appendChild(icon);
     div.appendChild(input);
     div.appendChild(btn);
@@ -553,6 +564,7 @@ var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
         grid.commandManager.pushCommandBlock(new IRCommandBlock("Change datePicker", command2));
         input.value = text;
         data.text = text;
+        lastDateTextCache.set(data, text);
         this.onDateClick(row, col, text);
         data.emitter.emit("onCellInfoChanged", { row, col });
         datePickerHandler.hide();
@@ -729,7 +741,7 @@ var IRGridRadioCellRenderer = class extends IRGridCellRenderer {
   }
   stackClickedRadio(item) {
     const top = this._radioItemStack.pop();
-    if (top && top.row !== item.row && top.col !== item.col) {
+    if (top && (top.row !== item.row || top.col !== item.col)) {
       top.radio.checked = false;
       top.data.text = "false";
       top.data.emitter.emit("onCellInfoChanged", { row: item.row, col: item.col });
@@ -843,9 +855,14 @@ var IRGridDefaultCellRenderer = class extends IRGridCellRenderer {
   }
 };
 var IRGridDefaultCellIconButtonRenderer = class extends IRGridCellRenderer {
+  constructor({ onClick }) {
+    super();
+    if (onClick)
+      this.onClick = onClick;
+  }
   render(row, col, data) {
     data.cellType = "default";
-    return createCellContentWithIconButton(row, col, data, this.onClick.bind(this));
+    return createCellContentWithIconButton(row, col, data, (ev, row2, col2) => this.onClick(ev, row2, col2));
   }
   onClick(ev, row, col) {
   }
@@ -874,9 +891,7 @@ var renderGridCellDefault = () => {
   return () => defaultRenderer;
 };
 function renderGridCellIconButton({ onClick }) {
-  const renderer = new IRGridDefaultCellIconButtonRenderer();
-  if (onClick)
-    renderer.onClick = onClick;
+  const renderer = new IRGridDefaultCellIconButtonRenderer({ onClick });
   return () => renderer;
 }
 function renderRowNoHeaderCell(fixedRowCount, ...prevCaptionList) {
@@ -1252,28 +1267,29 @@ var IRGridRangeUtil = class {
     return newRange;
   }
   getTextMatrixByRange(range) {
-    const adjustRange = this.adjustRange(range);
-    if (!adjustRange)
-      return [[]];
     const arrayBuffer = [];
-    for (let row = adjustRange.top; row <= adjustRange.bottom; ++row) {
+    for (let row = range.top; row <= range.bottom; ++row) {
       arrayBuffer.push(
-        import_lodash3.default.range(adjustRange.left, adjustRange.right + 1).map((col) => this._grid.cell(row, col).text)
+        import_lodash3.default.range(range.left, range.right + 1).map((col) => this._grid.cell(row, col).text)
       );
     }
     return arrayBuffer;
   }
   getCellMatrixByRange(range) {
-    const adjustRange = this.adjustRange(range);
-    if (!adjustRange)
-      return [[]];
     const arrayBuffer = [];
-    for (let row = adjustRange.top; row <= adjustRange.bottom; ++row) {
+    for (let row = range.top; row <= range.bottom; ++row) {
       arrayBuffer.push(
-        import_lodash3.default.range(adjustRange.left, adjustRange.right + 1).map((col) => this._grid.cell(row, col))
+        import_lodash3.default.range(range.left, range.right + 1).map((col) => this._grid.cell(row, col))
       );
     }
     return arrayBuffer;
+  }
+  getCellListByColumn(left, right) {
+    const top = 0, bottom = this._grid.getRowCount() - 1;
+    return [...this._generator.getSelectionGenerator({ top, left, bottom, right })];
+  }
+  getColumnListByColumn(left, right) {
+    return import_lodash3.default.range(left, right + 1).map((col) => this._grid.getColumn(col));
   }
 };
 
@@ -1562,6 +1578,10 @@ var IRGridRow = class {
       return left + (this._grid.getColumnVisible(col) ? this._grid.getColumnWidth(col) + 1 : 0);
     }, 0);
   }
+  // row에 있는 모든 셀에 metaInfo 일괄 적용
+  updateCellMetaInfo(cellMetaInfo) {
+    this.cells.forEach((cell) => cell.cellInfo = cellMetaInfo);
+  }
   freezeColumns(column) {
     this._stickyColumns = column;
     this.updateStickyStatus();
@@ -1786,10 +1806,10 @@ var IRGridCell2 = class {
     this._row = -1;
     this._col = -1;
     this._lastEditSelection = { start: 0, end: 0 };
+    this._metaInfo = { ...metaInfo };
     this._element = document.createElement(tag);
     this._element.rowSpan = 1;
     this._element.colSpan = 1;
-    this._metaInfo = { ...metaInfo };
     this._cellRenderer = cellRenderer;
     this._uuid = v4_default();
     this.row = row;
@@ -1803,6 +1823,8 @@ var IRGridCell2 = class {
       if (!checkTargetIsHTMLElement(ev.target))
         return;
       if (ev.target.tagName === "I")
+        return;
+      if (ev.target.tagName === "TEXTAREA")
         return;
       this.onDblClick(this);
     };
@@ -1908,6 +1930,9 @@ var IRGridCell2 = class {
   }
   get cellInfo() {
     return this._metaInfo;
+  }
+  get zIndexVariant() {
+    return this._element.style.getPropertyValue("--grid-sticky-cell-z-index");
   }
   /*
    * Setters
@@ -2050,9 +2075,8 @@ var IRGridCell2 = class {
       const renderer = this._cellRenderer(this.row, this.col, this._metaInfo);
       if (renderer instanceof IRGridCellRenderer)
         return renderer;
-      else if (renderer instanceof HTMLElement) {
+      if (renderer instanceof HTMLElement)
         return createCustomRenderer(() => renderer);
-      }
     }
     throw new Error("Invalid cell renderer");
   }
@@ -2062,6 +2086,9 @@ var IRGridCell2 = class {
   replaceElement(element) {
     this.removeChildren();
     this.element.appendChild(element);
+  }
+  checkInputValidation(value) {
+    return this.metaInfo.enabledPatternCheck && this.metaInfo.allowedRegExpPattern ? this.metaInfo.allowedRegExpPattern.test(value) : true;
   }
   render() {
     if (this.visible) {
@@ -2673,12 +2700,10 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
             minXY = initXY - size + grid.minColWidth;
             maxXY = initXY - size + grid.maxColWidth;
             startXY = grid.getColumnLeft(eventCell.col) + grid.getCellWidth(eventCell);
-            divGuide.style.cssText = makeCssText({
-              top: "0px",
-              width: "0px",
-              height: `${grid.height}px`,
-              left: `${getGuideX()}px`
-            });
+            divGuide.style.top = "0px";
+            divGuide.style.width = "0px";
+            divGuide.style.height = `${grid.height}px`;
+            divGuide.style.left = `${getGuideX()}px`;
           } else {
             divGuide.className = grid_classNames_default.rowResizerGuide["&"];
             size = grid.getRowHeight(getRowNo(eventCell));
@@ -2686,12 +2711,10 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
             minXY = initXY - size + grid.minRowHeight;
             maxXY = initXY - size + grid.maxRowHeight;
             startXY = grid.getRow(eventCell.row).top + grid.getCellHeight(eventCell);
-            divGuide.style.cssText = makeCssText({
-              top: `${getGuideY()}px`,
-              width: `${grid.width}px`,
-              height: "0px",
-              left: "0px"
-            });
+            divGuide.style.top = `${getGuideY()}px`;
+            divGuide.style.width = `${grid.width}px`;
+            divGuide.style.height = `0px`;
+            divGuide.style.left = `0px`;
           }
           wrapperElement.appendChild(divGuide);
           grid.addGlobalEventListener(document, "keydown", docKeyDownHandler);
@@ -2876,6 +2899,9 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
       startCell = null;
       gridContext.setIdle();
     });
+    grid.onDoubleClickCell = (cell) => gridContext.isIdle && grid.doEditMode(cell);
+    grid.onColumnClick = (cell) => grid.selectColumn(cell.col);
+    grid.onRowClick = (cell) => grid.selectRow(cell.row);
   }
 };
 function MouseCellSelectorPlugin() {
@@ -3362,7 +3388,10 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
         textArea.focus();
     });
     grid.addGlobalEventListener(contextElement, "mouseup", (ev) => {
+      var _a;
       if (ev.target instanceof HTMLTextAreaElement)
+        return;
+      if ((_a = document.activeElement) == null ? void 0 : _a.classList.contains("grid__textarea"))
         return;
       textArea.focus();
     });
@@ -3372,20 +3401,9 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
       editActiveCell(ev.data ?? void 0, true);
       return true;
     });
-    textArea.addEventListener("paste", (ev) => {
-      if (!ev.clipboardData)
-        throw new Error("Invalid ClipboardEvent");
-      const selection = grid.getSelection();
-      if (!selection)
-        throw new Error("it needs selection to paste");
-      const cellMetaInfoList = getCopyMetaInfoFromClipboard(ev.clipboardData);
-      grid.commandManager.doRecording("Paste", () => {
-        grid.paste(selection, cellMetaInfoList);
-      });
-      ev.preventDefault();
-    });
     textArea.addEventListener("copy", (ev) => grid.onNativeCopy(ev));
     textArea.addEventListener("cut", (ev) => grid.onNativeCut(ev));
+    textArea.addEventListener("paste", (ev) => grid.onNativePaste(ev));
     keyController.addKeyAction("Tab", (ev) => {
       if (ev.shiftKey)
         selectBeforeActiveCell();
@@ -3542,20 +3560,20 @@ var IRGridColumnFillPlugin = class extends IRGridPlugin {
     let scheduled = NOT_SCHEDULED2;
     const fillColumns = () => {
       const { clientWidth } = contextElement;
-      let w = 0;
       if (clientWidth === 0) {
         grid.logger.warn("IRGrid.ColumnFillPlugin", "clientWidth is 0, it's probably set to 'display: none'");
         return;
       }
+      const excludedLastColCount = grid.getColCount() - 1;
+      const colWidth = clientWidth - excludedLastColCount;
       const totalWeight = import_lodash9.default.range(grid.getColCount()).filter((id) => grid.getColumnVisible(id)).reduce((weight, id) => weight + (this._columnWeightList[id] ?? 1), 0);
-      import_lodash9.default.range(grid.getColCount() - 1).filter((id) => grid.getColumnVisible(id)).forEach((id) => {
+      let w = 0;
+      import_lodash9.default.range(excludedLastColCount).filter((id) => grid.getColumnVisible(id)).forEach((id) => {
         const ratio = (this._columnWeightList[id] ?? 1) / totalWeight;
-        grid.setColumnWidth(id, Math.floor(ratio * clientWidth));
+        grid.setColumnWidth(id, Math.floor(ratio * colWidth));
         w += grid.getColumnWidth(id);
       });
-      import_lodash9.default.range(grid.getColCount() - 1, -1, -1).filter((id) => grid.getColumnVisible(id)).slice(0, 1).forEach((id) => {
-        grid.setColumnWidth(id, clientWidth - w);
-      });
+      import_lodash9.default.range(excludedLastColCount, -1, -1).filter((id) => grid.getColumnVisible(id)).slice(0, 1).forEach((id) => grid.setColumnWidth(id, colWidth - w));
     };
     const scheduleColumnFill = () => {
       if (scheduled !== NOT_SCHEDULED2)
@@ -3730,39 +3748,7 @@ function SingleCellDragPlugin() {
 
 // src/js-components/grid/plugins/row-column-exchange.ts
 var IRGridRowColumnExchangePlugin = class extends IRGridPlugin {
-  constructor() {
-    super(...arguments);
-    this._enabled = false;
-    this._gridWrapper = null;
-  }
-  get gridWrapper() {
-    if (!this._gridWrapper)
-      throw new Error("Grid wrapper is not set. Please addPlugin method of IRGrid before using this plugin.");
-    return this._gridWrapper;
-  }
-  get enabled() {
-    return this._enabled;
-  }
-  set enabled(value) {
-    if (value === this._enabled)
-      return;
-    this._enabled = value;
-    if (value)
-      this.addEventListeners();
-    else
-      this.removeEventListeners();
-  }
-  addEventListeners() {
-    this.gridWrapper.addEventListener("mousemove", this.exchangeMouseMoveHandler);
-  }
-  removeEventListeners() {
-    this.gridWrapper.removeEventListener("mousemove", this.exchangeMouseMoveHandler);
-  }
-  exchangeMouseMoveHandler(e) {
-    console.log(1);
-  }
-  mount({ grid, wrapperElement }) {
-    this._gridWrapper = wrapperElement;
+  mount(gridObjects) {
   }
 };
 
@@ -3771,20 +3757,22 @@ var IRGridCellEditor = class {
   constructor(cell) {
     this._cell = cell;
   }
-  createTextAreaWrapper(data, clearData = false) {
+  createTextAreaWrapper(key, clearData = false) {
     const textareaWrapper = document.createElement("div");
     const textarea = document.createElement("textarea");
     const beforeText = this._cell.metaInfo.text ?? "";
     textarea.className = grid_classNames_default.textarea["&"];
     textarea.value = beforeText;
+    if (this._cell.metaInfo.maxLength)
+      textarea.maxLength = this._cell.metaInfo.maxLength;
     if (clearData)
       textarea.value = "";
-    if (data)
-      textarea.value += data;
+    if (key)
+      textarea.value += key;
     const endEditHandler = (value, changed, endKeyCode) => {
       textarea.removeEventListener("blur", onBlurHandler);
       textareaWrapper.remove();
-      if (changed) {
+      if (changed && this._cell.checkInputValidation(value)) {
         const command2 = new SetCellCommand(this._cell.metaInfo.commandManager, [
           this._cell.row,
           this._cell.col,
@@ -4458,6 +4446,12 @@ function createIRGridFinder(grid, args) {
 
 // src/js-components/grid/utility/merge.ts
 var import_lodash11 = __toESM(require_lodash());
+function isSingleCell(range) {
+  return range.top === range.bottom && range.left === range.right;
+}
+function isInvalidRange(range) {
+  return range.top > range.bottom || range.left > range.right;
+}
 function createMergeHandler(grid) {
   const mergeList = [];
   const generator = new IRGridCellGenerator(grid);
@@ -4482,6 +4476,7 @@ function createMergeHandler(grid) {
     const id = mergeList.indexOf(cell);
     return id < 0 ? null : mergeList[id];
   };
+  const isConflictedZIndex = (range) => new Set([...generator.getSelectionGenerator(range)].map((cell) => cell.zIndexVariant)).size > 1;
   return {
     isValidatedMerging,
     getMergedRowHeight(top, bottom) {
@@ -4489,14 +4484,16 @@ function createMergeHandler(grid) {
       return import_lodash11.default.range(top, bottom + 1).filter((id) => grid.getRowVisible(id)).reduce((height, id) => height + grid.getRowHeight(id), 0) + borderGap;
     },
     mergeCells(range) {
-      if (range.top > range.bottom || range.left > range.right)
+      if (isInvalidRange(range))
         throw new Error("Invalid range");
       else if (isValidatedMerging(range) === false)
         throw new Error("Could not merging with Conflicted cells!");
       else if (isContainedHiddenCell(range))
         throw new Error("Could not merging with hidden cells!");
-      else if (range.top === range.bottom && range.left === range.right)
+      else if (isSingleCell(range))
         throw new Error("Could not merging with single cell!");
+      else if (isConflictedZIndex(range))
+        throw new Error("Could not merging with different z-index!");
       const mergeMain = grid.cell(range.top, range.left);
       mergeMain.height = this.getMergedRowHeight(range.top, range.bottom);
       mergeMain.mergeInfo = { rowSpan: getRowSpanCount(range.top, range.bottom), colSpan: getColSpanCount(range.left, range.right) };
@@ -4994,7 +4991,6 @@ var MergeCellsCommand = class extends IRGridCommand {
 };
 
 // src/js-components/grid/command/remove-col.ts
-var import_lodash13 = __toESM(require_lodash());
 var RemoveColumnCommand = class extends IRGridCommand {
   _undo() {
     const count = this._args[1] - this._args[0] + 1;
@@ -5020,14 +5016,11 @@ var RemoveColumnCommand = class extends IRGridCommand {
     );
   }
   _getUndoContext() {
+    const rangeUtil = new IRGridRangeUtil(this._instance);
     const [left, right] = this._args;
-    const columnList = import_lodash13.default.range(left, right + 1).map((col) => this._instance.getColumn(col));
-    const removedCells = import_lodash13.default.range(left, right + 1).flatMap(
-      (col) => this._instance.getRowLodash().map((row) => row.getCell(col)).value()
-    );
     return {
-      removedCells,
-      columnList,
+      removedCells: rangeUtil.getCellListByColumn(left, right),
+      columnList: rangeUtil.getColumnListByColumn(left, right),
       selection: this._instance.getSelection(),
       activeCell: this._instance.activeCell
     };
@@ -5044,7 +5037,7 @@ var RemoveColumnCommand = class extends IRGridCommand {
 };
 
 // src/js-components/grid/command/remove-row.ts
-var import_lodash14 = __toESM(require_lodash());
+var import_lodash13 = __toESM(require_lodash());
 var RemoveRowCommand = class extends IRGridCommand {
   _undo() {
     const count = this._args[1] - this._args[0] + 1;
@@ -5078,7 +5071,7 @@ var RemoveRowCommand = class extends IRGridCommand {
   }
   _getUndoContext() {
     const [top, bottom] = this._args;
-    const removedRows = import_lodash14.default.range(top, bottom + 1).map((row) => this._instance.getRow(row));
+    const removedRows = import_lodash13.default.range(top, bottom + 1).map((row) => this._instance.getRow(row));
     return {
       removedRows,
       selection: this._instance.getSelection(),
@@ -5198,6 +5191,11 @@ function command() {
 }
 
 // src/js-components/grid/grid.ts
+var IR_GRID_WEAK_MAP_OBJ = {};
+var IR_GRID_CLIPBOARD_TYPE_LIST = [
+  "text/html",
+  "text/plain"
+];
 var IRGrid = class extends IRComponent {
   constructor({
     contextElement,
@@ -5502,11 +5500,7 @@ var IRGrid = class extends IRComponent {
     this._mergeManager.splitCells(row, col);
   }
   mergeCells(top, left, bottom, right) {
-    const range = { top, left, bottom, right };
-    const selection = this.getSelection();
-    selection && this._gridContext.selectionRangeState.next(null);
-    this._mergeManager.mergeCells(range);
-    selection && this.select(range, null);
+    this._mergeManager.mergeCells({ top, left, bottom, right });
   }
   undo() {
     this._commandManager.undo();
@@ -5582,7 +5576,7 @@ var IRGrid = class extends IRComponent {
   clearRows() {
     this._rowManager.clearRows();
     this._commandManager.clearCommands();
-    this._debounceManager.resetLastRenderedRow(this.headerRows).addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass").addTask("updateSelection");
+    this._debounceManager.resetLastRenderedRow(this.headerRows).addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass").addTask("adjustSelection").addTask("updateSelection");
   }
   getColumnLeft(col) {
     return this._colManager.getColumnLeft(col);
@@ -5603,13 +5597,13 @@ var IRGrid = class extends IRComponent {
   }
   getCellWidth(cell) {
     if (cell.mergeInfo)
-      return import_lodash15.default.range(cell.mergeInfo.colSpan).filter((id) => this.getColumnVisible(cell.col + id)).reduce((width, id) => width + this.getColumnWidth(cell.col + id), 0);
+      return import_lodash14.default.range(cell.mergeInfo.colSpan).filter((id) => this.getColumnVisible(cell.col + id)).reduce((width, id) => width + this.getColumnWidth(cell.col + id), 0);
     else
       return this.getColumnWidth(cell.col);
   }
   getCellHeight(cell) {
     if (cell.mergeInfo)
-      return import_lodash15.default.range(cell.mergeInfo.rowSpan).filter((id) => this.getRowVisible(cell.row + id)).reduce((height, id) => height + this.getRowHeight(cell.row + id), 0);
+      return import_lodash14.default.range(cell.mergeInfo.rowSpan).filter((id) => this.getRowVisible(cell.row + id)).reduce((height, id) => height + this.getRowHeight(cell.row + id), 0);
     else
       return this.getRowHeight(cell.col);
   }
@@ -5825,7 +5819,7 @@ var IRGrid = class extends IRComponent {
         this.addRow(adjustHeight);
       return true;
     }
-    const newRows = import_lodash15.default.range(count).map((id) => this.createIRGridRow(adjustInsertId + id, 0, adjustHeight));
+    const newRows = import_lodash14.default.range(count).map((id) => this.createIRGridRow(adjustInsertId + id, 0, adjustHeight));
     this._rowManager.insertRows(adjustInsertId, newRows);
     this._debounceManager.resetLastRenderedRow(insertingRowId).addTask("updateTop").addTask("updateRowId").addTask("virtualRender").addTask("generateScrollBarClass").addTask("adjustSelection");
     return true;
@@ -5867,7 +5861,7 @@ var IRGrid = class extends IRComponent {
    * @command
    */
   autoSizeColumns(left, right) {
-    import_lodash15.default.range(left, right + 1).forEach((col) => {
+    import_lodash14.default.range(left, right + 1).forEach((col) => {
       const maxWidth = this._rowManager.rowLodash.map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => cell.innerWidth).reduce((a, b) => Math.max(a, b), 0);
       const checkIsChanged = maxWidth !== this.getColumnWidth(col);
       if (checkIsChanged)
@@ -5892,7 +5886,7 @@ var IRGrid = class extends IRComponent {
    * @command
    */
   autoSizeRows(top, bottom) {
-    import_lodash15.default.range(top, bottom + 1).forEach((row) => {
+    import_lodash14.default.range(top, bottom + 1).forEach((row) => {
       const autoHeight = this._rowManager.getRow(row).rowInnerHeight;
       if (autoHeight !== this.getRowHeight(row))
         this.setRowHeight(row, autoHeight);
@@ -5904,11 +5898,55 @@ var IRGrid = class extends IRComponent {
       console.warn("No selection detected.");
       return;
     }
+    this.focus();
+    document.execCommand("copy");
   }
   _hasToSplitBeforePasting(cellMetaInfoList) {
     if (!this._copyOptions.rowSpan && !this._copyOptions.colSpan)
       return false;
-    return false;
+    return cellMetaInfoList.flat().some((metaInfo) => metaInfo.rowSpan > 1 || metaInfo.colSpan > 1);
+  }
+  async _createClipboardGetter() {
+    const obj = {
+      "ir-grid/cell": "",
+      "text/html": "",
+      "text/plain": ""
+    };
+    try {
+      const items = (await ClipboardManager.read()).flat();
+      for await (const item of items) {
+        for (const type of IR_GRID_CLIPBOARD_TYPE_LIST) {
+          if (obj[type] === "" && item.types.includes(type))
+            obj[type] = await blobToStr(await item.getType(type));
+        }
+      }
+    } catch (err) {
+      console.warn("pasteFromClipboard warning! it expects https protocol and clipboard permission.", err);
+      obj["ir-grid/cell"] = readText(IR_GRID_WEAK_MAP_OBJ) ?? "";
+    }
+    return {
+      getData(format) {
+        return obj[format] ?? "";
+      }
+    };
+  }
+  /**
+   * Clipboard API를 통해, IRGrid에 붙여넣기를 수행한다.
+   * https 보안 프로토콜 안에서 사용 가능하며, Clipboard Permission이 허용되어야 한다.
+   * ! firefox의 경우 Clipboard API를 지원하지 않는다.
+   */
+  async pasteFromClipboard() {
+    const selection = this.getSelection();
+    if (!selection) {
+      console.warn("no selection, it needs selection to paste");
+      return;
+    }
+    this.paste(
+      selection,
+      getCopyMetaInfoFromClipboard(
+        await this._createClipboardGetter()
+      )
+    );
   }
   paste(range, cellMetaInfoList) {
     if (cellMetaInfoList.length === 0) {
@@ -6040,10 +6078,8 @@ var IRGrid = class extends IRComponent {
   onClearCell(_cell) {
   }
   onColumnClick(cell) {
-    this.selectColumn(cell.col);
   }
   onRowClick(cell) {
-    this.selectRow(cell.row);
   }
   onCreatingCell(_cell) {
   }
@@ -6079,7 +6115,6 @@ var IRGrid = class extends IRComponent {
     return true;
   }
   onDoubleClickCell(cell) {
-    this._gridContext.isIdle && this.doEditMode(cell);
   }
   onDropOnCell(_row, _col, _ev) {
   }
@@ -6088,14 +6123,6 @@ var IRGrid = class extends IRComponent {
       return false;
     ev.dataTransfer.setData("application/json", JSON.stringify(cell.metaInfo.object));
     return true;
-  }
-  onNativeCut(ev) {
-    const selection = this.getSelection();
-    if (!selection)
-      throw new Error("Detected copy without selection");
-    this.onNativeCopy(ev);
-    for (const cell of this._generator.getSelectionGenerator(selection))
-      cell.editable && cell.clear();
   }
   splitCellsByRange(range) {
     for (const cell of this._generator.getSelectionGenerator(range)) {
@@ -6125,8 +6152,30 @@ var IRGrid = class extends IRComponent {
       colSpan: this._copyOptions.colSpan ? cell.mergeInfo.colSpan : 1
     })));
     setClipboardData(ev.clipboardData, cellMetaCopyMatrix);
+    writeText(IR_GRID_WEAK_MAP_OBJ, JSON.stringify(cellMetaCopyMatrix));
     this.focus();
     this.onCopy();
+    ev.preventDefault();
+  }
+  onNativeCut(ev) {
+    const selection = this.getSelection();
+    if (!selection)
+      throw new Error("Detected copy without selection");
+    this.onNativeCopy(ev);
+    for (const cell of this._generator.getSelectionGenerator(selection))
+      cell.editable && cell.clear();
+    ev.preventDefault();
+  }
+  onNativePaste(ev) {
+    if (!ev.clipboardData)
+      throw new Error("Invalid ClipboardEvent");
+    const selection = this.getSelection();
+    if (!selection)
+      throw new Error("it needs selection to paste");
+    const cellMetaInfoList = getCopyMetaInfoFromClipboard(ev.clipboardData);
+    this.commandManager.doRecording("Paste", () => {
+      this.paste(selection, cellMetaInfoList);
+    });
     ev.preventDefault();
   }
   doEditMode(cell, data, clearData = false) {
@@ -6142,7 +6191,7 @@ var IRGrid = class extends IRComponent {
     editor.onMoveUpOnEdit = () => this._cursorManager.selectNextSelection(-1, 0, false);
     editor.onMoveRightOnEdit = () => this._cursorManager.selectNextSelection(0, 1, false);
     editor.onMoveDownOnEdit = () => this._cursorManager.selectNextSelection(1, 0, false);
-    editor.onTabOnEdit = (_16, shiftKey) => {
+    editor.onTabOnEdit = (_15, shiftKey) => {
       if (shiftKey)
         this._cursorManager.selectBeforeActiveCell();
       else
@@ -6217,8 +6266,8 @@ var IRGrid = class extends IRComponent {
     }
   }
   initTableRowCol() {
-    import_lodash15.default.range(this._colHeaderInfo.colCount).forEach(() => this.addColumn(this._colHeaderInfo.defaultSize));
-    import_lodash15.default.range(this._colHeaderInfo.rowCount + this._bodyInfo.rowCount).forEach(() => this.addRow());
+    import_lodash14.default.range(this._colHeaderInfo.colCount).forEach(() => this.addColumn(this._colHeaderInfo.defaultSize));
+    import_lodash14.default.range(this._colHeaderInfo.rowCount + this._bodyInfo.rowCount).forEach(() => this.addRow());
   }
   initColumnHeaderCell(cell) {
     cell.cellType = "col-header";
@@ -6302,14 +6351,14 @@ var IRGrid = class extends IRComponent {
   }
   createIRGridRow(rowId, top, height) {
     const row = new IRGridRow({ grid: this, row: rowId, height, top, rowType: rowId < this.headerRows ? "col-header" : "body" });
-    import_lodash15.default.range(this.getColCount()).forEach((col) => row.addCell(this.createIRGridCell(rowId, col)));
-    import_lodash15.default.range(this.getColCount()).filter((col) => this.getColumnVisible(col) === false).forEach((col) => row.setColumnVisible(col, false));
+    import_lodash14.default.range(this.getColCount()).forEach((col) => row.addCell(this.createIRGridCell(rowId, col)));
+    import_lodash14.default.range(this.getColCount()).filter((col) => this.getColumnVisible(col) === false).forEach((col) => row.setColumnVisible(col, false));
     row.onMounted = () => {
       row.freezeColumns(this._rowHeaderInfo.colCount);
       this.onMountedRow(row.rowId);
     };
     row.onChangedHeight = () => {
-      import_lodash15.default.range(this.getColCount()).forEach((col) => {
+      import_lodash14.default.range(this.getColCount()).forEach((col) => {
         const cell = row.getCell(col);
         const mergeMain = cell.mergeMain ? cell.mergeMain : cell.mergeInfo.rowSpan > 1 ? cell : null;
         if (mergeMain)
@@ -6456,7 +6505,12 @@ var createInferenceSortHandler = ({
   return {
     sortColumn(column, order, startRow, endRow) {
       const isStringColumn = (() => {
-        return grid.getRowLodash().drop(startRow).take(endRow - startRow).some((row) => !onNumberCheck(row.getCell(column)));
+        for (let i = startRow; i < endRow; i++) {
+          const cell = grid.getRow(i).getCell(column);
+          if (onNumberCheck(cell))
+            return false;
+        }
+        return true;
       })();
       if (!isStringColumn)
         grid.sort(numberComparator(column), order, startRow, endRow);
@@ -6465,7 +6519,13 @@ var createInferenceSortHandler = ({
     }
   };
 };
+
+// src/js-components/grid/utility/input-pattern.ts
+var ALLOW_ONLY_CURRENCY_NUMBER_PATTERN = /^-?(\d{1,3}([,]\d{3})*|\d+)(\.\d+)?$/;
+var ALLOW_ONLY_NUMBER_PATTERN = /^-?\d+(\.\d+)?$/;
 export {
+  ALLOW_ONLY_CURRENCY_NUMBER_PATTERN,
+  ALLOW_ONLY_NUMBER_PATTERN,
   CellDropPlugin,
   CellObserverPlugin,
   ColumnFillPlugin,

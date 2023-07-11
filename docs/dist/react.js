@@ -1,19 +1,20 @@
 import {
   IRContextMenuContext,
   contextMenuListAtom,
-  fn,
   getDefaultStore,
+  produce,
   require_jsx_runtime,
   require_react,
   require_react_dom
-} from "./chunks/chunk-74RFBZGZ.js";
+} from "./chunks/chunk-YURDEAAV.js";
 import {
-  __commonJS,
-  __toESM,
-  layer_default,
   require_lodash,
   v4_default
-} from "./chunks/chunk-JYMTCUXI.js";
+} from "./chunks/chunk-N2GALXSL.js";
+import {
+  __commonJS,
+  __toESM
+} from "./chunks/chunk-56RD7WBD.js";
 
 // ../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js
 var require_client = __commonJS({
@@ -58,7 +59,10 @@ function App() {
 
 // src/react-components/app/index.tsx
 var import_jsx_runtime2 = __toESM(require_jsx_runtime());
-var root = (0, import_client.createRoot)(layer_default.reactApp);
+var rootElement = document.getElementById("ir_react_app");
+if (!rootElement)
+  throw new Error("Root element not found!");
+var root = (0, import_client.createRoot)(rootElement);
 root.render(/* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react.default.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, {}) }));
 
 // src/react-components/context-menu/context-menu.adapter.ts
@@ -70,7 +74,7 @@ var IRContextMenuAdapter = class {
     this._isDestroyed = false;
     const itemsCloneDeep = (0, import_lodash.default)(items).cloneDeep();
     this.findDividerRecursively(itemsCloneDeep);
-    defaultStore.set(contextMenuListAtom, fn((draft) => {
+    defaultStore.set(contextMenuListAtom, produce((draft) => {
       draft.push({
         isVisible: false,
         key: this._uuid,
@@ -93,7 +97,7 @@ var IRContextMenuAdapter = class {
     });
   }
   findItemAndDoAction(action) {
-    defaultStore.set(contextMenuListAtom, fn((draft) => {
+    defaultStore.set(contextMenuListAtom, produce((draft) => {
       const find = draft.find((item) => item.key === this._uuid);
       if (find)
         action(find);
@@ -127,7 +131,7 @@ var IRContextMenuAdapter = class {
     if (this._isDestroyed)
       throw new Error("Already destroyed.");
     this._isDestroyed = true;
-    defaultStore.set(contextMenuListAtom, fn((draft) => draft.filter((item) => item.key !== this._uuid)));
+    defaultStore.set(contextMenuListAtom, produce((draft) => draft.filter((item) => item.key !== this._uuid)));
   }
   updateItems(updateCallback) {
     this.findItemAndDoAction((item) => updateCallback(item.items));

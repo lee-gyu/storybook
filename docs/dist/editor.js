@@ -1,18 +1,22 @@
 import {
   i18n_default
-} from "./chunks/chunk-ZBZVVTYW.js";
+} from "./chunks/chunk-QWQ3YZPD.js";
 import {
   IRComponent
-} from "./chunks/chunk-BI23OIPF.js";
+} from "./chunks/chunk-WLNTEPMI.js";
+import "./chunks/chunk-ANWI2HK3.js";
+import {
+  require_lodash
+} from "./chunks/chunk-N2GALXSL.js";
 import {
   __commonJS,
-  __toESM,
-  require_lodash
-} from "./chunks/chunk-JYMTCUXI.js";
+  __toESM
+} from "./chunks/chunk-56RD7WBD.js";
 
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/lib/codemirror.js
 var require_codemirror = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/lib/codemirror.js"(exports, module) {
+    "use strict";
     (function(global, factory) {
       typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, global.CodeMirror = factory());
     })(exports, function() {
@@ -10756,6 +10760,7 @@ var require_codemirror = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/sql/sql.js
 var require_sql = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/sql/sql.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -11158,6 +11163,7 @@ var require_sql = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/show-hint.js
 var require_show_hint = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/show-hint.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -11719,6 +11725,7 @@ var require_show_hint = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/sql-hint.js
 var require_sql_hint = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/hint/sql-hint.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_sql());
@@ -11991,6 +11998,7 @@ var require_sql_hint = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/dialog/dialog.js
 var require_dialog = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/dialog/dialog.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -12149,6 +12157,7 @@ var require_dialog = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/scroll/annotatescrollbar.js
 var require_annotatescrollbar = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/scroll/annotatescrollbar.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -12274,6 +12283,7 @@ var require_annotatescrollbar = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/searchcursor.js
 var require_searchcursor = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/searchcursor.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -12611,6 +12621,7 @@ var require_searchcursor = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/search.js
 var require_search = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/search.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_searchcursor(), require_dialog());
@@ -12974,6 +12985,7 @@ var require_search = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/jump-to-line.js
 var require_jump_to_line = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/jump-to-line.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_dialog());
@@ -13026,6 +13038,7 @@ var require_jump_to_line = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/matchesonscrollbar.js
 var require_matchesonscrollbar = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/search/matchesonscrollbar.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror(), require_searchcursor(), require_annotatescrollbar());
@@ -13132,6 +13145,7 @@ var require_matchesonscrollbar = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/xml/xml.js
 var require_xml = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/mode/xml/xml.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -13592,6 +13606,7 @@ var require_xml = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/multiplex.js
 var require_multiplex = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/multiplex.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());
@@ -13723,6 +13738,7 @@ var require_multiplex = __commonJS({
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/simple.js
 var require_simple = __commonJS({
   "../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/addon/mode/simple.js"(exports, module) {
+    "use strict";
     (function(mod) {
       if (typeof exports == "object" && typeof module == "object")
         mod(require_codemirror());

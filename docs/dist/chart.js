@@ -1,9 +1,11 @@
 import {
   IRComponent
-} from "./chunks/chunk-BI23OIPF.js";
+} from "./chunks/chunk-WLNTEPMI.js";
+import "./chunks/chunk-ANWI2HK3.js";
+import "./chunks/chunk-N2GALXSL.js";
 import {
   __publicField
-} from "./chunks/chunk-JYMTCUXI.js";
+} from "./chunks/chunk-56RD7WBD.js";
 
 // ../../node_modules/.pnpm/@kurkle+color@0.3.2/node_modules/@kurkle/color/dist/color.esm.js
 function round(v) {
@@ -12152,7 +12154,7 @@ var TimeSeriesScale = class extends TimeScale {
 __publicField(TimeSeriesScale, "id", "timeseries");
 __publicField(TimeSeriesScale, "defaults", TimeScale.defaults);
 
-// src/js-components/chart/chart.ts
+// src/js-components/chart/ir-chart.ts
 Chart.register(plugin_title, plugin_legend, plugin_tooltip);
 var IRChart = class extends IRComponent {
   constructor({ contextElement }) {
@@ -12235,30 +12237,4 @@ export {
   IRLineChart,
   IRPieChart
 };
-/*! Bundled license information:
-
-@kurkle/color/dist/color.esm.js:
-  (*!
-   * @kurkle/color v0.3.2
-   * https://github.com/kurkle/color#readme
-   * (c) 2023 Jukka Kurkela
-   * Released under the MIT License
-   *)
-
-chart.js/dist/chunks/helpers.segment.js:
-  (*!
-   * Chart.js v4.3.0
-   * https://www.chartjs.org
-   * (c) 2023 Chart.js Contributors
-   * Released under the MIT License
-   *)
-
-chart.js/dist/chart.js:
-  (*!
-   * Chart.js v4.3.0
-   * https://www.chartjs.org
-   * (c) 2023 Chart.js Contributors
-   * Released under the MIT License
-   *)
-*/
 //# sourceMappingURL=chart.js.map
