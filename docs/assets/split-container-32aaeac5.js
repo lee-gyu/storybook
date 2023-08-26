@@ -1,0 +1,2 @@
+import{S as l}from"./timePicker.elements-3c8a0aec.js";function i(n){if(!(n.parent instanceof HTMLElement))throw new Error("splitHandler.parent is not HTMLElement");return n.parent}function c(n,e){var t,r;const a=l(n,Object.assign(Object.assign({},e),{snapOffset:(t=e==null?void 0:e.snapOffset)!==null&&t!==void 0?t:10,dragInterval:(r=e==null?void 0:e.dragInterval)!==null&&r!==void 0?r:5,gutterSize:6}));return i(a),Object.assign(Object.assign({},a),{expand(s){}})}export{c};
+//# sourceMappingURL=split-container-32aaeac5.js.map

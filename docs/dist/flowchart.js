@@ -4,7 +4,7 @@ import {
 } from "./chunks/chunk-J7AUQGT2.js";
 import {
   IRComponent
-} from "./chunks/chunk-WLNTEPMI.js";
+} from "./chunks/chunk-6ZPO4QUU.js";
 import {
   Logger,
   blobToBase64,
@@ -12,14 +12,14 @@ import {
   downloadDataURL,
   getBase64FromSvg,
   getImageBlobFromImage
-} from "./chunks/chunk-ANWI2HK3.js";
+} from "./chunks/chunk-KNCXJEQV.js";
 import {
   require_lodash
-} from "./chunks/chunk-N2GALXSL.js";
+} from "./chunks/chunk-OWY4E3VR.js";
 import {
   __export,
   __toESM
-} from "./chunks/chunk-56RD7WBD.js";
+} from "./chunks/chunk-4CFQBDTJ.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -3385,18 +3385,19 @@ var DEFAULT_CONNECTION_STYLE_DATA = {
   "connection.destinationObjId": null,
   "connection.destinationPos": null,
   "connection.width": 200,
-  "connection.arrowFill": "black",
-  "connection.arrowSize": 10,
   "connection.textBorderColor": "black",
   "connection.textBorderWidth": 1,
   "connection.textBorderDash": 0,
   "connection.textBorderFill": "white",
-  "connection.connectorFill": "black",
+  "connection.connectorFill": "#303030",
   "connection.connectorSize": 3,
   "connection.adjusterSize": 7,
   "connection.adjusterFill": "black",
+  "connection.arrowFill": "black",
+  "connection.arrowSize": 10,
   "connection.arrowBorderColor": "black",
-  "connection.arrowBorderWidth": 1
+  "connection.arrowBorderWidth": 1,
+  "connection.arrowType": "triangle"
 };
 
 // src/js-components/flowchart/data/group.ts
@@ -3426,7 +3427,8 @@ var DEFAULT_NODE_STYLE_DATA = {
   "node.commentBottomRight": "",
   "node.commentFontSize": 10,
   "node.commentForeColor": "black",
-  "node.commentFontFamily": "Noto Sans KR"
+  "node.commentFontFamily": "Noto Sans KR",
+  "node.borderRadius": 0
 };
 
 // src/js-components/flowchart/util/functions.ts
@@ -4619,7 +4621,7 @@ var BaseRenderer = class {
       throw new Error("foreignObj, textarea is null!");
     const rect = this._getLabelRect();
     this.objects.foreignObj.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height);
-    this.objects.textarea.style("width", `${rect.width - 22}px`).style("height", `${rect.height}px`).style("border", "1px solid #717171").style("background-color", "transparent");
+    this.objects.textarea.style("width", `${rect.width}px`).style("height", `${rect.height}px`).style("border", "1px solid #717171").style("background-color", "transparent");
   }
   removeLabelEdit() {
     if (this.objects.foreignObj) {
@@ -4898,7 +4900,7 @@ var NodeRenderer = class extends BaseRenderer {
     return {
       x: -(width / 2),
       y: -(height / 2),
-      width: width + 20,
+      width,
       height
     };
   }
@@ -5464,22 +5466,39 @@ var ConnectionRenderer = class extends BaseRenderer {
     return {
       x: parseFloat(this.objects.text.attr("x")) - width / 2,
       y: parseFloat(this.objects.text.attr("y")) - 5 - this.data.fontSize,
-      width: width + 20,
+      width,
       height: Math.max(height, this.data.fontSize + 10)
     };
   }
   _renderMarker() {
     const wrapper = this.dataWrapper;
-    const style = {
-      borderWidth: wrapper.get("borderWidth"),
-      arrowSize: wrapper.get("connection.arrowSize"),
-      arrowFill: wrapper.get("connection.arrowFill"),
-      arrowBorderColor: wrapper.get("connection.arrowBorderColor"),
-      arrowBorderWidth: wrapper.get("connection.arrowBorderWidth")
-    };
-    const markerSize = style.arrowSize / style.borderWidth;
-    this.objects.marker.attr("refX", markerSize).attr("refY", markerSize / 2).attr("markerWidth", markerSize).attr("markerHeight", markerSize).attr("orient", "auto");
-    this.objects.markerPath.attr("d", `M 0 0 L ${markerSize} ${markerSize / 2} L 0 ${markerSize} z`).attr("fill", style.arrowFill).attr("stroke", style.arrowBorderColor).attr("stroke-width", style.arrowBorderWidth / style.borderWidth);
+    const borderWidth = wrapper.get("borderWidth"), arrowSize = wrapper.get("connection.arrowSize"), arrowFill = wrapper.get("connection.arrowFill"), arrowBorderColor = wrapper.get("connection.arrowBorderColor"), arrowBorderWidth = wrapper.get("connection.arrowBorderWidth");
+    const markerSize = (arrowSize + arrowBorderWidth) / borderWidth;
+    const adjustBorderWidth = arrowBorderWidth / borderWidth;
+    this.objects.markerPath.attr("fill", arrowFill).attr("stroke", arrowBorderColor).attr("stroke-width", adjustBorderWidth);
+    const arrowType = wrapper.get("connection.arrowType");
+    this.objects.marker.attr("refY", markerSize / 2).attr("markerWidth", markerSize).attr("markerHeight", markerSize).attr("orient", "auto");
+    switch (arrowType) {
+      case "triangle":
+        this._renderTriangleMarker(markerSize, adjustBorderWidth);
+        break;
+      case "circle":
+        this._renderCircleMarker(markerSize, adjustBorderWidth);
+        break;
+      default:
+        throw new Error(`unknown render type '${arrowType}'`);
+    }
+  }
+  _renderTriangleMarker(markerSize, borderWidth) {
+    const offset = markerSize - borderWidth;
+    this.objects.marker.attr("refX", markerSize);
+    this.objects.markerPath.attr("d", `M ${borderWidth} ${borderWidth} L ${offset} ${markerSize / 2} L ${borderWidth} ${offset} z`);
+  }
+  _renderCircleMarker(markerSize, borderWidth) {
+    const offset = markerSize / 2;
+    const radius = (markerSize - borderWidth) / 2;
+    this.objects.marker.attr("refX", offset);
+    this.objects.markerPath.attr("d", `M ${offset} ${offset} m ${radius} 0 a ${radius} ${radius} 0 1 0 -${radius * 2} 0 a ${radius} ${radius} 0 1 0 ${radius * 2} 0`);
   }
   _renderConnector() {
     const wrapper = this.dataWrapper;
@@ -6134,7 +6153,7 @@ var ReturnRenderer = class extends NodeRenderer {
     const wrapper = this.dataWrapper;
     const width = this.width;
     const height = this.height;
-    this.objects.body.attr("x", -(width / 2)).attr("y", -(height / 2)).attr("width", width).attr("height", height).style("fill", wrapper.get("node.fill")).attr("stroke", wrapper.get("borderColor")).style("stroke-width", wrapper.get("borderWidth")).attr("stroke-dasharray", wrapper.get("borderDash"));
+    this.objects.body.attr("x", -(width / 2)).attr("y", -(height / 2)).attr("rx", wrapper.get("node.borderRadius")).attr("width", width).attr("height", height).style("fill", wrapper.get("node.fill")).attr("stroke", wrapper.get("borderColor")).style("stroke-width", wrapper.get("borderWidth")).attr("stroke-dasharray", wrapper.get("borderDash"));
     this._createText();
   }
 };
@@ -7268,13 +7287,7 @@ var IRFlowchart = class extends IRComponent {
    * @param {Node} node
    */
   _addClickActionOnNode(node) {
-    node.g.on("click", (ev) => {
-      if (this._editMode)
-        return;
-      if (this._isSingleSelection(ev.ctrlKey))
-        this.releaseAllObjects(node);
-      this._objectClickHandler(node, EVENT_TYPE.CLICK_NODE);
-    }).on("dblclick", () => {
+    node.g.on("dblclick", () => {
       if (node.data.editable && this._readonly === false)
         node.renderer.editLabelMode();
       this._logger.info("InnoFlowchart.event.emit.dblClickNode", node);
@@ -7323,11 +7336,19 @@ var IRFlowchart = class extends IRComponent {
         this._initDrag("drag-node-move");
       }
       moved && this._moveSelectedObjects(diffX, diffY);
-    }).on("end", () => {
-      if (this._moveScreenOnSelect && node.type === "node")
-        this.moveScreenByObject(node);
-      this._moveHandler.moveEndHandler();
-      this._terminateDrag("drag-node-move");
+    }).on("end", (ev) => {
+      if (moved) {
+        if (this._moveScreenOnSelect && node.type === "node")
+          this.moveScreenByObject(node);
+        this._moveHandler.moveEndHandler();
+        this._terminateDrag("drag-node-move");
+      } else {
+        if (this._editMode)
+          return;
+        if (this._isSingleSelection(ev.ctrlKey))
+          this.releaseAllObjects(node);
+        this._objectClickHandler(node, EVENT_TYPE.CLICK_NODE);
+      }
     }));
   }
   /**

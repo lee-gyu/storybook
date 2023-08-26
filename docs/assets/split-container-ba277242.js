@@ -1,2 +1,0 @@
-import{S as r}from"./timePicker.elements-261a85d5.js";function a(t){if(!(t.parent instanceof HTMLElement))throw new Error("splitHandler.parent is not HTMLElement");return t.parent}function o(t,n){const e=r(t,Object.assign(Object.assign({},n),{snapOffset:10,gutterSize:6}));return a(e),Object.assign(Object.assign({},e),{expand(i){}})}export{o as c};
-//# sourceMappingURL=split-container-ba277242.js.map
