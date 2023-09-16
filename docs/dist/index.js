@@ -7,17 +7,19 @@ import {
   IRSelect,
   IRTimePicker,
   IRTree,
+  IRTree2,
+  IRVirtualDOM,
   createDropdownDiv,
   createDropdownItem,
   hasDisplayedConfirm,
   renderCheckboxTreeNode,
   renderDefaultTreeNode,
   setTreeDragDropReorder
-} from "./chunks/chunk-YRNHSXRJ.js";
+} from "./chunks/chunk-ZSAPMVOS.js";
 import {
   i18n_default
-} from "./chunks/chunk-HJBF6H4G.js";
-import "./chunks/chunk-6ZPO4QUU.js";
+} from "./chunks/chunk-LHMO7VL6.js";
+import "./chunks/chunk-VRKNG2RG.js";
 import {
   ClipboardManager,
   EnvConstantsSchema,
@@ -74,8 +76,9 @@ import {
   uuid,
   xss_default,
   z_index_classNames_default
-} from "./chunks/chunk-KNCXJEQV.js";
-import "./chunks/chunk-OWY4E3VR.js";
+} from "./chunks/chunk-RFSANBZJ.js";
+import "./chunks/chunk-FF6PGBFM.js";
+import "./chunks/chunk-IQO4KW2H.js";
 import {
   IR_STYLE_CONFIG,
   clearGlobalKeyListener,
@@ -85,7 +88,9 @@ import {
   offsetBottomAutoUpdate,
   registerGlobalKeyListener,
   unregisterGlobalKeyListener
-} from "./chunks/chunk-4CFQBDTJ.js";
+} from "./chunks/chunk-FWLV7CMV.js";
+import "./chunks/chunk-YVPLOK3S.js";
+import "./chunks/chunk-NP7LZUD4.js";
 export {
   ClipboardManager,
   EnvConstantsSchema,
@@ -97,6 +102,8 @@ export {
   IRSelect,
   IRTimePicker,
   IRTree,
+  IRTree2,
+  IRVirtualDOM,
   IR_STYLE_CONFIG,
   Logger,
   Palette,

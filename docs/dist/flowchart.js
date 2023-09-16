@@ -4,7 +4,7 @@ import {
 } from "./chunks/chunk-J7AUQGT2.js";
 import {
   IRComponent
-} from "./chunks/chunk-6ZPO4QUU.js";
+} from "./chunks/chunk-VRKNG2RG.js";
 import {
   Logger,
   blobToBase64,
@@ -12,14 +12,17 @@ import {
   downloadDataURL,
   getBase64FromSvg,
   getImageBlobFromImage
-} from "./chunks/chunk-KNCXJEQV.js";
+} from "./chunks/chunk-RFSANBZJ.js";
 import {
   require_lodash
-} from "./chunks/chunk-OWY4E3VR.js";
+} from "./chunks/chunk-FF6PGBFM.js";
+import "./chunks/chunk-IQO4KW2H.js";
+import "./chunks/chunk-FWLV7CMV.js";
+import "./chunks/chunk-YVPLOK3S.js";
 import {
   __export,
   __toESM
-} from "./chunks/chunk-4CFQBDTJ.js";
+} from "./chunks/chunk-NP7LZUD4.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -3366,10 +3369,10 @@ var DEFAULT_STYLE_DATA = {
   tooltipFontFamily: DEFAULT_FONT_FAMILY,
   tooltipFill: "white",
   tooltipMaxWidth: 380,
-  tooltipBorderColor: "#bbb",
+  tooltipBorderColor: "var(--navy-700)",
   tooltipBorderWidth: 1,
   tooltipBorderDash: 0,
-  tooltipPadding: 10,
+  tooltipPadding: 8,
   tooltipTextDecoration: "none",
   tooltipVisible: true,
   "borderWidth.selected": 2,
@@ -5254,7 +5257,7 @@ var ObjectMouseHandler = class {
     const size = getFittedSizeOnText(style);
     style.width = Math.min(size.width, obj.data.tooltipMaxWidth);
     const textLines = getWrappedText(style);
-    this.tooltip.g.append("rect").attr("x", x).attr("y", y).attr("width", style.width + style.padding * 2).attr("height", textLines.lineHeight * textLines.length + style.padding * 2).attr("fill", style.fill).attr("stroke", style.borderColor).attr("stroke-width", style.borderWidth).attr("stroke-dasharray", style.borderDash);
+    this.tooltip.g.append("rect").attr("x", x).attr("y", y).attr("rx", "4").attr("width", style.width + style.padding * 2).attr("height", textLines.lineHeight * textLines.length + style.padding * 2).attr("fill", style.fill).attr("stroke", style.borderColor).attr("stroke-width", style.borderWidth).attr("stroke-dasharray", style.borderDash);
     const text = this.tooltip.g.append("text").attr("fill", style.foreColor).attr("fontSize", style.fontSize).attr("text-decoration", style.textDecoration);
     createTextLines(
       text,
