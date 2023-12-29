@@ -1,12 +1,17 @@
 import {
+  data_worker_default
+} from "./chunks/chunk-OMKBGN5O.js";
+import "./chunks/chunk-JMMGNVNB.js";
+import {
   v4_default
 } from "./chunks/chunk-IQO4KW2H.js";
-import "./chunks/chunk-YVPLOK3S.js";
-import "./chunks/chunk-NP7LZUD4.js";
+import "./chunks/chunk-L3QRNZQF.js";
+import "./chunks/chunk-SLIKBEQ2.js";
+import "./chunks/chunk-F6QKJDR3.js";
 
 // src/data-export.ts
 var taskMap = /* @__PURE__ */ new Map();
-var getWorker = (() => {
+var getWorker = /* @__PURE__ */ (() => {
   let worker = null;
   function getTaskLog(taskId) {
     const taskLog = taskMap.get(taskId);
@@ -17,7 +22,7 @@ var getWorker = (() => {
   return () => {
     if (!worker)
       worker = new Worker(
-        new URL(import.meta.url + "/../data-export/data-worker.js"),
+        new URL(data_worker_default),
         {
           name: "ir-data-exporting-worker",
           type: "module"

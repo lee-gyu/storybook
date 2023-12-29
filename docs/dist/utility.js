@@ -7,28 +7,33 @@ import {
   appendElement,
   blobToStr,
   checkTargetIsHTMLElement,
+  closest,
   createBuilderClient,
   createClickOutsideHandler,
   createCustomIcon,
+  createElement,
   createEntryScriptLoader,
   createIFrameModule,
   createIconElement,
   createImageFromSrcUrl,
   createLoadingHandler,
   createObjectURLFromSvg,
-  createPopover,
   createSessionChannel,
   createSplitContainer,
   createTooltip,
   createTooltipBySelector,
+  createTooltipContainer,
   createUUID,
+  createUUIDBasedOnParam,
   downloadDataURL,
   get2DGenerator,
   getBase64FromSvg,
+  getCacheDataStorage,
   getCommonChannel,
   getDefaultValue,
   getElement,
   getEntryParam,
+  getIRIconPng,
   getImageBlobFromImage,
   getMinMaxBetween,
   getPageIdInURL,
@@ -36,6 +41,7 @@ import {
   getSessionChannel,
   getSessionIdInURL,
   getTextWidthContext,
+  getTooltipElements,
   hasClass,
   hasEntryParam,
   hasSessionIdInURL,
@@ -44,6 +50,7 @@ import {
   initSessionChannel,
   makeNewUrl,
   openNewWindow,
+  parseInt,
   postClear,
   postRemoveItem,
   postSetItem,
@@ -54,19 +61,21 @@ import {
   uuid,
   xss_default,
   z_index_classNames_default
-} from "./chunks/chunk-RFSANBZJ.js";
-import "./chunks/chunk-FF6PGBFM.js";
+} from "./chunks/chunk-K5RQWUDQ.js";
 import "./chunks/chunk-IQO4KW2H.js";
+import "./chunks/chunk-L3QRNZQF.js";
 import {
   clearGlobalKeyListener,
   createESCHideController,
+  createFloatingHandler,
+  createPopover,
   getVirtualEl,
   offsetBottomAutoUpdate,
   registerGlobalKeyListener,
   unregisterGlobalKeyListener
-} from "./chunks/chunk-FWLV7CMV.js";
-import "./chunks/chunk-YVPLOK3S.js";
-import "./chunks/chunk-NP7LZUD4.js";
+} from "./chunks/chunk-E2DVMCXX.js";
+import "./chunks/chunk-SLIKBEQ2.js";
+import "./chunks/chunk-F6QKJDR3.js";
 
 // src/utils/iter/make-iterator.ts
 function* range(start, end) {
@@ -88,12 +97,15 @@ export {
   blobToStr,
   checkTargetIsHTMLElement,
   clearGlobalKeyListener,
+  closest,
   z_index_classNames_default as clsZId,
   createBuilderClient,
   createClickOutsideHandler,
   createCustomIcon,
   createESCHideController,
+  createElement,
   createEntryScriptLoader,
+  createFloatingHandler,
   createIFrameModule,
   createIconElement,
   createImageFromSrcUrl,
@@ -104,14 +116,18 @@ export {
   createSplitContainer,
   createTooltip,
   createTooltipBySelector,
+  createTooltipContainer,
   createUUID,
+  createUUIDBasedOnParam,
   downloadDataURL,
   get2DGenerator,
   getBase64FromSvg,
+  getCacheDataStorage,
   getCommonChannel,
   getDefaultValue,
   getElement,
   getEntryParam,
+  getIRIconPng,
   getImageBlobFromImage,
   getMinMaxBetween,
   getPageIdInURL,
@@ -119,6 +135,7 @@ export {
   getSessionChannel,
   getSessionIdInURL,
   getTextWidthContext,
+  getTooltipElements,
   getVirtualEl,
   hasClass,
   hasEntryParam,
@@ -129,6 +146,7 @@ export {
   makeNewUrl,
   offsetBottomAutoUpdate,
   openNewWindow,
+  parseInt,
   postClear,
   postRemoveItem,
   postSetItem,

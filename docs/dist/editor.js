@@ -1,20 +1,20 @@
 import {
   i18n_default
-} from "./chunks/chunk-LHMO7VL6.js";
+} from "./chunks/chunk-VEWYTQUD.js";
 import {
   IRComponent
-} from "./chunks/chunk-VRKNG2RG.js";
-import "./chunks/chunk-RFSANBZJ.js";
+} from "./chunks/chunk-O3XJ324C.js";
+import "./chunks/chunk-K5RQWUDQ.js";
+import "./chunks/chunk-IQO4KW2H.js";
 import {
   require_lodash
-} from "./chunks/chunk-FF6PGBFM.js";
-import "./chunks/chunk-IQO4KW2H.js";
-import "./chunks/chunk-FWLV7CMV.js";
-import "./chunks/chunk-YVPLOK3S.js";
+} from "./chunks/chunk-L3QRNZQF.js";
+import "./chunks/chunk-E2DVMCXX.js";
+import "./chunks/chunk-SLIKBEQ2.js";
 import {
   __commonJS,
   __toESM
-} from "./chunks/chunk-NP7LZUD4.js";
+} from "./chunks/chunk-F6QKJDR3.js";
 
 // ../../node_modules/.pnpm/codemirror@5.65.13/node_modules/codemirror/lib/codemirror.js
 var require_codemirror = __commonJS({
@@ -402,7 +402,7 @@ var require_codemirror = __commonJS({
         }
         return found != null ? found : bidiOther;
       }
-      var bidiOrdering = function() {
+      var bidiOrdering = /* @__PURE__ */ function() {
         var lowTypes = "bbbbbbbbbtstwsbbbbbbbbbbbbbbssstwNN%%%NNNNNN,N,N1111111111NNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNbbbbbbsbbbbbbbbbbbbbbbbbbbbbbbbbb,N%%%%NNNNLNNNNN%%11NLNNN1LNNNNNLLLLLLLLLLLLLLLLLLLLLLLNLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLN";
         var arabicTypes = "nnnnnnNNr%%r,rNNmmmmmmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnn%nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111";
         function charType(code) {
@@ -10724,7 +10724,7 @@ var require_codemirror = __commonJS({
       var dontDelegate = "iter insert remove copy getEditor constructor".split(" ");
       for (var prop in Doc.prototype) {
         if (Doc.prototype.hasOwnProperty(prop) && indexOf(dontDelegate, prop) < 0) {
-          CodeMirror2.prototype[prop] = function(method) {
+          CodeMirror2.prototype[prop] = /* @__PURE__ */ function(method) {
             return function() {
               return method.apply(this.doc, arguments);
             };
@@ -13984,24 +13984,24 @@ var require_simple = __commonJS({
 });
 
 // src/js-components/editor/editor.ts
-var import_codemirror2 = __toESM(require_codemirror());
-var import_lodash2 = __toESM(require_lodash());
-var import_sql = __toESM(require_sql());
-var import_show_hint = __toESM(require_show_hint());
-var import_sql_hint = __toESM(require_sql_hint());
-var import_dialog = __toESM(require_dialog());
-var import_annotatescrollbar = __toESM(require_annotatescrollbar());
-var import_search = __toESM(require_search());
-var import_jump_to_line = __toESM(require_jump_to_line());
-var import_matchesonscrollbar = __toESM(require_matchesonscrollbar());
-var import_searchcursor = __toESM(require_searchcursor());
-var import_xml = __toESM(require_xml());
+var import_codemirror2 = __toESM(require_codemirror(), 1);
+var import_lodash2 = __toESM(require_lodash(), 1);
+var import_sql = __toESM(require_sql(), 1);
+var import_show_hint = __toESM(require_show_hint(), 1);
+var import_sql_hint = __toESM(require_sql_hint(), 1);
+var import_dialog = __toESM(require_dialog(), 1);
+var import_annotatescrollbar = __toESM(require_annotatescrollbar(), 1);
+var import_search = __toESM(require_search(), 1);
+var import_jump_to_line = __toESM(require_jump_to_line(), 1);
+var import_matchesonscrollbar = __toESM(require_matchesonscrollbar(), 1);
+var import_searchcursor = __toESM(require_searchcursor(), 1);
+var import_xml = __toESM(require_xml(), 1);
 
 // src/js-components/editor/mode.ts
-var import_codemirror = __toESM(require_codemirror());
-var import_lodash = __toESM(require_lodash());
-var import_multiplex = __toESM(require_multiplex());
-var import_simple = __toESM(require_simple());
+var import_codemirror = __toESM(require_codemirror(), 1);
+var import_lodash = __toESM(require_lodash(), 1);
+var import_multiplex = __toESM(require_multiplex(), 1);
+var import_simple = __toESM(require_simple(), 1);
 var regexp = {
   startContext: [
     { tokenType: "ir-string", begin: /"/, end: /"/ },
@@ -14152,13 +14152,14 @@ var IREditor = class extends IRComponent {
     keyEvents,
     gutters = DEFAULT_GUTTERS
   }) {
+    var _a;
     super({ contextElement });
     this._showWhitespace = false;
     contextElement.classList.add("editor");
     this.editor = (0, import_codemirror2.default)(contextElement, {
       lineNumbers: true,
       gutters,
-      mode: editorModeMap[mode] ?? "text/plain",
+      mode: (_a = editorModeMap[mode]) != null ? _a : "text/plain",
       theme: "idea",
       tabSize: 4,
       indentWithTabs: false,
@@ -14197,16 +14198,17 @@ var IREditor = class extends IRComponent {
     this.onDestroy = () => this.editor.getWrapperElement().remove();
   }
   get cursor() {
+    var _a, _b, _c;
     const cursorFrom = this.editor.getCursor("from");
     const cursorTo = this.editor.getCursor("to");
-    const cursorElement = this.contextElement.querySelector(".CodeMirror-cursor") ?? this.contextElement.querySelector(".CodeMirror-selected");
+    const cursorElement = (_a = this.contextElement.querySelector(".CodeMirror-cursor")) != null ? _a : this.contextElement.querySelector(".CodeMirror-selected");
     return {
       startY: cursorFrom.line,
       startX: cursorFrom.ch,
       endY: cursorTo.line,
       endX: cursorTo.ch,
-      x: (cursorElement == null ? void 0 : cursorElement.offsetLeft) ?? 0,
-      y: (cursorElement == null ? void 0 : cursorElement.offsetTop) ?? 0
+      x: (_b = cursorElement == null ? void 0 : cursorElement.offsetLeft) != null ? _b : 0,
+      y: (_c = cursorElement == null ? void 0 : cursorElement.offsetTop) != null ? _c : 0
     };
   }
   get lineCount() {

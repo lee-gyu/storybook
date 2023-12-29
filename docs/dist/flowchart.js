@@ -4,7 +4,7 @@ import {
 } from "./chunks/chunk-J7AUQGT2.js";
 import {
   IRComponent
-} from "./chunks/chunk-VRKNG2RG.js";
+} from "./chunks/chunk-O3XJ324C.js";
 import {
   Logger,
   blobToBase64,
@@ -12,17 +12,17 @@ import {
   downloadDataURL,
   getBase64FromSvg,
   getImageBlobFromImage
-} from "./chunks/chunk-RFSANBZJ.js";
+} from "./chunks/chunk-K5RQWUDQ.js";
+import "./chunks/chunk-IQO4KW2H.js";
 import {
   require_lodash
-} from "./chunks/chunk-FF6PGBFM.js";
-import "./chunks/chunk-IQO4KW2H.js";
-import "./chunks/chunk-FWLV7CMV.js";
-import "./chunks/chunk-YVPLOK3S.js";
+} from "./chunks/chunk-L3QRNZQF.js";
+import "./chunks/chunk-E2DVMCXX.js";
+import "./chunks/chunk-SLIKBEQ2.js";
 import {
   __export,
   __toESM
-} from "./chunks/chunk-NP7LZUD4.js";
+} from "./chunks/chunk-F6QKJDR3.js";
 
 // ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
 var noop = { value: () => {
@@ -3177,7 +3177,7 @@ function zoom_default2() {
 }
 
 // src/js-components/flowchart/flowchart.js
-var import_lodash4 = __toESM(require_lodash());
+var import_lodash4 = __toESM(require_lodash(), 1);
 
 // src/js-components/flowchart/action/action-controller.ts
 var ActionController = class {
@@ -3270,7 +3270,7 @@ var DeleteCommand = class extends AddCommand {
 };
 
 // src/js-components/flowchart/util/functions.ts
-var _ = __toESM(require_lodash());
+var _ = __toESM(require_lodash(), 1);
 
 // src/js-components/flowchart/util/text-metrics.ts
 var canvas = document.createElement("canvas");
@@ -3831,7 +3831,7 @@ var RenderCommand = class extends BaseCommand {
 };
 
 // src/js-components/flowchart/action/command/z-index.ts
-var import_lodash = __toESM(require_lodash());
+var import_lodash = __toESM(require_lodash(), 1);
 var ZIndexCommand = class extends BaseCommand {
   constructor(dataList) {
     super("front");
@@ -3866,7 +3866,7 @@ var ZIndexCommand = class extends BaseCommand {
 };
 
 // src/js-components/flowchart/action/move-handler.ts
-var import_lodash2 = __toESM(require_lodash());
+var import_lodash2 = __toESM(require_lodash(), 1);
 var MoveHandler = class {
   constructor(actionController, objectManager, iContainer) {
     this.actionController = actionController;
@@ -3894,7 +3894,7 @@ var MoveHandler = class {
 };
 
 // src/js-components/flowchart/action/resize-handler.ts
-var import_lodash3 = __toESM(require_lodash());
+var import_lodash3 = __toESM(require_lodash(), 1);
 var ResizeHandler = class {
   constructor(actionController, objectManager, iContainer) {
     this.actionController = actionController;
@@ -4537,9 +4537,10 @@ var StyleDataWrapper = class {
     this.data = data;
   }
   get(key) {
+    var _a;
     if (FIXED_KEYS.has(key))
       return this.data[key];
-    return this.data[`${key}${this._getPostFix()}`] ?? this.data[key];
+    return (_a = this.data[`${key}${this._getPostFix()}`]) != null ? _a : this.data[key];
   }
   _getPostFix() {
     if (this.data.isSelected)
@@ -5078,7 +5079,8 @@ var clipboard_default = {
     writeText(IR_FLOWCHART_WEAK_MAP_OBJ, data);
   },
   loadData() {
-    return readText(IR_FLOWCHART_WEAK_MAP_OBJ) ?? TMP_CLIPBOARD_DATA;
+    var _a;
+    return (_a = readText(IR_FLOWCHART_WEAK_MAP_OBJ)) != null ? _a : TMP_CLIPBOARD_DATA;
   }
 };
 

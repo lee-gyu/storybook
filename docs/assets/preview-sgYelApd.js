@@ -1,0 +1,1 @@
+const e={parameters:{options:{showPanel:!1,storySort:{method:"alphabetical",order:["CSS","Elements","HTML Components","JS Components","Data Exporting","JS Utility","React Components","Web API","Objects","Utilities","Examples"],locales:"ko-KR"}}}};export{e as default};

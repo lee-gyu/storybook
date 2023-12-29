@@ -1,64 +1,181 @@
 import {
   IRCommandBlock,
   IRCommandManager,
-  button_classNames_default,
-  checkbox_classNames_default,
   createDatePickerHandler,
   createDropdownDiv,
-  createDropdownItem,
-  input_classNames_default,
-  select_classNames_default
-} from "./chunks/chunk-ZSAPMVOS.js";
+  createDropdownItem
+} from "./chunks/chunk-CF6RNEVQ.js";
 import {
   i18n_default
-} from "./chunks/chunk-LHMO7VL6.js";
+} from "./chunks/chunk-VEWYTQUD.js";
 import {
   readText,
   writeText
 } from "./chunks/chunk-J7AUQGT2.js";
 import {
   IRComponent
-} from "./chunks/chunk-VRKNG2RG.js";
+} from "./chunks/chunk-O3XJ324C.js";
 import {
+  $,
+  $r,
+  A,
+  Ar,
+  B,
+  Br,
   ClipboardManager,
+  Cr,
+  Dr,
+  Fr,
+  Gr,
+  Hr,
+  Ir,
+  J,
+  Jr,
+  Kr,
+  Lr,
+  Mr,
+  N,
+  Nr,
+  Or,
+  Pr,
   ReactiveState,
+  Rr,
+  Sr,
+  Tr,
+  Ur,
+  Vr,
+  Wr,
+  Xr,
+  Y,
+  Yr,
+  Zr,
+  _e,
+  _r,
+  ae,
+  ar,
   blobToStr,
   checkTargetIsHTMLElement,
+  closest,
+  cr,
   createClickOutsideHandler,
   createIconElement,
+  de,
+  ee,
+  fr,
   get2DGenerator,
   getMinMaxBetween,
   getTextWidthContext,
-  map
-} from "./chunks/chunk-RFSANBZJ.js";
-import {
-  require_lodash
-} from "./chunks/chunk-FF6PGBFM.js";
+  gr,
+  hr,
+  ie,
+  ir,
+  j,
+  kr,
+  le,
+  lr,
+  m,
+  map,
+  ne,
+  nr,
+  oe,
+  or,
+  pr,
+  q,
+  qr,
+  re,
+  rr,
+  sr,
+  te,
+  tr,
+  wr,
+  x,
+  xr,
+  y,
+  yr,
+  z,
+  zr
+} from "./chunks/chunk-K5RQWUDQ.js";
 import {
   v4_default
 } from "./chunks/chunk-IQO4KW2H.js";
 import {
-  IR_STYLE_CONFIG,
+  require_lodash
+} from "./chunks/chunk-L3QRNZQF.js";
+import {
   computePosition,
   createESCHideController,
+  esm_default,
   flip,
   getLayerElement,
+  getThemeStore,
   offset,
   offsetBottomAutoUpdate,
-  require_dayjs_min,
   shift
-} from "./chunks/chunk-FWLV7CMV.js";
-import "./chunks/chunk-YVPLOK3S.js";
+} from "./chunks/chunk-E2DVMCXX.js";
+import "./chunks/chunk-SLIKBEQ2.js";
 import {
   __decorateClass,
   __toESM
-} from "./chunks/chunk-NP7LZUD4.js";
+} from "./chunks/chunk-F6QKJDR3.js";
+
+// ../../node_modules/.pnpm/@vanilla-extract+private@1.0.3/node_modules/@vanilla-extract/private/dist/vanilla-extract-private.esm.js
+function getVarName(variable) {
+  var matches = variable.match(/^var\((.*)\)$/);
+  if (matches) {
+    return matches[1];
+  }
+  return variable;
+}
+function get(obj, path) {
+  var result = obj;
+  for (var key of path) {
+    if (!(key in result)) {
+      throw new Error("Path ".concat(path.join(" -> "), " does not exist in object"));
+    }
+    result = result[key];
+  }
+  return result;
+}
+function walkObject(obj, fn) {
+  var path = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [];
+  var clone = obj.constructor();
+  for (var key in obj) {
+    var _value = obj[key];
+    var currentPath = [...path, key];
+    if (typeof _value === "string" || typeof _value === "number" || _value == null) {
+      clone[key] = fn(_value, currentPath);
+    } else if (typeof _value === "object" && !Array.isArray(_value)) {
+      clone[key] = walkObject(_value, fn, currentPath);
+    } else {
+      console.warn('Skipping invalid key "'.concat(currentPath.join("."), '". Should be a string, number, null or object. Received: "').concat(Array.isArray(_value) ? "Array" : typeof _value, '"'));
+    }
+  }
+  return clone;
+}
+
+// ../../node_modules/.pnpm/@vanilla-extract+dynamic@2.0.3/node_modules/@vanilla-extract/dynamic/dist/vanilla-extract-dynamic.esm.js
+function setVar(element, variable, value) {
+  element.style.setProperty(getVarName(variable), value);
+}
+function setElementVars(element, varsOrContract, tokens) {
+  if (typeof tokens === "object") {
+    var _contract = varsOrContract;
+    walkObject(tokens, (value, path) => {
+      setVar(element, get(_contract, path), String(value));
+    });
+  } else {
+    var _vars = varsOrContract;
+    for (var varName in _vars) {
+      setVar(element, varName, _vars[varName]);
+    }
+  }
+}
 
 // src/js-components/grid/grid.ts
-var import_lodash15 = __toESM(require_lodash());
+var import_lodash15 = __toESM(require_lodash(), 1);
 
 // src/js-components/grid/cell-renderer/cell-renderer.ts
-var import_lodash = __toESM(require_lodash());
+var import_lodash = __toESM(require_lodash(), 1);
 
 // src/js-components/grid/utils.ts
 function checkContainsInRange(row, col, range) {
@@ -98,18 +215,18 @@ function getCellInnerHeight(element) {
 }
 function getOffsetXYOnContext(ev) {
   let element = ev.target;
-  let x = ev.offsetX;
-  let y = ev.offsetY;
+  let x2 = ev.offsetX;
+  let y2 = ev.offsetY;
   while (element !== ev.currentTarget) {
     if (!(element instanceof HTMLElement))
       throw new Error("invalid event target!");
     if (element.tagName === "TR")
       break;
-    x += element.offsetLeft;
-    y += element.offsetTop;
+    x2 += element.offsetLeft;
+    y2 += element.offsetTop;
     element = element.parentElement;
   }
-  return { x, y };
+  return { x: x2, y: y2 };
 }
 
 // src/js-components/grid/cell-renderer/cell-renderer.ts
@@ -120,34 +237,40 @@ var IRGridCellRenderer = class {
     throw new Error("Not implemented");
   }
   getHorizontalCellPadding(metaInfo) {
-    return (metaInfo.paddingLeft ?? metaInfo.getGridStore().cellPadding.left) + (metaInfo.paddingRight ?? metaInfo.getGridStore().cellPadding.right);
+    var _a, _b;
+    return ((_a = metaInfo.paddingLeft) != null ? _a : metaInfo.getGridStore().cellPadding.left) + ((_b = metaInfo.paddingRight) != null ? _b : metaInfo.getGridStore().cellPadding.right);
   }
-  getCellInnerWidth(cell, metaInfo) {
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
+    var _a, _b;
+    const context = getTextWidthContext(fontSize, fontFamily);
     const iconWidth = [metaInfo.icon, metaInfo.sortOrder].reduce((count, icon) => icon ? count + 1 : count, 0) * (ICON_SIZE + ICON_HORIZONTAL_GAP);
-    const lines = `${metaInfo.text || ""}`.split("\n");
-    const firstLine = lines[0] || "";
-    return (0, import_lodash.default)(lines).drop(1).reduce(
+    const lines = `${(_a = metaInfo.text) != null ? _a : ""}`.split("\n");
+    const firstLineWidth = iconWidth + context.calculateWidth((_b = lines[0]) != null ? _b : "");
+    return this.getHorizontalCellPadding(metaInfo) + (0, import_lodash.default)(lines).drop(1).reduce(
       (width, line) => Math.max(width, context.calculateWidth(line)),
-      iconWidth + context.calculateWidth(firstLine)
-    ) + this.getHorizontalCellPadding(metaInfo);
+      firstLineWidth
+    );
   }
-  getRendererInnerWidth(cell, metaInfo) {
+  getRendererInnerWidth(fontSize, fontFamily, metaInfo) {
     return 0;
   }
   getCellInnerHeight(cell, metaInfo) {
+    var _a, _b;
     const gridStore = metaInfo.getGridStore();
-    const top = metaInfo.paddingTop ?? gridStore.cellPadding.top;
-    const bottom = metaInfo.paddingBottom ?? gridStore.cellPadding.bottom;
+    const top = (_a = metaInfo.paddingTop) != null ? _a : gridStore.cellPadding.top;
+    const bottom = (_b = metaInfo.paddingBottom) != null ? _b : gridStore.cellPadding.bottom;
     return top + bottom + getCellInnerHeight(cell);
   }
   get renderType() {
-    throw new Error("Not implemented");
+    return "unknown";
+  }
+  get editable() {
+    return true;
   }
 };
 
 // src/js-components/grid/command/set-cell.ts
-var import_lodash2 = __toESM(require_lodash());
+var import_lodash2 = __toESM(require_lodash(), 1);
 
 // src/js-components/command-manager/command.ts
 var IRCommand = class {
@@ -239,6 +362,12 @@ var SetCellCommand = class extends IRGridCommand {
 };
 
 // src/js-components/grid/cell-renderer/checkbox.ts
+var clsCheck = {
+  checkbox: ar,
+  checkboxWrapper: nr,
+  checkboxText: lr,
+  checkboxInput: tr
+};
 var CHECKBOX_DEFAULT_SIZE = 16;
 var CHECKBOX_DEFAULT_GAP = 6;
 var CHECKBOX_DEFAULT_MARGIN = CHECKBOX_DEFAULT_GAP * 2;
@@ -255,17 +384,15 @@ var IRGridCheckboxRenderer = class extends IRGridCellRenderer {
     const div = document.createElement("div");
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
-    data.cellType = "checkbox";
-    data.editable = false;
-    div.className = checkbox_classNames_default.checkbox["&"];
-    label.className = checkbox_classNames_default.checkboxWrapper["&"];
+    div.classList.add(Pr, clsCheck.checkbox);
+    label.classList.add(Rr, clsCheck.checkboxWrapper);
     checkbox.type = "checkbox";
-    checkbox.className = checkbox_classNames_default.checkboxInput["&"];
+    checkbox.className = clsCheck.checkboxInput;
     label.appendChild(checkbox);
     data.icon && label.appendChild(createIconElement(`ir-icon--${data.icon}`));
     if (data.label) {
       const span = document.createElement("span");
-      span.className = checkbox_classNames_default.text["&"];
+      span.className = `${Vr} ${clsCheck.checkboxText}`;
       span.innerText = data.label;
       label.appendChild(span);
     }
@@ -293,8 +420,8 @@ var IRGridCheckboxRenderer = class extends IRGridCellRenderer {
     };
     return div;
   }
-  getCellInnerWidth(cell, metaInfo) {
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
+    const context = getTextWidthContext(fontSize, fontFamily);
     const labelWidth = metaInfo.label ? CHECKBOX_DEFAULT_GAP + context.calculateWidth(metaInfo.label) : 0;
     const iconWidth = metaInfo.icon ? CHECKBOX_DEFAULT_GAP + ICON_SIZE2 : 0;
     return CHECKBOX_DEFAULT_SIZE + CHECKBOX_DEFAULT_MARGIN + labelWidth + iconWidth + this.getHorizontalCellPadding(metaInfo);
@@ -302,95 +429,25 @@ var IRGridCheckboxRenderer = class extends IRGridCellRenderer {
   get renderType() {
     return "checkbox";
   }
+  get editable() {
+    return false;
+  }
 };
 function renderGridCheckbox(args) {
-  const checkboxRenderer = new IRGridCheckboxRenderer(args);
+  const checkboxRenderer = new IRGridCheckboxRenderer(args != null ? args : {});
   return () => checkboxRenderer;
 }
 
 // src/js-components/grid/cell-renderer/select.ts
-var import_lodash3 = __toESM(require_lodash());
-
-// src/js-components/grid/grid.classNames.ts
-var block = "grid";
-var grid_classNames_default = {
-  grid: {
-    "&": block,
-    "col-resizing": `${block}--col-resizing`,
-    "row-resizing": `${block}--row-resizing`,
-    "is-resizing": "is-resizing"
-  },
-  wrapper: {
-    "&": `${block}__wrapper`
-  },
-  headerCell: {
-    "&": `${block}__header-cell`
-  },
-  cellProgress: {
-    "&": `${block}__cell-progress`
-  },
-  contentCell: {
-    "&": `${block}__content-cell`,
-    "is-disabled": "is-disabled",
-    "is-selected": "is-selected",
-    "is-diff": "is-diff",
-    "is-same": "is-same"
-  },
-  cellSticky: {
-    "&": `${block}__sticky-cell`
-  },
-  cell: {
-    "&": `${block}__cell`,
-    "is-selected": "is-selected",
-    "is-disabled": "is-disabled",
-    "is-readonly": "is-readonly",
-    "is-active": "is-active",
-    "is-dragging": "is-dragging",
-    select: `${block}__cell--select`,
-    "date-picker": `${block}__cell--date-picker`,
-    button: `${block}__cell--button`
-  },
-  cellMemo: {
-    "&": `${block}__cell-memo`
-  },
-  cellError: {
-    "&": `${block}__cell-error`
-  },
-  active: {
-    "&": `${block}__active`
-  },
-  th: {
-    "&": `${block}__th`,
-    "is-active": "is-active",
-    "col-resizing": `${block}__th--col-resizing`,
-    "row-resizing": `${block}__th--row-resizing`
-  },
-  rowSticky: {
-    "&": `${block}__sticky-row`
-  },
-  rowHeaderSticky: {
-    "&": `${block}__sticky-row-header`
-  },
-  textarea: {
-    "&": `${block}__textarea`
-  },
-  focus: {
-    "&": `${block}__focus`
-  },
-  colResizerGuide: {
-    "&": `${block}__col-resizer-guide`
-  },
-  rowResizerGuide: {
-    "&": `${block}__row-resizer-guide`
-  }
-};
-
-// src/js-components/grid/cell-renderer/select.ts
+var import_lodash3 = __toESM(require_lodash(), 1);
+var clsSelect = { select: A, selectInput: j, selectInputNative: J, selectInputIcon: q };
 var SELECT_RENDERER_WIDTH_CACHE = /* @__PURE__ */ new WeakMap();
-var DEFAULT_MARGIN = 30;
-var SCROLL_WIDTH = 20;
+var ICON_SIZE3 = 20;
+var ICON_GAP = 4;
+var DEFAULT_MARGIN = ICON_SIZE3 + ICON_GAP;
+var SCROLL_WIDTH = 18;
 var SELECT_TRANSITION_MS = 150;
-var DEFAULT_CUSTOM_DISPLAY_TEXT_FUNC = (value, text) => text ?? "";
+var DEFAULT_CUSTOM_DISPLAY_TEXT_FUNC = (value, text) => text != null ? text : "";
 var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
   constructor({
     items,
@@ -433,11 +490,9 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
     const input = document.createElement("input");
     const icon = document.createElement("i");
     const isEmpty = data.text === "" || data.text === null || data.text === void 0;
-    data.cellType = "select";
-    data.editable = false;
-    div.classList.add(grid_classNames_default.cell.select, select_classNames_default.select["&"], select_classNames_default.selectInput["&"]);
-    input.classList.add(select_classNames_default.selectInputNative["&"]);
-    icon.classList.add(select_classNames_default.selectInputIcon["&"], "ir-icon", "ir-icon--chevron-down");
+    div.classList.add(Kr, clsSelect.select, clsSelect.selectInput);
+    input.classList.add(clsSelect.selectInputNative);
+    icon.classList.add(clsSelect.selectInputIcon, "ir-icon", "ir-icon--chevron-down");
     input.type = "text";
     input.readOnly = true;
     let isMapped = false;
@@ -478,9 +533,9 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
           else
             itemWrapperElement.style.display = "";
           if (text === data.text)
-            itemWrapperElement.classList.add("is-selected");
+            itemWrapperElement.classList.add(N);
           else
-            itemWrapperElement.classList.remove("is-selected");
+            itemWrapperElement.classList.remove(N);
           buttonElement.onclick = () => {
             const grid = data.commandManager;
             const command2 = new SetCellCommand(grid, [row, col, { text, value }]);
@@ -506,14 +561,15 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
           };
         }
         const cell = div.parentElement;
-        const width = Math.max(this.getItemWidth(cell, data), div.offsetWidth);
+        const { fontSize, fontFamily } = getComputedStyle(cell);
+        const width = Math.max(this.getItemWidth(fontSize, fontFamily, data), div.offsetWidth);
         divDropdown.style.width = `${width}px`;
         divDropdown.setAttribute("data-row", row.toString());
         divDropdown.setAttribute("data-col", col.toString());
         getLayerElement("popover").appendChild(divDropdown);
-        div.classList.add(select_classNames_default.select["is-expanded"]);
+        div.classList.add("is-expanded");
         setTimeout(() => {
-          divDropdown.classList.add(select_classNames_default.select["is-expanded"]);
+          divDropdown.classList.add("is-expanded");
           this._floatingCleanup();
           this._floatingCleanup = offsetBottomAutoUpdate(div.parentElement, divDropdown);
         }, 0);
@@ -521,8 +577,8 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
       hide: () => {
         escController.destroy();
         outsideHandler.destroy();
-        div.classList.remove(select_classNames_default.select["is-expanded"]);
-        divDropdown.classList.remove(select_classNames_default.select["is-expanded"]);
+        div.classList.remove("is-expanded");
+        divDropdown.classList.remove("is-expanded");
         setTimeout(() => {
           if (divDropdown.getAttribute("data-row") === row.toString() && divDropdown.getAttribute("data-col") === col.toString()) {
             this._floatingCleanup();
@@ -533,7 +589,7 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
     };
     const escController = createESCHideController(objHandler);
     const onToggle = () => {
-      if (!div.classList.contains(select_classNames_default.select["is-expanded"]))
+      if (!div.classList.contains("is-expanded"))
         objHandler.show();
       else
         objHandler.hide();
@@ -545,34 +601,38 @@ var IRGridSelectCellRenderer = class extends IRGridCellRenderer {
   }
   onChange(_row, _col, _value, _text, _beforeValue, _beforeText) {
   }
-  getCellInnerWidth(cell, metaInfo) {
-    if (!this._allowCustomText || !metaInfo.text)
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
+    if (!metaInfo.text)
       return 0;
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
+    const context = getTextWidthContext(fontSize, fontFamily);
     const isTextInItems = this._itemTextSet.has(metaInfo.text);
-    const cellWidth = context.calculateWidth(this._customDisplayTextFunc(metaInfo.value, metaInfo.text, !isTextInItems));
+    const text = this._customDisplayTextFunc(metaInfo.value, metaInfo.text, !isTextInItems);
+    const cellWidth = context.calculateWidth(text);
     return DEFAULT_MARGIN + cellWidth + this.getHorizontalCellPadding(metaInfo);
   }
-  getDropdownWidth(cell, metaInfo) {
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
+  getDropdownWidth(fontSize, fontFamily, metaInfo) {
+    const context = getTextWidthContext(fontSize, fontFamily);
     const maxWidth = this._items.reduce((width, item) => Math.max(width, context.calculateWidth(item.text)), 0);
     return DEFAULT_MARGIN + maxWidth + this.getHorizontalCellPadding(metaInfo);
   }
-  getRendererInnerWidth(cell, metaInfo) {
+  getRendererInnerWidth(fontSize, fontFamily, metaInfo) {
     const cacheWidth = SELECT_RENDERER_WIDTH_CACHE.get(this);
     if (cacheWidth)
       return cacheWidth;
-    const calculateWidth = this.getDropdownWidth(cell, metaInfo);
+    const calculateWidth = this.getDropdownWidth(fontSize, fontFamily, metaInfo);
     SELECT_RENDERER_WIDTH_CACHE.set(this, calculateWidth);
     return calculateWidth;
   }
-  getItemWidth(cell, metaInfo) {
+  getItemWidth(fontSize, fontFamily, metaInfo) {
     if (this._itemWidth === null)
-      this._itemWidth = this.getRendererInnerWidth(cell, metaInfo);
+      this._itemWidth = this.getRendererInnerWidth(fontSize, fontFamily, metaInfo);
     return this._itemWidth + SCROLL_WIDTH;
   }
   get renderType() {
     return "select";
+  }
+  get editable() {
+    return false;
   }
 };
 var renderGridSelect = (args) => {
@@ -581,15 +641,15 @@ var renderGridSelect = (args) => {
 };
 
 // src/js-components/grid/cell-renderer/datePicker.ts
-var import_dayjs = __toESM(require_dayjs_min());
+var clsInput = { input: sr, inputNative: gr, inputSuffix: pr };
 var DEFAULT_MARGIN2 = 28;
 var lastDateTextCache = /* @__PURE__ */ new WeakMap();
 var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
   constructor({
     onDateClick,
     format = i18n_default.datePicker.dateFormat,
-    minDate = IR_STYLE_CONFIG.datePicker.minDate,
-    maxDate = IR_STYLE_CONFIG.datePicker.maxDate,
+    minDate = getThemeStore().getStoreValue("datePicker.minDate"),
+    maxDate = getThemeStore().getStoreValue("datePicker.maxDate"),
     allowedEmptyString = true
   }) {
     super();
@@ -602,11 +662,12 @@ var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
   }
   onDateClick(row, col, text) {
   }
-  getCellInnerWidth(cell, metaInfo) {
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
+    const context = getTextWidthContext(fontSize, fontFamily);
     return context.calculateWidth(metaInfo.text || this._format) + DEFAULT_MARGIN2 + this.getHorizontalCellPadding(metaInfo);
   }
   render(row, col, data) {
+    var _a;
     const div = document.createElement("div");
     const input = document.createElement("input");
     const btn = document.createElement("button");
@@ -617,26 +678,25 @@ var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
       _format: format,
       _allowedEmptyString: allowedEmptyString
     } = this;
-    data.cellType = "datePicker";
     input.readOnly = true;
     input.maxLength = format.length;
-    div.classList.add(input_classNames_default.input["&"], grid_classNames_default.cell["date-picker"]);
-    input.classList.add(input_classNames_default.inputNative["&"]);
-    btn.classList.add(input_classNames_default.inputSuffix["&"]);
+    div.classList.add(clsInput.input, Lr);
+    input.classList.add(clsInput.inputNative);
+    btn.classList.add(clsInput.inputSuffix);
     icon.classList.add("ir-icon", "ir-icon--calendar");
     input.type = "text";
     input.placeholder = format;
     if (data.text !== "") {
-      const textDayjs = (0, import_dayjs.default)(data.text, format, true);
+      const textDayjs = esm_default(data.text, format, true);
       if (!textDayjs.isValid())
         data.text = lastDateTextCache.get(data);
       if (textDayjs.isBefore(minDate) || textDayjs.isAfter(maxDate))
         data.text = lastDateTextCache.get(data);
     }
     if (!allowedEmptyString && (data.text === "" || data.text === void 0))
-      data.text = lastDateTextCache.has(data) ? lastDateTextCache.get(data) : (0, import_dayjs.default)().format(format);
+      data.text = lastDateTextCache.has(data) ? lastDateTextCache.get(data) : esm_default().format(format);
     input.value = data.text || "";
-    lastDateTextCache.set(data, data.text ?? "");
+    lastDateTextCache.set(data, (_a = data.text) != null ? _a : "");
     btn.appendChild(icon);
     div.appendChild(input);
     div.appendChild(btn);
@@ -647,11 +707,11 @@ var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
       maxDate,
       onClick: (dt) => {
         const beforeText = data.text;
-        const text = (0, import_dayjs.default)(dt).format(format);
+        const text = esm_default(dt).format(format);
         const grid = data.commandManager;
         const command2 = new SetCellCommand(grid, [row, col, { text }]);
         command2.onUndo = () => {
-          this.onDateClick(row, col, beforeText ?? "");
+          this.onDateClick(row, col, beforeText != null ? beforeText : "");
         };
         command2.onExecute = () => {
           this.onDateClick(row, col, text);
@@ -667,7 +727,7 @@ var IRGridDatePickerRenderer = class extends IRGridCellRenderer {
     });
     btn.onclick = () => {
       if (!datePickerHandler.visible) {
-        const check = (0, import_dayjs.default)(data.text, format, true);
+        const check = esm_default(data.text, format, true);
         if (check.isValid())
           datePickerHandler.update(check.toDate(), check.toDate());
         else
@@ -686,25 +746,11 @@ var renderGridDatePicker = (args) => {
   return () => datePickerRenderer;
 };
 
-// src/components/progress/progress.classNames.ts
-var block2 = "progress";
-var progress_classNames_default = {
-  progress: {
-    "&": block2,
-    danger: `${block2}--danger`,
-    warning: `${block2}--warning`,
-    info: `${block2}--info`,
-    tertiary: `${block2}--tertiary`,
-    secondary: `${block2}--secondary`
-  },
-  bar: {
-    "&": `${block2}__bar`
-  },
-  VALUE_PROPERTY: "--progress-value",
-  PERCENT_PROPERTY: "--progress-percent"
-};
-
 // src/js-components/grid/cell-renderer/progress.ts
+var clsProgress = {
+  progress: ir,
+  progressVariants: or
+};
 var DEFAULT_PROGRESS_OPTIONS = {
   min: 0,
   max: 100,
@@ -722,6 +768,7 @@ var IRGridProgressRenderer = class extends IRGridCellRenderer {
     this._afterDecimalLen = afterDecimalLen;
   }
   render(row, col, data) {
+    var _a;
     const {
       _min: min,
       _max: max,
@@ -730,25 +777,28 @@ var IRGridProgressRenderer = class extends IRGridCellRenderer {
     } = this;
     const wrapper = document.createElement("div");
     const progress = document.createElement("div");
-    wrapper.className = grid_classNames_default.cellProgress["&"];
-    progress.className = progress_classNames_default.progress["&"];
-    const intent = data.intent ?? defaultIntent;
+    wrapper.className = Nr;
+    progress.className = clsProgress.progress;
+    const intent = (_a = data.intent) != null ? _a : defaultIntent;
     if (intent)
-      progress.classList.add(progress_classNames_default.progress[intent]);
-    data.cellType = "progress";
-    data.editable = false;
+      progress.classList.add(`${clsProgress.progress}--${intent}`);
     const value = getMinMaxBetween(parseFloat(data.text || "0"), min, max);
     const percent = (value - min) / (max - min) * PROGRESS_RATIO;
-    progress.style.setProperty(progress_classNames_default.VALUE_PROPERTY, `'${percent.toFixed(afterDecimalLen)}%'`);
-    progress.style.setProperty(progress_classNames_default.PERCENT_PROPERTY, `${percent}%`);
+    setElementVars(progress, {
+      [clsProgress.progressVariants.progressPercent]: `${percent}%`,
+      [clsProgress.progressVariants.progressText]: `'${percent.toFixed(afterDecimalLen)}%'`
+    });
     wrapper.appendChild(progress);
     return wrapper;
   }
-  getCellInnerWidth(cell, metaInfo) {
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
     return DEFAULT_WIDTH + this.getHorizontalCellPadding(metaInfo);
   }
   get renderType() {
     return "progress";
+  }
+  get editable() {
+    return false;
   }
 };
 var renderGridProgress = (args = DEFAULT_PROGRESS_OPTIONS) => {
@@ -759,32 +809,38 @@ var renderGridProgress = (args = DEFAULT_PROGRESS_OPTIONS) => {
 // src/js-components/grid/cell-renderer/button.ts
 var DEFAULT_ICON_SIZE = 26;
 var DEFAULT_BUTTON_HEIGHT = 24;
+var buttonCls = {
+  primary: z,
+  secondary: m,
+  tertiary: B,
+  transparent: y
+};
 var IRGridButtonRenderer = class extends IRGridCellRenderer {
-  constructor({ onClick, defaultColor = "transparent", defaultLabel = "", defaultIcon }) {
+  constructor(args) {
     super();
-    this._defaultColor = defaultColor;
-    this._defaultLabel = defaultLabel;
-    this._defaultIcon = defaultIcon;
-    if (onClick)
-      this.onClick = onClick.bind(this);
+    this.args = args;
+    if (args.onClick)
+      this.onClick = args.onClick.bind(this);
   }
   onClick(ev, row, col) {
   }
   render(row, col, data) {
+    var _a, _b;
     const wrapper = document.createElement("div");
     const button = document.createElement("button");
-    wrapper.className = grid_classNames_default.cell.button;
-    data.editable = false;
-    button.className = button_classNames_default.button["&"];
-    const color = data.intent ?? this._defaultColor;
+    wrapper.className = Hr;
+    button.classList.add(Br, "button");
+    const color = (_a = data.intent) != null ? _a : this.args.defaultColor;
     if (color)
-      button.classList.add(button_classNames_default.button[color]);
+      button.classList.add(buttonCls[color]);
+    if (this.args.outlineStyle)
+      wrapper.classList.add(Sr);
     button.onclick = (ev) => this.onClick(ev, row, col);
-    const icon = data.icon || this._defaultIcon;
-    const text = (data.label ?? this._defaultLabel) || "";
+    const icon = data.icon || this.args.defaultIcon;
+    const text = ((_b = data.label) != null ? _b : this.args.defaultLabel) || "";
     if (icon) {
       const iconElement = document.createElement("i");
-      iconElement.classList.add(button_classNames_default.buttonIcon["&"], "ir-icon", `ir-icon--${icon}`);
+      iconElement.classList.add(x, "ir-icon", `ir-icon--${icon}`);
       button.appendChild(iconElement);
     }
     if (text) {
@@ -795,10 +851,10 @@ var IRGridButtonRenderer = class extends IRGridCellRenderer {
     wrapper.appendChild(button);
     return wrapper;
   }
-  getCellInnerWidth(cell, metaInfo) {
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
-    const icon = metaInfo.icon || this._defaultIcon;
-    const label = metaInfo.label || this._defaultLabel;
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
+    const context = getTextWidthContext(fontSize, fontFamily);
+    const icon = metaInfo.icon || this.args.defaultIcon;
+    const label = metaInfo.label || this.args.defaultLabel;
     const labelWidth = context.calculateWidth(label || "") + (icon ? DEFAULT_ICON_SIZE : 0);
     return this.getHorizontalCellPadding(metaInfo) + labelWidth + this.getHorizontalCellPadding(metaInfo);
   }
@@ -808,30 +864,17 @@ var IRGridButtonRenderer = class extends IRGridCellRenderer {
   get renderType() {
     return "button";
   }
+  get editable() {
+    return false;
+  }
 };
-var renderGridButton = ({ onClick, defaultColor = "transparent", defaultLabel, defaultIcon }) => {
-  const buttonRenderer = new IRGridButtonRenderer({ onClick, defaultColor, defaultLabel, defaultIcon });
+var renderGridButton = (args) => {
+  const buttonRenderer = new IRGridButtonRenderer(args != null ? args : {});
   return () => buttonRenderer;
 };
 
-// src/components/radio/radio.classNames.ts
-var block3 = "radio";
-var radio_classNames_default = {
-  radio: {
-    "&": block3
-  },
-  radioWrapper: {
-    "&": `${block3}__wrapper`
-  },
-  radioInput: {
-    "&": `${block3}__input`
-  },
-  text: {
-    "&": `${block3}__text`
-  }
-};
-
 // src/js-components/grid/cell-renderer/radio.ts
+var clsRadio = { radio: Y, radioWrapper: _r, radioInput: $, radioText: rr };
 var RADIO_DEFAULT_SIZE = 16;
 var RADIO_DEFAULT_GAP = 6;
 var RADIO_DEFAULT_MARGIN = RADIO_DEFAULT_GAP * 2;
@@ -855,16 +898,14 @@ var IRGridRadioCellRenderer = class extends IRGridCellRenderer {
     const div = document.createElement("div");
     const label = document.createElement("label");
     const radio = document.createElement("input");
-    data.cellType = "radio";
-    data.editable = false;
-    div.className = radio_classNames_default.radio["&"];
-    label.className = radio_classNames_default.radioWrapper["&"];
+    div.className = `${Gr} ${clsRadio.radio}`;
+    label.className = clsRadio.radioWrapper;
     radio.type = "radio";
-    radio.className = radio_classNames_default.radioInput["&"];
+    radio.className = clsRadio.radioInput;
     label.appendChild(radio);
     if (data.label) {
       const span = document.createElement("span");
-      span.className = radio_classNames_default.text["&"];
+      span.className = clsRadio.radioText;
       span.innerText = data.label;
       label.appendChild(span);
     }
@@ -896,13 +937,16 @@ var IRGridRadioCellRenderer = class extends IRGridCellRenderer {
   }
   onRadioClick(row, col) {
   }
-  getCellInnerWidth(cell, metaInfo) {
-    const context = getTextWidthContext(cell.style.fontSize, cell.style.fontFamily);
+  getCellInnerWidth(fontSize, fontFamily, metaInfo) {
+    const context = getTextWidthContext(fontSize, fontFamily);
     const labelWidth = metaInfo.label ? RADIO_DEFAULT_GAP + context.calculateWidth(metaInfo.label) : 0;
     return RADIO_DEFAULT_SIZE + RADIO_DEFAULT_MARGIN + labelWidth + this.getHorizontalCellPadding(metaInfo);
   }
   get renderType() {
     return "radio";
+  }
+  get editable() {
+    return false;
   }
 };
 var renderGridRadio = ({ onRadioClick }) => {
@@ -912,10 +956,11 @@ var renderGridRadio = ({ onRadioClick }) => {
 
 // src/js-components/grid/cell-renderer/default.ts
 function createCellContent(data) {
+  var _a;
   const div = document.createElement("div");
   const text = document.createElement("span");
-  text.innerText = data.text ?? "";
-  div.className = grid_classNames_default.contentCell["&"];
+  text.innerText = (_a = data.text) != null ? _a : "";
+  div.className = hr;
   if (data.sortOrder !== void 0) {
     const icon = data.sortOrder === "ASC" ? "sort-ascending" : "sort-descending";
     const iconElement = document.createElement("i");
@@ -933,15 +978,16 @@ function createCellContent(data) {
   return div;
 }
 function createCellContentWithIconButton(row, col, data, onClick) {
+  var _a;
   const div = document.createElement("div");
   const text = document.createElement("span");
-  text.innerText = data.text ?? "";
-  div.className = grid_classNames_default.contentCell["&"];
+  text.innerText = (_a = data.text) != null ? _a : "";
+  div.className = hr;
   if (data.icon) {
     const button = document.createElement("button");
     const icon = document.createElement("i");
     button.setAttribute("type", "button");
-    button.classList.add("icon-button");
+    button.classList.add("icon-button", yr);
     button.onclick = (ev) => {
       onClick && onClick(ev, row, col);
     };
@@ -956,7 +1002,6 @@ function createCellContentWithIconButton(row, col, data, onClick) {
 }
 var IRGridDefaultCellRenderer = class extends IRGridCellRenderer {
   render(row, col, data) {
-    data.cellType = "default";
     return createCellContent(data);
   }
   get renderType() {
@@ -970,25 +1015,39 @@ var IRGridDefaultCellIconButtonRenderer = class extends IRGridCellRenderer {
       this.onClick = onClick;
   }
   render(row, col, data) {
-    data.cellType = "default";
     return createCellContentWithIconButton(row, col, data, (ev, row2, col2) => this.onClick(ev, row2, col2));
   }
   onClick(ev, row, col) {
+  }
+  get renderType() {
+    return "iconButton";
   }
 };
 var IRGridRowNoHeaderCellRenderer = class extends IRGridCellRenderer {
   constructor(fixedRowCount, ...captionList) {
     super();
+    this._prefix = "";
     this._fixedRowCount = fixedRowCount;
     this._captionList = captionList;
+  }
+  get prefix() {
+    return this._prefix;
+  }
+  get renderType() {
+    return "rowNo";
+  }
+  get editable() {
+    return false;
+  }
+  set prefix(prefix) {
+    this._prefix = prefix;
   }
   render(row, col, data) {
     const div = document.createElement("div");
     const text = document.createElement("div");
     const r = row - this._fixedRowCount;
-    data.cellType = "rowNo";
-    div.className = grid_classNames_default.contentCell["&"];
-    const cellText = r < this._captionList.length ? this._captionList[r] : `${1 + r - this._captionList.length}`;
+    div.className = hr;
+    const cellText = r < this._captionList.length ? this._captionList[r] : `${this._prefix}${1 + r - this._captionList.length}`;
     text.innerText = cellText;
     data.text = cellText;
     div.appendChild(text);
@@ -1030,17 +1089,23 @@ function createCustomRenderer(renderFunc) {
 
 // src/js-components/grid/clipboard/clipboard.ts
 function getPastingContext(grid, copyOptions) {
-  function getPastingRange(range, cellMetaInfoMatrix) {
+  function getPastingRange(selection, cellMetaInfoMatrix) {
     if (cellMetaInfoMatrix.length === 0)
       throw new Error("No pasting data.");
+    const copySelection = { ...selection };
     const dataHeight = cellMetaInfoMatrix.length;
     const dataWidth = cellMetaInfoMatrix[0].length;
-    return {
-      top: range.top,
-      left: range.left,
-      bottom: Math.max(range.top + (dataHeight - 1), range.bottom),
-      right: Math.max(range.left + (dataWidth - 1), range.right)
-    };
+    const bottom = copySelection.top + dataHeight;
+    const right = copySelection.left + dataWidth;
+    for (let row = selection.bottom + 1; row < bottom; ++row) {
+      if (grid.hasRow(row) || grid.onAutoInsertRow(row))
+        copySelection.bottom = row;
+    }
+    for (let col = selection.right + 1; col < right; ++col) {
+      if (grid.hasColumn(col) || grid.onAutoInsertColumn(col))
+        copySelection.right = col;
+    }
+    return copySelection;
   }
   function beforePastingList(pasteRange, cellMetaInfoMatrix) {
     if (cellMetaInfoMatrix.length === 0)
@@ -1050,18 +1115,18 @@ function getPastingContext(grid, copyOptions) {
     const pastingCellList = [];
     const rangeHeight = pasteRange.bottom - pasteRange.top + 1;
     const rangeWidth = pasteRange.right - pasteRange.left + 1;
-    function getPastingData(y, x) {
-      const [adjustedY, adjustedX] = [y % dataHeight, x % dataWidth];
+    function getPastingData(y2, x2) {
+      const [adjustedY, adjustedX] = [y2 % dataHeight, x2 % dataWidth];
       return cellMetaInfoMatrix[adjustedY][adjustedX];
     }
-    for (const { y, x } of get2DGenerator(rangeHeight, rangeWidth)) {
-      const [row, col] = [y + pasteRange.top, x + pasteRange.left];
+    for (const { y: y2, x: x2 } of get2DGenerator(rangeHeight, rangeWidth)) {
+      const [row, col] = [y2 + pasteRange.top, x2 + pasteRange.left];
       !grid.hasRow(row) && grid.onAutoInsertRow(row) && grid.addRow();
       !grid.hasColumn(col) && grid.onAutoInsertColumn(col) && grid.addColumn();
       if (!grid.hasRow(row) || !grid.hasColumn(col))
         continue;
       const cell = grid.cell(row, col);
-      const cellMetaInfo = getPastingData(y, x);
+      const cellMetaInfo = getPastingData(y2, x2);
       if (cellMetaInfo.cellVisible && grid.onCheckPasteCell(cell, cellMetaInfo.text))
         pastingCellList.push({
           cell,
@@ -1069,7 +1134,8 @@ function getPastingContext(grid, copyOptions) {
             text: cellMetaInfo.text,
             cellVisible: cellMetaInfo.cellVisible,
             rowSpan: copyOptions.rowSpan ? cellMetaInfo.rowSpan : 1,
-            colSpan: copyOptions.colSpan ? cellMetaInfo.colSpan : 1
+            colSpan: copyOptions.colSpan ? cellMetaInfo.colSpan : 1,
+            isFormatted: false
           }
         });
     }
@@ -1106,15 +1172,15 @@ function getHtmlTextPayload(cellMetaCopyMatrix) {
   const doc = new Document();
   const table = doc.createElement("table");
   cellMetaCopyMatrix.forEach((row) => {
-    const tr = doc.createElement("tr");
+    const tr2 = doc.createElement("tr");
     row.filter((cell) => cell.cellVisible).forEach((cell) => {
       const td = doc.createElement("td");
       td.textContent = cell.text;
       td.setAttribute("rowSpan", `${cell.rowSpan}`);
       td.setAttribute("colSpan", `${cell.colSpan}`);
-      tr.appendChild(td);
+      tr2.appendChild(td);
     });
-    table.appendChild(tr);
+    table.appendChild(tr2);
   });
   doc.appendChild(table);
   return doc.documentElement.outerHTML;
@@ -1130,12 +1196,13 @@ function parseHtmlTextPayload(html) {
   const copyMetaInfo = Array(rows.length).fill(void 0).map(() => []);
   function fillEmptyData(row, col, rowSpan, colSpan) {
     for (let i = row; i < row + rowSpan; ++i) {
-      for (let j = col; j < col + colSpan; ++j) {
-        copyMetaInfo[i][j] = {
+      for (let j2 = col; j2 < col + colSpan; ++j2) {
+        copyMetaInfo[i][j2] = {
           text: "",
           rowSpan: 1,
           colSpan: 1,
-          cellVisible: false
+          cellVisible: false,
+          isFormatted: false
         };
       }
     }
@@ -1157,7 +1224,8 @@ function parseHtmlTextPayload(html) {
         text: cell.innerText,
         rowSpan: cell.rowSpan,
         colSpan: cell.colSpan,
-        cellVisible: true
+        cellVisible: true,
+        isFormatted: cell.hasAttribute("class")
       };
       colId = getNextColId(colId);
     }
@@ -1192,15 +1260,13 @@ function parsePlainTextPayload(payload) {
   const data = [];
   const parsingStack = [];
   const lineBuffer = [];
-  function isItColumnDelimiter(ch) {
-    return ch === COLUMN_SEPARATOR;
-  }
   function flushParsingStack() {
     lineBuffer.push({
       text: parsingStack.join(""),
       rowSpan: 1,
       colSpan: 1,
-      cellVisible: true
+      cellVisible: true,
+      isFormatted: false
     });
     parsingStack.length = 0;
   }
@@ -1214,14 +1280,15 @@ function parsePlainTextPayload(payload) {
   for (const ch of payload) {
     if (ch === "\r")
       continue;
-    else if (isItColumnDelimiter(ch))
+    else if (ch === COLUMN_SEPARATOR)
       flushParsingStack();
     else if (ch === LINE_SEPARATOR)
       flushLineBuffer();
     else
       parsingStack.push(ch);
   }
-  flushLineBuffer();
+  if (parsingStack.length > 0 || lineBuffer.length > 0)
+    flushLineBuffer();
   return data;
 }
 
@@ -1248,11 +1315,36 @@ function setClipboardData(transferData, cellCopyMetaMatrix) {
     ({ format, payloadFunc }) => transferData.setData(format, payloadFunc(cellCopyMetaMatrix))
   );
 }
+function isOmitted(cell) {
+  return cell.isFormatted && cell.text.startsWith("#");
+}
+function hasOmittedData(data) {
+  return data.some((row) => row.some((cell) => isOmitted(cell)));
+}
+function getCombinedData(data, textData) {
+  var _a, _b;
+  for (let r = 0; r < data.length; ++r) {
+    const length = data[r].length;
+    for (let c = 0; c < length; ++c) {
+      if (((_b = (_a = textData[r]) == null ? void 0 : _a[c]) == null ? void 0 : _b.text) && isOmitted(data[r][c]))
+        data[r][c].text = textData[r][c].text;
+    }
+  }
+  return data;
+}
 function getCopyMetaInfoFromClipboard(transferData) {
   for (const { format, parseFunc } of FORMAT_INTERFACE) {
     const data = transferData.getData(format);
-    if (data !== "")
-      return parseFunc(data);
+    if (data !== "") {
+      const parsedData = parseFunc(data);
+      if (!hasOmittedData(parsedData))
+        return parsedData;
+      const plainText = transferData.getData(FORMAT_INTERFACE[2].format);
+      return getCombinedData(
+        parsedData,
+        FORMAT_INTERFACE[2].parseFunc(plainText)
+      );
+    }
   }
   console.warn("No relevant data format in clipboard!");
   return [];
@@ -1276,7 +1368,7 @@ var IRGridModeState = class extends ReactiveState {
 };
 
 // src/js-components/grid/grid.range.util.ts
-var import_lodash4 = __toESM(require_lodash());
+var import_lodash4 = __toESM(require_lodash(), 1);
 
 // src/js-components/grid/utility/generator.ts
 var IRGridCellGenerator = class {
@@ -1483,514 +1575,19 @@ var IRGridStateContext = class {
   }
 };
 
-// src/js-components/grid/grid-row.ts
-var import_lodash5 = __toESM(require_lodash());
-
-// src/js-components/grid/grid.constants.ts
-var ROW_BORDER_SIZE = 1;
-var COLUMN_BORDER_SIZE = 1;
-
-// src/js-components/grid/grid-row.ts
-var GRID_HEIGHT_PROPERTY = "--grid-cell-height";
-var IRGridRow = class {
-  constructor({ grid, rowId, height, top, rowType }) {
-    this._rowElement = null;
-    this._top = -1;
-    this._maxCellHeight = 0;
-    this._uuid = v4_default();
-    this._stickyColumns = 0;
-    this._height = 0;
-    this._isCalledOnMounted = false;
-    this._grid = grid;
-    this._cells = [];
-    this._rowType = rowType;
-    this._rowId = rowId;
-    this._maxCellHeight = height;
-    this._isMounted = false;
-    this._height = height;
-    this._top = top;
-  }
-  /**
-   * Getters
-   */
-  get rowInnerHeight() {
-    return this._cells.filter((cell) => cell.visible && cell.mergeInfo.rowSpan === 1).reduce((height, cell) => Math.max(height, cell.innerHeight), 0);
-  }
-  get isFreezed() {
-    return this.element.classList.contains(grid_classNames_default.rowSticky["&"]);
-  }
-  get uuid() {
-    return this._uuid;
-  }
-  get isMounted() {
-    return this._isMounted;
-  }
-  get rowId() {
-    return this._rowId;
-  }
-  get isHeaderRow() {
-    return this.element.classList.contains(grid_classNames_default.rowHeaderSticky["&"]);
-  }
-  get cellCounts() {
-    return this._cells.length;
-  }
-  get rowType() {
-    return this._rowType;
-  }
-  initRowElement() {
-    const tr = document.createElement("tr");
-    tr.style.setProperty(GRID_HEIGHT_PROPERTY, `${this._height}px`);
-    tr.setAttribute("data-top", this._top.toString());
-    tr.dataset["row"] = this._rowId.toString();
-    this._rowElement = tr;
-    for (const cell of this._cells) {
-      tr.appendChild(cell.element);
-      cell.setStickyZIndex(this.getFreezedCellType(cell.col), this._top, this._grid.getColumnLeft(cell.col));
-      if (this.isMounted)
-        cell.render();
-    }
-    return tr;
-  }
-  get element() {
-    if (this._rowElement === null) {
-      this._rowElement = this.initRowElement();
-    }
-    return this._rowElement;
-  }
-  get textColor() {
-    return this.element.style.color;
-  }
-  get height() {
-    return this._height;
-  }
-  get heightWithBorder() {
-    return this._height + ROW_BORDER_SIZE;
-  }
-  get bottom() {
-    if (!this.visible)
-      return this._top;
-    return this._top + this.heightWithBorder;
-  }
-  get bottomByCellHeight() {
-    return this._top + this._maxCellHeight;
-  }
-  get stickyColumns() {
-    return this._stickyColumns;
-  }
-  get top() {
-    return this._top;
-  }
-  get visible() {
-    return this.element.style.display !== "none";
-  }
-  /*
-   * Setters
-   */
-  set rowId(row) {
-    if (this._rowElement)
-      this._rowElement.dataset["row"] = row.toString();
-    this._rowId = row;
-    this._cells.forEach((cell) => cell.row = row);
-    this.render();
-  }
-  set textColor(color) {
-    this.element.style.color = color;
-  }
-  set height(height) {
-    this._height = height;
-    this.element.style.setProperty(GRID_HEIGHT_PROPERTY, `${height}px`);
-    this.onChangedHeight(this, height);
-  }
-  set top(value) {
-    this._top = value;
-    this.element.setAttribute("data-top", value.toString());
-    this.updateStickyStatus();
-  }
-  set visible(visible) {
-    if (visible) {
-      this.element.style.removeProperty("display");
-      this.render();
-    } else
-      this.element.style.display = "none";
-  }
-  /*
-   * Public Methods
-   */
-  unmount() {
-    this._isMounted = false;
-    this.element.remove();
-  }
-  updateMaxCellHeight() {
-    const rowHeight = this.height;
-    this._maxCellHeight = this._cells.reduce((h, cell) => {
-      return Math.max(h, cell.height ?? rowHeight);
-    }, rowHeight);
-  }
-  removeCells(left, right) {
-    import_lodash5.default.range(left, right + 1).forEach((col) => this._cells[col].element.remove());
-    const removedCols = 1 + right - left;
-    this._cells.splice(left, removedCols);
-    import_lodash5.default.range(left, this._cells.length).forEach((col) => {
-      this._cells[col].col -= removedCols;
-      this._cells[col].render();
-    });
-  }
-  /**
-   * 현재 row에서 가장 위에 있는 rowId 반환
-   * 내부에 병합된 셀이 있는 경우, 해당 셀이 참조하는 셀의 top을 반환
-   */
-  getTopRowId() {
-    let topRowId = this._rowId;
-    for (const cell of this._cells) {
-      if (cell.mergeMain)
-        topRowId = Math.min(topRowId, cell.mergeMain.row);
-    }
-    return topRowId;
-  }
-  /**
-   * 현재 row에서 가장 아래에 있는 rowId 반환
-   * 내부에 병합된 셀이 있는 경우, 해당 셀이 참조하는 셀의 bottom을 반환
-   */
-  getBottomRowId() {
-    let bottomRowId = this._rowId;
-    for (const cell of this._cells) {
-      if (cell.mergeMain)
-        bottomRowId = Math.max(bottomRowId, cell.mergeMain.bottom);
-    }
-    return bottomRowId;
-  }
-  getFreezedCellType(col) {
-    const isFreezedColumn = col < this._grid.getFreezedColumnCount();
-    if (this.isHeaderRow)
-      return isFreezedColumn ? STICKY_Z_INDEX.lv9 : STICKY_Z_INDEX.lv8;
-    if (this.isFreezed)
-      if (isFreezedColumn)
-        return col < this._grid.headerColumns ? STICKY_Z_INDEX.lv7 : STICKY_Z_INDEX.lv6;
-      else
-        return STICKY_Z_INDEX.lv5;
-    if (isFreezedColumn)
-      return col < this._grid.headerColumns ? STICKY_Z_INDEX.lv4 : STICKY_Z_INDEX.lv3;
-    return null;
-  }
-  addCell(cell) {
-    this._cells.push(cell);
-    if (this._rowElement) {
-      this._rowElement.appendChild(cell.element);
-      cell.setStickyZIndex(this.getFreezedCellType(cell.col), this._top, this._grid.getColumnLeft(cell.col));
-      cell.render();
-    }
-  }
-  insertCells(cells, col) {
-    if (this._cells.length < col)
-      throw new Error(`Out of length at the row. the length is ${this._cells.length} and you tried inserting with ${col}`);
-    const target = this._cells[col].element;
-    import_lodash5.default.range(col, this._cells.length).forEach((id) => {
-      this._cells[id].col += cells.length;
-      this._cells[id].render();
-    });
-    this._cells.splice(col, 0, ...cells);
-    (0, import_lodash5.default)(cells).forEach((cell) => {
-      cell.setStickyZIndex(this.getFreezedCellType(cell.col), this._top, this._grid.getColumnLeft(cell.col));
-      target.insertAdjacentElement("beforebegin", cell.element);
-      if (this.isMounted)
-        cell.render();
-    });
-  }
-  render() {
-    if (this.visible)
-      this._cells.forEach((cell) => cell.render());
-  }
-  getCell(col) {
-    const cell = this._cells[col];
-    if (!cell)
-      throw new Error(`Not found cell ${this._rowId}, ${col}`);
-    return cell;
-  }
-  *getCellGenerator(left = 0, right = this._cells.length - 1) {
-    for (let c = left; c <= right; ++c)
-      yield this._cells[c];
-  }
-  setColumnVisible(col, visible) {
-    this._cells[col].visible = visible;
-  }
-  getColumnVisible(col) {
-    return this._cells[col].visible;
-  }
-  setAutoHeight(minSize, maxSize) {
-    const height = Math.ceil(this.rowInnerHeight);
-    const autoHeight = getMinMaxBetween(isNaN(height) ? 0 : height, minSize, maxSize);
-    if (this.height !== autoHeight) {
-      this.height = autoHeight;
-      return true;
-    }
-    return false;
-  }
-  mount(element, position) {
-    if (this.isMounted)
-      return;
-    element.insertAdjacentElement(position, this.element);
-    this.render();
-    this._isMounted = true;
-    if (!this._isCalledOnMounted) {
-      this._isCalledOnMounted = true;
-      this.onMounted(this);
-    }
-  }
-  freeze(isHeader = false) {
-    if (isHeader)
-      this.element.classList.add(grid_classNames_default.rowHeaderSticky["&"]);
-    this.element.classList.add(grid_classNames_default.rowSticky["&"]);
-    this.updateStickyStatus();
-  }
-  isBetweenTop(top) {
-    return top >= this.top && top <= this.bottom;
-  }
-  updateStickyStatus() {
-    this._cells.reduce((left, cell, col) => {
-      cell.setStickyZIndex(this.getFreezedCellType(col), this._top, left);
-      return left + (this._grid.getColumnVisible(col) ? this._grid.getColumnWidth(col) + 1 : 0);
-    }, 0);
-  }
-  // row에 있는 모든 셀에 metaInfo 일괄 적용
-  updateCellMetaInfo(cellMetaInfo) {
-    this._cells.forEach((cell) => cell.cellInfo = cellMetaInfo);
-  }
-  freezeColumns(column) {
-    this._stickyColumns = column;
-    this.updateStickyStatus();
-  }
-  unfreeze() {
-    if (this.isHeaderRow)
-      throw new Error("Can not freeze header row!");
-    this.element.classList.remove(grid_classNames_default.rowSticky["&"]);
-    this.updateStickyStatus();
-  }
-  /*
-   * Events
-   */
-  onMounted(_row) {
-  }
-  onChangedHeight(_row, _height) {
-  }
-};
-var IRGridRowManager = class {
-  constructor(headerRows, freezedRows) {
-    this._rowList = [];
-    this._visibleRowList = [];
-    this._headerRows = headerRows;
-    this._freezedRows = freezedRows;
-    this._rowsHeight = 0;
-    this._headerRowsHeight = 0;
-    this._freezedRowsHeight = 0;
-  }
-  getRow(rowId) {
-    const row = this._rowList[rowId];
-    if (!row)
-      throw new Error(`Not found row ${rowId}`);
-    return row;
-  }
-  addRow(row) {
-    this._rowList.push(row);
-    this._visibleRowList.push(row);
-    this.updateRowHeight(row, "add");
-    if (row.rowId < this.freezedRows)
-      this.updateFixedHeight();
-  }
-  clearRows() {
-    (0, import_lodash5.default)(this._rowList).drop(this.headerRows).forEach((row) => row.unmount());
-    this._rowList.length = this.headerRows;
-    this._rowsHeight = this.headerRowsHeight;
-    this._freezedRowsHeight = this.headerRowsHeight;
-    this.updateVisibleRowList();
-  }
-  addColumn(creatingCellFunc) {
-    this._rowList.forEach((row) => row.addCell(creatingCellFunc(row)));
-  }
-  setColumnVisible(col, visible) {
-    this._rowList.forEach((row) => row.getCell(col).visible = visible);
-  }
-  insertColumns(insertingColumnId, count, createCellFunc) {
-    this._rowList.forEach((row) => {
-      const cellList = import_lodash5.default.range(count).map((id) => createCellFunc(row.rowId, insertingColumnId + id));
-      row.insertCells(cellList, insertingColumnId);
-    });
-  }
-  removeRows(top, bottom) {
-    const deletedRows = this._rowList.splice(top, bottom - top + 1);
-    if (deletedRows.length === 0)
-      return;
-    deletedRows.forEach((row) => {
-      this.updateRowHeight(row, "remove");
-      row.unmount();
-    });
-    this.updateVisibleRowList();
-    this.updateFixedHeight();
-  }
-  removeColumns(left, right) {
-    this._rowList.forEach((row) => row.removeCells(left, right));
-  }
-  insertRows(insertingRowId, rows) {
-    let top = this._rowList[insertingRowId].top;
-    this._rowList.splice(insertingRowId, 0, ...rows);
-    this.updateVisibleRowList();
-    for (let i = 0; i < rows.length; i++) {
-      const insertedRow = rows[i];
-      insertedRow.top = top;
-      this.updateRowHeight(insertedRow, "add");
-      top = insertedRow.bottom;
-    }
-    this.updateFixedHeight();
-  }
-  addFixedHeight(row, rowId, sign = 1) {
-    if (rowId < this.headerRows)
-      this._headerRowsHeight += row.heightWithBorder * sign;
-    if (rowId < this.freezedRows)
-      this._freezedRowsHeight += row.heightWithBorder * sign;
-  }
-  updateFixedHeight() {
-    this._headerRowsHeight = 0;
-    this._freezedRowsHeight = 0;
-    let rowId = 0;
-    const endRowIndex = Math.min(this.length, this.freezedRows);
-    for (const row of this._rowList) {
-      if (row.visible) {
-        this.addFixedHeight(row, rowId);
-        ++rowId;
-      }
-      if (rowId >= endRowIndex)
-        break;
-    }
-  }
-  updateCellReadonlyStatus() {
-    this._rowList.forEach((row) => {
-      const cellCount = row.cellCounts;
-      for (let col = 0; col < cellCount; col++)
-        row.getCell(col).updateReadonlyStatus();
-    });
-  }
-  setRowHeight(rowId, newHeight) {
-    const row = this.getRow(rowId);
-    const diff = row.height - newHeight;
-    if (diff === 0)
-      return;
-    row.height = newHeight;
-    this.changeRowHeight(row, diff);
-  }
-  setRowVisible(rowId, visible) {
-    const row = this.getRow(rowId);
-    if (visible === row.visible)
-      return;
-    row.visible = visible;
-    this.updateRowHeight(row, visible ? "show" : "hide");
-    this.updateVisibleRowList();
-    this.updateFixedHeight();
-  }
-  updateVisibleRowList() {
-    this._visibleRowList = this._rowList.filter((row) => row.visible);
-  }
-  changeRowHeight(row, diff) {
-    this._rowsHeight -= diff;
-    if (row.rowId < this.headerRows)
-      this._headerRowsHeight -= diff;
-    if (row.rowId < this.freezedRows)
-      this._freezedRowsHeight -= diff;
-  }
-  updateRowHeight(row, type) {
-    if (type === "remove" && !row.visible)
-      return;
-    const height = row.height + ROW_BORDER_SIZE;
-    const heightWithSign = type === "add" || type === "show" ? height : -height;
-    this._rowsHeight += heightWithSign;
-  }
-  sort(compareFunc, order, start, end) {
-    const notSortedTopRows = this._rowList.slice(0, start);
-    const sortingRows = this._rowList.slice(start, end);
-    const notSortedBottomRows = this._rowList.slice(end);
-    sortingRows.forEach((row) => row.unmount());
-    sortingRows.sort((a, b) => {
-      if (order === "ASC")
-        return compareFunc(a, b);
-      else
-        return -compareFunc(a, b);
-    });
-    this._rowList = [
-      ...notSortedTopRows,
-      ...sortingRows,
-      ...notSortedBottomRows
-    ];
-  }
-  freezeRows(freezingRowCount) {
-    this._freezedRows = freezingRowCount;
-    (0, import_lodash5.default)(this._rowList).drop(this.headerRows).takeWhile((row) => row.isFreezed).forEach((row) => {
-      row.unfreeze();
-    });
-    (0, import_lodash5.default)(this._rowList).drop(this.headerRows).take(freezingRowCount).forEach((row) => row.freeze());
-    this.updateFixedHeight();
-  }
-  renderRows() {
-    this._visibleRowList.forEach((row) => row.render());
-  }
-  getTopByRowId(rowId) {
-    return this.getRow(rowId).top;
-  }
-  getBottomByRowId(rowId) {
-    return this.getRow(rowId).bottom;
-  }
-  getNextRowId() {
-    return this._rowList.length;
-  }
-  getRowByTop(top) {
-    const visibleRowList = this.visibleRowList;
-    let startIndex = 0;
-    let endIndex = visibleRowList.length - 1;
-    while (startIndex <= endIndex) {
-      const middleIndex = startIndex + Math.floor((endIndex - startIndex) / 2);
-      const currentRow = visibleRowList[middleIndex];
-      if (currentRow.isBetweenTop(top))
-        return currentRow;
-      if (top < currentRow.top)
-        endIndex = middleIndex - 1;
-      else
-        startIndex = middleIndex + 1;
-    }
-    return null;
-  }
-  get visibleRowList() {
-    return this._visibleRowList;
-  }
-  get freezedRowsHeight() {
-    return this._freezedRowsHeight;
-  }
-  get headerRowsHeight() {
-    return this._headerRowsHeight;
-  }
-  get rowLodash() {
-    return (0, import_lodash5.default)(this._rowList);
-  }
-  get rowsHeight() {
-    return this._rowsHeight;
-  }
-  get length() {
-    return this._rowList.length;
-  }
-  get headerRows() {
-    return this._headerRows;
-  }
-  get freezedRows() {
-    return this._headerRows + this._freezedRows;
-  }
-  get bodyFreezedRows() {
-    return this._freezedRows;
-  }
-  get firstRow() {
-    return this._rowList[0];
-  }
-  get lastRow() {
-    return this._rowList[this._rowList.length - 1];
-  }
-};
-
 // src/js-components/grid/grid-cell.ts
+var zIdLevelList = [
+  le.zLevel0,
+  le.zLevel1,
+  le.zLevel2,
+  le.zLevel3,
+  le.zLevel4,
+  le.zLevel5,
+  le.zLevel6,
+  le.zLevel7,
+  le.zLevel8,
+  le.zLevel9
+];
 var STICKY_Z_INDEX = {
   lv9: 9,
   lv8: 8,
@@ -2000,7 +1597,7 @@ var STICKY_Z_INDEX = {
   lv4: 4,
   lv3: 3
 };
-var IRGridCell2 = class {
+var IRGridCell = class {
   constructor({ row, col, tag, metaInfo, cellRenderer }) {
     this._row = -1;
     this._col = -1;
@@ -2018,7 +1615,7 @@ var IRGridCell2 = class {
    * Getters
    */
   get isFreezed() {
-    return this.element.classList.contains(grid_classNames_default.cellSticky["&"]) || this.element.tagName === "TH";
+    return this.element.classList.contains(_e) || this.element.tagName === "TH";
   }
   get uuid() {
     return this._uuid;
@@ -2036,10 +1633,16 @@ var IRGridCell2 = class {
     return this.mergeInfo.rowSpan > 1 || this.mergeInfo.colSpan > 1;
   }
   get isSelected() {
-    return this.element.classList.contains(grid_classNames_default.cell["is-selected"]);
+    return this.element.classList.contains("is-selected");
   }
   get innerHeight() {
     return this._getRenderInstance().getCellInnerHeight(this.element, this._metaInfo);
+  }
+  get fontSize() {
+    return this._metaInfo.fontSize || getThemeStore().getStoreValue("grid.defaultFontSize");
+  }
+  get fontFamily() {
+    return this._metaInfo.fontFamily || getThemeStore().getStoreValue("grid.defaultFontFamily");
   }
   get mergeArea() {
     return {
@@ -2050,10 +1653,10 @@ var IRGridCell2 = class {
     };
   }
   get innerWidth() {
-    return this._getRenderInstance().getCellInnerWidth(this.element, this._metaInfo);
+    return this._getRenderInstance().getCellInnerWidth(this.fontSize, this.fontFamily, this._metaInfo);
   }
   get rendererInnerWidth() {
-    return this._getRenderInstance().getRendererInnerWidth(this.element, this._metaInfo);
+    return this._getRenderInstance().getRendererInnerWidth(this.fontSize, this.fontFamily, this._metaInfo);
   }
   get mergeInfo() {
     return {
@@ -2083,8 +1686,8 @@ var IRGridCell2 = class {
     return this._cellRenderer;
   }
   get canClear() {
-    const { disabled, readonly, cellType, text } = this.metaInfo;
-    return disabled !== true && readonly !== true && cellType === "default" && text !== "";
+    const { disabled, readonly, text } = this.metaInfo;
+    return disabled !== true && readonly !== true && this.renderType === "default" && text !== "";
   }
   get text() {
     const { text } = this._metaInfo;
@@ -2111,8 +1714,8 @@ var IRGridCell2 = class {
     const element = document.createElement(this._tag);
     element.rowSpan = 1;
     element.colSpan = 1;
+    element.classList.add(wr, this._tag === "th" ? Wr : kr);
     element.setAttribute("data-row", this._row.toString());
-    element.style.setProperty("--grid-row-num", this._row.toString());
     element.setAttribute("data-col", this._col.toString());
     element.setAttribute("data-type", this._cellType);
     element.onclick = () => this.onClick(this);
@@ -2137,7 +1740,15 @@ var IRGridCell2 = class {
     return this._element;
   }
   get editable() {
-    return !(this._metaInfo.editable !== true || this._metaInfo.disabled || this.onCheckReadonly());
+    if (this._metaInfo.editable === false)
+      return false;
+    if (this._metaInfo.disabled)
+      return false;
+    if (this.onCheckReadonly())
+      return false;
+    if (this._getRenderInstance().editable === false)
+      return false;
+    return true;
   }
   get lastSelectionStart() {
     return this._lastEditSelection.start;
@@ -2163,9 +1774,9 @@ var IRGridCell2 = class {
   }
   set isDragOver(flag) {
     if (flag)
-      this.element.classList.add(grid_classNames_default.cell["is-dragging"]);
+      this.element.classList.add("is-dragging");
     else
-      this.element.classList.remove(grid_classNames_default.cell["is-dragging"]);
+      this.element.classList.remove("is-dragging");
   }
   set text(text) {
     this.cellInfo = { text };
@@ -2177,14 +1788,12 @@ var IRGridCell2 = class {
   }
   set cellType(type) {
     this._cellType = type;
-    if (this._element)
-      this.element.setAttribute("data-type", type);
   }
   set height(height) {
     if (height)
-      this.element.style.setProperty(GRID_HEIGHT_PROPERTY, `${height}px`);
+      setElementVars(this.element, { [le.cellHeight]: `${height}px` });
     else
-      this.element.style.removeProperty(GRID_HEIGHT_PROPERTY);
+      setElementVars(this.element, { [le.cellHeight]: "" });
   }
   set mergeInfo({ rowSpan = 1, colSpan = 1 }) {
     if (rowSpan === 1)
@@ -2200,7 +1809,6 @@ var IRGridCell2 = class {
   set row(row) {
     this._row = row;
     this.element.setAttribute("data-row", row.toString());
-    this.element.style.setProperty("--grid-row-num", row.toString());
   }
   set col(col) {
     this._col = col;
@@ -2215,12 +1823,17 @@ var IRGridCell2 = class {
    */
   select() {
     if (!this.isSelected) {
-      this.element.classList.add(grid_classNames_default.cell["is-selected"]);
+      this.element.classList.add("is-selected");
       this.onSelect(this);
     }
   }
+  updateCellMetaInfo(metaInfo, text) {
+    Object.assign(this._metaInfo, metaInfo);
+    text && Object.assign(this._metaInfo, { text });
+    this.render();
+  }
   release() {
-    this.element.classList.remove(grid_classNames_default.cell["is-selected"]);
+    this.element.classList.remove("is-selected");
     this.deactivate();
   }
   setLastSelection(start, end) {
@@ -2228,15 +1841,15 @@ var IRGridCell2 = class {
   }
   activate() {
     if (this._mergeMain)
-      this._mergeMain.element.classList.add(grid_classNames_default.th["is-active"]);
+      this._mergeMain.element.classList.add("is-active");
     else
-      this.element.classList.add(grid_classNames_default.th["is-active"]);
+      this.element.classList.add("is-active");
   }
   deactivate() {
-    this.syncClassRemoveWithMergeMain(grid_classNames_default.th["is-active"]);
+    this.syncClassRemoveWithMergeMain("is-active");
   }
   updateReadonlyStatus() {
-    toggleClass(this.element, grid_classNames_default.cell["is-readonly"], this.onCheckReadonly());
+    toggleClass(this.element, "is-readonly", this.onCheckReadonly());
   }
   setStickyLeft(left) {
     this.element.style.left = `${left}px`;
@@ -2257,7 +1870,7 @@ var IRGridCell2 = class {
     this.removeStickyLeft();
     if (level === null)
       return;
-    this.element.style.setProperty("--grid-sticky-cell-z-index", `var(--grid-z-index-level${level})`);
+    setElementVars(this.element, { [le.stickyCellZId]: zIdLevelList[level] });
     this.addStickyCls();
     if (level >= STICKY_Z_INDEX.lv5) {
       this.setStickyTop(top);
@@ -2266,20 +1879,20 @@ var IRGridCell2 = class {
       this.setStickyLeft(left);
   }
   updateCellStatus() {
-    toggleClass(this.element, grid_classNames_default.cell["is-disabled"], this._metaInfo.disabled === true);
+    toggleClass(this.element, "is-disabled", this._metaInfo.disabled === true);
     toggleClass(this.element, "is-asc", this._metaInfo.sortOrder === "ASC");
     toggleClass(this.element, "is-desc", this._metaInfo.sortOrder === "DESC");
     this.updateReadonlyStatus();
     if (this._metaInfo.isError)
-      this.addMark(grid_classNames_default.cellError["&"]);
+      this.addMark(xr);
     else if (this._metaInfo.hasMemo)
-      this.addMark(grid_classNames_default.cellMemo["&"]);
+      this.addMark(Cr);
     else if (this._mark)
       this.removeMark();
     this.element.style.textAlign = this._metaInfo.horizontalAlign || "";
     this.element.style.verticalAlign = this._metaInfo.verticalAlign || "";
-    this.element.style.fontSize = this._metaInfo.fontSize || "12px";
-    this.element.style.fontFamily = this._metaInfo.fontFamily || `"Noto Sans KR", sans-serif`;
+    this.element.style.fontSize = this.fontSize;
+    this.element.style.fontFamily = this.fontFamily;
     this.element.style.color = this._metaInfo.textColor || "";
     this.element.style.backgroundColor = this._metaInfo.backColor || "";
   }
@@ -2306,7 +1919,7 @@ var IRGridCell2 = class {
     return this.metaInfo.enabledPatternCheck && this.metaInfo.allowedRegExpPattern ? this.metaInfo.allowedRegExpPattern.test(value) : true;
   }
   render() {
-    if (!this._element === null)
+    if (this._element === null)
       return;
     if (!this.visible)
       return;
@@ -2319,10 +1932,10 @@ var IRGridCell2 = class {
     this.onClear(this);
   }
   addStickyCls() {
-    this.element.classList.add(grid_classNames_default.cellSticky["&"]);
+    this.element.classList.add(_e);
   }
   removeStickyCls() {
-    this.element.classList.remove(grid_classNames_default.cellSticky["&"]);
+    this.element.classList.remove(_e);
   }
   /*
    * Events
@@ -2355,7 +1968,7 @@ var IRGridCell2 = class {
   }
   addMark(cls) {
     if (!this._mark)
-      this._mark = document.createElement("div");
+      this._mark = document.createElement("span");
     this._mark.className = cls;
     this.element.appendChild(this._mark);
   }
@@ -2368,7 +1981,7 @@ var IRGridCell2 = class {
 };
 
 // src/js-components/grid/grid-debounce-manager.ts
-var import_lodash6 = __toESM(require_lodash());
+var import_lodash5 = __toESM(require_lodash(), 1);
 var NOT_SCHEDULED = -1;
 var SCHEDULE_KEY = [
   "nothing",
@@ -2400,9 +2013,11 @@ var IRGridDebounceManager = class {
     this._selector = selector;
     this._gridRangeUtil = new IRGridRangeUtil(grid);
     this._emptyRow = document.createElement("tr");
-    this._emptyRow.className = "grid__empty-row";
+    this._emptyRow.className = fr;
     this._emptyRow.dataset["hidden"] = "true";
-    this._emptyRow.style.setProperty("--empty-row-height", "0px");
+    setElementVars(this._emptyRow, {
+      [le.emptyRowHeight]: "0"
+    });
     this._tbody.appendChild(this._emptyRow);
     grid.addGlobalEventListener(contextElement, "scroll", (ev) => {
       this.addTask("virtualRender").addTask("updateSelectionByScroll");
@@ -2413,7 +2028,7 @@ var IRGridDebounceManager = class {
     const taskSetClone = new Set(this._scheduledTaskSet);
     this._scheduledTaskSet.clear();
     this._rafHandler = NOT_SCHEDULED;
-    (0, import_lodash6.default)(SCHEDULE_KEY).filter((key) => taskSetClone.has(key)).forEach((key) => {
+    (0, import_lodash5.default)(SCHEDULE_KEY).filter((key) => taskSetClone.has(key)).forEach((key) => {
       try {
         key !== "nothing" && this[key].call(this);
       } catch (err) {
@@ -2423,13 +2038,21 @@ var IRGridDebounceManager = class {
     this._afterRenderCallbackList.forEach((callback) => callback());
     this._afterRenderCallbackList.length = 0;
   }
+  forceRunTasks() {
+    this._rafHandler !== NOT_SCHEDULED && cancelAnimationFrame(this._rafHandler);
+    this.renderTask();
+  }
   addTask(key) {
     this._scheduledTaskSet.add(key);
-    cancelAnimationFrame(this._rafHandler);
-    this._rafHandler = requestAnimationFrame(() => this.renderTask());
+    if (this._rafHandler === NOT_SCHEDULED)
+      this._rafHandler = requestAnimationFrame(() => this.renderTask());
     return this;
   }
+  scheduleAddRowTasks() {
+    this.addTask("virtualRender").addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass");
+  }
   getActualBodyRowsInfo() {
+    var _a, _b;
     const rowCounts = this._grid.getRowCount() - 1;
     const freezedRowCount = Math.min(
       this._grid.getFreezedRowCount(),
@@ -2437,9 +2060,9 @@ var IRGridDebounceManager = class {
     );
     const { fixedRowHeight } = this._grid;
     const { scrollTop, clientHeight } = this._contextElement;
-    const firstRow = this._grid.getRowByTop(fixedRowHeight + scrollTop + 1) ?? this._grid.firstRow;
-    const lastRow = this._grid.getRowByTop(scrollTop + clientHeight) ?? this._grid.lastRow;
-    const viewRowList = import_lodash6.default.range(0, freezedRowCount);
+    const firstRow = (_a = this._grid.getRowByTop(fixedRowHeight + scrollTop + 1)) != null ? _a : this._grid.firstRow;
+    const lastRow = (_b = this._grid.getRowByTop(scrollTop + clientHeight)) != null ? _b : this._grid.lastRow;
+    const viewRowList = import_lodash5.default.range(0, freezedRowCount);
     if (!firstRow || !lastRow)
       return { emptyRowHeight: 0, viewRowList };
     const extendedStartRowId = firstRow.getTopRowId();
@@ -2449,11 +2072,12 @@ var IRGridDebounceManager = class {
     return {
       emptyRowHeight: adjustedFirstRow.top - fixedRowHeight,
       // viewport row 영역 list에 추가
-      viewRowList: viewRowList.concat(import_lodash6.default.range(adjustedFirstRow.rowId, adjustedLastRow.rowId + 1))
+      viewRowList: viewRowList.concat(import_lodash5.default.range(adjustedFirstRow.rowId, adjustedLastRow.rowId + 1))
     };
   }
   getGridRow(rowElement) {
-    const rowId = parseInt(rowElement.dataset["row"] ?? "", 10);
+    var _a;
+    const rowId = parseInt((_a = rowElement.dataset["row"]) != null ? _a : "", 10);
     if (rowId !== rowId)
       return null;
     return this._grid.getRow(rowId);
@@ -2474,7 +2098,9 @@ var IRGridDebounceManager = class {
       this._emptyRow.dataset["hidden"] = "true";
     } else {
       this._emptyRow.dataset["hidden"] = "false";
-      this._emptyRow.style.setProperty("--empty-row-height", `${emptyRowHeight}px`);
+      setElementVars(this._emptyRow, {
+        [le.emptyRowHeight]: `${emptyRowHeight}px`
+      });
     }
     let beforeMounted = null;
     let isAddedEmptyRow = false;
@@ -2583,8 +2209,526 @@ var IRGridDebounceManager = class {
   }
 };
 
+// src/js-components/grid/grid-row.ts
+var import_lodash6 = __toESM(require_lodash(), 1);
+
+// src/js-components/grid/grid.constants.ts
+var ROW_BORDER_SIZE = 1;
+var COLUMN_BORDER_SIZE = 1;
+
+// src/js-components/grid/grid-row.ts
+var IRGridRow = class {
+  constructor({ grid, rowId, height, top, rowType }) {
+    this._rowElement = null;
+    this._top = -1;
+    this._maxCellHeight = 0;
+    this._uuid = v4_default();
+    this._stickyColumns = 0;
+    this._height = 0;
+    this._isCalledOnMounted = false;
+    this._grid = grid;
+    this._cells = [];
+    this._rowType = rowType;
+    this._rowId = rowId;
+    this._maxCellHeight = height;
+    this._isMounted = false;
+    this._height = height;
+    this._top = top;
+  }
+  /**
+   * Getters
+   */
+  get rowInnerHeight() {
+    return this._cells.filter((cell) => cell.visible && cell.mergeInfo.rowSpan === 1).reduce((height, cell) => Math.max(height, cell.innerHeight), 0);
+  }
+  get isFreezed() {
+    return this.element.classList.contains(oe);
+  }
+  get uuid() {
+    return this._uuid;
+  }
+  get isMounted() {
+    return this._isMounted;
+  }
+  get rowId() {
+    return this._rowId;
+  }
+  get isHeaderRow() {
+    return this.element.classList.contains(ie);
+  }
+  get cellCounts() {
+    return this._cells.length;
+  }
+  get rowType() {
+    return this._rowType;
+  }
+  initRowElement() {
+    const tr2 = document.createElement("tr");
+    setElementVars(tr2, {
+      [le.cellHeight]: `${this._height}px`
+    });
+    tr2.setAttribute("data-top", this._top.toString());
+    tr2.dataset["row"] = this._rowId.toString();
+    this._rowElement = tr2;
+    for (const cell of this._cells) {
+      tr2.appendChild(cell.element);
+      cell.setStickyZIndex(this.getFreezedCellType(cell.col), this._top, this._grid.getColumnLeft(cell.col));
+      if (this.isMounted)
+        cell.render();
+    }
+    return tr2;
+  }
+  get element() {
+    if (this._rowElement === null)
+      this._rowElement = this.initRowElement();
+    return this._rowElement;
+  }
+  get textColor() {
+    return this.element.style.color;
+  }
+  get height() {
+    return this._height;
+  }
+  get heightWithBorder() {
+    return this._height + ROW_BORDER_SIZE;
+  }
+  get bottom() {
+    if (!this.visible)
+      return this._top;
+    return this._top + this.heightWithBorder;
+  }
+  get bottomByCellHeight() {
+    return this._top + this._maxCellHeight;
+  }
+  get stickyColumns() {
+    return this._stickyColumns;
+  }
+  get top() {
+    return this._top;
+  }
+  get visible() {
+    return this.element.style.display !== "none";
+  }
+  /*
+   * Setters
+   */
+  set rowId(row) {
+    if (this._rowElement)
+      this._rowElement.dataset["row"] = row.toString();
+    this._rowId = row;
+    this._cells.forEach((cell) => cell.row = row);
+    this.render();
+  }
+  set textColor(color) {
+    this.element.style.color = color;
+  }
+  set height(height) {
+    this._height = height;
+    setElementVars(this.element, {
+      [le.cellHeight]: `${height}px`
+    });
+    this.onChangedHeight(this, height);
+  }
+  set top(value) {
+    this._top = value;
+    this.element.setAttribute("data-top", value.toString());
+    this.updateStickyStatus();
+  }
+  set visible(visible) {
+    if (visible) {
+      this.element.style.removeProperty("display");
+      this.render();
+    } else
+      this.element.style.display = "none";
+  }
+  /*
+   * Public Methods
+   */
+  unmount() {
+    this._isMounted = false;
+    this.element.remove();
+  }
+  updateMaxCellHeight() {
+    const rowHeight = this.height;
+    this._maxCellHeight = this._cells.reduce((h, cell) => {
+      var _a;
+      return Math.max(h, (_a = cell.height) != null ? _a : rowHeight);
+    }, rowHeight);
+  }
+  removeCells(left, right) {
+    import_lodash6.default.range(left, right + 1).forEach((col) => this._cells[col].element.remove());
+    const removedCols = 1 + right - left;
+    this._cells.splice(left, removedCols);
+    import_lodash6.default.range(left, this._cells.length).forEach((col) => {
+      this._cells[col].col -= removedCols;
+      this._cells[col].render();
+    });
+  }
+  /**
+   * 현재 row에서 가장 위에 있는 rowId 반환
+   * 내부에 병합된 셀이 있는 경우, 해당 셀이 참조하는 셀의 top을 반환
+   */
+  getTopRowId() {
+    let topRowId = this._rowId;
+    for (const cell of this._cells) {
+      if (cell.mergeMain)
+        topRowId = Math.min(topRowId, cell.mergeMain.row);
+    }
+    return topRowId;
+  }
+  /**
+   * 현재 row에서 가장 아래에 있는 rowId 반환
+   * 내부에 병합된 셀이 있는 경우, 해당 셀이 참조하는 셀의 bottom을 반환
+   */
+  getBottomRowId() {
+    let bottomRowId = this._rowId;
+    for (const cell of this._cells) {
+      if (cell.mergeMain)
+        bottomRowId = Math.max(bottomRowId, cell.mergeMain.bottom);
+    }
+    return bottomRowId;
+  }
+  getFreezedCellType(col) {
+    const isFreezedColumn = col < this._grid.getFreezedColumnCount();
+    if (this.isHeaderRow)
+      return isFreezedColumn ? STICKY_Z_INDEX.lv9 : STICKY_Z_INDEX.lv8;
+    if (this.isFreezed)
+      if (isFreezedColumn)
+        return col < this._grid.headerColumns ? STICKY_Z_INDEX.lv7 : STICKY_Z_INDEX.lv6;
+      else
+        return STICKY_Z_INDEX.lv5;
+    if (isFreezedColumn)
+      return col < this._grid.headerColumns ? STICKY_Z_INDEX.lv4 : STICKY_Z_INDEX.lv3;
+    return null;
+  }
+  addCell(cell) {
+    this._cells.push(cell);
+    if (this._rowElement) {
+      this._rowElement.appendChild(cell.element);
+      cell.setStickyZIndex(this.getFreezedCellType(cell.col), this._top, this._grid.getColumnLeft(cell.col));
+      cell.render();
+    }
+  }
+  insertCells(cells, col) {
+    if (this._cells.length < col)
+      throw new Error(`Out of length at the row. the length is ${this._cells.length} and you tried inserting with ${col}`);
+    const target = this._cells[col].element;
+    import_lodash6.default.range(col, this._cells.length).forEach((id) => {
+      this._cells[id].col += cells.length;
+      this._cells[id].render();
+    });
+    this._cells.splice(col, 0, ...cells);
+    (0, import_lodash6.default)(cells).forEach((cell) => {
+      cell.setStickyZIndex(this.getFreezedCellType(cell.col), this._top, this._grid.getColumnLeft(cell.col));
+      target.insertAdjacentElement("beforebegin", cell.element);
+      if (this.isMounted)
+        cell.render();
+    });
+  }
+  render() {
+    if (this.visible)
+      this._cells.forEach((cell) => cell.render());
+  }
+  getCell(col) {
+    const cell = this._cells[col];
+    if (!cell)
+      throw new Error(`Not found cell ${this._rowId}, ${col}`);
+    return cell;
+  }
+  setRowInfo(rowInfo) {
+    const {
+      textData,
+      cellMetaInfo
+    } = rowInfo;
+    this._cells.forEach((cell, col) => cell.updateCellMetaInfo(cellMetaInfo, textData == null ? void 0 : textData[col]));
+  }
+  *getCellGenerator(left = 0, right = this._cells.length - 1) {
+    for (let c = left; c <= right; ++c)
+      yield this._cells[c];
+  }
+  setColumnVisible(col, visible) {
+    this._cells[col].visible = visible;
+  }
+  getColumnVisible(col) {
+    return this._cells[col].visible;
+  }
+  setAutoHeight(minSize, maxSize) {
+    const height = Math.ceil(this.rowInnerHeight);
+    const autoHeight = getMinMaxBetween(isNaN(height) ? 0 : height, minSize, maxSize);
+    if (this.height !== autoHeight) {
+      this.height = autoHeight;
+      return true;
+    }
+    return false;
+  }
+  mount(element, position) {
+    if (this.isMounted)
+      return;
+    element.insertAdjacentElement(position, this.element);
+    this.render();
+    this._isMounted = true;
+    if (!this._isCalledOnMounted) {
+      this._isCalledOnMounted = true;
+      this.onMounted(this);
+    }
+  }
+  freeze(isHeader = false) {
+    if (isHeader)
+      this.element.classList.add(ie);
+    this.element.classList.add(oe);
+    this.updateStickyStatus();
+  }
+  isBetweenTop(top) {
+    return top >= this.top && top <= this.bottom;
+  }
+  updateStickyStatus() {
+    this._cells.reduce((left, cell, col) => {
+      cell.setStickyZIndex(this.getFreezedCellType(col), this._top, left);
+      return left + (this._grid.getColumnVisible(col) ? this._grid.getColumnWidth(col) + 1 : 0);
+    }, 0);
+  }
+  // row에 있는 모든 셀에 metaInfo 일괄 적용
+  updateCellMetaInfo(cellMetaInfo) {
+    this._cells.forEach((cell) => cell.cellInfo = cellMetaInfo);
+  }
+  freezeColumns(column) {
+    this._stickyColumns = column;
+    this.updateStickyStatus();
+  }
+  unfreeze() {
+    if (this.isHeaderRow)
+      throw new Error("Can not freeze header row!");
+    this.element.classList.remove(oe);
+    this.updateStickyStatus();
+  }
+  /*
+   * Events
+   */
+  onMounted(_row) {
+  }
+  onChangedHeight(_row, _height) {
+  }
+};
+var IRGridRowManager = class {
+  constructor(headerRows, freezedRows) {
+    this._rowList = [];
+    this._visibleRowList = [];
+    this._headerRows = headerRows;
+    this._freezedRows = freezedRows;
+    this._rowsHeight = 0;
+    this._headerRowsHeight = 0;
+    this._freezedRowsHeight = 0;
+  }
+  getRow(rowId) {
+    const row = this._rowList[rowId];
+    if (!row)
+      throw new Error(`Not found row ${rowId}`);
+    return row;
+  }
+  addRow(row) {
+    this._rowList.push(row);
+    this._visibleRowList.push(row);
+    this.updateRowHeight(row, "add");
+    if (row.rowId < this.freezedRows)
+      this.updateFixedHeight();
+  }
+  clearRows() {
+    (0, import_lodash6.default)(this._rowList).drop(this.headerRows).forEach((row) => row.unmount());
+    this._rowList.length = this.headerRows;
+    this._rowsHeight = this.headerRowsHeight;
+    this._freezedRowsHeight = this.headerRowsHeight;
+    this.updateVisibleRowList();
+  }
+  addColumn(creatingCellFunc) {
+    this._rowList.forEach((row) => row.addCell(creatingCellFunc(row)));
+  }
+  setColumnVisible(col, visible) {
+    this._rowList.forEach((row) => row.getCell(col).visible = visible);
+  }
+  insertColumns(insertingColumnId, count, createCellFunc) {
+    this._rowList.forEach((row) => {
+      const cellList = import_lodash6.default.range(count).map((id) => createCellFunc(row.rowId, insertingColumnId + id));
+      row.insertCells(cellList, insertingColumnId);
+    });
+  }
+  removeRows(top, bottom) {
+    const deletedRows = this._rowList.splice(top, bottom - top + 1);
+    if (deletedRows.length === 0)
+      return;
+    deletedRows.forEach((row) => {
+      this.updateRowHeight(row, "remove");
+      row.unmount();
+    });
+    this.updateVisibleRowList();
+    this.updateFixedHeight();
+  }
+  removeColumns(left, right) {
+    this._rowList.forEach((row) => row.removeCells(left, right));
+  }
+  insertRows(insertingRowId, rows) {
+    let top = this._rowList[insertingRowId].top;
+    this._rowList.splice(insertingRowId, 0, ...rows);
+    this.updateVisibleRowList();
+    for (let i = 0; i < rows.length; i++) {
+      const insertedRow = rows[i];
+      insertedRow.top = top;
+      this.updateRowHeight(insertedRow, "add");
+      top = insertedRow.bottom;
+    }
+    this.updateFixedHeight();
+  }
+  addFixedHeight(row, rowId, sign = 1) {
+    if (rowId < this.headerRows)
+      this._headerRowsHeight += row.heightWithBorder * sign;
+    if (rowId < this.freezedRows)
+      this._freezedRowsHeight += row.heightWithBorder * sign;
+  }
+  updateFixedHeight() {
+    this._headerRowsHeight = 0;
+    this._freezedRowsHeight = 0;
+    let rowId = 0;
+    const endRowIndex = Math.min(this.length, this.freezedRows);
+    for (const row of this._rowList) {
+      if (row.visible) {
+        this.addFixedHeight(row, rowId);
+        ++rowId;
+      }
+      if (rowId >= endRowIndex)
+        break;
+    }
+  }
+  updateCellReadonlyStatus() {
+    this._rowList.forEach((row) => {
+      const cellCount = row.cellCounts;
+      for (let col = 0; col < cellCount; col++)
+        row.getCell(col).updateReadonlyStatus();
+    });
+  }
+  setRowHeight(rowId, newHeight) {
+    const row = this.getRow(rowId);
+    const diff = row.height - newHeight;
+    if (diff === 0)
+      return;
+    row.height = newHeight;
+    this.changeRowHeight(row, diff);
+  }
+  setRowVisible(rowId, visible) {
+    const row = this.getRow(rowId);
+    if (visible === row.visible)
+      return;
+    row.visible = visible;
+    this.updateRowHeight(row, visible ? "show" : "hide");
+    this.updateVisibleRowList();
+    this.updateFixedHeight();
+  }
+  updateVisibleRowList() {
+    this._visibleRowList = this._rowList.filter((row) => row.visible);
+  }
+  changeRowHeight(row, diff) {
+    this._rowsHeight -= diff;
+    if (row.rowId < this.headerRows)
+      this._headerRowsHeight -= diff;
+    if (row.rowId < this.freezedRows)
+      this._freezedRowsHeight -= diff;
+  }
+  updateRowHeight(row, type) {
+    if (type === "remove" && !row.visible)
+      return;
+    const height = row.height + ROW_BORDER_SIZE;
+    const heightWithSign = type === "add" || type === "show" ? height : -height;
+    this._rowsHeight += heightWithSign;
+  }
+  sort(compareFunc, order, start, end) {
+    const notSortedTopRows = this._rowList.slice(0, start);
+    const sortingRows = this._rowList.slice(start, end);
+    const notSortedBottomRows = this._rowList.slice(end);
+    sortingRows.forEach((row) => row.unmount());
+    sortingRows.sort((a, b) => {
+      if (order === "ASC")
+        return compareFunc(a, b);
+      else
+        return -compareFunc(a, b);
+    });
+    this._rowList = [
+      ...notSortedTopRows,
+      ...sortingRows,
+      ...notSortedBottomRows
+    ];
+    this.updateVisibleRowList();
+  }
+  freezeRows(freezingRowCount) {
+    this._freezedRows = freezingRowCount;
+    (0, import_lodash6.default)(this._rowList).drop(this.headerRows).takeWhile((row) => row.isFreezed).forEach((row) => {
+      row.unfreeze();
+    });
+    (0, import_lodash6.default)(this._rowList).drop(this.headerRows).take(freezingRowCount).forEach((row) => row.freeze());
+    this.updateFixedHeight();
+  }
+  renderRows() {
+    this._visibleRowList.forEach((row) => row.render());
+  }
+  getTopByRowId(rowId) {
+    return this.getRow(rowId).top;
+  }
+  getBottomByRowId(rowId) {
+    return this.getRow(rowId).bottom;
+  }
+  getNextRowId() {
+    return this._rowList.length;
+  }
+  getRowByTop(top) {
+    const visibleRowList = this.visibleRowList;
+    let startIndex = 0;
+    let endIndex = visibleRowList.length - 1;
+    while (startIndex <= endIndex) {
+      const middleIndex = startIndex + Math.floor((endIndex - startIndex) / 2);
+      const currentRow = visibleRowList[middleIndex];
+      if (currentRow.isBetweenTop(top))
+        return currentRow;
+      if (top < currentRow.top)
+        endIndex = middleIndex - 1;
+      else
+        startIndex = middleIndex + 1;
+    }
+    return null;
+  }
+  get visibleRowList() {
+    return this._visibleRowList;
+  }
+  get freezedRowsHeight() {
+    return this._freezedRowsHeight;
+  }
+  get headerRowsHeight() {
+    return this._headerRowsHeight;
+  }
+  get rowLodash() {
+    return (0, import_lodash6.default)(this._rowList);
+  }
+  get rowsHeight() {
+    return this._rowsHeight;
+  }
+  get length() {
+    return this._rowList.length;
+  }
+  get headerRows() {
+    return this._headerRows;
+  }
+  get freezedRows() {
+    return this._headerRows + this._freezedRows;
+  }
+  get bodyFreezedRows() {
+    return this._freezedRows;
+  }
+  get firstRow() {
+    return this._rowList[0];
+  }
+  get lastRow() {
+    return this._rowList[this._rowList.length - 1];
+  }
+};
+
 // src/js-components/grid/grid-column.ts
-var import_lodash7 = __toESM(require_lodash());
+var import_lodash7 = __toESM(require_lodash(), 1);
 var IRGridColumn = class {
   constructor({ columnId, width, left }) {
     this._left = 0;
@@ -2802,18 +2946,20 @@ var IRGridColumnManager = class {
 // src/js-components/grid/grid.store.ts
 var IRGridStore = class {
   constructor(options) {
-    this._cellPadding = Object.freeze(options.cellPadding ?? {
-      top: IR_STYLE_CONFIG.grid.paddingTop,
-      left: IR_STYLE_CONFIG.grid.paddingLeft,
-      bottom: IR_STYLE_CONFIG.grid.paddingBottom,
-      right: IR_STYLE_CONFIG.grid.paddingRight
+    var _a;
+    const themeStore = getThemeStore();
+    this._cellPadding = Object.freeze((_a = options.cellPadding) != null ? _a : {
+      top: themeStore.getStoreValue("grid.paddingTop"),
+      left: themeStore.getStoreValue("grid.paddingLeft"),
+      bottom: themeStore.getStoreValue("grid.paddingBottom"),
+      right: themeStore.getStoreValue("grid.paddingRight")
     });
-    this._defaultRowHeight = IR_STYLE_CONFIG.grid.defaultRowHeight;
-    this._defaultColumnWidth = IR_STYLE_CONFIG.grid.defaultColumnWidth;
-    this._defaultRowMinSize = IR_STYLE_CONFIG.grid.defaultRowMinSize;
-    this._defaultRowMaxSize = IR_STYLE_CONFIG.grid.defaultRowMaxSize;
-    this._defaultColumnMinSize = IR_STYLE_CONFIG.grid.defaultColumnMinSize;
-    this._defaultColumnMaxSize = IR_STYLE_CONFIG.grid.defaultColumnMaxSize;
+    this._defaultRowHeight = themeStore.getStoreValue("grid.defaultRowHeight");
+    this._defaultColumnWidth = themeStore.getStoreValue("grid.defaultColumnWidth");
+    this._defaultRowMinSize = themeStore.getStoreValue("grid.defaultRowMinSize");
+    this._defaultRowMaxSize = themeStore.getStoreValue("grid.defaultRowMaxSize");
+    this._defaultColumnMinSize = themeStore.getStoreValue("grid.defaultColumnMinSize");
+    this._defaultColumnMaxSize = themeStore.getStoreValue("grid.defaultColumnMaxSize");
     this._rowManager = new IRGridRowManager(options.headerRowCount, options.freezedRowCount);
     this._columnManager = new IRGridColumnManager(options.headerColumnCount, options.freezedColumnCount);
   }
@@ -2928,6 +3074,14 @@ var IRGridPlugin = class {
 // src/js-components/grid/plugins/resizer.ts
 var COL_INTERACTION_SIZE = 12;
 var ROW_INTERACTION_SIZE = 8;
+var gridResizingCls = {
+  "col-resizing": Tr,
+  "row-resizing": Jr
+};
+var gridHeaderCellResizingCls = {
+  "col-resizing": Dr,
+  "row-resizing": Ar
+};
 var getColumnNo = (cell) => {
   if (cell.mergeInfo)
     return cell.col + cell.mergeInfo.colSpan - 1;
@@ -2961,17 +3115,17 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
       let latestContextDownHandler = null;
       let latestClickedTime = 0;
       const resetCursor = () => {
-        contextElement.classList.remove(grid_classNames_default.grid["col-resizing"]);
-        contextElement.classList.remove(grid_classNames_default.grid["row-resizing"]);
-        contextElement.classList.remove(grid_classNames_default.grid["is-resizing"]);
+        contextElement.classList.remove(Tr);
+        contextElement.classList.remove(Jr);
+        contextElement.classList.remove("is-resizing");
         latestContextDownHandler && contextElement.removeEventListener("mousedown", latestContextDownHandler);
       };
       const setCursor = (eventCell, clsResizing) => {
         latestContextDownHandler && contextElement.removeEventListener("mousedown", latestContextDownHandler);
-        contextElement.classList.remove(grid_classNames_default.grid["col-resizing"]);
-        contextElement.classList.remove(grid_classNames_default.grid["row-resizing"]);
-        contextElement.classList.add(grid_classNames_default.grid[clsResizing]);
-        contextElement.classList.add(grid_classNames_default.grid["is-resizing"]);
+        contextElement.classList.remove(Tr);
+        contextElement.classList.remove(Jr);
+        contextElement.classList.add(gridResizingCls[clsResizing]);
+        contextElement.classList.add("is-resizing");
         let initXY = 0;
         let minXY = 0;
         let maxXY = 0;
@@ -3010,9 +3164,9 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
           }
           isResizing = true;
           latestClickedTime = curTime;
-          eventCell.element.classList.add(grid_classNames_default.th[clsResizing]);
+          eventCell.element.classList.add(gridHeaderCellResizingCls[clsResizing]);
           if (clsResizing === "col-resizing") {
-            divGuide.className = grid_classNames_default.colResizerGuide["&"];
+            divGuide.className = Ir;
             size = grid.getColumnWidth(getColumnNo(eventCell));
             initXY = ev.pageX;
             minXY = initXY - size + grid.minColWidth;
@@ -3023,7 +3177,7 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
             divGuide.style.height = `${grid.height}px`;
             divGuide.style.left = `${getGuideX()}px`;
           } else {
-            divGuide.className = grid_classNames_default.rowResizerGuide["&"];
+            divGuide.className = qr;
             size = grid.getRowHeight(getRowNo(eventCell));
             initXY = ev.pageY;
             minXY = initXY - size + grid.minRowHeight;
@@ -3081,7 +3235,7 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
           isResizing = false;
           divGuide.remove();
           resetCursor();
-          eventCell.element.classList.remove(grid_classNames_default.th[clsResizing]);
+          eventCell.element.classList.remove(gridHeaderCellResizingCls[clsResizing]);
           document.removeEventListener("mousemove", docMouseMoveHandler);
           document.removeEventListener("mouseup", docMouseUpHandler);
           document.removeEventListener("keydown", docKeyDownHandler);
@@ -3113,7 +3267,7 @@ var IRGridResizerPlugin = class extends IRGridPlugin {
       grid.addGlobalEventListener(contextElement, "mouseout", contextMouseOutHandler);
     })();
     const getHeaderCellOrNull = (ev) => {
-      const curCell = ev.target.closest("th");
+      const curCell = closest("th", "tr", ev.target);
       if (!curCell)
         return null;
       const [row, col] = [
@@ -3142,7 +3296,7 @@ function ResizerPlugin(resizerOptions) {
 }
 
 // src/js-components/grid/plugins/cell-selector.ts
-var import_lodash8 = __toESM(require_lodash());
+var import_lodash8 = __toESM(require_lodash(), 1);
 var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
   _mountTask({ grid, gridContext, contextElement }) {
     let startCell = null;
@@ -3168,6 +3322,7 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
       if (import_lodash8.default.isEqual(range, grid.getSelection()))
         return;
       grid.select(range, startCell);
+      this.onChangedSelection(range);
     };
     grid.addGlobalEventListener(contextElement, "mousedown", (ev) => {
       if (!checkTargetIsHTMLElement(ev.target))
@@ -3176,10 +3331,10 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
         return;
       if (ev.target instanceof HTMLTextAreaElement)
         return;
-      if (ev.target.closest(".button"))
+      if (closest(".button", "tr", ev.target))
         return;
-      const curCell = ev.target.closest("td");
-      if (!curCell || (curCell == null ? void 0 : curCell.tagName) === "TH")
+      const curCell = closest("td", "tr", ev.target);
+      if (!curCell)
         return;
       const cellAddress = getCellElementRowCol(curCell);
       const activeCell = grid.activeCell;
@@ -3189,6 +3344,7 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
       } else {
         startCell = grid.cell(cellAddress.row, cellAddress.col);
         grid.selectRange(startCell.row, startCell.col, startCell.bottom, startCell.right, startCell);
+        this.onChangedSelection({ top: startCell.row, left: startCell.col, bottom: startCell.bottom, right: startCell.right });
       }
       gridContext.setMode({ mode: "selecting-mouse", contextParam: {} });
     });
@@ -3204,10 +3360,10 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
       const { offsetX, offsetY, target } = ev;
       if (!checkTargetIsHTMLElement(target))
         return;
-      const x = offsetX + target.scrollLeft;
-      const y = offsetY + target.scrollTop;
-      const adjustLeft = x > grid.width ? grid.width : x;
-      const adjustTop = y > grid.height ? grid.height : y;
+      const x2 = offsetX + target.scrollLeft;
+      const y2 = offsetY + target.scrollTop;
+      const adjustLeft = x2 > grid.width ? grid.width : x2;
+      const adjustTop = y2 > grid.height ? grid.height : y2;
       const endCell = grid.findCellOrNull(adjustTop, adjustLeft);
       endCell && selectRange(startCell2, endCell);
     }
@@ -3222,6 +3378,8 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
         moveOnCell(startCell, ev.target);
     });
     grid.addGlobalEventListener(document, "mouseup", () => {
+      if (!startCell)
+        return;
       startCell = null;
       gridContext.setIdle();
     });
@@ -3231,6 +3389,8 @@ var IRGridMouseCellSelectorPlugin = class extends IRGridPlugin {
   }
   get pluginKey() {
     return "cell-selector";
+  }
+  onChangedSelection(range) {
   }
 };
 function MouseCellSelectorPlugin() {
@@ -3273,14 +3433,15 @@ var ClearCellsCommand = class extends IRGridCommand {
 };
 
 // src/js-components/grid/utility/cursor.ts
-function createGridCellCursorManager(grid) {
-  const getNextYAbove = (row, col, y) => {
+function createGridCellCursorManager(grid, rowSelection) {
+  const getNextYAbove = (row, col, y2) => {
+    var _a;
     const startRow = grid.headerRows;
-    let counter = y;
+    let counter = y2;
     let nextRow = row;
     while (counter !== 0) {
       const currentCell = grid.cell(nextRow, col);
-      const mainCell = currentCell.mergeMain ?? currentCell;
+      const mainCell = (_a = currentCell.mergeMain) != null ? _a : currentCell;
       const tmpRow = mainCell.row - 1;
       if (tmpRow < startRow)
         break;
@@ -3290,13 +3451,14 @@ function createGridCellCursorManager(grid) {
     }
     return nextRow;
   };
-  const getNextYBelow = (row, col, y) => {
+  const getNextYBelow = (row, col, y2) => {
+    var _a;
     const endRow = grid.getRowCount() - 1;
-    let counter = y;
+    let counter = y2;
     let nextRow = row;
     while (counter !== 0) {
       const currentCell = grid.cell(nextRow, col);
-      const mainCell = currentCell.mergeMain ?? currentCell;
+      const mainCell = (_a = currentCell.mergeMain) != null ? _a : currentCell;
       const tmpRow = mainCell.bottom + 1;
       if (tmpRow > endRow)
         break;
@@ -3306,13 +3468,14 @@ function createGridCellCursorManager(grid) {
     }
     return nextRow;
   };
-  const getNextXLeft = (row, col, x) => {
+  const getNextXLeft = (row, col, x2) => {
+    var _a;
     const startCol = grid.headerColumns;
-    let counter = x;
+    let counter = x2;
     let nextCol = col;
     while (counter !== 0) {
       const currentCell = grid.cell(row, nextCol);
-      const mainCell = currentCell.mergeMain ?? currentCell;
+      const mainCell = (_a = currentCell.mergeMain) != null ? _a : currentCell;
       const tmpCol = mainCell.col - 1;
       if (tmpCol < startCol)
         break;
@@ -3322,13 +3485,14 @@ function createGridCellCursorManager(grid) {
     }
     return nextCol;
   };
-  const getNextXRight = (row, col, x) => {
+  const getNextXRight = (row, col, x2) => {
+    var _a;
     const endCol = grid.getColCount() - 1;
-    let counter = x;
+    let counter = x2;
     let nextCol = col;
     while (counter !== 0) {
       const currentCell = grid.cell(row, nextCol);
-      const mainCell = currentCell.mergeMain ?? currentCell;
+      const mainCell = (_a = currentCell.mergeMain) != null ? _a : currentCell;
       const tmpCol = mainCell.right + 1;
       if (tmpCol > endCol)
         break;
@@ -3381,6 +3545,7 @@ function createGridCellCursorManager(grid) {
     return beforeRow;
   };
   const selectNextActiveCell = () => {
+    var _a;
     const { activeCell } = grid;
     if (!activeCell) {
       console.warn("No active cell warning.");
@@ -3388,21 +3553,28 @@ function createGridCellCursorManager(grid) {
     }
     const endRow = getLastActiveRow();
     const endCol = getLastActiveColumn();
-    const mainCell = activeCell.mergeMain ?? activeCell;
+    const mainCell = (_a = activeCell.mergeMain) != null ? _a : activeCell;
     if (mainCell.right === endCol) {
       if (activeCell.row === endRow)
         return;
       const firstCol = getFirstActiveColumn();
       const nextRow = getNextActiveRow(activeCell.row);
-      grid.selectCell(nextRow, firstCol);
+      if (rowSelection)
+        grid.selectRow(nextRow, grid.cell(nextRow, firstCol));
+      else
+        grid.selectCell(nextRow, firstCol);
       grid.scrollInView(nextRow, firstCol);
     } else {
       const nextCol = getNextXRight(activeCell.row, mainCell.right, 1);
-      grid.selectCell(activeCell.row, nextCol);
+      if (rowSelection)
+        grid.selectRow(activeCell.row, grid.cell(activeCell.row, nextCol));
+      else
+        grid.selectCell(activeCell.row, nextCol);
       grid.scrollOnCol(nextCol);
     }
   };
   const selectBeforeActiveCell = () => {
+    var _a;
     const { activeCell } = grid;
     if (!activeCell) {
       console.warn("No active cell warning.");
@@ -3410,26 +3582,33 @@ function createGridCellCursorManager(grid) {
     }
     const startRow = getFirstActiveRow();
     const startCol = getFirstActiveColumn();
-    const mainCell = activeCell.mergeMain ?? activeCell;
+    const mainCell = (_a = activeCell.mergeMain) != null ? _a : activeCell;
     if (mainCell.col === startCol) {
       if (activeCell.row === startRow)
         return;
       const lastCol = getLastActiveColumn();
       const beforeRow = getBeforeActiveRow(activeCell.row);
-      grid.selectCell(beforeRow, lastCol);
+      if (rowSelection)
+        grid.selectRow(beforeRow, grid.cell(beforeRow, lastCol));
+      else
+        grid.selectCell(beforeRow, lastCol);
       grid.scrollInView(beforeRow, lastCol);
     } else {
       const nextCol = getNextXLeft(activeCell.row, mainCell.col, -1);
-      grid.selectCell(activeCell.row, nextCol);
+      if (rowSelection)
+        grid.selectRow(activeCell.row, grid.cell(activeCell.row, nextCol));
+      else
+        grid.selectCell(activeCell.row, nextCol);
       grid.scrollOnCol(nextCol);
     }
   };
   const getColIdWithMaximumRowSpanInRow = (row, left, right) => {
+    var _a;
     let maxRowSpan = -1;
     let colId = -1;
     for (let col = left; col <= right; col++) {
       const cell = grid.cell(row, col);
-      const mainCell = cell.mergeMain ?? cell;
+      const mainCell = (_a = cell.mergeMain) != null ? _a : cell;
       const { rowSpan } = mainCell.mergeInfo;
       if (rowSpan > maxRowSpan) {
         maxRowSpan = rowSpan;
@@ -3439,10 +3618,11 @@ function createGridCellCursorManager(grid) {
     return colId;
   };
   const getMaximumBottomByRow = (row, left, right) => {
+    var _a;
     let maxBottom = -1;
     for (let col = left; col <= right; col++) {
       const cell = grid.cell(row, col);
-      const mainCell = cell.mergeMain ?? cell;
+      const mainCell = (_a = cell.mergeMain) != null ? _a : cell;
       const { bottom } = mainCell;
       if (bottom > maxBottom)
         maxBottom = bottom;
@@ -3450,21 +3630,23 @@ function createGridCellCursorManager(grid) {
     return maxBottom;
   };
   const getMinimumTopByRow = (row, left, right) => {
+    var _a;
     let minTop = 999999999;
     for (let col = left; col <= right; col++) {
       const cell = grid.cell(row, col);
-      const mainCell = cell.mergeMain ?? cell;
+      const mainCell = (_a = cell.mergeMain) != null ? _a : cell;
       if (minTop > mainCell.row)
         minTop = mainCell.row;
     }
     return minTop;
   };
   const getRowIdWithMaximumColSpanInCol = (col, top, bottom) => {
+    var _a;
     let maxColSpan = -1;
     let rowId = -1;
     for (let row = top; row <= bottom; row++) {
       const cell = grid.cell(row, col);
-      const mainCell = cell.mergeMain ?? cell;
+      const mainCell = (_a = cell.mergeMain) != null ? _a : cell;
       const { colSpan } = mainCell.mergeInfo;
       if (colSpan > maxColSpan) {
         maxColSpan = colSpan;
@@ -3474,10 +3656,11 @@ function createGridCellCursorManager(grid) {
     return rowId;
   };
   const getMaximumRightByColumn = (col, top, bottom) => {
+    var _a;
     let maxRight = -1;
     for (let row = top; row <= bottom; row++) {
       const cell = grid.cell(row, col);
-      const mainCell = cell.mergeMain ?? cell;
+      const mainCell = (_a = cell.mergeMain) != null ? _a : cell;
       const { right } = mainCell;
       if (right > maxRight)
         maxRight = right;
@@ -3485,47 +3668,57 @@ function createGridCellCursorManager(grid) {
     return maxRight;
   };
   const getMinimumLeftByColumn = (col, top, bottom) => {
+    var _a;
     let minLeft = 999999999;
     for (let row = top; row <= bottom; row++) {
       const cell = grid.cell(row, col);
-      const mainCell = cell.mergeMain ?? cell;
+      const mainCell = (_a = cell.mergeMain) != null ? _a : cell;
       if (minLeft > mainCell.col)
         minLeft = mainCell.col;
     }
     return minLeft;
   };
-  const selectNextSelection = (y, x, isExpanding) => {
+  const selectNextSelection = (y2, x2, isExpanding) => {
+    var _a;
     const selection = grid.getSelection();
     const { activeCell } = grid;
     if (selection == null || activeCell == null) {
       console.warn("No selection warning");
       return;
     }
-    const mainCell = activeCell.mergeMain ?? activeCell;
+    const mainCell = (_a = activeCell.mergeMain) != null ? _a : activeCell;
+    if (isExpanding && rowSelection)
+      return;
     if (!isExpanding) {
-      if (y !== 0) {
-        const nextRow = y < 0 ? getNextYAbove(mainCell.row, activeCell.col, y) : getNextYBelow(mainCell.bottom, activeCell.col, y);
-        grid.selectCell(nextRow, activeCell.col);
+      if (y2 !== 0) {
+        const nextRow = y2 < 0 ? getNextYAbove(mainCell.row, activeCell.col, y2) : getNextYBelow(mainCell.bottom, activeCell.col, y2);
+        if (rowSelection)
+          grid.selectRow(nextRow, grid.cell(nextRow, activeCell.col));
+        else
+          grid.selectCell(nextRow, activeCell.col);
         grid.scrollOnRow(nextRow);
       } else {
-        const nextCol = x < 0 ? getNextXLeft(activeCell.row, mainCell.col, x) : getNextXRight(activeCell.row, mainCell.right, x);
-        grid.selectCell(activeCell.row, nextCol);
+        const nextCol = x2 < 0 ? getNextXLeft(activeCell.row, mainCell.col, x2) : getNextXRight(activeCell.row, mainCell.right, x2);
+        if (rowSelection)
+          grid.selectRow(activeCell.row, grid.cell(activeCell.row, nextCol));
+        else
+          grid.selectCell(activeCell.row, nextCol);
         grid.scrollOnCol(nextCol);
       }
       return;
     }
     const { top, bottom, left, right } = selection;
-    if (y !== 0) {
-      if (y < 0) {
+    if (y2 !== 0) {
+      if (y2 < 0) {
         const maxBottom = getMaximumBottomByRow(activeCell.row, left, right);
         if (maxBottom === bottom) {
           const colId = getColIdWithMaximumRowSpanInRow(top, left, right);
-          const nextTop = getNextYAbove(top, colId, y);
+          const nextTop = getNextYAbove(top, colId, y2);
           grid.selectRange(nextTop, left, bottom, right, activeCell);
           grid.scrollOnRow(nextTop);
         } else {
           const colId = getColIdWithMaximumRowSpanInRow(bottom, left, right);
-          const nextBottom = getNextYAbove(bottom, colId, y);
+          const nextBottom = getNextYAbove(bottom, colId, y2);
           grid.selectRange(top, left, nextBottom, right, activeCell);
           grid.scrollOnRow(nextBottom);
         }
@@ -3533,26 +3726,26 @@ function createGridCellCursorManager(grid) {
         const minTop = getMinimumTopByRow(activeCell.row, left, right);
         if (minTop === top) {
           const colId = getColIdWithMaximumRowSpanInRow(bottom, left, right);
-          const nextBottom = getNextYBelow(bottom, colId, y);
+          const nextBottom = getNextYBelow(bottom, colId, y2);
           grid.selectRange(top, left, nextBottom, right, activeCell);
           grid.scrollOnRow(nextBottom);
         } else {
           const colId = getColIdWithMaximumRowSpanInRow(top, left, right);
-          const nextTop = getNextYBelow(top, colId, y);
+          const nextTop = getNextYBelow(top, colId, y2);
           grid.selectRange(nextTop, left, bottom, right, activeCell);
           grid.scrollOnRow(nextTop);
         }
       }
-    } else if (x < 0) {
+    } else if (x2 < 0) {
       const maxRight = getMaximumRightByColumn(activeCell.col, top, bottom);
       if (maxRight === right) {
         const rowId = getRowIdWithMaximumColSpanInCol(left, top, bottom);
-        const nextLeft = getNextXLeft(rowId, left, x);
+        const nextLeft = getNextXLeft(rowId, left, x2);
         grid.selectRange(top, nextLeft, bottom, right, activeCell);
         grid.scrollOnCol(nextLeft);
       } else {
         const rowId = getRowIdWithMaximumColSpanInCol(right, top, bottom);
-        const nextRight = getNextXLeft(rowId, right, x);
+        const nextRight = getNextXLeft(rowId, right, x2);
         grid.selectRange(top, left, bottom, nextRight, activeCell);
         grid.scrollOnCol(nextRight);
       }
@@ -3560,12 +3753,12 @@ function createGridCellCursorManager(grid) {
       const minLeft = getMinimumLeftByColumn(activeCell.col, top, bottom);
       if (minLeft === left) {
         const rowId = getRowIdWithMaximumColSpanInCol(right, top, bottom);
-        const nextRight = getNextXRight(rowId, right, x);
+        const nextRight = getNextXRight(rowId, right, x2);
         grid.selectRange(top, left, bottom, nextRight, activeCell);
         grid.scrollOnCol(nextRight);
       } else {
         const rowId = getRowIdWithMaximumColSpanInCol(left, top, bottom);
-        const nextLeft = getNextXRight(rowId, left, x);
+        const nextLeft = getNextXRight(rowId, left, x2);
         grid.selectRange(top, nextLeft, bottom, right, activeCell);
         grid.scrollOnCol(nextLeft);
       }
@@ -3579,9 +3772,14 @@ function createGridCellCursorManager(grid) {
       return;
     }
     const lastCol = getLastActiveColumn();
-    if (!isExtending)
-      grid.selectCell(activeCell.row, lastCol);
-    else
+    if (isExtending && rowSelection)
+      return;
+    if (!isExtending) {
+      if (rowSelection)
+        grid.selectRow(activeCell.row, grid.cell(activeCell.row, lastCol));
+      else
+        grid.selectCell(activeCell.row, lastCol);
+    } else
       grid.selectRange(selection.top, activeCell.col, selection.bottom, lastCol, activeCell);
     grid.scrollOnCol(lastCol);
   };
@@ -3593,9 +3791,14 @@ function createGridCellCursorManager(grid) {
       return;
     }
     const firstCol = getFirstActiveColumn();
-    if (!isExtending)
-      grid.selectCell(activeCell.row, firstCol);
-    else
+    if (isExtending && rowSelection)
+      return;
+    if (!isExtending) {
+      if (rowSelection)
+        grid.selectRow(activeCell.row, grid.cell(activeCell.row, firstCol));
+      else
+        grid.selectCell(activeCell.row, firstCol);
+    } else
       grid.selectRange(selection.top, firstCol, selection.bottom, activeCell.col, activeCell);
     grid.scrollOnCol(firstCol);
   };
@@ -3607,6 +3810,8 @@ function createGridCellCursorManager(grid) {
       return;
     }
     const lastRow = getLastActiveRow();
+    if (isExtending && rowSelection)
+      return;
     if (!isExtending)
       grid.selectCell(lastRow, activeCell.col);
     else
@@ -3621,6 +3826,8 @@ function createGridCellCursorManager(grid) {
       return;
     }
     const firstRow = getFirstActiveRow();
+    if (isExtending && rowSelection)
+      return;
     if (!isExtending)
       grid.selectCell(firstRow, activeCell.col);
     else
@@ -3643,7 +3850,7 @@ function createGridCellCursorManager(grid) {
 }
 
 // src/utils/key-controller.ts
-var import_lodash9 = __toESM(require_lodash());
+var import_lodash9 = __toESM(require_lodash(), 1);
 var KeyActionController = class {
   constructor() {
     this.keyMap = {};
@@ -3679,9 +3886,13 @@ var KeyActionController = class {
 // src/js-components/grid/plugins/default-key.ts
 var PAGE_OFFSET = 10;
 var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
-  constructor({ keyMiddleware = [] }) {
+  constructor({
+    keyMiddleware = [],
+    rowSelection = false
+  }) {
     super();
     this._keyMiddleware = keyMiddleware;
+    this._rowSelection = rowSelection;
   }
   _mountTask({ grid, gridContext, contextElement }) {
     const keyController = new KeyActionController();
@@ -3691,10 +3902,10 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
       ev.preventDefault();
     };
     const editActiveCell = (data, clearData = false) => {
-      var _a;
+      var _a, _b;
       if (!gridContext.isIdle)
         return;
-      const cell = ((_a = grid.activeCell) == null ? void 0 : _a.mergeMain) ?? grid.activeCell;
+      const cell = (_b = (_a = grid.activeCell) == null ? void 0 : _a.mergeMain) != null ? _b : grid.activeCell;
       cell && grid.doEditMode(cell, data, clearData);
     };
     this._keyMiddleware.forEach(([key, keyAction]) => keyController.addKeyAction(key, keyAction));
@@ -3708,8 +3919,8 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
       selectMoveToFirstColumn,
       selectMoveToLastColumn,
       selectMoveToLastRow
-    } = createGridCellCursorManager(grid);
-    textArea.className = grid_classNames_default.focus["&"];
+    } = createGridCellCursorManager(grid, this._rowSelection);
+    textArea.className = Fr;
     contextElement.appendChild(textArea);
     grid.addCoreElement(textArea);
     grid.addGlobalEventListener(contextElement, "focus", () => {
@@ -3720,14 +3931,15 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
       var _a;
       if (ev.target instanceof HTMLTextAreaElement)
         return;
-      if ((_a = document.activeElement) == null ? void 0 : _a.classList.contains("grid__textarea"))
+      if ((_a = document.activeElement) == null ? void 0 : _a.classList.contains(ne))
         return;
       textArea.focus();
     });
     grid.addGlobalEventListener(contextElement, "input", (ev) => {
+      var _a;
       if (ev.target !== textArea)
         return;
-      editActiveCell(ev.data ?? void 0, true);
+      editActiveCell((_a = ev.data) != null ? _a : void 0, true);
       return true;
     });
     textArea.addEventListener("copy", (ev) => grid.onNativeCopy(ev));
@@ -3835,7 +4047,7 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
       for (const cell of generator.getSelectionGenerator(selection)) {
         if (cell.onCheckReadonly() || cell.metaInfo.disabled)
           continue;
-        if (cell.metaInfo.cellType === "checkbox") {
+        if (cell.renderType === "checkbox") {
           (_a = cell.element.querySelector("input")) == null ? void 0 : _a.click();
         }
       }
@@ -3855,7 +4067,7 @@ var IRGridDefaultKeyPlugin = class extends IRGridPlugin {
   }
 };
 function DefaultKeyPlugin(defaultKeyOptions) {
-  return new IRGridDefaultKeyPlugin(defaultKeyOptions ?? {});
+  return new IRGridDefaultKeyPlugin(defaultKeyOptions != null ? defaultKeyOptions : {});
 }
 
 // src/js-components/grid/plugins/row-selection.ts
@@ -3865,7 +4077,7 @@ var IRGridRowSelectionPlugin = class extends IRGridPlugin {
     table.addEventListener("mousedown", (ev) => {
       if (ev.button !== 0)
         return;
-      const curCell = ev.target.closest("td");
+      const curCell = closest("td", "tr", ev.target);
       if (!curCell || (curCell == null ? void 0 : curCell.tagName) === "TH")
         return;
       const cellAddress = getCellElementRowCol(curCell);
@@ -3883,7 +4095,7 @@ function RowSelectionPlugin() {
 }
 
 // src/js-components/grid/plugins/column-fill.ts
-var import_lodash10 = __toESM(require_lodash());
+var import_lodash10 = __toESM(require_lodash(), 1);
 var NOT_SCHEDULED2 = -1;
 var COLUMN_WEIGHT_REGEXP = /^\d+px$/;
 function validateColumnWeight(columnWeight) {
@@ -3938,7 +4150,8 @@ var IRGridColumnFillPlugin = class extends IRGridPlugin {
       }, 0);
       let w = 0;
       import_lodash10.default.range(excludedLastColCount).filter((id) => grid.getColumnVisible(id)).forEach((id) => {
-        const weight = this._columnWeightList[id] ?? 1;
+        var _a;
+        const weight = (_a = this._columnWeightList[id]) != null ? _a : 1;
         if (typeof weight === "string" && weight.endsWith("px")) {
           const width = convertFixedColumnWidth(weight);
           grid.setColumnWidth(id, width);
@@ -3978,7 +4191,7 @@ var IRGridColumnFillPlugin = class extends IRGridPlugin {
   }
 };
 function ColumnFillPlugin(columnFillOptions) {
-  return new IRGridColumnFillPlugin(columnFillOptions ?? { columnWeight: [] });
+  return new IRGridColumnFillPlugin(columnFillOptions != null ? columnFillOptions : { columnWeight: [] });
 }
 
 // src/js-components/grid/plugins/cell-observer.ts
@@ -4084,7 +4297,7 @@ var IRGridCellDropPlugin = class extends IRGridPlugin {
   }
 };
 function CellDropPlugin(cellDropArgs) {
-  return new IRGridCellDropPlugin(cellDropArgs ?? {});
+  return new IRGridCellDropPlugin(cellDropArgs != null ? cellDropArgs : {});
 }
 
 // src/js-components/grid/plugins/single-cell-drag.ts
@@ -4105,7 +4318,7 @@ var IRGridSingleCellDragPlugin = class extends IRGridPlugin {
     table.addEventListener("mousedown", (ev) => {
       if (ev.button !== 0)
         return;
-      const curCell = ev.target.closest("td");
+      const curCell = closest("td", "tr", ev.target);
       if (!curCell) {
         releaseDragging();
         return;
@@ -4146,27 +4359,38 @@ var IRGridRowColumnExchangePlugin = class extends IRGridPlugin {
 
 // src/js-components/grid/plugins/popover.ts
 var FLOATING_OFFSET = 8;
+var gridIntentCls = {
+  normal: Zr,
+  error: Or
+};
 var updatePopoverOffset = (refElement, floatingElement, placement, crossAxis) => {
   if (refElement.isConnected === false || refElement.offsetParent === null)
     return;
   computePosition(refElement, floatingElement, {
     placement,
+    strategy: "fixed",
     middleware: [
       offset({
         mainAxis: FLOATING_OFFSET,
-        crossAxis: crossAxis ?? 0
+        crossAxis: crossAxis != null ? crossAxis : 0
       }),
       flip(),
       shift({ padding: 5 })
     ]
-  }).then(({ x, y, placement: placement2 }) => {
-    floatingElement.style.left = `${x}px`;
-    floatingElement.style.top = `${y}px`;
+  }).then(({ x: x2, y: y2, placement: placement2 }) => {
+    floatingElement.style.left = `${x2}px`;
+    floatingElement.style.top = `${y2}px`;
     floatingElement.dataset["placement"] = placement2;
   });
 };
-var DEFAULT_GET_TOOLTIP_TEXT = (cell) => cell.cellInfo.tooltip ?? cell.cellInfo.text ?? "";
-var DEFAULT_GET_MEMO_TEXT = (cell) => cell.cellInfo.memo ?? "";
+var DEFAULT_GET_TOOLTIP_TEXT = (cell) => {
+  var _a, _b;
+  return (_b = (_a = cell.cellInfo.tooltip) != null ? _a : cell.cellInfo.text) != null ? _b : "";
+};
+var DEFAULT_GET_MEMO_TEXT = (cell) => {
+  var _a;
+  return (_a = cell.cellInfo.memo) != null ? _a : "";
+};
 var IRGridPopoverPlugin = class extends IRGridPlugin {
   constructor(options) {
     super();
@@ -4174,7 +4398,7 @@ var IRGridPopoverPlugin = class extends IRGridPlugin {
     this.context = null;
     this._tooltipElement = document.createElement("div");
     this._memoElement = document.createElement("div");
-    this._tooltipElement.className = "tooltip";
+    this._tooltipElement.className = cr;
   }
   hideMemo() {
     this._memoElement.remove();
@@ -4183,7 +4407,7 @@ var IRGridPopoverPlugin = class extends IRGridPlugin {
     this._tooltipElement.remove();
   }
   createContext(cell) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e2, _f;
     const {
       memoInterval,
       tooltipInterval,
@@ -4194,16 +4418,16 @@ var IRGridPopoverPlugin = class extends IRGridPlugin {
       memoIntent = "normal",
       tooltipDisabled = false
     } = cell.cellInfo;
-    const tooltipText = ((_b = (_a = this.options).getTooltipText) == null ? void 0 : _b.call(_a, cell)) ?? DEFAULT_GET_TOOLTIP_TEXT(cell);
-    const memoText = ((_d = (_c = this.options).getMemoText) == null ? void 0 : _d.call(_c, cell)) ?? DEFAULT_GET_MEMO_TEXT(cell);
+    const tooltipText = (_c = (_b = (_a = this.options).getTooltipText) == null ? void 0 : _b.call(_a, cell)) != null ? _c : DEFAULT_GET_TOOLTIP_TEXT(cell);
+    const memoText = (_f = (_e2 = (_d = this.options).getMemoText) == null ? void 0 : _e2.call(_d, cell)) != null ? _f : DEFAULT_GET_MEMO_TEXT(cell);
     const showTooltip = () => {
       this._tooltipElement.textContent = tooltipText;
       getLayerElement("popover").appendChild(this._tooltipElement);
       updatePopoverOffset(cell.element, this._tooltipElement, "bottom");
     };
     const showMemo = () => {
-      this._memoElement.textContent = memoText ?? "";
-      this._memoElement.className = `memo memo--${memoIntent}`;
+      this._memoElement.textContent = memoText != null ? memoText : "";
+      this._memoElement.className = `${Mr} ${gridIntentCls[memoIntent]}`;
       getLayerElement("popover").appendChild(this._memoElement);
       updatePopoverOffset(cell.element, this._memoElement, "right-start", FLOATING_OFFSET);
     };
@@ -4227,7 +4451,7 @@ var IRGridPopoverPlugin = class extends IRGridPlugin {
       var _a, _b, _c;
       if (!checkTargetIsHTMLElement(ev.target))
         return;
-      const cellElement = ev.target.closest("td");
+      const cellElement = closest("td,th", "tr", ev.target);
       if (!cellElement) {
         (_a = this.context) == null ? void 0 : _a.cleanup();
         return;
@@ -4261,21 +4485,25 @@ var IRGridPopoverPlugin = class extends IRGridPlugin {
 };
 
 // src/js-components/grid/utility/cell-editor.ts
+var ASCII_CODE = 128;
 var IRGridCellEditor = class {
   constructor(cell) {
     this._cell = cell;
   }
   createTextAreaWrapper(key, clearData = false) {
+    var _a;
     const textareaWrapper = document.createElement("div");
     const textarea = document.createElement("textarea");
-    const beforeText = this._cell.metaInfo.text ?? "";
-    textarea.className = grid_classNames_default.textarea["&"];
+    const beforeText = (_a = this._cell.metaInfo.text) != null ? _a : "";
+    textarea.className = ne;
     textarea.value = beforeText;
     if (this._cell.metaInfo.maxLength)
       textarea.maxLength = this._cell.metaInfo.maxLength;
+    else
+      textarea.maxLength = 1e4;
     if (clearData)
       textarea.value = "";
-    if (key)
+    if (key && key.charCodeAt(0) < ASCII_CODE)
       textarea.value += key;
     const endEditHandler = (value, changed, endKeyCode) => {
       textarea.removeEventListener("blur", onBlurHandler);
@@ -4563,22 +4791,23 @@ var Emittery = class _Emittery {
     };
   }
   static get isDebugEnabled() {
-    var _a;
+    var _a, _b;
     if (typeof ((_a = globalThis.process) == null ? void 0 : _a.env) !== "object") {
       return isGlobalDebugEnabled;
     }
-    const { env } = globalThis.process ?? { env: {} };
+    const { env } = (_b = globalThis.process) != null ? _b : { env: {} };
     return env.DEBUG === "emittery" || env.DEBUG === "*" || isGlobalDebugEnabled;
   }
   static set isDebugEnabled(newValue) {
     isGlobalDebugEnabled = newValue;
   }
   constructor(options = {}) {
+    var _a;
     anyMap.set(this, /* @__PURE__ */ new Set());
     eventsMap.set(this, /* @__PURE__ */ new Map());
     producersMap.set(this, /* @__PURE__ */ new Map());
     producersMap.get(this).set(anyProducer, /* @__PURE__ */ new Set());
-    this.debug = options.debug ?? {};
+    this.debug = (_a = options.debug) != null ? _a : {};
     if (this.debug.enabled === void 0) {
       this.debug.enabled = false;
     }
@@ -4661,13 +4890,14 @@ var Emittery = class _Emittery {
     return iterator(this, eventNames);
   }
   async emit(eventName, eventData) {
+    var _a;
     assertEventName(eventName);
     if (isMetaEvent(eventName) && !canEmitMetaEvents) {
       throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
     }
     this.logIfDebugEnabled("emit", eventName, eventData);
     enqueueProducers(this, eventName, eventData);
-    const listeners = getListeners(this, eventName) ?? /* @__PURE__ */ new Set();
+    const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
     const anyListeners = anyMap.get(this);
     const staticListeners = [...listeners];
     const staticAnyListeners = isMetaEvent(eventName) ? [] : [...anyListeners];
@@ -4686,12 +4916,13 @@ var Emittery = class _Emittery {
     ]);
   }
   async emitSerial(eventName, eventData) {
+    var _a;
     assertEventName(eventName);
     if (isMetaEvent(eventName) && !canEmitMetaEvents) {
       throw new TypeError("`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`");
     }
     this.logIfDebugEnabled("emitSerial", eventName, eventData);
-    const listeners = getListeners(this, eventName) ?? /* @__PURE__ */ new Set();
+    const listeners = (_a = getListeners(this, eventName)) != null ? _a : /* @__PURE__ */ new Set();
     const anyListeners = anyMap.get(this);
     const staticListeners = [...listeners];
     const staticAnyListeners = [...anyListeners];
@@ -4756,12 +4987,12 @@ var Emittery = class _Emittery {
     }
   }
   listenerCount(eventNames) {
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e2, _f;
     eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
     let count = 0;
     for (const eventName of eventNames) {
       if (typeof eventName === "string") {
-        count += anyMap.get(this).size + (((_a = getListeners(this, eventName)) == null ? void 0 : _a.size) ?? 0) + (((_b = getEventProducers(this, eventName)) == null ? void 0 : _b.size) ?? 0) + (((_c = getEventProducers(this)) == null ? void 0 : _c.size) ?? 0);
+        count += anyMap.get(this).size + ((_b = (_a = getListeners(this, eventName)) == null ? void 0 : _a.size) != null ? _b : 0) + ((_d = (_c = getEventProducers(this, eventName)) == null ? void 0 : _c.size) != null ? _d : 0) + ((_f = (_e2 = getEventProducers(this)) == null ? void 0 : _e2.size) != null ? _f : 0);
         continue;
       }
       if (typeof eventName !== "undefined") {
@@ -4831,7 +5062,7 @@ var createEmitController = (grid) => {
 };
 
 // src/js-components/grid/utility/finder.ts
-var import_lodash11 = __toESM(require_lodash());
+var import_lodash11 = __toESM(require_lodash(), 1);
 function createIRGridFinder(grid, args) {
   const finderOptions = {
     text: "",
@@ -4953,7 +5184,7 @@ function createIRGridFinder(grid, args) {
 }
 
 // src/js-components/grid/utility/merge.ts
-var import_lodash12 = __toESM(require_lodash());
+var import_lodash12 = __toESM(require_lodash(), 1);
 function isSingleCell(range) {
   return range.top === range.bottom && range.left === range.right;
 }
@@ -5079,9 +5310,9 @@ function createMergeHandler(grid) {
 }
 
 // src/js-components/grid/utility/selector.ts
-var import_lodash13 = __toESM(require_lodash());
-var GRID_SELECTION_HIDDEN_CLS = "grid-selection--hidden";
+var import_lodash13 = __toESM(require_lodash(), 1);
 var SELECTION_COUNT = 4;
+var GRID_SELECTION_HIDDEN_CLS = "is-hidden";
 function getIntersection(range, range2) {
   if (range.top > range2.bottom || range2.top > range.bottom || range.left > range2.right || range2.left > range.right)
     return null;
@@ -5092,8 +5323,8 @@ function getIntersection(range, range2) {
     right: Math.min(range.right, range2.right)
   };
 }
-var SUB_SELECTION_CLASSES = "sub-selection";
-var SELECTION_CLASS = ["all-freezed-area", "freezed-row-area", "freezed-column-area", "non-freezed"];
+var SUB_SELECTION_CLASSES = ae;
+var SELECTION_CLASS = [Xr, re, $r, ee];
 var BORDER_DIRECTION = ["top", "left", "bottom", "right"];
 function createGridSelectionElement(grid) {
   const div = document.createElement("div");
@@ -5112,8 +5343,8 @@ function createGridSelectionElement(grid) {
   const [borderTop, borderLeft, borderBottom, borderRight] = selectionBorderList;
   const horizontalBorderList = [borderTop, borderBottom];
   const verticalBorderList = [borderLeft, borderRight];
-  div.classList.add("grid-selection", GRID_SELECTION_HIDDEN_CLS);
-  selectionBorderList.forEach((border, id) => border.className = `border-line border-line__${BORDER_DIRECTION[id]}`);
+  div.classList.add(Ur, GRID_SELECTION_HIDDEN_CLS);
+  selectionBorderList.forEach((border, id) => border.className = `${Yr} border-line__${BORDER_DIRECTION[id]}`);
   selectionList.forEach((subSelection) => div.appendChild(subSelection));
   selectionBorderList.forEach((border) => div.appendChild(border));
   function getAreaRectByRange(range) {
@@ -5543,33 +5774,32 @@ var RemoveColumnCommand = class extends IRGridCommand {
 };
 
 // src/js-components/grid/command/remove-row.ts
-var import_lodash14 = __toESM(require_lodash());
+var import_lodash14 = __toESM(require_lodash(), 1);
 var RemoveRowCommand = class extends IRGridCommand {
   _undo() {
     const count = this._args[1] - this._args[0] + 1;
     this._instance.insertRows(this._args[0], count);
-    this._instance.afterRender(() => {
-      this._undoContext.removedRows.forEach((removedRow) => {
-        const recoveredRow = this._instance.getRow(removedRow.rowId);
-        this._instance.setRowHeight(recoveredRow.rowId, removedRow.height);
-        this._instance.setRowVisible(recoveredRow.rowId, removedRow.visible);
-        for (let cellId = 0; cellId < removedRow.cellCounts; cellId++) {
-          const removedCell = removedRow.getCell(cellId);
-          recoveredRow.getCell(cellId).cellRenderer = removedCell.cellRenderer;
-          this._instance.setCell(recoveredRow.rowId, cellId, removedCell.metaInfo);
-          if (removedCell.mergeInfo.rowSpan > 1 || removedCell.mergeInfo.colSpan > 1)
-            this._instance.mergeCells(
-              removedCell.row,
-              removedCell.col,
-              removedCell.bottom,
-              removedCell.right
-            );
-        }
-        this._undoContext.selection && this._instance.select(
-          this._undoContext.selection,
-          this._undoContext.activeCell ? this._instance.cell(this._undoContext.activeCell.row, this._undoContext.activeCell.col) : null
-        );
-      });
+    this._instance.forceLayoutTask();
+    this._undoContext.removedRows.forEach((removedRow) => {
+      const recoveredRow = this._instance.getRow(removedRow.rowId);
+      this._instance.setRowHeight(recoveredRow.rowId, removedRow.height);
+      this._instance.setRowVisible(recoveredRow.rowId, removedRow.visible);
+      for (let cellId = 0; cellId < removedRow.cellCounts; cellId++) {
+        const removedCell = removedRow.getCell(cellId);
+        recoveredRow.getCell(cellId).cellRenderer = removedCell.cellRenderer;
+        this._instance.setCell(recoveredRow.rowId, cellId, removedCell.metaInfo);
+        if (removedCell.mergeInfo.rowSpan > 1 || removedCell.mergeInfo.colSpan > 1)
+          this._instance.mergeCells(
+            removedCell.row,
+            removedCell.col,
+            removedCell.bottom,
+            removedCell.right
+          );
+      }
+      this._undoContext.selection && this._instance.select(
+        this._undoContext.selection,
+        this._undoContext.activeCell ? this._instance.cell(this._undoContext.activeCell.row, this._undoContext.activeCell.col) : null
+      );
     });
   }
   _execute() {
@@ -5697,6 +5927,12 @@ function command() {
 }
 
 // src/js-components/grid/grid.ts
+var gridCSS = {
+  grid: zr,
+  gridWrapper: de,
+  gridTable: te,
+  gridVariants: le
+};
 var IR_GRID_WEAK_MAP_OBJ = {};
 var IR_GRID_CLIPBOARD_TYPE_LIST = [
   "text/html",
@@ -5704,14 +5940,12 @@ var IR_GRID_CLIPBOARD_TYPE_LIST = [
 ];
 var IRGrid = class extends IRComponent {
   constructor(args) {
+    var _a, _b, _c, _d;
     super({ contextElement: args.contextElement });
     this._gridContext = new IRGridStateContext(this);
     this._gridRangeUtils = new IRGridRangeUtil(this);
+    this._plugins = [];
     this._readonly = false;
-    this._copyOptions = {
-      rowSpan: true,
-      colSpan: true
-    };
     const {
       contextElement,
       colHeader,
@@ -5721,7 +5955,8 @@ var IRGrid = class extends IRComponent {
       plugins,
       storeOptions
     } = args;
-    this._cursorManager = createGridCellCursorManager(this);
+    this._multipleCellMode = (_a = args.multipleCellMode) != null ? _a : false;
+    this._cursorManager = createGridCellCursorManager(this, false);
     this._commandManager = new IRCommandManager({ context: this });
     this.contextElement.tabIndex = -1;
     this._defaultColumnCellFormat = {
@@ -5730,6 +5965,7 @@ var IRGrid = class extends IRComponent {
         text: ""
       }
     };
+    this._copyOptions = (_b = args.copyOptions) != null ? _b : { rowSpan: true, colSpan: true };
     if (defaultColumnCellFormat) {
       for (const [key, value] of Object.entries(defaultColumnCellFormat))
         this._defaultColumnCellFormat[key] = Object.assign(this._defaultColumnCellFormat[key] || {}, value);
@@ -5739,8 +5975,8 @@ var IRGrid = class extends IRComponent {
       Object.assign({
         freezedColumnCount: 0,
         freezedRowCount: 0,
-        headerColumnCount: (rowHeader == null ? void 0 : rowHeader.colCount) ?? 0,
-        headerRowCount: (colHeader == null ? void 0 : colHeader.rowCount) ?? 0
+        headerColumnCount: (_c = rowHeader == null ? void 0 : rowHeader.colCount) != null ? _c : 0,
+        headerRowCount: (_d = colHeader == null ? void 0 : colHeader.rowCount) != null ? _d : 0
       }, storeOptions)
     );
     this.initGridCellPadding();
@@ -5768,12 +6004,13 @@ var IRGrid = class extends IRComponent {
       colCount: 0,
       cellRenderer: defaultCellRenderer
     }, body);
-    this.contextElement.classList.add(grid_classNames_default.grid["&"]);
+    this.contextElement.classList.add(gridCSS.grid);
     this._tableElement = document.createElement("table");
     this._divWrapper = document.createElement("div");
     const tbody = document.createElement("tbody");
-    this._divWrapper.className = grid_classNames_default.wrapper["&"];
+    this._divWrapper.className = gridCSS.gridWrapper;
     this._divWrapper.tabIndex = -1;
+    this._tableElement.classList.add(gridCSS.gridTable);
     this._tableElement.appendChild(this.colManager.colgroup);
     this._tableElement.appendChild(tbody);
     this._divWrapper.appendChild(this._tableElement);
@@ -5784,7 +6021,7 @@ var IRGrid = class extends IRComponent {
       this.onResizeContext();
     });
     this.resizeObserver.observe(this.contextElement);
-    this.initPlugins(plugins ?? [
+    this.initPlugins(plugins != null ? plugins : [
       new IRGridDefaultKeyPlugin({}),
       new IRGridMouseCellSelectorPlugin(),
       new IRGridCellDropPlugin({}),
@@ -5827,7 +6064,8 @@ var IRGrid = class extends IRComponent {
         this.onActiveCellNull();
     });
     this._gridContext.selectionRangeState.addSubscription((_prev, next) => {
-      this.onSelectChanged((next == null ? void 0 : next.range) ?? null);
+      var _a2;
+      this.onSelectChanged((_a2 = next == null ? void 0 : next.range) != null ? _a2 : null);
     });
     this._gridContext.gridModeState.addSubscription((_prev, next) => {
       this.contextElement.dataset["mode"] = next.mode;
@@ -5836,8 +6074,8 @@ var IRGrid = class extends IRComponent {
     this.initTableRowCol();
     this.addGlobalEventListener(this.contextElement, "contextmenu", (ev) => {
       ev.preventDefault();
-      const { x, y } = getOffsetXYOnContext(ev);
-      this.onContextMenu(ev, this.findCellOrNull(y, x));
+      const { x: x2, y: y2 } = getOffsetXYOnContext(ev);
+      this.onContextMenu(ev, this.findCellOrNull(y2, x2));
     });
   }
   /**
@@ -5845,6 +6083,9 @@ var IRGrid = class extends IRComponent {
    */
   get fixedRowCount() {
     return this._colHeaderInfo.rowCount;
+  }
+  get canSelectMultipleCells() {
+    return this._multipleCellMode;
   }
   get firstRow() {
     return this.rowManager.firstRow;
@@ -5936,8 +6177,8 @@ var IRGrid = class extends IRComponent {
     return this.rowManager.headerRowsHeight;
   }
   get activeCell() {
-    var _a;
-    return ((_a = this._gridContext.selectionRangeState.value) == null ? void 0 : _a.activeCell) ?? null;
+    var _a, _b;
+    return (_b = (_a = this._gridContext.selectionRangeState.value) == null ? void 0 : _a.activeCell) != null ? _b : null;
   }
   /*
    * Setters
@@ -6019,12 +6260,17 @@ var IRGrid = class extends IRComponent {
     return this._mergeManager.isMerged(row, col);
   }
   splitCells(row, col) {
+    this.forceLayoutTask();
     this._mergeManager.splitCells(row, col);
     this._debounceManager.addTask("virtualRender");
   }
   mergeCells(top, left, bottom, right) {
+    this.forceLayoutTask();
     this._mergeManager.mergeCells({ top, left, bottom, right });
     this._debounceManager.addTask("virtualRender");
+    const selection = this.getSelection();
+    if (selection)
+      this.selectRange(selection.top, selection.left, selection.bottom, selection.right);
   }
   undo() {
     this._commandManager.undo();
@@ -6062,6 +6308,7 @@ var IRGrid = class extends IRComponent {
     return curRow;
   }
   findCellOrNull(offsetY, offsetX) {
+    var _a;
     const { scrollTop, scrollLeft } = this;
     const adjustOffsetY = offsetY < scrollTop + this.fixedRowHeight ? offsetY - scrollTop : offsetY;
     const adjustOffsetX = offsetX < scrollLeft + this.fixedColumnWidth ? offsetX - scrollLeft : offsetX;
@@ -6072,7 +6319,7 @@ var IRGrid = class extends IRComponent {
     if (!column)
       return null;
     const cell = this.cell(row.rowId, column.columnId);
-    return cell.mergeMain ?? cell;
+    return (_a = cell.mergeMain) != null ? _a : cell;
   }
   getBaseCell(row, col) {
     const cell = this.cell(row, col);
@@ -6117,7 +6364,8 @@ var IRGrid = class extends IRComponent {
     this.select({ top, left, bottom, right }, cell);
   }
   selectAll() {
-    this.selectRange(this.headerRows, this.headerColumns, this.getRowCount() - 1, this.getColCount() - 1, this.activeCell ?? null);
+    var _a;
+    this.selectRange(this.headerRows, this.headerColumns, this.getRowCount() - 1, this.getColCount() - 1, (_a = this.activeCell) != null ? _a : null);
   }
   getCellWidth(cell) {
     if (cell.mergeInfo)
@@ -6132,8 +6380,8 @@ var IRGrid = class extends IRComponent {
       return this.getRowHeight(cell.col);
   }
   getSelection() {
-    var _a;
-    return ((_a = this._gridContext.selectionRangeState.value) == null ? void 0 : _a.range) ?? null;
+    var _a, _b;
+    return (_b = (_a = this._gridContext.selectionRangeState.value) == null ? void 0 : _a.range) != null ? _b : null;
   }
   scrollOnRow(row) {
     if (!this._debounceManager.isScheduled)
@@ -6141,11 +6389,21 @@ var IRGrid = class extends IRComponent {
     else
       this.afterRender(() => this.scrollOnRowTask(row));
   }
+  forceLayoutTask() {
+    this._debounceManager.forceRunTasks();
+  }
   scrollOnCol(col) {
     if (!this._debounceManager.isScheduled)
       this.scrollOnColTask(col);
     else
       this.afterRender(() => this.scrollOnColTask(col));
+  }
+  getPlugin(type) {
+    for (const plugin of this._plugins) {
+      if (plugin instanceof type)
+        return plugin;
+    }
+    throw new Error(`not found plugin ${type}`);
   }
   resetScroll() {
     this.contextElement.scrollTop = 0;
@@ -6218,11 +6476,21 @@ var IRGrid = class extends IRComponent {
   isBased(row, col) {
     return this.cell(row, col).mergeMain === void 0;
   }
+  /**
+   * 해당 row, col cell의 IRGridCellMetaInfo를 반환합니다.
+   */
   getCell(row, col) {
     return this.cell(row, col).metaInfo;
   }
   setCell(row, col, cellInfo) {
     this.cell(row, col).cellInfo = cellInfo;
+  }
+  /**
+   * 행의 여러 데이터를 삽입할 때, 성능 최적화를 위해 사용
+   * rowInfo의 cellMetaInfo의 경우, 기존 속성을 상속하지 않고,
+   */
+  setRowInfo(rowNo, rowInfo) {
+    this.getRow(rowNo).setRowInfo(rowInfo);
   }
   selectCell(row, col) {
     this.selectRange(row, col, row, col, this.cell(row, col));
@@ -6260,12 +6528,23 @@ var IRGrid = class extends IRComponent {
   getRowLodash() {
     return this.rowManager.rowLodash;
   }
-  addRow(height = this._rowHeaderInfo.defaultSize) {
+  /**
+   * command 처리 제거용 (벌크 addRow 성능)
+   */
+  _addRow(height = this._rowHeaderInfo.defaultSize) {
     const adjustedHeight = getMinMaxBetween(height, this.minRowHeight, this.maxRowHeight);
     const gridRow = this.createIRGridRow(this.rowManager.getNextRowId(), this.height, adjustedHeight);
     this.rowManager.addRow(gridRow);
-    this._debounceManager.addTask("virtualRender").addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass");
     return gridRow.rowId;
+  }
+  _createBulkRows(rowCount, height) {
+    for (let i = 0; i < rowCount; i++)
+      this._addRow(height);
+    this._debounceManager.scheduleAddRowTasks();
+  }
+  addRow(height) {
+    this._debounceManager.scheduleAddRowTasks();
+    return this._addRow(height);
   }
   /**
    *
@@ -6318,13 +6597,16 @@ var IRGrid = class extends IRComponent {
       this._debounceManager.addTask("updateRowsStickyLeft");
     return true;
   }
-  addColumn(width = this._colHeaderInfo.defaultSize) {
+  _addColumn(width = this._colHeaderInfo.defaultSize) {
     const adjustWidth = getMinMaxBetween(width, this.minColWidth, this.maxColWidth);
     const column = this.colManager.addColumn(adjustWidth);
     this.rowManager.addColumn((row) => this.createIRGridCell(row.rowId, column.columnId));
-    this._debounceManager.addTask("generateScrollBarClass");
     this._emitterController.emit("onColumnChanged", { left: column.columnId, right: column.columnId, type: "addColumn" });
     return column.columnId;
+  }
+  addColumn(width) {
+    this._debounceManager.addTask("generateScrollBarClass");
+    return this._addColumn(width);
   }
   /**
    *
@@ -6387,14 +6669,7 @@ var IRGrid = class extends IRComponent {
    */
   autoSizeColumns(left, right) {
     import_lodash15.default.range(left, right + 1).forEach((col) => {
-      const maxWidth = Math.ceil(this.rowManager.rowLodash.map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => {
-        return Math.max(
-          // 1. cell 자체 크기 계산
-          cell.innerWidth,
-          // 2. cell renderer의 크기 계산
-          cell.rendererInnerWidth
-        );
-      }).reduce((a, b) => Math.max(a, b), 0));
+      const maxWidth = Math.ceil(this.rowManager.rowLodash.map((row) => row.getCell(col)).filter((cell) => cell.visible && cell.mergeInfo.colSpan === 1).flatMap((cell) => cell.innerWidth).reduce((a, b) => Math.max(a, b), 0));
       if (maxWidth !== this.getColumnWidth(col))
         this.setColumnWidth(
           col,
@@ -6438,6 +6713,7 @@ var IRGrid = class extends IRComponent {
     return cellMetaInfoList.flat().some((metaInfo) => metaInfo.rowSpan > 1 || metaInfo.colSpan > 1);
   }
   async _createClipboardGetter() {
+    var _a;
     const obj = {
       "ir-grid/cell": "",
       "text/html": "",
@@ -6453,11 +6729,12 @@ var IRGrid = class extends IRComponent {
       }
     } catch (err) {
       console.warn("pasteFromClipboard warning! it expects https protocol and clipboard permission.", err);
-      obj["ir-grid/cell"] = readText(IR_GRID_WEAK_MAP_OBJ) ?? "";
+      obj["ir-grid/cell"] = (_a = readText(IR_GRID_WEAK_MAP_OBJ)) != null ? _a : "";
     }
     return {
       getData(format) {
-        return obj[format] ?? "";
+        var _a2;
+        return (_a2 = obj[format]) != null ? _a2 : "";
       }
     };
   }
@@ -6491,8 +6768,8 @@ var IRGrid = class extends IRComponent {
     if (pastingCellList.length === 0)
       return;
     this.onClipboardBeforePaste(pasteRange);
-    this.onClipboardAfterPaste(pasteRange);
     pastingContext.pasteTask(pastingCellList);
+    this.onClipboardAfterPaste(pasteRange);
     this.select(pasteRange);
   }
   hasRow(row) {
@@ -6503,7 +6780,7 @@ var IRGrid = class extends IRComponent {
   }
   clearCells(range) {
     for (const cell of this._generator.getSelectionGenerator(range))
-      cell.canClear && cell.clear();
+      this.onClearCellCheck(cell) && cell.clear();
   }
   setRowVisible(rowId, visible) {
     if (this._mergeManager.checkConflictingInRows(rowId, rowId))
@@ -6551,10 +6828,11 @@ var IRGrid = class extends IRComponent {
   selectRows(top, bottom, activeCell = this.activeCell) {
     if (top < this.headerRows)
       return;
-    this.selectRange(top, this.headerColumns, bottom, this.getColCount() - 1, activeCell ?? this.cell(top, this.headerColumns));
+    this.selectRange(top, this.headerColumns, bottom, this.getColCount() - 1, activeCell != null ? activeCell : this.cell(top, this.headerColumns));
   }
   freezeRows(freezingRowCount) {
     this.rowManager.freezeRows(freezingRowCount);
+    this._debounceManager.addTask("updateSelection");
   }
   /**
    * columnId까지의 컬럼을 고정함 (3인 경우, 0~3까지 열이 고정됨)
@@ -6563,6 +6841,7 @@ var IRGrid = class extends IRComponent {
    */
   freezeColumns(columnId) {
     this.freezeColumn(columnId + 1 - this.headerColumns);
+    this._debounceManager.addTask("updateSelection");
   }
   /**
    * 현재 고정된 열 이후 freezingColumnCount 만큼의 열을 고정함.
@@ -6574,7 +6853,7 @@ var IRGrid = class extends IRComponent {
     else if (freezingColumnCount > this.getColCount() - this.headerColumns)
       throw new Error("Could not be freezing after last column");
     this.colManager.freezeColumns(freezingColumnCount);
-    this._debounceManager.addTask("updateRowsStickyLeft");
+    this._debounceManager.addTask("updateSelection").addTask("updateRowsStickyLeft");
   }
   clearUndoStack() {
     this.commandManager.clearCommands();
@@ -6583,10 +6862,55 @@ var IRGrid = class extends IRComponent {
     Object.assign(this._copyOptions, copyOptions);
   }
   sort(compareFunc, order, startRowId, endRowId) {
-    const start = Math.max(startRowId ?? this.headerRows, this.headerRows);
-    const end = Math.min(endRowId ?? this.getRowCount(), this.getRowCount());
+    const start = Math.max(startRowId != null ? startRowId : this.headerRows, this.headerRows);
+    const end = Math.min(endRowId != null ? endRowId : this.getRowCount(), this.getRowCount());
     this.rowManager.sort(compareFunc, order, start, end);
     this._debounceManager.addTask("updateTop").addTask("updateRowId").addTask("virtualRender").addTask("adjustSelection");
+  }
+  splitCellsByRange(range) {
+    for (const cell of this._generator.getSelectionGenerator(range)) {
+      const mergedCellOrNull = cell.mergeInfo.rowSpan > 1 || cell.mergeInfo.colSpan > 1 ? cell : cell.mergeMain;
+      if (mergedCellOrNull)
+        this.splitCells(mergedCellOrNull.row, mergedCellOrNull.col);
+    }
+  }
+  selectMultipleCellAddress(cellAddressList) {
+    if (cellAddressList.length > 0)
+      this.selectCell(cellAddressList[0][0], cellAddressList[0][1]);
+  }
+  selectMultipleCells(cells) {
+    if (cells.length > 0)
+      this.selectCell(cells[0].row, cells[0].col);
+  }
+  getSelectionMode() {
+    return "range";
+  }
+  getSelectedCells() {
+    const selection = this.getSelection();
+    if (!selection)
+      return [];
+    return [this.cell(selection.top, selection.left)];
+  }
+  getSelectedMultipleCellAddress() {
+    const selection = this.getSelection();
+    if (!selection)
+      return [];
+    return [[selection.top, selection.left]];
+  }
+  /**
+   * 현재 단일 셀이 선택되었으면 true 반환, 그외 false (선택 영역 없거나 또는 2개 이상 셀 영역 선택)
+   */
+  isSelectedSingleCell() {
+    const selection = this.getSelection();
+    if (!selection)
+      return false;
+    const { top, left, bottom, right } = selection;
+    if (top === bottom && left === right)
+      return true;
+    const cell = this.getRow(top).getCell(left);
+    if (bottom === cell.bottom && right === cell.right)
+      return true;
+    return false;
   }
   render() {
     this.rowManager.renderRows();
@@ -6607,6 +6931,9 @@ var IRGrid = class extends IRComponent {
   onSelectChanged(_selection) {
   }
   onClearCell(_cell) {
+  }
+  onClearCellCheck(cell) {
+    return cell.canClear;
   }
   onColumnClick(cell) {
   }
@@ -6655,19 +6982,12 @@ var IRGrid = class extends IRComponent {
     ev.dataTransfer.setData("application/json", JSON.stringify(cell.metaInfo.object));
     return true;
   }
-  splitCellsByRange(range) {
-    for (const cell of this._generator.getSelectionGenerator(range)) {
-      const mergedCellOrNull = cell.mergeInfo.rowSpan > 1 || cell.mergeInfo.colSpan > 1 ? cell : cell.mergeMain;
-      if (mergedCellOrNull)
-        this.splitCells(mergedCellOrNull.row, mergedCellOrNull.col);
-    }
-  }
   onCheckPasteCell(cell, text) {
     return cell.visible && cell.onCheckReadonly() !== true && cell.metaInfo.disabled !== true && cell.metaInfo.clipboardEnabled !== false && this.onClipboardBeforePasteCell(cell, text);
   }
-  onUndo(block4) {
+  onUndo(block) {
   }
-  onRedo(block4) {
+  onRedo(block) {
   }
   onNativeCopy(ev) {
     if (!ev.clipboardData)
@@ -6679,8 +6999,9 @@ var IRGrid = class extends IRComponent {
     const cellMetaCopyMatrix = cellMatrix.map((row) => row.map((cell) => ({
       text: cell.text,
       cellVisible: cell.mergeMain === void 0,
-      rowSpan: this._copyOptions.rowSpan ? cell.mergeInfo.rowSpan : 1,
-      colSpan: this._copyOptions.colSpan ? cell.mergeInfo.colSpan : 1
+      rowSpan: cell.mergeInfo.rowSpan,
+      colSpan: cell.mergeInfo.colSpan,
+      isFormatted: false
     })));
     setClipboardData(ev.clipboardData, cellMetaCopyMatrix);
     writeText(IR_GRID_WEAK_MAP_OBJ, JSON.stringify(cellMetaCopyMatrix));
@@ -6693,8 +7014,9 @@ var IRGrid = class extends IRComponent {
     if (!selection)
       throw new Error("Detected copy without selection");
     this.onNativeCopy(ev);
-    for (const cell of this._generator.getSelectionGenerator(selection))
-      cell.editable && cell.clear();
+    this.commandManager.doRecording("Cut", () => {
+      this.clearCells(selection);
+    });
     ev.preventDefault();
   }
   onNativePaste(ev) {
@@ -6710,6 +7032,8 @@ var IRGrid = class extends IRComponent {
     ev.preventDefault();
   }
   doEditMode(cell, data, clearData = false) {
+    if (!cell.element.isConnected || !cell.editable)
+      return false;
     const editor = new IRGridCellEditor(cell);
     editor.onEditDone = (cell2, isChanged, beforeText, endKeyCode, selStart, selEnd) => {
       this.onEditCellDone(cell2, isChanged, beforeText, endKeyCode, selStart, selEnd);
@@ -6735,8 +7059,6 @@ var IRGrid = class extends IRComponent {
       this.selectCell(nextRow, cell.col);
       this.doEditMode(this.cell(nextRow, cell.col));
     };
-    if (!cell.element.isConnected || !cell.editable)
-      return false;
     try {
       this._gridContext.gridModeState.next({
         mode: "edit-cell",
@@ -6794,6 +7116,7 @@ var IRGrid = class extends IRComponent {
           wrapperElement: this._divWrapper,
           gridContext: this._gridContext
         });
+        this._plugins.push(plugin);
       }
     } catch (err) {
       console.error("Plugin init error", err);
@@ -6801,7 +7124,7 @@ var IRGrid = class extends IRComponent {
   }
   initTableRowCol() {
     import_lodash15.default.range(this._colHeaderInfo.colCount).forEach(() => this.addColumn(this._colHeaderInfo.defaultSize));
-    import_lodash15.default.range(this._colHeaderInfo.rowCount + this._bodyInfo.rowCount).forEach(() => this.addRow());
+    this._createBulkRows(this._colHeaderInfo.rowCount + this._bodyInfo.rowCount);
   }
   initColumnHeaderCell(cell) {
     cell.cellType = "col-header";
@@ -6826,10 +7149,12 @@ var IRGrid = class extends IRComponent {
   }
   initGridCellPadding() {
     const { top, left, bottom, right } = this._gridStore.cellPadding;
-    this.contextElement.style.setProperty("--ir-grid-cell-top-padding", `${top}px`);
-    this.contextElement.style.setProperty("--ir-grid-cell-left-padding", `${left}px`);
-    this.contextElement.style.setProperty("--ir-grid-cell-bottom-padding", `${bottom}px`);
-    this.contextElement.style.setProperty("--ir-grid-cell-right-padding", `${right}px`);
+    setElementVars(this.contextElement, {
+      [gridCSS.gridVariants.cellTopPadding]: `${top}px`,
+      [gridCSS.gridVariants.cellLeftPadding]: `${left}px`,
+      [gridCSS.gridVariants.cellBottomPadding]: `${bottom}px`,
+      [gridCSS.gridVariants.cellRightPadding]: `${right}px`
+    });
   }
   getCellRenderer(cellType, row, col, metaInfo) {
     if (cellType === "col-header")
@@ -6873,7 +7198,7 @@ var IRGrid = class extends IRComponent {
     const tag = cellType.endsWith("header") ? "th" : "td";
     const metaInfo = this.getDefaultCellFormat(cellType, col);
     const cellRenderer = this.getCellRenderer(cellType, row, col, metaInfo);
-    const cell = new IRGridCell2({
+    const cell = new IRGridCell({
       row,
       col,
       tag,
