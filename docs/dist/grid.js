@@ -4,17 +4,17 @@ import {
   createDatePickerHandler,
   createDropdownDiv,
   createDropdownItem
-} from "./chunks/chunk-CF6RNEVQ.js";
+} from "./chunks/chunk-TI6PMWG5.js";
 import {
   i18n_default
-} from "./chunks/chunk-VEWYTQUD.js";
+} from "./chunks/chunk-35W6Z2PF.js";
 import {
   readText,
   writeText
 } from "./chunks/chunk-J7AUQGT2.js";
 import {
   IRComponent
-} from "./chunks/chunk-O3XJ324C.js";
+} from "./chunks/chunk-LW2VMBBJ.js";
 import {
   $,
   $r,
@@ -94,7 +94,7 @@ import {
   yr,
   z,
   zr
-} from "./chunks/chunk-K5RQWUDQ.js";
+} from "./chunks/chunk-TPDWUAOZ.js";
 import {
   v4_default
 } from "./chunks/chunk-IQO4KW2H.js";
@@ -111,8 +111,8 @@ import {
   offset,
   offsetBottomAutoUpdate,
   shift
-} from "./chunks/chunk-E2DVMCXX.js";
-import "./chunks/chunk-SLIKBEQ2.js";
+} from "./chunks/chunk-UB2SBWNL.js";
+import "./chunks/chunk-7NF5VX7D.js";
 import {
   __decorateClass,
   __toESM
@@ -956,10 +956,7 @@ var renderGridRadio = ({ onRadioClick }) => {
 
 // src/js-components/grid/cell-renderer/default.ts
 function createCellContent(data) {
-  var _a;
   const div = document.createElement("div");
-  const text = document.createElement("span");
-  text.innerText = (_a = data.text) != null ? _a : "";
   div.className = hr;
   if (data.sortOrder !== void 0) {
     const icon = data.sortOrder === "ASC" ? "sort-ascending" : "sort-descending";
@@ -974,14 +971,15 @@ function createCellContent(data) {
       icon.style.setProperty("--ir-icon-foreground-color", data.iconColor);
     div.appendChild(icon);
   }
-  div.appendChild(text);
+  if (data.text) {
+    const span = document.createElement("span");
+    span.innerText = data.text;
+    div.appendChild(span);
+  }
   return div;
 }
 function createCellContentWithIconButton(row, col, data, onClick) {
-  var _a;
   const div = document.createElement("div");
-  const text = document.createElement("span");
-  text.innerText = (_a = data.text) != null ? _a : "";
   div.className = hr;
   if (data.icon) {
     const button = document.createElement("button");
@@ -997,7 +995,11 @@ function createCellContentWithIconButton(row, col, data, onClick) {
     button.appendChild(icon);
     div.appendChild(button);
   }
-  div.appendChild(text);
+  if (data.text) {
+    const span = document.createElement("span");
+    span.innerText = data.text;
+    div.appendChild(span);
+  }
   return div;
 }
 var IRGridDefaultCellRenderer = class extends IRGridCellRenderer {
@@ -6235,6 +6237,17 @@ var IRGrid = class extends IRComponent {
         startIndex = middleIndex + 1;
     }
     return null;
+  }
+  /**
+   * 설정된 기본 열 서식을 변경합니다.
+   * all 모든 셀 공통
+   * {number} 해당 열 셀 공통
+   * col_header_{number} 해당 열 헤더 셀
+   * row_header_{number} 해당 행 헤더 셀
+   * body_{number} 해당 body 열 셀
+   */
+  setDefaultColumnCellFormat(key, format) {
+    this._defaultColumnCellFormat[key] = { ...format };
   }
   /**
    * 이진 검색으로 top에 해당되는 row를 찾습니다.

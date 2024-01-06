@@ -1,12 +1,12 @@
 import {
   data_worker_default
-} from "./chunks/chunk-OMKBGN5O.js";
+} from "./chunks/chunk-LDNLTL5A.js";
 import "./chunks/chunk-JMMGNVNB.js";
 import {
   v4_default
 } from "./chunks/chunk-IQO4KW2H.js";
 import "./chunks/chunk-L3QRNZQF.js";
-import "./chunks/chunk-SLIKBEQ2.js";
+import "./chunks/chunk-7NF5VX7D.js";
 import "./chunks/chunk-F6QKJDR3.js";
 
 // src/data-export.ts
@@ -29,13 +29,18 @@ var getWorker = /* @__PURE__ */ (() => {
         }
       );
     worker.onmessage = (e) => {
+      var _a;
       const taskResult = e.data;
       if (!taskResult.taskId) {
         console.error(taskResult);
         throw new Error(`taskId is not defined.`);
       }
       const taskLog = getTaskLog(taskResult.taskId);
-      taskLog.resolve(taskResult.objectURL);
+      if (taskResult.hasError) {
+        taskLog.reject((_a = taskResult.error) != null ? _a : new Error("unknown error"));
+      } else {
+        taskLog.resolve(taskResult.objectURL);
+      }
       taskMap.delete(taskResult.taskId);
     };
     worker.onerror = (err) => {
