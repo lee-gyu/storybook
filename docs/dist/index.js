@@ -1,1 +1,3608 @@
-import{a as on,b as nn,c as rn,d as st,e as sn,f as an}from"./chunks/chunk-6EIWT5G5.js";import{a as Ne,b as P}from"./chunks/chunk-HM7E4RBT.js";import{a as M}from"./chunks/chunk-SAP32CJ3.js";import{g as it}from"./chunks/chunk-HJRTLFPM.js";import"./chunks/chunk-X4TSTTXY.js";import{$a as jo,D as de,E as ce,F as ue,G as he,H as Xe,J as He,K as Ye,L as Ze,N as me,O as q,Q as X,Sa as Je,Ta as Do,Ua as V,Va as Mo,Wa as So,Xa as Po,Ya as Oo,Za as Bo,_a as $o,a as T,ab as Fo,b as G,bb as qo,c as Ue,cb as Xo,d as xo,db as $t,e as Ke,eb as nt,f as Ho,fb as rt,g as y,gb as Yo,h as We,hb as fe,i as Ge,ib as Zo,j as No,jb as Jo,k as le,kb as Qo,l as qe,lb as ne,mb as en,ob as tn}from"./chunks/chunk-P5YJIQLH.js";import{b as zo,c as Uo,d as Ko,e as Wo,f as Go}from"./chunks/chunk-4BHHVEMS.js";import{a as yo}from"./chunks/chunk-H64UOPIH.js";import"./chunks/chunk-ZSTOGUCC.js";import{a as ye,b as xe,c as W,d as Qe,e as et,f as Lo,g as pe,m as tt,n as Ao,o as ot,p as Vo}from"./chunks/chunk-5PCD5M4R.js";import"./chunks/chunk-QOX5DKB2.js";import{d as ae}from"./chunks/chunk-QBHXWPSD.js";var re=class{constructor({rowId:t,top:e,height:o,defaultHeight:n,object:i}){this._isFreezed=!1;this._cachedElement=null;this._templateHelperObj=null;this._rowId=t,this._top=e,this._height=o,this._object=i!=null?i:null,this._visible=!0,this._defaultHeight=n}get object(){return this._object}get height(){return this._height}get top(){return this._top}get visible(){return this._visible}get bottom(){return this._visible===!1?this.top:this._top+this._height}get template(){if(!this._templateHelperObj)throw new Error("Template helper object is not set");return this._templateHelperObj}setTemplateHelper(t){this._templateHelperObj=t}updateObject(t){let e=this._object;this._object=t,this.onUpdatedObject(this,e,t)}updateRowStyles(){if(!this.isCachedElement)return;let t=this.getRowElement();this._visible?t.classList.remove("ir-vd-container__viewport-row--hidden"):t.classList.add("ir-vd-container__viewport-row--hidden"),this._defaultHeight!==this._height?t.style.setProperty("--ir-vd-default-row-height",`${this._height}px`):t.style.removeProperty("--ir-vd-default-row-height")}setVisible(t){this._visible=t,this.updateRowStyles()}setHeight(t){this._height=t,this.updateRowStyles()}createRowElement(){let t=document.createElement("div");return this._cachedElement=t,t.classList.add("ir-vd-container__viewport-row"),this.updateRowIdTopAttr(),this.updateRowStyles(),t}onMounted(t,e){}onUpdatedObject(t,e,o){}onCreatedElement(t,e){}getRowElement(){if(this._cachedElement)return this._cachedElement;let t=this.createRowElement();return this.onCreatedElement(this,t),this.updateFreezedStatus(),t}updateFreezedStatus(){this.isCachedElement&&(this._isFreezed?this.getRowElement().dataset.isFreezed="true":delete this.getRowElement().dataset.isFreezed)}remove(){this.isCachedElement&&this.getRowElement().remove()}freeze(){this._isFreezed||(this._isFreezed=!0,this.updateFreezedStatus())}unfreeze(){this._isFreezed&&(this._isFreezed=!1,this.updateFreezedStatus())}updateRowIdTopAttr(){if(!this.isCachedElement)return;let t=this.getRowElement();t.dataset.rowId=`${this._rowId}`,t.style.setProperty("--ir-vd-row-top",`${this._top}px`)}setRowIdAndTop(t,e){this._rowId=t,this._top=e,this.updateRowIdTopAttr()}get isFreezed(){return this._isFreezed}get isCachedElement(){return this._cachedElement!==null}get rowId(){return this._rowId}get isConnectedInDOM(){return this.isCachedElement&&this.getRowElement().isConnected}};var ge=class{constructor(t){this.args=t;this._rows=[];this._visibleRowList=[];this._totalHeight=0;this._totalWidth=0;this._freezedHeight=0;this._headerRowsCount=0;this._hiddenHeaderRowsCount=0;this._debounceContext={rafHandler:-1,taskSet:new Set,startRowId:Number.MAX_VALUE}}scheduleTasks(...t){this._debounceContext.rafHandler>-1&&cancelAnimationFrame(this._debounceContext.rafHandler),t.forEach(e=>this._debounceContext.taskSet.add(e)),requestAnimationFrame(()=>this.doTasks())}doTasks(){let{taskSet:t}=this._debounceContext;try{t.has("update-row-info")&&this.updateRowInfo()}finally{this._debounceContext.taskSet.clear(),this._debounceContext.rafHandler=-1,this._debounceContext.startRowId=Number.MAX_VALUE}}updateRowInfo(){var e;if(this._debounceContext.startRowId===-1)throw new Error("startRowId is not set");let{startRowId:t}=this._debounceContext;for(let o=t;o<this.rowCount;++o){let n=this._rows[o-1];this._rows[o].setRowIdAndTop(o,(e=n==null?void 0:n.bottom)!=null?e:0)}}scheduleUpdateRowInfo(t){this._debounceContext.startRowId=Math.min(t,this._debounceContext.startRowId),this.scheduleTasks("update-row-info")}createRowsFragment(t,e){let o=document.createDocumentFragment();for(let n=t;n<=e;n++){let i=this._rows[n];i.visible&&o.appendChild(i.getRowElement())}return o}getRowByElement(t){let e=t.dataset.rowId;if(!e)throw new Error("rowId not found in rowElement");return this.getRowById(+e)}getRowByTop(t){let e=0,o=this._visibleRowList.length-1;for(;e<=o;){let n=Math.floor((e+o)/2),i=this._visibleRowList[n];if(t>=i.top&&t<=i.bottom)return i;t<i.top?o=n-1:e=n+1}return null}getRowById(t){let e=this._rows[t];if(!e)throw new Error(`rowId ${t} not found`);return e}getRowByIdOrNull(t){var e;return(e=this._rows[t])!=null?e:null}removeRows(t,e){if(t<this._headerRowsCount||e>=this.rowCount)throw new Error("removing row id must be in between headerRow and rowCount");for(let o=t;o<=e;o++){let n=this._rows[o];n.remove(),this._totalHeight-=n.height}this._rows.splice(t,e-t+1),this.updateVisibleRowList(),this.scheduleUpdateRowInfo(t)}clearRows(){for(let t=this._headerRowsCount;t<this.rowCount;t++){let e=this._rows[t];e.isConnectedInDOM&&e.remove()}this._rows.length=this._headerRowsCount,this._visibleRowList.length=this._headerRowsCount,this._totalHeight=this._freezedHeight}addRow(t,e,o){let n=new re({rowId:this._rows.length,height:t,top:this._totalHeight,defaultHeight:e,object:o});return this._rows.push(n),this._visibleRowList.push(n),this._totalHeight+=t,n}insertRow(t,e,o,n){if(t<this._headerRowsCount||t>this.rowCount)throw new Error(`invalid row range. it must be between ${this._headerRowsCount} ~ ${this.rowCount}`);let i=this._rows[t],s=new re({rowId:t,height:e,defaultHeight:o,top:i?i.top:this._totalHeight,object:n});return this._rows.splice(t,0,s),this._totalHeight+=e,this.scheduleUpdateRowInfo(t+1),this.updateVisibleRowList(),s}updateVisibleRowList(){this._visibleRowList=this._rows.filter(t=>t.visible)}setRowHeight(t,e){let o=this.getRowById(t),n=o.height;o.setHeight(e),o.visible&&(this._totalHeight+=e-n,o.isFreezed&&(this._freezedHeight+=e-n)),this.scheduleUpdateRowInfo(t)}setRowVisible(t,e){let o=this.getRowById(t);if(o.visible===e)return;let n=e?1:-1,i=o.height*n;o.setVisible(e),this.updateVisibleRowList(),this._totalHeight+=i,t<this._headerRowsCount&&(this._freezedHeight+=i,this._hiddenHeaderRowsCount+=n),o.visible||o.remove(),this.scheduleUpdateRowInfo(t)}freezeRows(t){if(t<0)throw new Error("freezeRowsCount must be a positive number");if(t>this.rowCount)throw new Error("freezeRowsCount must be less than the total number of rows");this._freezedHeight=0;for(let e=0;e<this._headerRowsCount;e++)this._rows[e].unfreeze();for(let e=0;e<t;e++)this._freezedHeight+=this._rows[e].height,this._rows[e].freeze();this._headerRowsCount=t}*getRowIter(){yield*this._rows}get totalHeight(){return this._totalHeight}get totalWidth(){return this._totalWidth}get freezedHeight(){return this._freezedHeight}get firstRow(){if(this.rowCount===0)throw new Error("no rows");return this._rows[0]}get lastRow(){if(this.rowCount===0)throw new Error("no rows");return this._rows[this._rows.length-1]}get rowCount(){return this._rows.length}get visibleRowCount(){return this._visibleRowList.length}get headerRowsCount(){return this._headerRowsCount}get visibleHeaderRowsCount(){return this._headerRowsCount+this._hiddenHeaderRowsCount}};function jt(){let r=document.createElement("div"),t=document.createElement("div");return t.className="ir-vd-container__viewport ir-vd-container__viewport--freezed",r.className="ir-vd-container__viewport",{viewport:r,freezedViewport:t}}var Ft=28,at=40,we=class extends M{constructor(e){var o,n;super(e);this.args=e;this._debounceContext={rAFHandler:-1,startRowId:-1,scrollRow:-1,registeredTasks:new Set,afterRenderTasks:[]};this.contextElement.classList.add("ir-vd-container"),this._viewportElements=jt(),this.contextElement.append(this._viewportElements.freezedViewport,this._viewportElements.viewport),this._itemManager=new ge({headerRowCount:(o=e.headerRowCount)!=null?o:0}),this.resizeObserver=new ResizeObserver(()=>{this.scheduleTasks("update-viewport")}),e.onMountedRow&&(this.onMountedRow=e.onMountedRow),e.onCreatedRowElement&&(this.onCreatedRowElement=e.onCreatedRowElement),e.onUpdatedRowObject&&(this.onUpdatedRowObject=e.onUpdatedRowObject),this._defaultRowHeight=(n=e.defaultRowHeight)!=null?n:Ft,this.contextElement.style.setProperty("--ir-vd-default-row-height",`${this._defaultRowHeight}px`),this.resizeObserver.observe(this.contextElement),this.initScrollEvent(),this.initRowCol()}initScrollEvent(){this.addGlobalEventListener(this.contextElement,"scroll",e=>{this.scheduleTasks("update-viewport")})}initRowCol(){for(let e=0;e<this.args.rowCount;e++)this.addRow();this.args.headerRowCount&&(this._itemManager.freezeRows(this.args.headerRowCount),this.updateFreezedViewport()),this.scheduleTasks("update-container-size","update-viewport")}updateContainerSize(){let{freezedViewport:e,viewport:o}=this._viewportElements,{freezedHeight:n,totalHeight:i}=this._itemManager;e.style.setProperty("--ir-vd-container-row-height",`${String(n)}px`),o.style.setProperty("--ir-vd-container-row-height",`${String(i)}px`)}_scrollToRow(e){let o=this._itemManager.getRowById(e);this.contextElement.scrollTo({top:o.top-this._itemManager.freezedHeight})}doTasks(){let{registeredTasks:e,afterRenderTasks:o}=this._debounceContext;try{e.has("update-container-size")&&this.updateContainerSize(),e.has("update-viewport")&&this.updateViewport(),o.forEach(n=>n())}finally{e.clear(),o.length=0,this._debounceContext.rAFHandler=-1,this._debounceContext.startRowId=-1,this._debounceContext.scrollRow=-1}}scheduleTasks(...e){for(let o of e)this._debounceContext.registeredTasks.add(o);this._debounceContext.rAFHandler===-1&&(this._debounceContext.rAFHandler=requestAnimationFrame(this.doTasks.bind(this)))}unmountNotInViewport(e,o){let n=this._viewportElements.viewport.firstElementChild;for(;n;){let i=this._itemManager.getRowByElement(n);n=n.nextElementSibling,i&&(i.rowId<e||i.rowId>o)&&i.isConnectedInDOM&&i.remove()}}clearFreezedViewport(){let{freezedViewport:e}=this._viewportElements,o=e.firstElementChild;for(;o;){let n=this._itemManager.getRowByElement(o);o=o.nextElementSibling,n.remove()}}updateFreezedViewport(){this.clearFreezedViewport();let{freezedViewport:e}=this._viewportElements,o=this._itemManager.createRowsFragment(0,this._itemManager.headerRowsCount-1);e.append(o)}mountViewportRows(){var d;if(this._itemManager.rowCount===0)return;let e=Math.max(0,this.contextElement.scrollTop-at,this._itemManager.freezedHeight+1),o=e+this.contextElement.clientHeight+at+this._defaultRowHeight,n=this._itemManager.getRowByTop(e),i=(d=this._itemManager.getRowByTop(o))!=null?d:this._itemManager.lastRow;if(!n)return;this.unmountNotInViewport(n.rowId,i.rowId);let{viewport:s}=this._viewportElements;if(s.childElementCount===0){s.append(this._itemManager.createRowsFragment(n.rowId,i.rowId));return}let a=null;for(let c=n.rowId;c<=i.rowId;++c){let l=this._itemManager.getRowById(c);l.visible&&(l.isConnectedInDOM||(a?a.getRowElement().after(l.getRowElement()):s.prepend(l.getRowElement())),a=l)}}updateViewport(){this.mountViewportRows(),this.generateScrollBarClass()}scrollToRow(e){this._debounceContext.registeredTasks.has("update-container-size")?this.afterRender(()=>this._scrollToRow(e)):this._scrollToRow(e)}getRowCount(){return this._itemManager.rowCount}getRowById(e){return this._itemManager.getRowById(e)}bindEventsToRow(e){e.onMounted=(o,n)=>this.onMountedRow(o,n),e.onCreatedElement=(o,n)=>this.onCreatedRowElement(o,n),e.onUpdatedObject=(o,n,i)=>this.onUpdatedRowObject(o,n,i)}insertRow(e,o,n){let i=this._itemManager.insertRow(e,o!=null?o:this._defaultRowHeight,this._defaultRowHeight,n);return this.bindEventsToRow(i),this.scheduleTasks("update-container-size","update-viewport"),i}*getRowIter(){yield*this._itemManager.getRowIter()}getRowVisible(e){return this._itemManager.getRowById(e).visible}addRow(e,o){let n=this._itemManager.addRow(e!=null?e:this._defaultRowHeight,this._defaultRowHeight,o);return this.bindEventsToRow(n),this.scheduleTasks("update-container-size","update-viewport"),n}removeRow(e){this.removeRows(e,e)}removeRows(e,o){this._itemManager.removeRows(e,o),this.scheduleTasks("update-container-size","update-viewport")}setRowVisible(e,o){if(this._itemManager.setRowVisible(e,o),o&&e<this._itemManager.headerRowsCount){let{freezedViewport:n}=this._viewportElements;n.append(this._itemManager.getRowById(e).getRowElement())}this.scheduleTasks("update-container-size","update-viewport")}forceLayout(){this.doTasks()}setRowHeight(e,o){this._itemManager.setRowHeight(e,o),this.scheduleTasks("update-container-size","update-viewport")}clearRows(){this._itemManager.clearRows(),this.scheduleTasks("update-container-size","update-viewport")}onMountedRow(e,o){}onUpdatedRowObject(e,o,n){}onCreatedRowElement(e,o){}afterRender(e){this._debounceContext.afterRenderTasks.push(e),this.scheduleTasks()}};function zt(r){let e=[{list:r.filter(n=>!n.parentItem),index:0}],o=[];if(r.length===0)return o;for(;e.length;){let n=e[e.length-1],{index:i,list:s}=n,a=s[i],{items:d,isDisabled:c}=a;c||o.push(a),++n.index,n.index===s.length&&e.pop(),a.expanded&&d.length>0&&e.push({index:0,list:d})}return o}function lt(r,t){let e=null,o=[],n=!1,i={ArrowUp:d,ArrowDown:c,ArrowLeft:m,ArrowRight:l," ":v};return r.addGlobalEventListener(t,"focus",()=>{e&&u(e)}),r.addGlobalEventListener(t,"blur",()=>{w()}),r.addGlobalEventListener(t,"keydown",p=>{i[p.key]&&(i[p.key](),p.preventDefault())}),{updateTreeVisibleInfo:s,setFocusNode:u};function s(){n=!0}function a(){return n&&(o=zt(r.getOrderedNodes()),n=!1),o}function d(){let p=e,_=a();if(p===null){u(_[0]);return}let E=_.findIndex(k=>k.uuid===p.uuid),R=_[E-1];R&&u(R)}function c(){let p=e,_=a();if(p===null){u(_[0]);return}let E=_.findIndex(k=>k.uuid===p.uuid),R=_[E+1];R&&u(R)}function l(){e!==null&&e.items.length!==0&&(e.expanded&&!e.items[0].isDisabled?u(e.items[0]):e.expand())}function m(){e!=null&&(e.expanded?e.collapse():e.parentItem&&u(e.parentItem))}function v(){e&&e.select()}function u(p,_=!0){w(),e=p,e.liTreeItem.classList.add("is-focus"),_&&p.scrollIntoView()}function w(){e&&e.liTreeItem.classList.remove("is-focus")}}var S="tree",g={tree:{"&":S},treeList:{"&":`${S}__list`},treeListRoot:{"&":`${S}__list--root`},treeLabel:{"&":`${S}__label`},treeLabelText:{"&":`${S}__label-text`},treeItem:{"&":`${S}__item`,parent:`${S}__item--parent`,"is-expanded":"is-expanded","is-selected":"is-selected"},treeItemContent:{"&":`${S}__item-content`},treeIconFolder:{"&":`${S}__icon-folder`},treeIconExpand:{"&":`${S}__icon-expand`}};var Y=r=>{let t=document.createElement("div"),e=document.createElement("i"),o=document.createElement("span");return t.className=g.treeLabel["&"],o.className=g.treeLabelText["&"],{get template(){return t},update:n=>{n.iconClass?(e.isConnected||o.insertAdjacentElement("beforebegin",e),e.className=`${g.treeIconFolder["&"]} ir-icon ${n.iconClass}`,n.iconColor?e.style.setProperty("--ir-icon-foreground-color",n.iconColor):e.style.removeProperty("--ir-icon-foreground-color")):e.remove(),n.caption?(t.appendChild(o),o.innerText=n.caption):o.remove()}}};var Ut="ir-icon--triangle-small-right",be=class{constructor({parentItem:t,icon:e,caption:o,data:n,level:i,uuid:s,defaultChecked:a=!1,renderer:d=Y,disabled:c=!1,draggable:l}){this.children=[],this._parentItem=t,this.data=n,this._level=i,this._iconClass=e,this._caption=o,this._template=d(this),this._checked=a,this._subChecked=a,this._disabled=c,this._uuid=s,this.liTreeItem=document.createElement("li"),this.liTreeItem.classList.add(g.treeItem["&"]),this.liTreeItem.dataset.uuid=this._uuid,this.divTreeItemContent=T(this.liTreeItem,"div",g.treeItemContent["&"]),this.divTreeItemContent.style.setProperty("--ir-tree-node-level",this._level.toString()),this.ulTreeList=document.createElement("ul"),this.ulTreeList.classList.add(g.treeList["&"]),this.iconExpand=T(this.divTreeItemContent,"i",g.treeIconExpand["&"],"ir-icon",Ut),this.divTreeItemContent.appendChild(this._template.template),this.divTreeItemContent.addEventListener("dragstart",m=>this.onDragStart(m)),this.divTreeItemContent.addEventListener("dragenter",m=>this.onDragOver(m)&&this.divTreeItemContent.classList.add("is-dragging")),this.divTreeItemContent.addEventListener("dragover",m=>this.onDragOver(m)&&m.preventDefault()),this.divTreeItemContent.addEventListener("dragend",m=>this.onDragEnd(m)),this.divTreeItemContent.addEventListener("dragleave",()=>this.clearDragging()),this.divTreeItemContent.addEventListener("drop",m=>{try{this.onDrop(m)}finally{this.clearDragging()}}),l&&this.divTreeItemContent.setAttribute("draggable","true")}get items(){return[...this.children]}get parentItem(){return this._parentItem}get count(){return this.children.length}get uuid(){return this._uuid}get subChecked(){return this._subChecked}get order(){return this.liTreeItem.parentElement?Array.prototype.indexOf.call(this.liTreeItem.parentElement.children,this.liTreeItem):-1}get level(){return this._level}set level(t){this._level=t,this.divTreeItemContent.style.setProperty("--ir-tree-node-level",t.toString())}get caption(){return this._caption}get isDisabled(){return this._disabled}get iconClass(){return this._iconClass}get hasChildren(){return this.liTreeItem.classList.contains(g.treeItem.parent)}get hasCheckedChildren(){return this.children.some(t=>t.checked||t.hasCheckedChildren)}get expanded(){return this.liTreeItem.classList.contains(g.treeItem["is-expanded"])}get selected(){return this.liTreeItem.classList.contains(g.treeItem["is-selected"])}get iconColor(){return this._iconColor}get checked(){return this._checked}set parentItem(t){if(t===this._parentItem)return;let e=this._parentItem,o=t;e&&e.removeChildNode(this),o&&o.addNode(this),this._parentItem=o}set caption(t){this._caption=t,this.render()}set disabled(t){this._disabled!==t&&(this._disabled=t,this._disabled?this.liTreeItem.classList.add("is-disabled"):this.liTreeItem.classList.remove("is-disabled"))}set checked(t){this._checked=t,this.render()}set iconClass(t){this._iconClass=t,this.render()}set iconColor(t){this._iconColor=t,this.render()}set hasChildren(t){t?this.liTreeItem.classList.add(g.treeItem.parent):this.liTreeItem.classList.remove(g.treeItem.parent)}removeItems(){[...this.children].forEach(t=>t.delete())}addNode(t){this.children.push(t),this.hasChildren||(this.hasChildren=!0)}getTreeNodeKey(){let t=[this.order],e=this.parentItem;for(;e;)t.push(e.order),e=e.parentItem;return t.reverse()}updateCheckedWithPropagation(t){this.checked=t,this.children.forEach(e=>e.updateCheckedWithPropagation(t))}updateCheckedStatus(){var t;this.checked=this.children.every(e=>e.checked),(t=this.parentItem)==null||t.updateCheckedStatus()}updateSubCheckedStatus(){this._subChecked=this.hasCheckedChildren}delete(){this.liTreeItem.remove(),this.emitDeleteRecursive(),this._parentItem&&this._parentItem.removeChildNode(this)}collapse(){this.hasChildren&&this.expanded&&this.onCollapsing(this)&&(this.liTreeItem.classList.remove(g.treeItem["is-expanded"]),this.ulTreeList.remove(),this.onCollapse(this))}scrollIntoView(t={block:"nearest"}){this.divTreeItemContent.scrollIntoView(t)}expand(){this.hasChildren&&(this.expanded||this.onExpanding(this)&&(this.liTreeItem.classList.add(g.treeItem["is-expanded"]),this.liTreeItem.appendChild(this.ulTreeList),this.onExpand(this)))}toggle(){this.liTreeItem.classList.contains(g.treeItem["is-expanded"])?this.collapse():this.expand()}select(){this.selected||(this.liTreeItem.classList.add(g.treeItem["is-selected"]),this.onSelect(this))}release(){this.selected&&(this.liTreeItem.classList.remove(g.treeItem["is-selected"]),this.onRelease(this))}render(){this._template.update(this),this.onRender(this._template.template)}onDragStart(t){}onDrop(t){}onDragEnd(t){}onDragOver(t){return!1}onSelect(t){}onRelease(t){}onRemove(t){}onExpanding(t){return!0}onExpand(t){}onRender(t){}onCollapsing(t){return!0}onCollapse(t){}removeChildNode(t){let e=this.children.indexOf(t);if(e===-1)throw new Error("there is not the node");this.children.splice(e,1),this.children.length===0&&(this.hasChildren=!1,this.collapse())}emitDeleteRecursive(){this.children.forEach(t=>t.emitDeleteRecursive()),this.onRemove(this)}clearDragging(){this.divTreeItemContent.classList.remove("is-dragging")}};var dt=class extends M{constructor({contextElement:e,renderer:o=Y,nodeDraggable:n=!0,enabledKeyboard:i=!0}){super({contextElement:e});this._nodeMap=new Map;this.nodes=[],this.selectedNode=null,this.renderer=o,this._nodeDraggable=n,e.classList.add(g.tree["&"]),e.setAttribute("tabindex","0"),e.setAttribute("role","tree"),i&&(this._keyboardInteraction=lt(this,e)),n===!1&&e.setAttribute("draggable","false"),this.rootElement=T(e,"ul",g.treeList["&"],g.treeListRoot["&"]),this.addCoreElement(this.rootElement),this.addGlobalEventListener(e,"contextmenu",s=>{if(s.preventDefault(),!(s.target instanceof HTMLElement))return;this.onContextMenu(s);let a=s.target.closest(`.${g.treeItem["&"]}`);a&&this.selectNodeByUUID(a.dataset.uuid)})}get items(){return[...this.nodes]}get selected(){return this.selectedNode}get nodeDraggable(){return this._nodeDraggable}set selected(e){var o,n;this.selected!==e&&((o=this.selectedNode)==null||o.release(),this.selectedNode=e,this.onChanged(e),e&&(e.select(),this.onSelectNode(e),(n=this._keyboardInteraction)==null||n.setFocusNode(e,!1)))}onDblClick(e){e.toggle()}onToggleClick(e){e.toggle()}onLabelClick(e){this.selected=e}onSelectNode(e){}onReleaseNode(e){}onRemoveNode(e){}onChanged(e){}onExpanding(e){return!0}onExpand(e){}onCollapsing(e){return!0}onCollapse(e){}onDragStartNode(e,o){o.dataTransfer&&(o.dataTransfer.setData("application/json",JSON.stringify(e.data)),o.dataTransfer.dropEffect="copy")}onDragOverOnNode(e,o){return!1}onDropOnNode(e,o){}onDragEndNode(e,o){}onRenderNode(e,o){}onNodeMoved(e,o){}onContextMenu(e){}compareNodeOrderKey(e,o){let n=Math.max(e.length,o.length);for(let i=0;i<n;i++){let s=e[i],a=o[i];if(s===void 0)return!0;if(a===void 0)return!1;if(s<a)return!0;if(s>a)return!1}throw new Error("same key error!")}getOrderedNodes(){return this.items.sort((e,o)=>this.compareNodeOrderKey(e.getTreeNodeKey(),o.getTreeNodeKey())?-1:1)}removeNodeByUUID(e){this.findNodeByUUID(e).delete()}selectNodeByUUID(e){this.findNodeByUUID(e).select()}findNodeByUUID(e){let o=this._nodeMap.get(e);if(!o)throw new Error(`not found node uuid: ${e}`);return o}addChild(e,o,n,i=void 0){var c;let s=qe();if(this._nodeMap.has(s))throw new Error("UUID already exists");let a=new be({parentItem:e,caption:o,data:n,level:e?e.level+1:0,renderer:this.renderer,defaultChecked:e==null?void 0:e.checked,draggable:this.nodeDraggable,uuid:s});this._nodeMap.set(a.uuid,a),e&&e.addNode(a),this.nodes.push(a),a.divTreeItemContent.ondblclick=l=>{l.target.classList.contains("checkbox__wrapper")||this.onDblClick(a)},a.divTreeItemContent.onclick=l=>{this.onLabelClick(a)},a.iconExpand.onclick=()=>this.onToggleClick(a),a.onSelect=()=>this.selected=a,a.onRelease=l=>this.onReleaseNode(l),a.onRemove=()=>{var m;this.nodes.indexOf(a)!==-1&&this.nodes.splice(this.nodes.indexOf(a),1),this.onRemoveNode(a),this._nodeMap.delete(a.uuid),(m=this._keyboardInteraction)==null||m.updateTreeVisibleInfo()},a.onExpanding=()=>this.onExpanding(a),a.onExpand=()=>{var l;(l=this._keyboardInteraction)==null||l.updateTreeVisibleInfo(),this.onExpand(a)},a.onCollapsing=()=>this.onCollapsing(a),a.onCollapse=()=>{var l;(l=this._keyboardInteraction)==null||l.updateTreeVisibleInfo(),this.onCollapse(a)},a.onDragStart=l=>this.onDragStartNode(a,l),a.onDrop=l=>this.onDropOnNode(a,l),a.onDragOver=l=>this.onDragOverOnNode(a,l),a.onDragEnd=l=>this.onDragEndNode(a,l),a.onRender=l=>this.onRenderNode(a,l),a.render(),(c=this._keyboardInteraction)==null||c.updateTreeVisibleInfo();let d=e?e.ulTreeList:this.rootElement;return i===void 0?d.appendChild(a.liTreeItem):i>=d.children.length?d.insertAdjacentElement("beforeend",a.liTreeItem):d.children[i].insertAdjacentElement("beforebegin",a.liTreeItem),a}moveNode(e,o,n){if(e===o.parentItem){console.error("Could not move to the node own child node.");return}let i=e.order;e.parentItem=o.parentItem,o.parentItem===null?e.level=0:e.level=o.parentItem.level+1,o.liTreeItem.insertAdjacentElement(n?"beforebegin":"afterend",e.liTreeItem),this.onNodeMoved(e,i)}selectNode(e){if(!this.nodes.includes(e))throw new Error("Can't select the node because it's not included");this.selected=e}clear(){this.selectedNode=null,this.rootElement.innerHTML="",this.nodes.splice(0,this.nodes.length),this._nodeMap.clear()}expandAll(){this.nodes.forEach(e=>e.expand())}collapseAll(){this.nodes.forEach(e=>e.collapse())}expandTo(e){let o=e._parentItem;for(;o;)o.expand(),o=o._parentItem}getDropNode(e){var n;let o=Ue(e.target,g.treeLabel["&"],this.contextElement);return o!==null?(n=o.parentElement)==null?void 0:n.parentElement:null}getNodeByOffsetTopOrNull(e){return null}};var Mn=({onCheck:r})=>t=>{let e=Y(t),o=document.createElement("label"),n=document.createElement("input");return n.type="checkbox",o.classList.add(X),n.classList.add(q),o.appendChild(n),e.template.insertAdjacentElement("afterbegin",o),n.addEventListener("click",()=>{var i;t.updateCheckedWithPropagation(n.checked),(i=t.parentItem)==null||i.updateCheckedStatus(),n.dataset.state=t.hasCheckedChildren?"sub-checked":"",r&&r(t)}),{get template(){return e.template},update:i=>{var s;e.update(i),i.checked!==n.checked&&(n.checked=i.checked),(s=i.parentItem)==null||s.updateCheckedStatus(),i.updateSubCheckedStatus(),n.dataset.state=i.subChecked?"sub-checked":""}}};var An=r=>{let t=null,e=null,o=()=>{e&&(e.divTreeItemContent.classList.remove("is-top"),e.divTreeItemContent.classList.remove("is-bottom")),e=null};r.onDragStartNode=(n,i)=>{i.dataTransfer&&(i.dataTransfer.dropEffect="move",t=n)},r.onDragOverOnNode=(n,i)=>{if(t===n)return!1;let s=n._parentItem;for(;s!==null;){if(s===t)return!1;s=s._parentItem}return o(),n.divTreeItemContent.classList.add(i.offsetY<16?"is-top":"is-bottom"),e=n,!0},r.onDropOnNode=n=>{if(!t)throw new Error("No start dragging node!");r.moveNode(t,n,n.divTreeItemContent.classList.contains("is-top"))},r.onDragEndNode=()=>{o()}};var Le={};Object.defineProperty(Le,"__esModule",{value:!0});var De=Le.styleq=void 0,Kt=new WeakMap,Wt="$$css";function ct(r){var t,e,o;return r!=null&&(t=r.disableCache===!0,e=r.disableMix===!0,o=r.transform),function(){for(var i=[],s="",a=null,d=t?null:Kt,c=new Array(arguments.length),l=0;l<arguments.length;l++)c[l]=arguments[l];for(;c.length>0;){var m=c.pop();if(!(m==null||m===!1)){if(Array.isArray(m)){for(var v=0;v<m.length;v++)c.push(m[v]);continue}var u=o!=null?o(m):m;if(u.$$css){var w="";if(d!=null&&d.has(u)){var p=d.get(u);p!=null&&(w=p[0],i.push.apply(i,p[1]),d=p[2])}else{var _=[];for(var E in u){var R=u[E];E!==Wt&&(typeof R=="string"||R===null?i.includes(E)||(i.push(E),d!=null&&_.push(E),typeof R=="string"&&(w+=w?" "+R:R)):console.error("styleq: ".concat(E," typeof ").concat(String(R),' is not "string" or "null".')))}if(d!=null){var k=new WeakMap;d.set(u,[w,_,k]),d=k}}w&&(s=s?w+" "+s:w)}else if(e)a==null&&(a={}),a=Object.assign({},u,a);else{var D=null;for(var A in u){var b=u[A];b!==void 0&&(i.includes(A)||(b!=null&&(a==null&&(a={}),D==null&&(D={}),D[A]=b),i.push(A),d=null))}D!=null&&(a=Object.assign(D,a))}}}var C=[s,a];return C}}var ut=ct();De=Le.styleq=ut;ut.factory=ct;var j=r=>new Error(`'stylex.${r}' should never be called at runtime. It should be compiled away by '@stylexjs/babel-plugin'`),H=r=>j(`types.${r}`);function I(){let r=this;for(var t=arguments.length,e=new Array(t),o=0;o<t;o++)e[o]=arguments[o];if(x.props)return x.props.call(r,e);let[n,i]=De(e),s={};return n!=null&&n!==""&&(s.className=n),i!=null&&Object.keys(i).length>0&&(s.style=i),s}function Gt(){let{className:r,style:t}=I(...arguments),e={};return r!=null&&r!==""&&(e.class=r),t!=null&&Object.keys(t).length>0&&(e.style=Object.keys(t).map(o=>`${o}:${t[o]};`).join("")),e}function qt(r){if(x.create!=null){let t=x.create;return t(r)}throw j("create")}function Xt(r){if(x.defineVars)return x.defineVars(r);throw j("defineVars")}var Yt=(r,t)=>{if(x.createTheme)return x.createTheme(r,t);throw j("createTheme")},Zt=r=>{if(x.include)return x.include(r);throw j("include")},Jt=qt,Qt=Xt,eo=Yt,to=Zt,oo={angle:r=>{throw H("angle")},color:r=>{throw H("color")},url:r=>{throw H("url")},image:r=>{throw H("image")},integer:r=>{throw H("integer")},lengthPercentage:r=>{throw H("lengthPercentage")},length:r=>{throw H("length")},percentage:r=>{throw H("percentage")},number:r=>{throw H("number")},resolution:r=>{throw H("resolution")},time:r=>{throw H("time")},transformFunction:r=>{throw H("transformFunction")},transformList:r=>{throw H("transformList")}},no=r=>{if(x.keyframes)return x.keyframes(r);throw j("keyframes")},ro=function(){if(x.firstThatWorks)return x.firstThatWorks(...arguments);throw j("firstThatWorks")};function O(){for(var r=arguments.length,t=new Array(r),e=0;e<r;e++)t[e]=arguments[e];let[o]=De(t);return o}O.props=I;O.attrs=Gt;O.create=Jt;O.defineVars=Qt;O.createTheme=eo;O.include=to;O.keyframes=no;O.firstThatWorks=ro;O.types=oo;var x={};var Z={truncate:{overflow:"ir-b3r6kr",overflowX:null,overflowY:null,textOverflow:"ir-lyipyv",whiteSpace:"ir-uxw1ft",$$css:!0},borderBottom:{borderBottom:"ir-h38nsk",borderBottomWidth:null,borderBottomStyle:null,borderBottomColor:null,$$css:!0},borderRight:{borderRight:"ir-wwah22",borderRightWidth:null,borderInlineStartWidth:null,borderInlineEndWidth:null,borderRightStyle:null,borderInlineStartStyle:null,borderInlineEndStyle:null,borderRightColor:null,borderInlineStartColor:null,borderInlineEndColor:null,$$css:!0},cursorPointer:{cursor:"ir-1ypdohk",$$css:!0},disabledOpacity:{opacity:"ir-15pvmkd",$$css:!0},disabled:{opacity:"ir-15pvmkd",pointerEvents:"ir-47corl",$$css:!0},invisible:{visibility:"ir-lshs6z",$$css:!0}},ht={templateColumns:"--irx-tree-view-template-columns"};var mt={base:{$$css:!0}},ie={base:{display:"ir-rvj5dj",gridTemplateColumns:"ir-suo5i5",gridAutoFlow:"ir-1mt1orb",gridAutoColumns:"ir-un8ryo",alignItems:"ir-6s0dn4",background:"ir-1gk1pts ir-13x9m4g ir-nreayj",backgroundAttachment:null,backgroundClip:null,backgroundColor:null,backgroundImage:null,backgroundOrigin:null,backgroundPosition:null,backgroundPositionX:null,backgroundPositionY:null,backgroundRepeat:null,backgroundSize:null,opacity:"ir-1fjr46u",pointerEvents:"ir-ye1tj0",$$css:!0},node:{cursor:"ir-1ypdohk",paddingLeft:"ir-1m85p54",paddingInlineStart:null,paddingInlineEnd:null,color:"ir-1ikc3k3",$$css:!0},header:{fontWeight:"ir-k50ysn",alignItems:"ir-1qjc9v5",color:"ir-7nd3pc",borderBottom:"ir-h38nsk",borderBottomWidth:null,borderBottomStyle:null,borderBottomColor:null,background:"ir-1gk1pts",backgroundAttachment:null,backgroundClip:null,backgroundColor:null,backgroundImage:null,backgroundOrigin:null,backgroundPosition:null,backgroundPositionX:null,backgroundPositionY:null,backgroundRepeat:null,backgroundSize:null,$$css:!0}},B={base:{lineHeight:"ir-1dpt0ig",padding:"ir-84vhe8",paddingInline:null,paddingStart:null,paddingLeft:null,paddingEnd:null,paddingRight:null,paddingBlock:null,paddingTop:null,paddingBottom:null,$$css:!0},nodeMain:{display:"ir-78zum5",alignItems:"ir-6s0dn4",columnGap:"ir-17zd0t2",$$css:!0},nodeIcon:{marginLeft:"ir-ip9h3s",marginInlineStart:null,marginInlineEnd:null,$$css:!0},nodeExpandButton:{opacity:"ir-j34u2y ir-1f2zl9v",$$css:!0},nodeCaption:{flex:"ir-1cqoux5",flexGrow:null,flexShrink:null,flexBasis:null,$$css:!0},column:{textAlign:"ir-2b8uid",$$css:!0},header:{borderRight:"ir-wwah22 ir-ahlotz",borderRightWidth:null,borderInlineStartWidth:null,borderInlineEndWidth:null,borderRightStyle:null,borderInlineStartStyle:null,borderInlineEndStyle:null,borderRightColor:null,borderInlineStartColor:null,borderInlineEndColor:null,$$css:!0}};var Te=class{constructor(t){this.args=t;this._parentNode=null;this._prevNode=null;this._nextNode=null;this._firstChildNode=null;this._lastChildNode=null;this._nodeData={...t.nodeData}}get level(){return this.args.level}get caption(){return this.data.caption}get key(){return this.data.key}get lastChild(){return this._lastChildNode}get icon(){return this.data.icon}get firstChild(){return this._firstChildNode}get next(){return this._nextNode}get prev(){return this._prevNode}get parent(){return this._parentNode}get data(){return this._nodeData}get object(){return this.data.object}get selected(){return this.data.selected}get disabled(){return this.data.disabled}get expanded(){return this.data.expanded}get iconColor(){return this.data.iconColor}get hook(){return this.args.hook}getColumnText(t){var e,o;return t===0?this.caption:(o=(e=this.data.columns)==null?void 0:e[t-1])!=null?o:""}select(){this.selected||(this.data.selected=!0,this.hook.emit("nodeUpdated",[this]),this.hook.emit("nodeSingleSelect",[this]))}addSelect(){this.selected||(this.data.selected=!0,this.hook.emit("nodeUpdated",[this]),this.hook.emit("nodeAddSelect",[this]))}multiSelectToggle(){this.selected?this.release():(this.data.selected=!0,this.hook.emit("nodeUpdated",[this]),this.hook.emit("nodeAddSelect",[this]))}release(){this.selected&&(this.data.selected=!1,this.hook.emit("nodeUpdated",[this]),this.hook.emit("nodeRelease",[this]))}};var pt=I(ie.base,ie.node),ft=I(ie.base,ie.header),Me=I(B.base,Z.truncate),gt=I(B.base,B.header,Z.truncate),Se=I(B.column),wt=I(B.nodeMain),bt=I(B.nodeCaption,Z.truncate),ve=I(B.nodeIcon),Tt=I(B.nodeExpandButton);var Ae=I(Z.invisible);function io(r){let t=document.createElement("div"),e=G("button"),o=V(""),n=document.createElement("span"),i=document.createElement("input");return y(t,wt,Me),y(n,bt),y(o,ve),y(e,Tt,ve),e.append(V("ir-icon--triangle-small-right")),t.appendChild(e),r.showIcon&&t.appendChild(o),t.appendChild(n),{mainContentDiv:t,expandButton:e,icon:o,text:n,checkbox:i}}function so(r,t){let e=[],o=io(t);for(let n=1;n<t.headerRow.columnCount;n++){let i=document.createElement("div");y(i,Me,Se),e.push(i)}return{columns:e,...o}}function ao(r){var e;let t=[];for(let o=0;o<r.headerRow.columnCount;o++){let n=document.createElement("div");n.textContent=(e=r.headerRow.text[o])!=null?e:"",y(n,gt),o>0&&y(n,Se),t.push(n)}return{columns:t}}function vt(r,t,e){let o=so(t,e),n=r.getRowElement();r.setTemplateHelper(o),y(n,pt),n.tabIndex=0,n.role="treeitem",n.dataset.nodeKey=t.key,Ve(r,t,e),n.appendChild(o.mainContentDiv),o.columns.forEach(i=>n.appendChild(i))}function _t(r,t){let e=ao(t),o=r.getRowElement();r.setTemplateHelper(e),y(o,ft),o.dataset.nodeHeader="true",Pe(r,t),e.columns.forEach(n=>o.appendChild(n))}function Ve(r,t,e){var c,l;let o=r.getRowElement(),n=(c=t.icon)!=null?c:e.defaultIcon,i=(l=t.iconColor)!=null?l:e.defaultIconColor,{text:s,columns:a,icon:d}=r.template;le(o,t.selected,"selected"),le(o,t.disabled,"disabled"),le(o,t.expanded,"expanded"),n?(We(d,Ae),y(d,ve,{className:`ir-icon ${n}`}),i&&d.style.setProperty("--ir-icon-foreground-color",i)):y(d,Ae),s.textContent=t.caption,a.forEach((m,v)=>{m.textContent=t.getColumnText(v+1)})}function Pe(r,t){let{columns:e}=r.template;e.forEach((o,n)=>{var i;o.textContent=(i=t.headerRow.text[n])!=null?i:""})}function Rt(r){let t=[];for(let e=0;e<r.headerRow.columnCount;e++){let o=r.headerRow.width[e];o===void 0?t.push("minmax(0, 1fr)"):typeof o=="number"?t.push(`minmax(${o}px, ${o}px)`):o.endsWith("px")?t.push(`minmax(${o}, ${o})`):t.push("minmax(0, 1fr)")}return t.join(" ")}var _e=class extends M{constructor(){super({contextElement:document.createElement("div")});this._hook=it();this.onInitDOMEvents(this.contextElement),this.onInitHooks()}get hook(){return this._hook}emitHook(e,o){return this._hook.emit(e,o)}addHook(e,o){this._hook.addHook(e,o)}setHook(e,o){this._hook.setHook(e,o)}removeHook(e,o){this._hook.removeHook(e,o)}setBeginHook(e,o){this._hook.setBeginHook(e,o)}setEndHook(e,o){this._hook.setEndHook(e,o)}clearHooks(e){this._hook.clearHooks(e)}clearBeginHooks(e){this._hook.clearBeginHooks(e)}clearEndHooks(e){this._hook.clearEndHooks(e)}get element(){return this.contextElement}};var lo=I(mt.base),co={columnCount:1,text:[""],width:["*"]},Oe=class extends _e{constructor(e){var o,n,i,s,a,d,c,l;super();this._rootNodeList=[];this._selectedNode=[];this._nodeMap=new Map;this._args={defaultIcon:e.defaultIcon,defaultIconColor:e.defaultIconColor,showIcon:(o=e.showIcon)!=null?o:!1,showCheckbox:(n=e.showCheckbox)!=null?n:!1,multiSelect:(i=e.multiSelect)!=null?i:!1,className:(s=e.className)!=null?s:"",nodeDraggable:(a=e.nodeDraggable)!=null?a:!1,enabledKeyboard:(d=e.enabledKeyboard)!=null?d:!1,displayHeader:(c=e.displayHeader)!=null?c:!1,headerRow:(l=e.headerRow)!=null?l:co},this._virtualDOM=this.initVirtualDOM(),this.updateTreeTemplateColumns()}onInitDOMEvents(e){e.tabIndex=0,e.role="tree",y(e,lo,this._args),this.addGlobalEventListener(e,"contextmenu",o=>this.emitHook("contextMenu",[o])),this.addGlobalEventListener(e,"focus",o=>this.emitHook("focus",[o])),this.addGlobalEventListener(e,"keydown",o=>this.emitHook("keydown",[o])),this.addGlobalEventListener(e,"blur",o=>this.emitHook("blur",[o])),this.addGlobalEventListener(e,"click",o=>this.emitHook("treeClick",[o]))}nodeUpdatedHook(e){let o=this._nodeMap.get(e.key);o&&this.emitHook("nodeRender",[o.virtualRow,o.node,this._args])}nodeSingleSelectHook(e){this.releaseSelectedNodes(),this._selectedNode.push(e)}nodeReleaseHook(e){let o=this._selectedNode.indexOf(e);o>=0&&this._selectedNode.splice(o,1)}nodeAddSelectHook(e){this._selectedNode.push(e)}onInitHooks(){this.setBeginHook("createHeaderRow",_t),this.setBeginHook("createNodeRow",vt),this.setBeginHook("headerRender",Pe),this.setBeginHook("nodeRender",Ve),this.setBeginHook("nodeUpdated",this.nodeUpdatedHook.bind(this)),this.addHook("nodeSingleSelect",this.nodeSingleSelectHook.bind(this)),this.addHook("nodeAddSelect",this.nodeAddSelectHook.bind(this)),this.addHook("nodeRelease",this.nodeReleaseHook.bind(this)),this.setBeginHook("contextMenu",e=>e.preventDefault()),this.setBeginHook("treeClick",this.treeClickHook.bind(this))}treeClickHook(e){if(!(e.target instanceof HTMLElement))return;let o=Ke("[data-node-key]",".ir-vd-container__viewport-row ",e.target),n=o==null?void 0:o.dataset.nodeKey;if(!n)return;let i=this.getTreeNodeOrNullByKey(n);i&&(this._args.multiSelect&&e.ctrlKey?i.multiSelectToggle():i.select(),this.emitHook("nodeClick",[e,i]))}onCreatedRowElement(e,o){e.isFreezed?this.emitHook("createHeaderRow",[e,this._args]):this.emitHook("createNodeRow",[e,e.object,this._args])}onUpdatedRowObject(e,o,n){e.isFreezed?this.emitHook("headerRender",[e,this._args]):this.emitHook("nodeRender",[e,n,this._args])}initVirtualDOM(){let e=document.createElement("div");e.classList.add(Je),e.style.height="100%";let o=new we({contextElement:e,rowCount:1,headerRowCount:1,defaultRowHeight:xe("tree-view.nodeRowHeight"),onCreatedRowElement:this.onCreatedRowElement.bind(this),onUpdatedRowObject:this.onUpdatedRowObject.bind(this)});return o.setRowHeight(0,xe("tree-view.headerRowHeight")),this.contextElement.appendChild(e),o.setRowVisible(0,this._args.displayHeader===!0),o}onDestroy(){this._virtualDOM.destroy()}get displayHeader(){return this._args.displayHeader}set displayHeader(e){this._args.displayHeader!==e&&(this._args.displayHeader=e,this.renderHeaderRow())}get multiSelect(){return this._args.multiSelect}set multiSelect(e){this._args.multiSelect!==e&&(this._args.multiSelect=e,this.releaseSelectedNodes())}renderHeaderRow(){let e=this._virtualDOM.getRowById(0);this._virtualDOM.setRowVisible(0,this._args.displayHeader===!0),this.emitHook("headerRender",[e,this._args])}setColumnCount(e){this._args.headerRow.columnCount=e,this.renderHeaderRow(),this.updateTreeTemplateColumns()}setColumnWidth(e,o){if(e<0||e>=this._args.headerRow.columnCount)throw new Error(`columnId is out of range: ${e}`);this._args.headerRow.width[e]=o,this.updateTreeTemplateColumns()}releaseSelectedNodes(){this.getSelectedNodes().forEach(e=>e.release())}selectNodeByKey(e){let o=this.getTreeNodeOrNullByKey(e);if(!o){console.warn(`node not found: ${e}`);return}o.select()}getSelectedNodes(){return[...this._selectedNode]}getSelectedNodeOrNull(){var e;return(e=this._selectedNode[0])!=null?e:null}autoSizeColumn(e){}getTreeNodeOrNullByKey(e){var o,n;return(n=(o=this._nodeMap.get(e))==null?void 0:o.node)!=null?n:null}setColumnText(e,o){if(e<0||e>=this._args.headerRow.columnCount)throw new Error(`columnId is out of range: ${e}`);this._args.headerRow.text[e]=o,this.renderHeaderRow()}updateNodeData(e,o){}updateNodeColumns(e,o){}updateTreeTemplateColumns(){Ge(this.contextElement,ht.templateColumns,Rt(this._args))}setNodeOnMap(e,o){if(this.getTreeNodeOrNullByKey(e.key))throw new Error(`already existed key: ${e.key}`);this._nodeMap.set(e.key,{node:e,virtualRow:o})}removeNodeByKey(e){}getNewNodeLevel(e){return e===void 0?0:1}addNode(e){let o=new Te({nodeData:e,level:this.getNewNodeLevel(e.parentKey),hook:this.hook}),n=this._virtualDOM.addRow(void 0,o);this.setNodeOnMap(o,n)}};var uo=r=>({mount(){},unmount(){}});var F=ae(Ne(),1);var Ct=(r,t)=>r instanceof Date?(0,F.default)(r).startOf("D"):typeof r=="string"?(0,F.default)(r,t):(0,F.default)(null),It=class extends M{constructor({div:e,defaultDate:o,format:n=P.datePicker.dateFormat,checkbox:i=!1,disabled:s=!1,allowedEmptyString:a=!0,onSelect:d,onChange:c,onCheckboxClick:l,minDate:m=ye().getStoreValue("datePicker.minDate"),maxDate:v=ye().getStoreValue("datePicker.maxDate")}){super({contextElement:e});this.selectedDate=null;this.calendarDate=new Date;if(o){let u=Ct(o,n);u.isValid()?(this.calendarDate=u.toDate(),this.selectedDate=u.toDate()):console.error(`invalid defaultDate format. it must follow ${n}`)}if(!a&&this.selectedDate==null){let u=Ct(new Date,n);this.calendarDate=u.toDate(),this.selectedDate=u.toDate()}if(this.format=n,this.div=e,this.input=document.createElement("input"),this.button=document.createElement("button"),this.button.appendChild(V("ir-icon--calendar")),this.div.innerHTML="",this.div.classList.add(de),this.input.setAttribute("type","text"),this.input.setAttribute("placeHolder",this.format),this.input.classList.add(ce,"tnum-adj"),this.button.className=he,this.button.type="button",this._minDate=m,this._maxDate=v,d&&(this.onSelect=d),c&&(this.onChange=c),l&&(this.onCheckboxClick=l),i){let u=document.createElement("div"),w=document.createElement("label"),p=document.createElement("input");p.setAttribute("type","checkbox"),u.classList.add(me,ue),w.className=X,p.className=q,w.appendChild(p),u.appendChild(w),this.div.appendChild(u),p.checked=!s,p.onchange=()=>{this.disabled=!p.checked,this.onCheckboxClick(p.checked)},this.addCoreElement(u)}this.disabled=s,this.div.appendChild(this.input),this.div.appendChild(this.button),this.addCoreElement(this.input),this.addCoreElement(this.button),this.selectedDate&&(this.input.value=(0,F.default)(this.selectedDate).format(n)),this.button.addEventListener("click",()=>{this.isVisible===!1&&this.show()}),this.input.addEventListener("blur",()=>{if(this.input.value===""){a?this.setDate(null):this.setDate(this.selectedDate);return}let u=(0,F.default)(this.input.value,this.format,!0);!u.isValid()||u.toDate()<this.minDate||u.toDate()>this.maxDate?this.setDate(this.selectedDate):this.setDate(u.toDate())}),this.handler=st({uuid:this.uuid,refElement:this.div,minDate:this._minDate,maxDate:this._maxDate,onClick:u=>{this.setDate(u),this.onSelect(u),this.hide()}})}get textValue(){return this.input.value}get inputCheckbox(){return this.div.querySelector(".checkbox__input")}get date(){return this.selectedDate}get isVisible(){return this.handler.visible}get disabled(){return this.input.hasAttribute("disabled")}get minDate(){return this._minDate}get maxDate(){return this._maxDate}set minDate(e){this._minDate=e}set maxDate(e){this._maxDate=e}set disabled(e){e?(this.input.setAttribute("disabled",""),this.button.setAttribute("disabled","")):(this.input.removeAttribute("disabled"),this.button.removeAttribute("disabled")),this.inputCheckbox&&(this.inputCheckbox.checked=!e)}setDate(e){e?(this.selectedDate=new Date(e),this.calendarDate=new Date(e),this.input.value=(0,F.default)(e).format(this.format),this.updateCalendar()):(this.selectedDate=null,this.input.value=""),this.latestValue!==this.input.value&&this.onChange(this.input.value),this.latestValue=this.input.value}show(){this.isVisible||(this.handler.update(this.calendarDate,this.selectedDate),this.handler.show())}hide(){this.isVisible&&this.handler.hide()}onSelect(e){}onChange(e){}onCheckboxClick(e){}updateCalendar(){this.handler.update(this.calendarDate,this.selectedDate)}};var yt=ae($t(),1);var se="confirm",z={confirm:{"&":se},confirmIcon:{"&":`${se}__icon`},confirmContent:{"&":`${se}__content`},confirmActions:{"&":`${se}__actions`},confirmButtonClose:{"&":`${se}__button-close`}};var L="dialog",U={dialog:{"&":L,transparent:`${L}--transparent`,"is-visible":"is-visible"},dialogWrapper:{"&":`${L}__wrapper`},dialogHeader:{"&":`${L}__header`},dialogHeaderTitle:{"&":`${L}__header-title`},dialogHeaderActions:{"&":`${L}__header-actions`},dialogContent:{"&":`${L}__content`},dialogFooter:{"&":`${L}__footer`},dialogFooterLeft:{"&":`${L}__footer-left`},dialogFooterRight:{"&":`${L}__footer-right`},dialogButtonClose:{"&":`${L}__button-close`}};var Et=["yes","no","ok","cancel","retry","ignore","stop"];function ho(){let r=document.createElement("div"),t=document.createElement("div"),e=document.createElement("div"),o=document.createElement("div"),n=document.createElement("div"),i=document.createElement("i"),s=document.createElement("div"),a={cancel:document.createElement("button"),ignore:document.createElement("button"),no:document.createElement("button"),ok:document.createElement("button"),retry:document.createElement("button"),stop:document.createElement("button"),yes:document.createElement("button")},d=document.createElement("i"),c=document.createElement("button");return r.tabIndex=-1,r.classList.add("ir-confirm",U.dialog["&"],fe.zIndex.message),t.className=U.dialogWrapper["&"],e.className=U.dialogContent["&"],o.className=z.confirm["&"],n.className=z.confirmContent["&"],s.className=z.confirmActions["&"],Object.values(a).forEach(l=>l.classList.add(Xe)),a.yes.classList.add(He),a.ok.classList.add(He),a.retry.classList.add(Ye),a.ignore.classList.add(Ze),d.classList.add("ir-icon","ir-icon--close"),c.className=z.confirmButtonClose["&"],s.appendChild(a.no),s.appendChild(a.stop),s.appendChild(a.ignore),s.appendChild(a.retry),s.appendChild(a.yes),s.appendChild(a.ok),c.appendChild(d),o.appendChild(c),o.appendChild(i),o.appendChild(n),o.appendChild(s),e.appendChild(o),t.appendChild(e),r.appendChild(t),{dialog:r,confirmIcon:i,confirmContent:n,confirmActions:s,buttonMap:a,closeButton:c}}var mo=(()=>{let r=null;return function(){return r||(r=ho()),r}})();function J(){return mo()}var po={error:"ir-icon--cancel-circle-fill ir-icon--danger",info:"ir-icon--information-circle-fill ir-icon--info",question:"ir-icon--question ir-icon--info",warning:"ir-icon--error ir-icon--warning"},fo=new Set(["class","style","title","id"]),go={onTagAttr(r,t,e,o){if(!o&&fo.has(t))return`${t}="${(0,yt.escapeAttrValue)(e)}"`}},Re={count:0},Xr=()=>Re.count>0,kt=class{constructor(t){this.args=t;this.enterHandler=null;this.activeElement=null;let{iconType:e="info",buttonType:o=["ok"],messageHTML:n,msgMap:i={},onClick:s,escButton:a,enterButton:d,contentElement:c}=t;this.visible=!1,this.iconType=e,this.buttonType=o,n&&(this.messageHTML=nt(n,go)),c&&(this.contentElement=c),this.msgMap={...i},this.enterButton=d,this.escButton=a,this.escController=pe(this),s&&(this.onClick=s)}updateContent(){let t=J();if(this.messageHTML)t.confirmContent.innerHTML=this.messageHTML;else if(this.contentElement)if(Object.getPrototypeOf(this.contentElement).jquery)t.confirmContent.replaceChildren(...this.contentElement);else if(this.contentElement instanceof HTMLElement)t.confirmContent.replaceChildren(this.contentElement);else throw new Error("not supported type contentElement");else throw new Error("html or element must be provided!")}_show(){var e;let t=J();Re.count++,this.updateContent(),this.visible=!0,this.activeElement=document.activeElement,t.confirmIcon.className=`${z.confirmIcon["&"]} ir-icon ${po[this.iconType]||""}`,t.closeButton.onclick=()=>this.hide(),this.args.hideCloseButton?t.closeButton.classList.add("display--none"):t.closeButton.classList.remove("display--none");for(let o of Et)t.buttonMap[o].remove(),t.buttonMap[o].innerText=(e=this.msgMap[o])!=null?e:P.confirm[o],t.buttonMap[o].onclick=()=>{this.hide(),this._doClick(o)};for(let o of this.buttonType)t.confirmActions.appendChild(t.buttonMap[o]);t.dialog.isConnected||W("message").appendChild(t.dialog),t.dialog.classList.add(U.dialog["is-visible"]),t.dialog.focus(),this.args.disabledKeyAction!==!0&&this._registerEnterESCHandler()}_registerEnterESCHandler(){this.enterHandler=()=>{let t=J();this.enterButton?t.buttonMap[this.enterButton].click():this.buttonType.length===1?t.buttonMap[this.buttonType[0]].click():this.hide()},Qe("Enter",this.enterHandler),this.escController.create()}show(){if(Re.count>0){console.warn("already opened a confirm");return}setTimeout(()=>this._show(),0)}onESC(){let t=J();this.escButton&&t.buttonMap[this.escButton].click()}hide(){if(this.visible===!1)return;this.escController.destroy(),Re.count=0,setTimeout(()=>{this.activeElement instanceof HTMLElement&&(this.activeElement.focus(),this.activeElement=null)},0);let t=J();this.visible=!1,t.dialog.classList.remove(U.dialog["is-visible"]),this.enterHandler&&et("Enter",this.enterHandler),this.enterHandler=null}_doClick(t){this.onClick(t)}onClick(t){}};var Fe=ae(Ne(),1);var Dt=ae(Ne(),1);var Q="time-picker",$={timePicker:{"&":Q,"is-visible":"is-visible"},timePickerPanelWrapper:{"&":`${Q}__panel-wrapper`},timePickerButtonPanel:{"&":`${Q}__button-panel`},timePickerPanel:{"&":`${Q}__panel`},timePickerPanelItem:{"&":`${Q}__panel-item`},timePickerDivider:{"&":`${Q}__divider`}};function xt(r,t){let e=t?r:r+":00";if(/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(e)){let{hour:o,minute:n,second:i}=Be(e);return o<0||o>=24||n<0||n>=60?!1:!(t&&i<0||i>=60)}else return!1}function Be(r){let[t,e,o]=r.split(":");return{hour:parseInt(t),minute:parseInt(e),second:parseInt(o)}}function Ht(r,t,e){return[r.toString().padStart(2,"0"),t.toString().padStart(2,"0"),e.toString().padStart(2,"0")].join(":")}var Ce=12,wo=60,bo=60,To=["period","hour","minute","second"];function vo(){let r=document.createElement("div"),t=document.createElement("div"),e=document.createElement("div"),o=[document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div")],[n,i,s,a]=o;r.classList.add($.timePicker["&"],fe.zIndex.popover),o.forEach((h,f)=>{h.setAttribute("data-type",To[f]),h.className=$.timePickerPanel["&"],t.appendChild(h)}),t.className=$.timePickerPanelWrapper["&"],e.className=$.timePickerButtonPanel["&"];let d=document.createElement("button");d.classList.add("button"),d.type="button",e.appendChild(d),r.appendChild(t),r.appendChild(e);function c(h){let f=document.createElement("div");return f.className=$.timePickerPanelItem["&"],f.dataset.text=h,f.innerText=h,f}return ne(2,()=>o[0].appendChild(c(""))),ne(Ce,h=>o[1].appendChild(c(`${h}`))),ne(wo,h=>o[2].appendChild(c(`${h}`))),ne(bo,h=>o[3].appendChild(c(`${h}`))),{elements:{nowButton:d,secondPanel:a,timePicker:r},updateI18n:l,removeSelected:m,getTimeElements:v,scrollIntoView:u,selectTime:w,isAM:p,setPeriod:_,setHourId:E,setMinuteId:R,setSecondId:k,periodGenerator:D,getCurrentTime:A,hourGenerator:b,minuteGenerator:C,secondGenerator:N};function l(){d.innerHTML="",d.appendChild(V("ir-icon--check")),d.append(P.timePicker.btnNow),o[0].children[0].innerHTML="",o[0].children[1].innerHTML="",o[0].children[0].append(P.timePicker.am),o[0].children[1].append(P.timePicker.pm)}function m(){r.querySelectorAll(".is-selected").forEach(h=>h.classList.remove("is-selected"))}function v(h,f,ee){let K=h<Ce,te=K?h:h-Ce,oe=K?0:1;return{periodElement:n.children[oe],hourElement:i.children[te],minuteElement:s.children[f],secondElement:a.children[ee]}}function u(h,f,ee){let{hourElement:K,minuteElement:te,secondElement:oe}=v(h,f,ee);i.scrollTop=K.offsetTop-i.clientHeight/2,s.scrollTop=te.offsetTop-s.clientHeight/2,a.scrollTop=oe.offsetTop-a.clientHeight/2}function w(h,f,ee){let{periodElement:K,hourElement:te,minuteElement:oe,secondElement:Bt}=v(h,f,ee);m(),K.classList.add("is-selected"),te.classList.add("is-selected"),oe.classList.add("is-selected"),Bt.classList.add("is-selected")}function p(){return n.children[0].classList.contains("is-selected")}function _(h){n.children[(h+1)%2].classList.remove("is-selected"),n.children[h].classList.add("is-selected")}function E(h){var f;(f=i.querySelector(".is-selected"))==null||f.classList.remove("is-selected"),i.children[h].classList.add("is-selected")}function R(h){var f;(f=s.querySelector(".is-selected"))==null||f.classList.remove("is-selected"),s.children[h].classList.add("is-selected")}function k(h){var f;(f=a.querySelector(".is-selected"))==null||f.classList.remove("is-selected"),a.children[h].classList.add("is-selected")}function*D(){yield[0,n.children[0]],yield[1,n.children[1]]}function A(){return Ht($e(i)+(p()?0:Ce),$e(s),$e(a))}function*b(){let h=0;for(let f of i.children)yield[h++,f]}function*C(){let h=0;for(let f of s.children)yield[h++,f]}function*N(){let h=0;for(let f of a.children)yield[h++,f]}}function $e(r){let t=r.querySelector(".is-selected");return t instanceof HTMLElement?parseInt(t.innerText||"0",10):0}var Lt=(()=>{let r=null;return function(){return r||(r=vo()),r}})();function Mt({uuid:r,refElement:t,onChange:e,visibleSeconds:o}){let n=!1,i=()=>{},{elements:s,getCurrentTime:a,selectTime:d,scrollIntoView:c,updateI18n:l,hourGenerator:m,minuteGenerator:v,secondGenerator:u,periodGenerator:w,setPeriod:p,setHourId:_,setMinuteId:E,setSecondId:R}=Lt(),k={setTime(b){let C=o?b:b+":00",{hour:N,minute:h,second:f}=Be(C);d(N,h,f),c(N,h,f)},show:()=>{if(!n){l(),n=!0,D.create(),A.create(),s.nowButton.onclick=b=>{let C=(0,Dt.default)().format("HH:mm:ss");k.setTime(C),e(b,C)};for(let[b,C]of w())C.onclick=N=>{p(b),e(N,a())};for(let[b,C]of m())C.onclick=N=>{_(b),e(N,a())};for(let[b,C]of v())C.onclick=N=>{E(b),e(N,a())};if(o){for(let[b,C]of u())C.onclick=N=>{R(b),e(N,a())};s.secondPanel.style.removeProperty("display")}else s.secondPanel.style.setProperty("display","none");s.timePicker.isConnected||W("popover").appendChild(s.timePicker),s.timePicker.style.removeProperty("display"),s.timePicker.setAttribute("data-uuid",r),setTimeout(()=>{s.timePicker.classList.add($.timePicker["is-visible"]),i(),i=ot(t,s.timePicker)},0)}},hide:()=>{n&&(D.destroy(),A.destroy(),s.timePicker.classList.remove($.timePicker["is-visible"]),s.timePicker.addEventListener("transitionend",b=>{b.currentTarget===b.target&&(n=!1,r===s.timePicker.getAttribute("data-uuid")&&(i(),s.timePicker.remove()))},{once:!0}))},onESC:()=>k.hide(),get visible(){return n}},D=pe(k),A=rt({eventElements:[s.timePicker],clickOutsideFunc:()=>k.hide()});return k}var je={checkbox:me,checkboxWrapper:X,checkboxInput:q},Ie={input:de,inputNative:ce,inputSuffix:he,inputPrefix:ue},St=class extends M{constructor(t){super(t);let{visibleSeconds:e=!1}=t,o=e?"HH:mm:ss":"HH:mm";if(this.contextElement.className=Ie.input,this.input=document.createElement("input"),this.input.placeholder=o,this.input.className=Ie.inputNative,this.button=document.createElement("button"),this.button.appendChild(V("ir-icon--watch")),this.button.className=Ie.inputSuffix,this.latestValue=t.value||"",this.button.onclick=()=>this.toggle(),this.timePickerHandler=Mt({uuid:this.uuid,refElement:this.contextElement,visibleSeconds:e,onChange:(n,i)=>{let s=(0,Fe.default)(i,"HH:mm:ss",!0).format(o);this.value=s,this.onChange(s)}}),t.checkbox){let n=document.createElement("div"),i=document.createElement("label"),s=document.createElement("input");s.setAttribute("type","checkbox"),n.classList.add(je.checkbox,Ie.inputPrefix),i.className=je.checkboxWrapper,s.className=je.checkboxInput,i.appendChild(s),n.appendChild(i),this.contextElement.appendChild(n),s.checked=!t.disabled,s.onchange=()=>this.disabled=!s.checked,this.addCoreElement(n)}this.contextElement.appendChild(this.input),this.contextElement.appendChild(this.button),this.addCoreElement(this.input),this.addCoreElement(this.button),this.disabled=t.disabled===!0,t.onChange&&(this.onChange=t.onChange),t.value&&(this.value=(0,Fe.default)(t.value,o).format(o)),this.input.onblur=()=>{xt(this.input.value,e)?this.value=this.input.value:this.value=this.latestValue}}get hour(){return 0}get minute(){return 0}get second(){return 0}get inputCheckbox(){return this.contextElement.querySelector(".checkbox__input")}get visible(){return this.timePickerHandler.visible}get disabled(){return this.input.disabled}get value(){return this._value}set disabled(t){this.input.disabled=t,this.button.disabled=t}set value(t){this._value=t,this.input.value=t||"",this.latestValue=this.input.value}show(){this.timePickerHandler.show(),this.timePickerHandler.setTime(this.value||"00:00:00")}hide(){this.timePickerHandler.hide()}toggle(){this.visible?this.hide():this.show()}onChange(t){}};var Ee=class{constructor(){this._dialogElement=G("div","dialog"),this._dialogElement.setAttribute("tabindex","-1"),this._wrapperElement=T(this._dialogElement,"div","dialog__wrapper"),this._headerElement=T(this._wrapperElement,"div","dialog__header"),this._bodyElement=T(this._wrapperElement,"div","dialog__content"),this._footerElement=T(this._wrapperElement,"div","dialog__footer")}setDialogWidth(t){return this._wrapperElement.style.width=`${t}px`,this}addStrongHeaderTitle(t){let e=T(this._headerElement,"strong","dialog__header-title");return e.innerText=t,this}createHeaderCloseButton(t){let e=T(this._headerElement,"div","dialog__header-actions"),o=T(e,"button","dialog__button-close");return T(o,"i","ir-icon","ir-icon--close"),o.onclick=t,this}setFooterClass(...t){return this._footerElement.classList.add(...t),this}setContentElement(...t){for(;this._bodyElement.lastChild;)this._bodyElement.lastChild.remove();return this._bodyElement.append(...t),this}addFooterButton(t,e,...o){let n=T(this._footerElement,"button","button",...o);return n.innerText=t,n.onclick=e,this}get element(){return this._dialogElement}};var At={"#login-info-dialog.title":"Login Information","#login-info-dialog.confirm-button":"Confirm","AUTH.PASSWORD.NOTICE":"Deadline of Password Change","AUTH.ACCESSIP":"Last Login IP","AUTH.LASTESTLOGINTIME":"Last Login Date","AUTH.SECURITY.NOTICE":"Security Issue"};var Vt={"#login-info-dialog.title":"\u30ED\u30B0\u30A4\u30F3\u60C5\u5831","#login-info-dialog.confirm-button":"\u78BA\u8A8D","AUTH.PASSWORD.NOTICE":"\u30D1\u30B9\u30EF\u30FC\u30C9\u5909\u66F4\u671F\u9650","AUTH.ACCESSIP":"\u6700\u7D42\u30ED\u30B0\u30A4\u30F3IP","AUTH.LASTESTLOGINTIME":"\u6700\u7D42\u30ED\u30B0\u30A4\u30F3\u65E5\u6642","AUTH.SECURITY.NOTICE":"\u30BB\u30AD\u30E5\u30EA\u30C6\u30A3\u60C5\u5831"};var ze={"#login-info-dialog.title":"\uB85C\uADF8\uC778 \uC815\uBCF4","#login-info-dialog.confirm-button":"\uD655\uC778","AUTH.PASSWORD.NOTICE":"\uBE44\uBC00\uBC88\uD638 \uBCC0\uACBD \uAE30\uD55C","AUTH.ACCESSIP":"\uCD5C\uC885 \uB85C\uADF8\uC778 IP","AUTH.LASTESTLOGINTIME":"\uCD5C\uC885 \uB85C\uADF8\uC778 \uC77C\uC2DC","AUTH.SECURITY.NOTICE":"\uBCF4\uC548 \uC0AC\uD56D"};var Pt={"#login-info-dialog.title":"\u767B\u5F55\u4FE1\u606F","#login-info-dialog.confirm-button":"?","AUTH.PASSWORD.NOTICE":"\u5BC6\u7801\u53D8\u66F4\u671F\u9650","AUTH.ACCESSIP":"\u6700\u7EC8\u767B\u5F55IP","AUTH.LASTESTLOGINTIME":"\u6700\u7EC8\u767B\u5F55\u65F6\u95F4","AUTH.SECURITY.NOTICE":"\u4FDD\u5B89\u4E8B\u9879"};var _o={ko:ze,en:At,ja:Vt,zh:Pt};function Ro(r,t){return r in t}function Ot(r){var e;let t=(e=_o[r])!=null?e:ze;return{getMsg(o,...n){return Ro(o,t)?t[o]:o}}}var Co=550,ke={"AUTH.ACCESSIP":1,"AUTH.LASTESTLOGINTIME":2,"AUTH.PASSWORD.NOTICE":3,"AUTH.SECURITY.NOTICE":4};function Io(r){return r.props.some(([t])=>ke[t]!==void 0)}function Eo(r){return r.props.filter(([t])=>ke[t]!==void 0).sort(([t],[e])=>ke[t]-ke[e])}function ko(r,t){var a,d;let e=document.createDocumentFragment(),o=new DOMParser,n=t.replace(/&/g,"&amp;"),s=(a=o.parseFromString(`<root>${n}</root>`,"application/xml").firstChild)==null?void 0:a.firstChild;for(;s;){if(s.nodeType===1&&s instanceof Element)if(s.tagName.toLowerCase()==="font"){let c=document.createElement("span");c.textContent=s.textContent,c.style.cssText=(d=s.getAttribute("style"))!=null?d:"";let l=s.getAttribute("color"),m=s.getAttribute("bgcolor");l&&(c.style.color=l.replace("cl","")),m&&(c.style.backgroundColor=m.replace("cl","")),e.append(c)}else s.tagName.toLowerCase()==="br"?e.append(document.createElement("br")):console.warn(`loginInfoDialog-parser::not allowed tag ${s.tagName}`);else s.textContent&&e.append(s.textContent);s=s.nextSibling}r.append(e)}function qi(r){let{irm010Data:t,lang:e="ko",onClose:o}=r;if(!Io(t))throw new Error("no login info data! check irm010 response");let n=new Ee,{getMsg:i}=Ot(e),s=()=>{d.hide()},a=l=>{l.key==="Enter"&&s()},d=tt({element:n.element,type:"dialog",parentElement:W("dialog"),onESC(){o==null||o(),window.removeEventListener("keyup",a)}}),c=(()=>{let l=G("ul","row","gap-y--xs");return Eo(t).forEach(([v,u])=>{let w=T(l,"li","row","col","col--12");T(w,"div","col","col--4").innerText=i(v),v==="AUTH.SECURITY.NOTICE"?ko(T(w,"div","col","col--8"),u):T(w,"div","col","col--8").innerText=u}),l})();return n.setDialogWidth(Co).addStrongHeaderTitle(i("#login-info-dialog.title")).createHeaderCloseButton(s).setContentElement(c).setFooterClass("justify-content--end").addFooterButton(i("#login-info-dialog.confirm-button"),s,"button--primary"),{popoverHandler:d,show(){n.element.focus(),d.show(),window.addEventListener("keyup",a)},hide(){d.hide()}}}export{Jo as ClipboardManager,sn as IRCommandBlock,an as IRCommandManager,kt as IRConfirm,It as IRDatePicker,rn as IRSelect,St as IRTimePicker,dt as IRTree,uo as IRTree2KeyboardPlugin,Oe as IRTreeView,we as IRVirtualDOM,yo as Logger,Yo as Palette,tn as ReactiveState,y as addStyleXClass,T as appendElement,Xo as blobToStr,Lo as clearGlobalKeyListener,Ke as closest,fe as clsZId,rt as createClickOutsideHandler,Mo as createCustomIcon,on as createDropdownDiv,nn as createDropdownItem,pe as createESCHideController,G as createElement,Vo as createFloatingHandler,V as createIconElement,Wo as createImageFromSrcUrl,Do as createLoadingHandler,qi as createLoginInfoDialog,zo as createObjectURLFromSvg,tt as createPopover,qo as createSplitContainer,Oo as createTooltip,Bo as createTooltipBySelector,Fo as createTooltipContainer,Ko as downloadDataURL,ne as forEachBySize,en as forEachFilterBySize,Qo as get2DGenerator,Uo as getBase64FromSvg,xo as getElement,So as getIRIconPng,Go as getImageBlobFromImage,W as getLayerElement,$o as getMinMaxBetween,Zo as getTextWidthContext,ye as getThemeStore,Po as getTooltipElements,Ao as getVirtualEl,Ue as hasClass,Xr as hasDisplayedConfirm,Io as hasLoginInfo,P as i18n,ot as offsetBottomAutoUpdate,jo as parseInt,Qe as registerGlobalKeyListener,Ho as removeAllChildren,We as removeStyleXClass,No as removeStyleXToken,Mn as renderCheckboxTreeNode,Y as renderDefaultTreeNode,le as setDataSetFlag,Ge as setStyleXToken,An as setTreeDragDropReorder,et as unregisterGlobalKeyListener,qe as uuid,nt as xss};
+import {
+  IRCommandBlock,
+  IRCommandManager,
+  IRSelect,
+  createDatePickerHandler,
+  createDropdownDiv,
+  createDropdownItem
+} from "./chunks/chunk-QCVP6SVD.js";
+import {
+  i18n_default,
+  require_dayjs_min
+} from "./chunks/chunk-Q2C44MJO.js";
+import {
+  IRComponent
+} from "./chunks/chunk-CXSYGCFU.js";
+import {
+  createHookFlow
+} from "./chunks/chunk-EOV7BLLI.js";
+import "./chunks/chunk-5P7UO6OH.js";
+import {
+  ClipboardManager,
+  Palette,
+  ReactiveState,
+  addStyleXClass,
+  appendElement,
+  blobToStr,
+  borderScroll,
+  button,
+  buttonPrimary,
+  buttonSecondary,
+  buttonTertiary,
+  checkbox,
+  checkboxInput,
+  checkboxWrapper,
+  closest,
+  createClickOutsideHandler,
+  createCustomIcon,
+  createElement,
+  createIconElement,
+  createLoadingHandler,
+  createSplitContainer,
+  createTooltip,
+  createTooltipBySelector,
+  createTooltipContainer,
+  forEachBySize,
+  forEachFilterBySize,
+  get2DGenerator,
+  getElement,
+  getIRIconPng,
+  getMinMaxBetween,
+  getTextWidthContext,
+  getTooltipElements,
+  hasClass,
+  input,
+  inputNative,
+  inputPrefix,
+  inputSuffix,
+  parseInt as parseInt2,
+  removeAllChildren,
+  removeStyleXClass,
+  removeStyleXToken,
+  require_lib,
+  setDataSetFlag,
+  setStyleXToken,
+  uuid,
+  xss_default,
+  z_index_classNames_default
+} from "./chunks/chunk-6IBVOU7E.js";
+import {
+  createImageFromSrcUrl,
+  createObjectURLFromSvg,
+  downloadDataURL,
+  getBase64FromSvg,
+  getImageBlobFromImage
+} from "./chunks/chunk-B5H3PAHZ.js";
+import {
+  Logger
+} from "./chunks/chunk-A735ODE2.js";
+import "./chunks/chunk-BEP2YSTU.js";
+import {
+  clearGlobalKeyListener,
+  createESCHideController,
+  createFloatingHandler,
+  createPopover,
+  getLayerElement,
+  getThemeStore,
+  getThemeStoreValue,
+  getVirtualEl,
+  offsetBottomAutoUpdate,
+  registerGlobalKeyListener,
+  unregisterGlobalKeyListener
+} from "./chunks/chunk-YY6MAG5N.js";
+import "./chunks/chunk-576AFCMI.js";
+import {
+  __toESM
+} from "./chunks/chunk-F6QKJDR3.js";
+
+// src/js-components/virtual-dom/viewport-row.ts
+var IRViewportRow = class {
+  constructor({
+    rowId,
+    top,
+    height,
+    defaultHeight,
+    object
+  }) {
+    this._isFreezed = false;
+    this._cachedElement = null;
+    this._templateHelperObj = null;
+    this._rowId = rowId;
+    this._top = top;
+    this._height = height;
+    this._object = object != null ? object : null;
+    this._visible = true;
+    this._defaultHeight = defaultHeight;
+  }
+  get object() {
+    return this._object;
+  }
+  get height() {
+    return this._height;
+  }
+  get top() {
+    return this._top;
+  }
+  get visible() {
+    return this._visible;
+  }
+  get bottom() {
+    if (this._visible === false)
+      return this.top;
+    return this._top + this._height;
+  }
+  get template() {
+    if (!this._templateHelperObj)
+      throw new Error("Template helper object is not set");
+    return this._templateHelperObj;
+  }
+  setTemplateHelper(template) {
+    this._templateHelperObj = template;
+  }
+  updateObject(obj) {
+    const oldObj = this._object;
+    this._object = obj;
+    this.onUpdatedObject(this, oldObj, obj);
+  }
+  updateRowStyles() {
+    if (!this.isCachedElement)
+      return;
+    const element = this.getRowElement();
+    if (this._visible)
+      element.classList.remove("ir-vd-container__viewport-row--hidden");
+    else
+      element.classList.add("ir-vd-container__viewport-row--hidden");
+    if (this._defaultHeight !== this._height)
+      element.style.setProperty("--ir-vd-default-row-height", `${this._height}px`);
+    else
+      element.style.removeProperty("--ir-vd-default-row-height");
+  }
+  setVisible(visible) {
+    this._visible = visible;
+    this.updateRowStyles();
+  }
+  setHeight(height) {
+    this._height = height;
+    this.updateRowStyles();
+  }
+  createRowElement() {
+    const div = document.createElement("div");
+    this._cachedElement = div;
+    div.classList.add("ir-vd-container__viewport-row");
+    this.updateRowIdTopAttr();
+    this.updateRowStyles();
+    return div;
+  }
+  // 화면에 mount 될 때 호출
+  onMounted(row, rowElement) {
+  }
+  onUpdatedObject(row, oldObj, newObj) {
+  }
+  /**
+   * Cache 되지 않은 요소가 생성될 때 호출 함
+   * @param element 신규 생성된 row 요소
+   */
+  onCreatedElement(row, element) {
+  }
+  getRowElement() {
+    if (this._cachedElement)
+      return this._cachedElement;
+    const element = this.createRowElement();
+    this.onCreatedElement(this, element);
+    this.updateFreezedStatus();
+    return element;
+  }
+  updateFreezedStatus() {
+    if (!this.isCachedElement)
+      return;
+    if (this._isFreezed)
+      this.getRowElement().dataset.isFreezed = "true";
+    else
+      delete this.getRowElement().dataset.isFreezed;
+  }
+  remove() {
+    if (this.isCachedElement)
+      this.getRowElement().remove();
+  }
+  freeze() {
+    if (this._isFreezed)
+      return;
+    this._isFreezed = true;
+    this.updateFreezedStatus();
+  }
+  unfreeze() {
+    if (!this._isFreezed)
+      return;
+    this._isFreezed = false;
+    this.updateFreezedStatus();
+  }
+  updateRowIdTopAttr() {
+    if (!this.isCachedElement)
+      return;
+    const element = this.getRowElement();
+    element.dataset.rowId = `${this._rowId}`;
+    element.style.setProperty("--ir-vd-row-top", `${this._top}px`);
+  }
+  setRowIdAndTop(rowId, top) {
+    this._rowId = rowId;
+    this._top = top;
+    this.updateRowIdTopAttr();
+  }
+  get isFreezed() {
+    return this._isFreezed;
+  }
+  get isCachedElement() {
+    return this._cachedElement !== null;
+  }
+  get rowId() {
+    return this._rowId;
+  }
+  get isConnectedInDOM() {
+    return this.isCachedElement && this.getRowElement().isConnected;
+  }
+};
+
+// src/js-components/virtual-dom/viewport-manager.ts
+var IRViewportItemManager = class {
+  constructor(args) {
+    this.args = args;
+    this._rows = [];
+    this._visibleRowList = [];
+    this._totalHeight = 0;
+    this._totalWidth = 0;
+    this._freezedHeight = 0;
+    this._headerRowsCount = 0;
+    this._hiddenHeaderRowsCount = 0;
+    this._debounceContext = {
+      rafHandler: -1,
+      taskSet: /* @__PURE__ */ new Set(),
+      startRowId: Number.MAX_VALUE
+    };
+  }
+  scheduleTasks(...tasks) {
+    if (this._debounceContext.rafHandler > -1)
+      cancelAnimationFrame(this._debounceContext.rafHandler);
+    tasks.forEach((task) => this._debounceContext.taskSet.add(task));
+    requestAnimationFrame(() => this.doTasks());
+  }
+  doTasks() {
+    const {
+      taskSet
+    } = this._debounceContext;
+    try {
+      if (taskSet.has("update-row-info"))
+        this.updateRowInfo();
+    } finally {
+      this._debounceContext.taskSet.clear();
+      this._debounceContext.rafHandler = -1;
+      this._debounceContext.startRowId = Number.MAX_VALUE;
+    }
+  }
+  updateRowInfo() {
+    var _a;
+    if (this._debounceContext.startRowId === -1)
+      throw new Error(`startRowId is not set`);
+    const {
+      startRowId
+    } = this._debounceContext;
+    for (let index = startRowId; index < this.rowCount; ++index) {
+      const prevRow = this._rows[index - 1];
+      const curRow = this._rows[index];
+      curRow.setRowIdAndTop(index, (_a = prevRow == null ? void 0 : prevRow.bottom) != null ? _a : 0);
+    }
+  }
+  /**
+   * startRowId부터 rowId와 top 모두 갱신
+   */
+  scheduleUpdateRowInfo(startRowId) {
+    this._debounceContext.startRowId = Math.min(startRowId, this._debounceContext.startRowId);
+    this.scheduleTasks("update-row-info");
+  }
+  createRowsFragment(start, end) {
+    const fragment = document.createDocumentFragment();
+    for (let i = start; i <= end; i++) {
+      const row = this._rows[i];
+      row.visible && fragment.appendChild(row.getRowElement());
+    }
+    return fragment;
+  }
+  getRowByElement(rowElement) {
+    const rowId = rowElement.dataset.rowId;
+    if (!rowId)
+      throw new Error(`rowId not found in rowElement`);
+    return this.getRowById(+rowId);
+  }
+  getRowByTop(top) {
+    let start = 0;
+    let end = this._visibleRowList.length - 1;
+    while (start <= end) {
+      const middleId = Math.floor((start + end) / 2);
+      const row = this._visibleRowList[middleId];
+      if (top >= row.top && top <= row.bottom)
+        return row;
+      if (top < row.top)
+        end = middleId - 1;
+      else
+        start = middleId + 1;
+    }
+    return null;
+  }
+  getRowById(rowId) {
+    const row = this._rows[rowId];
+    if (!row)
+      throw new Error(`rowId ${rowId} not found`);
+    return row;
+  }
+  getRowByIdOrNull(rowId) {
+    var _a;
+    return (_a = this._rows[rowId]) != null ? _a : null;
+  }
+  removeRows(startRowId, endRowId) {
+    if (startRowId < this._headerRowsCount || endRowId >= this.rowCount)
+      throw new Error(`removing row id must be in between headerRow and rowCount`);
+    for (let rowId = startRowId; rowId <= endRowId; rowId++) {
+      const row = this._rows[rowId];
+      row.remove();
+      this._totalHeight -= row.height;
+    }
+    this._rows.splice(startRowId, endRowId - startRowId + 1);
+    this.updateVisibleRowList();
+    this.scheduleUpdateRowInfo(startRowId);
+  }
+  clearRows() {
+    for (let i = this._headerRowsCount; i < this.rowCount; i++) {
+      const row = this._rows[i];
+      if (row.isConnectedInDOM)
+        row.remove();
+    }
+    this._rows.length = this._headerRowsCount;
+    this._visibleRowList.length = this._headerRowsCount;
+    this._totalHeight = this._freezedHeight;
+  }
+  addRow(height, defaultHeight, object) {
+    const rowObj = new IRViewportRow({
+      rowId: this._rows.length,
+      height,
+      top: this._totalHeight,
+      defaultHeight,
+      object
+    });
+    this._rows.push(rowObj);
+    this._visibleRowList.push(rowObj);
+    this._totalHeight += height;
+    return rowObj;
+  }
+  /**
+   * row를 rowId에 넣는다. (이미 row가 존재하면 뒤로 민다.)
+   */
+  insertRow(rowId, height, defaultHeight, object) {
+    if (rowId < this._headerRowsCount || rowId > this.rowCount)
+      throw new Error(`invalid row range. it must be between ${this._headerRowsCount} ~ ${this.rowCount}`);
+    const row = this._rows[rowId];
+    const rowObj = new IRViewportRow({
+      rowId,
+      height,
+      defaultHeight,
+      // row가 존재하면 해당 row로 설정 없다면, 맨 끝이니 totalHeight
+      top: row ? row.top : this._totalHeight,
+      object
+    });
+    this._rows.splice(rowId, 0, rowObj);
+    this._totalHeight += height;
+    this.scheduleUpdateRowInfo(rowId + 1);
+    this.updateVisibleRowList();
+    return rowObj;
+  }
+  updateVisibleRowList() {
+    this._visibleRowList = this._rows.filter((row) => row.visible);
+  }
+  setRowHeight(rowId, height) {
+    const row = this.getRowById(rowId);
+    const prevHeight = row.height;
+    row.setHeight(height);
+    if (row.visible) {
+      this._totalHeight += height - prevHeight;
+      if (row.isFreezed)
+        this._freezedHeight += height - prevHeight;
+    }
+    this.scheduleUpdateRowInfo(rowId);
+  }
+  setRowVisible(rowId, visible) {
+    const row = this.getRowById(rowId);
+    if (row.visible === visible)
+      return;
+    const sign = visible ? 1 : -1;
+    const height = row.height * sign;
+    row.setVisible(visible);
+    this.updateVisibleRowList();
+    this._totalHeight += height;
+    if (rowId < this._headerRowsCount) {
+      this._freezedHeight += height;
+      this._hiddenHeaderRowsCount += sign;
+    }
+    if (!row.visible)
+      row.remove();
+    this.scheduleUpdateRowInfo(rowId);
+  }
+  freezeRows(freezeRowsCount) {
+    if (freezeRowsCount < 0)
+      throw new Error(`freezeRowsCount must be a positive number`);
+    else if (freezeRowsCount > this.rowCount)
+      throw new Error(`freezeRowsCount must be less than the total number of rows`);
+    this._freezedHeight = 0;
+    for (let i = 0; i < this._headerRowsCount; i++)
+      this._rows[i].unfreeze();
+    for (let i = 0; i < freezeRowsCount; i++) {
+      this._freezedHeight += this._rows[i].height;
+      this._rows[i].freeze();
+    }
+    this._headerRowsCount = freezeRowsCount;
+  }
+  *getRowIter() {
+    yield* this._rows;
+  }
+  get totalHeight() {
+    return this._totalHeight;
+  }
+  get totalWidth() {
+    return this._totalWidth;
+  }
+  get freezedHeight() {
+    return this._freezedHeight;
+  }
+  get firstRow() {
+    if (this.rowCount === 0)
+      throw new Error("no rows");
+    return this._rows[0];
+  }
+  get lastRow() {
+    if (this.rowCount === 0)
+      throw new Error("no rows");
+    return this._rows[this._rows.length - 1];
+  }
+  get rowCount() {
+    return this._rows.length;
+  }
+  get visibleRowCount() {
+    return this._visibleRowList.length;
+  }
+  get headerRowsCount() {
+    return this._headerRowsCount;
+  }
+  get visibleHeaderRowsCount() {
+    return this._headerRowsCount + this._hiddenHeaderRowsCount;
+  }
+};
+
+// src/js-components/virtual-dom/index.ts
+function createViewportElements() {
+  const viewport = document.createElement("div");
+  const freezedViewport = document.createElement("div");
+  freezedViewport.className = "ir-vd-container__viewport ir-vd-container__viewport--freezed";
+  viewport.className = "ir-vd-container__viewport";
+  return {
+    viewport,
+    freezedViewport
+  };
+}
+var DEFAULT_ROW_HEIGHT = 28;
+var HEIGHT_DETECT_GAP = 40;
+var IRVirtualDOM = class extends IRComponent {
+  constructor(args) {
+    var _a, _b;
+    super(args);
+    this.args = args;
+    this._debounceContext = {
+      rAFHandler: -1,
+      startRowId: -1,
+      scrollRow: -1,
+      registeredTasks: /* @__PURE__ */ new Set(),
+      afterRenderTasks: []
+    };
+    this.contextElement.classList.add("ir-vd-container");
+    this._viewportElements = createViewportElements();
+    this.contextElement.append(
+      this._viewportElements.freezedViewport,
+      this._viewportElements.viewport
+    );
+    this._itemManager = new IRViewportItemManager({
+      headerRowCount: (_a = args.headerRowCount) != null ? _a : 0
+    });
+    this.resizeObserver = new ResizeObserver(() => {
+      this.scheduleTasks("update-viewport");
+    });
+    if (args.onMountedRow)
+      this.onMountedRow = args.onMountedRow;
+    if (args.onCreatedRowElement)
+      this.onCreatedRowElement = args.onCreatedRowElement;
+    if (args.onUpdatedRowObject)
+      this.onUpdatedRowObject = args.onUpdatedRowObject;
+    this._defaultRowHeight = (_b = args.defaultRowHeight) != null ? _b : DEFAULT_ROW_HEIGHT;
+    this.contextElement.style.setProperty("--ir-vd-default-row-height", `${this._defaultRowHeight}px`);
+    this.resizeObserver.observe(this.contextElement);
+    this.initScrollEvent();
+    this.initRowCol();
+  }
+  initScrollEvent() {
+    this.addGlobalEventListener(this.contextElement, "scroll", (_ev) => {
+      this.scheduleTasks("update-viewport");
+    });
+  }
+  initRowCol() {
+    for (let i = 0; i < this.args.rowCount; i++)
+      this.addRow();
+    if (this.args.headerRowCount) {
+      this._itemManager.freezeRows(this.args.headerRowCount);
+      this.updateFreezedViewport();
+    }
+    this.scheduleTasks("update-container-size", "update-viewport");
+  }
+  updateContainerSize() {
+    const {
+      freezedViewport,
+      viewport
+    } = this._viewportElements;
+    const {
+      freezedHeight,
+      totalHeight
+    } = this._itemManager;
+    freezedViewport.style.setProperty("--ir-vd-container-row-height", `${String(freezedHeight)}px`);
+    viewport.style.setProperty("--ir-vd-container-row-height", `${String(totalHeight)}px`);
+  }
+  _scrollToRow(rowId) {
+    const row = this._itemManager.getRowById(rowId);
+    this.contextElement.scrollTo({ top: row.top - this._itemManager.freezedHeight });
+  }
+  doTasks() {
+    const { registeredTasks, afterRenderTasks } = this._debounceContext;
+    try {
+      if (registeredTasks.has("update-container-size"))
+        this.updateContainerSize();
+      if (registeredTasks.has("update-viewport"))
+        this.updateViewport();
+      afterRenderTasks.forEach((task) => task());
+    } finally {
+      registeredTasks.clear();
+      afterRenderTasks.length = 0;
+      this._debounceContext.rAFHandler = -1;
+      this._debounceContext.startRowId = -1;
+      this._debounceContext.scrollRow = -1;
+    }
+  }
+  scheduleTasks(...tasks) {
+    for (const task of tasks)
+      this._debounceContext.registeredTasks.add(task);
+    if (this._debounceContext.rAFHandler === -1)
+      this._debounceContext.rAFHandler = requestAnimationFrame(this.doTasks.bind(this));
+  }
+  unmountNotInViewport(viewportStartRow, viewportEndRow) {
+    let curElement = this._viewportElements.viewport.firstElementChild;
+    while (curElement) {
+      const row = this._itemManager.getRowByElement(curElement);
+      curElement = curElement.nextElementSibling;
+      if (row && (row.rowId < viewportStartRow || row.rowId > viewportEndRow) && row.isConnectedInDOM)
+        row.remove();
+    }
+  }
+  clearFreezedViewport() {
+    const { freezedViewport } = this._viewportElements;
+    let curElement = freezedViewport.firstElementChild;
+    while (curElement) {
+      const row = this._itemManager.getRowByElement(curElement);
+      curElement = curElement.nextElementSibling;
+      row.remove();
+    }
+  }
+  updateFreezedViewport() {
+    this.clearFreezedViewport();
+    const { freezedViewport } = this._viewportElements;
+    const frag = this._itemManager.createRowsFragment(0, this._itemManager.headerRowsCount - 1);
+    freezedViewport.append(frag);
+  }
+  // 현재 scroll에 맞는 요소 viewport 업데이트
+  mountViewportRows() {
+    var _a;
+    if (this._itemManager.rowCount === 0)
+      return;
+    const top = Math.max(0, this.contextElement.scrollTop - HEIGHT_DETECT_GAP, this._itemManager.freezedHeight + 1);
+    const bottom = top + this.contextElement.clientHeight + HEIGHT_DETECT_GAP + this._defaultRowHeight;
+    const startRow = this._itemManager.getRowByTop(top);
+    const endRow = (_a = this._itemManager.getRowByTop(bottom)) != null ? _a : this._itemManager.lastRow;
+    if (!startRow)
+      return;
+    this.unmountNotInViewport(startRow.rowId, endRow.rowId);
+    const { viewport } = this._viewportElements;
+    if (viewport.childElementCount === 0) {
+      viewport.append(this._itemManager.createRowsFragment(startRow.rowId, endRow.rowId));
+      return;
+    }
+    let beforeRow = null;
+    for (let rowId = startRow.rowId; rowId <= endRow.rowId; ++rowId) {
+      const row = this._itemManager.getRowById(rowId);
+      if (!row.visible)
+        continue;
+      if (!row.isConnectedInDOM) {
+        if (!beforeRow)
+          viewport.prepend(row.getRowElement());
+        else
+          beforeRow.getRowElement().after(row.getRowElement());
+      }
+      beforeRow = row;
+    }
+  }
+  updateViewport() {
+    this.mountViewportRows();
+    this.generateScrollBarClass();
+  }
+  scrollToRow(rowId) {
+    if (this._debounceContext.registeredTasks.has("update-container-size"))
+      this.afterRender(() => this._scrollToRow(rowId));
+    else
+      this._scrollToRow(rowId);
+  }
+  getRowCount() {
+    return this._itemManager.rowCount;
+  }
+  getRowById(rowId) {
+    return this._itemManager.getRowById(rowId);
+  }
+  bindEventsToRow(rowObj) {
+    rowObj.onMounted = (row, rowEle) => this.onMountedRow(row, rowEle);
+    rowObj.onCreatedElement = (row, rowEle) => this.onCreatedRowElement(row, rowEle);
+    rowObj.onUpdatedObject = (row, oldObj, newObj) => this.onUpdatedRowObject(row, oldObj, newObj);
+  }
+  insertRow(insertingRowId, height, object) {
+    const rowObj = this._itemManager.insertRow(insertingRowId, height != null ? height : this._defaultRowHeight, this._defaultRowHeight, object);
+    this.bindEventsToRow(rowObj);
+    this.scheduleTasks("update-container-size", "update-viewport");
+    return rowObj;
+  }
+  *getRowIter() {
+    yield* this._itemManager.getRowIter();
+  }
+  getRowVisible(rowId) {
+    return this._itemManager.getRowById(rowId).visible;
+  }
+  addRow(height, object) {
+    const rowObj = this._itemManager.addRow(height != null ? height : this._defaultRowHeight, this._defaultRowHeight, object);
+    this.bindEventsToRow(rowObj);
+    this.scheduleTasks("update-container-size", "update-viewport");
+    return rowObj;
+  }
+  removeRow(rowId) {
+    this.removeRows(rowId, rowId);
+  }
+  removeRows(startRowId, endRowId) {
+    this._itemManager.removeRows(startRowId, endRowId);
+    this.scheduleTasks("update-container-size", "update-viewport");
+  }
+  setRowVisible(rowId, visible) {
+    this._itemManager.setRowVisible(rowId, visible);
+    if (visible && rowId < this._itemManager.headerRowsCount) {
+      const { freezedViewport } = this._viewportElements;
+      freezedViewport.append(this._itemManager.getRowById(rowId).getRowElement());
+    }
+    this.scheduleTasks("update-container-size", "update-viewport");
+  }
+  forceLayout() {
+    this.doTasks();
+  }
+  setRowHeight(rowId, height) {
+    this._itemManager.setRowHeight(rowId, height);
+    this.scheduleTasks("update-container-size", "update-viewport");
+  }
+  /**
+   * 고정 행을 제외한 모든 행을 제거 합니다.
+   */
+  clearRows() {
+    this._itemManager.clearRows();
+    this.scheduleTasks("update-container-size", "update-viewport");
+  }
+  onMountedRow(row, rowElement) {
+  }
+  onUpdatedRowObject(row, oldObj, newObj) {
+  }
+  onCreatedRowElement(row, rowElement) {
+  }
+  afterRender(task) {
+    this._debounceContext.afterRenderTasks.push(task);
+    this.scheduleTasks();
+  }
+};
+
+// src/js-components/tree/keyboard-interaction.ts
+function visibleTreeList(treeList) {
+  const rootList = treeList.filter((node) => !node.parentItem);
+  const stack = [{ list: rootList, index: 0 }];
+  const visibleList = [];
+  if (treeList.length === 0)
+    return visibleList;
+  while (stack.length) {
+    const peek = stack[stack.length - 1];
+    const { index, list } = peek;
+    const nodeData = list[index];
+    const { items, isDisabled } = nodeData;
+    if (!isDisabled)
+      visibleList.push(nodeData);
+    ++peek.index;
+    if (peek.index === list.length)
+      stack.pop();
+    if (nodeData.expanded && items.length > 0) {
+      stack.push({
+        index: 0,
+        list: items
+      });
+    }
+  }
+  return visibleList;
+}
+function initIRTreeKeyboardInteraction(tree2, element) {
+  let focusItem = null;
+  let treeList = [];
+  let isScheduledUpdate = false;
+  const keyEventMap = {
+    "ArrowUp": arrowUpHandler,
+    "ArrowDown": arrowDownHandler,
+    "ArrowLeft": arrowLeftHandler,
+    "ArrowRight": arrowRightHandler,
+    " ": spaceBarHandler
+  };
+  tree2.addGlobalEventListener(element, "focus", () => {
+    focusItem && setFocusNode(focusItem);
+  });
+  tree2.addGlobalEventListener(element, "blur", () => {
+    releaseFocusClass();
+  });
+  tree2.addGlobalEventListener(element, "keydown", (ev) => {
+    if (!keyEventMap[ev.key])
+      return;
+    keyEventMap[ev.key]();
+    ev.preventDefault();
+  });
+  return {
+    updateTreeVisibleInfo,
+    setFocusNode
+  };
+  function updateTreeVisibleInfo() {
+    isScheduledUpdate = true;
+  }
+  function getScheduledTreeList() {
+    if (isScheduledUpdate) {
+      treeList = visibleTreeList(tree2.getOrderedNodes());
+      isScheduledUpdate = false;
+    }
+    return treeList;
+  }
+  function arrowUpHandler() {
+    const focusNode = focusItem;
+    const treeList2 = getScheduledTreeList();
+    if (focusNode === null) {
+      setFocusNode(treeList2[0]);
+      return;
+    }
+    const findIndex = treeList2.findIndex((node) => node.uuid === focusNode.uuid);
+    const prevNode = treeList2[findIndex - 1];
+    if (prevNode)
+      setFocusNode(prevNode);
+  }
+  function arrowDownHandler() {
+    const focusNode = focusItem;
+    const treeList2 = getScheduledTreeList();
+    if (focusNode === null) {
+      setFocusNode(treeList2[0]);
+      return;
+    }
+    const findIndex = treeList2.findIndex((node) => node.uuid === focusNode.uuid);
+    const nextNode = treeList2[findIndex + 1];
+    if (nextNode)
+      setFocusNode(nextNode);
+  }
+  function arrowRightHandler() {
+    if (focusItem === null)
+      return;
+    if (focusItem.items.length === 0)
+      return;
+    if (focusItem.expanded && !focusItem.items[0].isDisabled)
+      setFocusNode(focusItem.items[0]);
+    else
+      focusItem.expand();
+  }
+  function arrowLeftHandler() {
+    if (focusItem == null)
+      return;
+    if (focusItem.expanded)
+      focusItem.collapse();
+    else if (focusItem.parentItem)
+      setFocusNode(focusItem.parentItem);
+  }
+  function spaceBarHandler() {
+    if (focusItem)
+      focusItem.select();
+  }
+  function setFocusNode(node, scroll = true) {
+    releaseFocusClass();
+    focusItem = node;
+    focusItem.liTreeItem.classList.add("is-focus");
+    scroll && node.scrollIntoView();
+  }
+  function releaseFocusClass() {
+    if (!focusItem)
+      return;
+    focusItem.liTreeItem.classList.remove("is-focus");
+  }
+}
+
+// src/js-components/tree/tree.classNames.ts
+var block = "tree";
+var tree_classNames_default = {
+  tree: {
+    "&": block
+  },
+  treeList: {
+    "&": `${block}__list`
+  },
+  treeListRoot: {
+    "&": `${block}__list--root`
+  },
+  treeLabel: {
+    "&": `${block}__label`
+  },
+  treeLabelText: {
+    "&": `${block}__label-text`
+  },
+  treeItem: {
+    "&": `${block}__item`,
+    parent: `${block}__item--parent`,
+    "is-expanded": "is-expanded",
+    "is-selected": "is-selected"
+  },
+  treeItemContent: {
+    "&": `${block}__item-content`
+  },
+  treeIconFolder: {
+    "&": `${block}__icon-folder`
+  },
+  treeIconExpand: {
+    "&": `${block}__icon-expand`
+  }
+};
+
+// src/js-components/tree/renderer/default.ts
+var renderDefaultTreeNode = (_node) => {
+  const content = document.createElement("div");
+  const iconFolder = document.createElement("i");
+  const span = document.createElement("span");
+  content.className = tree_classNames_default.treeLabel["&"];
+  span.className = tree_classNames_default.treeLabelText["&"];
+  return {
+    get template() {
+      return content;
+    },
+    update: (node) => {
+      if (node.iconClass) {
+        if (!iconFolder.isConnected)
+          span.insertAdjacentElement("beforebegin", iconFolder);
+        iconFolder.className = `${tree_classNames_default.treeIconFolder["&"]} ir-icon ${node.iconClass}`;
+        if (node.iconColor)
+          iconFolder.style.setProperty("--ir-icon-foreground-color", node.iconColor);
+        else
+          iconFolder.style.removeProperty("--ir-icon-foreground-color");
+      } else
+        iconFolder.remove();
+      if (node.caption) {
+        content.appendChild(span);
+        span.innerText = node.caption;
+      } else
+        span.remove();
+    }
+  };
+};
+
+// src/js-components/tree/treeNode.ts
+var statusIcon = "ir-icon--triangle-small-right";
+var IRTreeNode = class {
+  constructor({
+    parentItem,
+    icon,
+    caption,
+    data,
+    level,
+    uuid: uuid2,
+    defaultChecked = false,
+    renderer = renderDefaultTreeNode,
+    disabled = false,
+    draggable
+  }) {
+    this.children = [];
+    this._parentItem = parentItem;
+    this.data = data;
+    this._level = level;
+    this._iconClass = icon;
+    this._caption = caption;
+    this._template = renderer(this);
+    this._checked = defaultChecked;
+    this._subChecked = defaultChecked;
+    this._disabled = disabled;
+    this._uuid = uuid2;
+    this.liTreeItem = document.createElement("li");
+    this.liTreeItem.classList.add(tree_classNames_default.treeItem["&"]);
+    this.liTreeItem.dataset.uuid = this._uuid;
+    this.divTreeItemContent = appendElement(this.liTreeItem, "div", tree_classNames_default.treeItemContent["&"]);
+    this.divTreeItemContent.style.setProperty("--ir-tree-node-level", this._level.toString());
+    this.ulTreeList = document.createElement("ul");
+    this.ulTreeList.classList.add(tree_classNames_default.treeList["&"]);
+    this.iconExpand = appendElement(this.divTreeItemContent, "i", tree_classNames_default.treeIconExpand["&"], "ir-icon", statusIcon);
+    this.divTreeItemContent.appendChild(this._template.template);
+    this.divTreeItemContent.addEventListener("dragstart", (ev) => this.onDragStart(ev));
+    this.divTreeItemContent.addEventListener("dragenter", (ev) => this.onDragOver(ev) && this.divTreeItemContent.classList.add("is-dragging"));
+    this.divTreeItemContent.addEventListener("dragover", (ev) => this.onDragOver(ev) && ev.preventDefault());
+    this.divTreeItemContent.addEventListener("dragend", (ev) => this.onDragEnd(ev));
+    this.divTreeItemContent.addEventListener("dragleave", () => this.clearDragging());
+    this.divTreeItemContent.addEventListener("drop", (ev) => {
+      try {
+        this.onDrop(ev);
+      } finally {
+        this.clearDragging();
+      }
+    });
+    if (draggable) {
+      this.divTreeItemContent.setAttribute("draggable", "true");
+    }
+  }
+  get items() {
+    return [...this.children];
+  }
+  get parentItem() {
+    return this._parentItem;
+  }
+  get count() {
+    return this.children.length;
+  }
+  get uuid() {
+    return this._uuid;
+  }
+  get subChecked() {
+    return this._subChecked;
+  }
+  get order() {
+    if (!this.liTreeItem.parentElement)
+      return -1;
+    return Array.prototype.indexOf.call(this.liTreeItem.parentElement.children, this.liTreeItem);
+  }
+  get level() {
+    return this._level;
+  }
+  set level(level) {
+    this._level = level;
+    this.divTreeItemContent.style.setProperty("--ir-tree-node-level", level.toString());
+  }
+  get caption() {
+    return this._caption;
+  }
+  get isDisabled() {
+    return this._disabled;
+  }
+  get iconClass() {
+    return this._iconClass;
+  }
+  get hasChildren() {
+    return this.liTreeItem.classList.contains(tree_classNames_default.treeItem.parent);
+  }
+  get hasCheckedChildren() {
+    return this.children.some((item) => item.checked || item.hasCheckedChildren);
+  }
+  get expanded() {
+    return this.liTreeItem.classList.contains(tree_classNames_default.treeItem["is-expanded"]);
+  }
+  get selected() {
+    return this.liTreeItem.classList.contains(tree_classNames_default.treeItem["is-selected"]);
+  }
+  get iconColor() {
+    return this._iconColor;
+  }
+  get checked() {
+    return this._checked;
+  }
+  set parentItem(node) {
+    if (node === this._parentItem)
+      return;
+    const oldParent = this._parentItem;
+    const newParent = node;
+    if (oldParent)
+      oldParent.removeChildNode(this);
+    if (newParent)
+      newParent.addNode(this);
+    this._parentItem = newParent;
+  }
+  set caption(text) {
+    this._caption = text;
+    this.render();
+  }
+  set disabled(nextDisabled) {
+    if (this._disabled === nextDisabled)
+      return;
+    this._disabled = nextDisabled;
+    if (this._disabled)
+      this.liTreeItem.classList.add("is-disabled");
+    else
+      this.liTreeItem.classList.remove("is-disabled");
+  }
+  set checked(checked) {
+    this._checked = checked;
+    this.render();
+  }
+  set iconClass(iconClass) {
+    this._iconClass = iconClass;
+    this.render();
+  }
+  set iconColor(color) {
+    this._iconColor = color;
+    this.render();
+  }
+  set hasChildren(value) {
+    if (value)
+      this.liTreeItem.classList.add(tree_classNames_default.treeItem.parent);
+    else
+      this.liTreeItem.classList.remove(tree_classNames_default.treeItem.parent);
+  }
+  removeItems() {
+    [...this.children].forEach((node) => node.delete());
+  }
+  addNode(node) {
+    this.children.push(node);
+    if (!this.hasChildren)
+      this.hasChildren = true;
+  }
+  getTreeNodeKey() {
+    const key = [this.order];
+    let curNode = this.parentItem;
+    while (curNode) {
+      key.push(curNode.order);
+      curNode = curNode.parentItem;
+    }
+    return key.reverse();
+  }
+  updateCheckedWithPropagation(checked) {
+    this.checked = checked;
+    this.children.forEach((node) => node.updateCheckedWithPropagation(checked));
+  }
+  updateCheckedStatus() {
+    var _a;
+    this.checked = this.children.every((node) => node.checked);
+    (_a = this.parentItem) == null ? void 0 : _a.updateCheckedStatus();
+  }
+  updateSubCheckedStatus() {
+    this._subChecked = this.hasCheckedChildren;
+  }
+  delete() {
+    this.liTreeItem.remove();
+    this.emitDeleteRecursive();
+    if (this._parentItem)
+      this._parentItem.removeChildNode(this);
+  }
+  collapse() {
+    if (!this.hasChildren)
+      return;
+    if (this.expanded) {
+      if (this.onCollapsing(this)) {
+        this.liTreeItem.classList.remove(tree_classNames_default.treeItem["is-expanded"]);
+        this.ulTreeList.remove();
+        this.onCollapse(this);
+      }
+    }
+  }
+  scrollIntoView(args = { block: "nearest" }) {
+    this.divTreeItemContent.scrollIntoView(args);
+  }
+  expand() {
+    if (!this.hasChildren)
+      return;
+    if (!this.expanded) {
+      if (this.onExpanding(this)) {
+        this.liTreeItem.classList.add(tree_classNames_default.treeItem["is-expanded"]);
+        this.liTreeItem.appendChild(this.ulTreeList);
+        this.onExpand(this);
+      }
+    }
+  }
+  toggle() {
+    if (this.liTreeItem.classList.contains(tree_classNames_default.treeItem["is-expanded"]))
+      this.collapse();
+    else
+      this.expand();
+  }
+  select() {
+    if (!this.selected) {
+      this.liTreeItem.classList.add(tree_classNames_default.treeItem["is-selected"]);
+      this.onSelect(this);
+    }
+  }
+  release() {
+    if (this.selected) {
+      this.liTreeItem.classList.remove(tree_classNames_default.treeItem["is-selected"]);
+      this.onRelease(this);
+    }
+  }
+  render() {
+    this._template.update(this);
+    this.onRender(this._template.template);
+  }
+  /**
+   * Drag Event
+   */
+  onDragStart(_ev) {
+  }
+  onDrop(_ev) {
+  }
+  onDragEnd(_ev) {
+  }
+  onDragOver(_ev) {
+    return false;
+  }
+  /**
+   * Object Events
+   */
+  onSelect(_node) {
+  }
+  onRelease(_node) {
+  }
+  onRemove(_node) {
+  }
+  onExpanding(_node) {
+    return true;
+  }
+  onExpand(_node) {
+  }
+  onRender(_element) {
+  }
+  onCollapsing(_node) {
+    return true;
+  }
+  onCollapse(_node) {
+  }
+  /**
+   * 현재 자식 배열에서 해당 node 제거
+   */
+  removeChildNode(node) {
+    const id = this.children.indexOf(node);
+    if (id === -1)
+      throw new Error("there is not the node");
+    this.children.splice(id, 1);
+    if (this.children.length === 0) {
+      this.hasChildren = false;
+      this.collapse();
+    }
+  }
+  emitDeleteRecursive() {
+    this.children.forEach((node) => node.emitDeleteRecursive());
+    this.onRemove(this);
+  }
+  clearDragging() {
+    this.divTreeItemContent.classList.remove("is-dragging");
+  }
+};
+
+// src/js-components/tree/tree.ts
+var IRTree = class extends IRComponent {
+  constructor({
+    contextElement,
+    renderer = renderDefaultTreeNode,
+    nodeDraggable = true,
+    enabledKeyboard = true
+  }) {
+    super({ contextElement });
+    this._nodeMap = /* @__PURE__ */ new Map();
+    this.nodes = [];
+    this.selectedNode = null;
+    this.renderer = renderer;
+    this._nodeDraggable = nodeDraggable;
+    contextElement.classList.add(tree_classNames_default.tree["&"]);
+    contextElement.setAttribute("tabindex", "0");
+    contextElement.setAttribute("role", "tree");
+    if (enabledKeyboard)
+      this._keyboardInteraction = initIRTreeKeyboardInteraction(this, contextElement);
+    if (nodeDraggable === false)
+      contextElement.setAttribute("draggable", "false");
+    this.rootElement = appendElement(contextElement, "ul", tree_classNames_default.treeList["&"], tree_classNames_default.treeListRoot["&"]);
+    this.addCoreElement(this.rootElement);
+    this.addGlobalEventListener(contextElement, "contextmenu", (ev) => {
+      ev.preventDefault();
+      if (!(ev.target instanceof HTMLElement))
+        return;
+      this.onContextMenu(ev);
+      const el = ev.target.closest(`.${tree_classNames_default.treeItem["&"]}`);
+      if (el)
+        this.selectNodeByUUID(el.dataset.uuid);
+    });
+  }
+  get items() {
+    return [...this.nodes];
+  }
+  get selected() {
+    return this.selectedNode;
+  }
+  get nodeDraggable() {
+    return this._nodeDraggable;
+  }
+  set selected(node) {
+    var _a, _b;
+    if (this.selected === node)
+      return;
+    (_a = this.selectedNode) == null ? void 0 : _a.release();
+    this.selectedNode = node;
+    this.onChanged(node);
+    if (node) {
+      node.select();
+      this.onSelectNode(node);
+      (_b = this._keyboardInteraction) == null ? void 0 : _b.setFocusNode(node, false);
+    }
+  }
+  onDblClick(node) {
+    node.toggle();
+  }
+  onToggleClick(node) {
+    node.toggle();
+  }
+  onLabelClick(node) {
+    this.selected = node;
+  }
+  onSelectNode(_) {
+  }
+  onReleaseNode(_) {
+  }
+  onRemoveNode(_) {
+  }
+  onChanged(_) {
+  }
+  onExpanding(_) {
+    return true;
+  }
+  onExpand(_) {
+  }
+  onCollapsing(_) {
+    return true;
+  }
+  onCollapse(_) {
+  }
+  onDragStartNode(node, ev) {
+    if (!ev.dataTransfer)
+      return;
+    ev.dataTransfer.setData("application/json", JSON.stringify(node.data));
+    ev.dataTransfer.dropEffect = "copy";
+  }
+  onDragOverOnNode(_node, _ev) {
+    return false;
+  }
+  onDropOnNode(_node, _ev) {
+  }
+  onDragEndNode(_node, ev) {
+  }
+  onRenderNode(_node, _element) {
+  }
+  onNodeMoved(_node, _beforeOrder) {
+  }
+  onContextMenu(_ev) {
+  }
+  /**
+   * left가 작으면 true 리턴
+   * TODO 추후 IRTree에서 분리 필요 (class 로직과 상관 없음)
+   */
+  compareNodeOrderKey(leftNumberList, rightNumberList) {
+    const length = Math.max(leftNumberList.length, rightNumberList.length);
+    for (let i = 0; i < length; i++) {
+      const leftVal = leftNumberList[i];
+      const rightVal = rightNumberList[i];
+      if (leftVal === void 0)
+        return true;
+      if (rightVal === void 0)
+        return false;
+      if (leftVal < rightVal)
+        return true;
+      if (leftVal > rightVal)
+        return false;
+    }
+    throw new Error("same key error!");
+  }
+  getOrderedNodes() {
+    return this.items.sort((a, b) => this.compareNodeOrderKey(a.getTreeNodeKey(), b.getTreeNodeKey()) ? -1 : 1);
+  }
+  removeNodeByUUID(uuid2) {
+    this.findNodeByUUID(uuid2).delete();
+  }
+  selectNodeByUUID(uuid2) {
+    this.findNodeByUUID(uuid2).select();
+  }
+  findNodeByUUID(uuid2) {
+    const node = this._nodeMap.get(uuid2);
+    if (!node)
+      throw new Error(`not found node uuid: ${uuid2}`);
+    return node;
+  }
+  addChild(parent, caption, data, order = void 0) {
+    var _a;
+    const nodeUUID = uuid();
+    if (this._nodeMap.has(nodeUUID))
+      throw new Error("UUID already exists");
+    const node = new IRTreeNode({
+      parentItem: parent,
+      caption,
+      data,
+      level: parent ? parent.level + 1 : 0,
+      renderer: this.renderer,
+      defaultChecked: parent == null ? void 0 : parent.checked,
+      draggable: this.nodeDraggable,
+      uuid: nodeUUID
+    });
+    this._nodeMap.set(node.uuid, node);
+    if (parent)
+      parent.addNode(node);
+    this.nodes.push(node);
+    node.divTreeItemContent.ondblclick = (ev) => {
+      if (ev.target.classList.contains("checkbox__wrapper"))
+        return;
+      this.onDblClick(node);
+    };
+    node.divTreeItemContent.onclick = (ev) => {
+      this.onLabelClick(node);
+    };
+    node.iconExpand.onclick = () => this.onToggleClick(node);
+    node.onSelect = () => this.selected = node;
+    node.onRelease = (node2) => this.onReleaseNode(node2);
+    node.onRemove = () => {
+      var _a2;
+      const id = this.nodes.indexOf(node);
+      if (id !== -1)
+        this.nodes.splice(this.nodes.indexOf(node), 1);
+      this.onRemoveNode(node);
+      this._nodeMap.delete(node.uuid);
+      (_a2 = this._keyboardInteraction) == null ? void 0 : _a2.updateTreeVisibleInfo();
+    };
+    node.onExpanding = () => this.onExpanding(node);
+    node.onExpand = () => {
+      var _a2;
+      (_a2 = this._keyboardInteraction) == null ? void 0 : _a2.updateTreeVisibleInfo();
+      this.onExpand(node);
+    };
+    node.onCollapsing = () => this.onCollapsing(node);
+    node.onCollapse = () => {
+      var _a2;
+      (_a2 = this._keyboardInteraction) == null ? void 0 : _a2.updateTreeVisibleInfo();
+      this.onCollapse(node);
+    };
+    node.onDragStart = (ev) => this.onDragStartNode(node, ev);
+    node.onDrop = (ev) => this.onDropOnNode(node, ev);
+    node.onDragOver = (ev) => this.onDragOverOnNode(node, ev);
+    node.onDragEnd = (ev) => this.onDragEndNode(node, ev);
+    node.onRender = (element) => this.onRenderNode(node, element);
+    node.render();
+    (_a = this._keyboardInteraction) == null ? void 0 : _a.updateTreeVisibleInfo();
+    const parentElement = parent ? parent.ulTreeList : this.rootElement;
+    if (order === void 0)
+      parentElement.appendChild(node.liTreeItem);
+    else if (order >= parentElement.children.length) {
+      parentElement.insertAdjacentElement("beforeend", node.liTreeItem);
+    } else {
+      parentElement.children[order].insertAdjacentElement("beforebegin", node.liTreeItem);
+    }
+    return node;
+  }
+  moveNode(node, targetNode, isTop) {
+    if (node === targetNode.parentItem) {
+      console.error("Could not move to the node own child node.");
+      return;
+    }
+    const beforeOrder = node.order;
+    node.parentItem = targetNode.parentItem;
+    if (targetNode.parentItem === null)
+      node.level = 0;
+    else
+      node.level = targetNode.parentItem.level + 1;
+    targetNode.liTreeItem.insertAdjacentElement(isTop ? "beforebegin" : "afterend", node.liTreeItem);
+    this.onNodeMoved(node, beforeOrder);
+  }
+  selectNode(node) {
+    if (!this.nodes.includes(node))
+      throw new Error("Can't select the node because it's not included");
+    this.selected = node;
+  }
+  clear() {
+    this.selectedNode = null;
+    this.rootElement.innerHTML = "";
+    this.nodes.splice(0, this.nodes.length);
+    this._nodeMap.clear();
+  }
+  expandAll() {
+    this.nodes.forEach((node) => node.expand());
+  }
+  collapseAll() {
+    this.nodes.forEach((node) => node.collapse());
+  }
+  expandTo(to) {
+    let node = to._parentItem;
+    while (node) {
+      node.expand();
+      node = node._parentItem;
+    }
+  }
+  getDropNode(ev) {
+    var _a;
+    const label = hasClass(ev.target, tree_classNames_default.treeLabel["&"], this.contextElement);
+    return label !== null ? (_a = label.parentElement) == null ? void 0 : _a.parentElement : null;
+  }
+  getNodeByOffsetTopOrNull(offsetTop) {
+    return null;
+  }
+};
+
+// src/js-components/tree/renderer/checkbox.ts
+var renderCheckboxTreeNode = ({ onCheck }) => {
+  return (node) => {
+    const content = renderDefaultTreeNode(node);
+    const label = document.createElement("label");
+    const checkbox2 = document.createElement("input");
+    checkbox2.type = "checkbox";
+    label.classList.add(checkboxWrapper);
+    checkbox2.classList.add(checkboxInput);
+    label.appendChild(checkbox2);
+    content.template.insertAdjacentElement("afterbegin", label);
+    checkbox2.addEventListener("click", () => {
+      var _a;
+      node.updateCheckedWithPropagation(checkbox2.checked);
+      (_a = node.parentItem) == null ? void 0 : _a.updateCheckedStatus();
+      checkbox2.dataset["state"] = node.hasCheckedChildren ? "sub-checked" : "";
+      onCheck && onCheck(node);
+    });
+    return {
+      get template() {
+        return content.template;
+      },
+      update: (node2) => {
+        var _a;
+        content.update(node2);
+        if (node2.checked !== checkbox2.checked)
+          checkbox2.checked = node2.checked;
+        (_a = node2.parentItem) == null ? void 0 : _a.updateCheckedStatus();
+        node2.updateSubCheckedStatus();
+        checkbox2.dataset["state"] = node2.subChecked ? "sub-checked" : "";
+      }
+    };
+  };
+};
+
+// src/js-components/tree/drag-drop-reorder.ts
+var OFFSET_BORDER = 16;
+var setTreeDragDropReorder = (tree2) => {
+  let startDraggingNode = null;
+  let lastDraggingNode = null;
+  const clearNodeBorderStyle = () => {
+    if (lastDraggingNode) {
+      lastDraggingNode.divTreeItemContent.classList.remove("is-top");
+      lastDraggingNode.divTreeItemContent.classList.remove("is-bottom");
+    }
+    lastDraggingNode = null;
+  };
+  tree2.onDragStartNode = (node, ev) => {
+    if (!ev.dataTransfer)
+      return;
+    ev.dataTransfer.dropEffect = "move";
+    startDraggingNode = node;
+  };
+  tree2.onDragOverOnNode = (node, ev) => {
+    if (startDraggingNode === node)
+      return false;
+    let parent = node._parentItem;
+    while (parent !== null) {
+      if (parent === startDraggingNode)
+        return false;
+      parent = parent._parentItem;
+    }
+    clearNodeBorderStyle();
+    node.divTreeItemContent.classList.add(ev.offsetY < OFFSET_BORDER ? "is-top" : "is-bottom");
+    lastDraggingNode = node;
+    return true;
+  };
+  tree2.onDropOnNode = (targetNode) => {
+    if (!startDraggingNode)
+      throw new Error("No start dragging node!");
+    tree2.moveNode(
+      startDraggingNode,
+      targetNode,
+      targetNode.divTreeItemContent.classList.contains("is-top")
+    );
+  };
+  tree2.onDragEndNode = () => {
+    clearNodeBorderStyle();
+  };
+};
+
+// ../../node_modules/.pnpm/@stylexjs+stylex@0.5.1/node_modules/@stylexjs/stylex/lib/es/stylex.mjs
+var styleq$1 = {};
+Object.defineProperty(styleq$1, "__esModule", {
+  value: true
+});
+var styleq_2 = styleq$1.styleq = void 0;
+var cache = /* @__PURE__ */ new WeakMap();
+var compiledKey = "$$css";
+function createStyleq(options) {
+  var disableCache;
+  var disableMix;
+  var transform;
+  if (options != null) {
+    disableCache = options.disableCache === true;
+    disableMix = options.disableMix === true;
+    transform = options.transform;
+  }
+  return function styleq2() {
+    var definedProperties = [];
+    var className = "";
+    var inlineStyle = null;
+    var nextCache = disableCache ? null : cache;
+    var styles = new Array(arguments.length);
+    for (var i = 0; i < arguments.length; i++) {
+      styles[i] = arguments[i];
+    }
+    while (styles.length > 0) {
+      var possibleStyle = styles.pop();
+      if (possibleStyle == null || possibleStyle === false) {
+        continue;
+      }
+      if (Array.isArray(possibleStyle)) {
+        for (var _i = 0; _i < possibleStyle.length; _i++) {
+          styles.push(possibleStyle[_i]);
+        }
+        continue;
+      }
+      var style = transform != null ? transform(possibleStyle) : possibleStyle;
+      if (style.$$css) {
+        var classNameChunk = "";
+        if (nextCache != null && nextCache.has(style)) {
+          var cacheEntry = nextCache.get(style);
+          if (cacheEntry != null) {
+            classNameChunk = cacheEntry[0];
+            definedProperties.push.apply(definedProperties, cacheEntry[1]);
+            nextCache = cacheEntry[2];
+          }
+        } else {
+          var definedPropertiesChunk = [];
+          for (var prop in style) {
+            var value = style[prop];
+            if (prop === compiledKey)
+              continue;
+            if (typeof value === "string" || value === null) {
+              if (!definedProperties.includes(prop)) {
+                definedProperties.push(prop);
+                if (nextCache != null) {
+                  definedPropertiesChunk.push(prop);
+                }
+                if (typeof value === "string") {
+                  classNameChunk += classNameChunk ? " " + value : value;
+                }
+              }
+            } else {
+              console.error("styleq: ".concat(prop, " typeof ").concat(String(value), ' is not "string" or "null".'));
+            }
+          }
+          if (nextCache != null) {
+            var weakMap = /* @__PURE__ */ new WeakMap();
+            nextCache.set(style, [classNameChunk, definedPropertiesChunk, weakMap]);
+            nextCache = weakMap;
+          }
+        }
+        if (classNameChunk) {
+          className = className ? classNameChunk + " " + className : classNameChunk;
+        }
+      } else {
+        if (disableMix) {
+          if (inlineStyle == null) {
+            inlineStyle = {};
+          }
+          inlineStyle = Object.assign({}, style, inlineStyle);
+        } else {
+          var subStyle = null;
+          for (var _prop in style) {
+            var _value = style[_prop];
+            if (_value !== void 0) {
+              if (!definedProperties.includes(_prop)) {
+                if (_value != null) {
+                  if (inlineStyle == null) {
+                    inlineStyle = {};
+                  }
+                  if (subStyle == null) {
+                    subStyle = {};
+                  }
+                  subStyle[_prop] = _value;
+                }
+                definedProperties.push(_prop);
+                nextCache = null;
+              }
+            }
+          }
+          if (subStyle != null) {
+            inlineStyle = Object.assign(subStyle, inlineStyle);
+          }
+        }
+      }
+    }
+    var styleProps = [className, inlineStyle];
+    return styleProps;
+  };
+}
+var styleq = createStyleq();
+styleq_2 = styleq$1.styleq = styleq;
+styleq.factory = createStyleq;
+var errorForFn = (name) => new Error(`'stylex.${name}' should never be called at runtime. It should be compiled away by '@stylexjs/babel-plugin'`);
+var errorForType = (key) => errorForFn(`types.${key}`);
+function props() {
+  const options = this;
+  for (var _len = arguments.length, styles = new Array(_len), _key = 0; _key < _len; _key++) {
+    styles[_key] = arguments[_key];
+  }
+  if (__implementations.props) {
+    return __implementations.props.call(options, styles);
+  }
+  const [className, style] = styleq_2(styles);
+  const result = {};
+  if (className != null && className !== "") {
+    result.className = className;
+  }
+  if (style != null && Object.keys(style).length > 0) {
+    result.style = style;
+  }
+  return result;
+}
+function attrs() {
+  const {
+    className,
+    style
+  } = props(...arguments);
+  const result = {};
+  if (className != null && className !== "") {
+    result.class = className;
+  }
+  if (style != null && Object.keys(style).length > 0) {
+    result.style = Object.keys(style).map((key) => `${key}:${style[key]};`).join("");
+  }
+  return result;
+}
+function stylexCreate(styles) {
+  if (__implementations.create != null) {
+    const create2 = __implementations.create;
+    return create2(styles);
+  }
+  throw errorForFn("create");
+}
+function stylexDefineVars(styles) {
+  if (__implementations.defineVars) {
+    return __implementations.defineVars(styles);
+  }
+  throw errorForFn("defineVars");
+}
+var stylexCreateTheme = (baseTokens, overrides) => {
+  if (__implementations.createTheme) {
+    return __implementations.createTheme(baseTokens, overrides);
+  }
+  throw errorForFn("createTheme");
+};
+var stylexInclude = (styles) => {
+  if (__implementations.include) {
+    return __implementations.include(styles);
+  }
+  throw errorForFn("include");
+};
+var create = stylexCreate;
+var defineVars = stylexDefineVars;
+var createTheme = stylexCreateTheme;
+var include = stylexInclude;
+var types = {
+  angle: (_v) => {
+    throw errorForType("angle");
+  },
+  color: (_v) => {
+    throw errorForType("color");
+  },
+  url: (_v) => {
+    throw errorForType("url");
+  },
+  image: (_v) => {
+    throw errorForType("image");
+  },
+  integer: (_v) => {
+    throw errorForType("integer");
+  },
+  lengthPercentage: (_v) => {
+    throw errorForType("lengthPercentage");
+  },
+  length: (_v) => {
+    throw errorForType("length");
+  },
+  percentage: (_v) => {
+    throw errorForType("percentage");
+  },
+  number: (_v) => {
+    throw errorForType("number");
+  },
+  resolution: (_v) => {
+    throw errorForType("resolution");
+  },
+  time: (_v) => {
+    throw errorForType("time");
+  },
+  transformFunction: (_v) => {
+    throw errorForType("transformFunction");
+  },
+  transformList: (_v) => {
+    throw errorForType("transformList");
+  }
+};
+var keyframes = (keyframes2) => {
+  if (__implementations.keyframes) {
+    return __implementations.keyframes(keyframes2);
+  }
+  throw errorForFn("keyframes");
+};
+var firstThatWorks = function() {
+  if (__implementations.firstThatWorks) {
+    return __implementations.firstThatWorks(...arguments);
+  }
+  throw errorForFn("firstThatWorks");
+};
+function _stylex() {
+  for (var _len2 = arguments.length, styles = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    styles[_key2] = arguments[_key2];
+  }
+  const [className] = styleq_2(styles);
+  return className;
+}
+_stylex.props = props;
+_stylex.attrs = attrs;
+_stylex.create = create;
+_stylex.defineVars = defineVars;
+_stylex.createTheme = createTheme;
+_stylex.include = include;
+_stylex.keyframes = keyframes;
+_stylex.firstThatWorks = firstThatWorks;
+_stylex.types = types;
+var __implementations = {};
+
+// ../ir-style-x/dist/index.js
+var utility = {
+  truncate: {
+    overflow: "ir-b3r6kr",
+    overflowX: null,
+    overflowY: null,
+    textOverflow: "ir-lyipyv",
+    whiteSpace: "ir-uxw1ft",
+    $$css: true
+  },
+  borderBottom: {
+    borderBottom: "ir-h38nsk",
+    borderBottomWidth: null,
+    borderBottomStyle: null,
+    borderBottomColor: null,
+    $$css: true
+  },
+  borderRight: {
+    borderRight: "ir-wwah22",
+    borderRightWidth: null,
+    borderInlineStartWidth: null,
+    borderInlineEndWidth: null,
+    borderRightStyle: null,
+    borderInlineStartStyle: null,
+    borderInlineEndStyle: null,
+    borderRightColor: null,
+    borderInlineStartColor: null,
+    borderInlineEndColor: null,
+    $$css: true
+  },
+  cursorPointer: {
+    cursor: "ir-1ypdohk",
+    $$css: true
+  },
+  disabledOpacity: {
+    opacity: "ir-15pvmkd",
+    $$css: true
+  },
+  disabled: {
+    opacity: "ir-15pvmkd",
+    pointerEvents: "ir-47corl",
+    $$css: true
+  },
+  invisible: {
+    visibility: "ir-lshs6z",
+    $$css: true
+  }
+};
+var staticTreeVars = {
+  templateColumns: "--irx-tree-view-template-columns"
+};
+var tree = {
+  base: {
+    $$css: true
+  }
+};
+var tree2Row = {
+  base: {
+    display: "ir-rvj5dj",
+    gridTemplateColumns: "ir-suo5i5",
+    gridAutoFlow: "ir-1mt1orb",
+    gridAutoColumns: "ir-un8ryo",
+    alignItems: "ir-6s0dn4",
+    background: "ir-1gk1pts ir-13x9m4g ir-nreayj",
+    backgroundAttachment: null,
+    backgroundClip: null,
+    backgroundColor: null,
+    backgroundImage: null,
+    backgroundOrigin: null,
+    backgroundPosition: null,
+    backgroundPositionX: null,
+    backgroundPositionY: null,
+    backgroundRepeat: null,
+    backgroundSize: null,
+    opacity: "ir-1fjr46u",
+    pointerEvents: "ir-ye1tj0",
+    $$css: true
+  },
+  node: {
+    cursor: "ir-1ypdohk",
+    paddingLeft: "ir-1m85p54",
+    paddingInlineStart: null,
+    paddingInlineEnd: null,
+    color: "ir-1ikc3k3",
+    $$css: true
+  },
+  header: {
+    fontWeight: "ir-k50ysn",
+    alignItems: "ir-1qjc9v5",
+    color: "ir-7nd3pc",
+    borderBottom: "ir-h38nsk",
+    borderBottomWidth: null,
+    borderBottomStyle: null,
+    borderBottomColor: null,
+    background: "ir-1gk1pts",
+    backgroundAttachment: null,
+    backgroundClip: null,
+    backgroundColor: null,
+    backgroundImage: null,
+    backgroundOrigin: null,
+    backgroundPosition: null,
+    backgroundPositionX: null,
+    backgroundPositionY: null,
+    backgroundRepeat: null,
+    backgroundSize: null,
+    $$css: true
+  }
+};
+var tree2Content = {
+  base: {
+    lineHeight: "ir-1dpt0ig",
+    padding: "ir-84vhe8",
+    paddingInline: null,
+    paddingStart: null,
+    paddingLeft: null,
+    paddingEnd: null,
+    paddingRight: null,
+    paddingBlock: null,
+    paddingTop: null,
+    paddingBottom: null,
+    $$css: true
+  },
+  nodeMain: {
+    display: "ir-78zum5",
+    alignItems: "ir-6s0dn4",
+    columnGap: "ir-17zd0t2",
+    $$css: true
+  },
+  nodeIcon: {
+    marginLeft: "ir-ip9h3s",
+    marginInlineStart: null,
+    marginInlineEnd: null,
+    $$css: true
+  },
+  nodeExpandButton: {
+    opacity: "ir-j34u2y ir-1f2zl9v",
+    $$css: true
+  },
+  nodeCaption: {
+    flex: "ir-1cqoux5",
+    flexGrow: null,
+    flexShrink: null,
+    flexBasis: null,
+    $$css: true
+  },
+  column: {
+    textAlign: "ir-2b8uid",
+    $$css: true
+  },
+  header: {
+    borderRight: "ir-wwah22 ir-ahlotz",
+    borderRightWidth: null,
+    borderInlineStartWidth: null,
+    borderInlineEndWidth: null,
+    borderRightStyle: null,
+    borderInlineStartStyle: null,
+    borderInlineEndStyle: null,
+    borderRightColor: null,
+    borderInlineStartColor: null,
+    borderInlineEndColor: null,
+    $$css: true
+  }
+};
+
+// src/js-components/tree-view/node.ts
+var IRTreeViewNode = class {
+  constructor(args) {
+    this.args = args;
+    this._parentNode = null;
+    this._prevNode = null;
+    this._nextNode = null;
+    this._firstChildNode = null;
+    this._lastChildNode = null;
+    this._nodeData = { ...args.nodeData };
+  }
+  get level() {
+    return this.args.level;
+  }
+  get caption() {
+    return this.data.caption;
+  }
+  get key() {
+    return this.data.key;
+  }
+  get lastChild() {
+    return this._lastChildNode;
+  }
+  get icon() {
+    return this.data.icon;
+  }
+  get firstChild() {
+    return this._firstChildNode;
+  }
+  get next() {
+    return this._nextNode;
+  }
+  get prev() {
+    return this._prevNode;
+  }
+  get parent() {
+    return this._parentNode;
+  }
+  get data() {
+    return this._nodeData;
+  }
+  get object() {
+    return this.data.object;
+  }
+  get selected() {
+    return this.data.selected;
+  }
+  get disabled() {
+    return this.data.disabled;
+  }
+  get expanded() {
+    return this.data.expanded;
+  }
+  get iconColor() {
+    return this.data.iconColor;
+  }
+  get hook() {
+    return this.args.hook;
+  }
+  getColumnText(colId) {
+    var _a, _b;
+    return colId === 0 ? this.caption : (_b = (_a = this.data.columns) == null ? void 0 : _a[colId - 1]) != null ? _b : "";
+  }
+  select() {
+    if (this.selected)
+      return;
+    this.data.selected = true;
+    this.hook.emit("nodeUpdated", [this]);
+    this.hook.emit("nodeSingleSelect", [this]);
+  }
+  addSelect() {
+    if (this.selected)
+      return;
+    this.data.selected = true;
+    this.hook.emit("nodeUpdated", [this]);
+    this.hook.emit("nodeAddSelect", [this]);
+  }
+  multiSelectToggle() {
+    if (this.selected) {
+      this.release();
+    } else {
+      this.data.selected = true;
+      this.hook.emit("nodeUpdated", [this]);
+      this.hook.emit("nodeAddSelect", [this]);
+    }
+  }
+  release() {
+    if (!this.selected)
+      return;
+    this.data.selected = false;
+    this.hook.emit("nodeUpdated", [this]);
+    this.hook.emit("nodeRelease", [this]);
+  }
+};
+
+// src/js-components/tree-view/render.stylex.ts
+var nodeRowCls = props(tree2Row.base, tree2Row.node);
+var headerRowCls = props(tree2Row.base, tree2Row.header);
+var nodeContentCls = props(tree2Content.base, utility.truncate);
+var headerContentCls = props(tree2Content.base, tree2Content.header, utility.truncate);
+var columnContentCls = props(tree2Content.column);
+var nodeMainContentCls = props(tree2Content.nodeMain);
+var nodeCaptionCls = props(tree2Content.nodeCaption, utility.truncate);
+var nodeIconCls = props(tree2Content.nodeIcon);
+var nodeExpandButtonCls = props(tree2Content.nodeExpandButton);
+
+// src/utils/stylex-utils-cls.ts
+var invisibleCls = props(utility.invisible);
+
+// src/js-components/tree-view/render.ts
+function createNodeContentsTemplate(args) {
+  const mainContentDiv = document.createElement("div");
+  const expandButton = createElement("button");
+  const icon = createIconElement("");
+  const text = document.createElement("span");
+  const checkbox2 = document.createElement("input");
+  addStyleXClass(mainContentDiv, nodeMainContentCls, nodeContentCls);
+  addStyleXClass(text, nodeCaptionCls);
+  addStyleXClass(icon, nodeIconCls);
+  addStyleXClass(expandButton, nodeExpandButtonCls, nodeIconCls);
+  expandButton.append(createIconElement("ir-icon--triangle-small-right"));
+  mainContentDiv.appendChild(expandButton);
+  args.showIcon && mainContentDiv.appendChild(icon);
+  mainContentDiv.appendChild(text);
+  return {
+    mainContentDiv,
+    expandButton,
+    icon,
+    text,
+    checkbox: checkbox2
+  };
+}
+function createNodeRowTemplate(node, args) {
+  const columns = [];
+  const nodeContents = createNodeContentsTemplate(args);
+  for (let i = 1; i < args.headerRow.columnCount; i++) {
+    const textDiv = document.createElement("div");
+    addStyleXClass(textDiv, nodeContentCls, columnContentCls);
+    columns.push(textDiv);
+  }
+  return {
+    columns,
+    ...nodeContents
+  };
+}
+function createHeaderRowTemplate(args) {
+  var _a;
+  const columns = [];
+  for (let i = 0; i < args.headerRow.columnCount; i++) {
+    const textDiv = document.createElement("div");
+    textDiv.textContent = (_a = args.headerRow.text[i]) != null ? _a : "";
+    addStyleXClass(textDiv, headerContentCls);
+    i > 0 && addStyleXClass(textDiv, columnContentCls);
+    columns.push(textDiv);
+  }
+  return {
+    columns
+  };
+}
+function createNodeRow(viewportRow, node, args) {
+  const nodeRowTemplate = createNodeRowTemplate(node, args);
+  const element = viewportRow.getRowElement();
+  viewportRow.setTemplateHelper(nodeRowTemplate);
+  addStyleXClass(element, nodeRowCls);
+  element.tabIndex = 0;
+  element.role = "treeitem";
+  element.dataset["nodeKey"] = node.key;
+  nodeRender(viewportRow, node, args);
+  element.appendChild(nodeRowTemplate.mainContentDiv);
+  nodeRowTemplate.columns.forEach((column) => element.appendChild(column));
+}
+function createHeaderRow(viewportRow, args) {
+  const headerRowTemplate = createHeaderRowTemplate(args);
+  const element = viewportRow.getRowElement();
+  viewportRow.setTemplateHelper(headerRowTemplate);
+  addStyleXClass(element, headerRowCls);
+  element.dataset["nodeHeader"] = "true";
+  headerRender(viewportRow, args);
+  headerRowTemplate.columns.forEach((column) => element.appendChild(column));
+}
+function nodeRender(viewportRow, node, args) {
+  var _a, _b;
+  const element = viewportRow.getRowElement();
+  const nodeIRIconCls = (_a = node.icon) != null ? _a : args.defaultIcon;
+  const iconColor = (_b = node.iconColor) != null ? _b : args.defaultIconColor;
+  const { text, columns, icon } = viewportRow.template;
+  setDataSetFlag(element, node.selected, "selected");
+  setDataSetFlag(element, node.disabled, "disabled");
+  setDataSetFlag(element, node.expanded, "expanded");
+  if (!nodeIRIconCls)
+    addStyleXClass(icon, invisibleCls);
+  else {
+    removeStyleXClass(icon, invisibleCls);
+    addStyleXClass(icon, nodeIconCls, { className: `ir-icon ${nodeIRIconCls}` });
+    iconColor && icon.style.setProperty("--ir-icon-foreground-color", iconColor);
+  }
+  text.textContent = node.caption;
+  columns.forEach((column, i) => {
+    column.textContent = node.getColumnText(i + 1);
+  });
+}
+function headerRender(viewportRow, args) {
+  const {
+    columns
+  } = viewportRow.template;
+  columns.forEach((column, i) => {
+    var _a;
+    column.textContent = (_a = args.headerRow.text[i]) != null ? _a : "";
+  });
+}
+
+// src/js-components/tree-view/tree-view.utils.ts
+function getGridTemplateColumns(args) {
+  const buffer = [];
+  for (let i = 0; i < args.headerRow.columnCount; i++) {
+    const width = args.headerRow.width[i];
+    if (width === void 0)
+      buffer.push(`minmax(0, 1fr)`);
+    else if (typeof width === "number")
+      buffer.push(`minmax(${width}px, ${width}px)`);
+    else if (width.endsWith("px"))
+      buffer.push(`minmax(${width}, ${width})`);
+    else
+      buffer.push(`minmax(0, 1fr)`);
+  }
+  return buffer.join(" ");
+}
+
+// src/js-components/base/hook-component.ts
+var IRHookComponent = class extends IRComponent {
+  constructor() {
+    super({
+      contextElement: document.createElement("div")
+    });
+    this._hook = createHookFlow();
+    this.onInitDOMEvents(this.contextElement);
+    this.onInitHooks();
+  }
+  get hook() {
+    return this._hook;
+  }
+  emitHook(key, args) {
+    return this._hook.emit(key, args);
+  }
+  addHook(key, callback) {
+    this._hook.addHook(key, callback);
+  }
+  setHook(key, callback) {
+    this._hook.setHook(key, callback);
+  }
+  removeHook(key, callback) {
+    this._hook.removeHook(key, callback);
+  }
+  setBeginHook(key, callback) {
+    this._hook.setBeginHook(key, callback);
+  }
+  setEndHook(key, callback) {
+    this._hook.setEndHook(key, callback);
+  }
+  clearHooks(key) {
+    this._hook.clearHooks(key);
+  }
+  clearBeginHooks(key) {
+    this._hook.clearBeginHooks(key);
+  }
+  clearEndHooks(key) {
+    this._hook.clearEndHooks(key);
+  }
+  get element() {
+    return this.contextElement;
+  }
+};
+
+// src/js-components/tree-view/tree-view.ts
+var treeCls = props(tree.base);
+var DEFAULT_HEADER_ARGS = {
+  columnCount: 1,
+  text: [""],
+  width: ["*"]
+};
+var IRTreeView = class extends IRHookComponent {
+  constructor(args) {
+    var _a, _b, _c, _d, _e, _f, _g, _h;
+    super();
+    this._rootNodeList = [];
+    this._selectedNode = [];
+    this._nodeMap = /* @__PURE__ */ new Map();
+    this._args = {
+      defaultIcon: args.defaultIcon,
+      defaultIconColor: args.defaultIconColor,
+      showIcon: (_a = args.showIcon) != null ? _a : false,
+      showCheckbox: (_b = args.showCheckbox) != null ? _b : false,
+      multiSelect: (_c = args.multiSelect) != null ? _c : false,
+      className: (_d = args.className) != null ? _d : "",
+      nodeDraggable: (_e = args.nodeDraggable) != null ? _e : false,
+      enabledKeyboard: (_f = args.enabledKeyboard) != null ? _f : false,
+      displayHeader: (_g = args.displayHeader) != null ? _g : false,
+      headerRow: (_h = args.headerRow) != null ? _h : DEFAULT_HEADER_ARGS
+    };
+    this._virtualDOM = this.initVirtualDOM();
+    this.updateTreeTemplateColumns();
+  }
+  onInitDOMEvents(contextElement) {
+    contextElement.tabIndex = 0;
+    contextElement.role = "tree";
+    addStyleXClass(contextElement, treeCls, this._args);
+    this.addGlobalEventListener(contextElement, "contextmenu", (ev) => this.emitHook("contextMenu", [ev]));
+    this.addGlobalEventListener(contextElement, "focus", (ev) => this.emitHook("focus", [ev]));
+    this.addGlobalEventListener(contextElement, "keydown", (ev) => this.emitHook("keydown", [ev]));
+    this.addGlobalEventListener(contextElement, "blur", (ev) => this.emitHook("blur", [ev]));
+    this.addGlobalEventListener(contextElement, "click", (ev) => this.emitHook("treeClick", [ev]));
+  }
+  // node 상태 변경 시, render 처리용
+  nodeUpdatedHook(node) {
+    const pair = this._nodeMap.get(node.key);
+    if (pair)
+      this.emitHook("nodeRender", [pair.virtualRow, pair.node, this._args]);
+  }
+  nodeSingleSelectHook(node) {
+    this.releaseSelectedNodes();
+    this._selectedNode.push(node);
+  }
+  nodeReleaseHook(node) {
+    const idx = this._selectedNode.indexOf(node);
+    if (idx >= 0)
+      this._selectedNode.splice(idx, 1);
+  }
+  nodeAddSelectHook(node) {
+    this._selectedNode.push(node);
+  }
+  onInitHooks() {
+    this.setBeginHook("createHeaderRow", createHeaderRow);
+    this.setBeginHook("createNodeRow", createNodeRow);
+    this.setBeginHook("headerRender", headerRender);
+    this.setBeginHook("nodeRender", nodeRender);
+    this.setBeginHook("nodeUpdated", this.nodeUpdatedHook.bind(this));
+    this.addHook("nodeSingleSelect", this.nodeSingleSelectHook.bind(this));
+    this.addHook("nodeAddSelect", this.nodeAddSelectHook.bind(this));
+    this.addHook("nodeRelease", this.nodeReleaseHook.bind(this));
+    this.setBeginHook("contextMenu", (ev) => ev.preventDefault());
+    this.setBeginHook("treeClick", this.treeClickHook.bind(this));
+  }
+  treeClickHook(ev) {
+    if (!(ev.target instanceof HTMLElement))
+      return;
+    const el = closest("[data-node-key]", ".ir-vd-container__viewport-row ", ev.target);
+    const key = el == null ? void 0 : el.dataset["nodeKey"];
+    if (!key)
+      return;
+    const node = this.getTreeNodeOrNullByKey(key);
+    if (!node)
+      return;
+    if (this._args.multiSelect && ev.ctrlKey)
+      node.multiSelectToggle();
+    else
+      node.select();
+    this.emitHook("nodeClick", [ev, node]);
+  }
+  onCreatedRowElement(row, element) {
+    if (row.isFreezed)
+      this.emitHook("createHeaderRow", [row, this._args]);
+    else
+      this.emitHook("createNodeRow", [row, row.object, this._args]);
+  }
+  onUpdatedRowObject(row, oldObj, newObj) {
+    if (row.isFreezed)
+      this.emitHook("headerRender", [row, this._args]);
+    else
+      this.emitHook("nodeRender", [row, newObj, this._args]);
+  }
+  initVirtualDOM() {
+    const virtualDOMContainer = document.createElement("div");
+    virtualDOMContainer.classList.add(borderScroll);
+    virtualDOMContainer.style.height = "100%";
+    const virtualDOM = new IRVirtualDOM({
+      contextElement: virtualDOMContainer,
+      // 헤더용 row 추가
+      rowCount: 1,
+      headerRowCount: 1,
+      defaultRowHeight: getThemeStoreValue("tree-view.nodeRowHeight"),
+      onCreatedRowElement: this.onCreatedRowElement.bind(this),
+      onUpdatedRowObject: this.onUpdatedRowObject.bind(this)
+    });
+    virtualDOM.setRowHeight(0, getThemeStoreValue("tree-view.headerRowHeight"));
+    this.contextElement.appendChild(virtualDOMContainer);
+    virtualDOM.setRowVisible(0, this._args.displayHeader === true);
+    return virtualDOM;
+  }
+  onDestroy() {
+    this._virtualDOM.destroy();
+  }
+  get displayHeader() {
+    return this._args.displayHeader;
+  }
+  set displayHeader(flag) {
+    if (this._args.displayHeader === flag)
+      return;
+    this._args.displayHeader = flag;
+    this.renderHeaderRow();
+  }
+  get multiSelect() {
+    return this._args.multiSelect;
+  }
+  set multiSelect(flag) {
+    if (this._args.multiSelect === flag)
+      return;
+    this._args.multiSelect = flag;
+    this.releaseSelectedNodes();
+  }
+  renderHeaderRow() {
+    const row = this._virtualDOM.getRowById(0);
+    this._virtualDOM.setRowVisible(0, this._args.displayHeader === true);
+    this.emitHook("headerRender", [row, this._args]);
+  }
+  setColumnCount(columnCount) {
+    this._args.headerRow.columnCount = columnCount;
+    this.renderHeaderRow();
+    this.updateTreeTemplateColumns();
+  }
+  setColumnWidth(colId, width) {
+    if (colId < 0 || colId >= this._args.headerRow.columnCount)
+      throw new Error(`columnId is out of range: ${colId}`);
+    this._args.headerRow.width[colId] = width;
+    this.updateTreeTemplateColumns();
+  }
+  /**
+   * 현재 선택된 모든 노드 해제
+   */
+  releaseSelectedNodes() {
+    this.getSelectedNodes().forEach((node) => node.release());
+  }
+  selectNodeByKey(key) {
+    const node = this.getTreeNodeOrNullByKey(key);
+    if (!node) {
+      console.warn(`node not found: ${key}`);
+      return;
+    }
+    node.select();
+  }
+  /**
+   * 현재 선택된 모든 노드 반환
+   */
+  getSelectedNodes() {
+    return [...this._selectedNode];
+  }
+  /**
+   * 현재 선택 노드 반환 없으면 null
+   */
+  getSelectedNodeOrNull() {
+    var _a;
+    return (_a = this._selectedNode[0]) != null ? _a : null;
+  }
+  autoSizeColumn(colId) {
+  }
+  getTreeNodeOrNullByKey(key) {
+    var _a, _b;
+    return (_b = (_a = this._nodeMap.get(key)) == null ? void 0 : _a.node) != null ? _b : null;
+  }
+  setColumnText(colId, text) {
+    if (colId < 0 || colId >= this._args.headerRow.columnCount)
+      throw new Error(`columnId is out of range: ${colId}`);
+    this._args.headerRow.text[colId] = text;
+    this.renderHeaderRow();
+  }
+  updateNodeData(key, nodeData) {
+  }
+  updateNodeColumns(key, columns) {
+  }
+  updateTreeTemplateColumns() {
+    setStyleXToken(this.contextElement, staticTreeVars.templateColumns, getGridTemplateColumns(this._args));
+  }
+  setNodeOnMap(node, virtualRow) {
+    if (this.getTreeNodeOrNullByKey(node.key))
+      throw new Error(`already existed key: ${node.key}`);
+    this._nodeMap.set(node.key, { node, virtualRow });
+  }
+  removeNodeByKey(key) {
+  }
+  getNewNodeLevel(parentKey) {
+    if (parentKey === void 0)
+      return 0;
+    return 1;
+  }
+  addNode(nodeData) {
+    const node = new IRTreeViewNode({
+      nodeData,
+      level: this.getNewNodeLevel(nodeData.parentKey),
+      hook: this.hook
+    });
+    const virtualRow = this._virtualDOM.addRow(void 0, node);
+    this.setNodeOnMap(node, virtualRow);
+  }
+};
+
+// src/js-components/tree-view/plugins/keyboard.ts
+var IRTreeViewKeyboardPlugin = (tree2) => {
+  return {
+    mount() {
+    },
+    unmount() {
+    }
+  };
+};
+
+// src/js-components/datePicker/datePicker.ts
+var import_dayjs = __toESM(require_dayjs_min(), 1);
+var convertToMomentFromStrOrDate = (defaultDate, format) => {
+  if (defaultDate instanceof Date)
+    return (0, import_dayjs.default)(defaultDate).startOf("D");
+  else if (typeof defaultDate === "string")
+    return (0, import_dayjs.default)(defaultDate, format);
+  return (0, import_dayjs.default)(null);
+};
+var IRDatePicker = class extends IRComponent {
+  constructor({
+    div,
+    defaultDate,
+    format = i18n_default.datePicker.dateFormat,
+    checkbox: checkbox2 = false,
+    disabled = false,
+    allowedEmptyString = true,
+    onSelect,
+    onChange,
+    onCheckboxClick,
+    minDate = getThemeStore().getStoreValue("datePicker.minDate"),
+    maxDate = getThemeStore().getStoreValue("datePicker.maxDate")
+  }) {
+    super({ contextElement: div });
+    this.selectedDate = null;
+    this.calendarDate = /* @__PURE__ */ new Date();
+    if (defaultDate) {
+      const defaultMoment = convertToMomentFromStrOrDate(defaultDate, format);
+      if (defaultMoment.isValid()) {
+        this.calendarDate = defaultMoment.toDate();
+        this.selectedDate = defaultMoment.toDate();
+      } else
+        console.error(`invalid defaultDate format. it must follow ${format}`);
+    }
+    if (!allowedEmptyString && this.selectedDate == null) {
+      const defaultMoment = convertToMomentFromStrOrDate(/* @__PURE__ */ new Date(), format);
+      this.calendarDate = defaultMoment.toDate();
+      this.selectedDate = defaultMoment.toDate();
+    }
+    this.format = format;
+    this.div = div;
+    this.input = document.createElement("input");
+    this.button = document.createElement("button");
+    this.button.appendChild(createIconElement("ir-icon--calendar"));
+    this.div.innerHTML = "";
+    this.div.classList.add(input);
+    this.input.setAttribute("type", "text");
+    this.input.setAttribute("placeHolder", this.format);
+    this.input.classList.add(inputNative, "tnum-adj");
+    this.button.className = inputSuffix;
+    this.button.type = "button";
+    this._minDate = minDate;
+    this._maxDate = maxDate;
+    if (onSelect)
+      this.onSelect = onSelect;
+    if (onChange)
+      this.onChange = onChange;
+    if (onCheckboxClick)
+      this.onCheckboxClick = onCheckboxClick;
+    if (checkbox2) {
+      const divInputPrefix = document.createElement("div");
+      const checkboxLabel = document.createElement("label");
+      const inputCheckbox = document.createElement("input");
+      inputCheckbox.setAttribute("type", "checkbox");
+      divInputPrefix.classList.add(checkbox, inputPrefix);
+      checkboxLabel.className = checkboxWrapper;
+      inputCheckbox.className = checkboxInput;
+      checkboxLabel.appendChild(inputCheckbox);
+      divInputPrefix.appendChild(checkboxLabel);
+      this.div.appendChild(divInputPrefix);
+      inputCheckbox.checked = !disabled;
+      inputCheckbox.onchange = () => {
+        this.disabled = !inputCheckbox.checked;
+        this.onCheckboxClick(inputCheckbox.checked);
+      };
+      this.addCoreElement(divInputPrefix);
+    }
+    this.disabled = disabled;
+    this.div.appendChild(this.input);
+    this.div.appendChild(this.button);
+    this.addCoreElement(this.input);
+    this.addCoreElement(this.button);
+    if (this.selectedDate)
+      this.input.value = (0, import_dayjs.default)(this.selectedDate).format(format);
+    this.button.addEventListener("click", () => {
+      if (this.isVisible === false)
+        this.show();
+    });
+    this.input.addEventListener("blur", () => {
+      if (this.input.value === "") {
+        if (allowedEmptyString)
+          this.setDate(null);
+        else
+          this.setDate(this.selectedDate);
+        return;
+      }
+      const dt = (0, import_dayjs.default)(this.input.value, this.format, true);
+      if (!dt.isValid() || dt.toDate() < this.minDate || dt.toDate() > this.maxDate)
+        this.setDate(this.selectedDate);
+      else
+        this.setDate(dt.toDate());
+    });
+    this.handler = createDatePickerHandler({
+      uuid: this.uuid,
+      refElement: this.div,
+      minDate: this._minDate,
+      maxDate: this._maxDate,
+      onClick: (dt) => {
+        this.setDate(dt);
+        this.onSelect(dt);
+        this.hide();
+      }
+    });
+  }
+  get textValue() {
+    return this.input.value;
+  }
+  get inputCheckbox() {
+    return this.div.querySelector(".checkbox__input");
+  }
+  get date() {
+    return this.selectedDate;
+  }
+  get isVisible() {
+    return this.handler.visible;
+  }
+  get disabled() {
+    return this.input.hasAttribute("disabled");
+  }
+  get minDate() {
+    return this._minDate;
+  }
+  get maxDate() {
+    return this._maxDate;
+  }
+  set minDate(value) {
+    this._minDate = value;
+  }
+  set maxDate(value) {
+    this._maxDate = value;
+  }
+  set disabled(flag) {
+    if (flag) {
+      this.input.setAttribute("disabled", "");
+      this.button.setAttribute("disabled", "");
+    } else {
+      this.input.removeAttribute("disabled");
+      this.button.removeAttribute("disabled");
+    }
+    if (this.inputCheckbox)
+      this.inputCheckbox.checked = !flag;
+  }
+  setDate(date) {
+    if (date) {
+      this.selectedDate = new Date(date);
+      this.calendarDate = new Date(date);
+      this.input.value = (0, import_dayjs.default)(date).format(this.format);
+      this.updateCalendar();
+    } else {
+      this.selectedDate = null;
+      this.input.value = "";
+    }
+    if (this.latestValue !== this.input.value)
+      this.onChange(this.input.value);
+    this.latestValue = this.input.value;
+  }
+  show() {
+    if (this.isVisible)
+      return;
+    this.handler.update(this.calendarDate, this.selectedDate);
+    this.handler.show();
+  }
+  hide() {
+    if (this.isVisible)
+      this.handler.hide();
+  }
+  /* Object Events */
+  onSelect(_date) {
+  }
+  onChange(_value) {
+  }
+  onCheckboxClick(_checked) {
+  }
+  updateCalendar() {
+    this.handler.update(this.calendarDate, this.selectedDate);
+  }
+};
+
+// src/js-components/confirm/confirm.ts
+var import_xss = __toESM(require_lib(), 1);
+
+// src/js-components/confirm/confirm.classNames.ts
+var block2 = "confirm";
+var confirm_classNames_default = {
+  confirm: {
+    "&": block2
+  },
+  confirmIcon: {
+    "&": `${block2}__icon`
+  },
+  confirmContent: {
+    "&": `${block2}__content`
+  },
+  confirmActions: {
+    "&": `${block2}__actions`
+  },
+  confirmButtonClose: {
+    "&": `${block2}__button-close`
+  }
+};
+
+// src/components/dialog/dialog.classNames.ts
+var block3 = "dialog";
+var dialog_classNames_default = {
+  dialog: {
+    "&": block3,
+    transparent: `${block3}--transparent`,
+    "is-visible": "is-visible"
+  },
+  dialogWrapper: {
+    "&": `${block3}__wrapper`
+  },
+  dialogHeader: {
+    "&": `${block3}__header`
+  },
+  dialogHeaderTitle: {
+    "&": `${block3}__header-title`
+  },
+  dialogHeaderActions: {
+    "&": `${block3}__header-actions`
+  },
+  dialogContent: {
+    "&": `${block3}__content`
+  },
+  dialogFooter: {
+    "&": `${block3}__footer`
+  },
+  dialogFooterLeft: {
+    "&": `${block3}__footer-left`
+  },
+  dialogFooterRight: {
+    "&": `${block3}__footer-right`
+  },
+  dialogButtonClose: {
+    "&": `${block3}__button-close`
+  }
+};
+
+// src/js-components/confirm/confirm.elements.ts
+var ConfirmButtonTypeList = ["yes", "no", "ok", "cancel", "retry", "ignore", "stop"];
+function createConfirmElements() {
+  const dialog = document.createElement("div");
+  const dialogWrapper = document.createElement("div");
+  const dialogContent = document.createElement("div");
+  const confirm = document.createElement("div");
+  const confirmContent = document.createElement("div");
+  const confirmIcon = document.createElement("i");
+  const confirmActions = document.createElement("div");
+  const buttonMap = {
+    cancel: document.createElement("button"),
+    ignore: document.createElement("button"),
+    no: document.createElement("button"),
+    ok: document.createElement("button"),
+    retry: document.createElement("button"),
+    stop: document.createElement("button"),
+    yes: document.createElement("button")
+  };
+  const closeIcon = document.createElement("i");
+  const closeButton = document.createElement("button");
+  dialog.tabIndex = -1;
+  dialog.classList.add("ir-confirm", dialog_classNames_default.dialog["&"], z_index_classNames_default.zIndex.message);
+  dialogWrapper.className = dialog_classNames_default.dialogWrapper["&"];
+  dialogContent.className = dialog_classNames_default.dialogContent["&"];
+  confirm.className = confirm_classNames_default.confirm["&"];
+  confirmContent.className = confirm_classNames_default.confirmContent["&"];
+  confirmActions.className = confirm_classNames_default.confirmActions["&"];
+  Object.values(buttonMap).forEach((e) => e.classList.add(button));
+  buttonMap.yes.classList.add(buttonPrimary);
+  buttonMap.ok.classList.add(buttonPrimary);
+  buttonMap.retry.classList.add(buttonSecondary);
+  buttonMap.ignore.classList.add(buttonTertiary);
+  closeIcon.classList.add("ir-icon", "ir-icon--close");
+  closeButton.className = confirm_classNames_default.confirmButtonClose["&"];
+  confirmActions.appendChild(buttonMap.no);
+  confirmActions.appendChild(buttonMap.stop);
+  confirmActions.appendChild(buttonMap.ignore);
+  confirmActions.appendChild(buttonMap.retry);
+  confirmActions.appendChild(buttonMap.yes);
+  confirmActions.appendChild(buttonMap.ok);
+  closeButton.appendChild(closeIcon);
+  confirm.appendChild(closeButton);
+  confirm.appendChild(confirmIcon);
+  confirm.appendChild(confirmContent);
+  confirm.appendChild(confirmActions);
+  dialogContent.appendChild(confirm);
+  dialogWrapper.appendChild(dialogContent);
+  dialog.appendChild(dialogWrapper);
+  return {
+    dialog,
+    confirmIcon,
+    confirmContent,
+    confirmActions,
+    buttonMap,
+    closeButton
+  };
+}
+var getElements = /* @__PURE__ */ (() => {
+  let elements = null;
+  return function getCachedConfirmElements() {
+    if (!elements)
+      elements = createConfirmElements();
+    return elements;
+  };
+})();
+function getConfirmElements() {
+  return getElements();
+}
+
+// src/js-components/confirm/confirm.ts
+var confirmTypeClass = {
+  error: "ir-icon--cancel-circle-fill ir-icon--danger",
+  info: "ir-icon--information-circle-fill ir-icon--info",
+  question: "ir-icon--question ir-icon--info",
+  warning: "ir-icon--error ir-icon--warning"
+};
+var XSS_ALLOW_ATTR_LIST = /* @__PURE__ */ new Set([
+  "class",
+  "style",
+  "title",
+  "id"
+]);
+var XSS_FILTER_OPTION = {
+  onTagAttr(tag, name, value, isWhiteAttr) {
+    if (!isWhiteAttr && XSS_ALLOW_ATTR_LIST.has(name))
+      return `${name}="${(0, import_xss.escapeAttrValue)(value)}"`;
+  }
+};
+var confirmContext = {
+  count: 0
+};
+var hasDisplayedConfirm = () => confirmContext.count > 0;
+var IRConfirm = class {
+  constructor(args) {
+    this.args = args;
+    this.enterHandler = null;
+    this.activeElement = null;
+    const {
+      iconType = "info",
+      buttonType = ["ok"],
+      messageHTML,
+      msgMap = {},
+      onClick,
+      escButton,
+      enterButton,
+      contentElement
+    } = args;
+    this.visible = false;
+    this.iconType = iconType;
+    this.buttonType = buttonType;
+    if (messageHTML)
+      this.messageHTML = xss_default(messageHTML, XSS_FILTER_OPTION);
+    if (contentElement)
+      this.contentElement = contentElement;
+    this.msgMap = {
+      ...msgMap
+    };
+    this.enterButton = enterButton;
+    this.escButton = escButton;
+    this.escController = createESCHideController(this);
+    if (onClick)
+      this.onClick = onClick;
+  }
+  updateContent() {
+    const elements = getConfirmElements();
+    if (this.messageHTML)
+      elements.confirmContent.innerHTML = this.messageHTML;
+    else if (this.contentElement) {
+      if (Object.getPrototypeOf(this.contentElement).jquery)
+        elements.confirmContent.replaceChildren(...this.contentElement);
+      else if (this.contentElement instanceof HTMLElement)
+        elements.confirmContent.replaceChildren(this.contentElement);
+      else
+        throw new Error("not supported type contentElement");
+    } else
+      throw new Error("html or element must be provided!");
+  }
+  _show() {
+    var _a;
+    const elements = getConfirmElements();
+    confirmContext.count++;
+    this.updateContent();
+    this.visible = true;
+    this.activeElement = document.activeElement;
+    elements.confirmIcon.className = `${confirm_classNames_default.confirmIcon["&"]} ir-icon ${confirmTypeClass[this.iconType] || ""}`;
+    elements.closeButton.onclick = () => this.hide();
+    if (this.args.hideCloseButton)
+      elements.closeButton.classList.add("display--none");
+    else
+      elements.closeButton.classList.remove("display--none");
+    for (const key of ConfirmButtonTypeList) {
+      elements.buttonMap[key].remove();
+      elements.buttonMap[key].innerText = (_a = this.msgMap[key]) != null ? _a : i18n_default.confirm[key];
+      elements.buttonMap[key].onclick = () => {
+        this.hide();
+        this._doClick(key);
+      };
+    }
+    for (const key of this.buttonType)
+      elements.confirmActions.appendChild(elements.buttonMap[key]);
+    if (!elements.dialog.isConnected)
+      getLayerElement("message").appendChild(elements.dialog);
+    elements.dialog.classList.add(dialog_classNames_default.dialog["is-visible"]);
+    elements.dialog.focus();
+    if (this.args.disabledKeyAction !== true)
+      this._registerEnterESCHandler();
+  }
+  _registerEnterESCHandler() {
+    this.enterHandler = () => {
+      const elements = getConfirmElements();
+      if (this.enterButton)
+        elements.buttonMap[this.enterButton].click();
+      else if (this.buttonType.length === 1)
+        elements.buttonMap[this.buttonType[0]].click();
+      else
+        this.hide();
+    };
+    registerGlobalKeyListener("Enter", this.enterHandler);
+    this.escController.create();
+  }
+  show() {
+    if (confirmContext.count > 0) {
+      console.warn("already opened a confirm");
+      return;
+    }
+    setTimeout(() => this._show(), 0);
+  }
+  onESC() {
+    const elements = getConfirmElements();
+    if (this.escButton)
+      elements.buttonMap[this.escButton].click();
+  }
+  hide() {
+    if (this.visible === false)
+      return;
+    this.escController.destroy();
+    confirmContext.count = 0;
+    setTimeout(() => {
+      if (this.activeElement instanceof HTMLElement) {
+        this.activeElement.focus();
+        this.activeElement = null;
+      }
+    }, 0);
+    const elements = getConfirmElements();
+    this.visible = false;
+    elements.dialog.classList.remove(dialog_classNames_default.dialog["is-visible"]);
+    this.enterHandler && unregisterGlobalKeyListener("Enter", this.enterHandler);
+    this.enterHandler = null;
+  }
+  _doClick(btnType) {
+    this.onClick(btnType);
+  }
+  onClick(_btnType) {
+  }
+};
+
+// src/js-components/timePicker/timePicker.ts
+var import_dayjs3 = __toESM(require_dayjs_min(), 1);
+
+// src/js-components/timePicker/timePicker.handler.ts
+var import_dayjs2 = __toESM(require_dayjs_min(), 1);
+
+// src/js-components/timePicker/timePicker.classNames.ts
+var block4 = "time-picker";
+var timePicker_classNames_default = {
+  timePicker: {
+    "&": block4,
+    "is-visible": "is-visible"
+  },
+  timePickerPanelWrapper: {
+    "&": `${block4}__panel-wrapper`
+  },
+  timePickerButtonPanel: {
+    "&": `${block4}__button-panel`
+  },
+  timePickerPanel: {
+    "&": `${block4}__panel`
+  },
+  timePickerPanelItem: {
+    "&": `${block4}__panel-item`
+  },
+  timePickerDivider: {
+    "&": `${block4}__divider`
+  }
+};
+
+// src/js-components/timePicker/utils.ts
+function isValidPattern(value, isSeconds) {
+  const formatValue = isSeconds ? value : value + ":00";
+  if (/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(formatValue)) {
+    const { hour, minute, second } = parseTime(formatValue);
+    if (hour < 0 || hour >= 24)
+      return false;
+    else if (minute < 0 || minute >= 60)
+      return false;
+    else if (isSeconds && second < 0 || second >= 60)
+      return false;
+    else
+      return true;
+  } else {
+    return false;
+  }
+}
+function parseTime(value) {
+  const [hour, minute, second] = value.split(":");
+  return {
+    hour: parseInt(hour),
+    minute: parseInt(minute),
+    second: parseInt(second)
+  };
+}
+function formatTime(hour, minute, second) {
+  return [
+    hour.toString().padStart(2, "0"),
+    minute.toString().padStart(2, "0"),
+    second.toString().padStart(2, "0")
+  ].join(":");
+}
+
+// src/js-components/timePicker/timePicker.elements.ts
+var HOURS = 12;
+var MINUTES = 60;
+var SECONDS = 60;
+var PANEL_TYPE = ["period", "hour", "minute", "second"];
+function createTimePickerElements() {
+  const timePicker = document.createElement("div");
+  const panelWrapper = document.createElement("div");
+  const buttonPanel = document.createElement("div");
+  const panelList = [document.createElement("div"), document.createElement("div"), document.createElement("div"), document.createElement("div")];
+  const [periodPanel, hourPanel, minutePanel, secondPanel] = panelList;
+  timePicker.classList.add(timePicker_classNames_default.timePicker["&"], z_index_classNames_default.zIndex.popover);
+  panelList.forEach((panel, id) => {
+    panel.setAttribute("data-type", PANEL_TYPE[id]);
+    panel.className = timePicker_classNames_default.timePickerPanel["&"];
+    panelWrapper.appendChild(panel);
+  });
+  panelWrapper.className = timePicker_classNames_default.timePickerPanelWrapper["&"];
+  buttonPanel.className = timePicker_classNames_default.timePickerButtonPanel["&"];
+  const nowButton = document.createElement("button");
+  nowButton.classList.add("button");
+  nowButton.type = "button";
+  buttonPanel.appendChild(nowButton);
+  timePicker.appendChild(panelWrapper);
+  timePicker.appendChild(buttonPanel);
+  function createPanelItem(text) {
+    const panelItem = document.createElement("div");
+    panelItem.className = timePicker_classNames_default.timePickerPanelItem["&"];
+    panelItem.dataset["text"] = text;
+    panelItem.innerText = text;
+    return panelItem;
+  }
+  forEachBySize(2, () => panelList[0].appendChild(createPanelItem("")));
+  forEachBySize(HOURS, (hour) => panelList[1].appendChild(createPanelItem(`${hour}`)));
+  forEachBySize(MINUTES, (minute) => panelList[2].appendChild(createPanelItem(`${minute}`)));
+  forEachBySize(SECONDS, (second) => panelList[3].appendChild(createPanelItem(`${second}`)));
+  return {
+    elements: {
+      nowButton,
+      secondPanel,
+      timePicker
+    },
+    updateI18n,
+    removeSelected,
+    getTimeElements,
+    scrollIntoView,
+    selectTime,
+    isAM,
+    setPeriod,
+    setHourId,
+    setMinuteId,
+    setSecondId,
+    periodGenerator,
+    getCurrentTime,
+    hourGenerator,
+    minuteGenerator,
+    secondGenerator
+  };
+  function updateI18n() {
+    nowButton.innerHTML = "";
+    nowButton.appendChild(createIconElement("ir-icon--check"));
+    nowButton.append(i18n_default.timePicker.btnNow);
+    panelList[0].children[0].innerHTML = "";
+    panelList[0].children[1].innerHTML = "";
+    panelList[0].children[0].append(i18n_default.timePicker.am);
+    panelList[0].children[1].append(i18n_default.timePicker.pm);
+  }
+  function removeSelected() {
+    timePicker.querySelectorAll(".is-selected").forEach((e) => e.classList.remove("is-selected"));
+  }
+  function getTimeElements(hour, minute, second) {
+    const isAM2 = hour < HOURS;
+    const adjustedHour = isAM2 ? hour : hour - HOURS;
+    const periodId = isAM2 ? 0 : 1;
+    return {
+      periodElement: periodPanel.children[periodId],
+      hourElement: hourPanel.children[adjustedHour],
+      minuteElement: minutePanel.children[minute],
+      secondElement: secondPanel.children[second]
+    };
+  }
+  function scrollIntoView(hour, minute, second) {
+    const { hourElement, minuteElement, secondElement } = getTimeElements(hour, minute, second);
+    hourPanel.scrollTop = hourElement.offsetTop - hourPanel.clientHeight / 2;
+    minutePanel.scrollTop = minuteElement.offsetTop - minutePanel.clientHeight / 2;
+    secondPanel.scrollTop = secondElement.offsetTop - secondPanel.clientHeight / 2;
+  }
+  function selectTime(hour, minute, second) {
+    const { periodElement, hourElement, minuteElement, secondElement } = getTimeElements(hour, minute, second);
+    removeSelected();
+    periodElement.classList.add("is-selected");
+    hourElement.classList.add("is-selected");
+    minuteElement.classList.add("is-selected");
+    secondElement.classList.add("is-selected");
+  }
+  function isAM() {
+    return periodPanel.children[0].classList.contains("is-selected");
+  }
+  function setPeriod(periodId) {
+    periodPanel.children[(periodId + 1) % 2].classList.remove("is-selected");
+    periodPanel.children[periodId].classList.add("is-selected");
+  }
+  function setHourId(hourId) {
+    var _a;
+    (_a = hourPanel.querySelector(".is-selected")) == null ? void 0 : _a.classList.remove("is-selected");
+    hourPanel.children[hourId].classList.add("is-selected");
+  }
+  function setMinuteId(minuteId) {
+    var _a;
+    (_a = minutePanel.querySelector(".is-selected")) == null ? void 0 : _a.classList.remove("is-selected");
+    minutePanel.children[minuteId].classList.add("is-selected");
+  }
+  function setSecondId(secondId) {
+    var _a;
+    (_a = secondPanel.querySelector(".is-selected")) == null ? void 0 : _a.classList.remove("is-selected");
+    secondPanel.children[secondId].classList.add("is-selected");
+  }
+  function* periodGenerator() {
+    yield [0, periodPanel.children[0]];
+    yield [1, periodPanel.children[1]];
+  }
+  function getCurrentTime() {
+    return formatTime(
+      getSelectedValueOnPanel(hourPanel) + (isAM() ? 0 : HOURS),
+      getSelectedValueOnPanel(minutePanel),
+      getSelectedValueOnPanel(secondPanel)
+    );
+  }
+  function* hourGenerator() {
+    let id = 0;
+    for (const e of hourPanel.children)
+      yield [id++, e];
+  }
+  function* minuteGenerator() {
+    let id = 0;
+    for (const e of minutePanel.children)
+      yield [id++, e];
+  }
+  function* secondGenerator() {
+    let id = 0;
+    for (const e of secondPanel.children)
+      yield [id++, e];
+  }
+}
+function getSelectedValueOnPanel(panel) {
+  const selected = panel.querySelector(".is-selected");
+  if (selected instanceof HTMLElement)
+    return parseInt(selected.innerText || "0", 10);
+  return 0;
+}
+var getTimePickerElements = /* @__PURE__ */ (() => {
+  let elements = null;
+  return function getCachedTimePickerElements() {
+    if (!elements)
+      elements = createTimePickerElements();
+    return elements;
+  };
+})();
+
+// src/js-components/timePicker/timePicker.handler.ts
+function createIRTimePickerHandler({ uuid: uuid2, refElement, onChange, visibleSeconds }) {
+  let visible = false;
+  let floatingCleanup = () => void 0;
+  const {
+    elements,
+    getCurrentTime,
+    selectTime,
+    scrollIntoView,
+    updateI18n,
+    hourGenerator,
+    minuteGenerator,
+    secondGenerator,
+    periodGenerator,
+    setPeriod,
+    setHourId,
+    setMinuteId,
+    setSecondId
+  } = getTimePickerElements();
+  const handler = {
+    setTime(value) {
+      const formatValue = visibleSeconds ? value : value + ":00";
+      const { hour, minute, second } = parseTime(formatValue);
+      selectTime(hour, minute, second);
+      scrollIntoView(hour, minute, second);
+    },
+    show: () => {
+      if (visible)
+        return;
+      updateI18n();
+      visible = true;
+      escController.create();
+      outsideHandler.create();
+      elements.nowButton.onclick = (ev) => {
+        const value = (0, import_dayjs2.default)().format("HH:mm:ss");
+        handler.setTime(value);
+        onChange(ev, value);
+      };
+      for (const [id, element] of periodGenerator())
+        element.onclick = (ev) => {
+          setPeriod(id);
+          onChange(ev, getCurrentTime());
+        };
+      for (const [id, element] of hourGenerator())
+        element.onclick = (ev) => {
+          setHourId(id);
+          onChange(ev, getCurrentTime());
+        };
+      for (const [id, element] of minuteGenerator())
+        element.onclick = (ev) => {
+          setMinuteId(id);
+          onChange(ev, getCurrentTime());
+        };
+      if (visibleSeconds) {
+        for (const [id, element] of secondGenerator())
+          element.onclick = (ev) => {
+            setSecondId(id);
+            onChange(ev, getCurrentTime());
+          };
+        elements.secondPanel.style.removeProperty("display");
+      } else
+        elements.secondPanel.style.setProperty("display", "none");
+      if (!elements.timePicker.isConnected)
+        getLayerElement("popover").appendChild(elements.timePicker);
+      elements.timePicker.style.removeProperty("display");
+      elements.timePicker.setAttribute("data-uuid", uuid2);
+      setTimeout(() => {
+        elements.timePicker.classList.add(timePicker_classNames_default.timePicker["is-visible"]);
+        floatingCleanup();
+        floatingCleanup = offsetBottomAutoUpdate(refElement, elements.timePicker);
+      }, 0);
+    },
+    hide: () => {
+      if (!visible)
+        return;
+      escController.destroy();
+      outsideHandler.destroy();
+      elements.timePicker.classList.remove(timePicker_classNames_default.timePicker["is-visible"]);
+      elements.timePicker.addEventListener("transitionend", (ev) => {
+        if (ev.currentTarget !== ev.target)
+          return;
+        visible = false;
+        if (uuid2 === elements.timePicker.getAttribute("data-uuid")) {
+          floatingCleanup();
+          elements.timePicker.remove();
+        }
+      }, { once: true });
+    },
+    onESC: () => handler.hide(),
+    get visible() {
+      return visible;
+    }
+  };
+  const escController = createESCHideController(handler);
+  const outsideHandler = createClickOutsideHandler({
+    eventElements: [elements.timePicker],
+    clickOutsideFunc: () => handler.hide()
+  });
+  return handler;
+}
+
+// src/js-components/timePicker/timePicker.ts
+var clsCheckbox = { checkbox, checkboxWrapper, checkboxInput };
+var clsInput = { input, inputNative, inputSuffix, inputPrefix };
+var IRTimePicker = class extends IRComponent {
+  constructor(args) {
+    super(args);
+    const { visibleSeconds = false } = args;
+    const formatTime2 = visibleSeconds ? "HH:mm:ss" : "HH:mm";
+    this.contextElement.className = clsInput.input;
+    this.input = document.createElement("input");
+    this.input.placeholder = formatTime2;
+    this.input.className = clsInput.inputNative;
+    this.button = document.createElement("button");
+    this.button.appendChild(createIconElement("ir-icon--watch"));
+    this.button.className = clsInput.inputSuffix;
+    this.latestValue = args.value || "";
+    this.button.onclick = () => this.toggle();
+    this.timePickerHandler = createIRTimePickerHandler({
+      uuid: this.uuid,
+      refElement: this.contextElement,
+      visibleSeconds,
+      onChange: (_, value) => {
+        const formatValue = (0, import_dayjs3.default)(value, "HH:mm:ss", true).format(formatTime2);
+        this.value = formatValue;
+        this.onChange(formatValue);
+      }
+    });
+    if (args.checkbox) {
+      const divInputPrefix = document.createElement("div");
+      const checkboxLabel = document.createElement("label");
+      const inputCheckbox = document.createElement("input");
+      inputCheckbox.setAttribute("type", "checkbox");
+      divInputPrefix.classList.add(clsCheckbox.checkbox, clsInput.inputPrefix);
+      checkboxLabel.className = clsCheckbox.checkboxWrapper;
+      inputCheckbox.className = clsCheckbox.checkboxInput;
+      checkboxLabel.appendChild(inputCheckbox);
+      divInputPrefix.appendChild(checkboxLabel);
+      this.contextElement.appendChild(divInputPrefix);
+      inputCheckbox.checked = !args.disabled;
+      inputCheckbox.onchange = () => this.disabled = !inputCheckbox.checked;
+      this.addCoreElement(divInputPrefix);
+    }
+    this.contextElement.appendChild(this.input);
+    this.contextElement.appendChild(this.button);
+    this.addCoreElement(this.input);
+    this.addCoreElement(this.button);
+    this.disabled = args.disabled === true;
+    if (args.onChange)
+      this.onChange = args.onChange;
+    if (args.value)
+      this.value = (0, import_dayjs3.default)(args.value, formatTime2).format(formatTime2);
+    this.input.onblur = () => {
+      if (!isValidPattern(this.input.value, visibleSeconds))
+        this.value = this.latestValue;
+      else
+        this.value = this.input.value;
+    };
+  }
+  get hour() {
+    return 0;
+  }
+  get minute() {
+    return 0;
+  }
+  get second() {
+    return 0;
+  }
+  get inputCheckbox() {
+    return this.contextElement.querySelector(".checkbox__input");
+  }
+  get visible() {
+    return this.timePickerHandler.visible;
+  }
+  get disabled() {
+    return this.input.disabled;
+  }
+  get value() {
+    return this._value;
+  }
+  set disabled(disabled) {
+    this.input.disabled = disabled;
+    this.button.disabled = disabled;
+  }
+  set value(value) {
+    this._value = value;
+    this.input.value = value || "";
+    this.latestValue = this.input.value;
+  }
+  show() {
+    this.timePickerHandler.show();
+    this.timePickerHandler.setTime(this.value || "00:00:00");
+  }
+  hide() {
+    this.timePickerHandler.hide();
+  }
+  toggle() {
+    if (this.visible)
+      this.hide();
+    else
+      this.show();
+  }
+  /*
+   * Events
+   */
+  onChange(_value) {
+  }
+};
+
+// src/dialogs/dialog-base.ts
+var DialogGenerator = class {
+  constructor() {
+    this._dialogElement = createElement("div", "dialog");
+    this._dialogElement.setAttribute("tabindex", "-1");
+    this._wrapperElement = appendElement(this._dialogElement, "div", "dialog__wrapper");
+    this._headerElement = appendElement(this._wrapperElement, "div", "dialog__header");
+    this._bodyElement = appendElement(this._wrapperElement, "div", "dialog__content");
+    this._footerElement = appendElement(this._wrapperElement, "div", "dialog__footer");
+  }
+  setDialogWidth(width) {
+    this._wrapperElement.style.width = `${width}px`;
+    return this;
+  }
+  addStrongHeaderTitle(text) {
+    const titleEl = appendElement(this._headerElement, "strong", "dialog__header-title");
+    titleEl.innerText = text;
+    return this;
+  }
+  createHeaderCloseButton(onClick) {
+    const actionsEl = appendElement(this._headerElement, "div", "dialog__header-actions");
+    const btnClose = appendElement(actionsEl, "button", "dialog__button-close");
+    appendElement(btnClose, "i", "ir-icon", "ir-icon--close");
+    btnClose.onclick = onClick;
+    return this;
+  }
+  setFooterClass(...cls) {
+    this._footerElement.classList.add(...cls);
+    return this;
+  }
+  setContentElement(...elements) {
+    while (this._bodyElement.lastChild)
+      this._bodyElement.lastChild.remove();
+    this._bodyElement.append(...elements);
+    return this;
+  }
+  addFooterButton(text, onClick, ...cls) {
+    const btn = appendElement(this._footerElement, "button", "button", ...cls);
+    btn.innerText = text;
+    btn.onclick = onClick;
+    return this;
+  }
+  get element() {
+    return this._dialogElement;
+  }
+};
+
+// src/dialogs/i18n/en.ts
+var en_default = {
+  "#login-info-dialog.title": "Login Information",
+  "#login-info-dialog.confirm-button": "Confirm",
+  "AUTH.PASSWORD.NOTICE": "Deadline of Password Change",
+  "AUTH.ACCESSIP": "Last Login IP",
+  "AUTH.LASTESTLOGINTIME": "Last Login Date",
+  "AUTH.SECURITY.NOTICE": "Security Issue"
+};
+
+// src/dialogs/i18n/ja.ts
+var ja_default = {
+  "#login-info-dialog.title": "\u30ED\u30B0\u30A4\u30F3\u60C5\u5831",
+  "#login-info-dialog.confirm-button": "\u78BA\u8A8D",
+  "AUTH.PASSWORD.NOTICE": "\u30D1\u30B9\u30EF\u30FC\u30C9\u5909\u66F4\u671F\u9650",
+  "AUTH.ACCESSIP": "\u6700\u7D42\u30ED\u30B0\u30A4\u30F3IP",
+  "AUTH.LASTESTLOGINTIME": "\u6700\u7D42\u30ED\u30B0\u30A4\u30F3\u65E5\u6642",
+  "AUTH.SECURITY.NOTICE": "\u30BB\u30AD\u30E5\u30EA\u30C6\u30A3\u60C5\u5831"
+};
+
+// src/dialogs/i18n/ko.ts
+var ko_default = {
+  "#login-info-dialog.title": "\uB85C\uADF8\uC778 \uC815\uBCF4",
+  "#login-info-dialog.confirm-button": "\uD655\uC778",
+  "AUTH.PASSWORD.NOTICE": "\uBE44\uBC00\uBC88\uD638 \uBCC0\uACBD \uAE30\uD55C",
+  "AUTH.ACCESSIP": "\uCD5C\uC885 \uB85C\uADF8\uC778 IP",
+  "AUTH.LASTESTLOGINTIME": "\uCD5C\uC885 \uB85C\uADF8\uC778 \uC77C\uC2DC",
+  "AUTH.SECURITY.NOTICE": "\uBCF4\uC548 \uC0AC\uD56D"
+};
+
+// src/dialogs/i18n/zh.ts
+var zh_default = {
+  "#login-info-dialog.title": "\u767B\u5F55\u4FE1\u606F",
+  // TODO
+  "#login-info-dialog.confirm-button": "?",
+  "AUTH.PASSWORD.NOTICE": "\u5BC6\u7801\u53D8\u66F4\u671F\u9650",
+  "AUTH.ACCESSIP": "\u6700\u7EC8\u767B\u5F55IP",
+  "AUTH.LASTESTLOGINTIME": "\u6700\u7EC8\u767B\u5F55\u65F6\u95F4",
+  "AUTH.SECURITY.NOTICE": "\u4FDD\u5B89\u4E8B\u9879"
+};
+
+// src/dialogs/i18n/index.tsx
+var I18N_MSG = { ko: ko_default, en: en_default, ja: ja_default, zh: zh_default };
+function isKey(key, obj) {
+  return key in obj;
+}
+function getLangContext(lang) {
+  var _a;
+  const msg = (_a = I18N_MSG[lang]) != null ? _a : ko_default;
+  return {
+    getMsg(key, ...args) {
+      if (isKey(key, msg))
+        return msg[key];
+      return key;
+    }
+  };
+}
+
+// src/dialogs/login-info-dialog.ts
+var LOGIN_INFO_DIALOG_WIDTH = 550;
+var loginInfo = {
+  "AUTH.ACCESSIP": 1,
+  "AUTH.LASTESTLOGINTIME": 2,
+  "AUTH.PASSWORD.NOTICE": 3,
+  "AUTH.SECURITY.NOTICE": 4
+};
+function hasLoginInfo(data) {
+  return data.props.some(([key]) => loginInfo[key] !== void 0);
+}
+function getLoginInfo(data) {
+  return data.props.filter(([key]) => loginInfo[key] !== void 0).sort(([key1], [key2]) => loginInfo[key1] - loginInfo[key2]);
+}
+function appendContentFragment(contentEl, content) {
+  var _a, _b;
+  const fragment = document.createDocumentFragment();
+  const parser = new DOMParser();
+  const encodedContent = content.replace(/&/g, "&amp;");
+  const dom = parser.parseFromString(`<root>${encodedContent}</root>`, "application/xml");
+  let cur = (_a = dom.firstChild) == null ? void 0 : _a.firstChild;
+  while (cur) {
+    if (cur.nodeType === 1 && cur instanceof Element) {
+      if (cur.tagName.toLowerCase() === "font") {
+        const font = document.createElement("span");
+        font.textContent = cur.textContent;
+        font.style.cssText = (_b = cur.getAttribute("style")) != null ? _b : "";
+        const color = cur.getAttribute("color");
+        const bgColor = cur.getAttribute("bgcolor");
+        if (color)
+          font.style.color = color.replace("cl", "");
+        if (bgColor)
+          font.style.backgroundColor = bgColor.replace("cl", "");
+        fragment.append(font);
+      } else if (cur.tagName.toLowerCase() === "br") {
+        fragment.append(document.createElement("br"));
+      } else {
+        console.warn(`loginInfoDialog-parser::not allowed tag ${cur.tagName}`);
+      }
+    } else if (cur.textContent) {
+      fragment.append(cur.textContent);
+    }
+    cur = cur.nextSibling;
+  }
+  contentEl.append(fragment);
+}
+function createLoginInfoDialog(args) {
+  const {
+    irm010Data,
+    lang = "ko",
+    onClose
+  } = args;
+  if (!hasLoginInfo(irm010Data))
+    throw new Error("no login info data! check irm010 response");
+  const dialog = new DialogGenerator();
+  const { getMsg } = getLangContext(lang);
+  const closeHandler = () => {
+    popover.hide();
+  };
+  const keyHandler = (e) => {
+    if (e.key === "Enter")
+      closeHandler();
+  };
+  const popover = createPopover({
+    element: dialog.element,
+    type: "dialog",
+    parentElement: getLayerElement("dialog"),
+    onESC() {
+      onClose == null ? void 0 : onClose();
+      window.removeEventListener("keyup", keyHandler);
+    }
+  });
+  const ulElement = (() => {
+    const ul = createElement("ul", "row", "gap-y--xs");
+    const loginNotifyInfo = getLoginInfo(irm010Data);
+    loginNotifyInfo.forEach(([key, value]) => {
+      const li = appendElement(ul, "li", "row", "col", "col--12");
+      appendElement(li, "div", "col", "col--4").innerText = getMsg(key);
+      if (key === "AUTH.SECURITY.NOTICE")
+        appendContentFragment(
+          appendElement(li, "div", "col", "col--8"),
+          value
+        );
+      else
+        appendElement(li, "div", "col", "col--8").innerText = value;
+    });
+    return ul;
+  })();
+  dialog.setDialogWidth(LOGIN_INFO_DIALOG_WIDTH).addStrongHeaderTitle(getMsg("#login-info-dialog.title")).createHeaderCloseButton(closeHandler).setContentElement(ulElement).setFooterClass("justify-content--end").addFooterButton(getMsg("#login-info-dialog.confirm-button"), closeHandler, "button--primary");
+  return {
+    popoverHandler: popover,
+    show() {
+      dialog.element.focus();
+      popover.show();
+      window.addEventListener("keyup", keyHandler);
+    },
+    hide() {
+      popover.hide();
+    }
+  };
+}
+export {
+  ClipboardManager,
+  IRCommandBlock,
+  IRCommandManager,
+  IRConfirm,
+  IRDatePicker,
+  IRSelect,
+  IRTimePicker,
+  IRTree,
+  IRTreeViewKeyboardPlugin as IRTree2KeyboardPlugin,
+  IRTreeView,
+  IRVirtualDOM,
+  Logger,
+  Palette,
+  ReactiveState,
+  addStyleXClass,
+  appendElement,
+  blobToStr,
+  clearGlobalKeyListener,
+  closest,
+  z_index_classNames_default as clsZId,
+  createClickOutsideHandler,
+  createCustomIcon,
+  createDropdownDiv,
+  createDropdownItem,
+  createESCHideController,
+  createElement,
+  createFloatingHandler,
+  createIconElement,
+  createImageFromSrcUrl,
+  createLoadingHandler,
+  createLoginInfoDialog,
+  createObjectURLFromSvg,
+  createPopover,
+  createSplitContainer,
+  createTooltip,
+  createTooltipBySelector,
+  createTooltipContainer,
+  downloadDataURL,
+  forEachBySize,
+  forEachFilterBySize,
+  get2DGenerator,
+  getBase64FromSvg,
+  getElement,
+  getIRIconPng,
+  getImageBlobFromImage,
+  getLayerElement,
+  getMinMaxBetween,
+  getTextWidthContext,
+  getThemeStore,
+  getTooltipElements,
+  getVirtualEl,
+  hasClass,
+  hasDisplayedConfirm,
+  hasLoginInfo,
+  i18n_default as i18n,
+  offsetBottomAutoUpdate,
+  parseInt2 as parseInt,
+  registerGlobalKeyListener,
+  removeAllChildren,
+  removeStyleXClass,
+  removeStyleXToken,
+  renderCheckboxTreeNode,
+  renderDefaultTreeNode,
+  setDataSetFlag,
+  setStyleXToken,
+  setTreeDragDropReorder,
+  unregisterGlobalKeyListener,
+  uuid,
+  xss_default as xss
+};
+//# sourceMappingURL=index.js.map

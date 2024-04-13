@@ -1,1 +1,78 @@
-import{a as k}from"./chunks/chunk-TPOBF2FR.js";import"./chunks/chunk-QK7BS6IW.js";import"./chunks/chunk-HJRTLFPM.js";import{a as i}from"./chunks/chunk-ZSTOGUCC.js";import"./chunks/chunk-QBHXWPSD.js";var o=new Map,g=(()=>{let r=null;function a(t){let e=o.get(t);if(!e)throw new Error(`'${t}' taskLog is not defined`);return e}return()=>(r||(r=new Worker(new URL(k),{name:"ir-data-exporting-worker",type:"module"})),r.onmessage=t=>{var n;let e=t.data;if(!e.taskId)throw console.error(e),new Error("taskId is not defined.");let s=a(e.taskId);e.hasError?s.reject((n=e.error)!=null?n:new Error("unknown error")):s.resolve(e.objectURL),o.delete(e.taskId)},r.onerror=t=>{},r)})();function d(r){return new Promise((a,t)=>{let e=g();o.set(r.taskId,{taskId:r.taskId,createdDateTick:Date.now(),resolve:a,reject:t}),e.postMessage({command:"register-task-item",taskItem:r})})}function u(r){return d({taskId:i(),data:r.data,format:r.format,args:r.args})}export{u as requestExportingData};
+import {
+  data_worker_default
+} from "./chunks/chunk-VEUVKQWR.js";
+import "./chunks/chunk-JMMGNVNB.js";
+import "./chunks/chunk-EOV7BLLI.js";
+import {
+  v4_default
+} from "./chunks/chunk-BEP2YSTU.js";
+import "./chunks/chunk-F6QKJDR3.js";
+
+// src/data-export.ts
+var taskMap = /* @__PURE__ */ new Map();
+var getWorker = /* @__PURE__ */ (() => {
+  let worker = null;
+  function getTaskLog(taskId) {
+    const taskLog = taskMap.get(taskId);
+    if (!taskLog)
+      throw new Error(`'${taskId}' taskLog is not defined`);
+    return taskLog;
+  }
+  return () => {
+    if (!worker)
+      worker = new Worker(
+        new URL(data_worker_default),
+        {
+          name: "ir-data-exporting-worker",
+          type: "module"
+        }
+      );
+    worker.onmessage = (e) => {
+      var _a;
+      const taskResult = e.data;
+      if (!taskResult.taskId) {
+        console.error(taskResult);
+        throw new Error(`taskId is not defined.`);
+      }
+      const taskLog = getTaskLog(taskResult.taskId);
+      if (taskResult.hasError) {
+        taskLog.reject((_a = taskResult.error) != null ? _a : new Error("unknown error"));
+      } else {
+        taskLog.resolve(taskResult.objectURL);
+      }
+      taskMap.delete(taskResult.taskId);
+    };
+    worker.onerror = (err) => {
+    };
+    return worker;
+  };
+})();
+function registerTaskLog(taskItem) {
+  return new Promise((resolve, reject) => {
+    const worker = getWorker();
+    taskMap.set(taskItem.taskId, {
+      taskId: taskItem.taskId,
+      createdDateTick: Date.now(),
+      resolve,
+      reject
+    });
+    worker.postMessage({
+      command: "register-task-item",
+      taskItem
+    });
+  });
+}
+function requestExportingData(options) {
+  return registerTaskLog(
+    {
+      taskId: v4_default(),
+      data: options.data,
+      format: options.format,
+      args: options.args
+    }
+  );
+}
+export {
+  requestExportingData
+};
+//# sourceMappingURL=data-export.js.map
