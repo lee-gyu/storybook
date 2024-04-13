@@ -1,0 +1,44 @@
+/* Copyright(C) 2022. InnoRules. All rights reserved. TEL: +82-02-416-2501 */
+:root {
+    --ir-icon-db-transfer: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22m50.41%2021.59-2.82%202.82L51.17%2028H42v4h9.17l-3.55%203.55%202.83%202.83L58.83%2030l-8.42-8.41ZM38%2011H4v10h34V11ZM38%2025H4v10h34V25ZM38%2039H4v10h34V39Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-db: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M50%209H10v11h40V9ZM50%2024H10v11h40V24ZM50%2039H10v11h40V39Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-filtering: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M25%2010H9v40h16V10ZM13%2022v-8h8v8h-8Zm0%2012v-8h8v8h-8Zm0%2012v-8h8v8h-8ZM51%2010H35v40h16V10ZM39%2022v-8h8v8h-8ZM28%2025v10l5-5-5-5Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-flowchart: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M47%2038V28H32v-6h5V8H23v14h5v6H13v10H8v14h14V38h-5v-6h26v6h-5v14h14V38h-5Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-item-panel: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M38%2010H10v40h40V10H38ZM22%2046h-8v-8h8v8Zm12%200h-8v-8h8v8Zm12%200h-8v-8h8v8Zm0-12H14V14h32v20Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-linked-square-four: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M50%2026V10H34v6h-8v-6H10v16h6v8h-6v16h16v-6h8v6h16V34h-6v-8h6ZM38%2014h8v8h-8v-8Zm-24%200h8v8h-8v-8Zm8%2032h-8v-8h8v8Zm24%200h-8v-8h8v8Zm-6-12h-6v6h-8v-6h-6v-8h6v-6h8v6h6v8Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-pf-matching-related-rules: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M50%2026V10H34v6h-8v-6H10v16h6v8h-6v16h16v-6h8v6h16V34h-6v-8h6ZM38%2014h8v8h-8v-8Zm-24%200h8v8h-8v-8Zm8%2032h-8v-8h8v8Zm24%200h-8v-8h8v8Zm-6-12h-6v6h-8v-6h-6v-8h6v-6h8v6h6v8Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-rule-condition: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M30%207a23%2023%200%201%200%200%2046%2023%2023%200%200%200%200-46Zm0%2042a19%2019%200%201%201%200-38%2019%2019%200%200%201%200%2038Z%22%2F%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22m27%2039.62-8.41-8.41%202.82-2.83L27%2033.96l12.59-12.58%202.82%202.83L27%2039.62Z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-select-allowed-value: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%232B3C56%22%20d%3D%22M26%2047.24v-14h-9v4h5v3h-8v11h14v-4h-2Zm-4%200h-4v-3h4v3ZM46%2047.24h-5v-15h-4l-4.5%206H37v9h-5v4h14v-4ZM27.94%2028.24%2017.53%2017.83%2020.35%2015l7.59%207.59L42.53%208l2.82%202.83-17.41%2017.41Z%22%2F%3E%3C%2Fsvg%3E);
+}
+.ir-icon {
+    --ir-icon-size: var(--ir-icon-default-size, 20px);
+    --ir-icon-background-color: transparent;
+    --ir-icon-foreground-color: var(--ir-default-color, #4a6897);
+}
+.ir-icon--db-transfer {
+    --ir-icon-src: var(--ir-icon-db-transfer);
+}
+.ir-icon--db {
+    --ir-icon-src: var(--ir-icon-db);
+}
+.ir-icon--filtering {
+    --ir-icon-src: var(--ir-icon-filtering);
+}
+.ir-icon--flowchart {
+    --ir-icon-src: var(--ir-icon-flowchart);
+}
+.ir-icon--item-panel {
+    --ir-icon-src: var(--ir-icon-item-panel);
+}
+.ir-icon--linked-square-four {
+    --ir-icon-src: var(--ir-icon-linked-square-four);
+}
+.ir-icon--pf-matching-related-rules {
+    --ir-icon-src: var(--ir-icon-pf-matching-related-rules);
+}
+.ir-icon--rule-condition {
+    --ir-icon-src: var(--ir-icon-rule-condition);
+}
+.ir-icon--select-allowed-value {
+    --ir-icon-src: var(--ir-icon-select-allowed-value);
+}
