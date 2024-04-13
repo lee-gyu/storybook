@@ -1,3 +1,3 @@
 # README
 
-!! there is no source code. (only dist production lib.)
+!! There is no source code. Only bundled production files in `dist/`.
