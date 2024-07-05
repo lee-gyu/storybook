@@ -1,78 +1,101 @@
-import {
-  data_worker_default
-} from "./chunks/chunk-VEUVKQWR.js";
-import "./chunks/chunk-JMMGNVNB.js";
-import "./chunks/chunk-EOV7BLLI.js";
-import {
-  v4_default
-} from "./chunks/chunk-BEP2YSTU.js";
-import "./chunks/chunk-F6QKJDR3.js";
-
-// src/data-export.ts
-var taskMap = /* @__PURE__ */ new Map();
-var getWorker = /* @__PURE__ */ (() => {
-  let worker = null;
-  function getTaskLog(taskId) {
-    const taskLog = taskMap.get(taskId);
-    if (!taskLog)
-      throw new Error(`'${taskId}' taskLog is not defined`);
-    return taskLog;
-  }
-  return () => {
-    if (!worker)
-      worker = new Worker(
-        new URL(data_worker_default),
-        {
-          name: "ir-data-exporting-worker",
-          type: "module"
+import { E as c } from "./chunks/excel-k9kYkFof.js";
+import { v as k } from "./chunks/v4-ANoOI1Qw.js";
+const s = [];
+function d(e) {
+  return e.format === "excel";
+}
+const i = /* @__PURE__ */ (() => {
+  let e = !1;
+  return async () => {
+    if (!e)
+      for (e = !0; s.length; ) {
+        const t = s.shift();
+        try {
+          d(t) && new c(t.args).export(t.data).then((r) => {
+            postMessage({
+              taskId: t.taskId,
+              objectURL: URL.createObjectURL(r),
+              hasError: !1
+            });
+          }).catch((r) => {
+            console.error("data-worker error", r), postMessage({
+              taskId: t.taskId,
+              hasError: !0,
+              error: r,
+              objectURL: ""
+            });
+          });
+        } catch (r) {
+          console.error("data-worker error", r), postMessage({
+            taskId: t.taskId,
+            hasError: !0,
+            error: r,
+            objectURL: ""
+          });
+        } finally {
+          e = !1;
         }
-      );
-    worker.onmessage = (e) => {
-      var _a;
-      const taskResult = e.data;
-      if (!taskResult.taskId) {
-        console.error(taskResult);
-        throw new Error(`taskId is not defined.`);
       }
-      const taskLog = getTaskLog(taskResult.taskId);
-      if (taskResult.hasError) {
-        taskLog.reject((_a = taskResult.error) != null ? _a : new Error("unknown error"));
-      } else {
-        taskLog.resolve(taskResult.objectURL);
-      }
-      taskMap.delete(taskResult.taskId);
-    };
-    worker.onerror = (err) => {
-    };
-    return worker;
   };
 })();
-function registerTaskLog(taskItem) {
-  return new Promise((resolve, reject) => {
-    const worker = getWorker();
-    taskMap.set(taskItem.taskId, {
-      taskId: taskItem.taskId,
+typeof WorkerGlobalScope < "u" && self instanceof WorkerGlobalScope && (self.onmessage = (e) => {
+  const {
+    command: t,
+    taskItem: r
+  } = e.data;
+  if (t === "register-task-item")
+    s.push(r), i();
+  else
+    throw console.error(`unknown command ${t}. Please check the docs`, r), new Error("unknown command");
+});
+const l = import.meta.url, a = /* @__PURE__ */ new Map(), u = /* @__PURE__ */ (() => {
+  let e = null;
+  function t(r) {
+    const o = a.get(r);
+    if (!o)
+      throw new Error(`'${r}' taskLog is not defined`);
+    return o;
+  }
+  return () => (e || (e = new Worker(
+    new URL(l),
+    {
+      name: "ir-data-exporting-worker",
+      type: "module"
+    }
+  )), e.onmessage = (r) => {
+    const o = r.data;
+    if (!o.taskId)
+      throw console.error(o), new Error("taskId is not defined.");
+    const n = t(o.taskId);
+    o.hasError ? n.reject(o.error ?? new Error("unknown error")) : n.resolve(o.objectURL), a.delete(o.taskId);
+  }, e.onerror = (r) => {
+  }, e);
+})();
+function f(e) {
+  return new Promise((t, r) => {
+    const o = u();
+    a.set(e.taskId, {
+      taskId: e.taskId,
       createdDateTick: Date.now(),
-      resolve,
-      reject
-    });
-    worker.postMessage({
+      resolve: t,
+      reject: r
+    }), o.postMessage({
       command: "register-task-item",
-      taskItem
+      taskItem: e
     });
   });
 }
-function requestExportingData(options) {
-  return registerTaskLog(
+function w(e) {
+  return f(
     {
-      taskId: v4_default(),
-      data: options.data,
-      format: options.format,
-      args: options.args
+      taskId: k(),
+      data: e.data,
+      format: e.format,
+      args: e.args
     }
   );
 }
 export {
-  requestExportingData
+  w as requestExportingData
 };
 //# sourceMappingURL=data-export.js.map

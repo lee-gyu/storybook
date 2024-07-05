@@ -1,1230 +1,868 @@
-import {
-  readText,
-  writeText
-} from "./chunks/chunk-J7AUQGT2.js";
-import {
-  IRComponent
-} from "./chunks/chunk-CXSYGCFU.js";
-import {
-  cloneDeep,
-  isDeepEqual,
-  zip
-} from "./chunks/chunk-EOV7BLLI.js";
-import {
-  blobToBase64,
-  createImageFromSrcUrl,
-  downloadDataURL,
-  getBase64FromSvg,
-  getImageBlobFromImage
-} from "./chunks/chunk-B5H3PAHZ.js";
-import {
-  Logger
-} from "./chunks/chunk-A735ODE2.js";
-import "./chunks/chunk-BEP2YSTU.js";
-import "./chunks/chunk-576AFCMI.js";
-import {
-  __export
-} from "./chunks/chunk-F6QKJDR3.js";
-
-// ../../node_modules/.pnpm/d3-dispatch@3.0.1/node_modules/d3-dispatch/src/dispatch.js
-var noop = { value: () => {
+import "./chunks/_init-CqtFEZw2.js";
+import { c as xn } from "./chunks/clone-CMP76bLO.js";
+import { L as _n } from "./chunks/logger-BzjoGhbK.js";
+import { i as vn, w as ar, r as cr } from "./chunks/in-memory-clipboard-CBDV7nbf.js";
+import { a as Pe, g as $e, b as Re, e as hr, d as lr } from "./chunks/image-HI2BJVWo.js";
+import { I as dr } from "./chunks/index-cpGHHlo1.js";
+function ur(n, t) {
+  return {
+    forEach(e) {
+      const r = Math.min(n.length, t.length);
+      for (let i = 0; i < r; i++)
+        e(n[i], t[i]);
+    }
+  };
+}
+var fr = { value: () => {
 } };
-function dispatch() {
-  for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
-    if (!(t = arguments[i] + "") || t in _ || /[\s.]/.test(t))
-      throw new Error("illegal type: " + t);
-    _[t] = [];
+function ee() {
+  for (var n = 0, t = arguments.length, e = {}, r; n < t; ++n) {
+    if (!(r = arguments[n] + "") || r in e || /[\s.]/.test(r))
+      throw new Error("illegal type: " + r);
+    e[r] = [];
   }
-  return new Dispatch(_);
+  return new Bt(e);
 }
-function Dispatch(_) {
-  this._ = _;
+function Bt(n) {
+  this._ = n;
 }
-function parseTypenames(typenames, types) {
-  return typenames.trim().split(/^|\s+/).map(function(t) {
-    var name = "", i = t.indexOf(".");
-    if (i >= 0)
-      name = t.slice(i + 1), t = t.slice(0, i);
-    if (t && !types.hasOwnProperty(t))
-      throw new Error("unknown type: " + t);
-    return { type: t, name };
+function gr(n, t) {
+  return n.trim().split(/^|\s+/).map(function(e) {
+    var r = "", i = e.indexOf(".");
+    if (i >= 0 && (r = e.slice(i + 1), e = e.slice(0, i)), e && !t.hasOwnProperty(e))
+      throw new Error("unknown type: " + e);
+    return { type: e, name: r };
   });
 }
-Dispatch.prototype = dispatch.prototype = {
-  constructor: Dispatch,
-  on: function(typename, callback) {
-    var _ = this._, T = parseTypenames(typename + "", _), t, i = -1, n = T.length;
+Bt.prototype = ee.prototype = {
+  constructor: Bt,
+  on: function(n, t) {
+    var e = this._, r = gr(n + "", e), i, o = -1, s = r.length;
     if (arguments.length < 2) {
-      while (++i < n)
-        if ((t = (typename = T[i]).type) && (t = get(_[t], typename.name)))
-          return t;
+      for (; ++o < s; )
+        if ((i = (n = r[o]).type) && (i = pr(e[i], n.name)))
+          return i;
       return;
     }
-    if (callback != null && typeof callback !== "function")
-      throw new Error("invalid callback: " + callback);
-    while (++i < n) {
-      if (t = (typename = T[i]).type)
-        _[t] = set(_[t], typename.name, callback);
-      else if (callback == null)
-        for (t in _)
-          _[t] = set(_[t], typename.name, null);
-    }
+    if (t != null && typeof t != "function")
+      throw new Error("invalid callback: " + t);
+    for (; ++o < s; )
+      if (i = (n = r[o]).type)
+        e[i] = Le(e[i], n.name, t);
+      else if (t == null)
+        for (i in e)
+          e[i] = Le(e[i], n.name, null);
     return this;
   },
   copy: function() {
-    var copy = {}, _ = this._;
-    for (var t in _)
-      copy[t] = _[t].slice();
-    return new Dispatch(copy);
+    var n = {}, t = this._;
+    for (var e in t)
+      n[e] = t[e].slice();
+    return new Bt(n);
   },
-  call: function(type2, that) {
-    if ((n = arguments.length - 2) > 0)
-      for (var args = new Array(n), i = 0, n, t; i < n; ++i)
-        args[i] = arguments[i + 2];
-    if (!this._.hasOwnProperty(type2))
-      throw new Error("unknown type: " + type2);
-    for (t = this._[type2], i = 0, n = t.length; i < n; ++i)
-      t[i].value.apply(that, args);
+  call: function(n, t) {
+    if ((i = arguments.length - 2) > 0)
+      for (var e = new Array(i), r = 0, i, o; r < i; ++r)
+        e[r] = arguments[r + 2];
+    if (!this._.hasOwnProperty(n))
+      throw new Error("unknown type: " + n);
+    for (o = this._[n], r = 0, i = o.length; r < i; ++r)
+      o[r].value.apply(t, e);
   },
-  apply: function(type2, that, args) {
-    if (!this._.hasOwnProperty(type2))
-      throw new Error("unknown type: " + type2);
-    for (var t = this._[type2], i = 0, n = t.length; i < n; ++i)
-      t[i].value.apply(that, args);
+  apply: function(n, t, e) {
+    if (!this._.hasOwnProperty(n))
+      throw new Error("unknown type: " + n);
+    for (var r = this._[n], i = 0, o = r.length; i < o; ++i)
+      r[i].value.apply(t, e);
   }
 };
-function get(type2, name) {
-  for (var i = 0, n = type2.length, c; i < n; ++i) {
-    if ((c = type2[i]).name === name) {
-      return c.value;
-    }
-  }
+function pr(n, t) {
+  for (var e = 0, r = n.length, i; e < r; ++e)
+    if ((i = n[e]).name === t)
+      return i.value;
 }
-function set(type2, name, callback) {
-  for (var i = 0, n = type2.length; i < n; ++i) {
-    if (type2[i].name === name) {
-      type2[i] = noop, type2 = type2.slice(0, i).concat(type2.slice(i + 1));
+function Le(n, t, e) {
+  for (var r = 0, i = n.length; r < i; ++r)
+    if (n[r].name === t) {
+      n[r] = fr, n = n.slice(0, r).concat(n.slice(r + 1));
       break;
     }
-  }
-  if (callback != null)
-    type2.push({ name, value: callback });
-  return type2;
+  return e != null && n.push({ name: t, value: e }), n;
 }
-var dispatch_default = dispatch;
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/namespaces.js
-var xhtml = "http://www.w3.org/1999/xhtml";
-var namespaces_default = {
+var fe = "http://www.w3.org/1999/xhtml";
+const He = {
   svg: "http://www.w3.org/2000/svg",
-  xhtml,
+  xhtml: fe,
   xlink: "http://www.w3.org/1999/xlink",
   xml: "http://www.w3.org/XML/1998/namespace",
   xmlns: "http://www.w3.org/2000/xmlns/"
 };
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/namespace.js
-function namespace_default(name) {
-  var prefix = name += "", i = prefix.indexOf(":");
-  if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns")
-    name = name.slice(i + 1);
-  return namespaces_default.hasOwnProperty(prefix) ? { space: namespaces_default[prefix], local: name } : name;
+function ne(n) {
+  var t = n += "", e = t.indexOf(":");
+  return e >= 0 && (t = n.slice(0, e)) !== "xmlns" && (n = n.slice(e + 1)), He.hasOwnProperty(t) ? { space: He[t], local: n } : n;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/creator.js
-function creatorInherit(name) {
+function yr(n) {
   return function() {
-    var document2 = this.ownerDocument, uri = this.namespaceURI;
-    return uri === xhtml && document2.documentElement.namespaceURI === xhtml ? document2.createElement(name) : document2.createElementNS(uri, name);
+    var t = this.ownerDocument, e = this.namespaceURI;
+    return e === fe && t.documentElement.namespaceURI === fe ? t.createElement(n) : t.createElementNS(e, n);
   };
 }
-function creatorFixed(fullname) {
+function mr(n) {
   return function() {
-    return this.ownerDocument.createElementNS(fullname.space, fullname.local);
+    return this.ownerDocument.createElementNS(n.space, n.local);
   };
 }
-function creator_default(name) {
-  var fullname = namespace_default(name);
-  return (fullname.local ? creatorFixed : creatorInherit)(fullname);
+function On(n) {
+  var t = ne(n);
+  return (t.local ? mr : yr)(t);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selector.js
-function none() {
+function br() {
 }
-function selector_default(selector) {
-  return selector == null ? none : function() {
-    return this.querySelector(selector);
+function Ce(n) {
+  return n == null ? br : function() {
+    return this.querySelector(n);
   };
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/select.js
-function select_default(select) {
-  if (typeof select !== "function")
-    select = selector_default(select);
-  for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) {
-      if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
-        if ("__data__" in node)
-          subnode.__data__ = node.__data__;
-        subgroup[i] = subnode;
-      }
-    }
-  }
-  return new Selection(subgroups, this._parents);
+function wr(n) {
+  typeof n != "function" && (n = Ce(n));
+  for (var t = this._groups, e = t.length, r = new Array(e), i = 0; i < e; ++i)
+    for (var o = t[i], s = o.length, a = r[i] = new Array(s), c, h, l = 0; l < s; ++l)
+      (c = o[l]) && (h = n.call(c, c.__data__, l, o)) && ("__data__" in c && (h.__data__ = c.__data__), a[l] = h);
+  return new L(r, this._parents);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/array.js
-function array(x) {
-  return x == null ? [] : Array.isArray(x) ? x : Array.from(x);
+function xr(n) {
+  return n == null ? [] : Array.isArray(n) ? n : Array.from(n);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selectorAll.js
-function empty() {
+function _r() {
   return [];
 }
-function selectorAll_default(selector) {
-  return selector == null ? empty : function() {
-    return this.querySelectorAll(selector);
+function Sn(n) {
+  return n == null ? _r : function() {
+    return this.querySelectorAll(n);
   };
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/selectAll.js
-function arrayAll(select) {
+function vr(n) {
   return function() {
-    return array(select.apply(this, arguments));
+    return xr(n.apply(this, arguments));
   };
 }
-function selectAll_default(select) {
-  if (typeof select === "function")
-    select = arrayAll(select);
-  else
-    select = selectorAll_default(select);
-  for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
-      if (node = group[i]) {
-        subgroups.push(select.call(node, node.__data__, i, group));
-        parents.push(node);
-      }
-    }
-  }
-  return new Selection(subgroups, parents);
+function Or(n) {
+  typeof n == "function" ? n = vr(n) : n = Sn(n);
+  for (var t = this._groups, e = t.length, r = [], i = [], o = 0; o < e; ++o)
+    for (var s = t[o], a = s.length, c, h = 0; h < a; ++h)
+      (c = s[h]) && (r.push(n.call(c, c.__data__, h, s)), i.push(c));
+  return new L(r, i);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/matcher.js
-function matcher_default(selector) {
+function Cn(n) {
   return function() {
-    return this.matches(selector);
+    return this.matches(n);
   };
 }
-function childMatcher(selector) {
-  return function(node) {
-    return node.matches(selector);
+function jn(n) {
+  return function(t) {
+    return t.matches(n);
   };
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/selectChild.js
-var find = Array.prototype.find;
-function childFind(match) {
+var Sr = Array.prototype.find;
+function Cr(n) {
   return function() {
-    return find.call(this.children, match);
+    return Sr.call(this.children, n);
   };
 }
-function childFirst() {
+function jr() {
   return this.firstElementChild;
 }
-function selectChild_default(match) {
-  return this.select(match == null ? childFirst : childFind(typeof match === "function" ? match : childMatcher(match)));
+function kr(n) {
+  return this.select(n == null ? jr : Cr(typeof n == "function" ? n : jn(n)));
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/selectChildren.js
-var filter = Array.prototype.filter;
-function children() {
+var Er = Array.prototype.filter;
+function Ir() {
   return Array.from(this.children);
 }
-function childrenFilter(match) {
+function Mr(n) {
   return function() {
-    return filter.call(this.children, match);
+    return Er.call(this.children, n);
   };
 }
-function selectChildren_default(match) {
-  return this.selectAll(match == null ? children : childrenFilter(typeof match === "function" ? match : childMatcher(match)));
+function Tr(n) {
+  return this.selectAll(n == null ? Ir : Mr(typeof n == "function" ? n : jn(n)));
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/filter.js
-function filter_default(match) {
-  if (typeof match !== "function")
-    match = matcher_default(match);
-  for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) {
-      if ((node = group[i]) && match.call(node, node.__data__, i, group)) {
-        subgroup.push(node);
-      }
-    }
-  }
-  return new Selection(subgroups, this._parents);
+function Ar(n) {
+  typeof n != "function" && (n = Cn(n));
+  for (var t = this._groups, e = t.length, r = new Array(e), i = 0; i < e; ++i)
+    for (var o = t[i], s = o.length, a = r[i] = [], c, h = 0; h < s; ++h)
+      (c = o[h]) && n.call(c, c.__data__, h, o) && a.push(c);
+  return new L(r, this._parents);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/sparse.js
-function sparse_default(update) {
-  return new Array(update.length);
+function kn(n) {
+  return new Array(n.length);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/enter.js
-function enter_default() {
-  return new Selection(this._enter || this._groups.map(sparse_default), this._parents);
+function zr() {
+  return new L(this._enter || this._groups.map(kn), this._parents);
 }
-function EnterNode(parent, datum2) {
-  this.ownerDocument = parent.ownerDocument;
-  this.namespaceURI = parent.namespaceURI;
-  this._next = null;
-  this._parent = parent;
-  this.__data__ = datum2;
+function qt(n, t) {
+  this.ownerDocument = n.ownerDocument, this.namespaceURI = n.namespaceURI, this._next = null, this._parent = n, this.__data__ = t;
 }
-EnterNode.prototype = {
-  constructor: EnterNode,
-  appendChild: function(child) {
-    return this._parent.insertBefore(child, this._next);
+qt.prototype = {
+  constructor: qt,
+  appendChild: function(n) {
+    return this._parent.insertBefore(n, this._next);
   },
-  insertBefore: function(child, next) {
-    return this._parent.insertBefore(child, next);
+  insertBefore: function(n, t) {
+    return this._parent.insertBefore(n, t);
   },
-  querySelector: function(selector) {
-    return this._parent.querySelector(selector);
+  querySelector: function(n) {
+    return this._parent.querySelector(n);
   },
-  querySelectorAll: function(selector) {
-    return this._parent.querySelectorAll(selector);
+  querySelectorAll: function(n) {
+    return this._parent.querySelectorAll(n);
   }
 };
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/constant.js
-function constant_default(x) {
+function Nr(n) {
   return function() {
-    return x;
+    return n;
   };
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/data.js
-function bindIndex(parent, group, enter, update, exit, data) {
-  var i = 0, node, groupLength = group.length, dataLength = data.length;
-  for (; i < dataLength; ++i) {
-    if (node = group[i]) {
-      node.__data__ = data[i];
-      update[i] = node;
-    } else {
-      enter[i] = new EnterNode(parent, data[i]);
-    }
-  }
-  for (; i < groupLength; ++i) {
-    if (node = group[i]) {
-      exit[i] = node;
-    }
-  }
+function Dr(n, t, e, r, i, o) {
+  for (var s = 0, a, c = t.length, h = o.length; s < h; ++s)
+    (a = t[s]) ? (a.__data__ = o[s], r[s] = a) : e[s] = new qt(n, o[s]);
+  for (; s < c; ++s)
+    (a = t[s]) && (i[s] = a);
 }
-function bindKey(parent, group, enter, update, exit, data, key) {
-  var i, node, nodeByKeyValue = /* @__PURE__ */ new Map(), groupLength = group.length, dataLength = data.length, keyValues = new Array(groupLength), keyValue;
-  for (i = 0; i < groupLength; ++i) {
-    if (node = group[i]) {
-      keyValues[i] = keyValue = key.call(node, node.__data__, i, group) + "";
-      if (nodeByKeyValue.has(keyValue)) {
-        exit[i] = node;
-      } else {
-        nodeByKeyValue.set(keyValue, node);
-      }
-    }
-  }
-  for (i = 0; i < dataLength; ++i) {
-    keyValue = key.call(parent, data[i], i, data) + "";
-    if (node = nodeByKeyValue.get(keyValue)) {
-      update[i] = node;
-      node.__data__ = data[i];
-      nodeByKeyValue.delete(keyValue);
-    } else {
-      enter[i] = new EnterNode(parent, data[i]);
-    }
-  }
-  for (i = 0; i < groupLength; ++i) {
-    if ((node = group[i]) && nodeByKeyValue.get(keyValues[i]) === node) {
-      exit[i] = node;
-    }
-  }
+function Pr(n, t, e, r, i, o, s) {
+  var a, c, h = /* @__PURE__ */ new Map(), l = t.length, f = o.length, u = new Array(l), y;
+  for (a = 0; a < l; ++a)
+    (c = t[a]) && (u[a] = y = s.call(c, c.__data__, a, t) + "", h.has(y) ? i[a] = c : h.set(y, c));
+  for (a = 0; a < f; ++a)
+    y = s.call(n, o[a], a, o) + "", (c = h.get(y)) ? (r[a] = c, c.__data__ = o[a], h.delete(y)) : e[a] = new qt(n, o[a]);
+  for (a = 0; a < l; ++a)
+    (c = t[a]) && h.get(u[a]) === c && (i[a] = c);
 }
-function datum(node) {
-  return node.__data__;
+function $r(n) {
+  return n.__data__;
 }
-function data_default(value, key) {
+function Rr(n, t) {
   if (!arguments.length)
-    return Array.from(this, datum);
-  var bind = key ? bindKey : bindIndex, parents = this._parents, groups = this._groups;
-  if (typeof value !== "function")
-    value = constant_default(value);
-  for (var m = groups.length, update = new Array(m), enter = new Array(m), exit = new Array(m), j = 0; j < m; ++j) {
-    var parent = parents[j], group = groups[j], groupLength = group.length, data = arraylike(value.call(parent, parent && parent.__data__, j, parents)), dataLength = data.length, enterGroup = enter[j] = new Array(dataLength), updateGroup = update[j] = new Array(dataLength), exitGroup = exit[j] = new Array(groupLength);
-    bind(parent, group, enterGroup, updateGroup, exitGroup, data, key);
-    for (var i0 = 0, i1 = 0, previous, next; i0 < dataLength; ++i0) {
-      if (previous = enterGroup[i0]) {
-        if (i0 >= i1)
-          i1 = i0 + 1;
-        while (!(next = updateGroup[i1]) && ++i1 < dataLength)
+    return Array.from(this, $r);
+  var e = t ? Pr : Dr, r = this._parents, i = this._groups;
+  typeof n != "function" && (n = Nr(n));
+  for (var o = i.length, s = new Array(o), a = new Array(o), c = new Array(o), h = 0; h < o; ++h) {
+    var l = r[h], f = i[h], u = f.length, y = Lr(n.call(l, l && l.__data__, h, r)), O = y.length, j = a[h] = new Array(O), M = s[h] = new Array(O), w = c[h] = new Array(u);
+    e(l, f, j, M, w, y, t);
+    for (var P = 0, A = 0, p, S; P < O; ++P)
+      if (p = j[P]) {
+        for (P >= A && (A = P + 1); !(S = M[A]) && ++A < O; )
           ;
-        previous._next = next || null;
+        p._next = S || null;
       }
-    }
   }
-  update = new Selection(update, parents);
-  update._enter = enter;
-  update._exit = exit;
-  return update;
+  return s = new L(s, r), s._enter = a, s._exit = c, s;
 }
-function arraylike(data) {
-  return typeof data === "object" && "length" in data ? data : Array.from(data);
+function Lr(n) {
+  return typeof n == "object" && "length" in n ? n : Array.from(n);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/exit.js
-function exit_default() {
-  return new Selection(this._exit || this._groups.map(sparse_default), this._parents);
+function Hr() {
+  return new L(this._exit || this._groups.map(kn), this._parents);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/join.js
-function join_default(onenter, onupdate, onexit) {
-  var enter = this.enter(), update = this, exit = this.exit();
-  if (typeof onenter === "function") {
-    enter = onenter(enter);
-    if (enter)
-      enter = enter.selection();
-  } else {
-    enter = enter.append(onenter + "");
-  }
-  if (onupdate != null) {
-    update = onupdate(update);
-    if (update)
-      update = update.selection();
-  }
-  if (onexit == null)
-    exit.remove();
-  else
-    onexit(exit);
-  return enter && update ? enter.merge(update).order() : update;
+function Fr(n, t, e) {
+  var r = this.enter(), i = this, o = this.exit();
+  return typeof n == "function" ? (r = n(r), r && (r = r.selection())) : r = r.append(n + ""), t != null && (i = t(i), i && (i = i.selection())), e == null ? o.remove() : e(o), r && i ? r.merge(i).order() : i;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/merge.js
-function merge_default(context) {
-  var selection2 = context.selection ? context.selection() : context;
-  for (var groups0 = this._groups, groups1 = selection2._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
-    for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
-      if (node = group0[i] || group1[i]) {
-        merge[i] = node;
-      }
-    }
-  }
-  for (; j < m0; ++j) {
-    merges[j] = groups0[j];
-  }
-  return new Selection(merges, this._parents);
+function Xr(n) {
+  for (var t = n.selection ? n.selection() : n, e = this._groups, r = t._groups, i = e.length, o = r.length, s = Math.min(i, o), a = new Array(i), c = 0; c < s; ++c)
+    for (var h = e[c], l = r[c], f = h.length, u = a[c] = new Array(f), y, O = 0; O < f; ++O)
+      (y = h[O] || l[O]) && (u[O] = y);
+  for (; c < i; ++c)
+    a[c] = e[c];
+  return new L(a, this._parents);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/order.js
-function order_default() {
-  for (var groups = this._groups, j = -1, m = groups.length; ++j < m; ) {
-    for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0; ) {
-      if (node = group[i]) {
-        if (next && node.compareDocumentPosition(next) ^ 4)
-          next.parentNode.insertBefore(node, next);
-        next = node;
-      }
-    }
-  }
+function Yr() {
+  for (var n = this._groups, t = -1, e = n.length; ++t < e; )
+    for (var r = n[t], i = r.length - 1, o = r[i], s; --i >= 0; )
+      (s = r[i]) && (o && s.compareDocumentPosition(o) ^ 4 && o.parentNode.insertBefore(s, o), o = s);
   return this;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/sort.js
-function sort_default(compare) {
-  if (!compare)
-    compare = ascending;
-  function compareNode(a, b) {
-    return a && b ? compare(a.__data__, b.__data__) : !a - !b;
+function Br(n) {
+  n || (n = Vr);
+  function t(f, u) {
+    return f && u ? n(f.__data__, u.__data__) : !f - !u;
   }
-  for (var groups = this._groups, m = groups.length, sortgroups = new Array(m), j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, sortgroup = sortgroups[j] = new Array(n), node, i = 0; i < n; ++i) {
-      if (node = group[i]) {
-        sortgroup[i] = node;
-      }
-    }
-    sortgroup.sort(compareNode);
+  for (var e = this._groups, r = e.length, i = new Array(r), o = 0; o < r; ++o) {
+    for (var s = e[o], a = s.length, c = i[o] = new Array(a), h, l = 0; l < a; ++l)
+      (h = s[l]) && (c[l] = h);
+    c.sort(t);
   }
-  return new Selection(sortgroups, this._parents).order();
+  return new L(i, this._parents).order();
 }
-function ascending(a, b) {
-  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+function Vr(n, t) {
+  return n < t ? -1 : n > t ? 1 : n >= t ? 0 : NaN;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/call.js
-function call_default() {
-  var callback = arguments[0];
-  arguments[0] = this;
-  callback.apply(null, arguments);
-  return this;
+function Ur() {
+  var n = arguments[0];
+  return arguments[0] = this, n.apply(null, arguments), this;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/nodes.js
-function nodes_default() {
+function Wr() {
   return Array.from(this);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/node.js
-function node_default() {
-  for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
-    for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
-      var node = group[i];
-      if (node)
-        return node;
+function qr() {
+  for (var n = this._groups, t = 0, e = n.length; t < e; ++t)
+    for (var r = n[t], i = 0, o = r.length; i < o; ++i) {
+      var s = r[i];
+      if (s)
+        return s;
     }
-  }
   return null;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/size.js
-function size_default() {
-  let size = 0;
-  for (const node of this)
-    ++size;
-  return size;
+function Gr() {
+  let n = 0;
+  for (const t of this)
+    ++n;
+  return n;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/empty.js
-function empty_default() {
+function Kr() {
   return !this.node();
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/each.js
-function each_default(callback) {
-  for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
-    for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) {
-      if (node = group[i])
-        callback.call(node, node.__data__, i, group);
-    }
-  }
+function Zr(n) {
+  for (var t = this._groups, e = 0, r = t.length; e < r; ++e)
+    for (var i = t[e], o = 0, s = i.length, a; o < s; ++o)
+      (a = i[o]) && n.call(a, a.__data__, o, i);
   return this;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/attr.js
-function attrRemove(name) {
+function Jr(n) {
   return function() {
-    this.removeAttribute(name);
+    this.removeAttribute(n);
   };
 }
-function attrRemoveNS(fullname) {
+function Qr(n) {
   return function() {
-    this.removeAttributeNS(fullname.space, fullname.local);
+    this.removeAttributeNS(n.space, n.local);
   };
 }
-function attrConstant(name, value) {
+function ti(n, t) {
   return function() {
-    this.setAttribute(name, value);
+    this.setAttribute(n, t);
   };
 }
-function attrConstantNS(fullname, value) {
+function ei(n, t) {
   return function() {
-    this.setAttributeNS(fullname.space, fullname.local, value);
+    this.setAttributeNS(n.space, n.local, t);
   };
 }
-function attrFunction(name, value) {
+function ni(n, t) {
   return function() {
-    var v = value.apply(this, arguments);
-    if (v == null)
-      this.removeAttribute(name);
-    else
-      this.setAttribute(name, v);
+    var e = t.apply(this, arguments);
+    e == null ? this.removeAttribute(n) : this.setAttribute(n, e);
   };
 }
-function attrFunctionNS(fullname, value) {
+function ri(n, t) {
   return function() {
-    var v = value.apply(this, arguments);
-    if (v == null)
-      this.removeAttributeNS(fullname.space, fullname.local);
-    else
-      this.setAttributeNS(fullname.space, fullname.local, v);
+    var e = t.apply(this, arguments);
+    e == null ? this.removeAttributeNS(n.space, n.local) : this.setAttributeNS(n.space, n.local, e);
   };
 }
-function attr_default(name, value) {
-  var fullname = namespace_default(name);
+function ii(n, t) {
+  var e = ne(n);
   if (arguments.length < 2) {
-    var node = this.node();
-    return fullname.local ? node.getAttributeNS(fullname.space, fullname.local) : node.getAttribute(fullname);
+    var r = this.node();
+    return e.local ? r.getAttributeNS(e.space, e.local) : r.getAttribute(e);
   }
-  return this.each((value == null ? fullname.local ? attrRemoveNS : attrRemove : typeof value === "function" ? fullname.local ? attrFunctionNS : attrFunction : fullname.local ? attrConstantNS : attrConstant)(fullname, value));
+  return this.each((t == null ? e.local ? Qr : Jr : typeof t == "function" ? e.local ? ri : ni : e.local ? ei : ti)(e, t));
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/window.js
-function window_default(node) {
-  return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
+function En(n) {
+  return n.ownerDocument && n.ownerDocument.defaultView || n.document && n || n.defaultView;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/style.js
-function styleRemove(name) {
+function oi(n) {
   return function() {
-    this.style.removeProperty(name);
+    this.style.removeProperty(n);
   };
 }
-function styleConstant(name, value, priority) {
+function si(n, t, e) {
   return function() {
-    this.style.setProperty(name, value, priority);
+    this.style.setProperty(n, t, e);
   };
 }
-function styleFunction(name, value, priority) {
+function ai(n, t, e) {
   return function() {
-    var v = value.apply(this, arguments);
-    if (v == null)
-      this.style.removeProperty(name);
-    else
-      this.style.setProperty(name, v, priority);
+    var r = t.apply(this, arguments);
+    r == null ? this.style.removeProperty(n) : this.style.setProperty(n, r, e);
   };
 }
-function style_default(name, value, priority) {
-  return arguments.length > 1 ? this.each((value == null ? styleRemove : typeof value === "function" ? styleFunction : styleConstant)(name, value, priority == null ? "" : priority)) : styleValue(this.node(), name);
+function ci(n, t, e) {
+  return arguments.length > 1 ? this.each((t == null ? oi : typeof t == "function" ? ai : si)(n, t, e ?? "")) : mt(this.node(), n);
 }
-function styleValue(node, name) {
-  return node.style.getPropertyValue(name) || window_default(node).getComputedStyle(node, null).getPropertyValue(name);
+function mt(n, t) {
+  return n.style.getPropertyValue(t) || En(n).getComputedStyle(n, null).getPropertyValue(t);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/property.js
-function propertyRemove(name) {
+function hi(n) {
   return function() {
-    delete this[name];
+    delete this[n];
   };
 }
-function propertyConstant(name, value) {
+function li(n, t) {
   return function() {
-    this[name] = value;
+    this[n] = t;
   };
 }
-function propertyFunction(name, value) {
+function di(n, t) {
   return function() {
-    var v = value.apply(this, arguments);
-    if (v == null)
-      delete this[name];
-    else
-      this[name] = v;
+    var e = t.apply(this, arguments);
+    e == null ? delete this[n] : this[n] = e;
   };
 }
-function property_default(name, value) {
-  return arguments.length > 1 ? this.each((value == null ? propertyRemove : typeof value === "function" ? propertyFunction : propertyConstant)(name, value)) : this.node()[name];
+function ui(n, t) {
+  return arguments.length > 1 ? this.each((t == null ? hi : typeof t == "function" ? di : li)(n, t)) : this.node()[n];
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/classed.js
-function classArray(string) {
-  return string.trim().split(/^|\s+/);
+function In(n) {
+  return n.trim().split(/^|\s+/);
 }
-function classList(node) {
-  return node.classList || new ClassList(node);
+function je(n) {
+  return n.classList || new Mn(n);
 }
-function ClassList(node) {
-  this._node = node;
-  this._names = classArray(node.getAttribute("class") || "");
+function Mn(n) {
+  this._node = n, this._names = In(n.getAttribute("class") || "");
 }
-ClassList.prototype = {
-  add: function(name) {
-    var i = this._names.indexOf(name);
-    if (i < 0) {
-      this._names.push(name);
-      this._node.setAttribute("class", this._names.join(" "));
-    }
+Mn.prototype = {
+  add: function(n) {
+    var t = this._names.indexOf(n);
+    t < 0 && (this._names.push(n), this._node.setAttribute("class", this._names.join(" ")));
   },
-  remove: function(name) {
-    var i = this._names.indexOf(name);
-    if (i >= 0) {
-      this._names.splice(i, 1);
-      this._node.setAttribute("class", this._names.join(" "));
-    }
+  remove: function(n) {
+    var t = this._names.indexOf(n);
+    t >= 0 && (this._names.splice(t, 1), this._node.setAttribute("class", this._names.join(" ")));
   },
-  contains: function(name) {
-    return this._names.indexOf(name) >= 0;
+  contains: function(n) {
+    return this._names.indexOf(n) >= 0;
   }
 };
-function classedAdd(node, names) {
-  var list = classList(node), i = -1, n = names.length;
-  while (++i < n)
-    list.add(names[i]);
+function Tn(n, t) {
+  for (var e = je(n), r = -1, i = t.length; ++r < i; )
+    e.add(t[r]);
 }
-function classedRemove(node, names) {
-  var list = classList(node), i = -1, n = names.length;
-  while (++i < n)
-    list.remove(names[i]);
+function An(n, t) {
+  for (var e = je(n), r = -1, i = t.length; ++r < i; )
+    e.remove(t[r]);
 }
-function classedTrue(names) {
+function fi(n) {
   return function() {
-    classedAdd(this, names);
+    Tn(this, n);
   };
 }
-function classedFalse(names) {
+function gi(n) {
   return function() {
-    classedRemove(this, names);
+    An(this, n);
   };
 }
-function classedFunction(names, value) {
+function pi(n, t) {
   return function() {
-    (value.apply(this, arguments) ? classedAdd : classedRemove)(this, names);
+    (t.apply(this, arguments) ? Tn : An)(this, n);
   };
 }
-function classed_default(name, value) {
-  var names = classArray(name + "");
+function yi(n, t) {
+  var e = In(n + "");
   if (arguments.length < 2) {
-    var list = classList(this.node()), i = -1, n = names.length;
-    while (++i < n)
-      if (!list.contains(names[i]))
-        return false;
-    return true;
+    for (var r = je(this.node()), i = -1, o = e.length; ++i < o; )
+      if (!r.contains(e[i]))
+        return !1;
+    return !0;
   }
-  return this.each((typeof value === "function" ? classedFunction : value ? classedTrue : classedFalse)(names, value));
+  return this.each((typeof t == "function" ? pi : t ? fi : gi)(e, t));
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/text.js
-function textRemove() {
+function mi() {
   this.textContent = "";
 }
-function textConstant(value) {
+function bi(n) {
   return function() {
-    this.textContent = value;
+    this.textContent = n;
   };
 }
-function textFunction(value) {
+function wi(n) {
   return function() {
-    var v = value.apply(this, arguments);
-    this.textContent = v == null ? "" : v;
+    var t = n.apply(this, arguments);
+    this.textContent = t ?? "";
   };
 }
-function text_default(value) {
-  return arguments.length ? this.each(value == null ? textRemove : (typeof value === "function" ? textFunction : textConstant)(value)) : this.node().textContent;
+function xi(n) {
+  return arguments.length ? this.each(n == null ? mi : (typeof n == "function" ? wi : bi)(n)) : this.node().textContent;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/html.js
-function htmlRemove() {
+function _i() {
   this.innerHTML = "";
 }
-function htmlConstant(value) {
+function vi(n) {
   return function() {
-    this.innerHTML = value;
+    this.innerHTML = n;
   };
 }
-function htmlFunction(value) {
+function Oi(n) {
   return function() {
-    var v = value.apply(this, arguments);
-    this.innerHTML = v == null ? "" : v;
+    var t = n.apply(this, arguments);
+    this.innerHTML = t ?? "";
   };
 }
-function html_default(value) {
-  return arguments.length ? this.each(value == null ? htmlRemove : (typeof value === "function" ? htmlFunction : htmlConstant)(value)) : this.node().innerHTML;
+function Si(n) {
+  return arguments.length ? this.each(n == null ? _i : (typeof n == "function" ? Oi : vi)(n)) : this.node().innerHTML;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/raise.js
-function raise() {
-  if (this.nextSibling)
-    this.parentNode.appendChild(this);
+function Ci() {
+  this.nextSibling && this.parentNode.appendChild(this);
 }
-function raise_default() {
-  return this.each(raise);
+function ji() {
+  return this.each(Ci);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/lower.js
-function lower() {
-  if (this.previousSibling)
-    this.parentNode.insertBefore(this, this.parentNode.firstChild);
+function ki() {
+  this.previousSibling && this.parentNode.insertBefore(this, this.parentNode.firstChild);
 }
-function lower_default() {
-  return this.each(lower);
+function Ei() {
+  return this.each(ki);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/append.js
-function append_default(name) {
-  var create2 = typeof name === "function" ? name : creator_default(name);
+function Ii(n) {
+  var t = typeof n == "function" ? n : On(n);
   return this.select(function() {
-    return this.appendChild(create2.apply(this, arguments));
+    return this.appendChild(t.apply(this, arguments));
   });
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/insert.js
-function constantNull() {
+function Mi() {
   return null;
 }
-function insert_default(name, before) {
-  var create2 = typeof name === "function" ? name : creator_default(name), select = before == null ? constantNull : typeof before === "function" ? before : selector_default(before);
+function Ti(n, t) {
+  var e = typeof n == "function" ? n : On(n), r = t == null ? Mi : typeof t == "function" ? t : Ce(t);
   return this.select(function() {
-    return this.insertBefore(create2.apply(this, arguments), select.apply(this, arguments) || null);
+    return this.insertBefore(e.apply(this, arguments), r.apply(this, arguments) || null);
   });
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/remove.js
-function remove() {
-  var parent = this.parentNode;
-  if (parent)
-    parent.removeChild(this);
+function Ai() {
+  var n = this.parentNode;
+  n && n.removeChild(this);
 }
-function remove_default() {
-  return this.each(remove);
+function zi() {
+  return this.each(Ai);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/clone.js
-function selection_cloneShallow() {
-  var clone = this.cloneNode(false), parent = this.parentNode;
-  return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
+function Ni() {
+  var n = this.cloneNode(!1), t = this.parentNode;
+  return t ? t.insertBefore(n, this.nextSibling) : n;
 }
-function selection_cloneDeep() {
-  var clone = this.cloneNode(true), parent = this.parentNode;
-  return parent ? parent.insertBefore(clone, this.nextSibling) : clone;
+function Di() {
+  var n = this.cloneNode(!0), t = this.parentNode;
+  return t ? t.insertBefore(n, this.nextSibling) : n;
 }
-function clone_default(deep) {
-  return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
+function Pi(n) {
+  return this.select(n ? Di : Ni);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/datum.js
-function datum_default(value) {
-  return arguments.length ? this.property("__data__", value) : this.node().__data__;
+function $i(n) {
+  return arguments.length ? this.property("__data__", n) : this.node().__data__;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/on.js
-function contextListener(listener) {
-  return function(event) {
-    listener.call(this, event, this.__data__);
+function Ri(n) {
+  return function(t) {
+    n.call(this, t, this.__data__);
   };
 }
-function parseTypenames2(typenames) {
-  return typenames.trim().split(/^|\s+/).map(function(t) {
-    var name = "", i = t.indexOf(".");
-    if (i >= 0)
-      name = t.slice(i + 1), t = t.slice(0, i);
-    return { type: t, name };
+function Li(n) {
+  return n.trim().split(/^|\s+/).map(function(t) {
+    var e = "", r = t.indexOf(".");
+    return r >= 0 && (e = t.slice(r + 1), t = t.slice(0, r)), { type: t, name: e };
   });
 }
-function onRemove(typename) {
+function Hi(n) {
   return function() {
-    var on = this.__on;
-    if (!on)
-      return;
-    for (var j = 0, i = -1, m = on.length, o; j < m; ++j) {
-      if (o = on[j], (!typename.type || o.type === typename.type) && o.name === typename.name) {
-        this.removeEventListener(o.type, o.listener, o.options);
-      } else {
-        on[++i] = o;
-      }
+    var t = this.__on;
+    if (t) {
+      for (var e = 0, r = -1, i = t.length, o; e < i; ++e)
+        o = t[e], (!n.type || o.type === n.type) && o.name === n.name ? this.removeEventListener(o.type, o.listener, o.options) : t[++r] = o;
+      ++r ? t.length = r : delete this.__on;
     }
-    if (++i)
-      on.length = i;
-    else
-      delete this.__on;
   };
 }
-function onAdd(typename, value, options) {
+function Fi(n, t, e) {
   return function() {
-    var on = this.__on, o, listener = contextListener(value);
-    if (on)
-      for (var j = 0, m = on.length; j < m; ++j) {
-        if ((o = on[j]).type === typename.type && o.name === typename.name) {
-          this.removeEventListener(o.type, o.listener, o.options);
-          this.addEventListener(o.type, o.listener = listener, o.options = options);
-          o.value = value;
+    var r = this.__on, i, o = Ri(t);
+    if (r) {
+      for (var s = 0, a = r.length; s < a; ++s)
+        if ((i = r[s]).type === n.type && i.name === n.name) {
+          this.removeEventListener(i.type, i.listener, i.options), this.addEventListener(i.type, i.listener = o, i.options = e), i.value = t;
           return;
         }
-      }
-    this.addEventListener(typename.type, listener, options);
-    o = { type: typename.type, name: typename.name, value, listener, options };
-    if (!on)
-      this.__on = [o];
-    else
-      on.push(o);
+    }
+    this.addEventListener(n.type, o, e), i = { type: n.type, name: n.name, value: t, listener: o, options: e }, r ? r.push(i) : this.__on = [i];
   };
 }
-function on_default(typename, value, options) {
-  var typenames = parseTypenames2(typename + ""), i, n = typenames.length, t;
+function Xi(n, t, e) {
+  var r = Li(n + ""), i, o = r.length, s;
   if (arguments.length < 2) {
-    var on = this.node().__on;
-    if (on)
-      for (var j = 0, m = on.length, o; j < m; ++j) {
-        for (i = 0, o = on[j]; i < n; ++i) {
-          if ((t = typenames[i]).type === o.type && t.name === o.name) {
-            return o.value;
-          }
-        }
-      }
+    var a = this.node().__on;
+    if (a) {
+      for (var c = 0, h = a.length, l; c < h; ++c)
+        for (i = 0, l = a[c]; i < o; ++i)
+          if ((s = r[i]).type === l.type && s.name === l.name)
+            return l.value;
+    }
     return;
   }
-  on = value ? onAdd : onRemove;
-  for (i = 0; i < n; ++i)
-    this.each(on(typenames[i], value, options));
+  for (a = t ? Fi : Hi, i = 0; i < o; ++i)
+    this.each(a(r[i], t, e));
   return this;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/dispatch.js
-function dispatchEvent(node, type2, params) {
-  var window2 = window_default(node), event = window2.CustomEvent;
-  if (typeof event === "function") {
-    event = new event(type2, params);
-  } else {
-    event = window2.document.createEvent("Event");
-    if (params)
-      event.initEvent(type2, params.bubbles, params.cancelable), event.detail = params.detail;
-    else
-      event.initEvent(type2, false, false);
-  }
-  node.dispatchEvent(event);
+function zn(n, t, e) {
+  var r = En(n), i = r.CustomEvent;
+  typeof i == "function" ? i = new i(t, e) : (i = r.document.createEvent("Event"), e ? (i.initEvent(t, e.bubbles, e.cancelable), i.detail = e.detail) : i.initEvent(t, !1, !1)), n.dispatchEvent(i);
 }
-function dispatchConstant(type2, params) {
+function Yi(n, t) {
   return function() {
-    return dispatchEvent(this, type2, params);
+    return zn(this, n, t);
   };
 }
-function dispatchFunction(type2, params) {
+function Bi(n, t) {
   return function() {
-    return dispatchEvent(this, type2, params.apply(this, arguments));
+    return zn(this, n, t.apply(this, arguments));
   };
 }
-function dispatch_default2(type2, params) {
-  return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type2, params));
+function Vi(n, t) {
+  return this.each((typeof t == "function" ? Bi : Yi)(n, t));
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/iterator.js
-function* iterator_default() {
-  for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
-    for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) {
-      if (node = group[i])
-        yield node;
-    }
-  }
+function* Ui() {
+  for (var n = this._groups, t = 0, e = n.length; t < e; ++t)
+    for (var r = n[t], i = 0, o = r.length, s; i < o; ++i)
+      (s = r[i]) && (yield s);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/selection/index.js
-var root = [null];
-function Selection(groups, parents) {
-  this._groups = groups;
-  this._parents = parents;
+var Nn = [null];
+function L(n, t) {
+  this._groups = n, this._parents = t;
 }
-function selection() {
-  return new Selection([[document.documentElement]], root);
+function It() {
+  return new L([[document.documentElement]], Nn);
 }
-function selection_selection() {
+function Wi() {
   return this;
 }
-Selection.prototype = selection.prototype = {
-  constructor: Selection,
-  select: select_default,
-  selectAll: selectAll_default,
-  selectChild: selectChild_default,
-  selectChildren: selectChildren_default,
-  filter: filter_default,
-  data: data_default,
-  enter: enter_default,
-  exit: exit_default,
-  join: join_default,
-  merge: merge_default,
-  selection: selection_selection,
-  order: order_default,
-  sort: sort_default,
-  call: call_default,
-  nodes: nodes_default,
-  node: node_default,
-  size: size_default,
-  empty: empty_default,
-  each: each_default,
-  attr: attr_default,
-  style: style_default,
-  property: property_default,
-  classed: classed_default,
-  text: text_default,
-  html: html_default,
-  raise: raise_default,
-  lower: lower_default,
-  append: append_default,
-  insert: insert_default,
-  remove: remove_default,
-  clone: clone_default,
-  datum: datum_default,
-  on: on_default,
-  dispatch: dispatch_default2,
-  [Symbol.iterator]: iterator_default
+L.prototype = It.prototype = {
+  constructor: L,
+  select: wr,
+  selectAll: Or,
+  selectChild: kr,
+  selectChildren: Tr,
+  filter: Ar,
+  data: Rr,
+  enter: zr,
+  exit: Hr,
+  join: Fr,
+  merge: Xr,
+  selection: Wi,
+  order: Yr,
+  sort: Br,
+  call: Ur,
+  nodes: Wr,
+  node: qr,
+  size: Gr,
+  empty: Kr,
+  each: Zr,
+  attr: ii,
+  style: ci,
+  property: ui,
+  classed: yi,
+  text: xi,
+  html: Si,
+  raise: ji,
+  lower: Ei,
+  append: Ii,
+  insert: Ti,
+  remove: zi,
+  clone: Pi,
+  datum: $i,
+  on: Xi,
+  dispatch: Vi,
+  [Symbol.iterator]: Ui
 };
-var selection_default = selection;
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/select.js
-function select_default2(selector) {
-  return typeof selector === "string" ? new Selection([[document.querySelector(selector)]], [document.documentElement]) : new Selection([[selector]], root);
+function V(n) {
+  return typeof n == "string" ? new L([[document.querySelector(n)]], [document.documentElement]) : new L([[n]], Nn);
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/sourceEvent.js
-function sourceEvent_default(event) {
-  let sourceEvent;
-  while (sourceEvent = event.sourceEvent)
-    event = sourceEvent;
-  return event;
+function qi(n) {
+  let t;
+  for (; t = n.sourceEvent; )
+    n = t;
+  return n;
 }
-
-// ../../node_modules/.pnpm/d3-selection@3.0.0/node_modules/d3-selection/src/pointer.js
-function pointer_default(event, node) {
-  event = sourceEvent_default(event);
-  if (node === void 0)
-    node = event.currentTarget;
-  if (node) {
-    var svg = node.ownerSVGElement || node;
-    if (svg.createSVGPoint) {
-      var point = svg.createSVGPoint();
-      point.x = event.clientX, point.y = event.clientY;
-      point = point.matrixTransform(node.getScreenCTM().inverse());
-      return [point.x, point.y];
+function tt(n, t) {
+  if (n = qi(n), t === void 0 && (t = n.currentTarget), t) {
+    var e = t.ownerSVGElement || t;
+    if (e.createSVGPoint) {
+      var r = e.createSVGPoint();
+      return r.x = n.clientX, r.y = n.clientY, r = r.matrixTransform(t.getScreenCTM().inverse()), [r.x, r.y];
     }
-    if (node.getBoundingClientRect) {
-      var rect = node.getBoundingClientRect();
-      return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
+    if (t.getBoundingClientRect) {
+      var i = t.getBoundingClientRect();
+      return [n.clientX - i.left - t.clientLeft, n.clientY - i.top - t.clientTop];
     }
   }
-  return [event.pageX, event.pageY];
+  return [n.pageX, n.pageY];
 }
-
-// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/noevent.js
-var nonpassive = { passive: false };
-var nonpassivecapture = { capture: true, passive: false };
-function nopropagation(event) {
-  event.stopImmediatePropagation();
+const Gi = { passive: !1 }, St = { capture: !0, passive: !1 };
+function ce(n) {
+  n.stopImmediatePropagation();
 }
-function noevent_default(event) {
-  event.preventDefault();
-  event.stopImmediatePropagation();
+function pt(n) {
+  n.preventDefault(), n.stopImmediatePropagation();
 }
-
-// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/nodrag.js
-function nodrag_default(view) {
-  var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", noevent_default, nonpassivecapture);
-  if ("onselectstart" in root2) {
-    selection2.on("selectstart.drag", noevent_default, nonpassivecapture);
-  } else {
-    root2.__noselect = root2.style.MozUserSelect;
-    root2.style.MozUserSelect = "none";
-  }
+function Dn(n) {
+  var t = n.document.documentElement, e = V(n).on("dragstart.drag", pt, St);
+  "onselectstart" in t ? e.on("selectstart.drag", pt, St) : (t.__noselect = t.style.MozUserSelect, t.style.MozUserSelect = "none");
 }
-function yesdrag(view, noclick) {
-  var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", null);
-  if (noclick) {
-    selection2.on("click.drag", noevent_default, nonpassivecapture);
-    setTimeout(function() {
-      selection2.on("click.drag", null);
-    }, 0);
-  }
-  if ("onselectstart" in root2) {
-    selection2.on("selectstart.drag", null);
-  } else {
-    root2.style.MozUserSelect = root2.__noselect;
-    delete root2.__noselect;
-  }
+function Pn(n, t) {
+  var e = n.document.documentElement, r = V(n).on("dragstart.drag", null);
+  t && (r.on("click.drag", pt, St), setTimeout(function() {
+    r.on("click.drag", null);
+  }, 0)), "onselectstart" in e ? r.on("selectstart.drag", null) : (e.style.MozUserSelect = e.__noselect, delete e.__noselect);
 }
-
-// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/constant.js
-var constant_default2 = (x) => () => x;
-
-// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/event.js
-function DragEvent(type2, {
-  sourceEvent,
-  subject,
-  target,
-  identifier,
-  active,
-  x,
-  y,
-  dx,
-  dy,
-  dispatch: dispatch2
+const zt = (n) => () => n;
+function ge(n, {
+  sourceEvent: t,
+  subject: e,
+  target: r,
+  identifier: i,
+  active: o,
+  x: s,
+  y: a,
+  dx: c,
+  dy: h,
+  dispatch: l
 }) {
   Object.defineProperties(this, {
-    type: { value: type2, enumerable: true, configurable: true },
-    sourceEvent: { value: sourceEvent, enumerable: true, configurable: true },
-    subject: { value: subject, enumerable: true, configurable: true },
-    target: { value: target, enumerable: true, configurable: true },
-    identifier: { value: identifier, enumerable: true, configurable: true },
-    active: { value: active, enumerable: true, configurable: true },
-    x: { value: x, enumerable: true, configurable: true },
-    y: { value: y, enumerable: true, configurable: true },
-    dx: { value: dx, enumerable: true, configurable: true },
-    dy: { value: dy, enumerable: true, configurable: true },
-    _: { value: dispatch2 }
+    type: { value: n, enumerable: !0, configurable: !0 },
+    sourceEvent: { value: t, enumerable: !0, configurable: !0 },
+    subject: { value: e, enumerable: !0, configurable: !0 },
+    target: { value: r, enumerable: !0, configurable: !0 },
+    identifier: { value: i, enumerable: !0, configurable: !0 },
+    active: { value: o, enumerable: !0, configurable: !0 },
+    x: { value: s, enumerable: !0, configurable: !0 },
+    y: { value: a, enumerable: !0, configurable: !0 },
+    dx: { value: c, enumerable: !0, configurable: !0 },
+    dy: { value: h, enumerable: !0, configurable: !0 },
+    _: { value: l }
   });
 }
-DragEvent.prototype.on = function() {
-  var value = this._.on.apply(this._, arguments);
-  return value === this._ ? this : value;
+ge.prototype.on = function() {
+  var n = this._.on.apply(this._, arguments);
+  return n === this._ ? this : n;
 };
-
-// ../../node_modules/.pnpm/d3-drag@3.0.0/node_modules/d3-drag/src/drag.js
-function defaultFilter(event) {
-  return !event.ctrlKey && !event.button;
+function Ki(n) {
+  return !n.ctrlKey && !n.button;
 }
-function defaultContainer() {
+function Zi() {
   return this.parentNode;
 }
-function defaultSubject(event, d) {
-  return d == null ? { x: event.x, y: event.y } : d;
+function Ji(n, t) {
+  return t ?? { x: n.x, y: n.y };
 }
-function defaultTouchable() {
+function Qi() {
   return navigator.maxTouchPoints || "ontouchstart" in this;
 }
-function drag_default() {
-  var filter2 = defaultFilter, container = defaultContainer, subject = defaultSubject, touchable = defaultTouchable, gestures = {}, listeners = dispatch_default("start", "drag", "end"), active = 0, mousedownx, mousedowny, mousemoving, touchending, clickDistance2 = 0;
-  function drag(selection2) {
-    selection2.on("mousedown.drag", mousedowned).filter(touchable).on("touchstart.drag", touchstarted).on("touchmove.drag", touchmoved, nonpassive).on("touchend.drag touchcancel.drag", touchended).style("touch-action", "none").style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
+function it() {
+  var n = Ki, t = Zi, e = Ji, r = Qi, i = {}, o = ee("start", "drag", "end"), s = 0, a, c, h, l, f = 0;
+  function u(p) {
+    p.on("mousedown.drag", y).filter(r).on("touchstart.drag", M).on("touchmove.drag", w, Gi).on("touchend.drag touchcancel.drag", P).style("touch-action", "none").style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
   }
-  function mousedowned(event, d) {
-    if (touchending || !filter2.call(this, event, d))
-      return;
-    var gesture = beforestart(this, container.call(this, event, d), event, d, "mouse");
-    if (!gesture)
-      return;
-    select_default2(event.view).on("mousemove.drag", mousemoved, nonpassivecapture).on("mouseup.drag", mouseupped, nonpassivecapture);
-    nodrag_default(event.view);
-    nopropagation(event);
-    mousemoving = false;
-    mousedownx = event.clientX;
-    mousedowny = event.clientY;
-    gesture("start", event);
-  }
-  function mousemoved(event) {
-    noevent_default(event);
-    if (!mousemoving) {
-      var dx = event.clientX - mousedownx, dy = event.clientY - mousedowny;
-      mousemoving = dx * dx + dy * dy > clickDistance2;
-    }
-    gestures.mouse("drag", event);
-  }
-  function mouseupped(event) {
-    select_default2(event.view).on("mousemove.drag mouseup.drag", null);
-    yesdrag(event.view, mousemoving);
-    noevent_default(event);
-    gestures.mouse("end", event);
-  }
-  function touchstarted(event, d) {
-    if (!filter2.call(this, event, d))
-      return;
-    var touches = event.changedTouches, c = container.call(this, event, d), n = touches.length, i, gesture;
-    for (i = 0; i < n; ++i) {
-      if (gesture = beforestart(this, c, event, d, touches[i].identifier, touches[i])) {
-        nopropagation(event);
-        gesture("start", event, touches[i]);
-      }
+  function y(p, S) {
+    if (!(l || !n.call(this, p, S))) {
+      var C = A(this, t.call(this, p, S), p, S, "mouse");
+      C && (V(p.view).on("mousemove.drag", O, St).on("mouseup.drag", j, St), Dn(p.view), ce(p), h = !1, a = p.clientX, c = p.clientY, C("start", p));
     }
   }
-  function touchmoved(event) {
-    var touches = event.changedTouches, n = touches.length, i, gesture;
-    for (i = 0; i < n; ++i) {
-      if (gesture = gestures[touches[i].identifier]) {
-        noevent_default(event);
-        gesture("drag", event, touches[i]);
-      }
+  function O(p) {
+    if (pt(p), !h) {
+      var S = p.clientX - a, C = p.clientY - c;
+      h = S * S + C * C > f;
+    }
+    i.mouse("drag", p);
+  }
+  function j(p) {
+    V(p.view).on("mousemove.drag mouseup.drag", null), Pn(p.view, h), pt(p), i.mouse("end", p);
+  }
+  function M(p, S) {
+    if (n.call(this, p, S)) {
+      var C = p.changedTouches, E = t.call(this, p, S), z = C.length, R, F;
+      for (R = 0; R < z; ++R)
+        (F = A(this, E, p, S, C[R].identifier, C[R])) && (ce(p), F("start", p, C[R]));
     }
   }
-  function touchended(event) {
-    var touches = event.changedTouches, n = touches.length, i, gesture;
-    if (touchending)
-      clearTimeout(touchending);
-    touchending = setTimeout(function() {
-      touchending = null;
-    }, 500);
-    for (i = 0; i < n; ++i) {
-      if (gesture = gestures[touches[i].identifier]) {
-        nopropagation(event);
-        gesture("end", event, touches[i]);
-      }
-    }
+  function w(p) {
+    var S = p.changedTouches, C = S.length, E, z;
+    for (E = 0; E < C; ++E)
+      (z = i[S[E].identifier]) && (pt(p), z("drag", p, S[E]));
   }
-  function beforestart(that, container2, event, d, identifier, touch) {
-    var dispatch2 = listeners.copy(), p = pointer_default(touch || event, container2), dx, dy, s;
-    if ((s = subject.call(that, new DragEvent("beforestart", {
-      sourceEvent: event,
-      target: drag,
-      identifier,
-      active,
-      x: p[0],
-      y: p[1],
+  function P(p) {
+    var S = p.changedTouches, C = S.length, E, z;
+    for (l && clearTimeout(l), l = setTimeout(function() {
+      l = null;
+    }, 500), E = 0; E < C; ++E)
+      (z = i[S[E].identifier]) && (ce(p), z("end", p, S[E]));
+  }
+  function A(p, S, C, E, z, R) {
+    var F = o.copy(), H = tt(R || C, S), Tt, At, d;
+    if ((d = e.call(p, new ge("beforestart", {
+      sourceEvent: C,
+      target: u,
+      identifier: z,
+      active: s,
+      x: H[0],
+      y: H[1],
       dx: 0,
       dy: 0,
-      dispatch: dispatch2
-    }), d)) == null)
-      return;
-    dx = s.x - p[0] || 0;
-    dy = s.y - p[1] || 0;
-    return function gesture(type2, event2, touch2) {
-      var p0 = p, n;
-      switch (type2) {
-        case "start":
-          gestures[identifier] = gesture, n = active++;
-          break;
-        case "end":
-          delete gestures[identifier], --active;
-        case "drag":
-          p = pointer_default(touch2 || event2, container2), n = active;
-          break;
-      }
-      dispatch2.call(
-        type2,
-        that,
-        new DragEvent(type2, {
-          sourceEvent: event2,
-          subject: s,
-          target: drag,
-          identifier,
-          active: n,
-          x: p[0] + dx,
-          y: p[1] + dy,
-          dx: p[0] - p0[0],
-          dy: p[1] - p0[1],
-          dispatch: dispatch2
-        }),
-        d
-      );
-    };
+      dispatch: F
+    }), E)) != null)
+      return Tt = d.x - H[0] || 0, At = d.y - H[1] || 0, function m(g, b, x) {
+        var _ = H, v;
+        switch (g) {
+          case "start":
+            i[z] = m, v = s++;
+            break;
+          case "end":
+            delete i[z], --s;
+          case "drag":
+            H = tt(x || b, S), v = s;
+            break;
+        }
+        F.call(
+          g,
+          p,
+          new ge(g, {
+            sourceEvent: b,
+            subject: d,
+            target: u,
+            identifier: z,
+            active: v,
+            x: H[0] + Tt,
+            y: H[1] + At,
+            dx: H[0] - _[0],
+            dy: H[1] - _[1],
+            dispatch: F
+          }),
+          E
+        );
+      };
   }
-  drag.filter = function(_) {
-    return arguments.length ? (filter2 = typeof _ === "function" ? _ : constant_default2(!!_), drag) : filter2;
-  };
-  drag.container = function(_) {
-    return arguments.length ? (container = typeof _ === "function" ? _ : constant_default2(_), drag) : container;
-  };
-  drag.subject = function(_) {
-    return arguments.length ? (subject = typeof _ === "function" ? _ : constant_default2(_), drag) : subject;
-  };
-  drag.touchable = function(_) {
-    return arguments.length ? (touchable = typeof _ === "function" ? _ : constant_default2(!!_), drag) : touchable;
-  };
-  drag.on = function() {
-    var value = listeners.on.apply(listeners, arguments);
-    return value === listeners ? drag : value;
-  };
-  drag.clickDistance = function(_) {
-    return arguments.length ? (clickDistance2 = (_ = +_) * _, drag) : Math.sqrt(clickDistance2);
-  };
-  return drag;
+  return u.filter = function(p) {
+    return arguments.length ? (n = typeof p == "function" ? p : zt(!!p), u) : n;
+  }, u.container = function(p) {
+    return arguments.length ? (t = typeof p == "function" ? p : zt(p), u) : t;
+  }, u.subject = function(p) {
+    return arguments.length ? (e = typeof p == "function" ? p : zt(p), u) : e;
+  }, u.touchable = function(p) {
+    return arguments.length ? (r = typeof p == "function" ? p : zt(!!p), u) : r;
+  }, u.on = function() {
+    var p = o.on.apply(o, arguments);
+    return p === o ? u : p;
+  }, u.clickDistance = function(p) {
+    return arguments.length ? (f = (p = +p) * p, u) : Math.sqrt(f);
+  }, u;
 }
-
-// ../../node_modules/.pnpm/d3-color@3.1.0/node_modules/d3-color/src/define.js
-function define_default(constructor, factory, prototype) {
-  constructor.prototype = factory.prototype = prototype;
-  prototype.constructor = constructor;
+function ke(n, t, e) {
+  n.prototype = t.prototype = e, e.constructor = n;
 }
-function extend(parent, definition) {
-  var prototype = Object.create(parent.prototype);
-  for (var key in definition)
-    prototype[key] = definition[key];
-  return prototype;
+function $n(n, t) {
+  var e = Object.create(n.prototype);
+  for (var r in t)
+    e[r] = t[r];
+  return e;
 }
-
-// ../../node_modules/.pnpm/d3-color@3.1.0/node_modules/d3-color/src/color.js
-function Color() {
+function Mt() {
 }
-var darker = 0.7;
-var brighter = 1 / darker;
-var reI = "\\s*([+-]?\\d+)\\s*";
-var reN = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)\\s*";
-var reP = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)%\\s*";
-var reHex = /^#([0-9a-f]{3,8})$/;
-var reRgbInteger = new RegExp(`^rgb\\(${reI},${reI},${reI}\\)$`);
-var reRgbPercent = new RegExp(`^rgb\\(${reP},${reP},${reP}\\)$`);
-var reRgbaInteger = new RegExp(`^rgba\\(${reI},${reI},${reI},${reN}\\)$`);
-var reRgbaPercent = new RegExp(`^rgba\\(${reP},${reP},${reP},${reN}\\)$`);
-var reHslPercent = new RegExp(`^hsl\\(${reN},${reP},${reP}\\)$`);
-var reHslaPercent = new RegExp(`^hsla\\(${reN},${reP},${reP},${reN}\\)$`);
-var named = {
+var Ct = 0.7, Gt = 1 / Ct, yt = "\\s*([+-]?\\d+)\\s*", jt = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)\\s*", G = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)%\\s*", to = /^#([0-9a-f]{3,8})$/, eo = new RegExp(`^rgb\\(${yt},${yt},${yt}\\)$`), no = new RegExp(`^rgb\\(${G},${G},${G}\\)$`), ro = new RegExp(`^rgba\\(${yt},${yt},${yt},${jt}\\)$`), io = new RegExp(`^rgba\\(${G},${G},${G},${jt}\\)$`), oo = new RegExp(`^hsl\\(${jt},${G},${G}\\)$`), so = new RegExp(`^hsla\\(${jt},${G},${G},${jt}\\)$`), Fe = {
   aliceblue: 15792383,
   antiquewhite: 16444375,
   aqua: 65535,
@@ -1374,336 +1012,207 @@ var named = {
   yellow: 16776960,
   yellowgreen: 10145074
 };
-define_default(Color, color, {
-  copy(channels) {
-    return Object.assign(new this.constructor(), this, channels);
+ke(Mt, kt, {
+  copy(n) {
+    return Object.assign(new this.constructor(), this, n);
   },
   displayable() {
     return this.rgb().displayable();
   },
-  hex: color_formatHex,
+  hex: Xe,
   // Deprecated! Use color.formatHex.
-  formatHex: color_formatHex,
-  formatHex8: color_formatHex8,
-  formatHsl: color_formatHsl,
-  formatRgb: color_formatRgb,
-  toString: color_formatRgb
+  formatHex: Xe,
+  formatHex8: ao,
+  formatHsl: co,
+  formatRgb: Ye,
+  toString: Ye
 });
-function color_formatHex() {
+function Xe() {
   return this.rgb().formatHex();
 }
-function color_formatHex8() {
+function ao() {
   return this.rgb().formatHex8();
 }
-function color_formatHsl() {
-  return hslConvert(this).formatHsl();
+function co() {
+  return Rn(this).formatHsl();
 }
-function color_formatRgb() {
+function Ye() {
   return this.rgb().formatRgb();
 }
-function color(format) {
-  var m, l;
-  format = (format + "").trim().toLowerCase();
-  return (m = reHex.exec(format)) ? (l = m[1].length, m = parseInt(m[1], 16), l === 6 ? rgbn(m) : l === 3 ? new Rgb(m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, (m & 15) << 4 | m & 15, 1) : l === 8 ? rgba(m >> 24 & 255, m >> 16 & 255, m >> 8 & 255, (m & 255) / 255) : l === 4 ? rgba(m >> 12 & 15 | m >> 8 & 240, m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, ((m & 15) << 4 | m & 15) / 255) : null) : (m = reRgbInteger.exec(format)) ? new Rgb(m[1], m[2], m[3], 1) : (m = reRgbPercent.exec(format)) ? new Rgb(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, 1) : (m = reRgbaInteger.exec(format)) ? rgba(m[1], m[2], m[3], m[4]) : (m = reRgbaPercent.exec(format)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) : (m = reHslPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) : (m = reHslaPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) : named.hasOwnProperty(format) ? rgbn(named[format]) : format === "transparent" ? new Rgb(NaN, NaN, NaN, 0) : null;
+function kt(n) {
+  var t, e;
+  return n = (n + "").trim().toLowerCase(), (t = to.exec(n)) ? (e = t[1].length, t = parseInt(t[1], 16), e === 6 ? Be(t) : e === 3 ? new $(t >> 8 & 15 | t >> 4 & 240, t >> 4 & 15 | t & 240, (t & 15) << 4 | t & 15, 1) : e === 8 ? Nt(t >> 24 & 255, t >> 16 & 255, t >> 8 & 255, (t & 255) / 255) : e === 4 ? Nt(t >> 12 & 15 | t >> 8 & 240, t >> 8 & 15 | t >> 4 & 240, t >> 4 & 15 | t & 240, ((t & 15) << 4 | t & 15) / 255) : null) : (t = eo.exec(n)) ? new $(t[1], t[2], t[3], 1) : (t = no.exec(n)) ? new $(t[1] * 255 / 100, t[2] * 255 / 100, t[3] * 255 / 100, 1) : (t = ro.exec(n)) ? Nt(t[1], t[2], t[3], t[4]) : (t = io.exec(n)) ? Nt(t[1] * 255 / 100, t[2] * 255 / 100, t[3] * 255 / 100, t[4]) : (t = oo.exec(n)) ? We(t[1], t[2] / 100, t[3] / 100, 1) : (t = so.exec(n)) ? We(t[1], t[2] / 100, t[3] / 100, t[4]) : Fe.hasOwnProperty(n) ? Be(Fe[n]) : n === "transparent" ? new $(NaN, NaN, NaN, 0) : null;
 }
-function rgbn(n) {
-  return new Rgb(n >> 16 & 255, n >> 8 & 255, n & 255, 1);
+function Be(n) {
+  return new $(n >> 16 & 255, n >> 8 & 255, n & 255, 1);
 }
-function rgba(r, g, b, a) {
-  if (a <= 0)
-    r = g = b = NaN;
-  return new Rgb(r, g, b, a);
+function Nt(n, t, e, r) {
+  return r <= 0 && (n = t = e = NaN), new $(n, t, e, r);
 }
-function rgbConvert(o) {
-  if (!(o instanceof Color))
-    o = color(o);
-  if (!o)
-    return new Rgb();
-  o = o.rgb();
-  return new Rgb(o.r, o.g, o.b, o.opacity);
+function ho(n) {
+  return n instanceof Mt || (n = kt(n)), n ? (n = n.rgb(), new $(n.r, n.g, n.b, n.opacity)) : new $();
 }
-function rgb(r, g, b, opacity) {
-  return arguments.length === 1 ? rgbConvert(r) : new Rgb(r, g, b, opacity == null ? 1 : opacity);
+function pe(n, t, e, r) {
+  return arguments.length === 1 ? ho(n) : new $(n, t, e, r ?? 1);
 }
-function Rgb(r, g, b, opacity) {
-  this.r = +r;
-  this.g = +g;
-  this.b = +b;
-  this.opacity = +opacity;
+function $(n, t, e, r) {
+  this.r = +n, this.g = +t, this.b = +e, this.opacity = +r;
 }
-define_default(Rgb, rgb, extend(Color, {
-  brighter(k) {
-    k = k == null ? brighter : Math.pow(brighter, k);
-    return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+ke($, pe, $n(Mt, {
+  brighter(n) {
+    return n = n == null ? Gt : Math.pow(Gt, n), new $(this.r * n, this.g * n, this.b * n, this.opacity);
   },
-  darker(k) {
-    k = k == null ? darker : Math.pow(darker, k);
-    return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+  darker(n) {
+    return n = n == null ? Ct : Math.pow(Ct, n), new $(this.r * n, this.g * n, this.b * n, this.opacity);
   },
   rgb() {
     return this;
   },
   clamp() {
-    return new Rgb(clampi(this.r), clampi(this.g), clampi(this.b), clampa(this.opacity));
+    return new $(dt(this.r), dt(this.g), dt(this.b), Kt(this.opacity));
   },
   displayable() {
-    return -0.5 <= this.r && this.r < 255.5 && (-0.5 <= this.g && this.g < 255.5) && (-0.5 <= this.b && this.b < 255.5) && (0 <= this.opacity && this.opacity <= 1);
+    return -0.5 <= this.r && this.r < 255.5 && -0.5 <= this.g && this.g < 255.5 && -0.5 <= this.b && this.b < 255.5 && 0 <= this.opacity && this.opacity <= 1;
   },
-  hex: rgb_formatHex,
+  hex: Ve,
   // Deprecated! Use color.formatHex.
-  formatHex: rgb_formatHex,
-  formatHex8: rgb_formatHex8,
-  formatRgb: rgb_formatRgb,
-  toString: rgb_formatRgb
+  formatHex: Ve,
+  formatHex8: lo,
+  formatRgb: Ue,
+  toString: Ue
 }));
-function rgb_formatHex() {
-  return `#${hex(this.r)}${hex(this.g)}${hex(this.b)}`;
+function Ve() {
+  return `#${lt(this.r)}${lt(this.g)}${lt(this.b)}`;
 }
-function rgb_formatHex8() {
-  return `#${hex(this.r)}${hex(this.g)}${hex(this.b)}${hex((isNaN(this.opacity) ? 1 : this.opacity) * 255)}`;
+function lo() {
+  return `#${lt(this.r)}${lt(this.g)}${lt(this.b)}${lt((isNaN(this.opacity) ? 1 : this.opacity) * 255)}`;
 }
-function rgb_formatRgb() {
-  const a = clampa(this.opacity);
-  return `${a === 1 ? "rgb(" : "rgba("}${clampi(this.r)}, ${clampi(this.g)}, ${clampi(this.b)}${a === 1 ? ")" : `, ${a})`}`;
+function Ue() {
+  const n = Kt(this.opacity);
+  return `${n === 1 ? "rgb(" : "rgba("}${dt(this.r)}, ${dt(this.g)}, ${dt(this.b)}${n === 1 ? ")" : `, ${n})`}`;
 }
-function clampa(opacity) {
-  return isNaN(opacity) ? 1 : Math.max(0, Math.min(1, opacity));
+function Kt(n) {
+  return isNaN(n) ? 1 : Math.max(0, Math.min(1, n));
 }
-function clampi(value) {
-  return Math.max(0, Math.min(255, Math.round(value) || 0));
+function dt(n) {
+  return Math.max(0, Math.min(255, Math.round(n) || 0));
 }
-function hex(value) {
-  value = clampi(value);
-  return (value < 16 ? "0" : "") + value.toString(16);
+function lt(n) {
+  return n = dt(n), (n < 16 ? "0" : "") + n.toString(16);
 }
-function hsla(h, s, l, a) {
-  if (a <= 0)
-    h = s = l = NaN;
-  else if (l <= 0 || l >= 1)
-    h = s = NaN;
-  else if (s <= 0)
-    h = NaN;
-  return new Hsl(h, s, l, a);
+function We(n, t, e, r) {
+  return r <= 0 ? n = t = e = NaN : e <= 0 || e >= 1 ? n = t = NaN : t <= 0 && (n = NaN), new U(n, t, e, r);
 }
-function hslConvert(o) {
-  if (o instanceof Hsl)
-    return new Hsl(o.h, o.s, o.l, o.opacity);
-  if (!(o instanceof Color))
-    o = color(o);
-  if (!o)
-    return new Hsl();
-  if (o instanceof Hsl)
-    return o;
-  o = o.rgb();
-  var r = o.r / 255, g = o.g / 255, b = o.b / 255, min2 = Math.min(r, g, b), max2 = Math.max(r, g, b), h = NaN, s = max2 - min2, l = (max2 + min2) / 2;
-  if (s) {
-    if (r === max2)
-      h = (g - b) / s + (g < b) * 6;
-    else if (g === max2)
-      h = (b - r) / s + 2;
-    else
-      h = (r - g) / s + 4;
-    s /= l < 0.5 ? max2 + min2 : 2 - max2 - min2;
-    h *= 60;
-  } else {
-    s = l > 0 && l < 1 ? 0 : h;
-  }
-  return new Hsl(h, s, l, o.opacity);
+function Rn(n) {
+  if (n instanceof U)
+    return new U(n.h, n.s, n.l, n.opacity);
+  if (n instanceof Mt || (n = kt(n)), !n)
+    return new U();
+  if (n instanceof U)
+    return n;
+  n = n.rgb();
+  var t = n.r / 255, e = n.g / 255, r = n.b / 255, i = Math.min(t, e, r), o = Math.max(t, e, r), s = NaN, a = o - i, c = (o + i) / 2;
+  return a ? (t === o ? s = (e - r) / a + (e < r) * 6 : e === o ? s = (r - t) / a + 2 : s = (t - e) / a + 4, a /= c < 0.5 ? o + i : 2 - o - i, s *= 60) : a = c > 0 && c < 1 ? 0 : s, new U(s, a, c, n.opacity);
 }
-function hsl(h, s, l, opacity) {
-  return arguments.length === 1 ? hslConvert(h) : new Hsl(h, s, l, opacity == null ? 1 : opacity);
+function uo(n, t, e, r) {
+  return arguments.length === 1 ? Rn(n) : new U(n, t, e, r ?? 1);
 }
-function Hsl(h, s, l, opacity) {
-  this.h = +h;
-  this.s = +s;
-  this.l = +l;
-  this.opacity = +opacity;
+function U(n, t, e, r) {
+  this.h = +n, this.s = +t, this.l = +e, this.opacity = +r;
 }
-define_default(Hsl, hsl, extend(Color, {
-  brighter(k) {
-    k = k == null ? brighter : Math.pow(brighter, k);
-    return new Hsl(this.h, this.s, this.l * k, this.opacity);
+ke(U, uo, $n(Mt, {
+  brighter(n) {
+    return n = n == null ? Gt : Math.pow(Gt, n), new U(this.h, this.s, this.l * n, this.opacity);
   },
-  darker(k) {
-    k = k == null ? darker : Math.pow(darker, k);
-    return new Hsl(this.h, this.s, this.l * k, this.opacity);
+  darker(n) {
+    return n = n == null ? Ct : Math.pow(Ct, n), new U(this.h, this.s, this.l * n, this.opacity);
   },
   rgb() {
-    var h = this.h % 360 + (this.h < 0) * 360, s = isNaN(h) || isNaN(this.s) ? 0 : this.s, l = this.l, m2 = l + (l < 0.5 ? l : 1 - l) * s, m1 = 2 * l - m2;
-    return new Rgb(
-      hsl2rgb(h >= 240 ? h - 240 : h + 120, m1, m2),
-      hsl2rgb(h, m1, m2),
-      hsl2rgb(h < 120 ? h + 240 : h - 120, m1, m2),
+    var n = this.h % 360 + (this.h < 0) * 360, t = isNaN(n) || isNaN(this.s) ? 0 : this.s, e = this.l, r = e + (e < 0.5 ? e : 1 - e) * t, i = 2 * e - r;
+    return new $(
+      he(n >= 240 ? n - 240 : n + 120, i, r),
+      he(n, i, r),
+      he(n < 120 ? n + 240 : n - 120, i, r),
       this.opacity
     );
   },
   clamp() {
-    return new Hsl(clamph(this.h), clampt(this.s), clampt(this.l), clampa(this.opacity));
+    return new U(qe(this.h), Dt(this.s), Dt(this.l), Kt(this.opacity));
   },
   displayable() {
-    return (0 <= this.s && this.s <= 1 || isNaN(this.s)) && (0 <= this.l && this.l <= 1) && (0 <= this.opacity && this.opacity <= 1);
+    return (0 <= this.s && this.s <= 1 || isNaN(this.s)) && 0 <= this.l && this.l <= 1 && 0 <= this.opacity && this.opacity <= 1;
   },
   formatHsl() {
-    const a = clampa(this.opacity);
-    return `${a === 1 ? "hsl(" : "hsla("}${clamph(this.h)}, ${clampt(this.s) * 100}%, ${clampt(this.l) * 100}%${a === 1 ? ")" : `, ${a})`}`;
+    const n = Kt(this.opacity);
+    return `${n === 1 ? "hsl(" : "hsla("}${qe(this.h)}, ${Dt(this.s) * 100}%, ${Dt(this.l) * 100}%${n === 1 ? ")" : `, ${n})`}`;
   }
 }));
-function clamph(value) {
-  value = (value || 0) % 360;
-  return value < 0 ? value + 360 : value;
+function qe(n) {
+  return n = (n || 0) % 360, n < 0 ? n + 360 : n;
 }
-function clampt(value) {
-  return Math.max(0, Math.min(1, value || 0));
+function Dt(n) {
+  return Math.max(0, Math.min(1, n || 0));
 }
-function hsl2rgb(h, m1, m2) {
-  return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
+function he(n, t, e) {
+  return (n < 60 ? t + (e - t) * n / 60 : n < 180 ? e : n < 240 ? t + (e - t) * (240 - n) / 60 : t) * 255;
 }
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/basis.js
-function basis(t1, v0, v1, v2, v3) {
-  var t2 = t1 * t1, t3 = t2 * t1;
-  return ((1 - 3 * t1 + 3 * t2 - t3) * v0 + (4 - 6 * t2 + 3 * t3) * v1 + (1 + 3 * t1 + 3 * t2 - 3 * t3) * v2 + t3 * v3) / 6;
-}
-function basis_default(values) {
-  var n = values.length - 1;
-  return function(t) {
-    var i = t <= 0 ? t = 0 : t >= 1 ? (t = 1, n - 1) : Math.floor(t * n), v1 = values[i], v2 = values[i + 1], v0 = i > 0 ? values[i - 1] : 2 * v1 - v2, v3 = i < n - 1 ? values[i + 2] : 2 * v2 - v1;
-    return basis((t - i / n) * n, v0, v1, v2, v3);
+const Ln = (n) => () => n;
+function fo(n, t) {
+  return function(e) {
+    return n + e * t;
   };
 }
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/basisClosed.js
-function basisClosed_default(values) {
-  var n = values.length;
-  return function(t) {
-    var i = Math.floor(((t %= 1) < 0 ? ++t : t) * n), v0 = values[(i + n - 1) % n], v1 = values[i % n], v2 = values[(i + 1) % n], v3 = values[(i + 2) % n];
-    return basis((t - i / n) * n, v0, v1, v2, v3);
+function go(n, t, e) {
+  return n = Math.pow(n, e), t = Math.pow(t, e) - n, e = 1 / e, function(r) {
+    return Math.pow(n + r * t, e);
   };
 }
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/constant.js
-var constant_default3 = (x) => () => x;
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/color.js
-function linear(a, d) {
-  return function(t) {
-    return a + t * d;
+function po(n) {
+  return (n = +n) == 1 ? Hn : function(t, e) {
+    return e - t ? go(t, e, n) : Ln(isNaN(t) ? e : t);
   };
 }
-function exponential(a, b, y) {
-  return a = Math.pow(a, y), b = Math.pow(b, y) - a, y = 1 / y, function(t) {
-    return Math.pow(a + t * b, y);
-  };
+function Hn(n, t) {
+  var e = t - n;
+  return e ? fo(n, e) : Ln(isNaN(n) ? t : n);
 }
-function gamma(y) {
-  return (y = +y) === 1 ? nogamma : function(a, b) {
-    return b - a ? exponential(a, b, y) : constant_default3(isNaN(a) ? b : a);
-  };
-}
-function nogamma(a, b) {
-  var d = b - a;
-  return d ? linear(a, d) : constant_default3(isNaN(a) ? b : a);
-}
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/rgb.js
-var rgb_default = function rgbGamma(y) {
-  var color2 = gamma(y);
-  function rgb2(start2, end) {
-    var r = color2((start2 = rgb(start2)).r, (end = rgb(end)).r), g = color2(start2.g, end.g), b = color2(start2.b, end.b), opacity = nogamma(start2.opacity, end.opacity);
-    return function(t) {
-      start2.r = r(t);
-      start2.g = g(t);
-      start2.b = b(t);
-      start2.opacity = opacity(t);
-      return start2 + "";
+const Ge = function n(t) {
+  var e = po(t);
+  function r(i, o) {
+    var s = e((i = pe(i)).r, (o = pe(o)).r), a = e(i.g, o.g), c = e(i.b, o.b), h = Hn(i.opacity, o.opacity);
+    return function(l) {
+      return i.r = s(l), i.g = a(l), i.b = c(l), i.opacity = h(l), i + "";
     };
   }
-  rgb2.gamma = rgbGamma;
-  return rgb2;
+  return r.gamma = n, r;
 }(1);
-function rgbSpline(spline) {
-  return function(colors) {
-    var n = colors.length, r = new Array(n), g = new Array(n), b = new Array(n), i, color2;
-    for (i = 0; i < n; ++i) {
-      color2 = rgb(colors[i]);
-      r[i] = color2.r || 0;
-      g[i] = color2.g || 0;
-      b[i] = color2.b || 0;
-    }
-    r = spline(r);
-    g = spline(g);
-    b = spline(b);
-    color2.opacity = 1;
-    return function(t) {
-      color2.r = r(t);
-      color2.g = g(t);
-      color2.b = b(t);
-      return color2 + "";
-    };
+function ot(n, t) {
+  return n = +n, t = +t, function(e) {
+    return n * (1 - e) + t * e;
   };
 }
-var rgbBasis = rgbSpline(basis_default);
-var rgbBasisClosed = rgbSpline(basisClosed_default);
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/number.js
-function number_default(a, b) {
-  return a = +a, b = +b, function(t) {
-    return a * (1 - t) + b * t;
-  };
-}
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/string.js
-var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g;
-var reB = new RegExp(reA.source, "g");
-function zero(b) {
+var ye = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g, le = new RegExp(ye.source, "g");
+function yo(n) {
   return function() {
-    return b;
+    return n;
   };
 }
-function one(b) {
+function mo(n) {
   return function(t) {
-    return b(t) + "";
+    return n(t) + "";
   };
 }
-function string_default(a, b) {
-  var bi = reA.lastIndex = reB.lastIndex = 0, am, bm, bs, i = -1, s = [], q = [];
-  a = a + "", b = b + "";
-  while ((am = reA.exec(a)) && (bm = reB.exec(b))) {
-    if ((bs = bm.index) > bi) {
-      bs = b.slice(bi, bs);
-      if (s[i])
-        s[i] += bs;
-      else
-        s[++i] = bs;
-    }
-    if ((am = am[0]) === (bm = bm[0])) {
-      if (s[i])
-        s[i] += bm;
-      else
-        s[++i] = bm;
-    } else {
-      s[++i] = null;
-      q.push({ i, x: number_default(am, bm) });
-    }
-    bi = reB.lastIndex;
-  }
-  if (bi < b.length) {
-    bs = b.slice(bi);
-    if (s[i])
-      s[i] += bs;
-    else
-      s[++i] = bs;
-  }
-  return s.length < 2 ? q[0] ? one(q[0].x) : zero(b) : (b = q.length, function(t) {
-    for (var i2 = 0, o; i2 < b; ++i2)
-      s[(o = q[i2]).i] = o.x(t);
-    return s.join("");
+function bo(n, t) {
+  var e = ye.lastIndex = le.lastIndex = 0, r, i, o, s = -1, a = [], c = [];
+  for (n = n + "", t = t + ""; (r = ye.exec(n)) && (i = le.exec(t)); )
+    (o = i.index) > e && (o = t.slice(e, o), a[s] ? a[s] += o : a[++s] = o), (r = r[0]) === (i = i[0]) ? a[s] ? a[s] += i : a[++s] = i : (a[++s] = null, c.push({ i: s, x: ot(r, i) })), e = le.lastIndex;
+  return e < t.length && (o = t.slice(e), a[s] ? a[s] += o : a[++s] = o), a.length < 2 ? c[0] ? mo(c[0].x) : yo(t) : (t = c.length, function(h) {
+    for (var l = 0, f; l < t; ++l)
+      a[(f = c[l]).i] = f.x(h);
+    return a.join("");
   });
 }
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/transform/decompose.js
-var degrees = 180 / Math.PI;
-var identity = {
+var Ke = 180 / Math.PI, me = {
   translateX: 0,
   translateY: 0,
   rotate: 0,
@@ -1711,1665 +1220,1133 @@ var identity = {
   scaleX: 1,
   scaleY: 1
 };
-function decompose_default(a, b, c, d, e, f) {
-  var scaleX, scaleY, skewX;
-  if (scaleX = Math.sqrt(a * a + b * b))
-    a /= scaleX, b /= scaleX;
-  if (skewX = a * c + b * d)
-    c -= a * skewX, d -= b * skewX;
-  if (scaleY = Math.sqrt(c * c + d * d))
-    c /= scaleY, d /= scaleY, skewX /= scaleY;
-  if (a * d < b * c)
-    a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
-  return {
-    translateX: e,
-    translateY: f,
-    rotate: Math.atan2(b, a) * degrees,
-    skewX: Math.atan(skewX) * degrees,
-    scaleX,
-    scaleY
+function Fn(n, t, e, r, i, o) {
+  var s, a, c;
+  return (s = Math.sqrt(n * n + t * t)) && (n /= s, t /= s), (c = n * e + t * r) && (e -= n * c, r -= t * c), (a = Math.sqrt(e * e + r * r)) && (e /= a, r /= a, c /= a), n * r < t * e && (n = -n, t = -t, c = -c, s = -s), {
+    translateX: i,
+    translateY: o,
+    rotate: Math.atan2(t, n) * Ke,
+    skewX: Math.atan(c) * Ke,
+    scaleX: s,
+    scaleY: a
   };
 }
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/transform/parse.js
-var svgNode;
-function parseCss(value) {
-  const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value + "");
-  return m.isIdentity ? identity : decompose_default(m.a, m.b, m.c, m.d, m.e, m.f);
+var Pt;
+function wo(n) {
+  const t = new (typeof DOMMatrix == "function" ? DOMMatrix : WebKitCSSMatrix)(n + "");
+  return t.isIdentity ? me : Fn(t.a, t.b, t.c, t.d, t.e, t.f);
 }
-function parseSvg(value) {
-  if (value == null)
-    return identity;
-  if (!svgNode)
-    svgNode = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  svgNode.setAttribute("transform", value);
-  if (!(value = svgNode.transform.baseVal.consolidate()))
-    return identity;
-  value = value.matrix;
-  return decompose_default(value.a, value.b, value.c, value.d, value.e, value.f);
+function xo(n) {
+  return n == null || (Pt || (Pt = document.createElementNS("http://www.w3.org/2000/svg", "g")), Pt.setAttribute("transform", n), !(n = Pt.transform.baseVal.consolidate())) ? me : (n = n.matrix, Fn(n.a, n.b, n.c, n.d, n.e, n.f));
 }
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/transform/index.js
-function interpolateTransform(parse, pxComma, pxParen, degParen) {
-  function pop(s) {
-    return s.length ? s.pop() + " " : "";
+function Xn(n, t, e, r) {
+  function i(h) {
+    return h.length ? h.pop() + " " : "";
   }
-  function translate(xa, ya, xb, yb, s, q) {
-    if (xa !== xb || ya !== yb) {
-      var i = s.push("translate(", null, pxComma, null, pxParen);
-      q.push({ i: i - 4, x: number_default(xa, xb) }, { i: i - 2, x: number_default(ya, yb) });
-    } else if (xb || yb) {
-      s.push("translate(" + xb + pxComma + yb + pxParen);
-    }
+  function o(h, l, f, u, y, O) {
+    if (h !== f || l !== u) {
+      var j = y.push("translate(", null, t, null, e);
+      O.push({ i: j - 4, x: ot(h, f) }, { i: j - 2, x: ot(l, u) });
+    } else
+      (f || u) && y.push("translate(" + f + t + u + e);
   }
-  function rotate(a, b, s, q) {
-    if (a !== b) {
-      if (a - b > 180)
-        b += 360;
-      else if (b - a > 180)
-        a += 360;
-      q.push({ i: s.push(pop(s) + "rotate(", null, degParen) - 2, x: number_default(a, b) });
-    } else if (b) {
-      s.push(pop(s) + "rotate(" + b + degParen);
-    }
+  function s(h, l, f, u) {
+    h !== l ? (h - l > 180 ? l += 360 : l - h > 180 && (h += 360), u.push({ i: f.push(i(f) + "rotate(", null, r) - 2, x: ot(h, l) })) : l && f.push(i(f) + "rotate(" + l + r);
   }
-  function skewX(a, b, s, q) {
-    if (a !== b) {
-      q.push({ i: s.push(pop(s) + "skewX(", null, degParen) - 2, x: number_default(a, b) });
-    } else if (b) {
-      s.push(pop(s) + "skewX(" + b + degParen);
-    }
+  function a(h, l, f, u) {
+    h !== l ? u.push({ i: f.push(i(f) + "skewX(", null, r) - 2, x: ot(h, l) }) : l && f.push(i(f) + "skewX(" + l + r);
   }
-  function scale(xa, ya, xb, yb, s, q) {
-    if (xa !== xb || ya !== yb) {
-      var i = s.push(pop(s) + "scale(", null, ",", null, ")");
-      q.push({ i: i - 4, x: number_default(xa, xb) }, { i: i - 2, x: number_default(ya, yb) });
-    } else if (xb !== 1 || yb !== 1) {
-      s.push(pop(s) + "scale(" + xb + "," + yb + ")");
-    }
+  function c(h, l, f, u, y, O) {
+    if (h !== f || l !== u) {
+      var j = y.push(i(y) + "scale(", null, ",", null, ")");
+      O.push({ i: j - 4, x: ot(h, f) }, { i: j - 2, x: ot(l, u) });
+    } else
+      (f !== 1 || u !== 1) && y.push(i(y) + "scale(" + f + "," + u + ")");
   }
-  return function(a, b) {
-    var s = [], q = [];
-    a = parse(a), b = parse(b);
-    translate(a.translateX, a.translateY, b.translateX, b.translateY, s, q);
-    rotate(a.rotate, b.rotate, s, q);
-    skewX(a.skewX, b.skewX, s, q);
-    scale(a.scaleX, a.scaleY, b.scaleX, b.scaleY, s, q);
-    a = b = null;
-    return function(t) {
-      var i = -1, n = q.length, o;
-      while (++i < n)
-        s[(o = q[i]).i] = o.x(t);
-      return s.join("");
+  return function(h, l) {
+    var f = [], u = [];
+    return h = n(h), l = n(l), o(h.translateX, h.translateY, l.translateX, l.translateY, f, u), s(h.rotate, l.rotate, f, u), a(h.skewX, l.skewX, f, u), c(h.scaleX, h.scaleY, l.scaleX, l.scaleY, f, u), h = l = null, function(y) {
+      for (var O = -1, j = u.length, M; ++O < j; )
+        f[(M = u[O]).i] = M.x(y);
+      return f.join("");
     };
   };
 }
-var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
-var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
-
-// ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/zoom.js
-var epsilon2 = 1e-12;
-function cosh(x) {
-  return ((x = Math.exp(x)) + 1 / x) / 2;
+var _o = Xn(wo, "px, ", "px)", "deg)"), vo = Xn(xo, ", ", ")", ")"), Oo = 1e-12;
+function Ze(n) {
+  return ((n = Math.exp(n)) + 1 / n) / 2;
 }
-function sinh(x) {
-  return ((x = Math.exp(x)) - 1 / x) / 2;
+function So(n) {
+  return ((n = Math.exp(n)) - 1 / n) / 2;
 }
-function tanh(x) {
-  return ((x = Math.exp(2 * x)) - 1) / (x + 1);
+function Co(n) {
+  return ((n = Math.exp(2 * n)) - 1) / (n + 1);
 }
-var zoom_default = function zoomRho(rho, rho2, rho4) {
-  function zoom(p0, p1) {
-    var ux0 = p0[0], uy0 = p0[1], w0 = p0[2], ux1 = p1[0], uy1 = p1[1], w1 = p1[2], dx = ux1 - ux0, dy = uy1 - uy0, d2 = dx * dx + dy * dy, i, S;
-    if (d2 < epsilon2) {
-      S = Math.log(w1 / w0) / rho;
-      i = function(t) {
+const jo = function n(t, e, r) {
+  function i(o, s) {
+    var a = o[0], c = o[1], h = o[2], l = s[0], f = s[1], u = s[2], y = l - a, O = f - c, j = y * y + O * O, M, w;
+    if (j < Oo)
+      w = Math.log(u / h) / t, M = function(E) {
         return [
-          ux0 + t * dx,
-          uy0 + t * dy,
-          w0 * Math.exp(rho * t * S)
+          a + E * y,
+          c + E * O,
+          h * Math.exp(t * E * w)
         ];
       };
-    } else {
-      var d1 = Math.sqrt(d2), b0 = (w1 * w1 - w0 * w0 + rho4 * d2) / (2 * w0 * rho2 * d1), b1 = (w1 * w1 - w0 * w0 - rho4 * d2) / (2 * w1 * rho2 * d1), r0 = Math.log(Math.sqrt(b0 * b0 + 1) - b0), r1 = Math.log(Math.sqrt(b1 * b1 + 1) - b1);
-      S = (r1 - r0) / rho;
-      i = function(t) {
-        var s = t * S, coshr0 = cosh(r0), u = w0 / (rho2 * d1) * (coshr0 * tanh(rho * s + r0) - sinh(r0));
+    else {
+      var P = Math.sqrt(j), A = (u * u - h * h + r * j) / (2 * h * e * P), p = (u * u - h * h - r * j) / (2 * u * e * P), S = Math.log(Math.sqrt(A * A + 1) - A), C = Math.log(Math.sqrt(p * p + 1) - p);
+      w = (C - S) / t, M = function(E) {
+        var z = E * w, R = Ze(S), F = h / (e * P) * (R * Co(t * z + S) - So(S));
         return [
-          ux0 + u * dx,
-          uy0 + u * dy,
-          w0 * coshr0 / cosh(rho * s + r0)
+          a + F * y,
+          c + F * O,
+          h * R / Ze(t * z + S)
         ];
       };
     }
-    i.duration = S * 1e3 * rho / Math.SQRT2;
-    return i;
+    return M.duration = w * 1e3 * t / Math.SQRT2, M;
   }
-  zoom.rho = function(_) {
-    var _1 = Math.max(1e-3, +_), _2 = _1 * _1, _4 = _2 * _2;
-    return zoomRho(_1, _2, _4);
-  };
-  return zoom;
+  return i.rho = function(o) {
+    var s = Math.max(1e-3, +o), a = s * s, c = a * a;
+    return n(s, a, c);
+  }, i;
 }(Math.SQRT2, 2, 4);
-
-// ../../node_modules/.pnpm/d3-timer@3.0.1/node_modules/d3-timer/src/timer.js
-var frame = 0;
-var timeout = 0;
-var interval = 0;
-var pokeDelay = 1e3;
-var taskHead;
-var taskTail;
-var clockLast = 0;
-var clockNow = 0;
-var clockSkew = 0;
-var clock = typeof performance === "object" && performance.now ? performance : Date;
-var setFrame = typeof window === "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(f) {
-  setTimeout(f, 17);
+var bt = 0, vt = 0, xt = 0, Yn = 1e3, Zt, Ot, Jt = 0, ut = 0, re = 0, Et = typeof performance == "object" && performance.now ? performance : Date, Bn = typeof window == "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(n) {
+  setTimeout(n, 17);
 };
-function now() {
-  return clockNow || (setFrame(clearNow), clockNow = clock.now() + clockSkew);
+function Ee() {
+  return ut || (Bn(ko), ut = Et.now() + re);
 }
-function clearNow() {
-  clockNow = 0;
+function ko() {
+  ut = 0;
 }
-function Timer() {
+function Qt() {
   this._call = this._time = this._next = null;
 }
-Timer.prototype = timer.prototype = {
-  constructor: Timer,
-  restart: function(callback, delay, time) {
-    if (typeof callback !== "function")
+Qt.prototype = Vn.prototype = {
+  constructor: Qt,
+  restart: function(n, t, e) {
+    if (typeof n != "function")
       throw new TypeError("callback is not a function");
-    time = (time == null ? now() : +time) + (delay == null ? 0 : +delay);
-    if (!this._next && taskTail !== this) {
-      if (taskTail)
-        taskTail._next = this;
-      else
-        taskHead = this;
-      taskTail = this;
-    }
-    this._call = callback;
-    this._time = time;
-    sleep();
+    e = (e == null ? Ee() : +e) + (t == null ? 0 : +t), !this._next && Ot !== this && (Ot ? Ot._next = this : Zt = this, Ot = this), this._call = n, this._time = e, be();
   },
   stop: function() {
-    if (this._call) {
-      this._call = null;
-      this._time = Infinity;
-      sleep();
-    }
+    this._call && (this._call = null, this._time = 1 / 0, be());
   }
 };
-function timer(callback, delay, time) {
-  var t = new Timer();
-  t.restart(callback, delay, time);
-  return t;
+function Vn(n, t, e) {
+  var r = new Qt();
+  return r.restart(n, t, e), r;
 }
-function timerFlush() {
-  now();
-  ++frame;
-  var t = taskHead, e;
-  while (t) {
-    if ((e = clockNow - t._time) >= 0)
-      t._call.call(void 0, e);
-    t = t._next;
-  }
-  --frame;
+function Eo() {
+  Ee(), ++bt;
+  for (var n = Zt, t; n; )
+    (t = ut - n._time) >= 0 && n._call.call(void 0, t), n = n._next;
+  --bt;
 }
-function wake() {
-  clockNow = (clockLast = clock.now()) + clockSkew;
-  frame = timeout = 0;
+function Je() {
+  ut = (Jt = Et.now()) + re, bt = vt = 0;
   try {
-    timerFlush();
+    Eo();
   } finally {
-    frame = 0;
-    nap();
-    clockNow = 0;
+    bt = 0, Mo(), ut = 0;
   }
 }
-function poke() {
-  var now2 = clock.now(), delay = now2 - clockLast;
-  if (delay > pokeDelay)
-    clockSkew -= delay, clockLast = now2;
+function Io() {
+  var n = Et.now(), t = n - Jt;
+  t > Yn && (re -= t, Jt = n);
 }
-function nap() {
-  var t0, t1 = taskHead, t2, time = Infinity;
-  while (t1) {
-    if (t1._call) {
-      if (time > t1._time)
-        time = t1._time;
-      t0 = t1, t1 = t1._next;
-    } else {
-      t2 = t1._next, t1._next = null;
-      t1 = t0 ? t0._next = t2 : taskHead = t2;
-    }
+function Mo() {
+  for (var n, t = Zt, e, r = 1 / 0; t; )
+    t._call ? (r > t._time && (r = t._time), n = t, t = t._next) : (e = t._next, t._next = null, t = n ? n._next = e : Zt = e);
+  Ot = n, be(r);
+}
+function be(n) {
+  if (!bt) {
+    vt && (vt = clearTimeout(vt));
+    var t = n - ut;
+    t > 24 ? (n < 1 / 0 && (vt = setTimeout(Je, n - Et.now() - re)), xt && (xt = clearInterval(xt))) : (xt || (Jt = Et.now(), xt = setInterval(Io, Yn)), bt = 1, Bn(Je));
   }
-  taskTail = t0;
-  sleep(time);
 }
-function sleep(time) {
-  if (frame)
+function te(n, t, e) {
+  var r = new Qt();
+  return t = t == null ? 0 : +t, r.restart((i) => {
+    r.stop(), n(i + t);
+  }, t, e), r;
+}
+var To = ee("start", "end", "cancel", "interrupt"), Ao = [], Un = 0, Qe = 1, we = 2, Vt = 3, tn = 4, xe = 5, Ut = 6;
+function ie(n, t, e, r, i, o) {
+  var s = n.__transition;
+  if (!s)
+    n.__transition = {};
+  else if (e in s)
     return;
-  if (timeout)
-    timeout = clearTimeout(timeout);
-  var delay = time - clockNow;
-  if (delay > 24) {
-    if (time < Infinity)
-      timeout = setTimeout(wake, time - clock.now() - clockSkew);
-    if (interval)
-      interval = clearInterval(interval);
-  } else {
-    if (!interval)
-      clockLast = clock.now(), interval = setInterval(poke, pokeDelay);
-    frame = 1, setFrame(wake);
-  }
-}
-
-// ../../node_modules/.pnpm/d3-timer@3.0.1/node_modules/d3-timer/src/timeout.js
-function timeout_default(callback, delay, time) {
-  var t = new Timer();
-  delay = delay == null ? 0 : +delay;
-  t.restart((elapsed) => {
-    t.stop();
-    callback(elapsed + delay);
-  }, delay, time);
-  return t;
-}
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/schedule.js
-var emptyOn = dispatch_default("start", "end", "cancel", "interrupt");
-var emptyTween = [];
-var CREATED = 0;
-var SCHEDULED = 1;
-var STARTING = 2;
-var STARTED = 3;
-var RUNNING = 4;
-var ENDING = 5;
-var ENDED = 6;
-function schedule_default(node, name, id2, index, group, timing) {
-  var schedules = node.__transition;
-  if (!schedules)
-    node.__transition = {};
-  else if (id2 in schedules)
-    return;
-  create(node, id2, {
-    name,
-    index,
+  zo(n, e, {
+    name: t,
+    index: r,
     // For context during callback.
-    group,
+    group: i,
     // For context during callback.
-    on: emptyOn,
-    tween: emptyTween,
-    time: timing.time,
-    delay: timing.delay,
-    duration: timing.duration,
-    ease: timing.ease,
+    on: To,
+    tween: Ao,
+    time: o.time,
+    delay: o.delay,
+    duration: o.duration,
+    ease: o.ease,
     timer: null,
-    state: CREATED
+    state: Un
   });
 }
-function init(node, id2) {
-  var schedule = get2(node, id2);
-  if (schedule.state > CREATED)
+function Ie(n, t) {
+  var e = W(n, t);
+  if (e.state > Un)
     throw new Error("too late; already scheduled");
-  return schedule;
+  return e;
 }
-function set2(node, id2) {
-  var schedule = get2(node, id2);
-  if (schedule.state > STARTED)
+function K(n, t) {
+  var e = W(n, t);
+  if (e.state > Vt)
     throw new Error("too late; already running");
-  return schedule;
+  return e;
 }
-function get2(node, id2) {
-  var schedule = node.__transition;
-  if (!schedule || !(schedule = schedule[id2]))
+function W(n, t) {
+  var e = n.__transition;
+  if (!e || !(e = e[t]))
     throw new Error("transition not found");
-  return schedule;
+  return e;
 }
-function create(node, id2, self) {
-  var schedules = node.__transition, tween;
-  schedules[id2] = self;
-  self.timer = timer(schedule, 0, self.time);
-  function schedule(elapsed) {
-    self.state = SCHEDULED;
-    self.timer.restart(start2, self.delay, self.time);
-    if (self.delay <= elapsed)
-      start2(elapsed - self.delay);
+function zo(n, t, e) {
+  var r = n.__transition, i;
+  r[t] = e, e.timer = Vn(o, 0, e.time);
+  function o(h) {
+    e.state = Qe, e.timer.restart(s, e.delay, e.time), e.delay <= h && s(h - e.delay);
   }
-  function start2(elapsed) {
-    var i, j, n, o;
-    if (self.state !== SCHEDULED)
-      return stop();
-    for (i in schedules) {
-      o = schedules[i];
-      if (o.name !== self.name)
+  function s(h) {
+    var l, f, u, y;
+    if (e.state !== Qe)
+      return c();
+    for (l in r)
+      if (y = r[l], y.name === e.name) {
+        if (y.state === Vt)
+          return te(s);
+        y.state === tn ? (y.state = Ut, y.timer.stop(), y.on.call("interrupt", n, n.__data__, y.index, y.group), delete r[l]) : +l < t && (y.state = Ut, y.timer.stop(), y.on.call("cancel", n, n.__data__, y.index, y.group), delete r[l]);
+      }
+    if (te(function() {
+      e.state === Vt && (e.state = tn, e.timer.restart(a, e.delay, e.time), a(h));
+    }), e.state = we, e.on.call("start", n, n.__data__, e.index, e.group), e.state === we) {
+      for (e.state = Vt, i = new Array(u = e.tween.length), l = 0, f = -1; l < u; ++l)
+        (y = e.tween[l].value.call(n, n.__data__, e.index, e.group)) && (i[++f] = y);
+      i.length = f + 1;
+    }
+  }
+  function a(h) {
+    for (var l = h < e.duration ? e.ease.call(null, h / e.duration) : (e.timer.restart(c), e.state = xe, 1), f = -1, u = i.length; ++f < u; )
+      i[f].call(n, l);
+    e.state === xe && (e.on.call("end", n, n.__data__, e.index, e.group), c());
+  }
+  function c() {
+    e.state = Ut, e.timer.stop(), delete r[t];
+    for (var h in r)
+      return;
+    delete n.__transition;
+  }
+}
+function Wt(n, t) {
+  var e = n.__transition, r, i, o = !0, s;
+  if (e) {
+    t = t == null ? null : t + "";
+    for (s in e) {
+      if ((r = e[s]).name !== t) {
+        o = !1;
         continue;
-      if (o.state === STARTED)
-        return timeout_default(start2);
-      if (o.state === RUNNING) {
-        o.state = ENDED;
-        o.timer.stop();
-        o.on.call("interrupt", node, node.__data__, o.index, o.group);
-        delete schedules[i];
-      } else if (+i < id2) {
-        o.state = ENDED;
-        o.timer.stop();
-        o.on.call("cancel", node, node.__data__, o.index, o.group);
-        delete schedules[i];
       }
+      i = r.state > we && r.state < xe, r.state = Ut, r.timer.stop(), r.on.call(i ? "interrupt" : "cancel", n, n.__data__, r.index, r.group), delete e[s];
     }
-    timeout_default(function() {
-      if (self.state === STARTED) {
-        self.state = RUNNING;
-        self.timer.restart(tick, self.delay, self.time);
-        tick(elapsed);
-      }
-    });
-    self.state = STARTING;
-    self.on.call("start", node, node.__data__, self.index, self.group);
-    if (self.state !== STARTING)
-      return;
-    self.state = STARTED;
-    tween = new Array(n = self.tween.length);
-    for (i = 0, j = -1; i < n; ++i) {
-      if (o = self.tween[i].value.call(node, node.__data__, self.index, self.group)) {
-        tween[++j] = o;
-      }
-    }
-    tween.length = j + 1;
-  }
-  function tick(elapsed) {
-    var t = elapsed < self.duration ? self.ease.call(null, elapsed / self.duration) : (self.timer.restart(stop), self.state = ENDING, 1), i = -1, n = tween.length;
-    while (++i < n) {
-      tween[i].call(node, t);
-    }
-    if (self.state === ENDING) {
-      self.on.call("end", node, node.__data__, self.index, self.group);
-      stop();
-    }
-  }
-  function stop() {
-    self.state = ENDED;
-    self.timer.stop();
-    delete schedules[id2];
-    for (var i in schedules)
-      return;
-    delete node.__transition;
+    o && delete n.__transition;
   }
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/interrupt.js
-function interrupt_default(node, name) {
-  var schedules = node.__transition, schedule, active, empty2 = true, i;
-  if (!schedules)
-    return;
-  name = name == null ? null : name + "";
-  for (i in schedules) {
-    if ((schedule = schedules[i]).name !== name) {
-      empty2 = false;
-      continue;
-    }
-    active = schedule.state > STARTING && schedule.state < ENDING;
-    schedule.state = ENDED;
-    schedule.timer.stop();
-    schedule.on.call(active ? "interrupt" : "cancel", node, node.__data__, schedule.index, schedule.group);
-    delete schedules[i];
-  }
-  if (empty2)
-    delete node.__transition;
-}
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/interrupt.js
-function interrupt_default2(name) {
+function No(n) {
   return this.each(function() {
-    interrupt_default(this, name);
+    Wt(this, n);
   });
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/tween.js
-function tweenRemove(id2, name) {
-  var tween0, tween1;
+function Do(n, t) {
+  var e, r;
   return function() {
-    var schedule = set2(this, id2), tween = schedule.tween;
-    if (tween !== tween0) {
-      tween1 = tween0 = tween;
-      for (var i = 0, n = tween1.length; i < n; ++i) {
-        if (tween1[i].name === name) {
-          tween1 = tween1.slice();
-          tween1.splice(i, 1);
+    var i = K(this, n), o = i.tween;
+    if (o !== e) {
+      r = e = o;
+      for (var s = 0, a = r.length; s < a; ++s)
+        if (r[s].name === t) {
+          r = r.slice(), r.splice(s, 1);
           break;
         }
-      }
     }
-    schedule.tween = tween1;
+    i.tween = r;
   };
 }
-function tweenFunction(id2, name, value) {
-  var tween0, tween1;
-  if (typeof value !== "function")
+function Po(n, t, e) {
+  var r, i;
+  if (typeof e != "function")
     throw new Error();
   return function() {
-    var schedule = set2(this, id2), tween = schedule.tween;
-    if (tween !== tween0) {
-      tween1 = (tween0 = tween).slice();
-      for (var t = { name, value }, i = 0, n = tween1.length; i < n; ++i) {
-        if (tween1[i].name === name) {
-          tween1[i] = t;
+    var o = K(this, n), s = o.tween;
+    if (s !== r) {
+      i = (r = s).slice();
+      for (var a = { name: t, value: e }, c = 0, h = i.length; c < h; ++c)
+        if (i[c].name === t) {
+          i[c] = a;
           break;
         }
-      }
-      if (i === n)
-        tween1.push(t);
+      c === h && i.push(a);
     }
-    schedule.tween = tween1;
+    o.tween = i;
   };
 }
-function tween_default(name, value) {
-  var id2 = this._id;
-  name += "";
-  if (arguments.length < 2) {
-    var tween = get2(this.node(), id2).tween;
-    for (var i = 0, n = tween.length, t; i < n; ++i) {
-      if ((t = tween[i]).name === name) {
-        return t.value;
-      }
-    }
+function $o(n, t) {
+  var e = this._id;
+  if (n += "", arguments.length < 2) {
+    for (var r = W(this.node(), e).tween, i = 0, o = r.length, s; i < o; ++i)
+      if ((s = r[i]).name === n)
+        return s.value;
     return null;
   }
-  return this.each((value == null ? tweenRemove : tweenFunction)(id2, name, value));
+  return this.each((t == null ? Do : Po)(e, n, t));
 }
-function tweenValue(transition2, name, value) {
-  var id2 = transition2._id;
-  transition2.each(function() {
-    var schedule = set2(this, id2);
-    (schedule.value || (schedule.value = {}))[name] = value.apply(this, arguments);
-  });
-  return function(node) {
-    return get2(node, id2).value[name];
+function Me(n, t, e) {
+  var r = n._id;
+  return n.each(function() {
+    var i = K(this, r);
+    (i.value || (i.value = {}))[t] = e.apply(this, arguments);
+  }), function(i) {
+    return W(i, r).value[t];
   };
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/interpolate.js
-function interpolate_default(a, b) {
-  var c;
-  return (typeof b === "number" ? number_default : b instanceof color ? rgb_default : (c = color(b)) ? (b = c, rgb_default) : string_default)(a, b);
+function Wn(n, t) {
+  var e;
+  return (typeof t == "number" ? ot : t instanceof kt ? Ge : (e = kt(t)) ? (t = e, Ge) : bo)(n, t);
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/attr.js
-function attrRemove2(name) {
+function Ro(n) {
   return function() {
-    this.removeAttribute(name);
+    this.removeAttribute(n);
   };
 }
-function attrRemoveNS2(fullname) {
+function Lo(n) {
   return function() {
-    this.removeAttributeNS(fullname.space, fullname.local);
+    this.removeAttributeNS(n.space, n.local);
   };
 }
-function attrConstant2(name, interpolate, value1) {
-  var string00, string1 = value1 + "", interpolate0;
+function Ho(n, t, e) {
+  var r, i = e + "", o;
   return function() {
-    var string0 = this.getAttribute(name);
-    return string0 === string1 ? null : string0 === string00 ? interpolate0 : interpolate0 = interpolate(string00 = string0, value1);
+    var s = this.getAttribute(n);
+    return s === i ? null : s === r ? o : o = t(r = s, e);
   };
 }
-function attrConstantNS2(fullname, interpolate, value1) {
-  var string00, string1 = value1 + "", interpolate0;
+function Fo(n, t, e) {
+  var r, i = e + "", o;
   return function() {
-    var string0 = this.getAttributeNS(fullname.space, fullname.local);
-    return string0 === string1 ? null : string0 === string00 ? interpolate0 : interpolate0 = interpolate(string00 = string0, value1);
+    var s = this.getAttributeNS(n.space, n.local);
+    return s === i ? null : s === r ? o : o = t(r = s, e);
   };
 }
-function attrFunction2(name, interpolate, value) {
-  var string00, string10, interpolate0;
+function Xo(n, t, e) {
+  var r, i, o;
   return function() {
-    var string0, value1 = value(this), string1;
-    if (value1 == null)
-      return void this.removeAttribute(name);
-    string0 = this.getAttribute(name);
-    string1 = value1 + "";
-    return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : (string10 = string1, interpolate0 = interpolate(string00 = string0, value1));
+    var s, a = e(this), c;
+    return a == null ? void this.removeAttribute(n) : (s = this.getAttribute(n), c = a + "", s === c ? null : s === r && c === i ? o : (i = c, o = t(r = s, a)));
   };
 }
-function attrFunctionNS2(fullname, interpolate, value) {
-  var string00, string10, interpolate0;
+function Yo(n, t, e) {
+  var r, i, o;
   return function() {
-    var string0, value1 = value(this), string1;
-    if (value1 == null)
-      return void this.removeAttributeNS(fullname.space, fullname.local);
-    string0 = this.getAttributeNS(fullname.space, fullname.local);
-    string1 = value1 + "";
-    return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : (string10 = string1, interpolate0 = interpolate(string00 = string0, value1));
+    var s, a = e(this), c;
+    return a == null ? void this.removeAttributeNS(n.space, n.local) : (s = this.getAttributeNS(n.space, n.local), c = a + "", s === c ? null : s === r && c === i ? o : (i = c, o = t(r = s, a)));
   };
 }
-function attr_default2(name, value) {
-  var fullname = namespace_default(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate_default;
-  return this.attrTween(name, typeof value === "function" ? (fullname.local ? attrFunctionNS2 : attrFunction2)(fullname, i, tweenValue(this, "attr." + name, value)) : value == null ? (fullname.local ? attrRemoveNS2 : attrRemove2)(fullname) : (fullname.local ? attrConstantNS2 : attrConstant2)(fullname, i, value));
+function Bo(n, t) {
+  var e = ne(n), r = e === "transform" ? vo : Wn;
+  return this.attrTween(n, typeof t == "function" ? (e.local ? Yo : Xo)(e, r, Me(this, "attr." + n, t)) : t == null ? (e.local ? Lo : Ro)(e) : (e.local ? Fo : Ho)(e, r, t));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/attrTween.js
-function attrInterpolate(name, i) {
-  return function(t) {
-    this.setAttribute(name, i.call(this, t));
+function Vo(n, t) {
+  return function(e) {
+    this.setAttribute(n, t.call(this, e));
   };
 }
-function attrInterpolateNS(fullname, i) {
-  return function(t) {
-    this.setAttributeNS(fullname.space, fullname.local, i.call(this, t));
+function Uo(n, t) {
+  return function(e) {
+    this.setAttributeNS(n.space, n.local, t.call(this, e));
   };
 }
-function attrTweenNS(fullname, value) {
-  var t0, i0;
-  function tween() {
-    var i = value.apply(this, arguments);
-    if (i !== i0)
-      t0 = (i0 = i) && attrInterpolateNS(fullname, i);
-    return t0;
+function Wo(n, t) {
+  var e, r;
+  function i() {
+    var o = t.apply(this, arguments);
+    return o !== r && (e = (r = o) && Uo(n, o)), e;
   }
-  tween._value = value;
-  return tween;
+  return i._value = t, i;
 }
-function attrTween(name, value) {
-  var t0, i0;
-  function tween() {
-    var i = value.apply(this, arguments);
-    if (i !== i0)
-      t0 = (i0 = i) && attrInterpolate(name, i);
-    return t0;
+function qo(n, t) {
+  var e, r;
+  function i() {
+    var o = t.apply(this, arguments);
+    return o !== r && (e = (r = o) && Vo(n, o)), e;
   }
-  tween._value = value;
-  return tween;
+  return i._value = t, i;
 }
-function attrTween_default(name, value) {
-  var key = "attr." + name;
+function Go(n, t) {
+  var e = "attr." + n;
   if (arguments.length < 2)
-    return (key = this.tween(key)) && key._value;
-  if (value == null)
-    return this.tween(key, null);
-  if (typeof value !== "function")
+    return (e = this.tween(e)) && e._value;
+  if (t == null)
+    return this.tween(e, null);
+  if (typeof t != "function")
     throw new Error();
-  var fullname = namespace_default(name);
-  return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
+  var r = ne(n);
+  return this.tween(e, (r.local ? Wo : qo)(r, t));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/delay.js
-function delayFunction(id2, value) {
+function Ko(n, t) {
   return function() {
-    init(this, id2).delay = +value.apply(this, arguments);
+    Ie(this, n).delay = +t.apply(this, arguments);
   };
 }
-function delayConstant(id2, value) {
-  return value = +value, function() {
-    init(this, id2).delay = value;
+function Zo(n, t) {
+  return t = +t, function() {
+    Ie(this, n).delay = t;
   };
 }
-function delay_default(value) {
-  var id2 = this._id;
-  return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id2, value)) : get2(this.node(), id2).delay;
+function Jo(n) {
+  var t = this._id;
+  return arguments.length ? this.each((typeof n == "function" ? Ko : Zo)(t, n)) : W(this.node(), t).delay;
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/duration.js
-function durationFunction(id2, value) {
+function Qo(n, t) {
   return function() {
-    set2(this, id2).duration = +value.apply(this, arguments);
+    K(this, n).duration = +t.apply(this, arguments);
   };
 }
-function durationConstant(id2, value) {
-  return value = +value, function() {
-    set2(this, id2).duration = value;
+function ts(n, t) {
+  return t = +t, function() {
+    K(this, n).duration = t;
   };
 }
-function duration_default(value) {
-  var id2 = this._id;
-  return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id2, value)) : get2(this.node(), id2).duration;
+function es(n) {
+  var t = this._id;
+  return arguments.length ? this.each((typeof n == "function" ? Qo : ts)(t, n)) : W(this.node(), t).duration;
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/ease.js
-function easeConstant(id2, value) {
-  if (typeof value !== "function")
+function ns(n, t) {
+  if (typeof t != "function")
     throw new Error();
   return function() {
-    set2(this, id2).ease = value;
+    K(this, n).ease = t;
   };
 }
-function ease_default(value) {
-  var id2 = this._id;
-  return arguments.length ? this.each(easeConstant(id2, value)) : get2(this.node(), id2).ease;
+function rs(n) {
+  var t = this._id;
+  return arguments.length ? this.each(ns(t, n)) : W(this.node(), t).ease;
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/easeVarying.js
-function easeVarying(id2, value) {
+function is(n, t) {
   return function() {
-    var v = value.apply(this, arguments);
-    if (typeof v !== "function")
+    var e = t.apply(this, arguments);
+    if (typeof e != "function")
       throw new Error();
-    set2(this, id2).ease = v;
+    K(this, n).ease = e;
   };
 }
-function easeVarying_default(value) {
-  if (typeof value !== "function")
+function os(n) {
+  if (typeof n != "function")
     throw new Error();
-  return this.each(easeVarying(this._id, value));
+  return this.each(is(this._id, n));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/filter.js
-function filter_default2(match) {
-  if (typeof match !== "function")
-    match = matcher_default(match);
-  for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) {
-      if ((node = group[i]) && match.call(node, node.__data__, i, group)) {
-        subgroup.push(node);
-      }
-    }
-  }
-  return new Transition(subgroups, this._parents, this._name, this._id);
+function ss(n) {
+  typeof n != "function" && (n = Cn(n));
+  for (var t = this._groups, e = t.length, r = new Array(e), i = 0; i < e; ++i)
+    for (var o = t[i], s = o.length, a = r[i] = [], c, h = 0; h < s; ++h)
+      (c = o[h]) && n.call(c, c.__data__, h, o) && a.push(c);
+  return new rt(r, this._parents, this._name, this._id);
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/merge.js
-function merge_default2(transition2) {
-  if (transition2._id !== this._id)
+function as(n) {
+  if (n._id !== this._id)
     throw new Error();
-  for (var groups0 = this._groups, groups1 = transition2._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
-    for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
-      if (node = group0[i] || group1[i]) {
-        merge[i] = node;
-      }
-    }
-  }
-  for (; j < m0; ++j) {
-    merges[j] = groups0[j];
-  }
-  return new Transition(merges, this._parents, this._name, this._id);
+  for (var t = this._groups, e = n._groups, r = t.length, i = e.length, o = Math.min(r, i), s = new Array(r), a = 0; a < o; ++a)
+    for (var c = t[a], h = e[a], l = c.length, f = s[a] = new Array(l), u, y = 0; y < l; ++y)
+      (u = c[y] || h[y]) && (f[y] = u);
+  for (; a < r; ++a)
+    s[a] = t[a];
+  return new rt(s, this._parents, this._name, this._id);
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/on.js
-function start(name) {
-  return (name + "").trim().split(/^|\s+/).every(function(t) {
-    var i = t.indexOf(".");
-    if (i >= 0)
-      t = t.slice(0, i);
-    return !t || t === "start";
+function cs(n) {
+  return (n + "").trim().split(/^|\s+/).every(function(t) {
+    var e = t.indexOf(".");
+    return e >= 0 && (t = t.slice(0, e)), !t || t === "start";
   });
 }
-function onFunction(id2, name, listener) {
-  var on0, on1, sit = start(name) ? init : set2;
+function hs(n, t, e) {
+  var r, i, o = cs(t) ? Ie : K;
   return function() {
-    var schedule = sit(this, id2), on = schedule.on;
-    if (on !== on0)
-      (on1 = (on0 = on).copy()).on(name, listener);
-    schedule.on = on1;
+    var s = o(this, n), a = s.on;
+    a !== r && (i = (r = a).copy()).on(t, e), s.on = i;
   };
 }
-function on_default2(name, listener) {
-  var id2 = this._id;
-  return arguments.length < 2 ? get2(this.node(), id2).on.on(name) : this.each(onFunction(id2, name, listener));
+function ls(n, t) {
+  var e = this._id;
+  return arguments.length < 2 ? W(this.node(), e).on.on(n) : this.each(hs(e, n, t));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/remove.js
-function removeFunction(id2) {
+function ds(n) {
   return function() {
-    var parent = this.parentNode;
-    for (var i in this.__transition)
-      if (+i !== id2)
+    var t = this.parentNode;
+    for (var e in this.__transition)
+      if (+e !== n)
         return;
-    if (parent)
-      parent.removeChild(this);
+    t && t.removeChild(this);
   };
 }
-function remove_default2() {
-  return this.on("end.remove", removeFunction(this._id));
+function us() {
+  return this.on("end.remove", ds(this._id));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/select.js
-function select_default3(select) {
-  var name = this._name, id2 = this._id;
-  if (typeof select !== "function")
-    select = selector_default(select);
-  for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) {
-      if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
-        if ("__data__" in node)
-          subnode.__data__ = node.__data__;
-        subgroup[i] = subnode;
-        schedule_default(subgroup[i], name, id2, i, subgroup, get2(node, id2));
+function fs(n) {
+  var t = this._name, e = this._id;
+  typeof n != "function" && (n = Ce(n));
+  for (var r = this._groups, i = r.length, o = new Array(i), s = 0; s < i; ++s)
+    for (var a = r[s], c = a.length, h = o[s] = new Array(c), l, f, u = 0; u < c; ++u)
+      (l = a[u]) && (f = n.call(l, l.__data__, u, a)) && ("__data__" in l && (f.__data__ = l.__data__), h[u] = f, ie(h[u], t, e, u, h, W(l, e)));
+  return new rt(o, this._parents, t, e);
+}
+function gs(n) {
+  var t = this._name, e = this._id;
+  typeof n != "function" && (n = Sn(n));
+  for (var r = this._groups, i = r.length, o = [], s = [], a = 0; a < i; ++a)
+    for (var c = r[a], h = c.length, l, f = 0; f < h; ++f)
+      if (l = c[f]) {
+        for (var u = n.call(l, l.__data__, f, c), y, O = W(l, e), j = 0, M = u.length; j < M; ++j)
+          (y = u[j]) && ie(y, t, e, j, u, O);
+        o.push(u), s.push(l);
       }
-    }
+  return new rt(o, s, t, e);
+}
+var ps = It.prototype.constructor;
+function ys() {
+  return new ps(this._groups, this._parents);
+}
+function ms(n, t) {
+  var e, r, i;
+  return function() {
+    var o = mt(this, n), s = (this.style.removeProperty(n), mt(this, n));
+    return o === s ? null : o === e && s === r ? i : i = t(e = o, r = s);
+  };
+}
+function qn(n) {
+  return function() {
+    this.style.removeProperty(n);
+  };
+}
+function bs(n, t, e) {
+  var r, i = e + "", o;
+  return function() {
+    var s = mt(this, n);
+    return s === i ? null : s === r ? o : o = t(r = s, e);
+  };
+}
+function ws(n, t, e) {
+  var r, i, o;
+  return function() {
+    var s = mt(this, n), a = e(this), c = a + "";
+    return a == null && (c = a = (this.style.removeProperty(n), mt(this, n))), s === c ? null : s === r && c === i ? o : (i = c, o = t(r = s, a));
+  };
+}
+function xs(n, t) {
+  var e, r, i, o = "style." + t, s = "end." + o, a;
+  return function() {
+    var c = K(this, n), h = c.on, l = c.value[o] == null ? a || (a = qn(t)) : void 0;
+    (h !== e || i !== l) && (r = (e = h).copy()).on(s, i = l), c.on = r;
+  };
+}
+function _s(n, t, e) {
+  var r = (n += "") == "transform" ? _o : Wn;
+  return t == null ? this.styleTween(n, ms(n, r)).on("end.style." + n, qn(n)) : typeof t == "function" ? this.styleTween(n, ws(n, r, Me(this, "style." + n, t))).each(xs(this._id, n)) : this.styleTween(n, bs(n, r, t), e).on("end.style." + n, null);
+}
+function vs(n, t, e) {
+  return function(r) {
+    this.style.setProperty(n, t.call(this, r), e);
+  };
+}
+function Os(n, t, e) {
+  var r, i;
+  function o() {
+    var s = t.apply(this, arguments);
+    return s !== i && (r = (i = s) && vs(n, s, e)), r;
   }
-  return new Transition(subgroups, this._parents, name, id2);
+  return o._value = t, o;
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/selectAll.js
-function selectAll_default2(select) {
-  var name = this._name, id2 = this._id;
-  if (typeof select !== "function")
-    select = selectorAll_default(select);
-  for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
-      if (node = group[i]) {
-        for (var children2 = select.call(node, node.__data__, i, group), child, inherit2 = get2(node, id2), k = 0, l = children2.length; k < l; ++k) {
-          if (child = children2[k]) {
-            schedule_default(child, name, id2, k, children2, inherit2);
-          }
-        }
-        subgroups.push(children2);
-        parents.push(node);
-      }
-    }
-  }
-  return new Transition(subgroups, parents, name, id2);
-}
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/selection.js
-var Selection2 = selection_default.prototype.constructor;
-function selection_default2() {
-  return new Selection2(this._groups, this._parents);
-}
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/style.js
-function styleNull(name, interpolate) {
-  var string00, string10, interpolate0;
-  return function() {
-    var string0 = styleValue(this, name), string1 = (this.style.removeProperty(name), styleValue(this, name));
-    return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : interpolate0 = interpolate(string00 = string0, string10 = string1);
-  };
-}
-function styleRemove2(name) {
-  return function() {
-    this.style.removeProperty(name);
-  };
-}
-function styleConstant2(name, interpolate, value1) {
-  var string00, string1 = value1 + "", interpolate0;
-  return function() {
-    var string0 = styleValue(this, name);
-    return string0 === string1 ? null : string0 === string00 ? interpolate0 : interpolate0 = interpolate(string00 = string0, value1);
-  };
-}
-function styleFunction2(name, interpolate, value) {
-  var string00, string10, interpolate0;
-  return function() {
-    var string0 = styleValue(this, name), value1 = value(this), string1 = value1 + "";
-    if (value1 == null)
-      string1 = value1 = (this.style.removeProperty(name), styleValue(this, name));
-    return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : (string10 = string1, interpolate0 = interpolate(string00 = string0, value1));
-  };
-}
-function styleMaybeRemove(id2, name) {
-  var on0, on1, listener0, key = "style." + name, event = "end." + key, remove2;
-  return function() {
-    var schedule = set2(this, id2), on = schedule.on, listener = schedule.value[key] == null ? remove2 || (remove2 = styleRemove2(name)) : void 0;
-    if (on !== on0 || listener0 !== listener)
-      (on1 = (on0 = on).copy()).on(event, listener0 = listener);
-    schedule.on = on1;
-  };
-}
-function style_default2(name, value, priority) {
-  var i = (name += "") === "transform" ? interpolateTransformCss : interpolate_default;
-  return value == null ? this.styleTween(name, styleNull(name, i)).on("end.style." + name, styleRemove2(name)) : typeof value === "function" ? this.styleTween(name, styleFunction2(name, i, tweenValue(this, "style." + name, value))).each(styleMaybeRemove(this._id, name)) : this.styleTween(name, styleConstant2(name, i, value), priority).on("end.style." + name, null);
-}
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/styleTween.js
-function styleInterpolate(name, i, priority) {
-  return function(t) {
-    this.style.setProperty(name, i.call(this, t), priority);
-  };
-}
-function styleTween(name, value, priority) {
-  var t, i0;
-  function tween() {
-    var i = value.apply(this, arguments);
-    if (i !== i0)
-      t = (i0 = i) && styleInterpolate(name, i, priority);
-    return t;
-  }
-  tween._value = value;
-  return tween;
-}
-function styleTween_default(name, value, priority) {
-  var key = "style." + (name += "");
+function Ss(n, t, e) {
+  var r = "style." + (n += "");
   if (arguments.length < 2)
-    return (key = this.tween(key)) && key._value;
-  if (value == null)
-    return this.tween(key, null);
-  if (typeof value !== "function")
+    return (r = this.tween(r)) && r._value;
+  if (t == null)
+    return this.tween(r, null);
+  if (typeof t != "function")
     throw new Error();
-  return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
+  return this.tween(r, Os(n, t, e ?? ""));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/text.js
-function textConstant2(value) {
+function Cs(n) {
   return function() {
-    this.textContent = value;
+    this.textContent = n;
   };
 }
-function textFunction2(value) {
+function js(n) {
   return function() {
-    var value1 = value(this);
-    this.textContent = value1 == null ? "" : value1;
+    var t = n(this);
+    this.textContent = t ?? "";
   };
 }
-function text_default2(value) {
-  return this.tween("text", typeof value === "function" ? textFunction2(tweenValue(this, "text", value)) : textConstant2(value == null ? "" : value + ""));
+function ks(n) {
+  return this.tween("text", typeof n == "function" ? js(Me(this, "text", n)) : Cs(n == null ? "" : n + ""));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/textTween.js
-function textInterpolate(i) {
+function Es(n) {
   return function(t) {
-    this.textContent = i.call(this, t);
+    this.textContent = n.call(this, t);
   };
 }
-function textTween(value) {
-  var t0, i0;
-  function tween() {
-    var i = value.apply(this, arguments);
-    if (i !== i0)
-      t0 = (i0 = i) && textInterpolate(i);
-    return t0;
+function Is(n) {
+  var t, e;
+  function r() {
+    var i = n.apply(this, arguments);
+    return i !== e && (t = (e = i) && Es(i)), t;
   }
-  tween._value = value;
-  return tween;
+  return r._value = n, r;
 }
-function textTween_default(value) {
-  var key = "text";
+function Ms(n) {
+  var t = "text";
   if (arguments.length < 1)
-    return (key = this.tween(key)) && key._value;
-  if (value == null)
-    return this.tween(key, null);
-  if (typeof value !== "function")
+    return (t = this.tween(t)) && t._value;
+  if (n == null)
+    return this.tween(t, null);
+  if (typeof n != "function")
     throw new Error();
-  return this.tween(key, textTween(value));
+  return this.tween(t, Is(n));
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/transition.js
-function transition_default() {
-  var name = this._name, id0 = this._id, id1 = newId();
-  for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
-      if (node = group[i]) {
-        var inherit2 = get2(node, id0);
-        schedule_default(node, name, id1, i, group, {
-          time: inherit2.time + inherit2.delay + inherit2.duration,
+function Ts() {
+  for (var n = this._name, t = this._id, e = Gn(), r = this._groups, i = r.length, o = 0; o < i; ++o)
+    for (var s = r[o], a = s.length, c, h = 0; h < a; ++h)
+      if (c = s[h]) {
+        var l = W(c, t);
+        ie(c, n, e, h, s, {
+          time: l.time + l.delay + l.duration,
           delay: 0,
-          duration: inherit2.duration,
-          ease: inherit2.ease
+          duration: l.duration,
+          ease: l.ease
         });
       }
-    }
-  }
-  return new Transition(groups, this._parents, name, id1);
+  return new rt(r, this._parents, n, e);
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/end.js
-function end_default() {
-  var on0, on1, that = this, id2 = that._id, size = that.size();
-  return new Promise(function(resolve, reject) {
-    var cancel = { value: reject }, end = { value: function() {
-      if (--size === 0)
-        resolve();
+function As() {
+  var n, t, e = this, r = e._id, i = e.size();
+  return new Promise(function(o, s) {
+    var a = { value: s }, c = { value: function() {
+      --i === 0 && o();
     } };
-    that.each(function() {
-      var schedule = set2(this, id2), on = schedule.on;
-      if (on !== on0) {
-        on1 = (on0 = on).copy();
-        on1._.cancel.push(cancel);
-        on1._.interrupt.push(cancel);
-        on1._.end.push(end);
-      }
-      schedule.on = on1;
-    });
-    if (size === 0)
-      resolve();
+    e.each(function() {
+      var h = K(this, r), l = h.on;
+      l !== n && (t = (n = l).copy(), t._.cancel.push(a), t._.interrupt.push(a), t._.end.push(c)), h.on = t;
+    }), i === 0 && o();
   });
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/transition/index.js
-var id = 0;
-function Transition(groups, parents, name, id2) {
-  this._groups = groups;
-  this._parents = parents;
-  this._name = name;
-  this._id = id2;
+var zs = 0;
+function rt(n, t, e, r) {
+  this._groups = n, this._parents = t, this._name = e, this._id = r;
 }
-function transition(name) {
-  return selection_default().transition(name);
+function Gn() {
+  return ++zs;
 }
-function newId() {
-  return ++id;
-}
-var selection_prototype = selection_default.prototype;
-Transition.prototype = transition.prototype = {
-  constructor: Transition,
-  select: select_default3,
-  selectAll: selectAll_default2,
-  selectChild: selection_prototype.selectChild,
-  selectChildren: selection_prototype.selectChildren,
-  filter: filter_default2,
-  merge: merge_default2,
-  selection: selection_default2,
-  transition: transition_default,
-  call: selection_prototype.call,
-  nodes: selection_prototype.nodes,
-  node: selection_prototype.node,
-  size: selection_prototype.size,
-  empty: selection_prototype.empty,
-  each: selection_prototype.each,
-  on: on_default2,
-  attr: attr_default2,
-  attrTween: attrTween_default,
-  style: style_default2,
-  styleTween: styleTween_default,
-  text: text_default2,
-  textTween: textTween_default,
-  remove: remove_default2,
-  tween: tween_default,
-  delay: delay_default,
-  duration: duration_default,
-  ease: ease_default,
-  easeVarying: easeVarying_default,
-  end: end_default,
-  [Symbol.iterator]: selection_prototype[Symbol.iterator]
+var Q = It.prototype;
+rt.prototype = {
+  constructor: rt,
+  select: fs,
+  selectAll: gs,
+  selectChild: Q.selectChild,
+  selectChildren: Q.selectChildren,
+  filter: ss,
+  merge: as,
+  selection: ys,
+  transition: Ts,
+  call: Q.call,
+  nodes: Q.nodes,
+  node: Q.node,
+  size: Q.size,
+  empty: Q.empty,
+  each: Q.each,
+  on: ls,
+  attr: Bo,
+  attrTween: Go,
+  style: _s,
+  styleTween: Ss,
+  text: ks,
+  textTween: Ms,
+  remove: us,
+  tween: $o,
+  delay: Jo,
+  duration: es,
+  ease: rs,
+  easeVarying: os,
+  end: As,
+  [Symbol.iterator]: Q[Symbol.iterator]
 };
-
-// ../../node_modules/.pnpm/d3-ease@3.0.1/node_modules/d3-ease/src/cubic.js
-function cubicInOut(t) {
-  return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
+function Ns(n) {
+  return ((n *= 2) <= 1 ? n * n * n : (n -= 2) * n * n + 2) / 2;
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/transition.js
-var defaultTiming = {
+var Ds = {
   time: null,
   // Set on use.
   delay: 0,
   duration: 250,
-  ease: cubicInOut
+  ease: Ns
 };
-function inherit(node, id2) {
-  var timing;
-  while (!(timing = node.__transition) || !(timing = timing[id2])) {
-    if (!(node = node.parentNode)) {
-      throw new Error(`transition ${id2} not found`);
-    }
-  }
-  return timing;
+function Ps(n, t) {
+  for (var e; !(e = n.__transition) || !(e = e[t]); )
+    if (!(n = n.parentNode))
+      throw new Error(`transition ${t} not found`);
+  return e;
 }
-function transition_default2(name) {
-  var id2, timing;
-  if (name instanceof Transition) {
-    id2 = name._id, name = name._name;
-  } else {
-    id2 = newId(), (timing = defaultTiming).time = now(), name = name == null ? null : name + "";
-  }
-  for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
-    for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
-      if (node = group[i]) {
-        schedule_default(node, name, id2, i, group, timing || inherit(node, id2));
-      }
-    }
-  }
-  return new Transition(groups, this._parents, name, id2);
+function $s(n) {
+  var t, e;
+  n instanceof rt ? (t = n._id, n = n._name) : (t = Gn(), (e = Ds).time = Ee(), n = n == null ? null : n + "");
+  for (var r = this._groups, i = r.length, o = 0; o < i; ++o)
+    for (var s = r[o], a = s.length, c, h = 0; h < a; ++h)
+      (c = s[h]) && ie(c, n, t, h, s, e || Ps(c, t));
+  return new rt(r, this._parents, n, t);
 }
-
-// ../../node_modules/.pnpm/d3-transition@3.0.1_d3-selection@3.0.0/node_modules/d3-transition/src/selection/index.js
-selection_default.prototype.interrupt = interrupt_default2;
-selection_default.prototype.transition = transition_default2;
-
-// ../../node_modules/.pnpm/d3-brush@3.0.0/node_modules/d3-brush/src/brush.js
-var { abs, max, min } = Math;
-function number1(e) {
-  return [+e[0], +e[1]];
-}
-function number2(e) {
-  return [number1(e[0]), number1(e[1])];
-}
-var X = {
-  name: "x",
-  handles: ["w", "e"].map(type),
-  input: function(x, e) {
-    return x == null ? null : [[+x[0], e[0][1]], [+x[1], e[1][1]]];
-  },
-  output: function(xy) {
-    return xy && [xy[0][0], xy[1][0]];
-  }
-};
-var Y = {
-  name: "y",
-  handles: ["n", "s"].map(type),
-  input: function(y, e) {
-    return y == null ? null : [[e[0][0], +y[0]], [e[1][0], +y[1]]];
-  },
-  output: function(xy) {
-    return xy && [xy[0][1], xy[1][1]];
-  }
-};
-var XY = {
-  name: "xy",
-  handles: ["n", "w", "e", "s", "nw", "ne", "sw", "se"].map(type),
-  input: function(xy) {
-    return xy == null ? null : number2(xy);
-  },
-  output: function(xy) {
-    return xy;
-  }
-};
-function type(t) {
-  return { type: t };
-}
-
-// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/constant.js
-var constant_default5 = (x) => () => x;
-
-// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/event.js
-function ZoomEvent(type2, {
-  sourceEvent,
-  target,
-  transform: transform2,
-  dispatch: dispatch2
+It.prototype.interrupt = No;
+It.prototype.transition = $s;
+const $t = (n) => () => n;
+function Rs(n, {
+  sourceEvent: t,
+  target: e,
+  transform: r,
+  dispatch: i
 }) {
   Object.defineProperties(this, {
-    type: { value: type2, enumerable: true, configurable: true },
-    sourceEvent: { value: sourceEvent, enumerable: true, configurable: true },
-    target: { value: target, enumerable: true, configurable: true },
-    transform: { value: transform2, enumerable: true, configurable: true },
-    _: { value: dispatch2 }
+    type: { value: n, enumerable: !0, configurable: !0 },
+    sourceEvent: { value: t, enumerable: !0, configurable: !0 },
+    target: { value: e, enumerable: !0, configurable: !0 },
+    transform: { value: r, enumerable: !0, configurable: !0 },
+    _: { value: i }
   });
 }
-
-// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/transform.js
-function Transform(k, x, y) {
-  this.k = k;
-  this.x = x;
-  this.y = y;
+function nt(n, t, e) {
+  this.k = n, this.x = t, this.y = e;
 }
-Transform.prototype = {
-  constructor: Transform,
-  scale: function(k) {
-    return k === 1 ? this : new Transform(this.k * k, this.x, this.y);
+nt.prototype = {
+  constructor: nt,
+  scale: function(n) {
+    return n === 1 ? this : new nt(this.k * n, this.x, this.y);
   },
-  translate: function(x, y) {
-    return x === 0 & y === 0 ? this : new Transform(this.k, this.x + this.k * x, this.y + this.k * y);
+  translate: function(n, t) {
+    return n === 0 & t === 0 ? this : new nt(this.k, this.x + this.k * n, this.y + this.k * t);
   },
-  apply: function(point) {
-    return [point[0] * this.k + this.x, point[1] * this.k + this.y];
+  apply: function(n) {
+    return [n[0] * this.k + this.x, n[1] * this.k + this.y];
   },
-  applyX: function(x) {
-    return x * this.k + this.x;
+  applyX: function(n) {
+    return n * this.k + this.x;
   },
-  applyY: function(y) {
-    return y * this.k + this.y;
+  applyY: function(n) {
+    return n * this.k + this.y;
   },
-  invert: function(location) {
-    return [(location[0] - this.x) / this.k, (location[1] - this.y) / this.k];
+  invert: function(n) {
+    return [(n[0] - this.x) / this.k, (n[1] - this.y) / this.k];
   },
-  invertX: function(x) {
-    return (x - this.x) / this.k;
+  invertX: function(n) {
+    return (n - this.x) / this.k;
   },
-  invertY: function(y) {
-    return (y - this.y) / this.k;
+  invertY: function(n) {
+    return (n - this.y) / this.k;
   },
-  rescaleX: function(x) {
-    return x.copy().domain(x.range().map(this.invertX, this).map(x.invert, x));
+  rescaleX: function(n) {
+    return n.copy().domain(n.range().map(this.invertX, this).map(n.invert, n));
   },
-  rescaleY: function(y) {
-    return y.copy().domain(y.range().map(this.invertY, this).map(y.invert, y));
+  rescaleY: function(n) {
+    return n.copy().domain(n.range().map(this.invertY, this).map(n.invert, n));
   },
   toString: function() {
     return "translate(" + this.x + "," + this.y + ") scale(" + this.k + ")";
   }
 };
-var identity2 = new Transform(1, 0, 0);
-transform.prototype = Transform.prototype;
-function transform(node) {
-  while (!node.__zoom)
-    if (!(node = node.parentNode))
-      return identity2;
-  return node.__zoom;
+var Te = new nt(1, 0, 0);
+Kn.prototype = nt.prototype;
+function Kn(n) {
+  for (; !n.__zoom; )
+    if (!(n = n.parentNode))
+      return Te;
+  return n.__zoom;
 }
-
-// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/noevent.js
-function nopropagation3(event) {
-  event.stopImmediatePropagation();
+function de(n) {
+  n.stopImmediatePropagation();
 }
-function noevent_default3(event) {
-  event.preventDefault();
-  event.stopImmediatePropagation();
+function _t(n) {
+  n.preventDefault(), n.stopImmediatePropagation();
 }
-
-// ../../node_modules/.pnpm/d3-zoom@3.0.0/node_modules/d3-zoom/src/zoom.js
-function defaultFilter2(event) {
-  return (!event.ctrlKey || event.type === "wheel") && !event.button;
+function Ls(n) {
+  return (!n.ctrlKey || n.type === "wheel") && !n.button;
 }
-function defaultExtent() {
-  var e = this;
-  if (e instanceof SVGElement) {
-    e = e.ownerSVGElement || e;
-    if (e.hasAttribute("viewBox")) {
-      e = e.viewBox.baseVal;
-      return [[e.x, e.y], [e.x + e.width, e.y + e.height]];
-    }
-    return [[0, 0], [e.width.baseVal.value, e.height.baseVal.value]];
-  }
-  return [[0, 0], [e.clientWidth, e.clientHeight]];
+function Hs() {
+  var n = this;
+  return n instanceof SVGElement ? (n = n.ownerSVGElement || n, n.hasAttribute("viewBox") ? (n = n.viewBox.baseVal, [[n.x, n.y], [n.x + n.width, n.y + n.height]]) : [[0, 0], [n.width.baseVal.value, n.height.baseVal.value]]) : [[0, 0], [n.clientWidth, n.clientHeight]];
 }
-function defaultTransform() {
-  return this.__zoom || identity2;
+function en() {
+  return this.__zoom || Te;
 }
-function defaultWheelDelta(event) {
-  return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 2e-3) * (event.ctrlKey ? 10 : 1);
+function Fs(n) {
+  return -n.deltaY * (n.deltaMode === 1 ? 0.05 : n.deltaMode ? 1 : 2e-3) * (n.ctrlKey ? 10 : 1);
 }
-function defaultTouchable2() {
+function Xs() {
   return navigator.maxTouchPoints || "ontouchstart" in this;
 }
-function defaultConstrain(transform2, extent, translateExtent) {
-  var dx0 = transform2.invertX(extent[0][0]) - translateExtent[0][0], dx1 = transform2.invertX(extent[1][0]) - translateExtent[1][0], dy0 = transform2.invertY(extent[0][1]) - translateExtent[0][1], dy1 = transform2.invertY(extent[1][1]) - translateExtent[1][1];
-  return transform2.translate(
-    dx1 > dx0 ? (dx0 + dx1) / 2 : Math.min(0, dx0) || Math.max(0, dx1),
-    dy1 > dy0 ? (dy0 + dy1) / 2 : Math.min(0, dy0) || Math.max(0, dy1)
+function Ys(n, t, e) {
+  var r = n.invertX(t[0][0]) - e[0][0], i = n.invertX(t[1][0]) - e[1][0], o = n.invertY(t[0][1]) - e[0][1], s = n.invertY(t[1][1]) - e[1][1];
+  return n.translate(
+    i > r ? (r + i) / 2 : Math.min(0, r) || Math.max(0, i),
+    s > o ? (o + s) / 2 : Math.min(0, o) || Math.max(0, s)
   );
 }
-function zoom_default2() {
-  var filter2 = defaultFilter2, extent = defaultExtent, constrain = defaultConstrain, wheelDelta = defaultWheelDelta, touchable = defaultTouchable2, scaleExtent = [0, Infinity], translateExtent = [[-Infinity, -Infinity], [Infinity, Infinity]], duration = 250, interpolate = zoom_default, listeners = dispatch_default("start", "zoom", "end"), touchstarting, touchfirst, touchending, touchDelay = 500, wheelDelay = 150, clickDistance2 = 0, tapDistance = 10;
-  function zoom(selection2) {
-    selection2.property("__zoom", defaultTransform).on("wheel.zoom", wheeled, { passive: false }).on("mousedown.zoom", mousedowned).on("dblclick.zoom", dblclicked).filter(touchable).on("touchstart.zoom", touchstarted).on("touchmove.zoom", touchmoved).on("touchend.zoom touchcancel.zoom", touchended).style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
+function Bs() {
+  var n = Ls, t = Hs, e = Ys, r = Fs, i = Xs, o = [0, 1 / 0], s = [[-1 / 0, -1 / 0], [1 / 0, 1 / 0]], a = 250, c = jo, h = ee("start", "zoom", "end"), l, f, u, y = 500, O = 150, j = 0, M = 10;
+  function w(d) {
+    d.property("__zoom", en).on("wheel.zoom", z, { passive: !1 }).on("mousedown.zoom", R).on("dblclick.zoom", F).filter(i).on("touchstart.zoom", H).on("touchmove.zoom", Tt).on("touchend.zoom touchcancel.zoom", At).style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
   }
-  zoom.transform = function(collection, transform2, point, event) {
-    var selection2 = collection.selection ? collection.selection() : collection;
-    selection2.property("__zoom", defaultTransform);
-    if (collection !== selection2) {
-      schedule(collection, transform2, point, event);
-    } else {
-      selection2.interrupt().each(function() {
-        gesture(this, arguments).event(event).start().zoom(null, typeof transform2 === "function" ? transform2.apply(this, arguments) : transform2).end();
-      });
-    }
+  w.transform = function(d, m, g, b) {
+    var x = d.selection ? d.selection() : d;
+    x.property("__zoom", en), d !== x ? S(d, m, g, b) : x.interrupt().each(function() {
+      C(this, arguments).event(b).start().zoom(null, typeof m == "function" ? m.apply(this, arguments) : m).end();
+    });
+  }, w.scaleBy = function(d, m, g, b) {
+    w.scaleTo(d, function() {
+      var x = this.__zoom.k, _ = typeof m == "function" ? m.apply(this, arguments) : m;
+      return x * _;
+    }, g, b);
+  }, w.scaleTo = function(d, m, g, b) {
+    w.transform(d, function() {
+      var x = t.apply(this, arguments), _ = this.__zoom, v = g == null ? p(x) : typeof g == "function" ? g.apply(this, arguments) : g, k = _.invert(v), I = typeof m == "function" ? m.apply(this, arguments) : m;
+      return e(A(P(_, I), v, k), x, s);
+    }, g, b);
+  }, w.translateBy = function(d, m, g, b) {
+    w.transform(d, function() {
+      return e(this.__zoom.translate(
+        typeof m == "function" ? m.apply(this, arguments) : m,
+        typeof g == "function" ? g.apply(this, arguments) : g
+      ), t.apply(this, arguments), s);
+    }, null, b);
+  }, w.translateTo = function(d, m, g, b, x) {
+    w.transform(d, function() {
+      var _ = t.apply(this, arguments), v = this.__zoom, k = b == null ? p(_) : typeof b == "function" ? b.apply(this, arguments) : b;
+      return e(Te.translate(k[0], k[1]).scale(v.k).translate(
+        typeof m == "function" ? -m.apply(this, arguments) : -m,
+        typeof g == "function" ? -g.apply(this, arguments) : -g
+      ), _, s);
+    }, b, x);
   };
-  zoom.scaleBy = function(selection2, k, p, event) {
-    zoom.scaleTo(selection2, function() {
-      var k0 = this.__zoom.k, k1 = typeof k === "function" ? k.apply(this, arguments) : k;
-      return k0 * k1;
-    }, p, event);
-  };
-  zoom.scaleTo = function(selection2, k, p, event) {
-    zoom.transform(selection2, function() {
-      var e = extent.apply(this, arguments), t0 = this.__zoom, p0 = p == null ? centroid(e) : typeof p === "function" ? p.apply(this, arguments) : p, p1 = t0.invert(p0), k1 = typeof k === "function" ? k.apply(this, arguments) : k;
-      return constrain(translate(scale(t0, k1), p0, p1), e, translateExtent);
-    }, p, event);
-  };
-  zoom.translateBy = function(selection2, x, y, event) {
-    zoom.transform(selection2, function() {
-      return constrain(this.__zoom.translate(
-        typeof x === "function" ? x.apply(this, arguments) : x,
-        typeof y === "function" ? y.apply(this, arguments) : y
-      ), extent.apply(this, arguments), translateExtent);
-    }, null, event);
-  };
-  zoom.translateTo = function(selection2, x, y, p, event) {
-    zoom.transform(selection2, function() {
-      var e = extent.apply(this, arguments), t = this.__zoom, p0 = p == null ? centroid(e) : typeof p === "function" ? p.apply(this, arguments) : p;
-      return constrain(identity2.translate(p0[0], p0[1]).scale(t.k).translate(
-        typeof x === "function" ? -x.apply(this, arguments) : -x,
-        typeof y === "function" ? -y.apply(this, arguments) : -y
-      ), e, translateExtent);
-    }, p, event);
-  };
-  function scale(transform2, k) {
-    k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], k));
-    return k === transform2.k ? transform2 : new Transform(k, transform2.x, transform2.y);
+  function P(d, m) {
+    return m = Math.max(o[0], Math.min(o[1], m)), m === d.k ? d : new nt(m, d.x, d.y);
   }
-  function translate(transform2, p0, p1) {
-    var x = p0[0] - p1[0] * transform2.k, y = p0[1] - p1[1] * transform2.k;
-    return x === transform2.x && y === transform2.y ? transform2 : new Transform(transform2.k, x, y);
+  function A(d, m, g) {
+    var b = m[0] - g[0] * d.k, x = m[1] - g[1] * d.k;
+    return b === d.x && x === d.y ? d : new nt(d.k, b, x);
   }
-  function centroid(extent2) {
-    return [(+extent2[0][0] + +extent2[1][0]) / 2, (+extent2[0][1] + +extent2[1][1]) / 2];
+  function p(d) {
+    return [(+d[0][0] + +d[1][0]) / 2, (+d[0][1] + +d[1][1]) / 2];
   }
-  function schedule(transition2, transform2, point, event) {
-    transition2.on("start.zoom", function() {
-      gesture(this, arguments).event(event).start();
+  function S(d, m, g, b) {
+    d.on("start.zoom", function() {
+      C(this, arguments).event(b).start();
     }).on("interrupt.zoom end.zoom", function() {
-      gesture(this, arguments).event(event).end();
+      C(this, arguments).event(b).end();
     }).tween("zoom", function() {
-      var that = this, args = arguments, g = gesture(that, args).event(event), e = extent.apply(that, args), p = point == null ? centroid(e) : typeof point === "function" ? point.apply(that, args) : point, w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]), a = that.__zoom, b = typeof transform2 === "function" ? transform2.apply(that, args) : transform2, i = interpolate(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
-      return function(t) {
-        if (t === 1)
-          t = b;
+      var x = this, _ = arguments, v = C(x, _).event(b), k = t.apply(x, _), I = g == null ? p(k) : typeof g == "function" ? g.apply(x, _) : g, q = Math.max(k[1][0] - k[0][0], k[1][1] - k[0][1]), N = x.__zoom, X = typeof m == "function" ? m.apply(x, _) : m, Z = c(N.invert(I).concat(q / N.k), X.invert(I).concat(q / X.k));
+      return function(Y) {
+        if (Y === 1)
+          Y = X;
         else {
-          var l = i(t), k = w / l[2];
-          t = new Transform(k, p[0] - l[0] * k, p[1] - l[1] * k);
+          var J = Z(Y), ae = q / J[2];
+          Y = new nt(ae, I[0] - J[0] * ae, I[1] - J[1] * ae);
         }
-        g.zoom(null, t);
+        v.zoom(null, Y);
       };
     });
   }
-  function gesture(that, args, clean) {
-    return !clean && that.__zooming || new Gesture(that, args);
+  function C(d, m, g) {
+    return !g && d.__zooming || new E(d, m);
   }
-  function Gesture(that, args) {
-    this.that = that;
-    this.args = args;
-    this.active = 0;
-    this.sourceEvent = null;
-    this.extent = extent.apply(that, args);
-    this.taps = 0;
+  function E(d, m) {
+    this.that = d, this.args = m, this.active = 0, this.sourceEvent = null, this.extent = t.apply(d, m), this.taps = 0;
   }
-  Gesture.prototype = {
-    event: function(event) {
-      if (event)
-        this.sourceEvent = event;
-      return this;
+  E.prototype = {
+    event: function(d) {
+      return d && (this.sourceEvent = d), this;
     },
     start: function() {
-      if (++this.active === 1) {
-        this.that.__zooming = this;
-        this.emit("start");
-      }
-      return this;
+      return ++this.active === 1 && (this.that.__zooming = this, this.emit("start")), this;
     },
-    zoom: function(key, transform2) {
-      if (this.mouse && key !== "mouse")
-        this.mouse[1] = transform2.invert(this.mouse[0]);
-      if (this.touch0 && key !== "touch")
-        this.touch0[1] = transform2.invert(this.touch0[0]);
-      if (this.touch1 && key !== "touch")
-        this.touch1[1] = transform2.invert(this.touch1[0]);
-      this.that.__zoom = transform2;
-      this.emit("zoom");
-      return this;
+    zoom: function(d, m) {
+      return this.mouse && d !== "mouse" && (this.mouse[1] = m.invert(this.mouse[0])), this.touch0 && d !== "touch" && (this.touch0[1] = m.invert(this.touch0[0])), this.touch1 && d !== "touch" && (this.touch1[1] = m.invert(this.touch1[0])), this.that.__zoom = m, this.emit("zoom"), this;
     },
     end: function() {
-      if (--this.active === 0) {
-        delete this.that.__zooming;
-        this.emit("end");
-      }
-      return this;
+      return --this.active === 0 && (delete this.that.__zooming, this.emit("end")), this;
     },
-    emit: function(type2) {
-      var d = select_default2(this.that).datum();
-      listeners.call(
-        type2,
+    emit: function(d) {
+      var m = V(this.that).datum();
+      h.call(
+        d,
         this.that,
-        new ZoomEvent(type2, {
+        new Rs(d, {
           sourceEvent: this.sourceEvent,
-          target: zoom,
-          type: type2,
+          target: w,
+          type: d,
           transform: this.that.__zoom,
-          dispatch: listeners
+          dispatch: h
         }),
-        d
+        m
       );
     }
   };
-  function wheeled(event, ...args) {
-    if (!filter2.apply(this, arguments))
+  function z(d, ...m) {
+    if (!n.apply(this, arguments))
       return;
-    var g = gesture(this, args).event(event), t = this.__zoom, k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], t.k * Math.pow(2, wheelDelta.apply(this, arguments)))), p = pointer_default(event);
-    if (g.wheel) {
-      if (g.mouse[0][0] !== p[0] || g.mouse[0][1] !== p[1]) {
-        g.mouse[1] = t.invert(g.mouse[0] = p);
-      }
-      clearTimeout(g.wheel);
-    } else if (t.k === k)
-      return;
+    var g = C(this, m).event(d), b = this.__zoom, x = Math.max(o[0], Math.min(o[1], b.k * Math.pow(2, r.apply(this, arguments)))), _ = tt(d);
+    if (g.wheel)
+      (g.mouse[0][0] !== _[0] || g.mouse[0][1] !== _[1]) && (g.mouse[1] = b.invert(g.mouse[0] = _)), clearTimeout(g.wheel);
     else {
-      g.mouse = [p, t.invert(p)];
-      interrupt_default(this);
-      g.start();
+      if (b.k === x)
+        return;
+      g.mouse = [_, b.invert(_)], Wt(this), g.start();
     }
-    noevent_default3(event);
-    g.wheel = setTimeout(wheelidled, wheelDelay);
-    g.zoom("mouse", constrain(translate(scale(t, k), g.mouse[0], g.mouse[1]), g.extent, translateExtent));
-    function wheelidled() {
-      g.wheel = null;
-      g.end();
+    _t(d), g.wheel = setTimeout(v, O), g.zoom("mouse", e(A(P(b, x), g.mouse[0], g.mouse[1]), g.extent, s));
+    function v() {
+      g.wheel = null, g.end();
     }
   }
-  function mousedowned(event, ...args) {
-    if (touchending || !filter2.apply(this, arguments))
+  function R(d, ...m) {
+    if (u || !n.apply(this, arguments))
       return;
-    var currentTarget = event.currentTarget, g = gesture(this, args, true).event(event), v = select_default2(event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true), p = pointer_default(event, currentTarget), x0 = event.clientX, y0 = event.clientY;
-    nodrag_default(event.view);
-    nopropagation3(event);
-    g.mouse = [p, this.__zoom.invert(p)];
-    interrupt_default(this);
-    g.start();
-    function mousemoved(event2) {
-      noevent_default3(event2);
-      if (!g.moved) {
-        var dx = event2.clientX - x0, dy = event2.clientY - y0;
-        g.moved = dx * dx + dy * dy > clickDistance2;
+    var g = d.currentTarget, b = C(this, m, !0).event(d), x = V(d.view).on("mousemove.zoom", I, !0).on("mouseup.zoom", q, !0), _ = tt(d, g), v = d.clientX, k = d.clientY;
+    Dn(d.view), de(d), b.mouse = [_, this.__zoom.invert(_)], Wt(this), b.start();
+    function I(N) {
+      if (_t(N), !b.moved) {
+        var X = N.clientX - v, Z = N.clientY - k;
+        b.moved = X * X + Z * Z > j;
       }
-      g.event(event2).zoom("mouse", constrain(translate(g.that.__zoom, g.mouse[0] = pointer_default(event2, currentTarget), g.mouse[1]), g.extent, translateExtent));
+      b.event(N).zoom("mouse", e(A(b.that.__zoom, b.mouse[0] = tt(N, g), b.mouse[1]), b.extent, s));
     }
-    function mouseupped(event2) {
-      v.on("mousemove.zoom mouseup.zoom", null);
-      yesdrag(event2.view, g.moved);
-      noevent_default3(event2);
-      g.event(event2).end();
+    function q(N) {
+      x.on("mousemove.zoom mouseup.zoom", null), Pn(N.view, b.moved), _t(N), b.event(N).end();
     }
   }
-  function dblclicked(event, ...args) {
-    if (!filter2.apply(this, arguments))
-      return;
-    var t0 = this.__zoom, p0 = pointer_default(event.changedTouches ? event.changedTouches[0] : event, this), p1 = t0.invert(p0), k1 = t0.k * (event.shiftKey ? 0.5 : 2), t1 = constrain(translate(scale(t0, k1), p0, p1), extent.apply(this, args), translateExtent);
-    noevent_default3(event);
-    if (duration > 0)
-      select_default2(this).transition().duration(duration).call(schedule, t1, p0, event);
-    else
-      select_default2(this).call(zoom.transform, t1, p0, event);
-  }
-  function touchstarted(event, ...args) {
-    if (!filter2.apply(this, arguments))
-      return;
-    var touches = event.touches, n = touches.length, g = gesture(this, args, event.changedTouches.length === n).event(event), started, i, t, p;
-    nopropagation3(event);
-    for (i = 0; i < n; ++i) {
-      t = touches[i], p = pointer_default(t, this);
-      p = [p, this.__zoom.invert(p), t.identifier];
-      if (!g.touch0)
-        g.touch0 = p, started = true, g.taps = 1 + !!touchstarting;
-      else if (!g.touch1 && g.touch0[2] !== p[2])
-        g.touch1 = p, g.taps = 0;
-    }
-    if (touchstarting)
-      touchstarting = clearTimeout(touchstarting);
-    if (started) {
-      if (g.taps < 2)
-        touchfirst = p[0], touchstarting = setTimeout(function() {
-          touchstarting = null;
-        }, touchDelay);
-      interrupt_default(this);
-      g.start();
+  function F(d, ...m) {
+    if (n.apply(this, arguments)) {
+      var g = this.__zoom, b = tt(d.changedTouches ? d.changedTouches[0] : d, this), x = g.invert(b), _ = g.k * (d.shiftKey ? 0.5 : 2), v = e(A(P(g, _), b, x), t.apply(this, m), s);
+      _t(d), a > 0 ? V(this).transition().duration(a).call(S, v, b, d) : V(this).call(w.transform, v, b, d);
     }
   }
-  function touchmoved(event, ...args) {
-    if (!this.__zooming)
-      return;
-    var g = gesture(this, args).event(event), touches = event.changedTouches, n = touches.length, i, t, p, l;
-    noevent_default3(event);
-    for (i = 0; i < n; ++i) {
-      t = touches[i], p = pointer_default(t, this);
-      if (g.touch0 && g.touch0[2] === t.identifier)
-        g.touch0[0] = p;
-      else if (g.touch1 && g.touch1[2] === t.identifier)
-        g.touch1[0] = p;
+  function H(d, ...m) {
+    if (n.apply(this, arguments)) {
+      var g = d.touches, b = g.length, x = C(this, m, d.changedTouches.length === b).event(d), _, v, k, I;
+      for (de(d), v = 0; v < b; ++v)
+        k = g[v], I = tt(k, this), I = [I, this.__zoom.invert(I), k.identifier], x.touch0 ? !x.touch1 && x.touch0[2] !== I[2] && (x.touch1 = I, x.taps = 0) : (x.touch0 = I, _ = !0, x.taps = 1 + !!l);
+      l && (l = clearTimeout(l)), _ && (x.taps < 2 && (f = I[0], l = setTimeout(function() {
+        l = null;
+      }, y)), Wt(this), x.start());
     }
-    t = g.that.__zoom;
-    if (g.touch1) {
-      var p0 = g.touch0[0], l0 = g.touch0[1], p1 = g.touch1[0], l1 = g.touch1[1], dp = (dp = p1[0] - p0[0]) * dp + (dp = p1[1] - p0[1]) * dp, dl = (dl = l1[0] - l0[0]) * dl + (dl = l1[1] - l0[1]) * dl;
-      t = scale(t, Math.sqrt(dp / dl));
-      p = [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2];
-      l = [(l0[0] + l1[0]) / 2, (l0[1] + l1[1]) / 2];
-    } else if (g.touch0)
-      p = g.touch0[0], l = g.touch0[1];
-    else
-      return;
-    g.zoom("touch", constrain(translate(t, p, l), g.extent, translateExtent));
   }
-  function touchended(event, ...args) {
-    if (!this.__zooming)
-      return;
-    var g = gesture(this, args).event(event), touches = event.changedTouches, n = touches.length, i, t;
-    nopropagation3(event);
-    if (touchending)
-      clearTimeout(touchending);
-    touchending = setTimeout(function() {
-      touchending = null;
-    }, touchDelay);
-    for (i = 0; i < n; ++i) {
-      t = touches[i];
-      if (g.touch0 && g.touch0[2] === t.identifier)
-        delete g.touch0;
-      else if (g.touch1 && g.touch1[2] === t.identifier)
-        delete g.touch1;
+  function Tt(d, ...m) {
+    if (this.__zooming) {
+      var g = C(this, m).event(d), b = d.changedTouches, x = b.length, _, v, k, I;
+      for (_t(d), _ = 0; _ < x; ++_)
+        v = b[_], k = tt(v, this), g.touch0 && g.touch0[2] === v.identifier ? g.touch0[0] = k : g.touch1 && g.touch1[2] === v.identifier && (g.touch1[0] = k);
+      if (v = g.that.__zoom, g.touch1) {
+        var q = g.touch0[0], N = g.touch0[1], X = g.touch1[0], Z = g.touch1[1], Y = (Y = X[0] - q[0]) * Y + (Y = X[1] - q[1]) * Y, J = (J = Z[0] - N[0]) * J + (J = Z[1] - N[1]) * J;
+        v = P(v, Math.sqrt(Y / J)), k = [(q[0] + X[0]) / 2, (q[1] + X[1]) / 2], I = [(N[0] + Z[0]) / 2, (N[1] + Z[1]) / 2];
+      } else if (g.touch0)
+        k = g.touch0[0], I = g.touch0[1];
+      else
+        return;
+      g.zoom("touch", e(A(v, k, I), g.extent, s));
     }
-    if (g.touch1 && !g.touch0)
-      g.touch0 = g.touch1, delete g.touch1;
-    if (g.touch0)
-      g.touch0[1] = this.__zoom.invert(g.touch0[0]);
-    else {
-      g.end();
-      if (g.taps === 2) {
-        t = pointer_default(t, this);
-        if (Math.hypot(touchfirst[0] - t[0], touchfirst[1] - t[1]) < tapDistance) {
-          var p = select_default2(this).on("dblclick.zoom");
-          if (p)
-            p.apply(this, arguments);
-        }
+  }
+  function At(d, ...m) {
+    if (this.__zooming) {
+      var g = C(this, m).event(d), b = d.changedTouches, x = b.length, _, v;
+      for (de(d), u && clearTimeout(u), u = setTimeout(function() {
+        u = null;
+      }, y), _ = 0; _ < x; ++_)
+        v = b[_], g.touch0 && g.touch0[2] === v.identifier ? delete g.touch0 : g.touch1 && g.touch1[2] === v.identifier && delete g.touch1;
+      if (g.touch1 && !g.touch0 && (g.touch0 = g.touch1, delete g.touch1), g.touch0)
+        g.touch0[1] = this.__zoom.invert(g.touch0[0]);
+      else if (g.end(), g.taps === 2 && (v = tt(v, this), Math.hypot(f[0] - v[0], f[1] - v[1]) < M)) {
+        var k = V(this).on("dblclick.zoom");
+        k && k.apply(this, arguments);
       }
     }
   }
-  zoom.wheelDelta = function(_) {
-    return arguments.length ? (wheelDelta = typeof _ === "function" ? _ : constant_default5(+_), zoom) : wheelDelta;
-  };
-  zoom.filter = function(_) {
-    return arguments.length ? (filter2 = typeof _ === "function" ? _ : constant_default5(!!_), zoom) : filter2;
-  };
-  zoom.touchable = function(_) {
-    return arguments.length ? (touchable = typeof _ === "function" ? _ : constant_default5(!!_), zoom) : touchable;
-  };
-  zoom.extent = function(_) {
-    return arguments.length ? (extent = typeof _ === "function" ? _ : constant_default5([[+_[0][0], +_[0][1]], [+_[1][0], +_[1][1]]]), zoom) : extent;
-  };
-  zoom.scaleExtent = function(_) {
-    return arguments.length ? (scaleExtent[0] = +_[0], scaleExtent[1] = +_[1], zoom) : [scaleExtent[0], scaleExtent[1]];
-  };
-  zoom.translateExtent = function(_) {
-    return arguments.length ? (translateExtent[0][0] = +_[0][0], translateExtent[1][0] = +_[1][0], translateExtent[0][1] = +_[0][1], translateExtent[1][1] = +_[1][1], zoom) : [[translateExtent[0][0], translateExtent[0][1]], [translateExtent[1][0], translateExtent[1][1]]];
-  };
-  zoom.constrain = function(_) {
-    return arguments.length ? (constrain = _, zoom) : constrain;
-  };
-  zoom.duration = function(_) {
-    return arguments.length ? (duration = +_, zoom) : duration;
-  };
-  zoom.interpolate = function(_) {
-    return arguments.length ? (interpolate = _, zoom) : interpolate;
-  };
-  zoom.on = function() {
-    var value = listeners.on.apply(listeners, arguments);
-    return value === listeners ? zoom : value;
-  };
-  zoom.clickDistance = function(_) {
-    return arguments.length ? (clickDistance2 = (_ = +_) * _, zoom) : Math.sqrt(clickDistance2);
-  };
-  zoom.tapDistance = function(_) {
-    return arguments.length ? (tapDistance = +_, zoom) : tapDistance;
-  };
-  return zoom;
+  return w.wheelDelta = function(d) {
+    return arguments.length ? (r = typeof d == "function" ? d : $t(+d), w) : r;
+  }, w.filter = function(d) {
+    return arguments.length ? (n = typeof d == "function" ? d : $t(!!d), w) : n;
+  }, w.touchable = function(d) {
+    return arguments.length ? (i = typeof d == "function" ? d : $t(!!d), w) : i;
+  }, w.extent = function(d) {
+    return arguments.length ? (t = typeof d == "function" ? d : $t([[+d[0][0], +d[0][1]], [+d[1][0], +d[1][1]]]), w) : t;
+  }, w.scaleExtent = function(d) {
+    return arguments.length ? (o[0] = +d[0], o[1] = +d[1], w) : [o[0], o[1]];
+  }, w.translateExtent = function(d) {
+    return arguments.length ? (s[0][0] = +d[0][0], s[1][0] = +d[1][0], s[0][1] = +d[0][1], s[1][1] = +d[1][1], w) : [[s[0][0], s[0][1]], [s[1][0], s[1][1]]];
+  }, w.constrain = function(d) {
+    return arguments.length ? (e = d, w) : e;
+  }, w.duration = function(d) {
+    return arguments.length ? (a = +d, w) : a;
+  }, w.interpolate = function(d) {
+    return arguments.length ? (c = d, w) : c;
+  }, w.on = function() {
+    var d = h.on.apply(h, arguments);
+    return d === h ? w : d;
+  }, w.clickDistance = function(d) {
+    return arguments.length ? (j = (d = +d) * d, w) : Math.sqrt(j);
+  }, w.tapDistance = function(d) {
+    return arguments.length ? (M = +d, w) : M;
+  }, w;
 }
-
-// src/js-components/flowchart/action/action-controller.ts
-var ActionController = class {
-  constructor(containerInterface, limit) {
-    this.actionLimit = limit;
-    this.undoStackList = [];
-    this.redoStackList = [];
-    this.containerInterface = containerInterface;
+class Vs {
+  constructor(t, e) {
+    this.actionLimit = e, this.undoStackList = [], this.redoStackList = [], this.containerInterface = t;
   }
-  addAction(...commands) {
-    if (this.undoStackList.length === this.actionLimit)
-      this.undoStackList.shift();
-    this.undoStackList.push(commands);
-    this.redoStackList.length = 0;
+  addAction(...t) {
+    this.undoStackList.length === this.actionLimit && this.undoStackList.shift(), this.undoStackList.push(t), this.redoStackList.length = 0;
   }
   clear() {
-    this.undoStackList.length = 0;
-    this.redoStackList.length = 0;
+    this.undoStackList.length = 0, this.redoStackList.length = 0;
   }
   popLastUndoAction() {
     return this.undoStackList.pop();
   }
   undo() {
-    const topActionOnUndo = this.undoStackList.pop();
-    if (!topActionOnUndo)
-      return null;
-    topActionOnUndo.forEach((undo) => undo.undo(this.containerInterface));
-    this.redoStackList.push(topActionOnUndo.reverse());
-    return topActionOnUndo;
+    const t = this.undoStackList.pop();
+    return t ? (t.forEach((e) => e.undo(this.containerInterface)), this.redoStackList.push(t.reverse()), t) : null;
   }
   redo() {
-    const topActionOnRedo = this.redoStackList.pop();
-    if (!topActionOnRedo)
-      return null;
-    topActionOnRedo.forEach((undo) => undo.redo(this.containerInterface));
-    this.undoStackList.push(topActionOnRedo.reverse());
-    return topActionOnRedo;
+    const t = this.redoStackList.pop();
+    return t ? (t.forEach((e) => e.redo(this.containerInterface)), this.undoStackList.push(t.reverse()), t) : null;
   }
-};
-
-// src/js-components/flowchart/action/command/base.ts
-var BaseCommand = class {
-  constructor(command) {
-    this.command = command;
+}
+class oe {
+  constructor(t) {
+    this.command = t;
   }
-  checkHasId(obj) {
-    return "id" in obj && (typeof obj.id === "number" || typeof obj.id === "string");
+  checkHasId(t) {
+    return "id" in t && (typeof t.id == "number" || typeof t.id == "string");
   }
-  undo(iContainer) {
+  undo(t) {
     return this;
   }
-  redo(iContainer) {
+  redo(t) {
     return this;
   }
-};
-
-// src/js-components/flowchart/action/command/add.ts
-var AddCommand = class extends BaseCommand {
-  constructor(objDataList) {
-    super("add");
-    this.objDataList = objDataList;
+}
+class ht extends oe {
+  constructor(t) {
+    super("add"), this.objDataList = t;
   }
-  undo(iContainer) {
-    this.objDataList.forEach((data) => {
-      if (this.checkHasId(data))
-        iContainer.removeObject(data.id);
-      else
-        console.error("data has no id", data);
-    });
-    return this;
+  undo(t) {
+    return this.objDataList.forEach((e) => {
+      this.checkHasId(e) ? t.removeObject(e.id) : console.error("data has no id", e);
+    }), this;
   }
-  redo(iContainer) {
-    this.objDataList.forEach((data) => iContainer.addRenderObj(data));
-    return this;
+  redo(t) {
+    return this.objDataList.forEach((e) => t.addRenderObj(e)), this;
   }
-};
-
-// src/js-components/flowchart/action/command/delete.ts
-var DeleteCommand = class extends AddCommand {
-  constructor(objDataList) {
-    super(objDataList);
-    this.command = "delete";
+}
+class _e extends ht {
+  constructor(t) {
+    super(t), this.command = "delete";
   }
-  undo(iContainer) {
-    return super.redo(iContainer);
+  undo(t) {
+    return super.redo(t);
   }
-  redo(iContainer) {
-    return super.undo(iContainer);
+  redo(t) {
+    return super.undo(t);
   }
-};
-
-// src/js-components/flowchart/util/text-metrics.ts
-var getCanvasContext = /* @__PURE__ */ (() => {
-  let context = null;
-  return function createCanvasContext() {
-    if (!context)
-      context = new OffscreenCanvas(0, 0).getContext("2d");
-    if (!context)
+}
+const Us = /* @__PURE__ */ (() => {
+  let n = null;
+  return function() {
+    if (n || (n = new OffscreenCanvas(0, 0).getContext("2d")), !n)
       throw new Error("Can't create canvas context");
-    return context;
+    return n;
   };
-})();
-var TEXT_ROW_SPACE = 2;
-var TEXT_PADDING = 10;
-var getTextMetrics = (text, style) => {
-  const context = getCanvasContext();
-  context.font = `${style.fontSize}px ${style.fontFamily}`;
-  const metrics = context.measureText(text);
+})(), Ae = 2, ve = 10, Oe = (n, t) => {
+  const e = Us();
+  e.font = `${t.fontSize}px ${t.fontFamily}`;
+  const r = e.measureText(n);
   return {
-    width: metrics.width,
-    height: metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent
+    width: r.width,
+    height: r.fontBoundingBoxAscent + r.fontBoundingBoxDescent
   };
-};
-var getWrappedText = (style) => {
-  const { text } = style;
-  const lines = [];
-  const buffer = [];
-  for (const char of text) {
-    if (char === "\r")
+}, ze = (n) => {
+  const { text: t } = n, e = [], r = [];
+  for (const i of t) {
+    if (i === "\r")
       continue;
-    else if (char === "\n") {
-      lines.push(buffer.join(""));
-      buffer.length = 0;
+    if (i === `
+`) {
+      e.push(r.join("")), r.length = 0;
       continue;
     }
-    buffer.push(char);
-    const text2 = buffer.join("");
-    const size = getTextMetrics(text2, style);
-    if (size.width >= style.width) {
-      lines.push(text2);
-      buffer.length = 0;
-    }
+    r.push(i);
+    const o = r.join("");
+    Oe(o, n).width >= n.width && (e.push(o), r.length = 0);
   }
-  if (buffer.length > 0)
-    lines.push(buffer.join(""));
-  return {
-    length: lines.length,
-    lineHeight: getTextMetrics("|", style).height,
-    lines
+  return r.length > 0 && e.push(r.join("")), {
+    length: e.length,
+    lineHeight: Oe("|", n).height,
+    lines: e
   };
-};
-var getFittedSizeOnText = (data) => {
-  const textLines = data.text.replace("\r", "").split("\n");
-  let maxWidth = 0;
-  let height = 0;
-  textLines.forEach((text) => {
-    const size = getTextMetrics(text, data);
-    height += data.fontSize + TEXT_ROW_SPACE;
-    maxWidth = Math.max(maxWidth, size.width);
-  });
-  return {
-    width: maxWidth,
-    height
+}, Zn = (n) => {
+  const t = n.text.replace("\r", "").split(`
+`);
+  let e = 0, r = 0;
+  return t.forEach((i) => {
+    const o = Oe(i, n);
+    r += n.fontSize + Ae, e = Math.max(e, o.width);
+  }), {
+    width: e,
+    height: r
   };
-};
-var getCroppedText = (data, height) => {
-  const wrapperInfo = getWrappedText(data);
-  const wrapHeight = wrapperInfo.lineHeight * wrapperInfo.length;
-  if (height < wrapHeight) {
-    const diff = Math.ceil((wrapHeight - height) / wrapperInfo.lineHeight);
-    wrapperInfo.lines = wrapperInfo.lines.splice(0, wrapperInfo.length - diff);
-    wrapperInfo.length = wrapperInfo.lines.length;
-    wrapperInfo.lines[wrapperInfo.length - 1] += "...";
+}, Ws = (n, t) => {
+  const e = ze(n), r = e.lineHeight * e.length;
+  if (t < r) {
+    const i = Math.ceil((r - t) / e.lineHeight);
+    e.lines = e.lines.splice(0, e.length - i), e.length = e.lines.length, e.lines[e.length - 1] += "...";
   }
-  return wrapperInfo;
-};
-
-// src/js-components/flowchart/data/style-data.ts
-var DEFAULT_FONT_FAMILY = "Pretendard";
-var DEFAULT_STYLE_DATA = {
+  return e;
+}, nn = "Pretendard", se = {
   id: "",
-  temp: false,
+  temp: !1,
   type: "",
   render: "",
   text: "",
-  editable: true,
+  editable: !0,
   foreColor: "black",
   fontSize: 16,
-  fontFamily: DEFAULT_FONT_FAMILY,
+  fontFamily: nn,
   textDecoration: "none",
-  visibleOverText: true,
+  visibleOverText: !0,
   opacity: 1,
   cursor: "move",
   borderColor: "black",
   borderWidth: 1,
   borderDash: 0,
-  isSelected: false,
-  isMonitoring: true,
-  isHovered: false,
+  isSelected: !1,
+  isMonitoring: !0,
+  isHovered: !1,
   tooltipText: "",
-  tooltipFontSize: 12,
+  tooltipFontSize: 13,
   tooltipForeColor: "black",
-  tooltipFontFamily: DEFAULT_FONT_FAMILY,
+  tooltipFontFamily: nn,
   tooltipFill: "white",
   tooltipMaxWidth: 380,
   tooltipBorderColor: "var(--navy-700)",
@@ -3377,14 +2354,11 @@ var DEFAULT_STYLE_DATA = {
   tooltipBorderDash: 0,
   tooltipPadding: 8,
   tooltipTextDecoration: "none",
-  tooltipVisible: true,
+  tooltipVisible: !0,
   "borderWidth.selected": 2,
   "borderColor.selected": "blue"
-};
-
-// src/js-components/flowchart/data/connection.ts
-var DEFAULT_CONNECTION_STYLE_DATA = {
-  ...DEFAULT_STYLE_DATA,
+}, Jn = {
+  ...se,
   "connection.points": [],
   "connection.sourceObjId": null,
   "connection.sourcePos": null,
@@ -3404,18 +2378,12 @@ var DEFAULT_CONNECTION_STYLE_DATA = {
   "connection.arrowBorderColor": "black",
   "connection.arrowBorderWidth": 1,
   "connection.arrowType": "triangle"
-};
-
-// src/js-components/flowchart/data/group.ts
-var DEFAULT_GROUP_STYLE_DATA = {
-  ...DEFAULT_STYLE_DATA,
+}, Qn = {
+  ...se,
   "group.margin": 20,
-  "group.borderAlwaysAppearance": false
-};
-
-// src/js-components/flowchart/data/node.ts
-var DEFAULT_NODE_STYLE_DATA = {
-  ...DEFAULT_STYLE_DATA,
+  "group.borderAlwaysAppearance": !1
+}, tr = {
+  ...se,
   "node.width": 120,
   "node.height": 60,
   "node.fill": "white",
@@ -3423,8 +2391,8 @@ var DEFAULT_NODE_STYLE_DATA = {
   "node.y": 0,
   "node.connectorGap": 0,
   "node.connectorSize": 5,
-  "node.resizerEnabled": true,
-  "node.connectorEnabled": true,
+  "node.resizerEnabled": !0,
+  "node.connectorEnabled": !0,
   "node.commentTopLeft": "",
   "node.commentTopCenter": "",
   "node.commentTopRight": "",
@@ -3435,350 +2403,257 @@ var DEFAULT_NODE_STYLE_DATA = {
   "node.commentForeColor": "black",
   "node.commentFontFamily": "Pretendard",
   "node.borderRadius": 0
-};
-
-// src/js-components/flowchart/util/functions.ts
-var TRANSLATE_REGEX = /translate\((-?[\d.]+),\s*?(-?[\d.]+)\)/;
-var SCALE_REGEX = /scale\(([\d.]+),\s*?([\d.]+)\)/;
-var POSITION_MAP = {
+}, qs = /translate\((-?[\d.]+),\s*?(-?[\d.]+)\)/, Gs = /scale\(([\d.]+),\s*?([\d.]+)\)/, rn = {
   top: 0,
   right: 1,
   bottom: 2,
   left: 3
-};
-var DEFAULT_CONNECTION_LENGTH = 45;
-var TMP_STYLE_MAP = {
-  node: { ...DEFAULT_NODE_STYLE_DATA },
-  group: { ...DEFAULT_GROUP_STYLE_DATA },
-  connection: { ...DEFAULT_CONNECTION_STYLE_DATA }
-};
-var getConnectedPositionId = (node, con) => {
-  switch (node.id) {
-    case con.sourceObjId:
-      return POSITION_MAP[con.sourcePos];
-    case con.destinationObjId:
-      return POSITION_MAP[con.destinationPos];
+}, T = 45, Ks = {
+  node: { ...tr },
+  group: { ...Qn },
+  connection: { ...Jn }
+}, on = (n, t) => {
+  switch (n.id) {
+    case t.sourceObjId:
+      return rn[t.sourcePos];
+    case t.destinationObjId:
+      return rn[t.destinationPos];
     default:
-      throw new Error(`It's not connected.`);
+      throw new Error("It's not connected.");
   }
-};
-var getPosition = (clsName) => {
-  if (clsName.indexOf("left") !== -1)
+}, Zs = (n) => {
+  if (n.indexOf("left") !== -1)
     return "left";
-  else if (clsName.indexOf("right") !== -1)
+  if (n.indexOf("right") !== -1)
     return "right";
-  else if (clsName.indexOf("top") !== -1)
+  if (n.indexOf("top") !== -1)
     return "top";
-  else if (clsName.indexOf("bottom") !== -1)
+  if (n.indexOf("bottom") !== -1)
     return "bottom";
-  throw new Error(`Invalid argument '${clsName}'`);
-};
-var getTransformData = (transform2) => {
-  const translateExec = TRANSLATE_REGEX.exec(transform2);
-  const scaleExec = SCALE_REGEX.exec(transform2);
-  let translateX = 0;
-  let translateY = 0;
-  let scale = 1;
-  if (translateExec) {
-    translateX = parseFloat(translateExec[1]);
-    translateY = parseFloat(translateExec[2]);
-  }
-  if (scaleExec) {
-    scale = parseFloat(scaleExec[1]);
-  }
-  return {
-    translateX,
-    translateY,
-    scale
+  throw new Error(`Invalid argument '${n}'`);
+}, Js = (n) => {
+  const t = qs.exec(n), e = Gs.exec(n);
+  let r = 0, i = 0, o = 1;
+  return t && (r = parseFloat(t[1]), i = parseFloat(t[2])), e && (o = parseFloat(e[1])), {
+    translateX: r,
+    translateY: i,
+    scale: o
   };
-};
-var setStyleValue = (data, key, value) => {
-  if (data[key] === void 0)
-    data[key] = value;
-};
-var defaultNodeRule = (data) => {
-  setStyleValue(data, "cursor", "move");
-  if (data.temp) {
-    setStyleValue(data, "node.resizerEnabled", false);
-    setStyleValue(data, "node.connectorEnabled", false);
-  }
-  switch (data.render) {
+}, B = (n, t, e) => {
+  n[t] === void 0 && (n[t] = e);
+}, Qs = (n) => {
+  switch (B(n, "cursor", "move"), n.temp && (B(n, "node.resizerEnabled", !1), B(n, "node.connectorEnabled", !1)), n.render) {
     case "start": {
-      setStyleValue(data, "node.resizerEnabled", false);
+      B(n, "node.resizerEnabled", !1);
       break;
     }
     case "comment": {
-      setStyleValue(data, "node.connectorEnabled", false);
+      B(n, "node.connectorEnabled", !1);
       break;
     }
     case "bridge": {
-      setStyleValue(data, "editable", 20);
-      setStyleValue(data, "node.width", 20);
-      setStyleValue(data, "node.height", 20);
-      setStyleValue(data, "node.resizerEnabled", false);
+      B(n, "editable", 20), B(n, "node.width", 20), B(n, "node.height", 20), B(n, "node.resizerEnabled", !1);
       break;
     }
-    default:
-      break;
   }
-};
-var defaultConnectionRule = (data) => {
-  setStyleValue(data, "cursor", "pointer");
-  if (data["connection.points"] === null || data["connection.points"] === void 0) {
-    data["connection.points"] = [];
-  }
-  const points = data["connection.points"];
-  for (let i = points.length; i < 2; i++) {
-    points.push({ x: 0, y: 0 });
-  }
-};
-var getDistance = (pos1, pos2) => {
-  return Math.sqrt(Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2));
-};
-var combineStyle = (data, theme) => {
-  const tmpStyle = TMP_STYLE_MAP[data.type];
-  if (tmpStyle === void 0)
-    throw new Error(`Unknown type '${data.type}'`);
-  for (const key of Object.keys(tmpStyle)) {
-    if (data[key] === void 0)
-      data[key] = theme[key];
-  }
-  return data;
-};
-var defaultRule = (data) => {
-  switch (data.type) {
+}, ta = (n) => {
+  B(n, "cursor", "pointer"), (n["connection.points"] === null || n["connection.points"] === void 0) && (n["connection.points"] = []);
+  const t = n["connection.points"];
+  for (let e = t.length; e < 2; e++)
+    t.push({ x: 0, y: 0 });
+}, sn = (n, t) => Math.sqrt(Math.pow(n.x - t.x, 2) + Math.pow(n.y - t.y, 2)), an = (n, t) => {
+  const e = Ks[n.type];
+  if (e === void 0)
+    throw new Error(`Unknown type '${n.type}'`);
+  for (const r of Object.keys(e))
+    n[r] === void 0 && (n[r] = t[r]);
+  return n;
+}, ea = (n) => {
+  switch (n.type) {
     case "node": {
-      defaultNodeRule(data);
+      Qs(n);
       break;
     }
     case "connection": {
-      defaultConnectionRule(data);
+      ta(n);
       break;
     }
     case "group": {
-      setStyleValue(data, "borderDash.selected", 1);
+      B(n, "borderDash.selected", 1);
       break;
     }
-    default:
-      break;
   }
-};
-var getDefaultConnection = (appendingObj) => {
-  const data = {
-    ...appendingObj.data
-  };
-  const firstPoint = appendingObj.firstPoint;
-  switch (appendingObj.sourcePos) {
+}, na = (n) => {
+  const t = {
+    ...n.data
+  }, e = n.firstPoint;
+  switch (n.sourcePos) {
     case "top": {
-      if (appendingObj.renderType === "direct") {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x,
-            y: firstPoint.y - DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      } else {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y - DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      }
+      n.renderType === "direct" ? t["connection.points"] = [
+        e,
+        {
+          x: e.x,
+          y: e.y - T
+        }
+      ] : t["connection.points"] = [
+        e,
+        {
+          x: e.x + T,
+          y: e.y - T
+        }
+      ];
       break;
     }
     case "bottom": {
-      if (appendingObj.renderType === "direct") {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      } else {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      }
+      n.renderType === "direct" ? t["connection.points"] = [
+        e,
+        {
+          x: e.x,
+          y: e.y + T
+        }
+      ] : t["connection.points"] = [
+        e,
+        {
+          x: e.x + T,
+          y: e.y + T
+        }
+      ];
       break;
     }
     case "left": {
-      if (appendingObj.renderType === "direct") {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x - DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y
-          }
-        ];
-      } else {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x - DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      }
+      n.renderType === "direct" ? t["connection.points"] = [
+        e,
+        {
+          x: e.x - T,
+          y: e.y
+        }
+      ] : t["connection.points"] = [
+        e,
+        {
+          x: e.x - T,
+          y: e.y + T
+        }
+      ];
       break;
     }
     case "right": {
-      if (appendingObj.renderType === "direct") {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y
-          }
-        ];
-      } else {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      }
+      n.renderType === "direct" ? t["connection.points"] = [
+        e,
+        {
+          x: e.x + T,
+          y: e.y
+        }
+      ] : t["connection.points"] = [
+        e,
+        {
+          x: e.x + T,
+          y: e.y + T
+        }
+      ];
       break;
     }
     default:
-      if (appendingObj.renderType === "direct") {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      } else {
-        data["connection.points"] = [
-          firstPoint,
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH / 2,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH / 2
-          },
-          {
-            x: firstPoint.x + DEFAULT_CONNECTION_LENGTH,
-            y: firstPoint.y + DEFAULT_CONNECTION_LENGTH
-          }
-        ];
-      }
+      n.renderType === "direct" ? t["connection.points"] = [
+        e,
+        {
+          x: e.x + T,
+          y: e.y + T
+        }
+      ] : t["connection.points"] = [
+        e,
+        {
+          x: e.x + T / 2,
+          y: e.y + T / 2
+        },
+        {
+          x: e.x + T,
+          y: e.y + T
+        }
+      ];
       break;
   }
-  return data;
-};
-var cloneObjDataList = (objList) => {
-  const dataList = [];
-  objList.forEach((obj) => {
-    dataList.push(cloneDeep(obj.data));
-  });
-  return dataList;
-};
-var deepCopy = (data) => {
-  return cloneDeep(data);
-};
-var getMovePropIterator = function* (objData) {
-  switch (objData.type) {
+  return t;
+}, at = (n) => {
+  const t = [];
+  return n.forEach((e) => {
+    t.push(xn(e.data));
+  }), t;
+}, Se = (n) => xn(n), cn = function* (n) {
+  switch (n.type) {
     case "node":
       yield {
         key: "node.x",
-        value: objData["node.x"]
-      };
-      yield {
+        value: n["node.x"]
+      }, yield {
         key: "node.y",
-        value: objData["node.y"]
+        value: n["node.y"]
       };
       break;
     case "connection":
       yield {
         key: "connection.sourceObjId",
-        value: objData["connection.sourceObjId"]
-      };
-      yield {
+        value: n["connection.sourceObjId"]
+      }, yield {
         key: "connection.sourcePos",
-        value: objData["connection.sourcePos"]
-      };
-      yield {
+        value: n["connection.sourcePos"]
+      }, yield {
         key: "connection.destinationObjId",
-        value: objData["connection.destinationObjId"]
-      };
-      yield {
+        value: n["connection.destinationObjId"]
+      }, yield {
         key: "connection.destinationPos",
-        value: objData["connection.destinationPos"]
-      };
-      yield {
+        value: n["connection.destinationPos"]
+      }, yield {
         key: "connection.points",
-        value: deepCopy(objData["connection.points"])
+        value: Se(n["connection.points"])
       };
       break;
     case "group":
       break;
     default:
-      throw new Error(`Unknow type '${objData.type}'`);
+      throw new Error(`Unknow type '${n.type}'`);
   }
 };
-function updateTextStyle(textObj, x, y, style) {
-  textObj.attr("x", x).attr("y", y).attr("fill", style.foreColor).attr("font-family", style.fontFamily).attr("font-size", style.fontSize).attr("text-decoration", style.textDecoration);
+function er(n, t, e, r) {
+  n.attr("x", t).attr("y", e).attr("fill", r.foreColor).attr("font-family", r.fontFamily).attr("font-size", r.fontSize).attr("text-decoration", r.textDecoration);
 }
-function createTextLines(textObj, textLines, x, y, style) {
-  updateTextStyle(textObj, x, y, style);
-  textLines.lines.forEach((line, id2) => {
-    const tspan = textObj.append("tspan").attr("x", x).attr("dx", 0).attr("dy", id2 === 0 ? 0 : style.fontSize + TEXT_ROW_SPACE).text(line);
-    if (line.trim() === "") {
-      tspan.attr("opacity", "0").attr("fill-opacity", "0").text(".");
-    }
+function nr(n, t, e, r, i) {
+  er(n, e, r, i), t.lines.forEach((o, s) => {
+    const a = n.append("tspan").attr("x", e).attr("dx", 0).attr("dy", s === 0 ? 0 : i.fontSize + Ae).text(o);
+    o.trim() === "" && a.attr("opacity", "0").attr("fill-opacity", "0").text(".");
   });
 }
-var removeText = (textObj, cache) => {
-  textObj.selectAll("tspan").remove();
-  cache.clear();
-};
-var createLogger = (id2) => {
-  return new Logger(id2);
-};
-
-// src/js-components/flowchart/action/command/edit.ts
-var SIZE_PROP_LIST = ["node.width", "node.height"];
-var ChangedInfo = class {
-  constructor(objData, propList) {
-    this._objData = objData;
-    this._propList = propList || [];
+const ra = (n, t) => {
+  n.selectAll("tspan").remove(), t.clear();
+}, ia = (n) => new _n(n), hn = ["node.width", "node.height"];
+class et {
+  constructor(t, e) {
+    this._objData = t, this._propList = e || [];
   }
   addMoveOldValues() {
-    for (const prop of getMovePropIterator(this._objData)) {
+    for (const t of cn(this._objData))
       this._propList.push({
-        key: prop.key,
-        oldValue: prop.value
+        key: t.key,
+        oldValue: t.value
       });
-    }
   }
   addSizeOldValues() {
-    for (const key of SIZE_PROP_LIST) {
+    for (const t of hn)
       this._propList.push({
-        key,
-        oldValue: this._objData[key],
-        newValue: this._objData[key]
+        key: t,
+        oldValue: this._objData[t],
+        newValue: this._objData[t]
       });
-    }
   }
   updateSizeNewValues() {
-    for (const key of SIZE_PROP_LIST) {
-      const find2 = this._propList.filter((x) => x.key === key)[0];
-      find2.newValue = this._objData[key];
+    for (const t of hn) {
+      const e = this._propList.filter((r) => r.key === t)[0];
+      e.newValue = this._objData[t];
     }
   }
   updateMoveNewValues() {
-    for (const prop of getMovePropIterator(this._objData)) {
-      const find2 = this._propList.filter((x) => x.key === prop.key)[0];
-      find2.newValue = prop.value;
+    for (const t of cn(this._objData)) {
+      const e = this._propList.filter((r) => r.key === t.key)[0];
+      e.newValue = t.value;
     }
   }
   get objData() {
@@ -3787,237 +2662,175 @@ var ChangedInfo = class {
   get propList() {
     return this._propList;
   }
-};
-var EditCommand = class extends BaseCommand {
-  constructor(changeInfoList) {
-    super("edit");
-    this.changeInfoList = changeInfoList;
+}
+class st extends oe {
+  constructor(t) {
+    super("edit"), this.changeInfoList = t;
   }
-  _setValue(prop, iContainer) {
-    this.changeInfoList.forEach((info) => {
-      const obj = iContainer.getObjectOrNull(info.objData.id);
-      if (obj !== null) {
-        obj.editProp(() => {
-          for (const propData of info.propList) {
-            obj.data[propData.key] = propData[prop];
-          }
-        });
-      }
+  _setValue(t, e) {
+    this.changeInfoList.forEach((r) => {
+      const i = e.getObjectOrNull(r.objData.id);
+      i !== null && i.editProp(() => {
+        for (const o of r.propList)
+          i.data[o.key] = o[t];
+      });
     });
   }
-  undo(iContainer) {
-    this._setValue("oldValue", iContainer);
-    return super.undo(iContainer);
+  undo(t) {
+    return this._setValue("oldValue", t), super.undo(t);
   }
-  redo(iContainer) {
-    this._setValue("newValue", iContainer);
-    return super.redo(iContainer);
+  redo(t) {
+    return this._setValue("newValue", t), super.redo(t);
   }
-};
-
-// src/js-components/flowchart/action/command/render.ts
-var RenderCommand = class extends BaseCommand {
-  constructor(renderObj, oldRender, newRender) {
-    super("render");
-    this.renderObj = renderObj;
-    this.oldRender = oldRender;
-    this.newRender = newRender;
+}
+class rr extends oe {
+  constructor(t, e, r) {
+    super("render"), this.renderObj = t, this.oldRender = e, this.newRender = r;
   }
-  undo(iContainer) {
-    iContainer.changeObjRender(this.renderObj, this.oldRender);
-    return super.undo(iContainer);
+  undo(t) {
+    return t.changeObjRender(this.renderObj, this.oldRender), super.undo(t);
   }
-  redo(iContainer) {
-    iContainer.changeObjRender(this.renderObj, this.newRender);
-    return super.redo(iContainer);
+  redo(t) {
+    return t.changeObjRender(this.renderObj, this.newRender), super.redo(t);
   }
-};
-
-// src/js-components/flowchart/action/command/z-index.ts
-var ZIndexCommand = class extends BaseCommand {
-  constructor(dataList) {
-    super("front");
-    this.dataList = dataList;
+}
+class ir extends oe {
+  constructor(t) {
+    super("front"), this.dataList = t;
   }
-  _setZId(prop, reverse, iContainer) {
-    const func = (data) => {
-      const obj = iContainer.getObjectOrNull(data.objId);
-      if (obj === null) {
-        iContainer.getLogger().error(
+  _setZId(t, e, r) {
+    const i = (h) => {
+      const l = r.getObjectOrNull(h.objId);
+      if (l === null) {
+        r.getLogger().error(
           "ZIndexCommand._setZId()",
-          `Could not find obj id '${data.objId}'`
+          `Could not find obj id '${h.objId}'`
         );
         return;
       }
-      obj.zIndex = data[prop];
-    };
-    const [start2, end, inc] = reverse ? [0, this.dataList.length, 1] : [this.dataList.length - 1, -1, -1];
-    let cur = start2;
-    while (start2 !== end) {
-      func(this.dataList[cur]);
-      cur += inc;
-    }
+      l.zIndex = h[t];
+    }, [o, s, a] = e ? [0, this.dataList.length, 1] : [this.dataList.length - 1, -1, -1];
+    let c = o;
+    for (; o !== s; )
+      i(this.dataList[c]), c += a;
   }
-  undo(iContainer) {
-    this._setZId("oldValue", false, iContainer);
-    return super.undo(iContainer);
+  undo(t) {
+    return this._setZId("oldValue", !1, t), super.undo(t);
   }
-  redo(iContainer) {
-    this._setZId("newValue", true, iContainer);
-    return super.redo(iContainer);
+  redo(t) {
+    return this._setZId("newValue", !0, t), super.redo(t);
   }
-};
-
-// src/js-components/flowchart/action/move-handler.ts
-var MoveHandler = class {
-  constructor(actionController, objectManager, iContainer) {
-    this.actionController = actionController;
-    this.objectManager = objectManager;
-    this.iContainer = iContainer;
-    this.movedInfo = [];
+}
+class oa {
+  constructor(t, e, r) {
+    this.actionController = t, this.objectManager = e, this.iContainer = r, this.movedInfo = [];
   }
   moveStartHandler() {
-    this.iContainer.getLogger().debug("MoveHandler.moveStartHandler()", "start");
-    this.movedInfo = [];
-    for (const obj of this.objectManager.getSelectedObjIterator()) {
-      const info = new ChangedInfo(obj.data);
-      info.addMoveOldValues();
-      this.movedInfo.push(info);
+    this.iContainer.getLogger().debug("MoveHandler.moveStartHandler()", "start"), this.movedInfo = [];
+    for (const t of this.objectManager.getSelectedObjIterator()) {
+      const e = new et(t.data);
+      e.addMoveOldValues(), this.movedInfo.push(e);
     }
   }
   moveEndHandler() {
-    this.iContainer.getLogger().debug("MoveHandler.moveEndHandler()", "end");
-    this.movedInfo.forEach((x) => x.updateMoveNewValues());
-    if (this.movedInfo.some((info) => info.propList.some((x) => isDeepEqual(x.oldValue, x.newValue) === false)))
-      this.actionController.addAction(new EditCommand(this.movedInfo));
+    this.iContainer.getLogger().debug("MoveHandler.moveEndHandler()", "end"), this.movedInfo.forEach((t) => t.updateMoveNewValues()), this.movedInfo.some((t) => t.propList.some((e) => vn(e.oldValue, e.newValue) === !1)) && this.actionController.addAction(new st(this.movedInfo));
   }
-};
-
-// src/js-components/flowchart/action/resize-handler.ts
-var ResizeHandler = class {
-  constructor(actionController, objectManager, iContainer) {
-    this.actionController = actionController;
-    this.objectManager = objectManager;
-    this.iContainer = iContainer;
-    this.resizeInfo = [];
+}
+class sa {
+  constructor(t, e, r) {
+    this.actionController = t, this.objectManager = e, this.iContainer = r, this.resizeInfo = [];
   }
-  resizeCallback(objId, cursor, diffWidth, diffHeight) {
-    for (const node of this.objectManager.getNodeIterator()) {
-      if (node.isSelected && node.id !== objId && node.resizerEnabled) {
-        const centerY = node.height / 2;
-        const centerX = node.width / 2;
-        switch (cursor) {
+  resizeCallback(t, e, r, i) {
+    for (const o of this.objectManager.getNodeIterator())
+      if (o.isSelected && o.id !== t && o.resizerEnabled) {
+        const s = o.height / 2, a = o.width / 2;
+        switch (e) {
           case "n-resize":
-            node.resizeToNorth(-(centerY + diffHeight));
+            o.resizeToNorth(-(s + i));
             break;
           case "nw-resize":
-            node.resizeToNorth(-(centerY + diffHeight));
-            node.resizeToWest(-(centerX + diffWidth));
+            o.resizeToNorth(-(s + i)), o.resizeToWest(-(a + r));
             break;
           case "ne-resize":
-            node.resizeToNorth(-(centerY + diffHeight));
-            node.resizeToEast(centerX + diffWidth);
+            o.resizeToNorth(-(s + i)), o.resizeToEast(a + r);
             break;
           case "w-resize":
-            node.resizeToWest(-(centerX + diffWidth));
+            o.resizeToWest(-(a + r));
             break;
           case "e-resize":
-            node.resizeToEast(centerX + diffWidth);
+            o.resizeToEast(a + r);
             break;
           case "s-resize":
-            node.resizeToSouth(centerY + diffHeight);
+            o.resizeToSouth(s + i);
             break;
           case "sw-resize":
-            node.resizeToSouth(centerY + diffHeight);
-            node.resizeToWest(-(centerX + diffWidth));
+            o.resizeToSouth(s + i), o.resizeToWest(-(a + r));
             break;
           case "se-resize":
-            node.resizeToSouth(centerY + diffHeight);
-            node.resizeToEast(centerX + diffWidth);
+            o.resizeToSouth(s + i), o.resizeToEast(a + r);
             break;
           default:
-            throw new Error(`Unknown cursor type '${cursor}'`);
+            throw new Error(`Unknown cursor type '${e}'`);
         }
       }
-    }
-    for (const group of this.objectManager.getGroupIterator()) {
-      group.isSelected && group.render();
-    }
+    for (const o of this.objectManager.getGroupIterator())
+      o.isSelected && o.render();
   }
   resizeDragStart() {
-    this.iContainer.getLogger().debug("ResizeHandler.resizeDragStart()", "start");
-    this.resizeInfo = [];
-    for (const node of this.objectManager.getNodeIterator()) {
-      if (node.isSelected) {
-        const info = new ChangedInfo(node.data);
-        info.addSizeOldValues();
-        this.resizeInfo.push(info);
+    this.iContainer.getLogger().debug("ResizeHandler.resizeDragStart()", "start"), this.resizeInfo = [];
+    for (const t of this.objectManager.getNodeIterator())
+      if (t.isSelected) {
+        const e = new et(t.data);
+        e.addSizeOldValues(), this.resizeInfo.push(e);
       }
-    }
   }
   resizeDragEnd() {
-    this.iContainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end");
-    this.resizeInfo.forEach((info) => info.updateSizeNewValues());
-    if (this.resizeInfo.some((info) => info.propList.some((x) => isDeepEqual(x.oldValue, x.newValue) === false))) {
-      this.actionController.addAction(new EditCommand(this.resizeInfo));
-    }
+    this.iContainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end"), this.resizeInfo.forEach((t) => t.updateSizeNewValues()), this.resizeInfo.some((t) => t.propList.some((e) => vn(e.oldValue, e.newValue) === !1)) && this.actionController.addAction(new st(this.resizeInfo));
   }
-  addDragActionOnResizer(node) {
-    node.renderer.resizers.forEach((resizer) => {
-      const cursor = resizer.attr("cursor");
-      resizer.call(drag_default().filter(() => this.iContainer.getReadOnly() === false).on("start", () => {
-        this.resizeDragStart();
-        this.iContainer.initDrag("drag-node-resize");
-      }).on("drag", (ev) => {
-        const dx = ev.x;
-        const dy = ev.y;
-        const curWidth = node.width;
-        const curHeight = node.height;
-        switch (cursor) {
+  addDragActionOnResizer(t) {
+    t.renderer.resizers.forEach((e) => {
+      const r = e.attr("cursor");
+      e.call(it().filter(() => this.iContainer.getReadOnly() === !1).on("start", () => {
+        this.resizeDragStart(), this.iContainer.initDrag("drag-node-resize");
+      }).on("drag", (i) => {
+        const o = i.x, s = i.y, a = t.width, c = t.height;
+        switch (r) {
           case "nw-resize":
-            node.resizeToNorth(dy);
-            node.resizeToWest(dx);
+            t.resizeToNorth(s), t.resizeToWest(o);
             break;
           case "n-resize":
-            node.resizeToNorth(dy);
+            t.resizeToNorth(s);
             break;
           case "ne-resize":
-            node.resizeToNorth(dy);
-            node.resizeToEast(dx);
+            t.resizeToNorth(s), t.resizeToEast(o);
             break;
           case "w-resize":
-            node.resizeToWest(dx);
+            t.resizeToWest(o);
             break;
           case "e-resize":
-            node.resizeToEast(dx);
+            t.resizeToEast(o);
             break;
           case "sw-resize":
-            node.resizeToSouth(dy);
-            node.resizeToWest(dx);
+            t.resizeToSouth(s), t.resizeToWest(o);
             break;
           case "s-resize":
-            node.resizeToSouth(dy);
+            t.resizeToSouth(s);
             break;
           case "se-resize":
-            node.resizeToSouth(dy);
-            node.resizeToEast(dx);
+            t.resizeToSouth(s), t.resizeToEast(o);
             break;
           default:
-            throw new Error(`Unknown cursor type '${cursor}'`);
+            throw new Error(`Unknown cursor type '${r}'`);
         }
-        const diffWidth = node.width - curWidth;
-        const diffHeight = node.height - curHeight;
-        this.resizeCallback(node.id, cursor, diffWidth, diffHeight);
+        const h = t.width - a, l = t.height - c;
+        this.resizeCallback(t.id, r, h, l);
       }).on("end", () => {
-        this.resizeDragEnd();
-        this.iContainer.terminateDrag("drag-node-resize");
+        this.resizeDragEnd(), this.iContainer.terminateDrag("drag-node-resize");
       }));
     });
   }
-};
-
-// src/js-components/flowchart/flowchart.types.ts
-var EVENT_TYPE = {
+}
+const D = {
   CLICK: "click",
   CLICK_NODE: "clickNode",
   DOUBLE_CLICK_NODE: "dblClickNode",
@@ -4036,24 +2849,14 @@ var EVENT_TYPE = {
   MOUSEUP_SHEET: "mouseUpSheet",
   CONTEXT_MENU: "contextmenu"
 };
-
-// src/js-components/flowchart/util/observe.ts
-var ObserverArg = class {
-  constructor(renderObj, key, newValue, oldValue) {
-    this.renderObj = renderObj;
-    this.key = key;
-    this.newValue = newValue;
-    this.oldValue = oldValue;
+class aa {
+  constructor(t, e, r, i) {
+    this.renderObj = t, this.key = e, this.newValue = r, this.oldValue = i;
   }
-};
-
-// src/js-components/flowchart/obj/base.ts
-var RenderObject = class {
-  constructor(data, renderer, containerInterface) {
-    this._clickedSeq = 0;
-    this.data = data;
-    this.renderer = renderer;
-    this.containerInterface = containerInterface;
+}
+class Ne {
+  constructor(t, e, r) {
+    this._clickedSeq = 0, this.data = t, this.renderer = e, this.containerInterface = r;
   }
   get onEditing() {
     return this.renderer.objects.foreignObj !== null;
@@ -4101,19 +2904,16 @@ var RenderObject = class {
     throw new Error("Not Implemented!");
   }
   get isTempObj() {
-    return this.data.temp || false;
+    return this.data.temp || !1;
   }
   get zIndex() {
-    const node = this.renderer.group.node();
-    if (!node)
+    const t = this.renderer.group.node();
+    if (!t)
       throw new Error("renderer.group.node is null!");
-    let zId = 0;
-    let prev = node.previousSibling;
-    while (prev !== null) {
-      prev = prev.previousSibling;
-      ++zId;
-    }
-    return zId;
+    let e = 0, r = t.previousSibling;
+    for (; r !== null; )
+      r = r.previousSibling, ++e;
+    return e;
   }
   get centerX() {
     return (this.x + this.endX) / 2;
@@ -4145,122 +2945,104 @@ var RenderObject = class {
   get isHovered() {
     return this.data.isHovered;
   }
-  set id(value) {
-    this.data.id = value;
+  set id(t) {
+    this.data.id = t;
   }
-  set x(value) {
+  set x(t) {
     throw new Error("Not Implemented!");
   }
-  set y(value) {
+  set y(t) {
     throw new Error("Not Implemented!");
   }
-  set width(value) {
+  set width(t) {
     throw new Error("Not Implemented!");
   }
-  set height(value) {
+  set height(t) {
     throw new Error("Not Implemented!");
   }
-  set textDecoration(value) {
-    this.data.textDecoration = value;
+  set textDecoration(t) {
+    this.data.textDecoration = t;
   }
-  set isHovered(value) {
-    this.data.isHovered = value;
+  set isHovered(t) {
+    this.data.isHovered = t;
   }
-  set clickedSeq(value) {
-    this._clickedSeq = value;
+  set clickedSeq(t) {
+    this._clickedSeq = t;
   }
   /**
   *
   * @param {Number | Null} id it will be on front if id is null
   */
-  set zIndex(id2) {
-    const container = this.renderer.container.node();
-    const g = this.renderer.group.node();
-    if (!container || !g)
+  set zIndex(t) {
+    const e = this.renderer.container.node(), r = this.renderer.group.node();
+    if (!e || !r)
       throw new Error("container or graphic element is null");
-    if (id2 === null || id2 === void 0 || id2 >= container.children.length)
-      container.appendChild(g);
-    else
-      container.insertBefore(g, container.children[id2]);
+    t == null || t >= e.children.length ? e.appendChild(r) : e.insertBefore(r, e.children[t]);
   }
   observeProperties() {
-    Object.keys(this.data).forEach((key) => {
-      let value = this.data[key];
-      Object.defineProperty(this.data, key, {
-        enumerable: true,
-        get: () => value,
-        set: (newValue) => {
-          const oldValue = value;
-          value = newValue;
-          if (this.data.isMonitoring) {
-            this.containerInterface.observerCallback(new ObserverArg(this, key, newValue, oldValue));
-            this.render();
-          }
+    Object.keys(this.data).forEach((t) => {
+      let e = this.data[t];
+      Object.defineProperty(this.data, t, {
+        enumerable: !0,
+        get: () => e,
+        set: (r) => {
+          const i = e;
+          e = r, this.data.isMonitoring && (this.containerInterface.observerCallback(new aa(this, t, r, i)), this.render());
         }
       });
     });
   }
-  changeRender(render, renderer) {
-    this.data.render = render;
-    this.destroy();
-    this.renderer = renderer;
-    this.create();
+  changeRender(t, e) {
+    this.data.render = t, this.destroy(), this.renderer = e, this.create();
   }
   create() {
-    this.renderer.create();
-    this.observeProperties();
+    this.renderer.create(), this.observeProperties();
   }
   destroy() {
     this.renderer.destroy();
   }
   render() {
-    this.renderer.render();
-    this.containerInterface.renderCallback(this);
+    this.renderer.render(), this.containerInterface.renderCallback(this);
   }
-  moveTo(x, y) {
+  moveTo(t, e) {
     this.editProp(() => {
-      this.x += x;
-      this.y += y;
+      this.x += t, this.y += e;
     });
   }
-  select(userInteraction = false, typeClick = "") {
-    if (this.data.isSelected === false) {
-      this.data.isSelected = true;
-      this.containerInterface.selectCallback(this, userInteraction, typeClick);
-    }
+  /**
+   *
+   * @param userInteraction 사용자 인터랙션으로 호출된 여부 확인 true인 경우, user가 의도한 select
+   * @param typeClick
+   */
+  select(t = !1, e = "") {
+    this.data.isSelected === !1 && (this.data.isSelected = !0, this.containerInterface.selectCallback(this, t, e));
   }
-  release(userInteraction = false) {
-    if (this.data.isSelected) {
-      this.data.isSelected = false;
-      this.containerInterface.releaseCallback(this, userInteraction);
-    }
+  release(t = !1) {
+    this.data.isSelected && (this.data.isSelected = !1, this.containerInterface.releaseCallback(this, t));
   }
   editLabel() {
     this.renderer.editLabelMode();
   }
-  getDataOrNull(key) {
-    return this.renderer.dataWrapper.get(key) || null;
+  getDataOrNull(t) {
+    return this.renderer.dataWrapper.get(t) || null;
   }
-  editProp(func) {
+  editProp(t) {
     try {
-      this.data.isMonitoring = false;
-      func();
+      this.data.isMonitoring = !1, t();
     } finally {
-      this.data.isMonitoring = true;
+      this.data.isMonitoring = !0;
     }
   }
-};
-
-// src/js-components/flowchart/obj/connection.js
-var Connection = class extends RenderObject {
+}
+class ca extends Ne {
   get points() {
     return this.data["connection.points"];
   }
   get endX() {
-    return this.points.reduce((a, b) => Math.max(a, b.x), 0);
+    return this.points.reduce((t, e) => Math.max(t, e.x), 0);
   }
   get endY() {
-    return this.points.reduce((a, b) => Math.max(a, b.y), 0);
+    return this.points.reduce((t, e) => Math.max(t, e.y), 0);
   }
   get sourceObjId() {
     return this.data["connection.sourceObjId"] || null;
@@ -4287,113 +3069,86 @@ var Connection = class extends RenderObject {
     return this.points[this.points.length - 1];
   }
   get startX() {
-    return this.points.reduce((a, b) => Math.min(a, b.x), Number.MAX_VALUE);
+    return this.points.reduce((t, e) => Math.min(t, e.x), Number.MAX_VALUE);
   }
   get startY() {
-    return this.points.reduce((a, b) => Math.min(a, b.y), Number.MAX_VALUE);
+    return this.points.reduce((t, e) => Math.min(t, e.y), Number.MAX_VALUE);
   }
   get width() {
-    if (!this.points) {
+    if (!this.points)
       return NaN;
-    }
-    const reduce = this.points.reduce((a, b) => {
-      return {
-        min: Math.min(a.min, b.x),
-        max: Math.max(a.max, b.x)
-      };
-    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
-    return reduce.max - reduce.min;
+    const t = this.points.reduce((e, r) => ({
+      min: Math.min(e.min, r.x),
+      max: Math.max(e.max, r.x)
+    }), { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
+    return t.max - t.min;
   }
   get height() {
-    if (!this.points) {
+    if (!this.points)
       return NaN;
-    }
-    const reduce = this.points.reduce((a, b) => {
-      return {
-        min: Math.min(a.min, b.y),
-        max: Math.max(a.max, b.y)
-      };
-    }, { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
-    return reduce.max - reduce.min;
+    const t = this.points.reduce((e, r) => ({
+      min: Math.min(e.min, r.y),
+      max: Math.max(e.max, r.y)
+    }), { min: Number.MAX_VALUE, max: Number.MIN_VALUE });
+    return t.max - t.min;
   }
   get x() {
-    const point = this.firstPoint;
-    return point !== null ? point.x : null;
+    const t = this.firstPoint;
+    return t !== null ? t.x : null;
   }
   get y() {
-    const point = this.firstPoint;
-    return point !== null ? point.y : null;
+    const t = this.firstPoint;
+    return t !== null ? t.y : null;
   }
-  set sourceObjId(value) {
-    this.data["connection.sourceObjId"] = value || null;
+  set sourceObjId(t) {
+    this.data["connection.sourceObjId"] = t || null;
   }
-  set destinationObjId(value) {
-    this.data["connection.destinationObjId"] = value || null;
+  set destinationObjId(t) {
+    this.data["connection.destinationObjId"] = t || null;
   }
-  set sourcePos(value) {
-    this.data["connection.sourcePos"] = value || null;
+  set sourcePos(t) {
+    this.data["connection.sourcePos"] = t || null;
   }
-  set destinationPos(value) {
-    this.data["connection.destinationPos"] = value || null;
+  set destinationPos(t) {
+    this.data["connection.destinationPos"] = t || null;
   }
-  set x(value) {
-    if (this.sourceObjId !== null) {
+  set x(t) {
+    if (this.sourceObjId !== null)
       return;
-    }
-    const point = this.firstPoint;
-    if (point !== null) {
-      point.x = value;
-      this.render();
-    }
+    const e = this.firstPoint;
+    e !== null && (e.x = t, this.render());
   }
-  set y(value) {
-    if (this.sourceObjId !== null) {
+  set y(t) {
+    if (this.sourceObjId !== null)
       return;
-    }
-    const point = this.firstPoint;
-    if (point !== null) {
-      point.y = value;
-      this.render();
-    }
+    const e = this.firstPoint;
+    e !== null && (e.y = t, this.render());
   }
-  setLastPointXY(x, y) {
-    this.data["connection.points"][this.renderer.lastPointId].x = x;
-    this.data["connection.points"][this.renderer.lastPointId].y = y;
-    this.render();
+  setLastPointXY(t, e) {
+    this.data["connection.points"][this.renderer.lastPointId].x = t, this.data["connection.points"][this.renderer.lastPointId].y = e, this.render();
   }
-  moveTo(x, y) {
-    if (this.sourceObj && this.destinationObj) {
+  moveTo(t, e) {
+    if (this.sourceObj && this.destinationObj)
       return;
-    }
-    const startId = this.sourceObj === null ? 0 : 1;
-    const endId = this.points.length - (this.destinationObj === null ? 0 : 1);
+    const r = this.sourceObj === null ? 0 : 1, i = this.points.length - (this.destinationObj === null ? 0 : 1);
     this.editProp(() => {
-      this.points.slice(startId, endId).forEach((pt) => {
-        pt.x += x;
-        pt.y += y;
+      this.points.slice(r, i).forEach((o) => {
+        o.x += t, o.y += e;
       });
     });
   }
-  comparePoints(points) {
-    if (!this.points || !points || this.points.length !== points.length) {
-      return false;
-    }
-    for (let i = 0; i < points.length; i++) {
-      if (this.points[i].x !== points[i].x && this.points[i].y !== points[i].y) {
-        return false;
-      }
-    }
-    return true;
+  comparePoints(t) {
+    if (!this.points || !t || this.points.length !== t.length)
+      return !1;
+    for (let e = 0; e < t.length; e++)
+      if (this.points[e].x !== t[e].x && this.points[e].y !== t[e].y)
+        return !1;
+    return !0;
   }
-};
-var connection_default = Connection;
-
-// src/js-components/flowchart/obj/group.js
-var Group = class extends RenderObject {
-  constructor(data, renderer, containerInterface) {
-    super(data, renderer, containerInterface);
-    this.objectSet = new Set(this.data.objectList || []);
-    this.rect = {
+}
+class ha extends Ne {
+  constructor(t, e, r) {
+    super(t, e, r), this.objectSet = new Set(this.data.objectList || []), this.rect = {
       x: 0,
       y: 0,
       width: 0,
@@ -4424,86 +3179,59 @@ var Group = class extends RenderObject {
   get endY() {
     return this.y + this.height;
   }
-  select(userInteraction, typeClick = "") {
-    this.objectSet.forEach((id2) => {
-      const obj = this.containerInterface.getObjectOrNull(id2);
-      if (obj != null) {
-        if (typeClick == "" || typeClick != "" && typeClick == obj.renderType)
-          obj.data.isSelected = true;
-      }
-    });
-    super.select(userInteraction);
+  select(t, e = "") {
+    this.objectSet.forEach((r) => {
+      const i = this.containerInterface.getObjectOrNull(r);
+      i != null && (e == "" || e != "" && e == i.renderType) && (i.data.isSelected = !0);
+    }), super.select(t);
   }
-  release(userInteraction = false) {
-    this.objectSet.forEach((id2) => {
-      const obj = this.containerInterface.getObjectOrNull(id2);
-      obj != null && obj.release(userInteraction);
-    });
-    super.release(userInteraction);
+  release(t = !1) {
+    this.objectSet.forEach((e) => {
+      const r = this.containerInterface.getObjectOrNull(e);
+      r != null && r.release(t);
+    }), super.release(t);
   }
   resize() {
-    const margin = this.data["group.margin"];
-    let minX = Number.MAX_VALUE;
-    let minY = Number.MAX_VALUE;
-    let maxX = Number.MIN_VALUE;
-    let maxY = Number.MIN_VALUE;
-    this.objectSet.forEach((v) => {
-      const obj = this.containerInterface.getObjectOrNull(v);
-      if (obj !== null) {
-        minX = Math.min(obj.startX - margin, minX);
-        maxX = Math.max(obj.endX + margin, maxX);
-        minY = Math.min(obj.startY - margin, minY);
-        maxY = Math.max(obj.endY + margin, maxY);
-      }
-    });
-    this.data["group.rect"] = this.rect;
-    this.rect.x = minX;
-    this.rect.y = minY;
-    this.rect.width = maxX - minX;
-    this.rect.height = maxY - minY;
+    const t = this.data["group.margin"];
+    let e = Number.MAX_VALUE, r = Number.MAX_VALUE, i = Number.MIN_VALUE, o = Number.MIN_VALUE;
+    this.objectSet.forEach((s) => {
+      const a = this.containerInterface.getObjectOrNull(s);
+      a !== null && (e = Math.min(a.startX - t, e), i = Math.max(a.endX + t, i), r = Math.min(a.startY - t, r), o = Math.max(a.endY + t, o));
+    }), this.data["group.rect"] = this.rect, this.rect.x = e, this.rect.y = r, this.rect.width = i - e, this.rect.height = o - r;
   }
   moveTo() {
     this.render();
   }
-  hasObjId(objId) {
-    return this.objectSet.has(objId);
+  hasObjId(t) {
+    return this.objectSet.has(t);
   }
   destroy() {
-    this.objectSet.clear();
-    super.destroy();
+    this.objectSet.clear(), super.destroy();
   }
   destroyAll() {
-    this.objectSet.forEach((id2) => {
-      const obj = this.containerInterface.getObjectOrNull(id2);
-      obj != null && this.containerInterface.removeObject(obj);
-    });
-    this.destroy();
+    this.objectSet.forEach((t) => {
+      const e = this.containerInterface.getObjectOrNull(t);
+      e != null && this.containerInterface.removeObject(e);
+    }), this.destroy();
   }
   // clear all items in this
   clear() {
     this.objectSet.clear();
   }
-  addObject(id2) {
-    if (this.objectSet.has(id2) === false) {
-      this.objectSet.add(id2);
-      this.resize();
-    } else {
-      throw new Error(`Already has added id! '${id2}'`);
-    }
+  addObject(t) {
+    if (this.objectSet.has(t) === !1)
+      this.objectSet.add(t), this.resize();
+    else
+      throw new Error(`Already has added id! '${t}'`);
   }
-  removeObject(id2) {
-    if (this.objectSet.has(id2)) {
-      this.objectSet.delete(id2);
-      this.resize();
-    } else {
-      throw new Error(`There is no id you received in this group!'${id2}'`);
-    }
+  removeObject(t) {
+    if (this.objectSet.has(t))
+      this.objectSet.delete(t), this.resize();
+    else
+      throw new Error(`There is no id you received in this group!'${t}'`);
   }
-};
-var group_default = Group;
-
-// src/js-components/flowchart/data/wrapper.ts
-var FIXED_KEYS = /* @__PURE__ */ new Set([
+}
+const la = /* @__PURE__ */ new Set([
   // 공용
   "id",
   "type",
@@ -4530,69 +3258,36 @@ var FIXED_KEYS = /* @__PURE__ */ new Set([
   "group.borderAlwaysAppearance",
   "group.margin"
 ]);
-var StyleDataWrapper = class {
-  constructor(data) {
-    this.data = data;
+class da {
+  constructor(t) {
+    this.data = t;
   }
-  get(key) {
-    var _a;
-    if (FIXED_KEYS.has(key))
-      return this.data[key];
-    return (_a = this.data[`${key}${this._getPostFix()}`]) != null ? _a : this.data[key];
+  get(t) {
+    return la.has(t) ? this.data[t] : this.data[`${t}${this._getPostFix()}`] ?? this.data[t];
   }
   _getPostFix() {
-    if (this.data.isSelected)
-      return ".selected";
-    if (this.data.isHovered)
-      return ".hovered";
-    return "";
+    return this.data.isSelected ? ".selected" : this.data.isHovered ? ".hovered" : "";
   }
-};
-
-// src/js-components/flowchart/util/text-cache.ts
-var CacheData = class {
+}
+class ua {
   constructor() {
-    this.text = "";
-    this.length = 0;
-    this.width = 0;
-    this.height = 0;
-    this.x = 0;
-    this.y = 0;
+    this.text = "", this.length = 0, this.width = 0, this.height = 0, this.x = 0, this.y = 0;
   }
-};
-var TextCache = class extends CacheData {
-  compareTo(data) {
-    return this.text === data.text && this.length === data.length && this.width === data.width && this.height === data.height && this.x === data.x && this.y === data.y;
+}
+class or extends ua {
+  compareTo(t) {
+    return this.text === t.text && this.length === t.length && this.width === t.width && this.height === t.height && this.x === t.x && this.y === t.y;
   }
-  update(data) {
-    this.text = data.text;
-    this.length = data.length;
-    this.width = data.width;
-    this.height = data.height;
-    this.x = data.x;
-    this.y = data.y;
+  update(t) {
+    this.text = t.text, this.length = t.length, this.width = t.width, this.height = t.height, this.x = t.x, this.y = t.y;
   }
   clear() {
-    this.text = "";
-    this.length = 0;
-    this.width = 0;
-    this.height = 0;
-    this.x = 0;
-    this.y = 0;
+    this.text = "", this.length = 0, this.width = 0, this.height = 0, this.x = 0, this.y = 0;
   }
-};
-
-// src/js-components/flowchart/render/base.ts
-var BaseRenderer = class {
-  constructor(data, className, containerInterface) {
-    this.data = data;
-    this.className = className;
-    this.containerInterface = containerInterface;
-    this.textCache = new TextCache();
-    this.dataWrapper = new StyleDataWrapper(data);
-    this.container = containerInterface.getSvg().select(".container");
-    this.group = this.container.append("g").attr("class", `${data.type} ${className}`);
-    this.objects = {
+}
+class De {
+  constructor(t, e, r) {
+    this.data = t, this.className = e, this.containerInterface = r, this.textCache = new or(), this.dataWrapper = new da(t), this.container = r.getSvg().select(".container"), this.group = this.container.append("g").attr("class", `${t.type} ${e}`), this.objects = {
       foreignObj: null,
       textarea: null,
       text: this.group.append("text").attr("class", "unselectable text--whitespace-pre").attr("text-anchor", "middle")
@@ -4605,7 +3300,7 @@ var BaseRenderer = class {
     throw new Error("Not implemented!");
   }
   get subUiVisibility() {
-    return this.data.isSelected && this.containerInterface.getReadOnly() === false ? "visible" : "hidden";
+    return this.data.isSelected && this.containerInterface.getReadOnly() === !1 ? "visible" : "hidden";
   }
   get isHovered() {
     return this.data.isHovered;
@@ -4621,118 +3316,79 @@ var BaseRenderer = class {
   _repositionTextarea() {
     if (!this.objects.foreignObj || !this.objects.textarea)
       throw new Error("foreignObj, textarea is null!");
-    const rect = this._getLabelRect();
-    this.objects.foreignObj.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height);
-    this.objects.textarea.style("width", `${rect.width}px`).style("height", `${rect.height}px`).style("outline", "1px solid #717171").style("background-color", "transparent");
+    const t = this._getLabelRect();
+    this.objects.foreignObj.attr("x", t.x).attr("y", t.y).attr("width", t.width).attr("height", t.height), this.objects.textarea.style("width", `${t.width}px`).style("height", `${t.height}px`).style("outline", "1px solid #717171").style("background-color", "transparent");
   }
   removeLabelEdit() {
-    if (this.objects.foreignObj) {
-      this.objects.text.attr("visibility", "visible");
-      this.objects.textarea = null;
-      this.objects.foreignObj.remove();
-      this.objects.foreignObj = null;
-      this.containerInterface.setEditMode(false);
-    }
+    this.objects.foreignObj && (this.objects.text.attr("visibility", "visible"), this.objects.textarea = null, this.objects.foreignObj.remove(), this.objects.foreignObj = null, this.containerInterface.setEditMode(!1));
   }
-  cancelLabelEdit(oldText) {
-    this.removeLabelEdit();
-    this.data.text = oldText;
+  cancelLabelEdit(t) {
+    this.removeLabelEdit(), this.data.text = t;
   }
   editLabelMode() {
-    if (!this.data.editable || this.objects.foreignObj || this.data.render === "bridge") {
+    if (!this.data.editable || this.objects.foreignObj || this.data.render === "bridge")
       return;
-    }
-    const oldText = this.data.text;
-    this.group.classed("edit", true);
-    this.containerInterface.setEditMode(true);
-    this.objects.text.attr("visibility", "hidden");
-    this.objects.foreignObj = this.group.append("foreignObject");
-    this.objects.textarea = this.objects.foreignObj.append("xhtml:div").style("overflow", "hidden").append("textarea").style("outline", "0").style("resize", "none").style("text-align", "center").style("font-family", this.data.fontFamily).style("font-size", `${this.data.fontSize}px`).on("keyup", (ev) => {
-      if (ev.key === "Escape") {
-        this.cancelLabelEdit(oldText);
-        this.containerInterface.getSvg().node().parentElement.focus();
-      } else {
-        this.data.text = this.objects.textarea.node().value;
-        this._repositionTextarea();
-      }
+    const t = this.data.text;
+    this.group.classed("edit", !0), this.containerInterface.setEditMode(!0), this.objects.text.attr("visibility", "hidden"), this.objects.foreignObj = this.group.append("foreignObject"), this.objects.textarea = this.objects.foreignObj.append("xhtml:div").style("overflow", "hidden").append("textarea").style("outline", "0").style("resize", "none").style("text-align", "center").style("font-family", this.data.fontFamily).style("font-size", `${this.data.fontSize}px`).style("color", this.data.foreColor).on("keyup", (e) => {
+      e.key === "Escape" ? (this.cancelLabelEdit(t), this.containerInterface.getSvg().node().parentElement.focus()) : (this.data.text = this.objects.textarea.node().value, this._repositionTextarea());
     }).on("focusout", () => {
-      if (this.objects.textarea) {
-        this.data.text = this.objects.textarea.node().value;
-        this.containerInterface.editTextCallback(this.data, oldText, this.data.text);
-        this.removeLabelEdit();
-      }
-      this.group.classed("edit", false);
-      this.render();
-    });
-    this._repositionTextarea();
-    this.objects.textarea.node().value = this.data.text || "";
-    this.objects.textarea.node().focus();
-    this.containerInterface.editTextModeCallback(this.data);
+      this.objects.textarea && (this.data.text = this.objects.textarea.node().value, this.containerInterface.editTextCallback(this.data, t, this.data.text), this.removeLabelEdit()), this.group.classed("edit", !1), this.render();
+    }), this._repositionTextarea(), this.objects.textarea.node().value = this.data.text || "", this.objects.textarea.node().focus(), this.containerInterface.editTextModeCallback(this.data);
   }
-  bringToFrontElement(element) {
-    this.group.node().appendChild(element);
+  bringToFrontElement(t) {
+    this.group.node().appendChild(t);
   }
   create() {
-    this._create();
-    this.bringToFrontElement(this.objects.text.node());
-    this.render();
+    this._create(), this.bringToFrontElement(this.objects.text.node()), this.render();
   }
   _create() {
     throw new Error("Not implemented method!");
   }
   render() {
-    this._render();
-    this.group.attr("cursor", this.dataWrapper.get("cursor"));
-    this.group.attr("opacity", this.dataWrapper.get("opacity"));
+    this._render(), this.group.attr("cursor", this.dataWrapper.get("cursor")), this.group.attr("opacity", this.dataWrapper.get("opacity"));
   }
   _render() {
     throw new Error("Not implemented method!");
   }
-  _getLabelXY(_info) {
+  _getLabelXY(t) {
     throw new Error("Not implemented!");
   }
-  _createText(x = 0, y = 0) {
-    const style = {
-      width: this.width - TEXT_PADDING,
+  _createText(t = 0, e = 0) {
+    const r = {
+      width: this.width - ve,
       text: this.dataWrapper.get("text"),
       fontFamily: this.dataWrapper.get("fontFamily"),
       fontSize: this.dataWrapper.get("fontSize"),
       foreColor: this.dataWrapper.get("foreColor"),
       textDecoration: this.dataWrapper.get("textDecoration")
-    };
-    const visibleOverText = this.dataWrapper.get("visibleOverText");
-    const wrappedInfo = visibleOverText ? getWrappedText(style) : getCroppedText(style, this.height - TEXT_PADDING);
-    const labelXY = this._getLabelXY(wrappedInfo);
-    const data = {
-      text: style.text,
+    }, o = this.dataWrapper.get("visibleOverText") ? ze(r) : Ws(r, this.height - ve), s = this._getLabelXY(o), a = {
+      text: r.text,
       width: this.width,
       height: this.height,
-      length: wrappedInfo.lines.length,
-      x: labelXY.x,
-      y: labelXY.y,
-      fontFamily: style.fontFamily,
-      fontSize: style.fontSize,
-      foreColor: style.foreColor,
-      textDecoration: style.textDecoration
+      length: o.lines.length,
+      x: s.x,
+      y: s.y,
+      fontFamily: r.fontFamily,
+      fontSize: r.fontSize,
+      foreColor: r.foreColor,
+      textDecoration: r.textDecoration
     };
-    if (this.textCache.compareTo(data)) {
-      updateTextStyle(
+    if (this.textCache.compareTo(a)) {
+      er(
         this.objects.text,
-        labelXY.x + x,
-        labelXY.y + y,
-        style
+        s.x + t,
+        s.y + e,
+        r
       );
       return;
     }
-    removeText(this.objects.text, this.textCache);
-    createTextLines(
+    ra(this.objects.text, this.textCache), nr(
       this.objects.text,
-      wrappedInfo,
-      labelXY.x + x,
-      labelXY.y + y,
-      style
-    );
-    this.textCache.update(data);
+      o,
+      s.x + t,
+      s.y + e,
+      r
+    ), this.textCache.update(a);
   }
   /**
    * svg 컨테이너에서 삭제
@@ -4740,12 +3396,8 @@ var BaseRenderer = class {
   destroy() {
     this.group.remove();
   }
-};
-
-// src/js-components/flowchart/render/node.js
-var RESIZER_SIZE = 6;
-var COMMENT_MARGIN = 5;
-var COMMENTS_POS = [
+}
+const ft = 6, fa = 2, ln = 5, dn = [
   ["TopLeft", "start"],
   ["TopCenter", "middle"],
   ["TopRight", "end"],
@@ -4753,14 +3405,9 @@ var COMMENTS_POS = [
   ["BottomCenter", "middle"],
   ["BottomRight", "end"]
 ];
-var NodeRenderer = class extends BaseRenderer {
-  constructor(data, className, iContainer) {
-    super(data, className, iContainer);
-    this.svg = this.containerInterface.getSvg();
-    this.connectors = [];
-    this.resizers = [];
-    this.comments = [];
-    this.backgroundRect = this.group.append("rect").attr("opacity", "0");
+class wt extends De {
+  constructor(t, e, r) {
+    super(t, e, r), this.svg = this.containerInterface.getSvg(), this.connectors = [], this.resizers = [], this.comments = [], this.backgroundRect = this.group.append("rect").attr("opacity", "0");
   }
   get width() {
     return this.data["node.width"];
@@ -4772,160 +3419,114 @@ var NodeRenderer = class extends BaseRenderer {
     return this.data["node.connectorEnabled"] && this.containerInterface.isAppending();
   }
   get resizerVisibility() {
-    return this.data["node.resizerEnabled"] === true && this.data.isSelected;
+    return this.data["node.resizerEnabled"] === !0 && this.data.isSelected;
   }
   _createComments() {
-    COMMENTS_POS.forEach((pos) => {
-      const [key, textAlign] = pos;
-      this.comments.push(this.group.append("text").attr("class", `${key} unselectable`).attr("text-anchor", textAlign));
+    dn.forEach((t) => {
+      const [e, r] = t;
+      this.comments.push(this.group.append("text").attr("class", `${e} unselectable`).attr("text-anchor", r));
     });
   }
   _createResizer() {
-    const g = this.group;
-    for (const pos of this.getResizerPosition()) {
-      const resizer = g.append("rect").attr("x", pos[0] - RESIZER_SIZE / 2).attr("y", pos[1] - RESIZER_SIZE / 2).attr("width", RESIZER_SIZE).attr("height", RESIZER_SIZE).attr("fill", "rgb(173, 216, 230)").attr("stroke", "rgb(30, 144, 255)").attr("cursor", pos[2]).attr("class", "resizer").attr("visibility", "hidden");
-      this.resizers.push(resizer);
+    const t = this.group;
+    for (const e of this.getResizerPosition()) {
+      const r = t.append("rect").attr("x", e[0] - ft / 2).attr("y", e[1] - ft / 2).attr("width", ft).attr("height", ft).attr("fill", "rgb(173, 216, 230)").attr("stroke", "rgb(30, 144, 255)").attr("cursor", e[2]).attr("class", "resizer").attr("visibility", "hidden");
+      this.resizers.push(r);
     }
   }
   _createConnector() {
-    const g = this.group;
-    for (const pos of this.getConnectorPosition()) {
-      const connector = g.append("circle").attr("cx", pos.x).attr("cy", pos.y).attr("r", this.dataWrapper.get("node.connectorSize")).attr("class", `connector ${pos.dir}`);
-      this.connectors.push(connector);
+    const t = this.group;
+    for (const e of this.getConnectorPosition()) {
+      const r = t.append("circle").attr("cx", e.x).attr("cy", e.y).attr("r", this.dataWrapper.get("node.connectorSize")).attr("class", `connector ${e.dir}`);
+      this.connectors.push(r);
     }
   }
   _renderComments() {
-    const wrapper = this.dataWrapper;
-    const fontFamily = wrapper.get("node.commentFontFamily");
-    const fontSize = wrapper.get("node.commentFontSize");
-    const halfWidth = this.width / 2;
-    const halfHeight = this.height / 2;
-    const topY = -(halfHeight + COMMENT_MARGIN);
-    const bottomY = halfHeight + COMMENT_MARGIN + fontSize;
-    const xyMap = {
+    const t = this.dataWrapper, e = t.get("node.commentFontFamily"), r = t.get("node.commentFontSize"), i = this.width / 2, o = this.height / 2, s = -(o + ln), a = o + ln + r, c = {
       TopLeft: {
-        x: -halfWidth,
-        y: topY
+        x: -i,
+        y: s
       },
       TopCenter: {
         x: 0,
-        y: topY
+        y: s
       },
       TopRight: {
-        x: halfWidth,
-        y: topY
+        x: i,
+        y: s
       },
       BottomLeft: {
-        x: -halfWidth,
-        y: bottomY
+        x: -i,
+        y: a
       },
       BottomCenter: {
         x: 0,
-        y: bottomY
+        y: a
       },
       BottomRight: {
-        x: halfWidth,
-        y: bottomY
+        x: i,
+        y: a
       }
     };
-    COMMENTS_POS.forEach((pos, id2) => {
-      const xy = xyMap[pos[0]];
-      this.comments[id2].attr("x", xy.x).attr("y", xy.y).attr("font-family", fontFamily).attr("font-size", fontSize).text(() => this.dataWrapper.get(`node.comment${pos[0]}`));
+    dn.forEach((h, l) => {
+      const f = c[h[0]];
+      this.comments[l].attr("x", f.x).attr("y", f.y).attr("font-family", e).attr("font-size", r).text(() => this.dataWrapper.get(`node.comment${h[0]}`));
     });
   }
   _renderConnector() {
-    let index = 0;
-    for (const pos of this.getConnectorPosition()) {
-      if (this.isHovered && this.connectorVisibility && this.containerInterface.getReadOnly() === false) {
-        this.bringToFrontElement(this.connectors[index].node());
-        this.connectors[index++].attr("cx", pos.x).attr("cy", pos.y).attr("visibility", "visible").attr("r", this.dataWrapper.get("node.connectorSize")).classed("active", true);
-      } else {
-        this.connectors[index++].classed("active", false).attr(
-          "visibility",
-          this.connectorVisibility && this.containerInterface.getReadOnly() === false ? "visible" : "hidden"
-        );
-      }
-    }
+    let t = 0;
+    for (const e of this.getConnectorPosition())
+      this.isHovered && this.connectorVisibility && this.containerInterface.getReadOnly() === !1 ? (this.bringToFrontElement(this.connectors[t].node()), this.connectors[t++].attr("cx", e.x).attr("cy", e.y).attr("visibility", "visible").attr("r", this.dataWrapper.get("node.connectorSize")).classed("active", !0)) : this.connectors[t++].classed("active", !1).attr(
+        "visibility",
+        this.connectorVisibility && this.containerInterface.getReadOnly() === !1 ? "visible" : "hidden"
+      );
   }
   _renderResizer() {
     if (this.resizers.length === 0)
       return;
-    let index = 0;
-    for (const pos of this.getResizerPosition()) {
-      if (this.isHovered && this.resizerVisibility && this.containerInterface.getReadOnly() === false) {
-        this.bringToFrontElement(this.resizers[index].node());
-        this.resizers[index++].attr("x", pos[0] - RESIZER_SIZE / 2).attr("y", pos[1] - RESIZER_SIZE / 2).attr("class", "resizer").attr("visibility", "visible").classed("active", true);
-      } else {
-        this.resizers[index++].classed("active", false).attr(
-          "visibility",
-          this.resizerVisibility && this.containerInterface.getReadOnly() === false ? "visible" : "hidden"
-        );
-      }
-    }
+    let t = 0;
+    for (const e of this.getResizerPosition())
+      this.isHovered && this.resizerVisibility && this.containerInterface.getReadOnly() === !1 ? (this.bringToFrontElement(this.resizers[t].node()), this.resizers[t++].attr("x", e[0] - ft / 2).attr("y", e[1] - ft / 2).attr("class", "resizer").attr("visibility", "visible").classed("active", !0)) : this.resizers[t++].classed("active", !1).attr(
+        "visibility",
+        this.resizerVisibility && this.containerInterface.getReadOnly() === !1 ? "visible" : "hidden"
+      );
   }
   *getConnectorPosition() {
-    const gap = this.dataWrapper.get("node.connectorGap");
-    const halfWidth = this.width / 2;
-    const halfHeight = this.height / 2;
-    yield { x: -(gap + halfWidth), y: 0, dir: "left" };
-    yield { x: halfWidth + gap, y: 0, dir: "right" };
-    yield { x: 0, y: -(gap + halfHeight), dir: "top" };
-    yield { x: 0, y: gap + halfHeight, dir: "bottom" };
+    const t = this.dataWrapper.get("node.connectorGap"), e = this.width / 2, r = this.height / 2;
+    yield { x: -(t + e), y: 0, dir: "left" }, yield { x: e + t, y: 0, dir: "right" }, yield { x: 0, y: -(t + r), dir: "top" }, yield { x: 0, y: t + r, dir: "bottom" };
   }
   *getResizerPosition() {
-    const halfWidth = this.width / 2;
-    const halfHeight = this.height / 2;
-    yield [-halfWidth, -halfHeight, "nw-resize"];
-    yield [0, -halfHeight, "n-resize"];
-    yield [halfWidth, -halfHeight, "ne-resize"];
-    yield [-halfWidth, 0, "w-resize"];
-    yield [halfWidth, 0, "e-resize"];
-    yield [-halfWidth, halfHeight, "sw-resize"];
-    yield [0, halfHeight, "s-resize"];
-    yield [halfWidth, halfHeight, "se-resize"];
+    const t = this.width / 2, e = this.height / 2;
+    yield [-t, -e, "nw-resize"], yield [0, -e, "n-resize"], yield [t, -e, "ne-resize"], yield [-t, 0, "w-resize"], yield [t, 0, "e-resize"], yield [-t, e, "sw-resize"], yield [0, e, "s-resize"], yield [t, e, "se-resize"];
   }
   _create() {
-    this._createComments();
-    this._createResizer();
-    this._createConnector();
+    this._createComments(), this._createResizer(), this._createConnector();
   }
-  _getLabelXY(info) {
-    const fontSize = this.dataWrapper.get("fontSize");
+  _getLabelXY(t) {
+    const e = this.dataWrapper.get("fontSize");
     return {
       x: 0,
-      y: fontSize - (fontSize + TEXT_ROW_SPACE) * info.length / 2
+      y: e - (e + Ae) * t.length / 2 - fa
     };
   }
   _getLabelRect() {
-    const width = this.width;
-    const height = this.height;
+    const t = this.width, e = this.height;
     return {
-      x: -(width / 2),
-      y: -(height / 2),
-      width,
-      height
+      x: -(t / 2),
+      y: -(e / 2),
+      width: t,
+      height: e
     };
   }
   _resizerVisibleBackgroundRect() {
     this.backgroundRect.attr("x", -(this.width / 2)).attr("y", -(this.height / 2)).attr("width", this.width).attr("height", this.height).style("fill", "white");
   }
   render() {
-    const x = this.data["node.x"] + this.data["node.width"] / 2;
-    const y = this.data["node.y"] + this.data["node.height"] / 2;
-    this.group.attr("transform", `translate(${x}, ${y})`);
-    this.resizerVisibility ? this._resizerVisibleBackgroundRect() : this.backgroundRect.style("fill", "none");
-    super.render();
-    this._renderComments();
-    this._renderResizer();
-    this._renderConnector();
+    const t = this.data["node.x"] + this.data["node.width"] / 2, e = this.data["node.y"] + this.data["node.height"] / 2;
+    this.group.attr("transform", `translate(${t}, ${e})`), this.resizerVisibility ? this._resizerVisibleBackgroundRect() : this.backgroundRect.style("fill", "none"), super.render(), this._renderComments(), this._renderResizer(), this._renderConnector();
   }
-};
-
-// src/js-components/flowchart/obj/node.js
-var COMMENT_MARGIN2 = 5;
-var MINIMUM_WIDTH = 30;
-var MINIMUM_HEIGHT = 30;
-var COMMENT_POS = /* @__PURE__ */ new Set([
+}
+const un = 5, Rt = 30, Lt = 30, ga = /* @__PURE__ */ new Set([
   "TopLeft",
   "TopCenter",
   "TopRight",
@@ -4933,27 +3534,25 @@ var COMMENT_POS = /* @__PURE__ */ new Set([
   "BottomCenter",
   "BottomRight"
 ]);
-var Node = class extends RenderObject {
+class pa extends Ne {
   /**
   * @param {NodeRenderer} renderer
   */
-  constructor(data, renderer, containerInterface) {
-    super(data, renderer, containerInterface);
-    this.renderer = renderer;
+  constructor(t, e, r) {
+    super(t, e, r), this.renderer = e;
   }
   get startX() {
     return this.x;
   }
   get startY() {
-    const hasTopComment = this.data["node.commentTopLeft"] || this.data["node.commentTopCenter"] || this.data["node.commentTopRight"];
-    const topAdjust = hasTopComment ? COMMENT_MARGIN2 + this.data["node.commentFontSize"] : 0;
-    return this.y - topAdjust;
+    const e = this.data["node.commentTopLeft"] || this.data["node.commentTopCenter"] || this.data["node.commentTopRight"] ? un + this.data["node.commentFontSize"] : 0;
+    return this.y - e;
   }
   get resizerEnabled() {
-    return this.data["node.resizerEnabled"] === true;
+    return this.data["node.resizerEnabled"] === !0;
   }
   get isConnectorEnabled() {
-    return this.data["node.connectorEnabled"] === true;
+    return this.data["node.connectorEnabled"] === !0;
   }
   get centerX() {
     return this.x + this.width / 2;
@@ -4977,27 +3576,26 @@ var Node = class extends RenderObject {
     return this.x + this.width;
   }
   get endY() {
-    const hasTopComment = this.data["node.commentBottomLeft"] || this.data["node.commentBottomCenter"] || this.data["node.commentBottomRight"];
-    const topAdjust = hasTopComment ? COMMENT_MARGIN2 + this.data["node.commentFontSize"] : 0;
-    return this.y + this.height + topAdjust;
+    const e = this.data["node.commentBottomLeft"] || this.data["node.commentBottomCenter"] || this.data["node.commentBottomRight"] ? un + this.data["node.commentFontSize"] : 0;
+    return this.y + this.height + e;
   }
-  set x(value) {
-    this.data["node.x"] = value;
+  set x(t) {
+    this.data["node.x"] = t;
   }
-  set y(value) {
-    this.data["node.y"] = value;
+  set y(t) {
+    this.data["node.y"] = t;
   }
-  set width(value) {
-    this.data["node.width"] = value;
+  set width(t) {
+    this.data["node.width"] = t;
   }
-  set height(value) {
-    this.data["node.height"] = value;
+  set height(t) {
+    this.data["node.height"] = t;
   }
   create() {
     super.create();
   }
-  getPositionXY(pos) {
-    switch (pos) {
+  getPositionXY(t) {
+    switch (t) {
       case "left":
         return {
           x: this.x,
@@ -5019,79 +3617,44 @@ var Node = class extends RenderObject {
           y: this.y + this.height
         };
       default:
-        throw new Error(`Invalid argument '${pos}'`);
+        throw new Error(`Invalid argument '${t}'`);
     }
   }
   fitSizeOnText() {
-    const size = getFittedSizeOnText(this.data);
-    const padding = TEXT_PADDING * 2;
-    this.width = size.width + padding;
-    this.height = size.height + padding;
+    const t = Zn(this.data), e = ve * 2;
+    this.width = t.width + e, this.height = t.height + e;
   }
-  resizeToNorth(dy) {
-    const sourceY = -(this.height / 2);
-    const diffY = parseInt(sourceY - dy);
-    if (this.height + diffY >= MINIMUM_HEIGHT) {
-      this.y -= diffY;
-      this.height = this.height + diffY;
-    } else {
-      this.y += this.height - MINIMUM_HEIGHT;
-      this.height = MINIMUM_HEIGHT;
-    }
+  resizeToNorth(t) {
+    const e = -(this.height / 2), r = parseInt(e - t);
+    this.height + r >= Lt ? (this.y -= r, this.height = this.height + r) : (this.y += this.height - Lt, this.height = Lt);
   }
-  resizeToWest(dx) {
-    const sourceX = -(this.width / 2);
-    const diffX = parseInt(sourceX - dx);
-    if (this.width + diffX >= MINIMUM_WIDTH) {
-      this.x -= diffX;
-      this.width = this.width + diffX;
-    } else {
-      this.x += this.width - MINIMUM_WIDTH;
-      this.width = MINIMUM_WIDTH;
-    }
+  resizeToWest(t) {
+    const e = -(this.width / 2), r = parseInt(e - t);
+    this.width + r >= Rt ? (this.x -= r, this.width = this.width + r) : (this.x += this.width - Rt, this.width = Rt);
   }
-  addComment(text, position, event) {
-    if (!COMMENT_POS.has(position)) {
-      throw new Error(`Unknown position value '${position}' Please call with 'TopLeft' or 'TopCenter' or 'TopRight' or 'BottomLeft' or 'BottomCenter' or 'BottomRight'`);
-    }
-    let key = `node.comment${position}`;
-    if (event) {
-      key += `.${event}`;
-    }
-    this.data[key] = text;
+  addComment(t, e, r) {
+    if (!ga.has(e))
+      throw new Error(`Unknown position value '${e}' Please call with 'TopLeft' or 'TopCenter' or 'TopRight' or 'BottomLeft' or 'BottomCenter' or 'BottomRight'`);
+    let i = `node.comment${e}`;
+    r && (i += `.${r}`), this.data[i] = t;
   }
-  resizeToEast(dx) {
-    this.width = Math.max(MINIMUM_WIDTH, parseInt(dx + this.width / 2));
+  resizeToEast(t) {
+    this.width = Math.max(Rt, parseInt(t + this.width / 2));
   }
-  resizeToSouth(dy) {
-    this.height = Math.max(MINIMUM_HEIGHT, parseInt(dy + this.height / 2));
+  resizeToSouth(t) {
+    this.height = Math.max(Lt, parseInt(t + this.height / 2));
   }
-};
-var node_default2 = Node;
-
-// src/js-components/flowchart/util/clipboard.ts
-var TMP_CLIPBOARD_DATA = `{"objects": []}`;
-var IR_FLOWCHART_WEAK_MAP_OBJ = {};
-var clipboard_default = {
-  saveData(data) {
-    writeText(IR_FLOWCHART_WEAK_MAP_OBJ, data);
+}
+const ya = '{"objects": []}', fn = {}, ue = {
+  saveData(n) {
+    ar(fn, n);
   },
   loadData() {
-    var _a;
-    return (_a = readText(IR_FLOWCHART_WEAK_MAP_OBJ)) != null ? _a : TMP_CLIPBOARD_DATA;
+    return cr(fn) ?? ya;
   }
 };
-
-// src/js-components/flowchart/util/container-interface.ts
-var InterfaceInstance = class {
-  constructor(api) {
-    Object.assign(this, api);
-  }
-};
-
-// src/js-components/flowchart/util/obj-mng.ts
-var objMngLogger = new Logger("Flowchart::ObjectManager");
-var ObjectManager = class {
+const ma = new _n("Flowchart::ObjectManager");
+class ba {
   constructor() {
     this.objMap = {
       node: /* @__PURE__ */ new Map(),
@@ -5099,29 +3662,24 @@ var ObjectManager = class {
       group: /* @__PURE__ */ new Map()
     };
   }
-  getMap(type2) {
-    const map = this.objMap[type2];
-    if (map === void 0) {
-      objMngLogger.error("ObjectManager.getMap()", `Unknown '${type2}' type`);
-      throw new Error(`Unknown '${type2}' type`);
-    }
-    return map;
+  getMap(t) {
+    const e = this.objMap[t];
+    if (e === void 0)
+      throw ma.error("ObjectManager.getMap()", `Unknown '${t}' type`), new Error(`Unknown '${t}' type`);
+    return e;
   }
   getObjCount() {
     return this.objMap.node.size + this.objMap.connection.size + this.objMap.group.size;
   }
-  add(obj) {
-    const map = this.getMap(obj.type);
-    if (map.has(obj.id)) {
-      throw new Error(`Already has objId '${obj.id}'`);
-    }
-    map.set(obj.id, obj);
+  add(t) {
+    const e = this.getMap(t.type);
+    if (e.has(t.id))
+      throw new Error(`Already has objId '${t.id}'`);
+    e.set(t.id, t);
   }
-  remove(obj) {
-    const map = this.getMap(obj.type);
-    if (map.has(obj.id)) {
-      map.delete(obj.id);
-    }
+  remove(t) {
+    const e = this.getMap(t.type);
+    e.has(t.id) && e.delete(t.id);
   }
   *getMapIterator() {
     yield* Object.values(this.objMap);
@@ -5135,268 +3693,166 @@ var ObjectManager = class {
   getGroupIterator() {
     return this.objMap.group.values();
   }
-  findOrNull(objId) {
-    for (const map of this.getMapIterator()) {
-      if (map.has(objId))
-        return map.get(objId);
-    }
+  findOrNull(t) {
+    for (const e of this.getMapIterator())
+      if (e.has(t))
+        return e.get(t);
     return null;
   }
   clear() {
-    Object.values(this.objMap).forEach((map) => map.clear());
+    Object.values(this.objMap).forEach((t) => t.clear());
   }
   *getAllObjIterator() {
-    for (const map of Object.values(this.objMap))
-      yield* map.values();
+    for (const t of Object.values(this.objMap))
+      yield* t.values();
   }
   *getSelectedObjIterator() {
-    for (const obj of this.getAllObjIterator()) {
-      if (obj.isSelected)
-        yield obj;
-    }
+    for (const t of this.getAllObjIterator())
+      t.isSelected && (yield t);
   }
-  getParentGroupOrNull(obj) {
-    for (const group of this.getGroupIterator()) {
-      if (group.hasObjId(obj.id)) {
-        return group;
-      }
-    }
+  getParentGroupOrNull(t) {
+    for (const e of this.getGroupIterator())
+      if (e.hasObjId(t.id))
+        return e;
     return null;
   }
-  *getConnectedConnections(nodeId) {
-    for (const con of this.getConnectionIterator()) {
-      if (!con.isTempObj && (con.sourceObjId === nodeId || con.destinationObjId === nodeId)) {
-        yield con;
-      }
-    }
+  *getConnectedConnections(t) {
+    for (const e of this.getConnectionIterator())
+      !e.isTempObj && (e.sourceObjId === t || e.destinationObjId === t) && (yield e);
   }
-  reassignId(obj, oldId, newId2) {
-    const map = this.getMap(obj.type);
-    map.delete(oldId);
-    map.set(newId2, obj);
+  reassignId(t, e, r) {
+    const i = this.getMap(t.type);
+    i.delete(e), i.set(r, t);
   }
-};
-var obj_mng_default = ObjectManager;
-
-// src/js-components/flowchart/util/obj-mouse-handler.ts
-var MARGIN_X = 10;
-var MARGIN_Y = 10;
-var TOOLTIP_DURATION = 500;
-var DEFAULT_MOUSEOUT_DURATION = 200;
-var ObjectMouseHandler = class {
-  constructor(api) {
-    this.tmpOut = false;
-    this.containerInterface = api;
-    this.tooltip = {
+}
+const wa = 10, xa = 10, _a = 500, va = 200;
+class Oa {
+  constructor(t) {
+    this.tmpOut = !1, this.containerInterface = t, this.tooltip = {
       objId: null,
       mouseOverTimer: null,
       mouseOutTimer: null,
       g: null,
-      textCache: new TextCache()
-    };
-    this.isFirefox = window.navigator.userAgent.toLowerCase().indexOf("firefox") > -1 ? true : false;
+      textCache: new or()
+    }, this.isFirefox = window.navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
   }
-  commonOverOutAction(obj) {
-    let x = 0;
-    let y = 0;
-    obj.g.on("mousemove", (ev) => {
-      x = ev.offsetX + MARGIN_X;
-      y = ev.offsetY + MARGIN_Y;
+  initCommonMouseOverOutAction(t) {
+    let e = 0, r = 0;
+    t.g.on("mousemove", (i) => {
+      e = i.offsetX + wa, r = i.offsetY + xa;
     }).on("mouseover", () => {
-      obj.isHovered = true;
-      if (this.containerInterface.getSelectNodeOnHover() && obj.type === "node" && !this.containerInterface.isDragging()) {
-        this.containerInterface.releaseAllObjects();
-        obj.select(true);
-      }
-      if (this.containerInterface.getTooltipHidden() || !obj.canShowTooltip) {
-        return;
-      }
-      if (this.tooltip.mouseOutTimer != null) {
-        this.tooltip.mouseOutTimer.stop();
-      }
-      this.tooltip.mouseOverTimer = timeout_default(() => {
-        if (obj.isHovered && obj.onEditing === false && obj.id !== this.tooltip.objId && !this.containerInterface.getTooltipHidden())
-          this.createTooltipObj(obj.data, x, y);
-      }, TOOLTIP_DURATION);
+      t.isHovered = !0, this.containerInterface.getSelectNodeOnHover() && t.type === "node" && !this.containerInterface.isDragging() && (this.containerInterface.releaseAllObjects(), t.select(!0)), !(this.containerInterface.getTooltipHidden() || !t.canShowTooltip) && (this.tooltip.mouseOutTimer != null && this.tooltip.mouseOutTimer.stop(), this.tooltip.mouseOverTimer = te(() => {
+        t.isHovered && t.onEditing === !1 && t.id !== this.tooltip.objId && !this.containerInterface.getTooltipHidden() && this.createTooltipObj(t.data, e, r);
+      }, _a));
     }).on("mouseout", () => {
-      obj.isHovered = false;
-      if (this.containerInterface.getTooltipHidden() || !obj.canShowTooltip) {
-        return;
-      }
-      if (this.tooltip.mouseOverTimer != null) {
-        this.tooltip.mouseOverTimer.stop();
-      }
-      this.tooltip.mouseOutTimer = timeout_default(() => {
-        if (!obj.isHovered) {
-          this.removeTooltipObj();
-        }
-      }, DEFAULT_MOUSEOUT_DURATION);
+      t.isHovered = !1, !(this.containerInterface.getTooltipHidden() || !t.canShowTooltip) && (this.tooltip.mouseOverTimer != null && this.tooltip.mouseOverTimer.stop(), this.tooltip.mouseOutTimer = te(
+        () => void (!t.isHovered && this.removeTooltipObj()),
+        va
+      ));
     });
   }
-  createTooltipObj(objData, x, y) {
-    this.removeTooltipObj();
-    this.tooltip.objId = objData.id;
-    this.tooltip.g = this.containerInterface.getSvg().append("g").attr("class", "tooltip");
-    const obj = this.containerInterface.getObjectOrNull(this.tooltip.objId);
-    if (obj === null) {
+  createTooltipObj(t, e, r) {
+    this.removeTooltipObj(), this.tooltip.objId = t.id, this.tooltip.g = this.containerInterface.getSvg().append("g").attr("class", "tooltip");
+    const i = this.containerInterface.getObjectOrNull(this.tooltip.objId);
+    if (i === null)
       return;
-    }
-    const style = {
-      text: obj.getDataOrNull("tooltipText"),
-      foreColor: obj.getDataOrNull("tooltipForeColor"),
-      fontFamily: obj.getDataOrNull("tooltipFontFamily"),
-      fontSize: obj.getDataOrNull("tooltipFontSize"),
-      textDecoration: obj.getDataOrNull("tooltipTextDecoration"),
-      padding: obj.getDataOrNull("tooltipPadding"),
-      fill: obj.getDataOrNull("tooltipFill"),
-      borderColor: obj.getDataOrNull("tooltipBorderColor"),
-      borderWidth: obj.getDataOrNull("tooltipBorderWidth"),
-      borderDash: obj.getDataOrNull("tooltipBorderDash"),
+    const o = {
+      text: i.getDataOrNull("tooltipText"),
+      foreColor: i.getDataOrNull("tooltipForeColor"),
+      fontFamily: i.getDataOrNull("tooltipFontFamily"),
+      fontSize: i.getDataOrNull("tooltipFontSize"),
+      textDecoration: i.getDataOrNull("tooltipTextDecoration"),
+      padding: i.getDataOrNull("tooltipPadding"),
+      fill: i.getDataOrNull("tooltipFill"),
+      borderColor: i.getDataOrNull("tooltipBorderColor"),
+      borderWidth: i.getDataOrNull("tooltipBorderWidth"),
+      borderDash: i.getDataOrNull("tooltipBorderDash"),
       width: 0
-    };
-    const size = getFittedSizeOnText(style);
-    style.width = Math.min(size.width, obj.data.tooltipMaxWidth);
-    const textLines = getWrappedText(style);
-    this.tooltip.g.append("rect").attr("x", x).attr("y", y).attr("rx", "4").attr("width", style.width + style.padding * 2).attr("height", textLines.lineHeight * textLines.length + style.padding * 2).attr("fill", style.fill).attr("stroke", style.borderColor).attr("stroke-width", style.borderWidth).attr("stroke-dasharray", style.borderDash);
-    const text = this.tooltip.g.append("text").attr("fill", style.foreColor).attr("fontSize", style.fontSize).attr("text-decoration", style.textDecoration);
-    createTextLines(
-      text,
-      textLines,
-      x + style.padding,
-      y + style.padding + style.fontSize,
-      style
+    }, s = Zn(o);
+    o.width = Math.min(s.width, i.data.tooltipMaxWidth);
+    const a = ze(o);
+    this.tooltip.g.append("rect").attr("x", e).attr("y", r).attr("rx", "4").attr("width", o.width + o.padding * 2).attr("height", a.lineHeight * a.length + o.padding * 2).attr("fill", o.fill).attr("stroke", o.borderColor).attr("stroke-width", o.borderWidth).attr("stroke-dasharray", o.borderDash);
+    const c = this.tooltip.g.append("text").attr("fill", o.foreColor).attr("fontSize", o.fontSize).attr("text-decoration", o.textDecoration);
+    nr(
+      c,
+      a,
+      e + o.padding,
+      r + o.padding + o.fontSize,
+      o
     );
   }
   removeTooltipObj() {
-    if (this.tooltip.g !== null) {
-      this.tooltip.g.remove();
-      this.tooltip.objId = null;
-      this.tooltip.g = null;
-      this.tooltip.textCache.clear();
-    }
+    this.tooltip.g !== null && (this.tooltip.g.remove(), this.tooltip.objId = null, this.tooltip.g = null, this.tooltip.textCache.clear());
   }
-  addMouseAction(obj) {
-    this.commonOverOutAction(obj);
+  addMouseAction(t) {
+    this.initCommonMouseOverOutAction(t);
   }
-};
-
-// src/js-components/flowchart/util/rect.ts
-var Rect = class {
-  constructor(startX, startY, endX, endY) {
-    this.startX = startX;
-    this.startY = startY;
-    this.endX = endX;
-    this.endY = endY;
+}
+class gn {
+  constructor(t, e, r, i) {
+    this.startX = t, this.startY = e, this.endX = r, this.endY = i;
   }
-  isContained(x, y) {
-    return x >= this.startX && x <= this.endX && y >= this.startY && y <= this.endY;
+  isContained(t, e) {
+    return t >= this.startX && t <= this.endX && e >= this.startY && e <= this.endY;
   }
-};
-
-// src/js-components/flowchart/render/bridge.js
-var BridgeRenderer = class extends NodeRenderer {
-  constructor(data, iContainer) {
-    super(data, "bridge", iContainer);
+}
+class Sa extends wt {
+  constructor(t, e) {
+    super(t, "bridge", e);
   }
   _create() {
-    this.objects.body = this.group.append("rect");
-    super._create();
+    this.objects.body = this.group.append("rect"), super._create();
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    const width = this.width;
-    const height = this.height;
-    this.objects.body.attr("x", -(width / 2)).attr("y", -(height / 2)).attr("rx", (width + height) / 6).style("width", `${width}px`).style("height", `${height}px`).style("fill", wrapper.get("node.fill")).style("stroke-width", wrapper.get("borderWidth")).attr("stroke", wrapper.get("borderColor")).attr("stroke-dasharray", wrapper.get("borderDash"));
+    const t = this.dataWrapper, e = this.width, r = this.height;
+    this.objects.body.attr("x", -(e / 2)).attr("y", -(r / 2)).attr("rx", (e + r) / 6).style("width", `${e}px`).style("height", `${r}px`).style("fill", t.get("node.fill")).style("stroke-width", t.get("borderWidth")).attr("stroke", t.get("borderColor")).attr("stroke-dasharray", t.get("borderDash"));
   }
-};
-
-// src/js-components/flowchart/render/comment.js
-var EDGE_SIZE = 15;
-var ANGLE_DIFF_X = -4;
-var ANGLE_DIFF_Y = 2;
-var CommentRenderer = class extends NodeRenderer {
-  constructor(data, iContainer) {
-    super(data, "comment", iContainer);
+}
+const gt = 15, Ca = -4, ja = 2;
+class ka extends wt {
+  constructor(t, e) {
+    super(t, "comment", e);
   }
   _create() {
-    this.objects.body = this.group.append("path").attr("class", "body").classed(this.data.type, true);
-    super._create();
+    this.objects.body = this.group.append("path").attr("class", "body").classed(this.data.type, !0), super._create();
   }
   _getPath() {
-    const commands = [];
-    const endX = this.width / 2;
-    const endY = this.height / 2;
-    const startX = -endX;
-    const startY = -endY;
-    commands.push(`M${startX} ${startY}`);
-    commands.push(`L${endX - EDGE_SIZE} ${startY}`);
-    commands.push(`L${endX},${startY + EDGE_SIZE}`);
-    commands.push(`L${endX},${endY}`);
-    commands.push(`L${startX},${endY}`);
-    commands.push(`Z`);
-    commands.push(`M${endX - EDGE_SIZE} ${startY}`);
-    commands.push(`L${endX - (EDGE_SIZE + ANGLE_DIFF_X)} ${startY + (EDGE_SIZE + ANGLE_DIFF_Y)}`);
-    commands.push(`L${endX} ${startY + EDGE_SIZE}`);
-    return commands.join(" ");
+    const t = [], e = this.width / 2, r = this.height / 2, i = -e, o = -r;
+    return t.push(`M${i} ${o}`), t.push(`L${e - gt} ${o}`), t.push(`L${e},${o + gt}`), t.push(`L${e},${r}`), t.push(`L${i},${r}`), t.push("Z"), t.push(`M${e - gt} ${o}`), t.push(`L${e - (gt + Ca)} ${o + (gt + ja)}`), t.push(`L${e} ${o + gt}`), t.join(" ");
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    this.objects.body.attr("d", this._getPath()).style("fill", wrapper.get("node.fill")).style("stroke-width", wrapper.get("borderWidth")).attr("stroke", wrapper.get("borderColor")).attr("stroke-dasharray", wrapper.get("borderDash"));
-    this._createText();
+    const t = this.dataWrapper;
+    this.objects.body.attr("d", this._getPath()).style("fill", t.get("node.fill")).style("stroke-width", t.get("borderWidth")).attr("stroke", t.get("borderColor")).attr("stroke-dasharray", t.get("borderDash")), this._createText();
   }
-};
-
-// src/js-components/flowchart/render/db.js
-var CIRCLE_HEIGHT_RATIO = 0.28;
-var DBRenderer = class extends NodeRenderer {
-  constructor(data, iContainer) {
-    super(data, "db", iContainer);
+}
+const pn = 0.28;
+class Ea extends wt {
+  constructor(t, e) {
+    super(t, "db", e);
   }
   _create() {
-    this.objects.circle = this.group.append("ellipse");
-    this.objects.body = this.group.append("path");
-    super._create();
+    this.objects.circle = this.group.append("ellipse"), this.objects.body = this.group.append("path"), super._create();
   }
   get circleHeight() {
-    return this.height * CIRCLE_HEIGHT_RATIO;
+    return this.height * pn;
   }
   _getPath() {
-    const commands = [];
-    const halfHeight = this.height / 2;
-    const ry = this.circleHeight / 2;
-    const rx = this.width / 2;
-    const x1 = -rx;
-    const x2 = rx;
-    const y1 = -halfHeight + ry;
-    const y2 = halfHeight - ry;
-    commands.push(`M${x1} ${y1}`);
-    commands.push(`A${rx} ${ry} 0 0 0 ${x2} ${y1}`);
-    commands.push(`V${y2}`);
-    commands.push(`A${rx} ${ry} 0 0 1 ${x1} ${y2}`);
-    commands.push(`V${y1}`);
-    return commands.join(" ");
+    const t = [], e = this.height / 2, r = this.circleHeight / 2, i = this.width / 2, o = -i, s = i, a = -e + r, c = e - r;
+    return t.push(`M${o} ${a}`), t.push(`A${i} ${r} 0 0 0 ${s} ${a}`), t.push(`V${c}`), t.push(`A${i} ${r} 0 0 1 ${o} ${c}`), t.push(`V${a}`), t.join(" ");
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    const ry = this.circleHeight / 2;
-    const rx = this.width / 2;
-    const halfHeight = this.height / 2;
-    const y1 = -halfHeight + ry;
-    const style = {
-      fill: wrapper.get("node.fill"),
-      borderWidth: wrapper.get("borderWidth"),
-      borderColor: wrapper.get("borderColor"),
-      borderDash: wrapper.get("borderDash")
+    const t = this.dataWrapper, e = this.circleHeight / 2, r = this.width / 2, o = -(this.height / 2) + e, s = {
+      fill: t.get("node.fill"),
+      borderWidth: t.get("borderWidth"),
+      borderColor: t.get("borderColor"),
+      borderDash: t.get("borderDash")
     };
-    this.objects.circle.attr("cx", 0).attr("cy", y1).attr("rx", rx).attr("ry", ry).style("fill", style.fill).style("stroke-width", style.borderWidth).attr("stroke", style.borderColor).attr("stroke-dasharray", style.borderDash);
-    this.objects.body.attr("d", this._getPath()).style("fill", style.fill).style("stroke-width", style.borderWidth).attr("stroke", style.borderColor).attr("stroke-dasharray", style.borderDash);
-    const circleHeight = this.height * CIRCLE_HEIGHT_RATIO;
-    this._createText(0, circleHeight / 2);
+    this.objects.circle.attr("cx", 0).attr("cy", o).attr("rx", r).attr("ry", e).style("fill", s.fill).style("stroke-width", s.borderWidth).attr("stroke", s.borderColor).attr("stroke-dasharray", s.borderDash), this.objects.body.attr("d", this._getPath()).style("fill", s.fill).style("stroke-width", s.borderWidth).attr("stroke", s.borderColor).attr("stroke-dasharray", s.borderDash);
+    const a = this.height * pn;
+    this._createText(0, a / 2);
   }
-};
-
-// src/js-components/flowchart/render/connection.js
-var ConnectionRenderer = class extends BaseRenderer {
+}
+class sr extends De {
   /**
   *
   * @param {*} container
@@ -5404,12 +3860,8 @@ var ConnectionRenderer = class extends BaseRenderer {
   * @param {*} className
   * @param {IContainer} iContainer
   */
-  constructor(data, className, iContainer) {
-    super(data, className, iContainer);
-    this.markerId = `${this.containerInterface.getUUID()}_marker_${this.data.id}`;
-    this.objects.marker = this.group.append("svg:defs").append("svg:marker").attr("id", this.markerId);
-    this.objects.markerPath = this.objects.marker.append("path");
-    this.checkChanged = {
+  constructor(t, e, r) {
+    super(t, e, r), this.markerId = `${this.containerInterface.getUUID()}_marker_${this.data.id}`, this.objects.marker = this.group.append("svg:defs").append("svg:marker").attr("id", this.markerId), this.objects.markerPath = this.objects.marker.append("path"), this.checkChanged = {
       points: null,
       srcX: 0,
       srcY: 0,
@@ -5427,92 +3879,75 @@ var ConnectionRenderer = class extends BaseRenderer {
     return this.data["connection.points"].length - 1;
   }
   create() {
-    super.create();
-    this.bringToFrontElement(this.objects.sourceConnector.node());
-    this.bringToFrontElement(this.objects.destinationConnector.node());
+    super.create(), this.bringToFrontElement(this.objects.sourceConnector.node()), this.bringToFrontElement(this.objects.destinationConnector.node());
   }
   _createConnector() {
-    this.objects.sourceConnector = this.group.append("circle").attr("cursor", "crosshair");
-    this.objects.destinationConnector = this.group.append("circle").attr("cursor", "crosshair");
+    this.objects.sourceConnector = this.group.append("circle").attr("cursor", "crosshair"), this.objects.destinationConnector = this.group.append("circle").attr("cursor", "crosshair");
   }
-  _getPosLocation(node, pos) {
-    let x = 0;
-    let y = 0;
-    switch (pos) {
+  _getPosLocation(t, e) {
+    let r = 0, i = 0;
+    switch (e) {
       case "left":
-        x = -(node.width / 2);
+        r = -(t.width / 2);
         break;
       case "right":
-        x = node.width / 2;
+        r = t.width / 2;
         break;
       case "top":
-        y = -(node.height / 2);
+        i = -(t.height / 2);
         break;
       case "bottom":
-        y = node.height / 2;
+        i = t.height / 2;
         break;
       default:
-        throw new Error(`Invalid argument '${pos}'`);
+        throw new Error(`Invalid argument '${e}'`);
     }
     return {
-      x,
-      y
+      x: r,
+      y: i
     };
   }
   _getBBox() {
     return this.objects.text.node().getBBox();
   }
   _getLabelRect() {
-    const bbox = this._getBBox();
-    const width = bbox.width + 10;
-    const height = bbox.height + 10;
+    const t = this._getBBox(), e = t.width + 10, r = t.height + 10;
     return {
-      x: parseFloat(this.objects.text.attr("x")) - width / 2,
+      x: parseFloat(this.objects.text.attr("x")) - e / 2,
       y: parseFloat(this.objects.text.attr("y")) - 5 - this.data.fontSize,
-      width,
-      height: Math.max(height, this.data.fontSize + 10)
+      width: e,
+      height: Math.max(r, this.data.fontSize + 10)
     };
   }
   _renderMarker() {
-    const wrapper = this.dataWrapper;
-    const borderWidth = wrapper.get("borderWidth"), arrowSize = wrapper.get("connection.arrowSize"), arrowFill = wrapper.get("connection.arrowFill"), arrowBorderColor = wrapper.get("connection.arrowBorderColor"), arrowBorderWidth = wrapper.get("connection.arrowBorderWidth");
-    const markerSize = (arrowSize + arrowBorderWidth) / borderWidth;
-    const adjustBorderWidth = arrowBorderWidth / borderWidth;
-    this.objects.markerPath.attr("fill", arrowFill).attr("stroke", arrowBorderColor).attr("stroke-width", adjustBorderWidth);
-    const arrowType = wrapper.get("connection.arrowType");
-    this.objects.marker.attr("refY", markerSize / 2).attr("markerWidth", markerSize).attr("markerHeight", markerSize).attr("orient", "auto");
-    switch (arrowType) {
+    const t = this.dataWrapper, e = t.get("borderWidth"), r = t.get("connection.arrowSize"), i = t.get("connection.arrowFill"), o = t.get("connection.arrowBorderColor"), s = t.get("connection.arrowBorderWidth"), a = (r + s) / e, c = s / e;
+    this.objects.markerPath.attr("fill", i).attr("stroke", o).attr("stroke-width", c);
+    const h = t.get("connection.arrowType");
+    switch (this.objects.marker.attr("refY", a / 2).attr("markerWidth", a).attr("markerHeight", a).attr("orient", "auto"), h) {
       case "triangle":
-        this._renderTriangleMarker(markerSize, adjustBorderWidth);
+        this._renderTriangleMarker(a, c);
         break;
       case "circle":
-        this._renderCircleMarker(markerSize, adjustBorderWidth);
+        this._renderCircleMarker(a, c);
         break;
       default:
-        throw new Error(`unknown render type '${arrowType}'`);
+        throw new Error(`unknown render type '${h}'`);
     }
   }
-  _renderTriangleMarker(markerSize, borderWidth) {
-    const offset = markerSize - borderWidth;
-    this.objects.marker.attr("refX", markerSize);
-    this.objects.markerPath.attr("d", `M ${borderWidth} ${borderWidth} L ${offset} ${markerSize / 2} L ${borderWidth} ${offset} z`);
+  _renderTriangleMarker(t, e) {
+    const r = t - e;
+    this.objects.marker.attr("refX", t), this.objects.markerPath.attr("d", `M ${e} ${e} L ${r} ${t / 2} L ${e} ${r} z`);
   }
-  _renderCircleMarker(markerSize, borderWidth) {
-    const offset = markerSize / 2;
-    const radius = (markerSize - borderWidth) / 2;
-    this.objects.marker.attr("refX", offset);
-    this.objects.markerPath.attr("d", `M ${offset} ${offset} m ${radius} 0 a ${radius} ${radius} 0 1 0 -${radius * 2} 0 a ${radius} ${radius} 0 1 0 ${radius * 2} 0`);
+  _renderCircleMarker(t, e) {
+    const r = t / 2, i = (t - e) / 2;
+    this.objects.marker.attr("refX", r), this.objects.markerPath.attr("d", `M ${r} ${r} m ${i} 0 a ${i} ${i} 0 1 0 -${i * 2} 0 a ${i} ${i} 0 1 0 ${i * 2} 0`);
   }
   _renderConnector() {
-    const wrapper = this.dataWrapper;
-    const sourceLoc = this._getSourceLoc();
-    const destinationLoc = this._getDestinationLoc();
-    const style = {
-      size: wrapper.get("connection.connectorSize"),
-      fill: wrapper.get("connection.connectorFill")
+    const t = this.dataWrapper, e = this._getSourceLoc(), r = this._getDestinationLoc(), i = {
+      size: t.get("connection.connectorSize"),
+      fill: t.get("connection.connectorFill")
     };
-    this.objects.sourceConnector.attr("cx", sourceLoc.x).attr("cy", sourceLoc.y).attr("r", style.size).attr("fill", style.fill).attr("visibility", this.subUiVisibility);
-    this.objects.destinationConnector.attr("cx", destinationLoc.x).attr("cy", destinationLoc.y).attr("r", style.size).attr("fill", style.fill).attr("visibility", this.subUiVisibility);
+    this.objects.sourceConnector.attr("cx", e.x).attr("cy", e.y).attr("r", i.size).attr("fill", i.fill).attr("visibility", this.subUiVisibility), this.objects.destinationConnector.attr("cx", r.x).attr("cy", r.y).attr("r", i.size).attr("fill", i.fill).attr("visibility", this.subUiVisibility);
   }
   _getSourceLoc() {
     return this._getNodePositionLoc(
@@ -5528,131 +3963,87 @@ var ConnectionRenderer = class extends BaseRenderer {
       this.lastPointId
     );
   }
-  _recordLastInfo(srcLoc, desLoc) {
-    this.checkChanged.points = this.data["connection.points"];
-    this.checkChanged.srcX = srcLoc.x;
-    this.checkChanged.srcY = srcLoc.y;
-    this.checkChanged.desX = desLoc.x;
-    this.checkChanged.desY = desLoc.y;
+  _recordLastInfo(t, e) {
+    this.checkChanged.points = this.data["connection.points"], this.checkChanged.srcX = t.x, this.checkChanged.srcY = t.y, this.checkChanged.desX = e.x, this.checkChanged.desY = e.y;
   }
-  _updatePoints(...points) {
-    if (this.data["connection.points"] === void 0 || this.data["connection.points"] === null) {
-      this.data["connection.points"] = [];
-    } else {
-      this.data["connection.points"].splice(
-        0,
-        this.data["connection.points"].length
-      );
-    }
-    points.forEach((pt) => this.data["connection.points"].push(pt));
+  _updatePoints(...t) {
+    this.data["connection.points"] === void 0 || this.data["connection.points"] === null ? this.data["connection.points"] = [] : this.data["connection.points"].splice(
+      0,
+      this.data["connection.points"].length
+    ), t.forEach((e) => this.data["connection.points"].push(e));
   }
-  _isChanged(srcLoc, desLoc) {
+  _isChanged(t, e) {
     try {
-      const tmpX1 = this.checkChanged.srcX - this.checkChanged.desX;
-      const tmpX2 = srcLoc.x - desLoc.x;
-      const tmpY1 = this.checkChanged.srcY - this.checkChanged.desY;
-      const tmpY2 = srcLoc.y - desLoc.y;
-      return tmpX1 !== tmpX2 || tmpY1 !== tmpY2;
+      const r = this.checkChanged.srcX - this.checkChanged.desX, i = t.x - e.x, o = this.checkChanged.srcY - this.checkChanged.desY, s = t.y - e.y;
+      return r !== i || o !== s;
     } finally {
-      this._recordLastInfo(srcLoc, desLoc);
+      this._recordLastInfo(t, e);
     }
   }
-  _getNodePositionLoc(objId, pos, pointId) {
-    if (objId && pos) {
-      const node = this.containerInterface.getObjectOrNull(objId);
-      if (node === null) {
-        if (this.data["connection.points"] && this.data["connection.points"].length > pointId) {
-          return {
-            x: this.data["connection.points"][pointId].x,
-            y: this.data["connection.points"][pointId].y
-          };
-        } else {
-          return {
-            x: 0,
-            y: 0
-          };
-        }
-      } else {
-        const posLocation = this._getPosLocation(node, pos);
-        const transform2 = getTransformData(node.renderer.group.attr("transform"));
+  _getNodePositionLoc(t, e, r) {
+    if (t && e) {
+      const i = this.containerInterface.getObjectOrNull(t);
+      if (i === null)
+        return this.data["connection.points"] && this.data["connection.points"].length > r ? {
+          x: this.data["connection.points"][r].x,
+          y: this.data["connection.points"][r].y
+        } : {
+          x: 0,
+          y: 0
+        };
+      {
+        const o = this._getPosLocation(i, e), s = Js(i.renderer.group.attr("transform"));
         return {
-          x: posLocation.x + transform2.translateX,
-          y: posLocation.y + transform2.translateY
+          x: o.x + s.translateX,
+          y: o.y + s.translateY
         };
       }
-    } else if (this.data["connection.points"] && this.data["connection.points"].length > pointId) {
-      return {
-        x: this.data["connection.points"][pointId].x,
-        y: this.data["connection.points"][pointId].y
-      };
     } else {
+      if (this.data["connection.points"] && this.data["connection.points"].length > r)
+        return {
+          x: this.data["connection.points"][r].x,
+          y: this.data["connection.points"][r].y
+        };
       throw new Error("Invalid points value.");
     }
   }
-};
-
-// src/js-components/flowchart/render/direct.js
-var DirectConnectionRenderer = class extends ConnectionRenderer {
-  constructor(data, iContainer) {
-    super(data, "direct", iContainer);
+}
+class Ia extends sr {
+  constructor(t, e) {
+    super(t, "direct", e);
   }
   _create() {
-    this.objects.line = this.group.append("line").attr("marker-end", `url(#${this.markerId})`);
-    this.objects.wideLine = this.group.append("line").attr("class", "wide-line").style("stroke", "rgba(0, 0, 0, 0)");
-    this.objects.rect = this.group.append("rect");
-    this._createConnector();
+    this.objects.line = this.group.append("line").attr("marker-end", `url(#${this.markerId})`), this.objects.wideLine = this.group.append("line").attr("class", "wide-line").style("stroke", "rgba(0, 0, 0, 0)"), this.objects.rect = this.group.append("rect"), this._createConnector();
   }
-  _getLabelXY(info) {
-    const srcLoc = this._getSourceLoc();
-    const desLoc = this._getDestinationLoc();
+  _getLabelXY(t) {
+    const e = this._getSourceLoc(), r = this._getDestinationLoc();
     return {
-      x: srcLoc.x + (desLoc.x - srcLoc.x) / 2,
-      y: srcLoc.y + (desLoc.y - srcLoc.y) / 2 + (this.data.fontSize - this.data.fontSize * info.length / 2)
+      x: e.x + (r.x - e.x) / 2,
+      y: e.y + (r.y - e.y) / 2 + (this.data.fontSize - this.data.fontSize * t.length / 2)
     };
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    const points = this.data["connection.points"];
-    const srcLoc = this._getSourceLoc();
-    const desLoc = this._getDestinationLoc();
-    const style = {
-      borderColor: wrapper.get("borderColor"),
-      borderWidth: wrapper.get("borderWidth"),
-      borderDash: wrapper.get("borderDash"),
-      text: wrapper.get("text"),
-      fill: wrapper.get("connection.textBorderFill"),
-      textBorderColor: wrapper.get("connection.textBorderColor"),
-      textBorderWidth: wrapper.get("connection.textBorderWidth"),
-      textBorderDash: wrapper.get("connection.textBorderDash")
+    const t = this.dataWrapper, e = this.data["connection.points"], r = this._getSourceLoc(), i = this._getDestinationLoc(), o = {
+      borderColor: t.get("borderColor"),
+      borderWidth: t.get("borderWidth"),
+      borderDash: t.get("borderDash"),
+      text: t.get("text"),
+      fill: t.get("connection.textBorderFill"),
+      textBorderColor: t.get("connection.textBorderColor"),
+      textBorderWidth: t.get("connection.textBorderWidth"),
+      textBorderDash: t.get("connection.textBorderDash")
     };
-    this._renderConnector();
-    this._renderMarker();
-    if (this._isChanged(srcLoc, desLoc)) {
-      this._updatePoints(srcLoc, desLoc);
-    }
-    this.objects.line.attr("x1", points[0].x).attr("y1", points[0].y).attr("x2", points[this.lastPointId].x).attr("y2", points[this.lastPointId].y).style("stroke", style.borderColor).style("stroke-width", style.borderWidth).style("stroke-dasharray", style.borderDash);
-    this.objects.wideLine.attr("x1", points[0].x).attr("y1", points[0].y).attr("x2", points[this.lastPointId].x).attr("y2", points[this.lastPointId].y).style("stroke-width", Math.max(style.borderWidth, 5));
-    this._createText();
-    if (style.text) {
-      const bbox = this._getBBox();
-      const width = bbox.width + 10;
-      const height = bbox.height + 10;
-      this.objects.rect.attr("x", bbox.x - 5).attr("y", bbox.y - 5).attr("width", width).attr("height", height).style("fill", style.fill).style("stroke", style.textBorderColor).style("stroke-width", style.textBorderWidth).style("stroke-dasharray", style.textBorderDash);
-    } else {
+    if (this._renderConnector(), this._renderMarker(), this._isChanged(r, i) && this._updatePoints(r, i), this.objects.line.attr("x1", e[0].x).attr("y1", e[0].y).attr("x2", e[this.lastPointId].x).attr("y2", e[this.lastPointId].y).style("stroke", o.borderColor).style("stroke-width", o.borderWidth).style("stroke-dasharray", o.borderDash), this.objects.wideLine.attr("x1", e[0].x).attr("y1", e[0].y).attr("x2", e[this.lastPointId].x).attr("y2", e[this.lastPointId].y).style("stroke-width", Math.max(o.borderWidth, 5)), this._createText(), o.text) {
+      const s = this._getBBox(), a = s.width + 10, c = s.height + 10;
+      this.objects.rect.attr("x", s.x - 5).attr("y", s.y - 5).attr("width", a).attr("height", c).style("fill", o.fill).style("stroke", o.textBorderColor).style("stroke-width", o.textBorderWidth).style("stroke-dasharray", o.textBorderDash);
+    } else
       this.objects.rect.style("fill", "transparent").style("stroke", "transparent");
-    }
   }
-};
-
-// src/js-components/flowchart/render/elbow.js
-var MINIMUM_GAP = 20;
-var ADJUSTER_SIZE = 10;
-var ADJUSTER_ADJ = ADJUSTER_SIZE / 2;
-var ElbowConnectionRenderer = class extends ConnectionRenderer {
-  constructor(data, iContainer) {
-    super(data, "elbow", iContainer);
-    this.adjusterList = [];
-    this.elbowMap = {
+}
+const Ht = 20, ct = 10, yn = ct / 2;
+class Ma extends sr {
+  constructor(t, e) {
+    super(t, "elbow", e), this.adjusterList = [], this.elbowMap = {
       top: this._topTo,
       bottom: this._bottomTo,
       left: this._leftTo,
@@ -5660,295 +4051,153 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
     };
   }
   _create() {
-    this.objects.polyline = this.group.append("polyline").attr("fill", "none").attr("marker-end", `url(#${this.markerId})`);
-    this.objects.wideLine = this.group.append("polyline").attr("fill", "none").style("stroke", "rgba(0, 0, 0, 0)");
-    this.objects.rect = this.group.append("rect");
-    this._createConnector();
-    const points = this.data["connection.points"];
-    if (points.length === 2) {
-      this.refreshAdjustList();
-    } else {
-      this._recordLastInfo(this._getSourceLoc(), this._getDestinationLoc());
-      this._createAdjustList(points.slice(1, points.length - 1));
-    }
+    this.objects.polyline = this.group.append("polyline").attr("fill", "none").attr("marker-end", `url(#${this.markerId})`), this.objects.wideLine = this.group.append("polyline").attr("fill", "none").style("stroke", "rgba(0, 0, 0, 0)"), this.objects.rect = this.group.append("rect"), this._createConnector();
+    const t = this.data["connection.points"];
+    t.length === 2 ? this.refreshAdjustList() : (this._recordLastInfo(this._getSourceLoc(), this._getDestinationLoc()), this._createAdjustList(t.slice(1, t.length - 1)));
   }
-  _getNextXY(pos, loc) {
-    switch (pos) {
+  _getNextXY(t, e) {
+    switch (t) {
       case "left":
-        return { x: loc.x - MINIMUM_GAP, y: loc.y };
+        return { x: e.x - Ht, y: e.y };
       case "right":
-        return { x: loc.x + MINIMUM_GAP, y: loc.y };
+        return { x: e.x + Ht, y: e.y };
       case "top":
-        return { x: loc.x, y: loc.y - MINIMUM_GAP };
+        return { x: e.x, y: e.y - Ht };
       case "bottom":
-        return { x: loc.x, y: loc.y + MINIMUM_GAP };
+        return { x: e.x, y: e.y + Ht };
       default:
-        throw new Error(`Unknown pos '${pos}'`);
+        throw new Error(`Unknown pos '${t}'`);
     }
   }
-  *_topTo(srcLoc, desLoc, srcNext, desNext, desPos) {
-    const middleX = (srcLoc.x + desLoc.x) / 2;
-    const middleY = (srcLoc.y + desLoc.y) / 2;
-    const nextMiddleX = (srcNext.x + desNext.x) / 2;
-    const nextMiddleY = (srcNext.y + desNext.y) / 2;
-    switch (desPos) {
+  *_topTo(t, e, r, i, o) {
+    const s = (t.x + e.x) / 2, a = (t.y + e.y) / 2, c = (r.x + i.x) / 2, h = (r.y + i.y) / 2;
+    switch (o) {
       case "top": {
-        yield { x: middleX, y: Math.min(srcNext.y, desNext.y) };
+        yield { x: s, y: Math.min(r.y, i.y) };
         break;
       }
       case "bottom": {
-        if (srcLoc.y > desLoc.y) {
-          yield { x: middleX, y: middleY };
-        } else {
-          yield { x: (srcLoc.x + middleX) / 2, y: srcNext.y };
-          yield { x: middleX, y: middleY };
-          yield { x: (middleX + desNext.x) / 2, y: desNext.y };
-        }
+        t.y > e.y ? yield { x: s, y: a } : (yield { x: (t.x + s) / 2, y: r.y }, yield { x: s, y: a }, yield { x: (s + i.x) / 2, y: i.y });
         break;
       }
       case "left": {
-        if (srcLoc.x < desLoc.x) {
-          if (srcLoc.y < desLoc.y) {
-            yield { x: (srcLoc.x + middleX) / 2, y: srcNext.y };
-            yield { x: middleX, y: nextMiddleY };
-          }
-        } else if (srcLoc.y < desLoc.y) {
-          yield { x: nextMiddleX, y: srcNext.y };
-          yield { x: desNext.x, y: nextMiddleY };
-        } else {
-          yield { x: nextMiddleX, y: middleY };
-          yield { x: desNext.x, y: (middleY + desNext.y) / 2 };
-        }
+        t.x < e.x ? t.y < e.y && (yield { x: (t.x + s) / 2, y: r.y }, yield { x: s, y: h }) : t.y < e.y ? (yield { x: c, y: r.y }, yield { x: i.x, y: h }) : (yield { x: c, y: a }, yield { x: i.x, y: (a + i.y) / 2 });
         break;
       }
       case "right": {
-        if (srcLoc.x < desLoc.x) {
-          if (srcLoc.y < desLoc.y) {
-            yield { x: nextMiddleX, y: srcNext.y };
-            yield { x: desNext.x, y: nextMiddleY };
-          } else {
-            yield { x: nextMiddleX, y: middleY };
-            yield { x: desNext.x, y: (middleY + desNext.y) / 2 };
-          }
-        } else if (srcLoc.y < desLoc.y) {
-          yield { x: (srcNext.x + middleX) / 2, y: srcNext.y };
-          yield { x: middleX, y: nextMiddleY };
-        }
+        t.x < e.x ? t.y < e.y ? (yield { x: c, y: r.y }, yield { x: i.x, y: h }) : (yield { x: c, y: a }, yield { x: i.x, y: (a + i.y) / 2 }) : t.y < e.y && (yield { x: (r.x + s) / 2, y: r.y }, yield { x: s, y: h });
         break;
       }
       default:
-        throw new Error(`Unknown pos '${desPos}'`);
+        throw new Error(`Unknown pos '${o}'`);
     }
   }
-  *_bottomTo(srcLoc, desLoc, srcNext, desNext, desPos) {
-    const middleX = (srcLoc.x + desLoc.x) / 2;
-    const middleY = (srcLoc.y + desLoc.y) / 2;
-    const nextMiddleX = (srcNext.x + desNext.x) / 2;
-    const nextMiddleY = (srcNext.y + desNext.y) / 2;
-    switch (desPos) {
+  *_bottomTo(t, e, r, i, o) {
+    const s = (t.x + e.x) / 2, a = (t.y + e.y) / 2, c = (r.x + i.x) / 2, h = (r.y + i.y) / 2;
+    switch (o) {
       case "top": {
-        if (srcLoc.y < desLoc.y) {
-          yield { x: middleX, y: middleY };
-        } else {
-          yield { x: (srcLoc.x + middleX) / 2, y: srcNext.y };
-          yield { x: middleX, y: middleY };
-          yield { x: (middleX + desNext.x) / 2, y: desNext.y };
-        }
+        t.y < e.y ? yield { x: s, y: a } : (yield { x: (t.x + s) / 2, y: r.y }, yield { x: s, y: a }, yield { x: (s + i.x) / 2, y: i.y });
         break;
       }
       case "bottom": {
-        yield { x: middleX, y: Math.max(srcNext.y, desNext.y) };
+        yield { x: s, y: Math.max(r.y, i.y) };
         break;
       }
       case "left": {
-        if (srcLoc.y < desLoc.y) {
-          if (srcLoc.x > desLoc.x) {
-            yield { x: nextMiddleX, y: middleY };
-            yield { x: desNext.x, y: (middleY + desNext.y) / 2 };
-          }
-        } else {
-          yield { x: nextMiddleX, y: srcNext.y };
-          yield { x: desNext.x, y: nextMiddleY };
-        }
+        t.y < e.y ? t.x > e.x && (yield { x: c, y: a }, yield { x: i.x, y: (a + i.y) / 2 }) : (yield { x: c, y: r.y }, yield { x: i.x, y: h });
         break;
       }
       case "right": {
-        if (srcLoc.y < desLoc.y) {
-          if (srcLoc.x < desLoc.x) {
-            const tmpY = (srcNext.y + nextMiddleY) / 2;
-            yield { x: nextMiddleX, y: tmpY };
-            yield { x: desNext.x, y: (tmpY + desNext.y) / 2 };
+        if (t.y < e.y) {
+          if (t.x < e.x) {
+            const l = (r.y + h) / 2;
+            yield { x: c, y: l }, yield { x: i.x, y: (l + i.y) / 2 };
           }
-        } else {
-          yield { x: nextMiddleX, y: srcNext.y };
-          yield { x: desNext.x, y: nextMiddleY };
-        }
+        } else
+          yield { x: c, y: r.y }, yield { x: i.x, y: h };
         break;
       }
       default:
-        throw new Error(`Unknown pos '${desPos}'`);
+        throw new Error(`Unknown pos '${o}'`);
     }
   }
-  *_leftTo(srcLoc, desLoc, srcNext, desNext, desPos) {
-    const middleX = (srcLoc.x + desLoc.x) / 2;
-    const middleY = (srcLoc.y + desLoc.y) / 2;
-    const nextMiddleX = (srcNext.x + desNext.x) / 2;
-    const nextMiddleY = (srcNext.y + desNext.y) / 2;
-    switch (desPos) {
+  *_leftTo(t, e, r, i, o) {
+    const s = (t.x + e.x) / 2, a = (t.y + e.y) / 2, c = (r.x + i.x) / 2, h = (r.y + i.y) / 2;
+    switch (o) {
       case "top": {
-        if (srcLoc.y < desLoc.y) {
-          if (srcLoc.x < desLoc.x) {
-            yield { x: srcNext.x, y: (srcNext.y + middleY) / 2 };
-            yield { x: nextMiddleX, y: middleY };
-          }
-        } else if (srcLoc.x < desLoc.x) {
-          yield { x: srcNext.x, y: nextMiddleY };
-          yield { x: nextMiddleX, y: desNext.y };
-        } else {
-          yield { x: middleX, y: nextMiddleY };
-          yield { x: (middleX + desNext.x) / 2, y: desNext.y };
-        }
+        t.y < e.y ? t.x < e.x && (yield { x: r.x, y: (r.y + a) / 2 }, yield { x: c, y: a }) : t.x < e.x ? (yield { x: r.x, y: h }, yield { x: c, y: i.y }) : (yield { x: s, y: h }, yield { x: (s + i.x) / 2, y: i.y });
         break;
       }
       case "bottom": {
-        if (srcLoc.y < desLoc.y) {
-          if (srcLoc.x < desLoc.x) {
-            yield { x: srcNext.x, y: nextMiddleY };
-            yield { x: nextMiddleX, y: desNext.y };
-          } else {
-            yield { x: middleX, y: nextMiddleY };
-            yield { x: (middleX + desNext.x) / 2, y: desNext.y };
-          }
-        } else if (srcLoc.x < desLoc.x) {
-          yield { x: srcNext.x, y: (srcNext.y + middleY) / 2 };
-          yield { x: nextMiddleX, y: middleY };
-        }
+        t.y < e.y ? t.x < e.x ? (yield { x: r.x, y: h }, yield { x: c, y: i.y }) : (yield { x: s, y: h }, yield { x: (s + i.x) / 2, y: i.y }) : t.x < e.x && (yield { x: r.x, y: (r.y + a) / 2 }, yield { x: c, y: a });
         break;
       }
       case "left": {
-        if (srcLoc.x < desLoc.x) {
-          yield { x: srcNext.x, y: middleY };
-        } else {
-          yield { x: desNext.x, y: middleY };
-        }
+        t.x < e.x ? yield { x: r.x, y: a } : yield { x: i.x, y: a };
         break;
       }
       case "right": {
-        if (srcLoc.x < desLoc.x) {
-          yield { x: srcNext.x, y: (srcNext.y + middleY) / 2 };
-          yield { x: nextMiddleX, y: middleY };
-          yield { x: desNext.x, y: (middleY + desNext.y) / 2 };
-        } else {
-          yield { x: middleX, y: middleY };
-        }
+        t.x < e.x ? (yield { x: r.x, y: (r.y + a) / 2 }, yield { x: c, y: a }, yield { x: i.x, y: (a + i.y) / 2 }) : yield { x: s, y: a };
         break;
       }
       default:
-        throw new Error(`Unknown pos '${desPos}'`);
+        throw new Error(`Unknown pos '${o}'`);
     }
   }
-  *_rightTo(srcLoc, desLoc, srcNext, desNext, desPos) {
-    const middleX = (srcLoc.x + desLoc.x) / 2;
-    const middleY = (srcLoc.y + desLoc.y) / 2;
-    const nextMiddleX = (srcNext.x + desNext.x) / 2;
-    const nextMiddleY = (srcNext.y + desNext.y) / 2;
-    switch (desPos) {
+  *_rightTo(t, e, r, i, o) {
+    const s = (t.x + e.x) / 2, a = (t.y + e.y) / 2, c = (r.x + i.x) / 2, h = (r.y + i.y) / 2;
+    switch (o) {
       case "top": {
-        if (srcLoc.y < desLoc.y) {
-          if (srcLoc.x > desLoc.x) {
-            yield { x: srcNext.x, y: (srcNext.y + middleY) / 2 };
-            yield { x: nextMiddleX, y: (middleY + desNext.y) / 2 };
-          }
-        } else if (srcLoc.x < desLoc.x) {
-          yield { x: middleX, y: nextMiddleY };
-          yield { x: (middleX + desNext.x) / 2, y: desNext.y };
-        } else {
-          yield { x: srcNext.x, y: nextMiddleY };
-          yield { x: nextMiddleX, y: desNext.y };
-        }
+        t.y < e.y ? t.x > e.x && (yield { x: r.x, y: (r.y + a) / 2 }, yield { x: c, y: (a + i.y) / 2 }) : t.x < e.x ? (yield { x: s, y: h }, yield { x: (s + i.x) / 2, y: i.y }) : (yield { x: r.x, y: h }, yield { x: c, y: i.y });
         break;
       }
       case "bottom": {
-        if (srcLoc.y < desLoc.y) {
-          if (srcLoc.x < desLoc.x) {
-            yield { x: middleX, y: nextMiddleY };
-            yield { x: (middleX + desNext.x) / 2, y: desNext.y };
-          } else {
-            yield { x: srcNext.x, y: nextMiddleY };
-            yield { x: nextMiddleX, y: desNext.y };
-          }
-        } else if (srcLoc.x > desLoc.x) {
-          yield { x: srcNext.x, y: (srcNext.y + middleY) / 2 };
-          yield { x: nextMiddleX, y: middleY };
-        }
+        t.y < e.y ? t.x < e.x ? (yield { x: s, y: h }, yield { x: (s + i.x) / 2, y: i.y }) : (yield { x: r.x, y: h }, yield { x: c, y: i.y }) : t.x > e.x && (yield { x: r.x, y: (r.y + a) / 2 }, yield { x: c, y: a });
         break;
       }
       case "left": {
-        if (srcLoc.x < desLoc.x) {
-          yield { x: middleX, y: middleY };
-        } else {
-          yield { x: srcNext.x, y: (srcNext.y + middleY) / 2 };
-          yield { x: nextMiddleX, y: middleY };
-          yield { x: desNext.x, y: (middleY + desNext.y) / 2 };
-        }
+        t.x < e.x ? yield { x: s, y: a } : (yield { x: r.x, y: (r.y + a) / 2 }, yield { x: c, y: a }, yield { x: i.x, y: (a + i.y) / 2 });
         break;
       }
       case "right": {
-        yield { x: Math.max(srcNext.x, desNext.x), y: middleY };
+        yield { x: Math.max(r.x, i.x), y: a };
         break;
       }
       default:
-        throw new Error(`Unknown pos '${desPos}'`);
+        throw new Error(`Unknown pos '${o}'`);
     }
   }
-  _getElbowPoints(srcLoc, desLoc, srcPos, desPos) {
-    const srcNext = this._getNextXY(srcPos, srcLoc);
-    const desNext = this._getNextXY(desPos, desLoc);
-    const points = [];
-    const func = this.elbowMap[srcPos];
-    points.push({ x: srcLoc.x, y: srcLoc.y });
-    if (func === void 0)
-      console.error(`unknown position value '${srcPos}'`);
-    else {
-      for (const p of func(srcLoc, desLoc, srcNext, desNext, desPos))
-        points.push(p);
-    }
-    points.push({ x: desLoc.x, y: desLoc.y });
-    return points;
+  _getElbowPoints(t, e, r, i) {
+    const o = this._getNextXY(r, t), s = this._getNextXY(i, e), a = [], c = this.elbowMap[r];
+    if (a.push({ x: t.x, y: t.y }), c === void 0)
+      console.error(`unknown position value '${r}'`);
+    else
+      for (const h of c(t, e, o, s, i))
+        a.push(h);
+    return a.push({ x: e.x, y: e.y }), a;
   }
   /**
   *
   * @param {[]} points
   * @returns {String}
   */
-  _getPolylinePath(points) {
-    const path = [];
-    let x = points[0].x;
-    let y = points[0].y;
-    let isVertical = this._getFirstPointDir() === "v";
-    path.push([x, y]);
-    for (let i = 0; i < points.length - 1; ++i) {
-      if (isVertical) {
-        y = points[i + 1].y;
-      } else {
-        x = points[i + 1].x;
-      }
-      path.push([x, y]);
-      isVertical = !isVertical;
-    }
-    path.push([points[points.length - 1].x, points[points.length - 1].y]);
-    return path;
+  _getPolylinePath(t) {
+    const e = [];
+    let r = t[0].x, i = t[0].y, o = this._getFirstPointDir() === "v";
+    e.push([r, i]);
+    for (let s = 0; s < t.length - 1; ++s)
+      o ? i = t[s + 1].y : r = t[s + 1].x, e.push([r, i]), o = !o;
+    return e.push([t[t.length - 1].x, t[t.length - 1].y]), e;
   }
-  _getLabelPos(pathPoints) {
-    const firstPoint = pathPoints[1];
-    const nextPoint = pathPoints[2];
+  _getLabelPos(t) {
+    const e = t[1], r = t[2];
     return {
-      x: (firstPoint[0] + nextPoint[0]) / 2,
-      y: (firstPoint[1] + nextPoint[1]) / 2
+      x: (e[0] + r[0]) / 2,
+      y: (e[1] + r[1]) / 2
     };
   }
-  _getPosToDir(pos) {
-    switch (pos) {
+  _getPosToDir(t) {
+    switch (t) {
       case "top":
       case "bottom":
         return "v";
@@ -5956,245 +4205,145 @@ var ElbowConnectionRenderer = class extends ConnectionRenderer {
       case "right":
         return "h";
       default:
-        throw new Error(`Unknown sourcePos '${pos}'`);
+        throw new Error(`Unknown sourcePos '${t}'`);
     }
   }
   _getFirstPointDir() {
-    if (this.data["connection.sourcePos"] !== null) {
+    if (this.data["connection.sourcePos"] !== null)
       return this._getPosToDir(this.data["connection.sourcePos"]);
-    } else {
-      const pos = this._getPos(this._getSourceLoc(), this._getDestinationLoc());
-      return this._getPosToDir(pos.srcPos);
+    {
+      const t = this._getPos(this._getSourceLoc(), this._getDestinationLoc());
+      return this._getPosToDir(t.srcPos);
     }
   }
-  _createAdjustList(adjustPoints) {
-    const data = this.data;
-    let flag = this._getFirstPointDir() === "v";
-    this.adjusterList.forEach((a) => a.remove());
-    this.adjusterList.splice(0, this.adjusterList.length);
-    adjustPoints.forEach((p, id2) => {
-      const isVertical = !flag;
-      let lastX = 0;
-      let lastY = 0;
-      let tmpPoints = null;
-      flag = !flag;
-      const point = this.group.append("rect").attr("x", p.x - ADJUSTER_SIZE / 2).attr("y", p.y - ADJUSTER_SIZE / 2).attr("width", ADJUSTER_SIZE).attr("height", ADJUSTER_SIZE).attr("class", "adjuster").attr("cursor", "move").call(drag_default().filter(() => this.containerInterface.getReadOnly() === false).on("start", (ev) => {
-        lastX = ev.x;
-        lastY = ev.y;
-        tmpPoints = deepCopy(this.data["connection.points"]);
-        this.containerInterface.adjDragStartCallback();
-      }).on("drag", (ev) => {
-        const points = data["connection.points"];
-        const pt = points[id2 + 1];
-        if (isVertical) {
-          const diffX = lastX - ev.x;
-          pt.x -= diffX;
-          lastX = ev.x;
-          point.attr("x", pt.x - ADJUSTER_SIZE / 2);
-          if (id2 > 0)
-            points[id2].x -= diffX / 2;
-          if (id2 + 3 < points.length)
-            points[id2 + 2].x -= diffX / 2;
+  _createAdjustList(t) {
+    const e = this.data;
+    let r = this._getFirstPointDir() === "v";
+    this.adjusterList.forEach((i) => i.remove()), this.adjusterList.splice(0, this.adjusterList.length), t.forEach((i, o) => {
+      const s = !r;
+      let a = 0, c = 0, h = null;
+      r = !r;
+      const l = this.group.append("rect").attr("x", i.x - ct / 2).attr("y", i.y - ct / 2).attr("width", ct).attr("height", ct).attr("class", "adjuster").attr("cursor", "move").call(it().filter(() => this.containerInterface.getReadOnly() === !1).on("start", (f) => {
+        a = f.x, c = f.y, h = Se(this.data["connection.points"]), this.containerInterface.adjDragStartCallback();
+      }).on("drag", (f) => {
+        const u = e["connection.points"], y = u[o + 1];
+        if (s) {
+          const O = a - f.x;
+          y.x -= O, a = f.x, l.attr("x", y.x - ct / 2), o > 0 && (u[o].x -= O / 2), o + 3 < u.length && (u[o + 2].x -= O / 2);
         } else {
-          const diffY = lastY - ev.y;
-          pt.y -= diffY;
-          lastY = ev.y;
-          point.attr("y", pt.y - ADJUSTER_SIZE / 2);
-          if (id2 > 0)
-            points[id2].y -= diffY / 2;
-          if (id2 + 3 < points.length)
-            points[id2 + 2].y -= diffY / 2;
+          const O = c - f.y;
+          y.y -= O, c = f.y, l.attr("y", y.y - ct / 2), o > 0 && (u[o].y -= O / 2), o + 3 < u.length && (u[o + 2].y -= O / 2);
         }
         this._render();
       }).on("end", () => {
         this.containerInterface.adjDragEndCallback(
           this.data,
-          tmpPoints,
-          deepCopy(this.data["connection.points"])
+          h,
+          Se(this.data["connection.points"])
         );
       }));
-      this.adjusterList.push(point);
+      this.adjusterList.push(l);
     });
   }
-  _getPos(srcLoc, desLoc) {
-    const pos = {
+  _getPos(t, e) {
+    const r = {
       srcPos: this.data["connection.sourcePos"],
       desPos: this.data["connection.destinationPos"]
-    };
-    const height = Math.abs(srcLoc.y - desLoc.y);
-    const width = Math.abs(srcLoc.x - desLoc.x);
-    if (!pos.srcPos) {
-      if (height > width) {
-        pos.srcPos = srcLoc.y > desLoc.y ? "top" : "bottom";
-      } else {
-        pos.srcPos = srcLoc.x > desLoc.x ? "left" : "right";
-      }
-    }
-    if (!pos.desPos) {
-      if (height > width) {
-        pos.desPos = srcLoc.y > desLoc.y ? "bottom" : "top";
-      } else {
-        pos.desPos = srcLoc.x > desLoc.x ? "right" : "left";
-      }
-    }
-    return pos;
+    }, i = Math.abs(t.y - e.y), o = Math.abs(t.x - e.x);
+    return r.srcPos || (i > o ? r.srcPos = t.y > e.y ? "top" : "bottom" : r.srcPos = t.x > e.x ? "left" : "right"), r.desPos || (i > o ? r.desPos = t.y > e.y ? "bottom" : "top" : r.desPos = t.x > e.x ? "right" : "left"), r;
   }
   refreshAdjustList() {
-    const srcLoc = this._getSourceLoc();
-    const desLoc = this._getDestinationLoc();
-    const pos = this._getPos(srcLoc, desLoc);
-    const tmpPoints = this._getElbowPoints(
-      srcLoc,
-      desLoc,
-      pos.srcPos,
-      pos.desPos
+    const t = this._getSourceLoc(), e = this._getDestinationLoc(), r = this._getPos(t, e), i = this._getElbowPoints(
+      t,
+      e,
+      r.srcPos,
+      r.desPos
     );
-    this._createAdjustList(tmpPoints.slice(1, tmpPoints.length - 1));
-    this._updatePoints(...tmpPoints);
+    this._createAdjustList(i.slice(1, i.length - 1)), this._updatePoints(...i);
   }
-  _getLabelXY(info) {
-    const pos = this._getLabelPos(this._getPolylinePath(this.data["connection.points"]));
+  _getLabelXY(t) {
+    const e = this._getLabelPos(this._getPolylinePath(this.data["connection.points"]));
     return {
-      x: pos.x,
-      y: pos.y + (this.data.fontSize - this.data.fontSize * info.length / 2)
+      x: e.x,
+      y: e.y + (this.data.fontSize - this.data.fontSize * t.length / 2)
     };
   }
   _renderAdjustList() {
-    this.adjusterList.forEach((adj, id2) => {
-      const curPt = this.data["connection.points"][id2 + 1];
-      adj.attr("x", curPt.x - ADJUSTER_ADJ).attr("y", curPt.y - ADJUSTER_ADJ);
-      adj.attr("visibility", this.group.classed("edit") === false ? this.subUiVisibility : "hidden");
-      this.bringToFrontElement(adj.node());
+    this.adjusterList.forEach((t, e) => {
+      const r = this.data["connection.points"][e + 1];
+      t.attr("x", r.x - yn).attr("y", r.y - yn), t.attr("visibility", this.group.classed("edit") === !1 ? this.subUiVisibility : "hidden"), this.bringToFrontElement(t.node());
     });
   }
   _render() {
-    const data = this.data;
-    const wrapper = this.dataWrapper;
-    const srcLoc = this._getSourceLoc();
-    const desLoc = this._getDestinationLoc();
-    if (this._isChanged(srcLoc, desLoc)) {
-      this.refreshAdjustList();
-    }
-    this._renderConnector();
-    this._renderMarker();
-    this._renderAdjustList();
-    const pathPoints = this._getPolylinePath(data["connection.points"]);
-    const path = pathPoints.map((pt) => `${pt[0]},${pt[1]}`).join(", ");
-    this.objects.polyline.attr("points", path).style("stroke", wrapper.get("borderColor")).style("stroke-width", wrapper.get("borderWidth")).style("stroke-dasharray", wrapper.get("borderDash"));
-    this.objects.wideLine.attr("points", path).style("stroke-width", Math.max(wrapper.get("borderWidth"), 5));
-    this._createText();
-    if (data.text) {
-      const bbox = this._getBBox();
-      const width = bbox.width + 10;
-      const height = bbox.height + 10;
-      this.objects.rect.attr("x", bbox.x - 5).attr("y", bbox.y - 5).attr("width", width).attr("height", height).style("fill", wrapper.get("connection.textBorderFill")).style("stroke", wrapper.get("connection.textBorderColor")).style("stroke-width", wrapper.get("connection.textBorderWidth")).style("stroke-dasharray", wrapper.get("connection.textBorderDash"));
-    } else {
+    const t = this.data, e = this.dataWrapper, r = this._getSourceLoc(), i = this._getDestinationLoc();
+    this._isChanged(r, i) && this.refreshAdjustList(), this._renderConnector(), this._renderMarker(), this._renderAdjustList();
+    const s = this._getPolylinePath(t["connection.points"]).map((a) => `${a[0]},${a[1]}`).join(", ");
+    if (this.objects.polyline.attr("points", s).style("stroke", e.get("borderColor")).style("stroke-width", e.get("borderWidth")).style("stroke-dasharray", e.get("borderDash")), this.objects.wideLine.attr("points", s).style("stroke-width", Math.max(e.get("borderWidth"), 5)), this._createText(), t.text) {
+      const a = this._getBBox(), c = a.width + 10, h = a.height + 10;
+      this.objects.rect.attr("x", a.x - 5).attr("y", a.y - 5).attr("width", c).attr("height", h).style("fill", e.get("connection.textBorderFill")).style("stroke", e.get("connection.textBorderColor")).style("stroke-width", e.get("connection.textBorderWidth")).style("stroke-dasharray", e.get("connection.textBorderDash"));
+    } else
       this.objects.rect.style("fill", "transparent").style("stroke", "transparent");
-    }
   }
-};
-
-// src/js-components/flowchart/render/group.js
-var GroupRenderer = class extends BaseRenderer {
-  constructor(data, iContainer) {
-    super(data, "group", iContainer);
+}
+class Ta extends De {
+  constructor(t, e) {
+    super(t, "group", e);
   }
   _create() {
-    this.objects.rect = this.group.append("rect").attr("fill", "none").attr("visibility", "hidden");
-    this.objects.thickRect = this.group.append("rect").attr("fill", "none").attr("opacity", "0").attr("visibility", "hidden");
+    this.objects.rect = this.group.append("rect").attr("fill", "none").attr("visibility", "hidden"), this.objects.thickRect = this.group.append("rect").attr("fill", "none").attr("opacity", "0").attr("visibility", "hidden");
   }
   _render() {
-    const rect = this.data["group.rect"];
-    const wrapper = this.dataWrapper;
+    const t = this.data["group.rect"], e = this.dataWrapper;
     if (this.data.isSelected || this.data["group.borderAlwaysAppearance"]) {
-      const borderWidth = wrapper.get("borderWidth");
-      this.objects.rect.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height).attr("stroke", wrapper.get("borderColor")).attr("stroke-width", borderWidth).attr("stroke-dasharray", wrapper.get("borderDash")).attr("visibility", "visible");
-      this.objects.thickRect.attr("x", rect.x).attr("y", rect.y).attr("width", rect.width).attr("height", rect.height).attr("stroke", "white").attr("stroke-width", Math.max(borderWidth, 8)).attr("visibility", "visible");
-    } else {
-      this.objects.rect.attr("visibility", "hidden");
-      this.objects.thickRect.attr("visibility", "hidden");
-    }
+      const r = e.get("borderWidth");
+      this.objects.rect.attr("x", t.x).attr("y", t.y).attr("width", t.width).attr("height", t.height).attr("stroke", e.get("borderColor")).attr("stroke-width", r).attr("stroke-dasharray", e.get("borderDash")).attr("visibility", "visible"), this.objects.thickRect.attr("x", t.x).attr("y", t.y).attr("width", t.width).attr("height", t.height).attr("stroke", "white").attr("stroke-width", Math.max(r, 8)).attr("visibility", "visible");
+    } else
+      this.objects.rect.attr("visibility", "hidden"), this.objects.thickRect.attr("visibility", "hidden");
   }
-};
-
-// src/js-components/flowchart/render/if.js
-var IfRenderer = class extends NodeRenderer {
-  constructor(data, iContainer) {
-    super(data, "if", iContainer);
+}
+class Aa extends wt {
+  constructor(t, e) {
+    super(t, "if", e);
   }
   _create() {
-    this.objects.body = this.group.append("polygon");
-    super._create();
+    this.objects.body = this.group.append("polygon"), super._create();
   }
   getPolygon() {
-    const points = [];
-    const halfWidth = this.width / 2;
-    const halfHeight = this.height / 2;
-    points.push(`${-halfWidth},${0}`);
-    points.push(`${0},${-halfHeight}`);
-    points.push(`${halfWidth},${0}`);
-    points.push(`${0},${halfHeight}`);
-    return points.join(" ");
+    const t = [], e = this.width / 2, r = this.height / 2;
+    return t.push(`${-e},0`), t.push(`0,${-r}`), t.push(`${e},0`), t.push(`0,${r}`), t.join(" ");
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    this.objects.body.attr("points", this.getPolygon()).attr("fill", wrapper.get("node.fill")).attr("stroke", wrapper.get("borderColor")).attr("stroke-width", wrapper.get("borderWidth")).attr("stroke-dasharray", wrapper.get("borderDash"));
-    this._createText();
+    const t = this.dataWrapper;
+    this.objects.body.attr("points", this.getPolygon()).attr("fill", t.get("node.fill")).attr("stroke", t.get("borderColor")).attr("stroke-width", t.get("borderWidth")).attr("stroke-dasharray", t.get("borderDash")), this._createText();
   }
-};
-
-// src/js-components/flowchart/render/return.js
-var ReturnRenderer = class extends NodeRenderer {
-  constructor(data, iContainer) {
-    super(data, "return", iContainer);
+}
+class za extends wt {
+  constructor(t, e) {
+    super(t, "return", e);
   }
   _create() {
-    this.objects.body = this.group.append("rect");
-    super._create();
+    this.objects.body = this.group.append("rect"), super._create();
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    const width = this.width;
-    const height = this.height;
-    this.objects.body.attr("x", -(width / 2)).attr("y", -(height / 2)).attr("rx", wrapper.get("node.borderRadius")).attr("width", width).attr("height", height).style("fill", wrapper.get("node.fill")).attr("stroke", wrapper.get("borderColor")).style("stroke-width", wrapper.get("borderWidth")).attr("stroke-dasharray", wrapper.get("borderDash"));
-    this._createText();
+    const t = this.dataWrapper, e = this.width, r = this.height;
+    this.objects.body.attr("x", -(e / 2)).attr("y", -(r / 2)).attr("rx", t.get("node.borderRadius")).attr("width", e).attr("height", r).style("fill", t.get("node.fill")).attr("stroke", t.get("borderColor")).style("stroke-width", t.get("borderWidth")).attr("stroke-dasharray", t.get("borderDash")), this._createText();
   }
-};
-
-// src/js-components/flowchart/render/start.js
-var StartRenderer = class extends NodeRenderer {
-  constructor(data, iContainer) {
-    super(data, "start", iContainer);
+}
+class Na extends wt {
+  constructor(t, e) {
+    super(t, "start", e);
   }
   _create() {
-    this.objects.body = this.group.append("rect");
-    super._create();
+    this.objects.body = this.group.append("rect"), super._create();
   }
   _render() {
-    const wrapper = this.dataWrapper;
-    const g = this.objects;
-    const width = this.width;
-    const height = this.height;
-    g.body.attr("x", -(width / 2)).attr("y", -(height / 2)).attr("rx", height / 2).attr("width", width).attr("height", height).style("fill", wrapper.get("node.fill")).style("stroke-width", wrapper.get("borderWidth")).attr("stroke-dasharray", wrapper.get("borderDash")).attr("stroke", wrapper.get("borderColor"));
-    this._createText();
+    const t = this.dataWrapper, e = this.objects, r = this.width, i = this.height;
+    e.body.attr("x", -(r / 2)).attr("y", -(i / 2)).attr("rx", i / 2).attr("width", r).attr("height", i).style("fill", t.get("node.fill")).style("stroke-width", t.get("borderWidth")).attr("stroke-dasharray", t.get("borderDash")).attr("stroke", t.get("borderColor")), this._createText();
   }
-};
-
-// src/js-components/flowchart/util/render-mng.js
-var RenderManager = class {
+}
+class Da {
   constructor() {
-    this.nodeRenderMap = /* @__PURE__ */ new Map();
-    this.connectionRenderMap = /* @__PURE__ */ new Map();
-    this.etcRenderMap = /* @__PURE__ */ new Map();
-    this.nodeRenderMap.set("start", StartRenderer);
-    this.nodeRenderMap.set("if", IfRenderer);
-    this.nodeRenderMap.set("return", ReturnRenderer);
-    this.nodeRenderMap.set("comment", CommentRenderer);
-    this.nodeRenderMap.set("bridge", BridgeRenderer);
-    this.nodeRenderMap.set("db", DBRenderer);
-    this.connectionRenderMap.set("direct", DirectConnectionRenderer);
-    this.connectionRenderMap.set("elbow", ElbowConnectionRenderer);
-    this.etcRenderMap.set("group", GroupRenderer);
+    this.nodeRenderMap = /* @__PURE__ */ new Map(), this.connectionRenderMap = /* @__PURE__ */ new Map(), this.etcRenderMap = /* @__PURE__ */ new Map(), this.nodeRenderMap.set("start", Na), this.nodeRenderMap.set("if", Aa), this.nodeRenderMap.set("return", za), this.nodeRenderMap.set("comment", ka), this.nodeRenderMap.set("bridge", Sa), this.nodeRenderMap.set("db", Ea), this.connectionRenderMap.set("direct", Ia), this.connectionRenderMap.set("elbow", Ma), this.etcRenderMap.set("group", Ta);
   }
   /**
   *
@@ -6202,30 +4351,29 @@ var RenderManager = class {
   * @param {string} render
   * @param {() => BaseRenderer} constructor
   */
-  _add(map, render, constructor) {
-    map.set(render, constructor);
+  _add(t, e, r) {
+    t.set(e, r);
   }
   /**
   *
   * @param {Map<String, BaseRenderer>} map
   * @param {String} key
   */
-  _get(map, key) {
-    if (map.has(key)) {
-      return map.get(key);
-    }
-    throw new Error(`There is no renderer (key: '${key}')`);
+  _get(t, e) {
+    if (t.has(e))
+      return t.get(e);
+    throw new Error(`There is no renderer (key: '${e}')`);
   }
-  addRenderMap(type2, render, constructor) {
-    switch (type2) {
+  addRenderMap(t, e, r) {
+    switch (t) {
       case "node":
-        this._add(this.nodeRenderMap, render, constructor);
+        this._add(this.nodeRenderMap, e, r);
         break;
       case "connection":
-        this._add(this.connectionRenderMap, render, constructor);
+        this._add(this.connectionRenderMap, e, r);
         break;
       default:
-        throw new Error(`Unknown type '${type2}'`);
+        throw new Error(`Unknown type '${t}'`);
     }
   }
   /**
@@ -6233,34 +4381,27 @@ var RenderManager = class {
   * @param {String} render
   * @returns
   */
-  getRenderConstructor(type2, render) {
-    switch (type2) {
+  getRenderConstructor(t, e) {
+    switch (t) {
       case "node":
-        return this._get(this.nodeRenderMap, render);
+        return this._get(this.nodeRenderMap, e);
       case "connection":
-        return this._get(this.connectionRenderMap, render);
+        return this._get(this.connectionRenderMap, e);
       default:
-        return this._get(this.etcRenderMap, render);
+        return this._get(this.etcRenderMap, e);
     }
   }
-  changeRender(obj, render, icontainer) {
-    const constructor = this.getRenderConstructor(obj.type, render);
-    const renderer = new constructor(obj.data, icontainer);
-    obj.changeRender(render, renderer);
+  changeRender(t, e, r) {
+    const i = this.getRenderConstructor(t.type, e), o = new i(t.data, r);
+    t.changeRender(e, o);
   }
-};
-
-// src/js-components/flowchart/util/seq-mng.ts
-var SequenceManager = class {
-  constructor(iContainer) {
-    this.objSeq = 0;
-    this.clickSeq = 0;
-    this.iContainer = iContainer;
-    this.clear();
+}
+class Pa {
+  constructor(t) {
+    this.objSeq = 0, this.clickSeq = 0, this.iContainer = t, this.clear();
   }
   clear() {
-    this.clearObjSeq();
-    this.clearClickSeq();
+    this.clearObjSeq(), this.clearClickSeq();
   }
   clearObjSeq() {
     this.objSeq = 1;
@@ -6269,92 +4410,54 @@ var SequenceManager = class {
     this.clickSeq = 0;
   }
   getObjSeqId() {
-    while (this.iContainer.getObjectOrNull(this.objSeq) !== null) {
+    for (; this.iContainer.getObjectOrNull(this.objSeq) !== null; )
       ++this.objSeq;
-    }
     return this.objSeq;
   }
   increaseClickSeq() {
     return ++this.clickSeq;
   }
+}
+const $a = {
+  ...Jn,
+  ...Qn,
+  ...tr,
+  ...se
 };
-
-// src/js-components/flowchart/util/theme.ts
-var DefaultTheme = {
-  ...DEFAULT_CONNECTION_STYLE_DATA,
-  ...DEFAULT_GROUP_STYLE_DATA,
-  ...DEFAULT_NODE_STYLE_DATA,
-  ...DEFAULT_STYLE_DATA
-};
-
-// src/utils/clipboard.ts
-function copyImageFromBase64(base64Src) {
-  return new Promise((resolve, reject) => {
-    const image = new Image();
-    image.onerror = (err) => reject(err);
-    image.src = base64Src;
-    image.onload = () => {
-      const selection2 = document.getSelection();
-      if (!selection2) {
-        reject("selection is null when copying image");
+function Ra(n) {
+  return new Promise((t, e) => {
+    const r = new Image();
+    r.onerror = (i) => e(i), r.src = n, r.onload = () => {
+      const i = document.getSelection();
+      if (!i) {
+        e("selection is null when copying image");
         return;
       }
-      const range = document.createRange();
-      document.body.appendChild(image);
-      range.selectNode(image);
-      selection2.removeAllRanges();
-      selection2.addRange(range);
-      document.execCommand("copy");
-      image.remove();
-      resolve();
+      const o = document.createRange();
+      document.body.appendChild(r), o.selectNode(r), i.removeAllRanges(), i.addRange(o), document.execCommand("copy"), r.remove(), t();
     };
   });
 }
-
-// src/js-components/flowchart/flowchart.js
-var DETECTING_SIZE = 10;
-var ACTION_LIMIT = 255;
-var POSITION_LIST = ["left", "right", "top", "bottom"];
-var EXPORT_MARGIN = 8;
-var MIN_ZOOM = 0.4;
-var MAX_ZOOM = 3;
-var NOT_CHANGING_PROPERTY_SET = /* @__PURE__ */ new Set(["isHovered", "isSelected"]);
-var createEmitter = (flowchart) => {
-  const eventMap = {};
+const Ft = 10, La = 255, Xt = ["left", "right", "top", "bottom"], mn = 8, Ha = 8, bn = 0.4, wn = 3, Fa = /* @__PURE__ */ new Set(["isHovered", "isSelected"]), Xa = (n) => {
+  const t = {};
   return {
-    emit: (event, args) => {
-      if (!eventMap[event])
-        return;
-      eventMap[event].forEach((callback) => callback.apply(flowchart, args));
+    emit: (e, r) => {
+      t[e] && t[e].forEach((i) => i.apply(n, r));
     },
-    on: (event, callback) => {
-      if (!eventMap[event])
-        eventMap[event] = [];
-      eventMap[event].push(callback);
-      return callback;
-    },
-    off: (event, callback) => {
-      if (!eventMap[event])
-        return false;
-      const id2 = eventMap[event].indexOf(callback);
-      if (id2 < 0)
-        return false;
-      eventMap[event].splice(id2, 1);
-      return true;
+    on: (e, r) => (t[e] || (t[e] = []), t[e].push(r), r),
+    off: (e, r) => {
+      if (!t[e])
+        return !1;
+      const i = t[e].indexOf(r);
+      return i < 0 ? !1 : (t[e].splice(i, 1), !0);
     }
   };
-};
-var createFlowchartTemplate = (id2) => {
-  const div = document.createElement("div");
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  svg.style.background = "#fff";
-  div.classList.add("flowchart");
-  div.tabIndex = 0;
-  svg.innerHTML = `
+}, Ya = (n) => {
+  const t = document.createElement("div"), e = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  return e.setAttribute("xmlns", "http://www.w3.org/2000/svg"), e.style.background = "#fff", t.classList.add("flowchart"), t.tabIndex = 0, e.innerHTML = `
 <defs>
     <pattern
-        id="${id2}_small_grid"
+        id="${n}_small_grid"
         width="10"
         height="10"
         patternUnits="userSpaceOnUse">
@@ -6365,139 +4468,112 @@ var createFlowchartTemplate = (id2) => {
         stroke-width="0.5"/>
     </pattern>
     <pattern
-        id="${id2}_grid"
+        id="${n}_grid"
         width="100"
         height="100"
         patternUnits="userSpaceOnUse">
         <rect
         width="100"
         height="100"
-        fill="url(#${id2}_small_grid)"/>
+        fill="url(#${n}_small_grid)"/>
         <path
         d="M 100 0 L 0 0 0 100"
         fill="none"
         stroke="gray"
         stroke-width="1"/>
     </pattern>
-</defs>`;
-  div.appendChild(svg);
-  return { div, svg };
-};
-var DEFAULT_MOVEMENT_UNIT = 10;
-var IRFlowchart = class extends IRComponent {
+</defs>`, t.appendChild(e), { div: t, svg: e };
+}, Yt = 10;
+class Ka extends dr {
+  #y = !0;
+  #m = !1;
+  #i = !1;
+  #n = !1;
+  #s = !1;
+  #f = !1;
+  #b = !1;
+  #w = !1;
+  #k = !1;
+  #d = !1;
+  #u = !1;
+  #x = !1;
+  #E = !1;
+  #_ = !1;
+  // DOM 감싸는 영역(wrapper) 레이아웃 사이즈
+  #o = { width: 0, height: 0 };
+  // 내부 svg 컨텐츠 사이즈
+  #g = { width: 0, height: 0 };
+  // appendMode context 저장
+  #e = { mode: null, data: null, dragged: !1 };
+  /** @type {RenderObject | null} */
+  #t = null;
+  #r = {
+    /** @type {d3.Selection | null} */
+    rect: null,
+    startX: 0,
+    startY: 0
+  };
+  #I = { curPosX: 0, curPosY: 0, isDragging: !1 };
   /**
    * @param {Object} param
    * @param {HTMLDivElement} param.contextElement
    * @param {String} param.width
    * @param {String} param.height
    */
-  constructor({ contextElement, width, height, fitSizeMode }) {
-    super({ contextElement });
-    this._wheelZoom = true;
-    this._gridMode = false;
-    this._editMode = false;
-    this._readonly = false;
-    this._simpleConnectingMode = false;
-    this._moveScreenOnSelect = false;
-    this._selectNodeOnHover = false;
-    this._tooltipHidden = false;
-    this._traceMode = false;
-    this._singleSelection = false;
-    this._isChanged = false;
-    this._isDragging = false;
-    this._canvasMoveMode = false;
-    this._fitSizeMode = fitSizeMode != null ? fitSizeMode : false;
-    this.keyMap = {};
-    this.keyMap.ArrowLeft = () => this.handleKeydownArrows(-DEFAULT_MOVEMENT_UNIT, 0);
-    this.keyMap.ArrowRight = () => this.handleKeydownArrows(DEFAULT_MOVEMENT_UNIT, 0);
-    this.keyMap.ArrowDown = () => this.handleKeydownArrows(0, DEFAULT_MOVEMENT_UNIT);
-    this.keyMap.ArrowUp = () => this.handleKeydownArrows(0, -DEFAULT_MOVEMENT_UNIT);
-    this.keyMap.Delete = () => this.handleKeydownDelete();
-    this.keyMap.Escape = () => this.handleKeydownEscape();
-    this.keyMap.F2 = () => this.handleKeydownF2();
-    this.keyMap["^x"] = () => this.cut();
-    this.keyMap["^c"] = () => this.copy();
-    this.keyMap["^v"] = () => this.paste();
-    this.keyMap["^z"] = () => this.undoAction();
-    this.keyMap["^y"] = () => this.redoAction();
-    this.keyMap["^a"] = () => this.selectAllObjects();
-    this.keyMap["^A"] = () => this.selectAllObjects();
-    this._appendMode = {
-      mode: null,
-      data: null,
-      dragged: false
-    };
-    this._wrapperSize = {
-      width: 0,
-      height: 0
-    };
-    this._svgSize = {
-      width: 0,
-      height: 0
-    };
-    this._appendingObject = null;
-    this.emitter = createEmitter(this);
-    const { div, svg } = createFlowchartTemplate(this.uuid);
-    this.div = div;
-    div.addEventListener("keydown", (ev) => {
-      if (this._editMode || this._readonly) {
+  constructor({ contextElement: t, width: e, height: r, fitSizeMode: i }) {
+    super({ contextElement: t }), this.#_ = i ?? !1, this.keyMap = {
+      ArrowLeft: () => this.handleKeydownArrows(-Yt, 0),
+      ArrowRight: () => this.handleKeydownArrows(Yt, 0),
+      ArrowDown: () => this.handleKeydownArrows(0, Yt),
+      ArrowUp: () => this.handleKeydownArrows(0, -Yt),
+      Delete: () => this.handleKeydownDelete(),
+      Escape: () => this.handleKeydownEscape(),
+      F2: () => this.handleKeydownF2(),
+      "^x": () => this.cut(),
+      "^c": () => this.copy(),
+      "^v": () => this.paste(),
+      "^z": () => this.undoAction(),
+      "^y": () => this.redoAction(),
+      "^a": () => this.selectAllObjects(),
+      "^A": () => this.selectAllObjects()
+    }, this.emitter = Xa(this);
+    const { div: o, svg: s } = Ya(this.uuid);
+    this.div = o, o.addEventListener("keydown", (a) => {
+      if (this.#i || this.#n) {
         this._logger.debug("InnoFlowchart.handleKeydown()", "Cancel because of editMode or readonly mode");
         return;
       }
-      const keyName = `${ev.ctrlKey ? "^" : ""}${ev.key}`;
-      if (keyName in this.keyMap) {
-        this.keyMap[keyName](ev);
-        ev.preventDefault();
-      }
-    });
-    this.addCoreElement(div);
-    contextElement.appendChild(div);
-    this._initD3Elements(div, svg, width, height);
-    this._containerInterface = new InterfaceInstance({
+      const c = `${a.ctrlKey ? "^" : ""}${a.key}`;
+      c in this.keyMap && (this.keyMap[c](a), a.preventDefault());
+    }), this.addCoreElement(o), t.appendChild(o), this.#Y(o, s, e, r), this._containerInterface = {
       // Manipulation API
       releaseAllObjects: () => this.releaseAllObjects(),
-      addRenderObj: (data) => this.add(data),
-      removeObject: (obj) => this.remove(obj),
-      initDrag: (dragEvent) => this._initDrag(dragEvent),
-      terminateDrag: (dragEvent) => this._terminateDrag(dragEvent),
-      isDragging: () => this._isDragging,
-      changeObjRender: (obj, render) => this._changeObjRender(obj, render),
+      addRenderObj: (a) => this.add(a),
+      removeObject: (a) => this.remove(a),
+      initDrag: (a) => this.#c(a),
+      terminateDrag: (a) => this.#h(a),
+      isDragging: () => this.#x,
+      changeObjRender: (a, c) => this.#L(a, c),
       // Callback
-      adjDragStartCallback: () => this._adjDragStartCallbackHandler(),
-      adjDragEndCallback: (data, oldPoints, newPoints) => this._adjDragEndCallbackHandler(data, oldPoints, newPoints),
-      editTextCallback: (data, oldText, newText) => this._editTextCallbackHandler(data, oldText, newText),
-      editTextModeCallback: (data) => this._editTextModeCallback(data),
-      renderCallback: (obj) => this._renderCallBack(obj),
-      observerCallback: (arg) => this._observerCallback(arg),
-      selectCallback: (obj, userInteraction, typeClick) => this._selectCallbackHandler(obj, userInteraction, typeClick),
-      releaseCallback: (obj, userInteraction) => this._releaseCallbackHandler(obj, userInteraction),
+      adjDragStartCallback: () => this.#kt(),
+      adjDragEndCallback: (a, c, h) => this.#Et(a, c, h),
+      editTextCallback: (a, c, h) => this.#jt(a, c, h),
+      editTextModeCallback: (a) => this.#K(a),
+      renderCallback: (a) => this.#It(a),
+      observerCallback: (a) => this.#W(a),
+      selectCallback: (a, c, h) => this.#q(a, c, h),
+      releaseCallback: (a, c) => this.#G(a, c),
       // getter / setter
-      setEditMode: (flag) => this._editMode = flag,
+      setEditMode: (a) => this.#i = a,
       getLogger: () => this._logger,
       getSvg: () => this.d3Svg,
-      getObjectOrNull: (id2) => this.getObjectOrNull(id2),
-      getSelectNodeOnHover: () => this._selectNodeOnHover,
-      getTooltipHidden: () => this._tooltipHidden,
-      getReadOnly: () => this._readonly,
-      isAppending: () => this._appendMode.mode === "append",
+      getObjectOrNull: (a) => this.getObjectOrNull(a),
+      getSelectNodeOnHover: () => this.#b,
+      getTooltipHidden: () => this.#w,
+      getReadOnly: () => this.#n,
+      isAppending: () => this.#e.mode === "append",
       getUUID: () => this.uuid
-    });
-    this._seqMng = new SequenceManager(this._containerInterface);
-    this._objectManager = new obj_mng_default();
-    this._actionController = new ActionController(this._containerInterface, ACTION_LIMIT);
-    this._moveHandler = new MoveHandler(this._actionController, this._objectManager, this._containerInterface);
-    this._resizeHandler = new ResizeHandler(this._actionController, this._objectManager, this._containerInterface);
-    this._renderManager = new RenderManager();
-    this._objMouseHandler = new ObjectMouseHandler(this._containerInterface);
-    this.theme = { ...DefaultTheme };
-    this.defaultRule = defaultRule;
-    this._cursorStatus = {
-      curPosX: 0,
-      curPosY: 0,
-      isDragging: false
-    };
-    this.zoomTo(1);
-    this.render();
+    }, this._objectManager = new ba(), this._renderManager = new Da(), this._seqMng = new Pa(this._containerInterface), this._objMouseHandler = new Oa(this._containerInterface), this._actionController = new Vs(this._containerInterface, La), this._moveHandler = new oa(this._actionController, this._objectManager, this._containerInterface), this._resizeHandler = new sa(this._actionController, this._objectManager, this._containerInterface), this.theme = { ...$a }, this.defaultRule = ea, this.zoomTo(1), this.render();
   }
   get svgElement() {
     return this.d3Svg.node();
@@ -6506,162 +4582,120 @@ var IRFlowchart = class extends IRComponent {
     return this._actionController;
   }
   get readonly() {
-    return this._readonly;
+    return this.#n;
   }
   get simpleConnectingMode() {
-    return this._simpleConnectingMode;
+    return this.#s;
   }
   get editMode() {
-    return this._editMode;
+    return this.#i;
   }
   get gridMode() {
-    return this._gridMode;
+    return this.#m;
   }
   get tooltipHidden() {
-    return this._tooltipHidden;
+    return this.#w;
   }
   get fitSizeMode() {
-    return this._fitSizeMode;
+    return this.#_;
   }
   get moveScreenOnSelect() {
-    return this._moveScreenOnSelect;
+    return this.#f;
   }
   get selectNodeOnHover() {
-    return this._selectNodeOnHover;
+    return this.#b;
   }
   get wheelZoom() {
-    return this._wheelZoom;
+    return this.#y;
   }
   get traceMode() {
-    return this._traceMode;
+    return this.#k;
   }
   get singleSelection() {
-    return this._singleSelection;
+    return this.#d;
   }
-  set readonly(boolean) {
-    this._readonly = boolean;
-    this.classedOnSvg(boolean, "readonly");
-    this._logger.info(`readonly property is changed to '${boolean}'`);
+  set readonly(t) {
+    this.#n = t, this.classedOnSvg(t, "readonly"), this._logger.info(`readonly property is changed to '${t}'`);
   }
-  set simpleConnectingMode(boolean) {
-    this._simpleConnectingMode = boolean;
-    this.classedOnSvg(boolean, "simple");
-    this._logger.info(`simpleConnectingMode property is changed to '${boolean}'`);
+  set simpleConnectingMode(t) {
+    this.#s = t, this.classedOnSvg(t, "simple"), this._logger.info(`simpleConnectingMode property is changed to '${t}'`);
   }
-  set editMode(boolean) {
-    this._editMode = boolean;
-    this.classedOnSvg(boolean, "edit-mode");
-    this._logger.info(`editMode property is changed to '${boolean}'`);
+  set editMode(t) {
+    this.#i = t, this.classedOnSvg(t, "edit-mode"), this._logger.info(`editMode property is changed to '${t}'`);
   }
-  set gridMode(boolean) {
-    this._gridMode = boolean;
-    this.d3Grid.attr("visibility", this._gridMode ? "visible" : "hidden");
-    this.classedOnSvg(boolean, "flowchart-grid");
-    this._logger.info(`gridMode property is changed to '${boolean}'`);
-    this.render();
+  set gridMode(t) {
+    this.#m = t, this.d3Grid.attr("visibility", this.#m ? "visible" : "hidden"), this.classedOnSvg(t, "flowchart-grid"), this._logger.info(`gridMode property is changed to '${t}'`), this.render();
   }
-  set tooltipHidden(boolean) {
-    this._tooltipHidden = boolean;
-    this.classedOnSvg(boolean, "tooltip-hidden");
-    this._logger.info(`tooltipHidden property is changed to '${boolean}'`);
+  set tooltipHidden(t) {
+    this.#w = t, this.classedOnSvg(t, "tooltip-hidden"), this._logger.info(`tooltipHidden property is changed to '${t}'`);
   }
-  set moveScreenOnSelect(boolean) {
-    this._moveScreenOnSelect = boolean;
-    this.classedOnSvg(boolean, "move-screen-on-select");
-    this._logger.info(`moveScreenOnSelect property is changed to '${boolean}'`);
+  set moveScreenOnSelect(t) {
+    this.#f = t, this.classedOnSvg(t, "move-screen-on-select"), this._logger.info(`moveScreenOnSelect property is changed to '${t}'`);
   }
-  set selectNodeOnHover(boolean) {
-    this._selectNodeOnHover = boolean;
-    this.classedOnSvg(boolean, "select-node-on-hover");
-    this._logger.info(`selectNodeOnHover property is changed to '${boolean}'`);
+  set selectNodeOnHover(t) {
+    this.#b = t, this.classedOnSvg(t, "select-node-on-hover"), this._logger.info(`selectNodeOnHover property is changed to '${t}'`);
   }
-  set wheelZoom(boolean) {
-    this._wheelZoom = boolean;
-    this.classedOnSvg(boolean, "wheel-zoom");
-    this._logger.info(`wheelZoom property is changed to '${boolean}'`);
+  set wheelZoom(t) {
+    this.#y = t, this.classedOnSvg(t, "wheel-zoom"), this._logger.info(`wheelZoom property is changed to '${t}'`);
   }
-  set traceMode(boolean) {
-    this._logger.logLevel = boolean ? "INFO" : "ERROR";
-    this._traceMode = boolean;
-    this.classedOnSvg(boolean, "trace");
-    this._logger.info(`traceMode property is changed to '${boolean}'`);
+  set traceMode(t) {
+    this._logger.logLevel = t ? "INFO" : "ERROR", this.#k = t, this.classedOnSvg(t, "trace"), this._logger.info(`traceMode property is changed to '${t}'`);
   }
-  set singleSelection(boolean) {
-    this._singleSelection = boolean;
-    this.classedOnSvg(boolean, "single-select");
-    this._logger.info(`singleSelection property is changed to '${boolean}'`);
+  set singleSelection(t) {
+    this.#d = t, this.classedOnSvg(t, "single-select"), this._logger.info(`singleSelection property is changed to '${t}'`);
   }
-  set canvasMoveMode(boolean) {
-    this._canvasMoveMode = boolean;
-    this.classedOnSvg(boolean, "canvas-move");
-    this._logger.info(`canvasMoveMode property is changed to '${boolean}'`);
+  set canvasMoveMode(t) {
+    this.#E = t, this.classedOnSvg(t, "canvas-move"), this._logger.info(`canvasMoveMode property is changed to '${t}'`);
   }
-  _initD3Elements(div, svg, width, height) {
-    this._logger = createLogger(this.uuid);
-    div.addEventListener("contextmenu", (e) => {
-      this.$emit(EVENT_TYPE.CONTEXT_MENU, e);
-      e.preventDefault();
+  #Y(t, e, r, i) {
+    this._logger = ia(this.uuid), t.addEventListener("contextmenu", (c) => {
+      c.preventDefault(), this.$emit(D.CONTEXT_MENU, c);
     });
-    const w = isNaN(width) ? width : `${width}px`;
-    const h = isNaN(height) ? height : `${height}px`;
-    this.d3Div = select_default2(div).style("width", w).style("height", h);
-    this.d3Svg = select_default2(svg).on("mousemove", (ev) => this._mouseMoveOnSheetHandler(ev)).on("click", (ev) => this._clickOnSheetHandler(ev)).call(drag_default().filter(() => this._editMode === false).on("start", (ev) => this._dragController(ev)).on("drag", (ev) => this._dragController(ev)).on("end", (ev) => this._dragController(ev)));
-    this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "flowchart-grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden");
-    this.d3Container = this.d3Svg.append("g").attr("class", "container");
-    const zoom = zoom_default2().filter((ev) => {
-      return this._wheelZoom && ev.type === "wheel" && ev.ctrlKey;
-    }).wheelDelta((ev) => -ev.deltaY * (ev.deltaMode === 1 ? 0.05 : ev.deltaMode ? 1 : 2e-3)).scaleExtent([MIN_ZOOM, MAX_ZOOM]).on("zoom", (ev) => this.zoomTo(ev.transform.k));
-    this.d3Div.call(zoom).on("dblclick.zoom", null);
-    this.selection = {
-      /** @type {d3.Selection | null} */
-      rect: null,
-      startX: 0,
-      startY: 0
-    };
+    const o = isNaN(r) ? r : `${r}px`, s = isNaN(i) ? i : `${i}px`;
+    this.d3Div = V(t).style("width", o).style("height", s), this.d3Svg = V(e).on("mousemove", (c) => this.#tt(c)).on("click", (c) => this.#Mt(c)).call(it().filter((c) => c.button === 0 && this.#i === !1).on("start", (c) => this.#j(c)).on("drag", (c) => this.#j(c)).on("end", (c) => this.#j(c))), this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "flowchart-grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden"), this.d3Container = this.d3Svg.append("g").attr("class", "container");
+    const a = Bs().filter((c) => this.#y && c.type === "wheel" && c.ctrlKey).wheelDelta((c) => -c.deltaY * (c.deltaMode === 1 ? 0.05 : c.deltaMode ? 1 : 2e-3)).scaleExtent([bn, wn]).on("zoom", (c) => this.zoomTo(c.transform.k));
+    this.d3Div.call(a).on("dblclick.zoom", null);
   }
   /**
   *
   * @param {import("./flowchart.types").EventType} event
   * @param  {...any} args
   */
-  $emit(event, ...args) {
-    this.emitter.emit(event, args);
+  $emit(t, ...e) {
+    this.emitter.emit(t, e);
   }
   /**
   * 신규 이벤트를 등록합니다.
   * @param {import("./flowchart.types").EventType} event
   * @param {Function} callback
   */
-  $on(event, callback) {
-    return this.emitter.on(event, callback);
+  $on(t, e) {
+    return this.emitter.on(t, e);
   }
   /**
   * 이벤트를 제거합니다.
   * @param {import("./flowchart.types").EventType} event
   * @param {Function?} callback
   */
-  $off(event, callback) {
-    return this.emitter.off(event, callback);
+  $off(t, e) {
+    return this.emitter.off(t, e);
   }
   /**
   * @param {() => void} func
   */
-  moveWrapper(func) {
+  moveWrapper(t) {
     try {
-      this._moveHandler.moveStartHandler();
-      func();
-      this._updateNegativePos();
+      this._moveHandler.moveStartHandler(), t(), this.#S();
     } finally {
-      this._moveHandler.moveEndHandler();
-      this.refreshSvgSize();
+      this._moveHandler.moveEndHandler(), this.refreshSvgSize();
     }
   }
   /**
    *
    * @param {SVGElement} defsElement
    */
-  addSvgDefs(defsElement) {
-    this.d3Svg.node().appendChild(defsElement);
+  addSvgDefs(t) {
+    this.d3Svg.node().appendChild(t);
   }
   /**
    *
@@ -6670,172 +4704,119 @@ var IRFlowchart = class extends IRComponent {
    * @param {string[]} offsets
    * @param {string[]} colors
    */
-  addLinearGradientDefs(id2, rotate, offsets, colors) {
-    if (typeof offsets.length !== "number" || typeof colors.length !== "number")
+  addLinearGradientDefs(t, e, r, i) {
+    if (typeof r.length != "number" || typeof i.length != "number")
       throw new Error("it must be an array type both offsets and colors!");
-    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-    const linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-    linearGradient.id = id2;
-    linearGradient.setAttribute("gradientTransform", `rotate(${rotate})`);
-    zip(offsets, colors).forEach(([offset, color2]) => {
-      const stop = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-      stop.setAttribute("offset", offset);
-      stop.setAttribute("stop-color", color2);
-      linearGradient.appendChild(stop);
-    });
-    defs.appendChild(linearGradient);
-    this.addSvgDefs(defs);
+    const o = document.createElementNS("http://www.w3.org/2000/svg", "defs"), s = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    s.id = t, s.setAttribute("gradientTransform", `rotate(${e})`), ur(r, i).forEach(([a, c]) => {
+      const h = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+      h.setAttribute("offset", a), h.setAttribute("stop-color", c), s.appendChild(h);
+    }), o.appendChild(s), this.addSvgDefs(o);
   }
   /**
   * @param {DefaultTheme} data
   * @param {Number} zIndex
   * @returns
   */
-  add(data, zIndex = void 0) {
-    switch (data.type) {
+  add(t, e = void 0) {
+    switch (t.type) {
       case void 0:
-        this._logger.error("InnoFlowchart.add()", "undefined type prop");
-        throw new Error("Object that you added needs 'type' property! (node or connection)");
+        throw this._logger.error("InnoFlowchart.add()", "undefined type prop"), new Error("Object that you added needs 'type' property! (node or connection)");
       case "group":
-        data.render = "group";
-        break;
-      default:
+        t.render = "group";
         break;
     }
-    if (data.render === void 0) {
-      this._logger.error("InnoFlowchart.add()", "undefined render prop");
-      throw new Error("Object that you added needs 'render' property!");
-    }
-    if (!data.id)
-      data.id = this._seqMng.getObjSeqId();
-    else {
-      switch (typeof data.id) {
+    if (t.render === void 0)
+      throw this._logger.error("InnoFlowchart.add()", "undefined render prop"), new Error("Object that you added needs 'render' property!");
+    if (!t.id)
+      t.id = this._seqMng.getObjSeqId();
+    else
+      switch (typeof t.id) {
         case "number":
         case "string":
           break;
         default:
-          this._logger.error(
+          throw this._logger.error(
             "InnoFlowchart.add()",
             "Not allowed id type (USE STRING OR NUMBER)"
-          );
-          throw new Error("Data's id is only allowed string or nubmer type!");
+          ), new Error("Data's id is only allowed string or nubmer type!");
       }
-    }
-    if (this._objectManager.findOrNull(data.id) !== null) {
-      this._logger.error("InnoFlowchart.add()", "duplicated object id");
-      throw new Error(`Object's id is already created! (${data.id})`);
-    }
-    this.defaultRule(data);
-    combineStyle(data, this.theme);
-    let obj = null;
-    const rendererConstructor = this._renderManager.getRenderConstructor(
-      data.type,
-      data.render
-    );
-    const renderer = new rendererConstructor(data, this._containerInterface);
-    switch (data.type) {
+    if (this._objectManager.findOrNull(t.id) !== null)
+      throw this._logger.error("InnoFlowchart.add()", "duplicated object id"), new Error(`Object's id is already created! (${t.id})`);
+    this.defaultRule(t), an(t, this.theme);
+    let r = null;
+    const i = this._renderManager.getRenderConstructor(
+      t.type,
+      t.render
+    ), o = new i(t, this._containerInterface);
+    switch (t.type) {
       case "connection":
-        obj = new connection_default(data, renderer, this._containerInterface);
+        r = new ca(t, o, this._containerInterface);
         break;
       case "node":
-        obj = new node_default2(data, renderer, this._containerInterface);
+        r = new pa(t, o, this._containerInterface);
         break;
       case "group":
-        obj = new group_default(data, renderer, this._containerInterface);
+        r = new ha(t, o, this._containerInterface);
         break;
       default:
-        throw Error(`unkown data type '${data.type}'`);
+        throw Error(`unkown data type '${t.type}'`);
     }
-    this._objectManager.add(obj);
-    obj.create();
-    this.refreshSvgSize();
-    if (zIndex !== void 0) {
-      this.d3Container.node().insertBefore(obj.g.node(), this._getChildElementOrNull(zIndex));
-    }
-    if (!data.temp) {
-      this._addObjectEvent(obj);
-      this.emitChangedStatus();
-      this.$emit(EVENT_TYPE.NEW_OBJECT, obj);
-      this._logger.debug("InnoFlowchart.add()", `created obj id is '${obj.id}'`);
-    } else {
-      this._logger.debug(
-        "InnoFlowchart.add()",
-        `created temp obj id is '${obj.id}'`
-      );
-    }
-    return obj;
+    return this._objectManager.add(r), r.create(), this.refreshSvgSize(), e !== void 0 && this.d3Container.node().insertBefore(r.g.node(), this.#dt(e)), t.temp ? this._logger.debug(
+      "InnoFlowchart.add()",
+      `created temp obj id is '${r.id}'`
+    ) : (this.#N(r), this.emitChangedStatus(), this.$emit(D.NEW_OBJECT, r), this._logger.debug("InnoFlowchart.add()", `created obj id is '${r.id}'`)), r;
   }
-  remove(object) {
-    if (object === null || object === void 0) {
-      this._logger.error(
+  remove(t) {
+    if (t == null)
+      throw this._logger.error(
         "InnoFlowchart.remove()",
         "Object could not be null or undefined to remove!"
-      );
-      throw new Error("Object could not be null or undefined to remove!");
-    }
-    let obj = null;
-    switch (typeof object) {
+      ), new Error("Object could not be null or undefined to remove!");
+    let e = null;
+    switch (typeof t) {
       case "string":
       case "number":
-        obj = this.getObjectOrNull(object);
+        e = this.getObjectOrNull(t);
         break;
       case "object":
-        obj = this.getObjectOrNull(object.id);
+        e = this.getObjectOrNull(t.id);
         break;
       default:
-        throw Error(`unkown data type '${typeof object}'`);
+        throw Error(`unkown data type '${typeof t}'`);
     }
-    if (obj != null) {
-      obj.destroy();
-      this.emitChangedStatus();
-      this._objectManager.remove(obj);
-      this.refreshSvgSize();
-      this._objMouseHandler.removeTooltipObj();
-      if (!obj.isTempObj) {
-        this.$emit(EVENT_TYPE.REMOVE_OBJECT, obj);
-        this._logger.debug(
-          "InnoFlowchart.remove()",
-          `Removed obj id is '${obj.id}'`
-        );
-      } else {
-        this._logger.debug(
-          "InnoFlowchart.remove()",
-          `Removed temp obj id is '${obj.id}'`
-        );
-      }
-    } else {
+    if (e != null)
+      e.destroy(), this.emitChangedStatus(), this._objectManager.remove(e), this.refreshSvgSize(), this._objMouseHandler.removeTooltipObj(), e.isTempObj ? this._logger.debug(
+        "InnoFlowchart.remove()",
+        `Removed temp obj id is '${e.id}'`
+      ) : (this.$emit(D.REMOVE_OBJECT, e), this._logger.debug(
+        "InnoFlowchart.remove()",
+        `Removed obj id is '${e.id}'`
+      ));
+    else
       throw new Error("There is no such as object you received in this flowchart!");
-    }
   }
   /**
   * zoom in/out by scale
   * @param {Number} scale
   */
-  zoomTo(scale) {
-    if (scale < MIN_ZOOM || scale > MAX_ZOOM) {
+  zoomTo(t) {
+    if (t < bn || t > wn)
       return;
-    }
-    this._logger.info("InnoFlowchart.zoomTo", `scale is changed to ${scale}`);
-    this.d3Div.node().__zoom.k = scale;
-    this.d3Container.attr("transform", `scale(${scale})`);
-    const gridScale = `${1 / scale * 100}%`;
-    this.d3Grid.attr("transform", `scale(${scale})`).attr("width", gridScale).attr("height", gridScale);
-    this.refreshSvgSize();
+    this._logger.info("InnoFlowchart.zoomTo", `scale is changed to ${t}`), this.d3Div.node().__zoom.k = t, this.d3Container.attr("transform", `scale(${t})`);
+    const e = `${1 / t * 100}%`;
+    this.d3Grid.attr("transform", `scale(${t})`).attr("width", e).attr("height", e), this.refreshSvgSize();
   }
   /**
    * 신규로 추가한 개체 집합을 undo에 기록하고,
    * 음수 좌표가 있는 경우에는 해당 좌표를 조정합니다.
    * @param  {...RenderObject} objects
    */
-  recordNewObjectsAction(...objects) {
-    this._actionController.addAction(new AddCommand(cloneObjDataList(objects)));
-    this._updateNegativePos();
+  recordNewObjectsAction(...t) {
+    this._actionController.addAction(new ht(at(t))), this.#S();
   }
   emitChangedStatus() {
-    if (!this._isChanged) {
-      this._isChanged = true;
-      this.classedOnSvg(true, "changed");
-    }
+    this.#u || (this.#u = !0, this.classedOnSvg(!0, "changed"));
   }
   getScale() {
     return this.getTransform().k;
@@ -6844,44 +4825,35 @@ var IRFlowchart = class extends IRComponent {
    * @param {Boolean} [sorted=true]
    * @returns {Connection[]}
    */
-  getSelectedConnections(sorted = true) {
-    const connections = [];
-    for (const con of this._objectManager.getConnectionIterator())
-      con.isSelected && connections.push(con);
-    sorted && connections.sort((a, b) => a.clickedSeq - b.clickedSeq);
-    return connections;
+  getSelectedConnections(t = !0) {
+    const e = [];
+    for (const r of this._objectManager.getConnectionIterator())
+      r.isSelected && e.push(r);
+    return t && e.sort((r, i) => r.clickedSeq - i.clickedSeq), e;
   }
   /**
    * @param {ChangedInfo[]} changedInfoList
    */
-  _editObjProp(changedInfoList) {
-    changedInfoList.forEach((info) => {
-      for (const prop of info.propList) {
-        if (prop.oldValue === void 0) {
-          prop.oldValue = info.objData[prop.key];
-        }
-        info.objData[prop.key] = prop.newValue;
-      }
-    });
-    this._actionController.addAction(new EditCommand(changedInfoList));
+  #B(t) {
+    t.forEach((e) => {
+      for (const r of e.propList)
+        r.oldValue === void 0 && (r.oldValue = e.objData[r.key]), e.objData[r.key] = r.newValue;
+    }), this._actionController.addAction(new st(t));
   }
   /**
    * @param {String} key
    * @param {any} newValue
    */
-  editSelectedObjProp(key, newValue) {
-    const list = [];
-    for (const obj of this._objectManager.getSelectedObjIterator()) {
-      if (obj.isSelected) {
-        list.push(new ChangedInfo(obj.data, [
-          {
-            key,
-            newValue
-          }
-        ]));
-      }
-    }
-    this._editObjProp(list);
+  editSelectedObjProp(t, e) {
+    const r = [];
+    for (const i of this._objectManager.getSelectedObjIterator())
+      i.isSelected && r.push(new et(i.data, [
+        {
+          key: t,
+          newValue: e
+        }
+      ]));
+    this.#B(r);
   }
   /**
    * append 모드로 전환
@@ -6889,88 +4861,62 @@ var IRFlowchart = class extends IRComponent {
    * @param {{}} data
    * @returns
    */
-  append(mode, data) {
-    if (this._readonly) {
+  append(t, e) {
+    if (this.#n) {
       this._logger.info(
         "InnoFlowchart.append()",
         "Preventing append (readonly: true)"
       );
       return;
     }
-    if (this._validateAppendMode({ mode, data })) {
-      this.clearAppendMode();
-      this._appendMode.mode = mode;
-      this._appendMode.data = data;
-      this.classedOnSvg(true, `is-appending-${data.type}`);
-      this._logger.info(
+    if (this.#A({ mode: t, data: e }))
+      this.clearAppendMode(), this.#e.mode = t, this.#e.data = e, this.classedOnSvg(!0, `is-appending-${e.type}`), this._logger.info(
         "InnoFlowchart.append()",
         "Append Mode",
-        this._appendMode.mode
+        this.#e.mode
       );
-    } else {
-      this._logger.error("InnoFlowchart.append()", "Invalid append info!");
-      throw new Error("Invalid append info!");
-    }
+    else
+      throw this._logger.error("InnoFlowchart.append()", "Invalid append info!"), new Error("Invalid append info!");
   }
   /**
    * 카메라 0,0 이동
    */
   resetScreen() {
-    const div = this.d3Div.node();
-    div.scrollLeft = 0;
-    div.scrollTop = 0;
+    const t = this.d3Div.node();
+    t.scrollLeft = 0, t.scrollTop = 0;
   }
   getWrapperSize() {
-    const element = this.d3Div.node();
-    if (!element)
-      throw new Error(`there is no wrapper div`);
-    const { width, height } = element.getBoundingClientRect();
-    return { width, height };
+    const t = this.d3Div.node();
+    if (!t)
+      throw new Error("there is no wrapper div");
+    const { width: e, height: r } = t.getBoundingClientRect();
+    return { width: e, height: r };
   }
   getTransform() {
-    return transform(this.d3Div.node());
+    return Kn(this.d3Div.node());
   }
   updateMinimumSvgSize() {
-    const size = this.getWrapperSize();
-    this._wrapperSize.width = parseInt(size.width);
-    this._wrapperSize.height = parseInt(size.height);
-    this.refreshSvgSize();
+    const t = this.getWrapperSize();
+    this.#o.width = parseInt(t.width), this.#o.height = parseInt(t.height), this.refreshSvgSize();
   }
-  _getFlowchartAvailableRect() {
-    const scale = this.getTransform().k;
-    const rect = {
+  #M() {
+    const t = this.getTransform().k, e = {
       top: 999999999,
       left: 999999999,
       right: 0,
       bottom: 0
     };
-    for (const obj of this._objectManager.getAllObjIterator()) {
-      rect.top = Math.min(rect.top, obj.startY);
-      rect.left = Math.min(rect.left, obj.startX);
-      rect.right = Math.max(rect.right, obj.endX);
-      rect.bottom = Math.max(rect.bottom, obj.endY);
-    }
-    rect.top *= scale;
-    rect.left *= scale;
-    rect.right *= scale;
-    rect.bottom *= scale;
-    return rect;
+    for (const r of this._objectManager.getAllObjIterator())
+      e.top = Math.min(e.top, r.startY), e.left = Math.min(e.left, r.startX), e.right = Math.max(e.right, r.endX), e.bottom = Math.max(e.bottom, r.endY);
+    return e.top *= t, e.left *= t, e.right *= t, e.bottom *= t, e;
   }
   updateSvgSize() {
-    let scaledWidth = this._svgSize.width;
-    let scaledHeight = this._svgSize.height;
-    if (!this._fitSizeMode) {
-      scaledWidth += this._wrapperSize.width / 2;
-      scaledHeight += this._wrapperSize.height / 2;
-    }
-    this.d3Svg.attr("width", Math.max(this._wrapperSize.width, scaledWidth)).attr("height", Math.max(this._wrapperSize.height, scaledHeight));
+    let t = this.#g.width, e = this.#g.height;
+    this.#_ || (t += this.#o.width / 2, e += this.#o.height / 2), this.d3Svg.attr("width", Math.max(this.#o.width, t)).attr("height", Math.max(this.#o.height, e));
   }
   refreshSvgSize() {
-    const rect = this._getFlowchartAvailableRect();
-    this._svgSize.width = rect.right;
-    this._svgSize.height = rect.bottom;
-    this._logger.info("InnoFlowchart.refreshSvgSize()", rect);
-    this.updateSvgSize();
+    const t = this.#M();
+    this.#g.width = t.right, this.#g.height = t.bottom, this._logger.info("InnoFlowchart.refreshSvgSize()", t), this.updateSvgSize();
   }
   /**
   * Re-render this flowchart
@@ -6982,140 +4928,99 @@ var IRFlowchart = class extends IRComponent {
   * @returns {RenderObject[]}
   */
   getObjectList() {
-    const objList = [];
-    for (const obj of this._objectManager.getAllObjIterator()) {
-      !obj.isTempObj && objList.push(obj);
-    }
-    return objList;
+    const t = [];
+    for (const e of this._objectManager.getAllObjIterator())
+      !e.isTempObj && t.push(e);
+    return t;
   }
   /**
   * clear all actions of actionController
   */
   clearActionList() {
-    this._logger.info("InnoFlowchart.clearActionList()");
-    this._actionController.clear();
+    this._logger.info("InnoFlowchart.clearActionList()"), this._actionController.clear();
   }
   /**
   * Undo last action through actionController
   */
   undoAction() {
-    if (this._readonly) {
+    if (this.#n) {
       this._logger.info("InnoFlowchart.undoAction()", "Preventing undo (readonly: true)");
       return;
     }
-    const undoCommand = this._actionController.undo();
-    this._logger.debug("InnoFlowchart.undoAction()", undoCommand);
-    if (undoCommand !== null) {
-      this.refreshSvgSize();
-      this.$emit(EVENT_TYPE.UNDO, undoCommand);
-    }
+    const t = this._actionController.undo();
+    this._logger.debug("InnoFlowchart.undoAction()", t), t !== null && (this.refreshSvgSize(), this.$emit(D.UNDO, t));
   }
   /**
   * Redo recently undone action through actionController
   */
   redoAction() {
-    if (this._readonly) {
+    if (this.#n) {
       this._logger.info("InnoFlowchart.redoAction()", "Preventing redo (readonly: true)");
       return;
     }
-    const redoCommand = this._actionController.redo();
-    this._logger.debug("InnoFlowchart.redoAction()", redoCommand);
-    if (redoCommand !== null) {
-      this.refreshSvgSize();
-      this.$emit(EVENT_TYPE.REDO, redoCommand);
-    }
+    const t = this._actionController.redo();
+    this._logger.debug("InnoFlowchart.redoAction()", t), t !== null && (this.refreshSvgSize(), this.$emit(D.REDO, t));
   }
   /**
   * @param {RenderObject} obj
   * @param {String} event
   */
-  _objectClickHandler(obj, event) {
-    this._logger.info(`InnoFlowchart.event.emit.${event}`, obj);
-    obj.select(true);
-    this.$emit(event, obj);
+  #v(t, e) {
+    this._logger.info(`InnoFlowchart.event.emit.${e}`, t), t.select(!0), this.$emit(e, t);
   }
   /**
   * @param {ObserverArg} arg
   */
-  _commonObserveCallback(arg) {
-    switch (arg.key) {
+  #V(t) {
+    switch (t.key) {
       case "id": {
-        const obj = this.getObjectOrNull(arg.oldValue);
-        if (obj !== null)
-          this._objectManager.reassignId(obj, arg.oldValue, arg.newValue);
+        const e = this.getObjectOrNull(t.oldValue);
+        e !== null && this._objectManager.reassignId(e, t.oldValue, t.newValue);
         break;
       }
       case "isSelected": {
-        if (arg.newValue)
-          arg.renderObj.clickedSeq = this._seqMng.increaseClickSeq();
+        t.newValue && (t.renderObj.clickedSeq = this._seqMng.increaseClickSeq());
         break;
       }
-      default:
-        break;
     }
   }
   /**
   * @param {ObserverArg} arg
   */
-  _connectionObserveCallback(arg) {
-    const obj = arg.renderObj;
-    switch (arg.key) {
+  #U(t) {
+    const e = t.renderObj;
+    switch (t.key) {
       case "connection.sourceObjId":
-        if (arg.oldValue !== null && arg.newValue === null)
-          this.$emit(EVENT_TYPE.DISCONNECT_NODE, obj, arg.key);
+        t.oldValue !== null && t.newValue === null && this.$emit(D.DISCONNECT_NODE, e, t.key);
         break;
       case "connection.sourcePos":
-        if (obj.sourceObjId !== null)
-          this.$emit(EVENT_TYPE.CONNECT_NODE, obj, arg.key);
+        e.sourceObjId !== null && this.$emit(D.CONNECT_NODE, e, t.key);
         break;
       case "connection.destinationObjId":
-        if (arg.oldValue !== null && arg.newValue === null)
-          this.$emit(EVENT_TYPE.DISCONNECT_NODE, obj, arg.key);
+        t.oldValue !== null && t.newValue === null && this.$emit(D.DISCONNECT_NODE, e, t.key);
         break;
       case "connection.destinationPos":
-        if (obj.destinationObjId !== null)
-          this.$emit(EVENT_TYPE.CONNECT_NODE, obj, arg.key);
-        break;
-      default:
+        e.destinationObjId !== null && this.$emit(D.CONNECT_NODE, e, t.key);
         break;
     }
   }
   /**
   * @param {ObserverArg} arg
   */
-  _observerCallback(arg) {
-    if (arg.newValue === arg.oldValue) {
-      return;
-    }
-    if (!this._isChanged && !NOT_CHANGING_PROPERTY_SET.has(arg.key))
-      this.emitChangedStatus();
-    this._commonObserveCallback(arg);
-    arg.renderObj.type === "connection" && this._connectionObserveCallback(arg);
+  #W(t) {
+    t.newValue !== t.oldValue && (!this.#u && !Fa.has(t.key) && this.emitChangedStatus(), this.#V(t), t.renderObj.type === "connection" && this.#U(t));
   }
   /**
   *
   * @param {RenderObject} obj
   * @param {Boolean} userInteraction
   */
-  _selectCallbackHandler(obj, userInteraction, typeClick) {
-    const parent = this._objectManager.getParentGroupOrNull(obj);
-    if (userInteraction) {
-      if (this._moveScreenOnSelect && obj.type === "node") {
-        this.moveScreenByObject(obj);
-      }
-      if (this._singleSelection) {
-        for (const sobj of this._objectManager.getSelectedObjIterator()) {
-          if (sobj !== obj) {
-            sobj.release();
-          }
-        }
-      }
-    }
-    if (parent !== null) {
-      parent.select(false, typeClick);
-    }
-    this._logger.info("InnoFlowchart._selectCallbackHandler()", obj);
-    this.$emit(EVENT_TYPE.SELECT_OBJECT, obj);
+  #q(t, e, r) {
+    const i = this._objectManager.getParentGroupOrNull(t);
+    if (e && (this.#f && t.type === "node" && this.moveScreenByObject(t), this.#d))
+      for (const o of this._objectManager.getSelectedObjIterator())
+        o !== t && o.release();
+    i !== null && i.select(!1, r), this._logger.info("InnoFlowchart._selectCallbackHandler()", t), this.$emit(D.SELECT_OBJECT, t);
   }
   /**
   *
@@ -7123,21 +5028,21 @@ var IRFlowchart = class extends IRComponent {
   * @param {Boolean} userInteraction
   */
   // eslint-disable-next-line no-unused-vars
-  _releaseCallbackHandler(obj, userInteraction) {
-    this.$emit(EVENT_TYPE.RELEASE_OBJECT, obj);
+  #G(t, e) {
+    this.$emit(D.RELEASE_OBJECT, t);
   }
-  _editTextModeCallback() {
+  #K() {
     this._objMouseHandler.removeTooltipObj();
   }
   /**
   * @param {Number} x
   * @param {Number} y
   */
-  _getXYOnSheet(x, y) {
-    const scale = 1 / this.getTransform().k;
+  #T(t, e) {
+    const r = 1 / this.getTransform().k;
     return {
-      x: x * scale,
-      y: y * scale
+      x: t * r,
+      y: e * r
     };
   }
   /**
@@ -7147,162 +5052,135 @@ var IRFlowchart = class extends IRComponent {
   * @param {{}} param.data
   * @returns
   */
-  _validateAppendMode({ mode, data }) {
-    switch (mode) {
-      case "append": {
-        return data.type === "node" || data.type === "connection";
-      }
-      case "paste": {
-        return data.objects.length > 0;
-      }
+  #A({ mode: t, data: e }) {
+    switch (t) {
+      case "append":
+        return e.type === "node" || e.type === "connection";
+      case "paste":
+        return e.objects.length > 0;
       default:
-        return false;
+        return !1;
     }
   }
-  _getProperlyPointsToCreate(data) {
-    const points = data["connection.points"];
-    loop:
+  #Z(t) {
+    const e = t["connection.points"];
+    t:
       for (; ; ) {
-        for (const con of this._objectManager.getConnectionIterator()) {
-          if (con.comparePoints(points)) {
-            points.forEach((pt) => {
-              pt.x += 10;
-              pt.y += 10;
+        for (const r of this._objectManager.getConnectionIterator())
+          if (r.comparePoints(e)) {
+            e.forEach((i) => {
+              i.x += 10, i.y += 10;
             });
-            continue loop;
+            continue t;
           }
-        }
-        return points;
+        return e;
       }
   }
-  _getProperlyNodePosToCreate(data) {
-    let x = data["node.x"];
-    let y = data["node.y"];
-    loop:
+  #J(t) {
+    let e = t["node.x"], r = t["node.y"];
+    t:
       for (; ; ) {
-        for (const node of this._objectManager.getNodeIterator()) {
-          if (node.x === x && node.y === y) {
-            x += 10;
-            y += 10;
-            continue loop;
+        for (const i of this._objectManager.getNodeIterator())
+          if (i.x === e && i.y === r) {
+            e += 10, r += 10;
+            continue t;
           }
-        }
-        return { "node.x": x, "node.y": y };
+        return { "node.x": e, "node.y": r };
       }
   }
-  _initAppendObj() {
-    switch (this._appendMode.data.type) {
+  #Q() {
+    switch (this.#e.data.type) {
       case "node": {
-        this._appendingObject = this.add({
-          ...this._appendMode.data,
-          temp: true,
+        this.#t = this.add({
+          ...this.#e.data,
+          temp: !0,
           id: "appending_temp_obj",
           opacity: 0
         });
         break;
       }
-      default:
-        break;
     }
   }
-  _mouseMoveOnSheetHandler(ev) {
-    const x = ev.offsetX;
-    const y = ev.offsetY;
-    if (!this._validateAppendMode(this._appendMode))
-      return;
-    switch (this._appendMode.mode) {
-      case "append":
-        if (this._appendingObject === null)
-          this._initAppendObj();
-        else if (this._appendingObject.type === "node")
-          this._moveAppendingNode(x, y);
-        break;
-      default:
-        break;
+  #tt(t) {
+    const e = t.offsetX, r = t.offsetY;
+    if (this.#A(this.#e)) {
+      switch (this.#e.mode) {
+        case "append":
+          this.#t === null ? this.#Q() : this.#t.type === "node" && this.#R(e, r);
+          break;
+      }
+      this.d3Div.node().focus();
     }
-    this.d3Div.node().focus();
   }
-  _setZIndexOnSelected(command) {
-    const dataList = [];
-    const newValue = command === "front" ? this._objectManager.getObjCount() : 0;
-    this._logger.info("InnoFlowchart.setZIndex()", `new z-index = ${newValue}`);
-    for (const obj of this.getSelectedObjects()) {
-      dataList.push({
-        objId: obj.id,
-        oldValue: obj.zIndex + (command === "back" ? 1 : 0),
-        newValue
-      });
-      obj.zIndex = newValue;
-    }
-    this.emitChangedStatus();
-    this._actionController.addAction(new ZIndexCommand(dataList));
+  #z(t) {
+    const e = [], r = t === "front" ? this._objectManager.getObjCount() : 0;
+    this._logger.info("InnoFlowchart.setZIndex()", `new z-index = ${r}`);
+    for (const i of this.getSelectedObjects())
+      e.push({
+        objId: i.id,
+        oldValue: i.zIndex + (t === "back" ? 1 : 0),
+        newValue: r
+      }), i.zIndex = r;
+    this.emitChangedStatus(), this._actionController.addAction(new ir(e));
   }
   /**
   * bring selected objects to front
   */
   bringToFront() {
-    this._logger.info("InnoFlowchart.bringToFront()");
-    this._setZIndexOnSelected("front");
+    this._logger.info("InnoFlowchart.bringToFront()"), this.#z("front");
   }
   /**
   * bring selected objects to back
   */
   bringToBack() {
-    this._logger.info("InnoFlowchart.bringToBack()");
-    this._setZIndexOnSelected("back");
+    this._logger.info("InnoFlowchart.bringToBack()"), this.#z("back");
   }
   /**
    * move selected objects by x, y
    * @param {Number} x
    * @param {Number} y
    */
-  _moveSelectedObjects(x, y) {
-    for (const obj of this._objectManager.getSelectedObjIterator()) {
-      obj.moveTo(x, y);
-    }
+  #O(t, e) {
+    for (const r of this._objectManager.getSelectedObjIterator())
+      r.moveTo(t, e);
   }
   /**
    * @param {String | Number} id the object's id
    * @returns {RenderObject | null}
    */
-  getObjectOrNull(id2) {
-    return this._objectManager.findOrNull(id2);
+  getObjectOrNull(t) {
+    return this._objectManager.findOrNull(t);
   }
   /**
    * select an object by id
    * @param {String | Number} id the object's id
    */
-  selectObjectById(id2) {
-    const obj = this.getObjectOrNull(id2);
-    if (obj != null) {
-      obj.select();
-    } else {
-      throw new Error(`Not found obj id '${id2}'`);
-    }
+  selectObjectById(t) {
+    const e = this.getObjectOrNull(t);
+    if (e === null)
+      throw new Error(`Not found obj id '${t}'`);
+    e.select();
   }
   /**
    * @param {RenderObject} obj
    */
-  _addCommonMouseAction(obj) {
-    this._objMouseHandler.addMouseAction(obj);
+  #et(t) {
+    this._objMouseHandler.addMouseAction(t);
   }
   /**
    *
    * @param {Boolean} Key
    * @returns
    */
-  _isSingleSelection(Key) {
-    return this._singleSelection || !Key;
+  #a(t) {
+    return this.#d || !t;
   }
   /**
    * @param {Node} node
    */
-  _addClickActionOnNode(node) {
-    node.g.on("dblclick", () => {
-      if (node.data.editable && this._readonly === false)
-        node.renderer.editLabelMode();
-      this._logger.info("InnoFlowchart.event.emit.dblClickNode", node);
-      this.$emit(EVENT_TYPE.DOUBLE_CLICK_NODE, node);
+  #nt(t) {
+    t.g.on("dblclick", () => {
+      t.data.editable && this.#n === !1 && t.renderer.editLabelMode(), this._logger.info("InnoFlowchart.event.emit.dblClickNode", t), this.$emit(D.DOUBLE_CLICK_NODE, t);
     });
   }
   /**
@@ -7310,413 +5188,270 @@ var IRFlowchart = class extends IRComponent {
    * @param {Boolean} flag
    * @param  {...String} classes
    */
-  classedOnSvg(flag, ...classes) {
-    classes.forEach((cls) => this.d3Svg.classed(cls, flag));
-    this.$emit(EVENT_TYPE.CHANGE_CLASS, this.d3Svg.attr("class"));
+  classedOnSvg(t, ...e) {
+    e.forEach((r) => this.d3Svg.classed(r, t)), this.$emit(D.CHANGE_CLASS, this.d3Svg.attr("class"));
   }
   /**
    * @param {Node} node
    */
-  _addDragActionOnNode(node) {
-    let moved = false;
-    let lastX = 0;
-    let lastY = 0;
-    let nodeOffsetX = 0;
-    let nodeOffsetY = 0;
-    node.g.call(drag_default().filter(() => this._editMode === false).on("start", (ev) => {
-      if (this._isSingleSelection(ev.sourceEvent.ctrlKey) && !node.isSelected) {
-        this.releaseAllObjects(node);
-      }
-      moved = false;
-      lastX = ev.x;
-      lastY = ev.y;
-      nodeOffsetX = node.width - (node.endX - ev.x);
-      nodeOffsetY = node.height - (node.endY - ev.y);
-      node.select(false);
-    }).on("drag", (ev) => {
-      if (this._readonly) {
+  #rt(t) {
+    let e = !1, r = 0, i = 0, o = 0, s = 0;
+    t.g.call(it().filter((a) => a.button === 0 && this.#i === !1).on("start", (a) => {
+      this.#a(a.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = a.x, i = a.y, o = t.width - (t.endX - a.x), s = t.height - (t.endY - a.y), t.select(!1);
+    }).on("drag", (a) => {
+      if (this.#n)
         return;
-      }
-      const nextX = ev.x - nodeOffsetX;
-      const nextY = ev.y - nodeOffsetY;
-      const diffX = nextX - node.x;
-      const diffY = nextY - node.y;
-      if (!moved && Math.abs(lastX - ev.x) + Math.abs(lastY - ev.y) > 8) {
-        moved = true;
-        this._moveHandler.moveStartHandler();
-        this._initDrag("drag-node-move");
-      }
-      moved && this._moveSelectedObjects(diffX, diffY);
-    }).on("end", (ev) => {
-      if (moved) {
-        if (this._moveScreenOnSelect && node.type === "node")
-          this.moveScreenByObject(node);
-        this._moveHandler.moveEndHandler();
-        this._terminateDrag("drag-node-move");
-      } else {
-        if (this._editMode)
+      const c = a.x - o, h = a.y - s, l = c - t.x, f = h - t.y;
+      !e && Math.abs(r - a.x) + Math.abs(i - a.y) > 8 && (e = !0, this._moveHandler.moveStartHandler(), this.#c("drag-node-move")), e && this.#O(l, f);
+    }).on("end", (a) => {
+      const c = a.sourceEvent;
+      if (e)
+        this.#f && t.type === "node" && this.moveScreenByObject(t), this._moveHandler.moveEndHandler(), this.#h("drag-node-move");
+      else {
+        if (this.#i)
           return;
-        if (this._isSingleSelection(ev.ctrlKey))
-          this.releaseAllObjects(node);
-        this._objectClickHandler(node, EVENT_TYPE.CLICK_NODE);
+        this.#a(c.ctrlKey) && this.releaseAllObjects(t), this.#v(t, D.CLICK_NODE);
       }
     }));
   }
   /**
   * @param {Node} node
   */
-  _addDragActionOnConnector(node) {
-    for (const connector of node.renderer.connectors) {
-      const pos = getPosition(connector.attr("class"));
-      connector.call(drag_default().filter(() => this._readonly === false).on("start", (ev) => {
-        const toX = node.x + node.width / 2 + ev.x;
-        const toY = node.y + node.height / 2 + ev.y;
-        const render = this._appendMode.data.render;
-        const posXY = node.getPositionXY(pos);
-        this._initDrag("drag-node-connector");
-        this._createAppendingConnection(posXY.x, posXY.y, toX, toY, {
+  #it(t) {
+    for (const e of t.renderer.connectors) {
+      const r = Zs(e.attr("class"));
+      e.call(it().filter((i) => i.button === 0 && this.#n === !1).on("start", (i) => {
+        const o = t.x + t.width / 2 + i.x, s = t.y + t.height / 2 + i.y, a = this.#e.data.render, c = t.getPositionXY(r);
+        this.#c("drag-node-connector"), this.#F(c.x, c.y, o, s, {
           type: "connection",
-          render,
-          "connection.sourceObjId": node.id,
-          "connection.sourcePos": pos
+          render: a,
+          "connection.sourceObjId": t.id,
+          "connection.sourcePos": r
         });
-      }).on("drag", (ev) => {
-        if (this._appendingObject === null) {
+      }).on("drag", (i) => {
+        if (this.#t === null)
           return;
-        }
-        const x = node.x + node.width / 2 + ev.x;
-        const y = node.y + node.height / 2 + ev.y;
-        this._appendMode.dragged = true;
-        this._moveAppendingConnection(x, y);
+        const o = t.x + t.width / 2 + i.x, s = t.y + t.height / 2 + i.y;
+        this.#e.dragged = !0, this.#H(o, s);
       }).on("end", () => {
-        if (this._appendingObject === null) {
-          return;
-        }
-        this._endAppendingConnection();
-        this._terminateDrag("drag-node-connector");
+        this.#t !== null && (this.#X(), this.#h("drag-node-connector"));
       }));
     }
   }
   /**
   * @param {Node} node
   */
-  _addNodeEvent(node) {
-    this._addClickActionOnNode(node);
-    this._addDragActionOnNode(node);
-    this._addDragActionOnConnector(node);
-    this._resizeHandler.addDragActionOnResizer(node);
+  #ot(t) {
+    this.#nt(t), this.#rt(t), this.#it(t), this._resizeHandler.addDragActionOnResizer(t);
+  }
+  /**
+   * 우측 클릭에 대하여 처리
+   * @param {RenderObject} object
+   */
+  #Tt(t) {
+    this.logger.info("rightClick");
+  }
+  /**
+   * @param {Connection} con
+   * @param {boolean} releaseBefore
+   */
+  #At(t, e) {
+    this.#a(e) && this.releaseAllObjects(t), this.#v(t, "clickConnection");
+  }
+  /**
+   * @param {Connection} con
+   */
+  #st(t) {
+    t.g.on("click", (e) => {
+      this.#a(e.ctrlKey) && this.releaseAllObjects(t), this.#v(t, "clickConnection");
+    }), t.g.on("dblclick", () => {
+      t.data.editable && this.#n === !1 && t.renderer.editLabelMode(), this._logger.info("InnoFlowchart.event.emit.dblClickConnection", t), this.$emit(D.DOUBLE_CLICK_CONNECTION, t);
+    });
   }
   /**
   * @param {Connection} con
   */
-  _addClickActionOnConnection(con) {
-    con.g.on("click", (ev) => {
-      if (this._isSingleSelection(ev.ctrlKey)) {
-        this.releaseAllObjects(con);
-      }
-      this._objectClickHandler(con, "clickConnection");
-    });
-    con.g.on("dblclick", () => {
-      if (con.data.editable && this._readonly === false) {
-        con.renderer.editLabelMode();
-      }
-      this._logger.info("InnoFlowchart.event.emit.dblClickConnection", con);
-      this.$emit(EVENT_TYPE.DOUBLE_CLICK_CONNECTION, con);
-    });
-  }
-  /**
-  * @param {Connection} con
-  */
-  _addDragActionOnConnection(con) {
-    let x = 0;
-    let y = 0;
-    let moved = false;
-    con.g.call(drag_default().filter(() => this._editMode === false).on("start", (ev) => {
-      if (this._isSingleSelection(ev.sourceEvent.ctrlKey) && !con.isSelected) {
-        this.releaseAllObjects(con);
-      }
-      x = ev.x;
-      y = ev.y;
-      moved = false;
-      con.select();
-    }).on("drag", (ev) => {
-      if (this._readonly) {
+  #at(t) {
+    let e = 0, r = 0, i = !1;
+    t.g.call(it().filter((o) => o.button === 0 && this.#i === !1).on("start", (o) => {
+      this.#a(o.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = o.x, r = o.y, i = !1, t.select();
+    }).on("drag", (o) => {
+      if (this.#n)
         return;
-      }
-      const diffX = ev.x - x;
-      const diffY = ev.y - y;
-      if (!moved && Math.abs(diffX) + Math.abs(diffY) > 5) {
-        moved = true;
-        this._moveHandler.moveStartHandler();
-        this._initDrag("drag-con-move");
-      }
-      if (!moved) {
-        return;
-      }
-      if (con.sourceObjId !== null) {
-        const obj = this.getObjectOrNull(con.sourceObjId);
-        if (obj === null || obj.isSelected === false) {
-          con.sourceObjId = null;
+      const s = o.x - e, a = o.y - r;
+      if (!i && Math.abs(s) + Math.abs(a) > 5 && (i = !0, this._moveHandler.moveStartHandler(), this.#c("drag-con-move")), !!i) {
+        if (t.sourceObjId !== null) {
+          const c = this.getObjectOrNull(t.sourceObjId);
+          (c === null || c.isSelected === !1) && (t.sourceObjId = null);
         }
-      }
-      if (con.destinationObjId !== null) {
-        const obj = this.getObjectOrNull(con.destinationObjId);
-        if (obj === null || obj.isSelected === false) {
-          con.destinationObjId = null;
+        if (t.destinationObjId !== null) {
+          const c = this.getObjectOrNull(t.destinationObjId);
+          (c === null || c.isSelected === !1) && (t.destinationObjId = null);
         }
+        this.#O(s, a), e = o.x, r = o.y;
       }
-      this._moveSelectedObjects(diffX, diffY);
-      x = ev.x;
-      y = ev.y;
     }).on("end", () => {
-      this._moveHandler.moveEndHandler();
-      this._terminateDrag("drag-con-move");
+      this._moveHandler.moveEndHandler(), this.#h("drag-con-move");
     }));
   }
-  _addDragActionOnConnectionConnector(con) {
-    const dragCreator = (objProp, posProp, ptId) => {
-      return drag_default().filter(() => this._editMode === false && this._readonly === false).on("start", () => {
-        this._moveHandler.moveStartHandler();
-        this._initDrag("drag-con-connector");
-      }).on("drag", (ev) => {
-        const detecting = this._getNodeAndPosUnderXY(ev.x, ev.y, this._simpleConnectingMode);
-        const point = ptId === "start" ? con.firstPoint : con.endPoint;
-        if (detecting.node === null) {
-          con[objProp] = null;
-          con[posProp] = null;
-          point.x = ev.x;
-          point.y = ev.y;
-        } else {
-          con[objProp] = detecting.node.id;
-          if (this._simpleConnectingMode)
-            this._setShortestPosition(con);
-          else
-            con[posProp] = detecting.pos;
-        }
-        if (con.renderType === "elbow")
-          con.renderer.refreshAdjustList();
-        con.render();
-      }).on("end", () => {
-        this._moveHandler.moveEndHandler();
-        this._terminateDrag("drag-con-connector");
-      });
-    };
-    con.renderer.objects.sourceConnector.call(dragCreator("sourceObjId", "sourcePos", "start"));
-    con.renderer.objects.destinationConnector.call(dragCreator("destinationObjId", "destinationPos", "end"));
+  #ct(t) {
+    const e = (r, i, o) => it().filter((s) => s.button === 0 && this.#i === !1 && this.#n === !1).on("start", () => {
+      this._moveHandler.moveStartHandler(), this.#c("drag-con-connector");
+    }).on("drag", (s) => {
+      const a = this.#C(s.x, s.y, this.#s), c = o === "start" ? t.firstPoint : t.endPoint;
+      a.node === null ? (t[r] = null, t[i] = null, c.x = s.x, c.y = s.y) : (t[r] = a.node.id, this.#s ? this.#p(t) : t[i] = a.pos), t.renderType === "elbow" && t.renderer.refreshAdjustList(), t.render();
+    }).on("end", () => {
+      this._moveHandler.moveEndHandler(), this.#h("drag-con-connector");
+    });
+    t.renderer.objects.sourceConnector.call(e("sourceObjId", "sourcePos", "start")), t.renderer.objects.destinationConnector.call(e("destinationObjId", "destinationPos", "end"));
   }
   /**
   * @param {Connection} con
   */
-  _addConnectionEvent(con) {
-    this._addClickActionOnConnection(con);
-    this._addDragActionOnConnection(con);
-    this._addDragActionOnConnectionConnector(con);
+  #ht(t) {
+    this.#st(t), this.#at(t), this.#ct(t);
   }
   /**
   *
   * @param {Group} group
   */
-  _addGroupEvent(group) {
-    let moved = false;
-    let startX = 0;
-    let stattY = 0;
-    let lastX = 0;
-    let lastY = 0;
-    group.g.call(drag_default().filter(() => this._editMode === false && this._readonly === false).on("start", (ev) => {
-      if (this._isSingleSelection(ev.sourceEvent.ctrlKey) && !group.isSelected) {
-        this.releaseAllObjects(group);
-      }
-      moved = false;
-      startX = ev.x;
-      stattY = ev.y;
-      lastX = ev.x;
-      lastY = ev.y;
-      group.select();
-    }).on("drag", (ev) => {
-      if (!moved && Math.abs(startX - ev.x) + Math.abs(stattY - ev.y) > 8) {
-        moved = true;
-        this._moveHandler.moveStartHandler();
-        this._initDrag("drag-group-move");
-      }
-      if (moved) {
-        this._moveSelectedObjects(ev.x - lastX, ev.y - lastY);
-        lastX = ev.x;
-        lastY = ev.y;
-      }
+  #lt(t) {
+    let e = !1, r = 0, i = 0, o = 0, s = 0;
+    t.g.call(it().filter((a) => a.button === 0 && this.#i === !1 && this.#n === !1).on("start", (a) => {
+      this.#a(a.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = a.x, i = a.y, o = a.x, s = a.y, t.select();
+    }).on("drag", (a) => {
+      !e && Math.abs(r - a.x) + Math.abs(i - a.y) > Ha && (e = !0, this._moveHandler.moveStartHandler(), this.#c("drag-group-move")), e && (this.#O(a.x - o, a.y - s), o = a.x, s = a.y);
     }).on("end", () => {
-      this._moveHandler.moveEndHandler();
-      this._terminateDrag("drag-group-move");
+      this._moveHandler.moveEndHandler(), this.#h("drag-group-move");
     }));
   }
   /**
   * @param {RenderObject} obj
   */
-  _addObjectEvent(obj) {
-    this._addCommonMouseAction(obj);
-    switch (obj.type) {
+  #N(t) {
+    switch (this.#et(t), t.type) {
       case "node":
-        this._addNodeEvent(obj);
-        obj.render();
+        this.#ot(t), t.render();
         break;
       case "connection":
-        this._addConnectionEvent(obj);
+        this.#ht(t);
         break;
       case "group":
-        this._addGroupEvent(obj);
+        this.#lt(t);
         break;
       default:
-        throw new Error(`Unknown data type '${obj.type}'`);
+        throw new Error(`Unknown data type '${t.type}'`);
     }
   }
   /**
   * @param {String} dragEvent
   */
-  _initDrag(dragEvent) {
-    this._isDragging = true;
-    this._appendMode.dragged = false;
-    this._objMouseHandler.removeTooltipObj();
-    this.classedOnSvg(true, dragEvent);
+  #c(t) {
+    this.#x = !0, this.#e.dragged = !1, this._objMouseHandler.removeTooltipObj(), this.classedOnSvg(!0, t);
   }
   /**
   * @param {String} dragEvent
   */
-  _terminateDrag(dragEvent) {
-    this._isDragging = false;
-    this._appendMode.dragged = false;
-    this.classedOnSvg(false, dragEvent);
-    this.clearAppendMode();
-    this._updateNegativePos();
-    this.refreshSvgSize();
-    if (this._simpleConnectingMode)
-      this.updateShortestNodes();
+  #h(t) {
+    this.#x = !1, this.#e.dragged = !1, this.classedOnSvg(!1, t), this.clearAppendMode(), this.#S(), this.refreshSvgSize(), this.#s && this.updateShortestNodes();
   }
-  _updateNegativePos() {
-    const minXY = {
+  #S() {
+    const t = {
       x: 0,
       y: 0,
       objX: null,
       objY: null
     };
-    for (const obj of this._objectManager.getAllObjIterator()) {
-      if (obj.startX < minXY.x) {
-        minXY.x = obj.startX;
-        minXY.objX = obj;
+    for (const e of this._objectManager.getAllObjIterator())
+      e.startX < t.x && (t.x = e.startX, t.objX = e), e.startY < t.y && (t.y = e.startY, t.objY = e);
+    if (t.x < 0 || t.y < 0) {
+      const e = this._actionController.popLastUndoAction(), r = [], i = t.x < 0 ? -t.x : 0, o = t.y < 0 ? -t.y : 0;
+      for (const s of this._objectManager.getNodeIterator()) {
+        const a = new et(s.data, []);
+        a.addMoveOldValues(), s.moveTo(i, o), a.updateMoveNewValues(), r.push(a);
       }
-      if (obj.startY < minXY.y) {
-        minXY.y = obj.startY;
-        minXY.objY = obj;
-      }
-    }
-    if (minXY.x < 0 || minXY.y < 0) {
-      const lastCommand = this._actionController.popLastUndoAction();
-      const changedInfoList = [];
-      const x = minXY.x < 0 ? -minXY.x : 0;
-      const y = minXY.y < 0 ? -minXY.y : 0;
-      for (const node of this._objectManager.getNodeIterator()) {
-        const changedInfo = new ChangedInfo(node.data, []);
-        changedInfo.addMoveOldValues();
-        node.moveTo(x, y);
-        changedInfo.updateMoveNewValues();
-        changedInfoList.push(changedInfo);
-      }
-      for (const con of this._objectManager.getConnectionIterator()) {
-        if (con.sourceObj === null || con.destinationObj === null) {
-          const changedInfo = new ChangedInfo(con.data, []);
-          changedInfo.addMoveOldValues();
-          con.moveTo(x, y);
-          changedInfo.updateMoveNewValues();
-          changedInfoList.push(changedInfo);
+      for (const s of this._objectManager.getConnectionIterator())
+        if (s.sourceObj === null || s.destinationObj === null) {
+          const a = new et(s.data, []);
+          a.addMoveOldValues(), s.moveTo(i, o), a.updateMoveNewValues(), r.push(a);
         }
-      }
-      for (const group of this._objectManager.getGroupIterator())
-        group.render();
-      if (lastCommand) {
-        lastCommand.unshift(new EditCommand(changedInfoList));
-        this._actionController.addAction(...lastCommand);
-      }
-      this.refreshSvgSize();
+      for (const s of this._objectManager.getGroupIterator())
+        s.render();
+      e && (e.unshift(new st(r)), this._actionController.addAction(...e)), this.refreshSvgSize();
     }
   }
   getCountOfSelectedObject() {
-    let cnt = 0;
-    for (const obj of this._objectManager.getSelectedObjIterator()) {
-      if (this._objectManager.getParentGroupOrNull(obj) == null)
-        obj.isSelected && ++cnt;
-    }
-    return cnt;
+    let t = 0;
+    for (const e of this._objectManager.getSelectedObjIterator())
+      this._objectManager.getParentGroupOrNull(e) == null && e.isSelected && ++t;
+    return t;
   }
   selectAllObjects() {
-    if (this._singleSelection) {
-      return;
-    }
-    for (const obj of this._objectManager.getAllObjIterator()) {
-      obj.type !== "group" && obj.select(true);
-    }
+    if (!this.#d)
+      for (const t of this._objectManager.getAllObjIterator())
+        t.type !== "group" && t.select(!0);
   }
   /**
   * @param {RenderObject | null} clickObj
   */
-  releaseAllObjects(clickObj) {
-    for (const obj of this._objectManager.getAllObjIterator())
-      clickObj !== obj && obj.release(true);
+  releaseAllObjects(t) {
+    for (const e of this._objectManager.getAllObjIterator())
+      t !== e && e.release(!0);
   }
   /**
   *
   * @param {'top' | 'left' | 'bottom' | 'right' | 'center' | 'middle'} direction
   * @param {Node[] | null} nodeList
   */
-  align(direction, nodeList) {
-    const tmp = nodeList || this.getSelectedNodes();
-    if (tmp.length <= 1) {
-      return;
+  align(t, e) {
+    const r = e || this.getSelectedNodes();
+    if (!(r.length <= 1)) {
+      switch (this._moveHandler.moveStartHandler(), t) {
+        case "left": {
+          const i = r[0].x;
+          r.forEach((o) => o.x = i);
+          break;
+        }
+        case "right": {
+          const i = r[0].endX;
+          r.forEach((o) => o.x = i - o.width);
+          break;
+        }
+        case "center": {
+          const i = r[0].centerX;
+          r.forEach((o) => o.x = i - o.width / 2);
+          break;
+        }
+        case "top": {
+          const i = r[0].y;
+          r.forEach((o) => o.y = i);
+          break;
+        }
+        case "bottom": {
+          const i = r[0].endY;
+          r.forEach((o) => o.y = i - o.height);
+          break;
+        }
+        case "middle": {
+          const i = r[0].centerY;
+          r.forEach((o) => o.y = i - o.height / 2);
+          break;
+        }
+        default:
+          throw new Error(`Unknown direct '${t}'`);
+      }
+      this._moveHandler.moveEndHandler();
     }
-    this._moveHandler.moveStartHandler();
-    switch (direction) {
-      case "left": {
-        const x = tmp[0].x;
-        tmp.forEach((node) => node.x = x);
-        break;
-      }
-      case "right": {
-        const x = tmp[0].endX;
-        tmp.forEach((node) => node.x = x - node.width);
-        break;
-      }
-      case "center": {
-        const x = tmp[0].centerX;
-        tmp.forEach((node) => node.x = x - node.width / 2);
-        break;
-      }
-      case "top": {
-        const y = tmp[0].y;
-        tmp.forEach((node) => node.y = y);
-        break;
-      }
-      case "bottom": {
-        const y = tmp[0].endY;
-        tmp.forEach((node) => node.y = y - node.height);
-        break;
-      }
-      case "middle": {
-        const y = tmp[0].centerY;
-        tmp.forEach((node) => node.y = y - node.height / 2);
-        break;
-      }
-      default:
-        throw new Error(`Unknown direct '${direction}'`);
-    }
-    this._moveHandler.moveEndHandler();
   }
   /**
   * @param {'v' | 'h'} direction
   * @param {Node[] | null} nodeList
   */
-  distribute(direction, nodeList) {
-    const tmp = nodeList || this.getSelectedNodes(false);
-    if (tmp.length <= 1) {
+  distribute(t, e) {
+    const r = e || this.getSelectedNodes(!1);
+    if (r.length <= 1)
       return;
-    }
-    const prop = direction === "h" ? {
+    const i = t === "h" ? {
       start: "x",
       center: "centerX",
       end: "endX",
@@ -7727,44 +5462,31 @@ var IRFlowchart = class extends IRComponent {
       end: "endY",
       size: "height"
     };
-    tmp.sort((a, b) => a[prop.center] - b[prop.center]);
-    this._moveHandler.moveStartHandler();
-    const end = tmp.length - 1;
-    const min2 = tmp[0][prop.end];
-    const max2 = tmp[end][prop.start];
-    const gap = tmp.slice(1, end).reduce((a, b) => a - b[prop.size], max2 - min2) / end;
-    tmp.slice(1, end).reduce((a, node) => {
-      node[prop.start] = a;
-      return a + node[prop.size] + gap;
-    }, min2 + gap);
-    this._moveHandler.moveEndHandler();
+    r.sort((h, l) => h[i.center] - l[i.center]), this._moveHandler.moveStartHandler();
+    const o = r.length - 1, s = r[0][i.end], a = r[o][i.start], c = r.slice(1, o).reduce((h, l) => h - l[i.size], a - s) / o;
+    r.slice(1, o).reduce((h, l) => (l[i.start] = h, h + l[i.size] + c), s + c), this._moveHandler.moveEndHandler();
   }
   /**
   * @param {Boolean} [sorted=true]
   * @returns {RenderObject[]}
   */
-  getSelectedObjects(sorted = true) {
-    const objList = Array.from(this._objectManager.getSelectedObjIterator());
-    sorted && objList.sort((a, b) => a.clickedSeq - b.clickedSeq);
-    return objList;
+  getSelectedObjects(t = !0) {
+    const e = Array.from(this._objectManager.getSelectedObjIterator());
+    return t && e.sort((r, i) => r.clickedSeq - i.clickedSeq), e;
   }
   removeSelected() {
-    const selectedObjList = this.getSelectedObjects(false);
-    selectedObjList.forEach((obj) => this.remove(obj));
-    this._actionController.addAction(
-      new DeleteCommand(cloneObjDataList(selectedObjList))
+    const t = this.getSelectedObjects(!1);
+    t.forEach((e) => this.remove(e)), this._actionController.addAction(
+      new _e(at(t))
     );
   }
   /**
   * get child element on container in order
   * @param {Number} index
   */
-  _getChildElementOrNull(index) {
-    const container = this.d3Container.node();
-    if (index >= container.children.length) {
-      return null;
-    }
-    return container.children[index];
+  #dt(t) {
+    const e = this.d3Container.node();
+    return t >= e.children.length ? null : e.children[t];
   }
   /**
   *
@@ -7773,308 +5495,238 @@ var IRFlowchart = class extends IRComponent {
   * @param {Boolean} simpleMode
   * @returns
   */
-  _getNodeAndPosUnderXY(curPosX, curPosY, simpleMode = false) {
-    for (const node of this._objectManager.getNodeIterator()) {
-      if (!node.isConnectorEnabled)
-        continue;
-      if (simpleMode) {
-        const rect = new Rect(node.x, node.y, node.endX, node.endY);
-        if (rect.isContained(curPosX, curPosY)) {
-          return {
-            node,
-            pos: "left"
-          };
-        }
-      } else {
-        for (const pos of POSITION_LIST) {
-          const xy = node.getPositionXY(pos);
-          const rect = new Rect(
-            xy.x - DETECTING_SIZE,
-            xy.y - DETECTING_SIZE,
-            xy.x + DETECTING_SIZE,
-            xy.y + DETECTING_SIZE
-          );
-          if (rect.isContained(curPosX, curPosY)) {
+  #C(t, e, r = !1) {
+    for (const i of this._objectManager.getNodeIterator())
+      if (i.isConnectorEnabled)
+        if (r) {
+          if (new gn(i.x, i.y, i.endX, i.endY).isContained(t, e))
             return {
-              node,
-              pos
+              node: i,
+              pos: "left"
             };
+        } else
+          for (const o of Xt) {
+            const s = i.getPositionXY(o);
+            if (new gn(
+              s.x - Ft,
+              s.y - Ft,
+              s.x + Ft,
+              s.y + Ft
+            ).isContained(t, e))
+              return {
+                node: i,
+                pos: o
+              };
           }
-        }
-      }
-    }
     return {
       node: null,
       pos: null
     };
   }
-  moveSelectedNode(x, y) {
-    for (const node of this._objectManager.getNodeIterator()) {
-      if (node.isSelected) {
-        node.x = parseInt((node.x + x) / 5) * 5;
-        node.y = parseInt((node.y + y) / 5) * 5;
-      }
-    }
+  moveSelectedNode(t, e) {
+    for (const r of this._objectManager.getNodeIterator())
+      r.isSelected && (r.x = parseInt((r.x + t) / 5) * 5, r.y = parseInt((r.y + e) / 5) * 5);
   }
   /**
   * get selected nodes
   * @param {Boolean} [sorted=true]
   * @returns {Node[]}
   */
-  getSelectedNodes(sorted = true) {
-    const nodes = [];
-    for (const node of this._objectManager.getNodeIterator()) {
-      node.isSelected && nodes.push(node);
-    }
-    sorted && nodes.sort((a, b) => a.clickedSeq - b.clickedSeq);
-    return nodes;
+  getSelectedNodes(t = !0) {
+    const e = [];
+    for (const r of this._objectManager.getNodeIterator())
+      r.isSelected && e.push(r);
+    return t && e.sort((r, i) => r.clickedSeq - i.clickedSeq), e;
   }
   /**
   * get connected connections on the node
   * @param {Node} node
   * @returns {Connection[]}
   */
-  getNodeConnections(node) {
-    const nodeId = node.observeProperties ? node.id : node;
-    const nodeObj = this.getObjectOrNull(nodeId);
-    const connections = Array.from(this._objectManager.getConnectedConnections(nodeId));
-    connections.sort((a, b) => {
-      return getConnectedPositionId(nodeObj, a) - getConnectedPositionId(nodeObj, b);
-    });
-    return connections;
+  getNodeConnections(t) {
+    const e = t.observeProperties ? t.id : t, r = this.getObjectOrNull(e), i = Array.from(this._objectManager.getConnectedConnections(e));
+    return i.sort((o, s) => on(r, o) - on(r, s)), i;
   }
   /**
   * move screen by obj's location
   * @param {RenderObject} obj
   */
-  moveScreenByObject(obj) {
-    const scale = this.getTransform().k;
-    this.d3Div.node().scrollLeft = obj.centerX * scale - this._wrapperSize.width / 2;
-    this.d3Div.node().scrollTop = obj.centerY * scale - this._wrapperSize.height / 2;
+  moveScreenByObject(t) {
+    const e = this.getTransform().k;
+    this.d3Div.node().scrollLeft = t.centerX * e - this.#o.width / 2, this.d3Div.node().scrollTop = t.centerY * e - this.#o.height / 2;
   }
   /**
    * @param {import("../../utils").ImageType} imgType
    */
-  async copyToClipboard(imgType = "image/png") {
+  async copyToClipboard(t = "image/png") {
     this.releaseAllObjects();
-    const image = await createImageFromSrcUrl(getBase64FromSvg(this.svgElement));
-    const blob = await getImageBlobFromImage(image, imgType, this._getFlowchartRect(), EXPORT_MARGIN);
-    const base64 = await blobToBase64(blob);
-    await copyImageFromBase64(base64);
+    const e = await Pe($e(this.svgElement)), r = await Re(e, t, this.#D(), mn), i = await hr(r);
+    await Ra(i);
   }
-  _getFlowchartRect() {
-    const { top, left, bottom, right } = this._getFlowchartAvailableRect();
+  #D() {
+    const { top: t, left: e, bottom: r, right: i } = this.#M();
     return {
-      x: left - 1,
-      y: top - 1,
-      width: right - left + 2,
-      height: bottom - top + 2
+      x: e - 1,
+      y: t - 1,
+      width: i - e + 2,
+      height: r - t + 2
     };
   }
   /**
    * @param {string} fileName
    * @param {import("../../utils").ImageType} imgType
    */
-  async saveAsImageFile(fileName, imgType = "image/png") {
+  async saveAsImageFile(t, e = "image/png") {
     this.releaseAllObjects();
-    const blob = await this.getBlob(imgType);
-    const objectURL = URL.createObjectURL(blob);
+    const r = await this.getBlob(e), i = URL.createObjectURL(r);
     try {
-      downloadDataURL(objectURL, fileName);
+      lr(i, t);
     } finally {
-      URL.revokeObjectURL(objectURL);
+      URL.revokeObjectURL(i);
     }
   }
   /**
    * @param {import("../../utils").ImageType} imgType
    */
-  async getBlob(imgType = "image/png") {
-    const image = await createImageFromSrcUrl(getBase64FromSvg(this.svgElement));
-    return await getImageBlobFromImage(image, imgType, this._getFlowchartRect(), EXPORT_MARGIN);
+  async getBlob(t = "image/png") {
+    const e = await Pe($e(this.svgElement));
+    return await Re(e, t, this.#D(), mn);
   }
   /**
   * clear info for appending or pasting objects
   */
   clearAppendMode() {
-    if (this._appendMode.data)
-      this.classedOnSvg(false, `is-appending-${this._appendMode.data.type}`);
-    this._appendingObject !== null && this.remove(this._appendingObject);
-    this._appendMode.mode = null;
-    this._appendMode.data = null;
-    this._appendMode.dragged = false;
-    this._appendingObject = null;
+    this.#e.data && this.classedOnSvg(!1, `is-appending-${this.#e.data.type}`), this.#t !== null && this.remove(this.#t), this.#e.mode = null, this.#e.data = null, this.#e.dragged = !1, this.#t = null;
   }
-  _getClipInfo() {
-    const objects = [];
-    for (const obj of this._objectManager.getSelectedObjIterator()) {
-      if (obj.type === "group") {
-        obj.data.objectList = Array.from(obj.objectSet);
-      }
-      objects.push(obj.data);
-    }
+  #P() {
+    const t = [];
+    for (const e of this._objectManager.getSelectedObjIterator())
+      e.type === "group" && (e.data.objectList = Array.from(e.objectSet)), t.push(e.data);
     return {
       copyDateTime: /* @__PURE__ */ new Date(),
-      objects
+      objects: t
     };
   }
   cut() {
-    this._logger.info("InnoFlowchart.cut()");
-    if (this.getSelectedObjects().length === 0)
-      return;
-    clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
-    this.removeSelected();
+    this._logger.info("InnoFlowchart.cut()"), this.getSelectedObjects().length !== 0 && (ue.saveData(JSON.stringify(this.#P())), this.removeSelected());
   }
   copy() {
-    this._logger.info("InnoFlowchart.copy()");
-    clipboard_default.saveData(JSON.stringify(this._getClipInfo()));
+    this._logger.info("InnoFlowchart.copy()"), ue.saveData(JSON.stringify(this.#P()));
   }
-  _createPastingObjs(clipData) {
-    if (clipData.objects.length === 0)
+  #ut(t) {
+    if (t.objects.length === 0)
       return;
-    const tmpIdMap = /* @__PURE__ */ new Map();
-    let cnt = 0;
-    const newId2 = this._seqMng.getObjSeqId();
-    const newObjs = [];
-    clipData.objects.forEach((data) => {
-      if (this.getObjectOrNull(data.id) !== null) {
-        let id2 = newId2 + cnt;
-        while (this.getObjectOrNull(id2) !== null || this.getObjectOrNull(id2) !== null && this.getObjectOrNull(id2).type === "connection" && (this.getObjectOrNull(id2).sourceObjId === id2 || this.getObjectOrNull(id2).destinationObjId === id2)) {
-          id2 = newId2 + ++cnt;
-          this._logger.info("id", id2);
-        }
-        ++cnt;
-        tmpIdMap.set(data.id, id2);
-      } else {
-        tmpIdMap.set(data.id, data.id);
-      }
-    });
-    clipData.objects.forEach((data) => {
-      const id2 = tmpIdMap.get(data.id);
-      switch (data.type) {
+    const e = /* @__PURE__ */ new Map();
+    let r = 0;
+    const i = this._seqMng.getObjSeqId(), o = [];
+    t.objects.forEach((s) => {
+      if (this.getObjectOrNull(s.id) !== null) {
+        let a = i + r;
+        for (; this.getObjectOrNull(a) !== null || this.getObjectOrNull(a) !== null && this.getObjectOrNull(a).type === "connection" && (this.getObjectOrNull(a).sourceObjId === a || this.getObjectOrNull(a).destinationObjId === a); )
+          a = i + ++r, this._logger.info("id", a);
+        ++r, e.set(s.id, a);
+      } else
+        e.set(s.id, s.id);
+    }), t.objects.forEach((s) => {
+      const a = e.get(s.id);
+      switch (s.type) {
         case "node": {
-          const pos = this._getProperlyNodePosToCreate(data);
-          newObjs.push(this.add({
-            ...data,
-            ...pos,
-            id: id2,
-            isSelected: false,
-            isHovered: false
+          const c = this.#J(s);
+          o.push(this.add({
+            ...s,
+            ...c,
+            id: a,
+            isSelected: !1,
+            isHovered: !1
           }));
           break;
         }
         case "connection": {
-          const points = this._getProperlyPointsToCreate(data);
-          if (data["connection.sourceObjId"] !== void 0 && data["connection.sourceObjId"] != null && tmpIdMap.has(data["connection.sourceObjId"])) {
-            data["connection.sourceObjId"] = tmpIdMap.get(data["connection.sourceObjId"]);
-          }
-          if (data["connection.destinationObjId"] !== void 0 && data["connection.destinationObjId"] != null && tmpIdMap.has(data["connection.destinationObjId"])) {
-            data["connection.destinationObjId"] = tmpIdMap.get(data["connection.destinationObjId"]);
-          }
-          newObjs.push(this.add({
-            ...data,
-            id: id2,
-            isSelected: false,
-            points
+          const c = this.#Z(s);
+          s["connection.sourceObjId"] !== void 0 && s["connection.sourceObjId"] != null && e.has(s["connection.sourceObjId"]) && (s["connection.sourceObjId"] = e.get(s["connection.sourceObjId"])), s["connection.destinationObjId"] !== void 0 && s["connection.destinationObjId"] != null && e.has(s["connection.destinationObjId"]) && (s["connection.destinationObjId"] = e.get(s["connection.destinationObjId"])), o.push(this.add({
+            ...s,
+            id: a,
+            isSelected: !1,
+            points: c
           }));
           break;
         }
         case "group": {
-          newObjs.push(this.add({
-            ...data,
-            id: id2,
-            isSelected: false,
-            objectList: data.objectList.map((id3) => tmpIdMap.get(id3))
+          o.push(this.add({
+            ...s,
+            id: a,
+            isSelected: !1,
+            objectList: s.objectList.map((c) => e.get(c))
           }));
           break;
         }
         default:
-          throw new Error(`Not supported type '${data.type}'`);
+          throw new Error(`Not supported type '${s.type}'`);
       }
-    });
-    this.moveScreenByObject(newObjs[0]);
-    this.releaseAllObjects();
-    newObjs.forEach((data) => {
-      data.select();
-    });
-    this._actionController.addAction(new AddCommand(cloneObjDataList(newObjs)));
+    }), this.moveScreenByObject(o[0]), this.releaseAllObjects(), o.forEach((s) => {
+      s.select();
+    }), this._actionController.addAction(new ht(at(o)));
   }
   paste() {
-    if (this._editMode || this._appendMode.mode != null) {
+    if (this.#i || this.#e.mode != null) {
       this._logger.debug(
         "InnoFlowchart.paste()",
         "Could not paste because of edit or append mode"
       );
       return;
     }
-    this._logger.info("InnoFlowchart.paste()");
-    this._createPastingObjs(JSON.parse(clipboard_default.loadData()));
+    this._logger.info("InnoFlowchart.paste()"), this.#ut(JSON.parse(ue.loadData()));
   }
   /**
-  * TODO: write some comment..
-  */
+   * 텍스트에 맞추어 노드 크기 조정
+   */
   fitSizeOnText() {
-    this._logger.info("InnoFlowchart.fitSizeOnText()");
-    this._resizeHandler.resizeDragStart();
-    this.getSelectedNodes(false).forEach((node) => {
-      node.resizerEnabled && node.fitSizeOnText();
-    });
-    this._resizeHandler.resizeDragEnd();
+    this._logger.info("InnoFlowchart.fitSizeOnText()"), this._resizeHandler.resizeDragStart(), this.getSelectedNodes(!1).forEach(
+      (t) => void (t.resizerEnabled && t.fitSizeOnText())
+    ), this._resizeHandler.resizeDragEnd();
   }
   /**
   *
   * @param {Node} source
   * @param {Node} target
   */
-  _getShortestPositions(source, target) {
-    const minPos = {
+  #ft(t, e) {
+    const r = {
       dist: Number.MAX_VALUE,
       sourcePos: "",
       destinationPos: ""
     };
-    for (const srcPos of POSITION_LIST) {
-      for (const desPos of POSITION_LIST) {
-        const srcXY = source.getPositionXY(srcPos);
-        const desXY = target.getPositionXY(desPos);
-        const dist = getDistance(srcXY, desXY);
-        if (dist < minPos.dist) {
-          minPos.dist = dist;
-          minPos.sourcePos = srcPos;
-          minPos.destinationPos = desPos;
-        }
+    for (const i of Xt)
+      for (const o of Xt) {
+        const s = t.getPositionXY(i), a = e.getPositionXY(o), c = sn(s, a);
+        c < r.dist && (r.dist = c, r.sourcePos = i, r.destinationPos = o);
       }
-    }
-    return minPos;
+    return r;
   }
   /**
   * @param {Connection} con
   */
-  _setShortestPosition(con) {
-    const source = this.getObjectOrNull(con.sourceObjId);
-    const destination = this.getObjectOrNull(con.destinationObjId);
-    const oldSrcPos = con.sourcePos;
-    const oldDesPos = con.destinationPos;
-    if (source !== null && destination !== null) {
-      const pos = this._getShortestPositions(source, destination);
-      con.sourcePos = pos.sourcePos;
-      con.destinationPos = pos.destinationPos;
-    } else if (source === null)
-      con.destinationPos = this._getPositionOnSimpleConnecting(con.firstPoint, destination);
-    else
-      con.sourcePos = this._getPositionOnSimpleConnecting(con.endPoint, source);
-    if (oldSrcPos !== con.sourcePos || oldDesPos !== con.destinationPos) {
-      const changedInfo = new ChangedInfo(con.data, [
+  #p(t) {
+    const e = this.getObjectOrNull(t.sourceObjId), r = this.getObjectOrNull(t.destinationObjId), i = t.sourcePos, o = t.destinationPos;
+    if (e !== null && r !== null) {
+      const s = this.#ft(e, r);
+      t.sourcePos = s.sourcePos, t.destinationPos = s.destinationPos;
+    } else
+      e === null ? t.destinationPos = this.#$(t.firstPoint, r) : t.sourcePos = this.#$(t.endPoint, e);
+    if (i !== t.sourcePos || o !== t.destinationPos) {
+      const s = new et(t.data, [
         {
           key: "connection.sourcePos",
-          oldValue: oldSrcPos,
-          newValue: con.sourcePos
+          oldValue: i,
+          newValue: t.sourcePos
         },
         {
           key: "connection.destinationPos",
-          oldValue: oldDesPos,
-          newValue: con.destinationPos
+          oldValue: o,
+          newValue: t.destinationPos
         }
       ]);
-      this._actionController.addAction(new EditCommand([changedInfo]));
+      this._actionController.addAction(new st([s]));
     }
   }
   /**
@@ -8082,316 +5734,243 @@ var IRFlowchart = class extends IRComponent {
   */
   updateShortestConnections() {
     this._logger.info("InnoFlowchart.updateShortestConnections()");
-    for (const con of this._objectManager.getConnectionIterator()) {
-      if (con.isSelected)
-        this._setShortestPosition(con);
-    }
+    for (const t of this._objectManager.getConnectionIterator())
+      t.isSelected && this.#p(t);
   }
   /**
   * 현재 선택된 노드들의 연결선들을 최단 경로로 맞춥니다.
   */
   updateShortestNodes() {
-    const conList = [];
-    for (const node of this._objectManager.getNodeIterator()) {
-      if (node.isSelected === false) {
-        continue;
-      }
-      for (const con of this._objectManager.getConnectedConnections(node.id)) {
-        if (conList.indexOf(con) === -1) {
-          conList.push(con);
-        }
-      }
-    }
-    conList.forEach((con) => this._setShortestPosition(con));
+    const t = [];
+    for (const e of this._objectManager.getNodeIterator())
+      if (e.isSelected !== !1)
+        for (const r of this._objectManager.getConnectedConnections(e.id))
+          t.indexOf(r) === -1 && t.push(r);
+    t.forEach((e) => this.#p(e));
   }
   /**
   * @param {{x: Number, y: Number}} startPoint
   * @param {Node} targetNode
   * @returns
   */
-  _getPositionOnSimpleConnecting(startPoint, targetNode) {
-    const minDist = {
+  #$(t, e) {
+    const r = {
       dist: Number.MAX_VALUE,
       pos: null
     };
-    for (const pos of POSITION_LIST) {
-      const xy = targetNode.getPositionXY(pos);
-      const dist = getDistance(xy, startPoint);
-      if (dist < minDist.dist) {
-        minDist.dist = dist;
-        minDist.pos = pos;
-      }
+    for (const i of Xt) {
+      const o = e.getPositionXY(i), s = sn(o, t);
+      s < r.dist && (r.dist = s, r.pos = i);
     }
-    return minDist.pos;
+    return r.pos;
   }
   /**
   * 특정 render의 개체를 모두 선택합니다.
   * @param {String} render
   */
-  selectType(render) {
-    this._logger.info("InnoFlowchart.selectType()", render);
-    const temp = render.toLowerCase();
+  selectType(t) {
+    this._logger.info("InnoFlowchart.selectType()", t);
+    const e = t.toLowerCase();
     this.releaseAllObjects();
-    for (const obj of this._objectManager.getAllObjIterator()) {
-      obj.renderType === temp && obj.select(false, temp);
-    }
+    for (const r of this._objectManager.getAllObjIterator())
+      r.renderType === e && r.select(!1, e);
   }
   /**
   * 플로우차트 변경 상태 초기화
   */
   clearChangedStatus() {
-    if (this._isChanged) {
-      this._isChanged = false;
-      this.classedOnSvg(false, "changed");
-    }
+    this.#u && (this.#u = !1, this.classedOnSvg(!1, "changed"));
   }
   /**
   * 플로우차트 내 모든 개체 제거
   */
   clear() {
     this.clearAppendMode();
-    for (const obj of this._objectManager.getAllObjIterator()) {
-      obj.destroy();
-    }
-    this._objectManager.clear();
-    this._seqMng.clear();
-    this._actionController.clear();
+    for (const t of this._objectManager.getAllObjIterator())
+      t.destroy();
+    this._objectManager.clear(), this._seqMng.clear(), this._actionController.clear();
   }
   /**
   * Creating a group object with selected objects
   * @param {{}} data
   */
-  group(data = void 0) {
-    const temp = data || {};
-    temp.type = "group";
-    temp.render = "group";
-    temp.objectList = [];
-    combineStyle(temp, this.theme);
-    for (const obj of this._objectManager.getSelectedObjIterator()) {
-      temp.objectList.push(obj.id);
-    }
-    const group = this.add(temp);
-    group.resize();
-    group.select();
-    this._actionController.addAction(new AddCommand(cloneObjDataList([group])));
+  group(t = void 0) {
+    const e = t || {};
+    e.type = "group", e.render = "group", e.objectList = [], an(e, this.theme);
+    for (const i of this._objectManager.getSelectedObjIterator())
+      e.objectList.push(i.id);
+    const r = this.add(e);
+    r.resize(), r.select(), this._actionController.addAction(new ht(at([r])));
   }
   /**
-  * Releasing children of selected groups and deleting the groups
-  */
+   * 현재 선택된 그룹화된 오브젝트의 자식의 그룹 상태를 해제
+   */
   ungroup() {
-    const tmpObjs = [];
-    for (const obj of this._objectManager.getGroupIterator()) {
-      if (obj.isSelected) {
-        obj.clear();
-        tmpObjs.push(obj);
-        this.remove(obj);
-      }
-    }
-    this._actionController.addAction(new DeleteCommand(cloneObjDataList(tmpObjs)));
+    const t = [];
+    for (const e of this._objectManager.getGroupIterator())
+      e.isSelected && (e.clear(), t.push(e), this.remove(e));
+    this._actionController.addAction(new _e(at(t)));
   }
   /**
   *
   * @param {Number} x
   * @param {Number} y
   */
-  _moveAppendingNode(x, y) {
-    const cursorXY = this._getXYOnSheet(x, y);
-    if (this._appendingObject.data.opacity === 0)
-      this._appendingObject.data.opacity = 0.5;
-    this._appendingObject.x = cursorXY.x - this._appendingObject.width / 2;
-    this._appendingObject.y = cursorXY.y - this._appendingObject.height / 2;
+  #R(t, e) {
+    const r = this.#T(t, e);
+    this.#t.data.opacity === 0 && (this.#t.data.opacity = 0.5), this.#t.x = r.x - this.#t.width / 2, this.#t.y = r.y - this.#t.height / 2;
   }
-  _getSvgXYOnDrag(x, y, scaled = false) {
-    const xy = {
-      x: x + this.d3Div.node().scrollLeft,
-      y: y + this.d3Div.node().scrollTop
+  #l(t, e, r = !1) {
+    const i = {
+      x: t + this.d3Div.node().scrollLeft,
+      y: e + this.d3Div.node().scrollTop
     };
-    if (scaled) {
-      const transform2 = this.getTransform();
-      const scale = 1 / transform2.k;
-      xy.x *= scale;
-      xy.y *= scale;
+    if (r) {
+      const s = 1 / this.getTransform().k;
+      i.x *= s, i.y *= s;
     }
-    return xy;
+    return i;
   }
-  _dragStartHandlerOnSelection(ev) {
-    const xy = this._getSvgXYOnDrag(ev.x, ev.y);
-    this.selection.rect = this.d3Svg.append("rect").attr("class", "selection");
-    this.selection.startX = xy.x;
-    this.selection.startY = xy.y;
+  #gt(t) {
+    const e = this.#l(t.x, t.y);
+    this.#r.rect = this.d3Svg.append("rect").attr("class", "selection"), this.#r.startX = e.x, this.#r.startY = e.y;
   }
-  _dragHandlerOnSelection(ev) {
-    const xy = this._getSvgXYOnDrag(ev.x, ev.y);
-    const startX = Math.min(xy.x, this.selection.startX);
-    const startY = Math.min(xy.y, this.selection.startY);
-    const endX = Math.max(xy.x, this.selection.startX);
-    const endY = Math.max(xy.y, this.selection.startY);
-    this.selection.rect.attr("x", startX).attr("y", startY).attr("width", endX - startX).attr("height", endY - startY);
+  #pt(t) {
+    const e = this.#l(t.x, t.y), r = Math.min(e.x, this.#r.startX), i = Math.min(e.y, this.#r.startY), o = Math.max(e.x, this.#r.startX), s = Math.max(e.y, this.#r.startY);
+    this.#r.rect.attr("x", r).attr("y", i).attr("width", o - r).attr("height", s - i);
   }
-  _dragEndHandlerOnSelection(ev) {
+  #yt(t) {
     try {
-      const transFormData = this.getTransform();
-      const xy = this._getSvgXYOnDrag(ev.x, ev.y);
-      const startX = Math.min(xy.x, this.selection.startX);
-      const startY = Math.min(xy.y, this.selection.startY);
-      const endX = Math.max(xy.x, this.selection.startX);
-      const endY = Math.max(xy.y, this.selection.startY);
-      const compareWithinRect = (x1, x2, y1, y2) => {
-        return x1 >= startX && x2 >= startX && x1 <= endX && x2 <= endX && y1 >= startY && y2 >= startY && y1 <= endY && y2 <= endY;
-      };
-      if (this._isSingleSelection(ev.sourceEvent.ctrlKey)) {
-        this.releaseAllObjects();
+      const e = this.getTransform(), r = this.#l(t.x, t.y), i = Math.min(r.x, this.#r.startX), o = Math.min(r.y, this.#r.startY), s = Math.max(r.x, this.#r.startX), a = Math.max(r.y, this.#r.startY), c = (h, l, f, u) => h >= i && l >= i && h <= s && l <= s && f >= o && u >= o && f <= a && u <= a;
+      this.#a(t.sourceEvent.ctrlKey) && this.releaseAllObjects();
+      for (const h of this._objectManager.getNodeIterator()) {
+        const l = h.x * e.k, f = (h.x + h.width) * e.k, u = h.y * e.k, y = (h.y + h.height) * e.k;
+        c(l, f, u, y) && h.select(!0);
       }
-      for (const node of this._objectManager.getNodeIterator()) {
-        const x1 = node.x * transFormData.k;
-        const x2 = (node.x + node.width) * transFormData.k;
-        const y1 = node.y * transFormData.k;
-        const y2 = (node.y + node.height) * transFormData.k;
-        compareWithinRect(x1, x2, y1, y2) && node.select(true);
-      }
-      for (const con of this._objectManager.getConnectionIterator()) {
-        const firstPoint = con.firstPoint;
-        const endPoint = con.endPoint;
-        const x1 = Math.min(firstPoint.x, endPoint.x) * transFormData.k;
-        const x2 = Math.max(firstPoint.x, endPoint.x) * transFormData.k;
-        const y1 = Math.min(firstPoint.y, endPoint.y) * transFormData.k;
-        const y2 = Math.max(firstPoint.y, endPoint.y) * transFormData.k;
-        compareWithinRect(x1, x2, y1, y2) && con.select(true);
+      for (const h of this._objectManager.getConnectionIterator()) {
+        const l = h.firstPoint, f = h.endPoint, u = Math.min(l.x, f.x) * e.k, y = Math.max(l.x, f.x) * e.k, O = Math.min(l.y, f.y) * e.k, j = Math.max(l.y, f.y) * e.k;
+        c(u, y, O, j) && h.select(!0);
       }
     } finally {
-      this.selection.rect.remove();
-      this.selection.rect = null;
-      this.$emit(EVENT_TYPE.MOUSEUP_SHEET, this._getSvgXYOnDrag(ev.x, ev.y));
+      this.#r.rect.remove(), this.#r.rect = null, this.$emit(D.MOUSEUP_SHEET, this.#l(t.x, t.y));
     }
   }
-  _canvasMoveStartHandler(ev) {
-    const { offsetX, offsetY } = ev.sourceEvent;
-    this.classedOnSvg(true, "is-grabbing");
-    this._cursorStatus = {
-      curPosX: offsetX,
-      curPosY: offsetY,
-      isDragging: true
+  #mt(t) {
+    const { offsetX: e, offsetY: r } = t.sourceEvent;
+    this.classedOnSvg(!0, "is-grabbing"), this._cursorStatus = {
+      curPosX: e,
+      curPosY: r,
+      isDragging: !0
     };
   }
-  _canvasMoveHandler(ev) {
-    const { curPosX, curPosY, isDragging } = this._cursorStatus;
-    if (!isDragging)
+  #bt(t) {
+    const { curPosX: e, curPosY: r, isDragging: i } = this.#I;
+    if (!i)
       return;
-    const { target, offsetX, offsetY } = ev.sourceEvent;
-    if (target !== this.d3Svg.node())
-      return;
-    this.div.scrollBy(curPosX - offsetX, curPosY - offsetY);
+    const { target: o, offsetX: s, offsetY: a } = t.sourceEvent;
+    o === this.d3Svg.node() && this.div.scrollBy(e - s, r - a);
   }
-  _canvasMoveEndHandler(ev) {
-    this._cursorStatus.isDragging = false;
-    this.classedOnSvg(false, "is-grabbing");
-    ev.sourceEvent.target === this.d3Svg.node() && this.releaseAllObjects();
+  #wt(t) {
+    this.#I.isDragging = !1, this.classedOnSvg(!1, "is-grabbing"), t.sourceEvent.target === this.d3Svg.node() && this.releaseAllObjects();
   }
-  _createAppendObj() {
-    switch (this._appendMode.mode) {
+  #xt() {
+    switch (this.#e.mode) {
       case "append": {
-        const newObj = this.add({
-          "node.x": this._appendingObject.x,
-          "node.y": this._appendingObject.y,
-          ...this._appendMode.data
+        const t = this.add({
+          "node.x": this.#t.x,
+          "node.y": this.#t.y,
+          ...this.#e.data
         });
-        this._actionController.addAction(new AddCommand(cloneObjDataList([newObj])));
+        this._actionController.addAction(new ht(at([t])));
         break;
       }
-      default:
-        break;
     }
     this.clearAppendMode();
   }
-  _getAppendNodeDragEventHandler(ev) {
+  #_t(t) {
     return {
       start: () => {
       },
-      drag: () => this._moveAppendingNode(ev.x + this.div.scrollLeft, ev.y + this.div.scrollTop),
-      end: () => this._createAppendObj()
+      drag: () => this.#R(t.x + this.div.scrollLeft, t.y + this.div.scrollTop),
+      end: () => this.#xt()
     };
   }
-  _getAppendConnectionDragEventHandler(ev) {
+  #vt(t) {
     return {
       start: () => {
-        const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
-        this._createAppendingConnection(pos.x, pos.y, pos.x, pos.y, this._appendMode.data);
-        this._appendMode.dragged = false;
+        const e = this.#l(t.x, t.y, !0);
+        this.#F(e.x, e.y, e.x, e.y, this.#e.data), this.#e.dragged = !1;
       },
       drag: () => {
-        const pos = this._getSvgXYOnDrag(ev.x, ev.y, true);
-        this._moveAppendingConnection(pos.x, pos.y, this._appendingObject.renderType);
-        this._appendMode.dragged = true;
+        const e = this.#l(t.x, t.y, !0);
+        this.#H(e.x, e.y, this.#t.renderType), this.#e.dragged = !0;
       },
       end: () => {
-        this._endAppendingConnection();
-        this.clearAppendMode();
+        this.#X(), this.clearAppendMode();
       }
     };
   }
-  _getAppendModeHandler(ev) {
+  #Ot(t) {
     return {
-      start: () => this._dragStartHandlerOnSelection(ev),
-      drag: () => this._dragHandlerOnSelection(ev),
-      end: () => this._dragEndHandlerOnSelection(ev)
+      start: () => this.#gt(t),
+      drag: () => this.#pt(t),
+      end: () => this.#yt(t)
     };
   }
-  _getCanvasMoveModeHandler(ev) {
+  #St(t) {
     return {
-      start: () => this._canvasMoveStartHandler(ev),
-      drag: () => this._canvasMoveHandler(ev),
-      end: () => this._canvasMoveEndHandler(ev)
+      start: () => this.#mt(t),
+      drag: () => this.#bt(t),
+      end: () => this.#wt(t)
     };
   }
-  _dragController(ev) {
-    const dragHandler = (() => {
-      if (this._appendMode.mode === "append") {
-        return this._appendMode.data.type === "node" ? this._getAppendNodeDragEventHandler(ev) : this._getAppendConnectionDragEventHandler(ev);
-      } else if (this._canvasMoveMode)
-        return this._getCanvasMoveModeHandler(ev);
-      else if (this._appendMode.mode === null)
-        return this._getAppendModeHandler(ev);
-      throw new Error(`unknown drag handler`);
-    })();
-    dragHandler[ev.type]();
+  #Ct(t) {
+    return this.#e.data.type === "node" ? this.#_t(t) : this.#vt(t);
+  }
+  #j(t) {
+    (() => {
+      if (this.#e.mode === "append")
+        return this.#Ct(t);
+      if (this.#E)
+        return this.#St(t);
+      if (this.#e.mode === null)
+        return this.#Ot(t);
+      throw new Error("unknown drag handler");
+    })()[t.type]();
   }
   cancelCreatingConnection() {
-    if (this._appendingObject === null) {
+    if (this.#t === null)
       throw new Error("There is no creatingConnection obj");
-    }
     this.clearAppendMode();
   }
-  _changeObjRender(obj, render) {
-    this._renderManager.changeRender(obj, render, this._containerInterface);
-    this._addObjectEvent(obj);
+  #L(t, e) {
+    this._renderManager.changeRender(t, e, this._containerInterface), this.#N(t);
   }
   /**
   * 개체의 렌더링 타입을 변경합니다.
   * @param {RenderObject} obj
   * @param {String} render
   */
-  changeRender(obj, render) {
-    const oldRender = obj.renderType;
-    this._changeObjRender(obj, render);
-    this._actionController.addAction(new RenderCommand(obj, oldRender, render));
+  changeRender(t, e) {
+    const r = t.renderType;
+    this.#L(t, e), this._actionController.addAction(new rr(t, r, e));
   }
   /**
   * @param {{}} objData
   * @param {String} oldText
   * @param {String} newText
   */
-  _editTextCallbackHandler(objData, oldText, newText) {
+  #jt(t, e, r) {
     this._logger.debug(
       "InnoFlowchart._editTextCallbackHandler()",
-      `oldText = '${oldText}'`,
-      `newText = '${newText}'`
-    );
-    this._actionController.addAction(new EditCommand([
-      new ChangedInfo(objData, [
+      `oldText = '${e}'`,
+      `newText = '${r}'`
+    ), this._actionController.addAction(new st([
+      new et(t, [
         {
           key: "text",
-          oldValue: oldText,
-          newValue: newText
+          oldValue: e,
+          newValue: r
         }
       ])
     ]));
@@ -8400,61 +5979,48 @@ var IRFlowchart = class extends IRComponent {
   * @param {Number} x
   * @param {Number} y
   */
-  _moveAppendingConnection(x, y) {
-    const detecting = this._getNodeAndPosUnderXY(
-      x,
-      y,
-      this._simpleConnectingMode
+  #H(t, e) {
+    const r = this.#C(
+      t,
+      e,
+      this.#s
     );
-    if (detecting.node === null || detecting.node.id === this._appendingObject.sourceObjId) {
-      this._appendingObject.setLastPointXY(x, y);
-      this._appendingObject.destinationObjId = null;
-      this._appendingObject.destinationPos = null;
-    } else {
-      this._appendingObject.destinationObjId = detecting.node.id;
-      if (this._simpleConnectingMode)
-        this._setShortestPosition(this._appendingObject);
-      else
-        this._appendingObject.destinationPos = detecting.pos;
-    }
+    r.node === null || r.node.id === this.#t.sourceObjId ? (this.#t.setLastPointXY(t, e), this.#t.destinationObjId = null, this.#t.destinationPos = null) : (this.#t.destinationObjId = r.node.id, this.#s ? this.#p(this.#t) : this.#t.destinationPos = r.pos);
   }
-  _adjDragStartCallbackHandler() {
-    this._logger.debug("InnoFlowchart.adjDragStartCallbackHandler()");
-    this._initDrag("drag-adj-move");
+  #kt() {
+    this._logger.debug("InnoFlowchart.adjDragStartCallbackHandler()"), this.#c("drag-adj-move");
   }
   /**
   * @param {{}} objData
   * @param {[]} oldPoints
   * @param {[]} newPoints
   */
-  _adjDragEndCallbackHandler(objData, oldPoints, newPoints) {
+  #Et(t, e, r) {
     this._logger.debug(
       "InnoFlowchart.adjDragEndCallbackHandler()",
       "record undo action"
-    );
-    this._actionController.addAction(
-      new EditCommand([new ChangedInfo(objData, [{ key: "connection.points", oldValue: oldPoints, newValue: newPoints }])])
-    );
-    this._terminateDrag("drag-adj-move");
+    ), this._actionController.addAction(
+      new st([new et(t, [{ key: "connection.points", oldValue: e, newValue: r }])])
+    ), this.#h("drag-adj-move");
   }
   /**
   * @param {RenderObject} obj
   */
-  _renderCallBack(obj) {
-    if (obj.type === "node") {
-      const set3 = /* @__PURE__ */ new Set();
-      for (const con of this._objectManager.getConnectionIterator()) {
-        if (!set3.has(con.id) && (con.sourceObjId === obj.id || con.destinationObjId === obj.id)) {
-          set3.add(con.id);
-          con.render();
-        }
-      }
+  #It(t) {
+    if (t.type === "node") {
+      const r = /* @__PURE__ */ new Set();
+      for (const i of this._objectManager.getConnectionIterator())
+        !r.has(i.id) && (i.sourceObjId === t.id || i.destinationObjId === t.id) && (r.add(i.id), i.render());
     }
-    const group = this._objectManager.getParentGroupOrNull(obj);
-    group !== null && group.resize();
+    const e = this._objectManager.getParentGroupOrNull(t);
+    e !== null && e.resize();
   }
-  _clickOnSheetHandler(ev) {
-    this.$emit(EVENT_TYPE.CLICK, this._getXYOnSheet(ev.offsetX, ev.offsetY));
+  /**
+   *
+   * @param {PointerEvent} ev
+   */
+  #Mt(t) {
+    this.$emit(D.CLICK, this.#T(t.offsetX, t.offsetY));
   }
   /**
   * @param {Number} x
@@ -8463,94 +6029,70 @@ var IRFlowchart = class extends IRComponent {
   * @param {Number} toY
   * @param {{}} data
   */
-  _createAppendingConnection(x, y, toX, toY, data) {
-    if (this._appendingObject !== null) {
+  #F(t, e, r, i, o) {
+    if (this.#t !== null)
       throw new Error("Already created an appending obj!!");
+    if (!o["connection.sourceObjId"]) {
+      const a = this.#C(t, e);
+      a.node !== null && (o["connection.sourceObjId"] = a.node.id, o["connection.sourcePos"] = a.pos);
     }
-    if (!data["connection.sourceObjId"]) {
-      const detecting = this._getNodeAndPosUnderXY(x, y);
-      if (detecting.node !== null) {
-        data["connection.sourceObjId"] = detecting.node.id;
-        data["connection.sourcePos"] = detecting.pos;
-      }
-    }
-    const obj = {
-      ...data,
+    const s = {
+      ...o,
       id: "#temp_appending_connection",
       type: "connection",
       opacity: 0.5,
-      temp: true,
+      temp: !0,
       "connection.points": [
-        { x, y },
-        { x: toX, y: toY }
+        { x: t, y: e },
+        { x: r, y: i }
       ]
     };
-    this._appendingObject = this.add(obj);
+    this.#t = this.add(s);
   }
-  _endAppendingConnection() {
-    let data = this._appendingObject.data;
-    if (this._appendMode.dragged === false) {
-      data = getDefaultConnection(this._appendingObject);
-    }
-    const newObj = this.add({
-      ...data,
+  #X() {
+    let t = this.#t.data;
+    this.#e.dragged === !1 && (t = na(this.#t));
+    const e = this.add({
+      ...t,
       id: void 0,
-      temp: false,
+      temp: !1,
       opacity: 1
     });
-    this._actionController.addAction(new AddCommand(cloneObjDataList([newObj])));
+    this._actionController.addAction(new ht(at([e])));
   }
   handleKeydownF2() {
-    if (!this._editMode && this.getCountOfSelectedObject() === 1) {
-      for (const obj of this._objectManager.getSelectedObjIterator()) {
-        obj.editLabel();
+    if (!this.#i && this.getCountOfSelectedObject() === 1)
+      for (const t of this._objectManager.getSelectedObjIterator()) {
+        t.editLabel();
         return;
       }
-    }
   }
   handleKeydownDelete() {
     this.removeSelected();
   }
-  handleKeydownArrows(x, y) {
-    const selected = this.getSelectedObjects(false);
-    if (selected.length > 0) {
-      this.moveWrapper(() => {
-        selected.filter((obj) => obj.isSelected).forEach((obj) => obj.moveTo(x, y));
-      });
-    } else {
-      this.div.scrollLeft += x * 2;
-      this.div.scrollTop += y * 2;
-    }
+  handleKeydownArrows(t, e) {
+    const r = this.getSelectedObjects(!1);
+    r.length > 0 ? this.moveWrapper(() => {
+      r.filter((i) => i.isSelected).forEach((i) => i.moveTo(t, e));
+    }) : (this.div.scrollLeft += t * 2, this.div.scrollTop += e * 2);
   }
   handleKeydownEscape() {
-    const appendMode = this._appendMode;
-    const appendingObject = this._appendingObject;
-    if (appendMode.mode === null && appendingObject !== null) {
-      this._logger.info("InnoFlowchart.handleKeydownEscape()", "Cancel Creating Connection");
-      this.cancelCreatingConnection();
-    } else if (appendMode.mode !== null) {
-      this._logger.info("InnoFlowchart.handleKeydownEscape()", "Clear Appending Data");
-      this.clearAppendMode();
-    } else {
-      this._logger.info("InnoFlowchart.handleKeydownEscape()", "releaseAllObj");
-      this.releaseAllObjects();
-    }
+    const t = this.#e, e = this.#t;
+    t.mode === null && e !== null ? (this._logger.info("InnoFlowchart.handleKeydownEscape()", "Cancel Creating Connection"), this.cancelCreatingConnection()) : t.mode !== null ? (this._logger.info("InnoFlowchart.handleKeydownEscape()", "Clear Appending Data"), this.clearAppendMode()) : (this._logger.info("InnoFlowchart.handleKeydownEscape()", "releaseAllObj"), this.releaseAllObjects());
   }
-};
-
-// src/js-components/flowchart/action/commands.ts
-var commands_exports = {};
-__export(commands_exports, {
-  AddCommand: () => AddCommand,
-  ChangedInfo: () => ChangedInfo,
-  DeleteCommand: () => DeleteCommand,
-  EditCommand: () => EditCommand,
-  RenderCommand: () => RenderCommand,
-  ZIndexCommand: () => ZIndexCommand
-});
+}
+const Za = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  AddCommand: ht,
+  ChangedInfo: et,
+  DeleteCommand: _e,
+  EditCommand: st,
+  RenderCommand: rr,
+  ZIndexCommand: ir
+}, Symbol.toStringTag, { value: "Module" }));
 export {
-  EVENT_TYPE,
-  IRFlowchart,
-  commands_exports as IRFlowchartCommands
+  D as EVENT_TYPE,
+  Ka as IRFlowchart,
+  Za as IRFlowchartCommands
 };
 //# sourceMappingURL=flowchart.js.map
