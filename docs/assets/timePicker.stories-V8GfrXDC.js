@@ -1,0 +1,43 @@
+import{j as e}from"./jsx-runtime-QvZ8i92b.js";import{D as c,a as o,L as s}from"./doc-content-DCRebTQc.js";import"./index-uubelm5h.js";import"./index-vAxXS4R5.js";const l={title:"JS Components/TimePicker"},i=()=>e.jsxs(c,{children:[e.jsx(o,{children:"IRTimePicker"}),e.jsxs("p",{children:[e.jsx("code",{children:"IRTimePicker"})," 컴포넌트를 활용하여 시/분을 선택하는 입력 컨트롤을 표현할 수 있습니다."]}),e.jsx(s,{fixedHeight:400,html:e.jsxs(e.Fragment,{children:[e.jsx("div",{id:"time_picker",style:{width:200}}),e.jsx("br",{}),e.jsx("div",{id:"time_picker2",style:{width:200}})]}),code:`
+import { IRTimePicker } from "./dist/index.js";
+
+new IRTimePicker({
+    contextElement: time_picker,
+    onChange: (value) => alert(value)
+})
+
+const timePicker = new IRTimePicker({
+    contextElement: time_picker2,
+    value: "16:00"
+})
+
+alert(timePicker.value)
+`})]});i.__docgenInfo={description:"",methods:[],displayName:"Basic"};var r,t,n;i.parameters={...i.parameters,docs:{...(r=i.parameters)==null?void 0:r.docs,source:{originalSource:`() => {
+  return <Doc>\r
+            <DocTitle>IRTimePicker</DocTitle>\r
+            <p><code>IRTimePicker</code> 컴포넌트를 활용하여 시/분을 선택하는 입력 컨트롤을 표현할 수 있습니다.</p>\r
+            <LiveEditor fixedHeight={400} html={<>\r
+                        <div id="time_picker" style={{
+        width: 200
+      }}></div>\r
+                        <br />\r
+                        <div id="time_picker2" style={{
+        width: 200
+      }}></div>\r
+                    </>} code={\`
+import { IRTimePicker } from "./dist/index.js";
+
+new IRTimePicker({
+    contextElement: time_picker,
+    onChange: (value) => alert(value)
+})
+
+const timePicker = new IRTimePicker({
+    contextElement: time_picker2,
+    value: "16:00"
+})
+
+alert(timePicker.value)
+\`} />\r
+        </Doc>;
+}`,...(n=(t=i.parameters)==null?void 0:t.docs)==null?void 0:n.source}}};const p=["Basic"];export{i as Basic,p as __namedExportsOrder,l as default};

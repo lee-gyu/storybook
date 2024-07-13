@@ -3,7 +3,7 @@ import { c as xn } from "./chunks/clone-CMP76bLO.js";
 import { L as _n } from "./chunks/logger-BzjoGhbK.js";
 import { i as vn, w as ar, r as cr } from "./chunks/in-memory-clipboard-CBDV7nbf.js";
 import { a as Pe, g as $e, b as Re, e as hr, d as lr } from "./chunks/image-HI2BJVWo.js";
-import { I as dr } from "./chunks/index-cpGHHlo1.js";
+import { I as dr } from "./chunks/index-E8PN8AEz.js";
 function ur(n, t) {
   return {
     forEach(e) {
@@ -3231,7 +3231,293 @@ class ha extends Ne {
       throw new Error(`There is no id you received in this group!'${t}'`);
   }
 }
-const la = /* @__PURE__ */ new Set([
+const ln = 5, Rt = 30, Lt = 30, la = /* @__PURE__ */ new Set([
+  "TopLeft",
+  "TopCenter",
+  "TopRight",
+  "BottomLeft",
+  "BottomCenter",
+  "BottomRight"
+]);
+class da extends Ne {
+  /**
+  * @param {NodeRenderer} renderer
+  */
+  constructor(t, e, r) {
+    super(t, e, r), this.renderer = e;
+  }
+  get startX() {
+    return this.x;
+  }
+  get startY() {
+    const e = this.data["node.commentTopLeft"] || this.data["node.commentTopCenter"] || this.data["node.commentTopRight"] ? ln + this.data["node.commentFontSize"] : 0;
+    return this.y - e;
+  }
+  get resizerEnabled() {
+    return this.data["node.resizerEnabled"] === !0;
+  }
+  get isConnectorEnabled() {
+    return this.data["node.connectorEnabled"] === !0;
+  }
+  get centerX() {
+    return this.x + this.width / 2;
+  }
+  get centerY() {
+    return this.y + this.height / 2;
+  }
+  get x() {
+    return this.data["node.x"];
+  }
+  get y() {
+    return this.data["node.y"];
+  }
+  get width() {
+    return this.data["node.width"];
+  }
+  get height() {
+    return this.data["node.height"];
+  }
+  get endX() {
+    return this.x + this.width;
+  }
+  get endY() {
+    const e = this.data["node.commentBottomLeft"] || this.data["node.commentBottomCenter"] || this.data["node.commentBottomRight"] ? ln + this.data["node.commentFontSize"] : 0;
+    return this.y + this.height + e;
+  }
+  set x(t) {
+    this.data["node.x"] = t;
+  }
+  set y(t) {
+    this.data["node.y"] = t;
+  }
+  set width(t) {
+    this.data["node.width"] = t;
+  }
+  set height(t) {
+    this.data["node.height"] = t;
+  }
+  create() {
+    super.create();
+  }
+  getPositionXY(t) {
+    switch (t) {
+      case "left":
+        return {
+          x: this.x,
+          y: this.y + this.height / 2
+        };
+      case "right":
+        return {
+          x: this.x + this.width,
+          y: this.y + this.height / 2
+        };
+      case "top":
+        return {
+          x: this.x + this.width / 2,
+          y: this.y
+        };
+      case "bottom":
+        return {
+          x: this.x + this.width / 2,
+          y: this.y + this.height
+        };
+      default:
+        throw new Error(`Invalid argument '${t}'`);
+    }
+  }
+  fitSizeOnText() {
+    const t = Zn(this.data), e = ve * 2;
+    this.width = t.width + e, this.height = t.height + e;
+  }
+  resizeToNorth(t) {
+    const e = -(this.height / 2), r = parseInt(e - t);
+    this.height + r >= Lt ? (this.y -= r, this.height = this.height + r) : (this.y += this.height - Lt, this.height = Lt);
+  }
+  resizeToWest(t) {
+    const e = -(this.width / 2), r = parseInt(e - t);
+    this.width + r >= Rt ? (this.x -= r, this.width = this.width + r) : (this.x += this.width - Rt, this.width = Rt);
+  }
+  addComment(t, e, r) {
+    if (!la.has(e))
+      throw new Error(`Unknown position value '${e}' Please call with 'TopLeft' or 'TopCenter' or 'TopRight' or 'BottomLeft' or 'BottomCenter' or 'BottomRight'`);
+    let i = `node.comment${e}`;
+    r && (i += `.${r}`), this.data[i] = t;
+  }
+  resizeToEast(t) {
+    this.width = Math.max(Rt, parseInt(t + this.width / 2));
+  }
+  resizeToSouth(t) {
+    this.height = Math.max(Lt, parseInt(t + this.height / 2));
+  }
+}
+const ua = '{"objects": []}', dn = {}, ue = {
+  saveData(n) {
+    ar(dn, n);
+  },
+  loadData() {
+    return cr(dn) ?? ua;
+  }
+};
+const fa = new _n("Flowchart::ObjectManager");
+class ga {
+  constructor() {
+    this.objMap = {
+      node: /* @__PURE__ */ new Map(),
+      connection: /* @__PURE__ */ new Map(),
+      group: /* @__PURE__ */ new Map()
+    };
+  }
+  getMap(t) {
+    const e = this.objMap[t];
+    if (e === void 0)
+      throw fa.error("ObjectManager.getMap()", `Unknown '${t}' type`), new Error(`Unknown '${t}' type`);
+    return e;
+  }
+  getObjCount() {
+    return this.objMap.node.size + this.objMap.connection.size + this.objMap.group.size;
+  }
+  add(t) {
+    const e = this.getMap(t.type);
+    if (e.has(t.id))
+      throw new Error(`Already has objId '${t.id}'`);
+    e.set(t.id, t);
+  }
+  remove(t) {
+    const e = this.getMap(t.type);
+    e.has(t.id) && e.delete(t.id);
+  }
+  *getMapIterator() {
+    yield* Object.values(this.objMap);
+  }
+  getNodeIterator() {
+    return this.objMap.node.values();
+  }
+  getConnectionIterator() {
+    return this.objMap.connection.values();
+  }
+  getGroupIterator() {
+    return this.objMap.group.values();
+  }
+  findOrNull(t) {
+    for (const e of this.getMapIterator())
+      if (e.has(t))
+        return e.get(t);
+    return null;
+  }
+  clear() {
+    Object.values(this.objMap).forEach((t) => t.clear());
+  }
+  *getAllObjIterator() {
+    for (const t of Object.values(this.objMap))
+      yield* t.values();
+  }
+  *getSelectedObjIterator() {
+    for (const t of this.getAllObjIterator())
+      t.isSelected && (yield t);
+  }
+  getParentGroupOrNull(t) {
+    for (const e of this.getGroupIterator())
+      if (e.hasObjId(t.id))
+        return e;
+    return null;
+  }
+  *getConnectedConnections(t) {
+    for (const e of this.getConnectionIterator())
+      !e.isTempObj && (e.sourceObjId === t || e.destinationObjId === t) && (yield e);
+  }
+  reassignId(t, e, r) {
+    const i = this.getMap(t.type);
+    i.delete(e), i.set(r, t);
+  }
+}
+class pa {
+  constructor() {
+    this.text = "", this.length = 0, this.width = 0, this.height = 0, this.x = 0, this.y = 0;
+  }
+}
+class or extends pa {
+  compareTo(t) {
+    return this.text === t.text && this.length === t.length && this.width === t.width && this.height === t.height && this.x === t.x && this.y === t.y;
+  }
+  update(t) {
+    this.text = t.text, this.length = t.length, this.width = t.width, this.height = t.height, this.x = t.x, this.y = t.y;
+  }
+  clear() {
+    this.text = "", this.length = 0, this.width = 0, this.height = 0, this.x = 0, this.y = 0;
+  }
+}
+const ya = 10, ma = 10, ba = 500, wa = 200;
+class xa {
+  constructor(t) {
+    this.tmpOut = !1, this.containerInterface = t, this.tooltip = {
+      objId: null,
+      mouseOverTimer: null,
+      mouseOutTimer: null,
+      g: null,
+      textCache: new or()
+    }, this.isFirefox = window.navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+  }
+  initCommonMouseOverOutAction(t) {
+    let e = 0, r = 0;
+    t.g.on("mousemove", (i) => {
+      e = i.offsetX + ya, r = i.offsetY + ma;
+    }).on("mouseover", () => {
+      t.isHovered = !0, this.containerInterface.getSelectNodeOnHover() && t.type === "node" && !this.containerInterface.isDragging() && (this.containerInterface.releaseAllObjects(), t.select(!0)), !(this.containerInterface.getTooltipHidden() || !t.canShowTooltip) && (this.tooltip.mouseOutTimer != null && this.tooltip.mouseOutTimer.stop(), this.tooltip.mouseOverTimer = te(() => {
+        t.isHovered && t.onEditing === !1 && t.id !== this.tooltip.objId && !this.containerInterface.getTooltipHidden() && this.createTooltipObj(t.data, e, r);
+      }, ba));
+    }).on("mouseout", () => {
+      t.isHovered = !1, !(this.containerInterface.getTooltipHidden() || !t.canShowTooltip) && (this.tooltip.mouseOverTimer != null && this.tooltip.mouseOverTimer.stop(), this.tooltip.mouseOutTimer = te(
+        () => void (!t.isHovered && this.removeTooltipObj()),
+        wa
+      ));
+    });
+  }
+  createTooltipObj(t, e, r) {
+    this.removeTooltipObj(), this.tooltip.objId = t.id, this.tooltip.g = this.containerInterface.getSvg().append("g").attr("class", "tooltip");
+    const i = this.containerInterface.getObjectOrNull(this.tooltip.objId);
+    if (i === null)
+      return;
+    const o = {
+      text: i.getDataOrNull("tooltipText"),
+      foreColor: i.getDataOrNull("tooltipForeColor"),
+      fontFamily: i.getDataOrNull("tooltipFontFamily"),
+      fontSize: i.getDataOrNull("tooltipFontSize"),
+      textDecoration: i.getDataOrNull("tooltipTextDecoration"),
+      padding: i.getDataOrNull("tooltipPadding"),
+      fill: i.getDataOrNull("tooltipFill"),
+      borderColor: i.getDataOrNull("tooltipBorderColor"),
+      borderWidth: i.getDataOrNull("tooltipBorderWidth"),
+      borderDash: i.getDataOrNull("tooltipBorderDash"),
+      width: 0
+    }, s = Zn(o);
+    o.width = Math.min(s.width, i.data.tooltipMaxWidth);
+    const a = ze(o);
+    this.tooltip.g.append("rect").attr("x", e).attr("y", r).attr("rx", "4").attr("width", o.width + o.padding * 2).attr("height", a.lineHeight * a.length + o.padding * 2).attr("fill", o.fill).attr("stroke", o.borderColor).attr("stroke-width", o.borderWidth).attr("stroke-dasharray", o.borderDash);
+    const c = this.tooltip.g.append("text").attr("fill", o.foreColor).attr("fontSize", o.fontSize).attr("text-decoration", o.textDecoration);
+    nr(
+      c,
+      a,
+      e + o.padding,
+      r + o.padding + o.fontSize,
+      o
+    );
+  }
+  removeTooltipObj() {
+    this.tooltip.g !== null && (this.tooltip.g.remove(), this.tooltip.objId = null, this.tooltip.g = null, this.tooltip.textCache.clear());
+  }
+  addMouseAction(t) {
+    this.initCommonMouseOverOutAction(t);
+  }
+}
+class un {
+  constructor(t, e, r, i) {
+    this.startX = t, this.startY = e, this.endX = r, this.endY = i;
+  }
+  isContained(t, e) {
+    return t >= this.startX && t <= this.endX && e >= this.startY && e <= this.endY;
+  }
+}
+const _a = /* @__PURE__ */ new Set([
   // 공용
   "id",
   "type",
@@ -3258,36 +3544,20 @@ const la = /* @__PURE__ */ new Set([
   "group.borderAlwaysAppearance",
   "group.margin"
 ]);
-class da {
+class va {
   constructor(t) {
     this.data = t;
   }
   get(t) {
-    return la.has(t) ? this.data[t] : this.data[`${t}${this._getPostFix()}`] ?? this.data[t];
+    return _a.has(t) ? this.data[t] : this.data[`${t}${this._getPostFix()}`] ?? this.data[t];
   }
   _getPostFix() {
     return this.data.isSelected ? ".selected" : this.data.isHovered ? ".hovered" : "";
   }
 }
-class ua {
-  constructor() {
-    this.text = "", this.length = 0, this.width = 0, this.height = 0, this.x = 0, this.y = 0;
-  }
-}
-class or extends ua {
-  compareTo(t) {
-    return this.text === t.text && this.length === t.length && this.width === t.width && this.height === t.height && this.x === t.x && this.y === t.y;
-  }
-  update(t) {
-    this.text = t.text, this.length = t.length, this.width = t.width, this.height = t.height, this.x = t.x, this.y = t.y;
-  }
-  clear() {
-    this.text = "", this.length = 0, this.width = 0, this.height = 0, this.x = 0, this.y = 0;
-  }
-}
 class De {
   constructor(t, e, r) {
-    this.data = t, this.className = e, this.containerInterface = r, this.textCache = new or(), this.dataWrapper = new da(t), this.container = r.getSvg().select(".container"), this.group = this.container.append("g").attr("class", `${t.type} ${e}`), this.objects = {
+    this.data = t, this.className = e, this.containerInterface = r, this.textCache = new or(), this.dataWrapper = new va(t), this.container = r.getSvg().select(".container"), this.group = this.container.append("g").attr("class", `${t.type} ${e}`), this.objects = {
       foreignObj: null,
       textarea: null,
       text: this.group.append("text").attr("class", "unselectable text--whitespace-pre").attr("text-anchor", "middle")
@@ -3397,7 +3667,7 @@ class De {
     this.group.remove();
   }
 }
-const ft = 6, fa = 2, ln = 5, dn = [
+const ft = 6, Oa = 2, fn = 5, gn = [
   ["TopLeft", "start"],
   ["TopCenter", "middle"],
   ["TopRight", "end"],
@@ -3422,7 +3692,7 @@ class wt extends De {
     return this.data["node.resizerEnabled"] === !0 && this.data.isSelected;
   }
   _createComments() {
-    dn.forEach((t) => {
+    gn.forEach((t) => {
       const [e, r] = t;
       this.comments.push(this.group.append("text").attr("class", `${e} unselectable`).attr("text-anchor", r));
     });
@@ -3442,7 +3712,7 @@ class wt extends De {
     }
   }
   _renderComments() {
-    const t = this.dataWrapper, e = t.get("node.commentFontFamily"), r = t.get("node.commentFontSize"), i = this.width / 2, o = this.height / 2, s = -(o + ln), a = o + ln + r, c = {
+    const t = this.dataWrapper, e = t.get("node.commentFontFamily"), r = t.get("node.commentFontSize"), i = this.width / 2, o = this.height / 2, s = -(o + fn), a = o + fn + r, c = {
       TopLeft: {
         x: -i,
         y: s
@@ -3468,7 +3738,7 @@ class wt extends De {
         y: a
       }
     };
-    dn.forEach((h, l) => {
+    gn.forEach((h, l) => {
       const f = c[h[0]];
       this.comments[l].attr("x", f.x).attr("y", f.y).attr("font-family", e).attr("font-size", r).text(() => this.dataWrapper.get(`node.comment${h[0]}`));
     });
@@ -3506,7 +3776,7 @@ class wt extends De {
     const e = this.dataWrapper.get("fontSize");
     return {
       x: 0,
-      y: e - (e + Ae) * t.length / 2 - fa
+      y: e - (e + Ae) * t.length / 2 - Oa
     };
   }
   _getLabelRect() {
@@ -3524,276 +3794,6 @@ class wt extends De {
   render() {
     const t = this.data["node.x"] + this.data["node.width"] / 2, e = this.data["node.y"] + this.data["node.height"] / 2;
     this.group.attr("transform", `translate(${t}, ${e})`), this.resizerVisibility ? this._resizerVisibleBackgroundRect() : this.backgroundRect.style("fill", "none"), super.render(), this._renderComments(), this._renderResizer(), this._renderConnector();
-  }
-}
-const un = 5, Rt = 30, Lt = 30, ga = /* @__PURE__ */ new Set([
-  "TopLeft",
-  "TopCenter",
-  "TopRight",
-  "BottomLeft",
-  "BottomCenter",
-  "BottomRight"
-]);
-class pa extends Ne {
-  /**
-  * @param {NodeRenderer} renderer
-  */
-  constructor(t, e, r) {
-    super(t, e, r), this.renderer = e;
-  }
-  get startX() {
-    return this.x;
-  }
-  get startY() {
-    const e = this.data["node.commentTopLeft"] || this.data["node.commentTopCenter"] || this.data["node.commentTopRight"] ? un + this.data["node.commentFontSize"] : 0;
-    return this.y - e;
-  }
-  get resizerEnabled() {
-    return this.data["node.resizerEnabled"] === !0;
-  }
-  get isConnectorEnabled() {
-    return this.data["node.connectorEnabled"] === !0;
-  }
-  get centerX() {
-    return this.x + this.width / 2;
-  }
-  get centerY() {
-    return this.y + this.height / 2;
-  }
-  get x() {
-    return this.data["node.x"];
-  }
-  get y() {
-    return this.data["node.y"];
-  }
-  get width() {
-    return this.data["node.width"];
-  }
-  get height() {
-    return this.data["node.height"];
-  }
-  get endX() {
-    return this.x + this.width;
-  }
-  get endY() {
-    const e = this.data["node.commentBottomLeft"] || this.data["node.commentBottomCenter"] || this.data["node.commentBottomRight"] ? un + this.data["node.commentFontSize"] : 0;
-    return this.y + this.height + e;
-  }
-  set x(t) {
-    this.data["node.x"] = t;
-  }
-  set y(t) {
-    this.data["node.y"] = t;
-  }
-  set width(t) {
-    this.data["node.width"] = t;
-  }
-  set height(t) {
-    this.data["node.height"] = t;
-  }
-  create() {
-    super.create();
-  }
-  getPositionXY(t) {
-    switch (t) {
-      case "left":
-        return {
-          x: this.x,
-          y: this.y + this.height / 2
-        };
-      case "right":
-        return {
-          x: this.x + this.width,
-          y: this.y + this.height / 2
-        };
-      case "top":
-        return {
-          x: this.x + this.width / 2,
-          y: this.y
-        };
-      case "bottom":
-        return {
-          x: this.x + this.width / 2,
-          y: this.y + this.height
-        };
-      default:
-        throw new Error(`Invalid argument '${t}'`);
-    }
-  }
-  fitSizeOnText() {
-    const t = Zn(this.data), e = ve * 2;
-    this.width = t.width + e, this.height = t.height + e;
-  }
-  resizeToNorth(t) {
-    const e = -(this.height / 2), r = parseInt(e - t);
-    this.height + r >= Lt ? (this.y -= r, this.height = this.height + r) : (this.y += this.height - Lt, this.height = Lt);
-  }
-  resizeToWest(t) {
-    const e = -(this.width / 2), r = parseInt(e - t);
-    this.width + r >= Rt ? (this.x -= r, this.width = this.width + r) : (this.x += this.width - Rt, this.width = Rt);
-  }
-  addComment(t, e, r) {
-    if (!ga.has(e))
-      throw new Error(`Unknown position value '${e}' Please call with 'TopLeft' or 'TopCenter' or 'TopRight' or 'BottomLeft' or 'BottomCenter' or 'BottomRight'`);
-    let i = `node.comment${e}`;
-    r && (i += `.${r}`), this.data[i] = t;
-  }
-  resizeToEast(t) {
-    this.width = Math.max(Rt, parseInt(t + this.width / 2));
-  }
-  resizeToSouth(t) {
-    this.height = Math.max(Lt, parseInt(t + this.height / 2));
-  }
-}
-const ya = '{"objects": []}', fn = {}, ue = {
-  saveData(n) {
-    ar(fn, n);
-  },
-  loadData() {
-    return cr(fn) ?? ya;
-  }
-};
-const ma = new _n("Flowchart::ObjectManager");
-class ba {
-  constructor() {
-    this.objMap = {
-      node: /* @__PURE__ */ new Map(),
-      connection: /* @__PURE__ */ new Map(),
-      group: /* @__PURE__ */ new Map()
-    };
-  }
-  getMap(t) {
-    const e = this.objMap[t];
-    if (e === void 0)
-      throw ma.error("ObjectManager.getMap()", `Unknown '${t}' type`), new Error(`Unknown '${t}' type`);
-    return e;
-  }
-  getObjCount() {
-    return this.objMap.node.size + this.objMap.connection.size + this.objMap.group.size;
-  }
-  add(t) {
-    const e = this.getMap(t.type);
-    if (e.has(t.id))
-      throw new Error(`Already has objId '${t.id}'`);
-    e.set(t.id, t);
-  }
-  remove(t) {
-    const e = this.getMap(t.type);
-    e.has(t.id) && e.delete(t.id);
-  }
-  *getMapIterator() {
-    yield* Object.values(this.objMap);
-  }
-  getNodeIterator() {
-    return this.objMap.node.values();
-  }
-  getConnectionIterator() {
-    return this.objMap.connection.values();
-  }
-  getGroupIterator() {
-    return this.objMap.group.values();
-  }
-  findOrNull(t) {
-    for (const e of this.getMapIterator())
-      if (e.has(t))
-        return e.get(t);
-    return null;
-  }
-  clear() {
-    Object.values(this.objMap).forEach((t) => t.clear());
-  }
-  *getAllObjIterator() {
-    for (const t of Object.values(this.objMap))
-      yield* t.values();
-  }
-  *getSelectedObjIterator() {
-    for (const t of this.getAllObjIterator())
-      t.isSelected && (yield t);
-  }
-  getParentGroupOrNull(t) {
-    for (const e of this.getGroupIterator())
-      if (e.hasObjId(t.id))
-        return e;
-    return null;
-  }
-  *getConnectedConnections(t) {
-    for (const e of this.getConnectionIterator())
-      !e.isTempObj && (e.sourceObjId === t || e.destinationObjId === t) && (yield e);
-  }
-  reassignId(t, e, r) {
-    const i = this.getMap(t.type);
-    i.delete(e), i.set(r, t);
-  }
-}
-const wa = 10, xa = 10, _a = 500, va = 200;
-class Oa {
-  constructor(t) {
-    this.tmpOut = !1, this.containerInterface = t, this.tooltip = {
-      objId: null,
-      mouseOverTimer: null,
-      mouseOutTimer: null,
-      g: null,
-      textCache: new or()
-    }, this.isFirefox = window.navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-  }
-  initCommonMouseOverOutAction(t) {
-    let e = 0, r = 0;
-    t.g.on("mousemove", (i) => {
-      e = i.offsetX + wa, r = i.offsetY + xa;
-    }).on("mouseover", () => {
-      t.isHovered = !0, this.containerInterface.getSelectNodeOnHover() && t.type === "node" && !this.containerInterface.isDragging() && (this.containerInterface.releaseAllObjects(), t.select(!0)), !(this.containerInterface.getTooltipHidden() || !t.canShowTooltip) && (this.tooltip.mouseOutTimer != null && this.tooltip.mouseOutTimer.stop(), this.tooltip.mouseOverTimer = te(() => {
-        t.isHovered && t.onEditing === !1 && t.id !== this.tooltip.objId && !this.containerInterface.getTooltipHidden() && this.createTooltipObj(t.data, e, r);
-      }, _a));
-    }).on("mouseout", () => {
-      t.isHovered = !1, !(this.containerInterface.getTooltipHidden() || !t.canShowTooltip) && (this.tooltip.mouseOverTimer != null && this.tooltip.mouseOverTimer.stop(), this.tooltip.mouseOutTimer = te(
-        () => void (!t.isHovered && this.removeTooltipObj()),
-        va
-      ));
-    });
-  }
-  createTooltipObj(t, e, r) {
-    this.removeTooltipObj(), this.tooltip.objId = t.id, this.tooltip.g = this.containerInterface.getSvg().append("g").attr("class", "tooltip");
-    const i = this.containerInterface.getObjectOrNull(this.tooltip.objId);
-    if (i === null)
-      return;
-    const o = {
-      text: i.getDataOrNull("tooltipText"),
-      foreColor: i.getDataOrNull("tooltipForeColor"),
-      fontFamily: i.getDataOrNull("tooltipFontFamily"),
-      fontSize: i.getDataOrNull("tooltipFontSize"),
-      textDecoration: i.getDataOrNull("tooltipTextDecoration"),
-      padding: i.getDataOrNull("tooltipPadding"),
-      fill: i.getDataOrNull("tooltipFill"),
-      borderColor: i.getDataOrNull("tooltipBorderColor"),
-      borderWidth: i.getDataOrNull("tooltipBorderWidth"),
-      borderDash: i.getDataOrNull("tooltipBorderDash"),
-      width: 0
-    }, s = Zn(o);
-    o.width = Math.min(s.width, i.data.tooltipMaxWidth);
-    const a = ze(o);
-    this.tooltip.g.append("rect").attr("x", e).attr("y", r).attr("rx", "4").attr("width", o.width + o.padding * 2).attr("height", a.lineHeight * a.length + o.padding * 2).attr("fill", o.fill).attr("stroke", o.borderColor).attr("stroke-width", o.borderWidth).attr("stroke-dasharray", o.borderDash);
-    const c = this.tooltip.g.append("text").attr("fill", o.foreColor).attr("fontSize", o.fontSize).attr("text-decoration", o.textDecoration);
-    nr(
-      c,
-      a,
-      e + o.padding,
-      r + o.padding + o.fontSize,
-      o
-    );
-  }
-  removeTooltipObj() {
-    this.tooltip.g !== null && (this.tooltip.g.remove(), this.tooltip.objId = null, this.tooltip.g = null, this.tooltip.textCache.clear());
-  }
-  addMouseAction(t) {
-    this.initCommonMouseOverOutAction(t);
-  }
-}
-class gn {
-  constructor(t, e, r, i) {
-    this.startX = t, this.startY = e, this.endX = r, this.endY = i;
-  }
-  isContained(t, e) {
-    return t >= this.startX && t <= this.endX && e >= this.startY && e <= this.endY;
   }
 }
 class Sa extends wt {
@@ -4493,11 +4493,11 @@ class Ka extends dr {
   #f = !1;
   #b = !1;
   #w = !1;
-  #k = !1;
+  #E = !1;
   #d = !1;
   #u = !1;
   #x = !1;
-  #E = !1;
+  #I = !1;
   #_ = !1;
   // DOM 감싸는 영역(wrapper) 레이아웃 사이즈
   #o = { width: 0, height: 0 };
@@ -4513,7 +4513,7 @@ class Ka extends dr {
     startX: 0,
     startY: 0
   };
-  #I = { curPosX: 0, curPosY: 0, isDragging: !1 };
+  #v = { curPosX: 0, curPosY: 0, isDragging: !1 };
   /**
    * @param {Object} param
    * @param {HTMLDivElement} param.contextElement
@@ -4545,7 +4545,7 @@ class Ka extends dr {
       }
       const c = `${a.ctrlKey ? "^" : ""}${a.key}`;
       c in this.keyMap && (this.keyMap[c](a), a.preventDefault());
-    }), this.addCoreElement(o), t.appendChild(o), this.#Y(o, s, e, r), this._containerInterface = {
+    }), this.addCoreElement(o), t.appendChild(o), this.#B(o, s, e, r), this._containerInterface = {
       // Manipulation API
       releaseAllObjects: () => this.releaseAllObjects(),
       addRenderObj: (a) => this.add(a),
@@ -4553,7 +4553,7 @@ class Ka extends dr {
       initDrag: (a) => this.#c(a),
       terminateDrag: (a) => this.#h(a),
       isDragging: () => this.#x,
-      changeObjRender: (a, c) => this.#L(a, c),
+      changeObjRender: (a, c) => this.#H(a, c),
       // Callback
       adjDragStartCallback: () => this.#kt(),
       adjDragEndCallback: (a, c, h) => this.#Et(a, c, h),
@@ -4573,7 +4573,7 @@ class Ka extends dr {
       getReadOnly: () => this.#n,
       isAppending: () => this.#e.mode === "append",
       getUUID: () => this.uuid
-    }, this._objectManager = new ba(), this._renderManager = new Da(), this._seqMng = new Pa(this._containerInterface), this._objMouseHandler = new Oa(this._containerInterface), this._actionController = new Vs(this._containerInterface, La), this._moveHandler = new oa(this._actionController, this._objectManager, this._containerInterface), this._resizeHandler = new sa(this._actionController, this._objectManager, this._containerInterface), this.theme = { ...$a }, this.defaultRule = ea, this.zoomTo(1), this.render();
+    }, this._objectManager = new ga(), this._renderManager = new Da(), this._seqMng = new Pa(this._containerInterface), this._objMouseHandler = new xa(this._containerInterface), this._actionController = new Vs(this._containerInterface, La), this._moveHandler = new oa(this._actionController, this._objectManager, this._containerInterface), this._resizeHandler = new sa(this._actionController, this._objectManager, this._containerInterface), this.theme = { ...$a }, this.defaultRule = ea, this.zoomTo(1), this.render();
   }
   get svgElement() {
     return this.d3Svg.node();
@@ -4609,7 +4609,7 @@ class Ka extends dr {
     return this.#y;
   }
   get traceMode() {
-    return this.#k;
+    return this.#E;
   }
   get singleSelection() {
     return this.#d;
@@ -4639,20 +4639,20 @@ class Ka extends dr {
     this.#y = t, this.classedOnSvg(t, "wheel-zoom"), this._logger.info(`wheelZoom property is changed to '${t}'`);
   }
   set traceMode(t) {
-    this._logger.logLevel = t ? "INFO" : "ERROR", this.#k = t, this.classedOnSvg(t, "trace"), this._logger.info(`traceMode property is changed to '${t}'`);
+    this._logger.logLevel = t ? "INFO" : "ERROR", this.#E = t, this.classedOnSvg(t, "trace"), this._logger.info(`traceMode property is changed to '${t}'`);
   }
   set singleSelection(t) {
     this.#d = t, this.classedOnSvg(t, "single-select"), this._logger.info(`singleSelection property is changed to '${t}'`);
   }
   set canvasMoveMode(t) {
-    this.#E = t, this.classedOnSvg(t, "canvas-move"), this._logger.info(`canvasMoveMode property is changed to '${t}'`);
+    this.#I = t, this.classedOnSvg(t, "canvas-move"), this._logger.info(`canvasMoveMode property is changed to '${t}'`);
   }
-  #Y(t, e, r, i) {
+  #B(t, e, r, i) {
     this._logger = ia(this.uuid), t.addEventListener("contextmenu", (c) => {
       c.preventDefault(), this.$emit(D.CONTEXT_MENU, c);
     });
     const o = isNaN(r) ? r : `${r}px`, s = isNaN(i) ? i : `${i}px`;
-    this.d3Div = V(t).style("width", o).style("height", s), this.d3Svg = V(e).on("mousemove", (c) => this.#tt(c)).on("click", (c) => this.#Mt(c)).call(it().filter((c) => c.button === 0 && this.#i === !1).on("start", (c) => this.#j(c)).on("drag", (c) => this.#j(c)).on("end", (c) => this.#j(c))), this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "flowchart-grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden"), this.d3Container = this.d3Svg.append("g").attr("class", "container");
+    this.d3Div = V(t).style("width", o).style("height", s), this.d3Svg = V(e).on("mousemove", (c) => this.#tt(c)).on("click", (c) => this.#Mt(c)).call(it().filter((c) => c.button === 0 && this.#i === !1).on("start", (c) => this.#k(c)).on("drag", (c) => this.#k(c)).on("end", (c) => this.#k(c))), this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "flowchart-grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden"), this.d3Container = this.d3Svg.append("g").attr("class", "container");
     const a = Bs().filter((c) => this.#y && c.type === "wheel" && c.ctrlKey).wheelDelta((c) => -c.deltaY * (c.deltaMode === 1 ? 0.05 : c.deltaMode ? 1 : 2e-3)).scaleExtent([bn, wn]).on("zoom", (c) => this.zoomTo(c.transform.k));
     this.d3Div.call(a).on("dblclick.zoom", null);
   }
@@ -4685,7 +4685,7 @@ class Ka extends dr {
   */
   moveWrapper(t) {
     try {
-      this._moveHandler.moveStartHandler(), t(), this.#S();
+      this._moveHandler.moveStartHandler(), t(), this.#C();
     } finally {
       this._moveHandler.moveEndHandler(), this.refreshSvgSize();
     }
@@ -4754,7 +4754,7 @@ class Ka extends dr {
         r = new ca(t, o, this._containerInterface);
         break;
       case "node":
-        r = new pa(t, o, this._containerInterface);
+        r = new da(t, o, this._containerInterface);
         break;
       case "group":
         r = new ha(t, o, this._containerInterface);
@@ -4765,7 +4765,7 @@ class Ka extends dr {
     return this._objectManager.add(r), r.create(), this.refreshSvgSize(), e !== void 0 && this.d3Container.node().insertBefore(r.g.node(), this.#dt(e)), t.temp ? this._logger.debug(
       "InnoFlowchart.add()",
       `created temp obj id is '${r.id}'`
-    ) : (this.#N(r), this.emitChangedStatus(), this.$emit(D.NEW_OBJECT, r), this._logger.debug("InnoFlowchart.add()", `created obj id is '${r.id}'`)), r;
+    ) : (this.#D(r), this.emitChangedStatus(), this.$emit(D.NEW_OBJECT, r), this._logger.debug("InnoFlowchart.add()", `created obj id is '${r.id}'`)), r;
   }
   remove(t) {
     if (t == null)
@@ -4813,7 +4813,7 @@ class Ka extends dr {
    * @param  {...RenderObject} objects
    */
   recordNewObjectsAction(...t) {
-    this._actionController.addAction(new ht(at(t))), this.#S();
+    this._actionController.addAction(new ht(at(t))), this.#C();
   }
   emitChangedStatus() {
     this.#u || (this.#u = !0, this.classedOnSvg(!0, "changed"));
@@ -4834,11 +4834,19 @@ class Ka extends dr {
   /**
    * @param {ChangedInfo[]} changedInfoList
    */
-  #B(t) {
+  #M(t) {
     t.forEach((e) => {
       for (const r of e.propList)
         r.oldValue === void 0 && (r.oldValue = e.objData[r.key]), e.objData[r.key] = r.newValue;
     }), this._actionController.addAction(new st(t));
+  }
+  /**
+   * builder에서 사용함, 다만 내부 함수로 사용하므로 외부에서 사용하지 않도록 주의
+   * @param {ChangedInfo[]} changedInfoList
+   * @deprecated
+   */
+  _editObjProp(t) {
+    return this.#M(t);
   }
   /**
    * @param {String} key
@@ -4853,7 +4861,7 @@ class Ka extends dr {
           newValue: e
         }
       ]));
-    this.#B(r);
+    this.#M(r);
   }
   /**
    * append 모드로 전환
@@ -4869,7 +4877,7 @@ class Ka extends dr {
       );
       return;
     }
-    if (this.#A({ mode: t, data: e }))
+    if (this.#z({ mode: t, data: e }))
       this.clearAppendMode(), this.#e.mode = t, this.#e.data = e, this.classedOnSvg(!0, `is-appending-${e.type}`), this._logger.info(
         "InnoFlowchart.append()",
         "Append Mode",
@@ -4899,7 +4907,7 @@ class Ka extends dr {
     const t = this.getWrapperSize();
     this.#o.width = parseInt(t.width), this.#o.height = parseInt(t.height), this.refreshSvgSize();
   }
-  #M() {
+  #T() {
     const t = this.getTransform().k, e = {
       top: 999999999,
       left: 999999999,
@@ -4915,7 +4923,7 @@ class Ka extends dr {
     this.#_ || (t += this.#o.width / 2, e += this.#o.height / 2), this.d3Svg.attr("width", Math.max(this.#o.width, t)).attr("height", Math.max(this.#o.height, e));
   }
   refreshSvgSize() {
-    const t = this.#M();
+    const t = this.#T();
     this.#g.width = t.right, this.#g.height = t.bottom, this._logger.info("InnoFlowchart.refreshSvgSize()", t), this.updateSvgSize();
   }
   /**
@@ -4965,7 +4973,7 @@ class Ka extends dr {
   * @param {RenderObject} obj
   * @param {String} event
   */
-  #v(t, e) {
+  #O(t, e) {
     this._logger.info(`InnoFlowchart.event.emit.${e}`, t), t.select(!0), this.$emit(e, t);
   }
   /**
@@ -5038,7 +5046,7 @@ class Ka extends dr {
   * @param {Number} x
   * @param {Number} y
   */
-  #T(t, e) {
+  #A(t, e) {
     const r = 1 / this.getTransform().k;
     return {
       x: t * r,
@@ -5052,7 +5060,7 @@ class Ka extends dr {
   * @param {{}} param.data
   * @returns
   */
-  #A({ mode: t, data: e }) {
+  #z({ mode: t, data: e }) {
     switch (t) {
       case "append":
         return e.type === "node" || e.type === "connection";
@@ -5103,16 +5111,16 @@ class Ka extends dr {
   }
   #tt(t) {
     const e = t.offsetX, r = t.offsetY;
-    if (this.#A(this.#e)) {
+    if (this.#z(this.#e)) {
       switch (this.#e.mode) {
         case "append":
-          this.#t === null ? this.#Q() : this.#t.type === "node" && this.#R(e, r);
+          this.#t === null ? this.#Q() : this.#t.type === "node" && this.#L(e, r);
           break;
       }
       this.d3Div.node().focus();
     }
   }
-  #z(t) {
+  #N(t) {
     const e = [], r = t === "front" ? this._objectManager.getObjCount() : 0;
     this._logger.info("InnoFlowchart.setZIndex()", `new z-index = ${r}`);
     for (const i of this.getSelectedObjects())
@@ -5127,20 +5135,20 @@ class Ka extends dr {
   * bring selected objects to front
   */
   bringToFront() {
-    this._logger.info("InnoFlowchart.bringToFront()"), this.#z("front");
+    this._logger.info("InnoFlowchart.bringToFront()"), this.#N("front");
   }
   /**
   * bring selected objects to back
   */
   bringToBack() {
-    this._logger.info("InnoFlowchart.bringToBack()"), this.#z("back");
+    this._logger.info("InnoFlowchart.bringToBack()"), this.#N("back");
   }
   /**
    * move selected objects by x, y
    * @param {Number} x
    * @param {Number} y
    */
-  #O(t, e) {
+  #S(t, e) {
     for (const r of this._objectManager.getSelectedObjIterator())
       r.moveTo(t, e);
   }
@@ -5202,7 +5210,7 @@ class Ka extends dr {
       if (this.#n)
         return;
       const c = a.x - o, h = a.y - s, l = c - t.x, f = h - t.y;
-      !e && Math.abs(r - a.x) + Math.abs(i - a.y) > 8 && (e = !0, this._moveHandler.moveStartHandler(), this.#c("drag-node-move")), e && this.#O(l, f);
+      !e && Math.abs(r - a.x) + Math.abs(i - a.y) > 8 && (e = !0, this._moveHandler.moveStartHandler(), this.#c("drag-node-move")), e && this.#S(l, f);
     }).on("end", (a) => {
       const c = a.sourceEvent;
       if (e)
@@ -5210,7 +5218,7 @@ class Ka extends dr {
       else {
         if (this.#i)
           return;
-        this.#a(c.ctrlKey) && this.releaseAllObjects(t), this.#v(t, D.CLICK_NODE);
+        this.#a(c.ctrlKey) && this.releaseAllObjects(t), this.#O(t, D.CLICK_NODE);
       }
     }));
   }
@@ -5222,7 +5230,7 @@ class Ka extends dr {
       const r = Zs(e.attr("class"));
       e.call(it().filter((i) => i.button === 0 && this.#n === !1).on("start", (i) => {
         const o = t.x + t.width / 2 + i.x, s = t.y + t.height / 2 + i.y, a = this.#e.data.render, c = t.getPositionXY(r);
-        this.#c("drag-node-connector"), this.#F(c.x, c.y, o, s, {
+        this.#c("drag-node-connector"), this.#X(c.x, c.y, o, s, {
           type: "connection",
           render: a,
           "connection.sourceObjId": t.id,
@@ -5232,9 +5240,9 @@ class Ka extends dr {
         if (this.#t === null)
           return;
         const o = t.x + t.width / 2 + i.x, s = t.y + t.height / 2 + i.y;
-        this.#e.dragged = !0, this.#H(o, s);
+        this.#e.dragged = !0, this.#F(o, s);
       }).on("end", () => {
-        this.#t !== null && (this.#X(), this.#h("drag-node-connector"));
+        this.#t !== null && (this.#Y(), this.#h("drag-node-connector"));
       }));
     }
   }
@@ -5256,14 +5264,14 @@ class Ka extends dr {
    * @param {boolean} releaseBefore
    */
   #At(t, e) {
-    this.#a(e) && this.releaseAllObjects(t), this.#v(t, "clickConnection");
+    this.#a(e) && this.releaseAllObjects(t), this.#O(t, "clickConnection");
   }
   /**
    * @param {Connection} con
    */
   #st(t) {
     t.g.on("click", (e) => {
-      this.#a(e.ctrlKey) && this.releaseAllObjects(t), this.#v(t, "clickConnection");
+      this.#a(e.ctrlKey) && this.releaseAllObjects(t), this.#O(t, "clickConnection");
     }), t.g.on("dblclick", () => {
       t.data.editable && this.#n === !1 && t.renderer.editLabelMode(), this._logger.info("InnoFlowchart.event.emit.dblClickConnection", t), this.$emit(D.DOUBLE_CLICK_CONNECTION, t);
     });
@@ -5288,7 +5296,7 @@ class Ka extends dr {
           const c = this.getObjectOrNull(t.destinationObjId);
           (c === null || c.isSelected === !1) && (t.destinationObjId = null);
         }
-        this.#O(s, a), e = o.x, r = o.y;
+        this.#S(s, a), e = o.x, r = o.y;
       }
     }).on("end", () => {
       this._moveHandler.moveEndHandler(), this.#h("drag-con-move");
@@ -5298,7 +5306,7 @@ class Ka extends dr {
     const e = (r, i, o) => it().filter((s) => s.button === 0 && this.#i === !1 && this.#n === !1).on("start", () => {
       this._moveHandler.moveStartHandler(), this.#c("drag-con-connector");
     }).on("drag", (s) => {
-      const a = this.#C(s.x, s.y, this.#s), c = o === "start" ? t.firstPoint : t.endPoint;
+      const a = this.#j(s.x, s.y, this.#s), c = o === "start" ? t.firstPoint : t.endPoint;
       a.node === null ? (t[r] = null, t[i] = null, c.x = s.x, c.y = s.y) : (t[r] = a.node.id, this.#s ? this.#p(t) : t[i] = a.pos), t.renderType === "elbow" && t.renderer.refreshAdjustList(), t.render();
     }).on("end", () => {
       this._moveHandler.moveEndHandler(), this.#h("drag-con-connector");
@@ -5320,7 +5328,7 @@ class Ka extends dr {
     t.g.call(it().filter((a) => a.button === 0 && this.#i === !1 && this.#n === !1).on("start", (a) => {
       this.#a(a.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = a.x, i = a.y, o = a.x, s = a.y, t.select();
     }).on("drag", (a) => {
-      !e && Math.abs(r - a.x) + Math.abs(i - a.y) > Ha && (e = !0, this._moveHandler.moveStartHandler(), this.#c("drag-group-move")), e && (this.#O(a.x - o, a.y - s), o = a.x, s = a.y);
+      !e && Math.abs(r - a.x) + Math.abs(i - a.y) > Ha && (e = !0, this._moveHandler.moveStartHandler(), this.#c("drag-group-move")), e && (this.#S(a.x - o, a.y - s), o = a.x, s = a.y);
     }).on("end", () => {
       this._moveHandler.moveEndHandler(), this.#h("drag-group-move");
     }));
@@ -5328,7 +5336,7 @@ class Ka extends dr {
   /**
   * @param {RenderObject} obj
   */
-  #N(t) {
+  #D(t) {
     switch (this.#et(t), t.type) {
       case "node":
         this.#ot(t), t.render();
@@ -5353,9 +5361,9 @@ class Ka extends dr {
   * @param {String} dragEvent
   */
   #h(t) {
-    this.#x = !1, this.#e.dragged = !1, this.classedOnSvg(!1, t), this.clearAppendMode(), this.#S(), this.refreshSvgSize(), this.#s && this.updateShortestNodes();
+    this.#x = !1, this.#e.dragged = !1, this.classedOnSvg(!1, t), this.clearAppendMode(), this.#C(), this.refreshSvgSize(), this.#s && this.updateShortestNodes();
   }
-  #S() {
+  #C() {
     const t = {
       x: 0,
       y: 0,
@@ -5495,11 +5503,11 @@ class Ka extends dr {
   * @param {Boolean} simpleMode
   * @returns
   */
-  #C(t, e, r = !1) {
+  #j(t, e, r = !1) {
     for (const i of this._objectManager.getNodeIterator())
       if (i.isConnectorEnabled)
         if (r) {
-          if (new gn(i.x, i.y, i.endX, i.endY).isContained(t, e))
+          if (new un(i.x, i.y, i.endX, i.endY).isContained(t, e))
             return {
               node: i,
               pos: "left"
@@ -5507,7 +5515,7 @@ class Ka extends dr {
         } else
           for (const o of Xt) {
             const s = i.getPositionXY(o);
-            if (new gn(
+            if (new un(
               s.x - Ft,
               s.y - Ft,
               s.x + Ft,
@@ -5560,11 +5568,11 @@ class Ka extends dr {
    */
   async copyToClipboard(t = "image/png") {
     this.releaseAllObjects();
-    const e = await Pe($e(this.svgElement)), r = await Re(e, t, this.#D(), mn), i = await hr(r);
+    const e = await Pe($e(this.svgElement)), r = await Re(e, t, this.#P(), mn), i = await hr(r);
     await Ra(i);
   }
-  #D() {
-    const { top: t, left: e, bottom: r, right: i } = this.#M();
+  #P() {
+    const { top: t, left: e, bottom: r, right: i } = this.#T();
     return {
       x: e - 1,
       y: t - 1,
@@ -5590,7 +5598,7 @@ class Ka extends dr {
    */
   async getBlob(t = "image/png") {
     const e = await Pe($e(this.svgElement));
-    return await Re(e, t, this.#D(), mn);
+    return await Re(e, t, this.#P(), mn);
   }
   /**
   * clear info for appending or pasting objects
@@ -5598,7 +5606,7 @@ class Ka extends dr {
   clearAppendMode() {
     this.#e.data && this.classedOnSvg(!1, `is-appending-${this.#e.data.type}`), this.#t !== null && this.remove(this.#t), this.#e.mode = null, this.#e.data = null, this.#e.dragged = !1, this.#t = null;
   }
-  #P() {
+  #$() {
     const t = [];
     for (const e of this._objectManager.getSelectedObjIterator())
       e.type === "group" && (e.data.objectList = Array.from(e.objectSet)), t.push(e.data);
@@ -5608,10 +5616,10 @@ class Ka extends dr {
     };
   }
   cut() {
-    this._logger.info("InnoFlowchart.cut()"), this.getSelectedObjects().length !== 0 && (ue.saveData(JSON.stringify(this.#P())), this.removeSelected());
+    this._logger.info("InnoFlowchart.cut()"), this.getSelectedObjects().length !== 0 && (ue.saveData(JSON.stringify(this.#$())), this.removeSelected());
   }
   copy() {
-    this._logger.info("InnoFlowchart.copy()"), ue.saveData(JSON.stringify(this.#P()));
+    this._logger.info("InnoFlowchart.copy()"), ue.saveData(JSON.stringify(this.#$()));
   }
   #ut(t) {
     if (t.objects.length === 0)
@@ -5712,7 +5720,7 @@ class Ka extends dr {
       const s = this.#ft(e, r);
       t.sourcePos = s.sourcePos, t.destinationPos = s.destinationPos;
     } else
-      e === null ? t.destinationPos = this.#$(t.firstPoint, r) : t.sourcePos = this.#$(t.endPoint, e);
+      e === null ? t.destinationPos = this.#R(t.firstPoint, r) : t.sourcePos = this.#R(t.endPoint, e);
     if (i !== t.sourcePos || o !== t.destinationPos) {
       const s = new et(t.data, [
         {
@@ -5753,7 +5761,7 @@ class Ka extends dr {
   * @param {Node} targetNode
   * @returns
   */
-  #$(t, e) {
+  #R(t, e) {
     const r = {
       dist: Number.MAX_VALUE,
       pos: null
@@ -5816,8 +5824,8 @@ class Ka extends dr {
   * @param {Number} x
   * @param {Number} y
   */
-  #R(t, e) {
-    const r = this.#T(t, e);
+  #L(t, e) {
+    const r = this.#A(t, e);
     this.#t.data.opacity === 0 && (this.#t.data.opacity = 0.5), this.#t.x = r.x - this.#t.width / 2, this.#t.y = r.y - this.#t.height / 2;
   }
   #l(t, e, r = !1) {
@@ -5857,21 +5865,21 @@ class Ka extends dr {
   }
   #mt(t) {
     const { offsetX: e, offsetY: r } = t.sourceEvent;
-    this.classedOnSvg(!0, "is-grabbing"), this._cursorStatus = {
+    this.classedOnSvg(!0, "is-grabbing"), this.#v = {
       curPosX: e,
       curPosY: r,
       isDragging: !0
     };
   }
   #bt(t) {
-    const { curPosX: e, curPosY: r, isDragging: i } = this.#I;
+    const { curPosX: e, curPosY: r, isDragging: i } = this.#v;
     if (!i)
       return;
     const { target: o, offsetX: s, offsetY: a } = t.sourceEvent;
     o === this.d3Svg.node() && this.div.scrollBy(e - s, r - a);
   }
   #wt(t) {
-    this.#I.isDragging = !1, this.classedOnSvg(!1, "is-grabbing"), t.sourceEvent.target === this.d3Svg.node() && this.releaseAllObjects();
+    this.#v.isDragging = !1, this.classedOnSvg(!1, "is-grabbing"), t.sourceEvent.target === this.d3Svg.node() && this.releaseAllObjects();
   }
   #xt() {
     switch (this.#e.mode) {
@@ -5891,7 +5899,7 @@ class Ka extends dr {
     return {
       start: () => {
       },
-      drag: () => this.#R(t.x + this.div.scrollLeft, t.y + this.div.scrollTop),
+      drag: () => this.#L(t.x + this.div.scrollLeft, t.y + this.div.scrollTop),
       end: () => this.#xt()
     };
   }
@@ -5899,14 +5907,14 @@ class Ka extends dr {
     return {
       start: () => {
         const e = this.#l(t.x, t.y, !0);
-        this.#F(e.x, e.y, e.x, e.y, this.#e.data), this.#e.dragged = !1;
+        this.#X(e.x, e.y, e.x, e.y, this.#e.data), this.#e.dragged = !1;
       },
       drag: () => {
         const e = this.#l(t.x, t.y, !0);
-        this.#H(e.x, e.y, this.#t.renderType), this.#e.dragged = !0;
+        this.#F(e.x, e.y, this.#t.renderType), this.#e.dragged = !0;
       },
       end: () => {
-        this.#X(), this.clearAppendMode();
+        this.#Y(), this.clearAppendMode();
       }
     };
   }
@@ -5927,11 +5935,11 @@ class Ka extends dr {
   #Ct(t) {
     return this.#e.data.type === "node" ? this.#_t(t) : this.#vt(t);
   }
-  #j(t) {
+  #k(t) {
     (() => {
       if (this.#e.mode === "append")
         return this.#Ct(t);
-      if (this.#E)
+      if (this.#I)
         return this.#St(t);
       if (this.#e.mode === null)
         return this.#Ot(t);
@@ -5943,8 +5951,8 @@ class Ka extends dr {
       throw new Error("There is no creatingConnection obj");
     this.clearAppendMode();
   }
-  #L(t, e) {
-    this._renderManager.changeRender(t, e, this._containerInterface), this.#N(t);
+  #H(t, e) {
+    this._renderManager.changeRender(t, e, this._containerInterface), this.#D(t);
   }
   /**
   * 개체의 렌더링 타입을 변경합니다.
@@ -5953,7 +5961,7 @@ class Ka extends dr {
   */
   changeRender(t, e) {
     const r = t.renderType;
-    this.#L(t, e), this._actionController.addAction(new rr(t, r, e));
+    this.#H(t, e), this._actionController.addAction(new rr(t, r, e));
   }
   /**
   * @param {{}} objData
@@ -5979,8 +5987,8 @@ class Ka extends dr {
   * @param {Number} x
   * @param {Number} y
   */
-  #H(t, e) {
-    const r = this.#C(
+  #F(t, e) {
+    const r = this.#j(
       t,
       e,
       this.#s
@@ -6020,7 +6028,7 @@ class Ka extends dr {
    * @param {PointerEvent} ev
    */
   #Mt(t) {
-    this.$emit(D.CLICK, this.#T(t.offsetX, t.offsetY));
+    this.$emit(D.CLICK, this.#A(t.offsetX, t.offsetY));
   }
   /**
   * @param {Number} x
@@ -6029,11 +6037,11 @@ class Ka extends dr {
   * @param {Number} toY
   * @param {{}} data
   */
-  #F(t, e, r, i, o) {
+  #X(t, e, r, i, o) {
     if (this.#t !== null)
       throw new Error("Already created an appending obj!!");
     if (!o["connection.sourceObjId"]) {
-      const a = this.#C(t, e);
+      const a = this.#j(t, e);
       a.node !== null && (o["connection.sourceObjId"] = a.node.id, o["connection.sourcePos"] = a.pos);
     }
     const s = {
@@ -6049,7 +6057,7 @@ class Ka extends dr {
     };
     this.#t = this.add(s);
   }
-  #X() {
+  #Y() {
     let t = this.#t.data;
     this.#e.dragged === !1 && (t = na(this.#t));
     const e = this.add({
