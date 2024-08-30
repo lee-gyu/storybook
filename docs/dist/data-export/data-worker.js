@@ -1,4 +1,4 @@
-import { E as s } from "../chunks/excel-k9kYkFof.js";
+import { E as s } from "../chunks/excel-DtpraY9m.js";
 const o = [];
 function a(t) {
   return t.format === "excel";

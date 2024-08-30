@@ -1,5 +1,5 @@
-import "./chunks/_init-CqtFEZw2.js";
-import { I as yn } from "./chunks/index-E8PN8AEz.js";
+import "./chunks/_init-B0xIPnhF.js";
+import { I as yn } from "./chunks/index-DDbI2a2F.js";
 /*!
  * @kurkle/color v0.3.2
  * https://github.com/kurkle/color#readme
@@ -1217,8 +1217,7 @@ function vo(i, t, e, s, n) {
   if (n === "middle") {
     const o = (t.x + e.x) / 2;
     i.lineTo(o, t.y), i.lineTo(o, e.y);
-  } else
-    n === "after" != !!s ? i.lineTo(t.x, e.y) : i.lineTo(e.x, t.y);
+  } else n === "after" != !!s ? i.lineTo(t.x, e.y) : i.lineTo(e.x, t.y);
   i.lineTo(e.x, e.y);
 }
 function Mo(i, t, e, s) {
@@ -3066,8 +3065,7 @@ function Lr(i, t, e, s) {
           };
         }
       }
-    } else
-      return l(o, t, e);
+    } else return l(o, t, e);
   }
   return {
     lo: 0,
@@ -3783,15 +3781,13 @@ function ma(i, t, e, s) {
     if (u = X(s, o, a), O(e)) {
       const b = Object.keys(e)[0], x = e[b];
       g = h[b].getPixelForValue(x) + p - t;
-    } else
-      e === "center" ? g = (c.bottom + c.top) / 2 + p - t : g = is(i, e, t);
+    } else e === "center" ? g = (c.bottom + c.top) / 2 + p - t : g = is(i, e, t);
     f = a - o;
   } else {
     if (O(e)) {
       const b = Object.keys(e)[0], x = e[b];
       u = h[b].getPixelForValue(x) - m + t;
-    } else
-      e === "center" ? u = (c.left + c.right) / 2 - m + t : u = is(i, e, t);
+    } else e === "center" ? u = (c.left + c.right) / 2 - m + t : u = is(i, e, t);
     g = X(s, r, n), d = e === "left" ? -N : N;
   }
   return {
@@ -6010,12 +6006,11 @@ class bs extends mt {
         s,
         this
       ], this);
-    } else
-      s && R(e.onClick, [
-        t,
-        s,
-        this
-      ], this);
+    } else s && R(e.onClick, [
+      t,
+      s,
+      this
+    ], this);
   }
 }
 function ol(i, t, e, s, n) {
@@ -7703,8 +7698,7 @@ class xn extends yn {
     super({ contextElement: t }), this.canvas = document.createElement("canvas"), this.contextElement.appendChild(this.canvas), this.addCoreElement(this.canvas);
   }
   get chartObj() {
-    if (!this.chart)
-      throw new Error("No chart instance!");
+    if (!this.chart) throw new Error("No chart instance!");
     return this.chart;
   }
   set yAxisVisible(t) {

@@ -1,168 +1,151 @@
-import "./chunks/_init-CqtFEZw2.js";
-import { a as v, g as x, b as A, d as O, f as $, s as R } from "./chunks/floating-B9y9ooPB.js";
-import { k as Q, c as ee, l as te, j as oe, o as ne, r as ae, u as ie } from "./chunks/floating-B9y9ooPB.js";
-import { o as M, Y as P, g as F, a4 as L, b9 as D } from "./chunks/rx-state-DkUPCYES.js";
-import { a5 as se, a8 as le, e as ce, a0 as de, c as me, a as ue, U as ge, b as pe, d as fe, $ as he, R as Ee, a7 as ve, a6 as Le, a1 as Te, X as Ce, a3 as _e, r as Ie, h as ye, a2 as be, s as we, K as Se } from "./chunks/rx-state-DkUPCYES.js";
-import { u as xe } from "./chunks/uuid-P7jWfzzn.js";
-import { a as Oe, c as $e, d as Re, g as Me, b as Pe } from "./chunks/image-HI2BJVWo.js";
-import { L as De } from "./chunks/logger-BzjoGhbK.js";
-const m = "loading", p = {
-  loading: {
-    "&": m,
-    primary: `${m}--primary`,
-    secondary: `${m}--secondary`,
-    tertiary: `${m}--tertiary`
-  },
-  loadingItems: {
-    "&": `${m}__items`
-  },
-  loadingDotItem: {
-    "&": `${m}__dot-item`
-  }
-}, N = 4, k = () => {
+import { aU as p } from "./chunks/_init-B0xIPnhF.js";
+import { q as x, a as E, g as H, b as O, d as R, f as M, s as P } from "./chunks/floating-COQGiF1T.js";
+import { m as te, c as oe, n as ne, l as ie, o as ae, p as re, r as se, u as le } from "./chunks/floating-COQGiF1T.js";
+import { m as A, f as N, q as v, S as k } from "./chunks/rx-state-R2lsZxJ3.js";
+import { C as de, R as me, e as ue, o as pe, c as fe, a as ge, j as he, g as Ee, b as ve, d as Le, n as Te, i as Ce, s as _e, r as Ie, k as be, p as Se, h as we, x as ye } from "./chunks/rx-state-R2lsZxJ3.js";
+import { v as U } from "./chunks/v4-Cgt9uYzN.js";
+import { a as He, c as Oe, d as Re, g as Me, b as Pe } from "./chunks/image-Y3tFDdOU.js";
+import { L as Ne } from "./chunks/logger-BzjoGhbK.js";
+const Q = () => U(), $ = 4, B = () => {
   const n = document.createElement("div"), t = document.createElement("div");
-  n.className = p.loading["&"], t.className = p.loadingItems["&"];
-  for (let o = 0; o < N; o++)
-    t.appendChild(M("i", p.loadingDotItem["&"]));
+  n.className = p.base, t.className = p.items;
+  for (let o = 0; o < $; o++)
+    t.appendChild(x({ tag: "i", className: p.item }).element);
   return n.appendChild(t), n;
-}, U = 150, T = /* @__PURE__ */ (() => {
+}, D = 150, L = /* @__PURE__ */ (() => {
   let n = null;
   function t() {
     const o = [];
-    let r = !1, l = -1;
-    function e(i) {
-      cancelAnimationFrame(l), l = requestAnimationFrame(() => {
-        o.forEach((s) => s.updatePos());
-      });
+    let r = !1;
+    function s(e) {
+      o.forEach((a) => a.updatePos());
     }
     return {
-      addLoadingElement(i) {
-        o.findIndex((c) => c === i) === -1 && o.push(i), r || (window.addEventListener("scroll", e, { capture: !0 }), r = !0);
+      addLoadingElement(e) {
+        o.findIndex((l) => l === e) === -1 && o.push(e), r || (window.addEventListener("scroll", s, { capture: !0 }), r = !0);
       },
-      removeLoadingElement(i) {
-        const s = o.findIndex((c) => c === i);
-        s !== -1 && o.splice(s, 1), o.length === 0 && (window.removeEventListener("scroll", e, { capture: !0 }), r = !1);
+      removeLoadingElement(e) {
+        const a = o.findIndex((l) => l === e);
+        a !== -1 && o.splice(a, 1), o.length === 0 && (window.removeEventListener("scroll", s, { capture: !0 }), r = !1);
       }
     };
   }
   return () => n || (n = t());
 })();
-class B {
+class F {
   constructor(t) {
     this._loadingElement = null, this._timeoutHandler = -1, this._refElement = t.refElement, this._onClick = t.onClick, this._startDelay = t.startDelay;
   }
   getLoadingElement() {
-    return this._loadingElement || (this._loadingElement = k(), this._loadingElement.onclick = this._onClick), this._loadingElement;
+    return this._loadingElement || (this._loadingElement = B(), this._loadingElement.onclick = this._onClick), this._loadingElement;
   }
   updatePos() {
     const t = this._refElement.getBoundingClientRect(), o = this.getLoadingElement();
     o.style.top = `${t.y}px`, o.style.left = `${t.x}px`, o.style.height = `${t.height}px`, o.style.width = `${t.width}px`;
   }
   visibleAction() {
-    this._refElement.after(this.getLoadingElement()), requestAnimationFrame(() => {
-      this.getLoadingElement().classList.add("is-visible");
-    });
+    this._refElement.after(this.getLoadingElement());
   }
   show() {
-    this.updatePos(), T().addLoadingElement(this), clearTimeout(this._timeoutHandler), this._timeoutHandler = window.setTimeout(() => this.visibleAction(), this._startDelay);
+    this.updatePos(), L().addLoadingElement(this), clearTimeout(this._timeoutHandler), this._timeoutHandler = window.setTimeout(() => this.visibleAction(), this._startDelay);
   }
   remove() {
-    this.getLoadingElement().remove(), T().removeLoadingElement(this);
+    this.getLoadingElement().remove(), L().removeLoadingElement(this);
   }
   hide() {
-    this.getLoadingElement().classList.remove("is-visible"), clearTimeout(this._timeoutHandler), this._timeoutHandler = window.setTimeout(() => this.remove(), U);
+    this.getLoadingElement().classList.remove("is-visible"), clearTimeout(this._timeoutHandler), this._timeoutHandler = window.setTimeout(() => this.remove(), D);
   }
 }
-const q = ({
+const V = ({
   contextElement: n,
   onClick: t = () => {
   },
   startDelay: o = 0
-}) => new B({
+}) => new F({
   refElement: n,
   startDelay: o,
   onClick: t
 });
 function z(n, t, o, r) {
-  A(n, t, {
+  O(n, t, {
     placement: o,
     strategy: "fixed",
     middleware: [
-      O(r),
-      $(),
-      R({ padding: 5 })
+      R(r),
+      M(),
+      P({ padding: 5 })
     ]
-  }).then(({ x: l, y: e, placement: i }) => {
-    t.style.left = `${l}px`, t.style.top = `${e}px`, t.dataset.placement = i;
+  }).then(({ x: s, y: e, placement: a }) => {
+    t.style.left = `${s}px`, t.style.top = `${e}px`, t.dataset.placement = a;
   });
 }
-function V(n) {
+function W(n) {
   const {
     containerElement: t,
     placement: o = "bottom",
     offset: r = 8,
-    interval: l = 0
+    interval: s = 0
   } = n;
   let e = null;
-  const { tooltipElement: i, updateText: s } = P();
-  function c(a) {
+  const { tooltipElement: a, updateText: l } = A();
+  function m(i) {
     return {
-      text: a.dataset.irTooltipText ?? "",
-      refMode: a.dataset.irTooltipRefMode ?? "element",
-      placement: a.dataset.irTooltipPlacement ?? o,
-      offset: L(a.dataset.irTooltipOffset, r),
-      interval: L(a.dataset.irTooltipInterval, l)
+      text: i.dataset.irTooltipText ?? "",
+      refMode: i.dataset.irTooltipRefMode ?? "element",
+      placement: i.dataset.irTooltipPlacement ?? o,
+      offset: v(i.dataset.irTooltipOffset, r),
+      interval: v(i.dataset.irTooltipInterval, s)
     };
   }
-  function u(a) {
+  function d(i) {
     const {
-      text: d,
-      refMode: C,
-      interval: _,
-      placement: I,
-      offset: y
-    } = c(a);
-    let g = null;
-    const E = () => {
-      if (!g)
+      text: c,
+      refMode: T,
+      interval: C,
+      placement: _,
+      offset: I
+    } = m(i);
+    let u = null;
+    const h = () => {
+      if (!u)
         throw new Error("Reference element is not set");
-      z(g, i, I, y);
+      z(u, a, _, I);
     }, b = () => {
-      s(d), x("popover").appendChild(i), E();
-    }, w = () => {
-      i.remove();
-    }, S = window.setTimeout(() => b(), _);
+      l(c), H("popover").appendChild(a), h();
+    }, S = () => {
+      a.remove();
+    }, w = window.setTimeout(() => b(), C);
     return {
-      refElement: a,
-      setReferenceEl(H) {
-        g = H;
+      refElement: i,
+      setReferenceEl(y) {
+        u = y;
       },
-      updateLocation: E,
+      updateLocation: h,
       get isPointerMode() {
-        return C === "pointer";
+        return T === "pointer";
       },
       cleanup() {
-        clearTimeout(S), e = null, w();
+        clearTimeout(w), e = null, S();
       }
     };
   }
-  const f = (a) => {
-    const d = F("[data-ir-tooltip]", ".ir-tooltip-container", a.target);
-    if (!d || !(d instanceof HTMLElement)) {
+  const f = (i) => {
+    const c = N("[data-ir-tooltip]", ".ir-tooltip-container", i.target);
+    if (!c || !(c instanceof HTMLElement)) {
       e == null || e.cleanup();
       return;
     }
-    if ((e == null ? void 0 : e.refElement) === d) {
-      e.isPointerMode && (e.setReferenceEl(v(a.clientX, a.clientY)), e.updateLocation());
+    if ((e == null ? void 0 : e.refElement) === c) {
+      e.isPointerMode && (e.setReferenceEl(E(i.clientX, i.clientY)), e.updateLocation());
       return;
     }
-    e == null || e.cleanup(), e = u(d), e.setReferenceEl(e.isPointerMode ? v(a.clientX, a.clientY) : d);
-  }, h = () => {
+    e == null || e.cleanup(), e = d(c), e.setReferenceEl(e.isPointerMode ? E(i.clientX, i.clientY) : c);
+  }, g = () => {
     e == null || e.cleanup();
   };
-  return t.classList.add("ir-tooltip-container"), t.addEventListener("mousemove", f), t.addEventListener("mouseleave", h), {
+  return t.classList.add("ir-tooltip-container"), t.addEventListener("mousemove", f), t.addEventListener("mouseleave", g), {
     destroy() {
-      e == null || e.cleanup(), t.removeEventListener("mousemove", f), t.removeEventListener("mouseleave", h);
+      e == null || e.cleanup(), t.removeEventListener("mousemove", f), t.removeEventListener("mouseleave", g);
     },
     cleanup() {
       e == null || e.cleanup();
@@ -181,71 +164,68 @@ const G = {
     thick: 6
   }
 };
-function W(n, t) {
-  const o = Object.assign({}, G, t), { gutterCls: r, direction: l, borderColor: e } = o;
+function Z(n, t) {
+  const o = Object.assign({}, G, t), { gutterCls: r, direction: s, borderColor: e } = o;
   return {
-    ...D(n, {
+    ...k(n, {
       ...o,
       gutterSize: j.gutterSize[r],
-      gutter: s()
+      gutter: l()
     })
   };
-  function s() {
-    const c = [
+  function l() {
+    const m = [
       "gutter",
-      `gutter--${l}`,
+      `gutter--${s}`,
       `gutter--${r}`,
       `gutter--${e}`
     ].join(" ");
     return () => {
-      const u = document.createElement("div");
-      return u.className = c, u;
+      const d = document.createElement("div");
+      return d.className = m, d;
     };
   }
 }
 export {
-  se as ClipboardManager,
-  De as Logger,
-  le as ReactiveState,
-  ce as appendElement,
-  de as blobToStr,
-  Q as clearGlobalKeyListener,
-  F as closest,
-  me as clsZId,
-  ue as createClickOutsideHandler,
-  ge as createCustomIcon,
-  ee as createESCHideController,
-  M as createElement,
-  te as createFloatingHandler,
-  pe as createIconElement,
-  Oe as createImageFromSrcUrl,
-  q as createLoadingHandler,
-  $e as createObjectURLFromSvg,
-  oe as createPopover,
-  W as createSplitContainer,
-  fe as createTooltip,
-  he as createTooltipBySelector,
-  V as createTooltipContainer,
+  de as ClipboardManager,
+  Ne as Logger,
+  me as ReactiveState,
+  ue as appendElement,
+  pe as blobToStr,
+  te as clearGlobalKeyListener,
+  N as closest,
+  fe as clsZId,
+  ge as createClickOutsideHandler,
+  he as createCustomIcon,
+  oe as createESCHideController,
+  Ee as createElement,
+  ne as createFloatingHandler,
+  ve as createIconElement,
+  He as createImageFromSrcUrl,
+  V as createLoadingHandler,
+  Oe as createObjectURLFromSvg,
+  ie as createPopover,
+  Z as createSplitContainer,
+  Le as createTooltip,
+  Te as createTooltipBySelector,
+  W as createTooltipContainer,
   Re as downloadDataURL,
-  Ee as forEachBySize,
-  ve as forEachFilterBySize,
-  Le as get2DGenerator,
+  Ce as forEachBySize,
+  _e as forEachFilterBySize,
+  Ie as get2DGenerator,
   Me as getBase64FromSvg,
-  Te as getElement,
-  Ce as getIRIconPng,
+  be as getIRIconPng,
   Pe as getImageBlobFromImage,
-  _e as getMinMaxBetween,
-  Ie as getTextWidthContext,
-  P as getTooltipElements,
-  v as getVirtualEl,
-  ye as hasClass,
-  ne as offsetBottomAutoUpdate,
-  L as parseInt,
-  ae as registerGlobalKeyListener,
-  be as removeAllChildren,
-  we as setDataSetFlag,
-  ie as unregisterGlobalKeyListener,
-  xe as uuid,
-  Se as xss
+  Se as getMinMaxBetween,
+  we as getTextWidthContext,
+  A as getTooltipElements,
+  E as getVirtualEl,
+  ae as offsetBottomAutoUpdate,
+  v as parseInt,
+  re as peekESCStack,
+  se as registerGlobalKeyListener,
+  le as unregisterGlobalKeyListener,
+  Q as uuid,
+  ye as xss
 };
 //# sourceMappingURL=utility.js.map
