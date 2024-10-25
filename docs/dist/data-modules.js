@@ -7459,7 +7459,7 @@ var Ue = { exports: {} };
           let m = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
           var o;
           this.objectMode = !0, this.delimiter = ",", this.rowDelimiter = `
-`, this.quote = '"', this.escape = this.quote, this.quoteColumns = !1, this.quoteHeaders = this.quoteColumns, this.headers = null, this.includeEndRowDelimiter = !1, this.writeBOM = !1, this.BOM = "\uFEFF", this.alwaysWriteHeaders = !1, Object.assign(this, m || {}), (m == null ? void 0 : m.quoteHeaders) === void 0 && (this.quoteHeaders = this.quoteColumns), (m == null ? void 0 : m.quote) === !0 ? this.quote = '"' : (m == null ? void 0 : m.quote) === !1 && (this.quote = ""), typeof (m == null ? void 0 : m.escape) != "string" && (this.escape = this.quote), this.shouldWriteHeaders = !!this.headers && ((o = m.writeHeaders) === null || o === void 0 || o), this.headers = Array.isArray(this.headers) ? this.headers : null, this.escapedQuote = `${this.escape}${this.quote}`;
+`, this.quote = '"', this.escape = this.quote, this.quoteColumns = !1, this.quoteHeaders = this.quoteColumns, this.headers = null, this.includeEndRowDelimiter = !1, this.writeBOM = !1, this.BOM = "\uFEFF", this.alwaysWriteHeaders = !1, Object.assign(this, m || {}), m?.quoteHeaders === void 0 && (this.quoteHeaders = this.quoteColumns), m?.quote === !0 ? this.quote = '"' : m?.quote === !1 && (this.quote = ""), typeof m?.escape != "string" && (this.escape = this.quote), this.shouldWriteHeaders = !!this.headers && ((o = m.writeHeaders) === null || o === void 0 || o), this.headers = Array.isArray(this.headers) ? this.headers : null, this.escapedQuote = `${this.escape}${this.quote}`;
         }
       };
     }, {}], 148: [function(s, T, S) {
@@ -18341,7 +18341,7 @@ var Ue = { exports: {} };
                 }(pt, ft, St);
               };
             }(Z) : Bt(ot = Z) ? (ct = Q(ot), function(ft) {
-              return ft == null ? void 0 : ft[ct];
+              return ft?.[ct];
             }) : /* @__PURE__ */ function(ft) {
               return function(St) {
                 return kt(St, ft);
@@ -18392,7 +18392,7 @@ var Ue = { exports: {} };
           }
           function Pt(Z, ot) {
             var ct = function(ft, St) {
-              return ft == null ? void 0 : ft[St];
+              return ft?.[St];
             }(Z, ot);
             return Ot(ct) ? ct : void 0;
           }
@@ -18748,7 +18748,7 @@ var Ue = { exports: {} };
           }
           function Wt(Q, it) {
             var ut = function(bt, jt) {
-              return bt == null ? void 0 : bt[jt];
+              return bt?.[jt];
             }(Q, it);
             return _t(ut) ? ut : void 0;
           }
@@ -19075,7 +19075,7 @@ var Ue = { exports: {} };
           }
           function k(O, z) {
             var $ = function(W, j) {
-              return W == null ? void 0 : W[j];
+              return W?.[j];
             }(O, z);
             return b($) ? $ : void 0;
           }
@@ -21610,7 +21610,7 @@ use chrome, FireFox or Internet Explorer 11`);
           let y = p.length;
           for (; y-- > 0; ) {
             const k = this.tag = p.pop();
-            if (this.topNS = k.ns, g == null || g(k), k.name === b) break;
+            if (this.topNS = k.ns, g?.(k), k.name === b) break;
             this.fail("unexpected close tag.");
           }
           y === 0 ? this.closedRoot = !0 : y < 0 && (this.fail(`unmatched closing tag: ${b}.`), this.text += `</${b}>`);

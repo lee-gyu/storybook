@@ -1,29 +1,29 @@
-import { aK as m, aL as g, aM as C, aN as M, aO as _, aP as b, aQ as y, aR as I, aS as D, aT as E, a as x } from "./chunks/_init-B0xIPnhF.js";
-import { b as v, d as N, f as T, s as L, q as o, v as O, g as w, c as k, a as B } from "./chunks/floating-COQGiF1T.js";
-import { c as h } from "./chunks/clone-CMP76bLO.js";
-import { c as A } from "./chunks/clsx-OuTLNxxd.js";
-import { v as R } from "./chunks/v4-Cgt9uYzN.js";
-function u(n) {
+import { aQ as p, aR as m, aS as g, aT as C, aU as _, aV as y, aW as I, aX as M, aY as b, aZ as D, h as E } from "./chunks/_init-Cv3gCb_1.js";
+import { k as x, l as v, m as T, n as N, q as o, v as w, g as L, c as O, i as k } from "./chunks/floating-fOdDS7jf.js";
+import { c } from "./chunks/clone-CMP76bLO.js";
+import { c as B } from "./chunks/clsx-OuTLNxxd.js";
+import { v as A } from "./chunks/v4-Cgt9uYzN.js";
+function h(n) {
   return n.some((t) => "icon" in t && t.icon !== void 0);
 }
-const P = 8;
-function f(n, t, s, a) {
-  v(n, t, {
-    placement: s,
+const R = 8;
+function u(n, t, e, a) {
+  x(n, t, {
+    placement: e,
     strategy: "fixed",
     middleware: [
-      N(a),
+      v(a),
       T(),
-      L()
+      N()
     ]
-  }).then((e) => {
-    t.style.left = `${e.x}px`, t.style.top = `${e.y - P}px`, t.dataset.placement = e.placement;
+  }).then((s) => {
+    t.style.left = `${s.x}px`, t.style.top = `${s.y - R}px`, t.dataset.placement = s.placement;
   });
 }
-function $(n) {
+function U(n) {
   return o({
     tag: "div",
-    className: m,
+    className: p,
     attr: {
       tabindex: "-1"
     },
@@ -32,57 +32,56 @@ function $(n) {
     }
   }).element;
 }
-function p(n, t, s) {
+function f(n, t, e) {
   const { element: a } = o({
     tag: "div",
-    className: A(
-      g,
-      t && I,
-      s && C
+    className: B(
+      m,
+      t && M,
+      e && g
     )
   });
-  let e = !1;
+  let s = !1;
   for (const i of n) {
     if (i.visible === !1) continue;
     if (i.type === "divider") {
-      e = a.children.length > 0;
+      s = a.children.length > 0;
       continue;
     }
-    e && (a.appendChild(G()), e = !1);
-    const r = U(i);
+    s && (a.appendChild(P()), s = !1);
+    const r = $(i);
     i.disabled && (r.dataset.disabled = "true"), a.appendChild(r);
   }
   return a;
 }
-function U(n) {
-  if (n.type === "command-button") return s(n);
+function $(n) {
+  if (n.type === "command-button") return e(n);
   if (n.type === "dropdown") return a(n);
   throw new Error(`Unknown item type: ${n.type}`);
-  function t(e) {
-    const i = document.createDocumentFragment(), r = o({ tag: "i", className: `${D} ir-icon` }), d = o({ tag: "span", className: E });
-    return d.element.textContent = e.label ?? "", r.element.classList.add(e.icon ? e.icon : x.invisible), i.appendChild(r.element), i.appendChild(d.element), i;
+  function t(s) {
+    const i = document.createDocumentFragment(), r = o({ tag: "i", className: `${b} ir-icon` }), d = o({ tag: "span", className: D });
+    return d.element.textContent = s.label ?? "", r.element.classList.add(s.icon ? s.icon : E.invisible), i.appendChild(r.element), i.appendChild(d.element), i;
   }
-  function s(e) {
-    const { element: i } = o({ tag: "button", className: M });
-    return i.appendChild(t(e)), i.addEventListener("click", (r) => {
-      r.__IR_CONTEXT_MENU_ITEM__ = e;
+  function e(s) {
+    const { element: i } = o({ tag: "button", className: C });
+    return i.appendChild(t(s)), i.addEventListener("click", (r) => {
+      r.__IR_CONTEXT_MENU_ITEM__ = s;
     }), i;
   }
-  function a(e) {
-    const { element: i } = o({ tag: "div", className: _ }), { element: r } = o({ tag: "i", className: `${b} ir-icon ir-icon--triangle-small-right` });
-    if (i.append(t(e), r), e.children && e.children.length > 0) {
-      const d = p(
-        e.children,
+  function a(s) {
+    const { element: i } = o({ tag: "div", className: _ }), { element: r } = o({ tag: "i", className: `${y} ir-icon ir-icon--triangle-small-right` });
+    if (i.append(t(s), r), s.children && s.children.length > 0) {
+      const d = f(
+        s.children,
         !0,
         // 모든 자식 요소에 icon이 없으면 기본 적으로 false 처리
-        e.hiddenIcon ?? !u(e.children)
+        s.hiddenIcon ?? !h(s.children)
       );
       i.append(d), i.addEventListener("mouseenter", () => {
-        var c;
-        f(
+        u(
           i,
           d,
-          ((c = i.parentElement) == null ? void 0 : c.dataset.placement) ?? "right-start",
+          i.parentElement?.dataset.placement ?? "right-start",
           0
         );
       });
@@ -90,30 +89,30 @@ function U(n) {
     return i;
   }
 }
-function G() {
-  return o({ tag: "div", className: y }).element;
+function P() {
+  return o({ tag: "div", className: I }).element;
 }
 const l = [];
-class Q {
+class F {
   constructor(t) {
-    this.args = t, this.#t = this.#d(), this.#a(h(t.items)), l.push(this);
+    this.args = t, this.#t = this.#d(), this.#a(c(t.items)), l.push(this);
   }
-  #o = R();
+  #o = A();
   #t;
   #s = !1;
   #n = !1;
   #i = null;
   #e = null;
   #d() {
-    const t = $(this.#o);
-    return "blurDisabled" in this.args && (t.dataset.blurDisabled = this.args.blurDisabled ? "true" : "false"), t.addEventListener("focusout", (s) => {
-      "blurDisabled" in this.args && this.args.blurDisabled || O(s.relatedTarget, this.#t) || s.relatedTarget && s.relatedTarget === this.#i || this.hide();
-    }), t.addEventListener("click", (s) => {
-      if (s.__IR_CONTEXT_MENU_ITEM__)
+    const t = U(this.#o);
+    return "blurDisabled" in this.args && (t.dataset.blurDisabled = this.args.blurDisabled ? "true" : "false"), t.addEventListener("focusout", (e) => {
+      "blurDisabled" in this.args && this.args.blurDisabled || w(e.relatedTarget, this.#t) || e.relatedTarget && e.relatedTarget === this.#i || this.hide();
+    }), t.addEventListener("click", (e) => {
+      if (e.__IR_CONTEXT_MENU_ITEM__)
         try {
           this.onCommandButtonClick({
-            ev: s,
-            item: s.__IR_CONTEXT_MENU_ITEM__
+            ev: e,
+            item: e.__IR_CONTEXT_MENU_ITEM__
           });
         } finally {
           this.hide();
@@ -122,21 +121,20 @@ class Q {
   }
   #a(t) {
     this.#t.firstChild && this.#t.removeChild(this.#t.firstChild), this.#t.append(
-      p(
+      f(
         t,
         !1,
-        this.args.hiddenIcon ?? !u(t)
+        this.args.hiddenIcon ?? !h(t)
       )
     );
   }
-  #r(t, s, a) {
-    H(), this.#s = !0, setTimeout(() => {
-      var e;
-      w("popover").appendChild(this.#t), f(t, this.#t, s, a), this.#t.focus(), (e = this.#e) == null || e.destroy(), this.#e = k(this), this.#e.create();
+  #r(t, e, a) {
+    X(), this.#s = !0, setTimeout(() => {
+      L("popover").appendChild(this.#t), u(t, this.#t, e, a), this.#t.focus(), this.#e?.destroy(), this.#e = O(this), this.#e.create();
     }, 0);
   }
-  showAtPoint(t, s) {
-    this.#r(B(t, s), "right-start", 0);
+  showAtPoint(t, e) {
+    this.#r(k(t, e), "right-start", 0);
   }
   /**
    *
@@ -144,24 +142,22 @@ class Q {
    * @param placement offset 방향
    * @param offsetPos 기본 값으로 8px offset을 가짐
    */
-  showByElement(t, s, a = 8) {
-    this.#i = t, this.#r(t, s, a);
+  showByElement(t, e, a = 8) {
+    this.#i = t, this.#r(t, e, a);
   }
   hide() {
-    var t;
-    this.isOpened !== !1 && (this.#s = !1, this.#i = null, (t = this.#e) == null || t.destroy(), setTimeout(() => {
+    this.isOpened !== !1 && (this.#s = !1, this.#i = null, this.#e?.destroy(), setTimeout(() => {
       this.#t.remove();
     }, 0));
   }
   destroy() {
-    var t;
     if (this.#n)
       throw new Error("Already destroyed.");
-    this.hide(), this.#t.remove(), this.#n = !0, (t = this.#e) == null || t.destroy(), l.splice(l.indexOf(this), 1);
+    this.hide(), this.#t.remove(), this.#n = !0, this.#e?.destroy(), l.splice(l.indexOf(this), 1);
   }
   updateItems(t) {
-    const s = h(this.args.items);
-    t(s), this.args.items = s, this.#a(s);
+    const e = c(this.args.items);
+    t(e), this.args.items = e, this.#a(e);
   }
   onCommandButtonClick(t) {
   }
@@ -169,10 +165,10 @@ class Q {
     return this.#s;
   }
 }
-function H() {
+function X() {
   l.forEach((n) => n.hide());
 }
 export {
-  Q as IRContextMenuAdapter
+  F as IRContextMenuAdapter
 };
 //# sourceMappingURL=react.js.map
