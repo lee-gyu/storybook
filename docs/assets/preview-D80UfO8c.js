@@ -1,1 +1,0 @@
-const t={parameters:{options:{bottomPanelHeight:0,rightPanelWidth:0,storySort:{method:"alphabetical",order:["JS Components","Common UI","JS Utility","Data Exporting","Web API","HTML Components"],locales:"ko-KR"}}}};export{t as default};

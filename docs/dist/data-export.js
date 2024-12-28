@@ -1,5 +1,5 @@
 import { E as c } from "./chunks/excel-B965z8tn.js";
-import { v as k } from "./chunks/v4-Cgt9uYzN.js";
+import { v as k } from "./chunks/v4-BiqnG7FB.js";
 const s = [];
 function d(e) {
   return e.format === "excel";

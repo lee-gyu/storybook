@@ -1,13 +1,13 @@
-import "./chunks/_init-Cv3gCb_1.js";
-import { c as ku, g as Su } from "./chunks/_commonjsHelpers-DaMA6jEr.js";
-import { i as Tt } from "./chunks/ko-DexDDk13.js";
-import { I as Cu } from "./chunks/index-C-Ilyvxg.js";
+import "./chunks/_init-DoZKvVzM.js";
+import { c as xu, g as wu } from "./chunks/_commonjsHelpers-DaMA6jEr.js";
+import { i as Tt } from "./chunks/index-DUaQNDMW.js";
+import { I as _u } from "./chunks/index-BK-o6tIM.js";
 var Ki = { exports: {} }, rl;
 function ot() {
   return rl || (rl = 1, function(xe, $) {
     (function(g, W) {
       xe.exports = W();
-    })(ku, function() {
+    })(xu, function() {
       var g = navigator.userAgent, W = navigator.platform, Y = /gecko\/\d/i.test(g), J = /MSIE \d/.test(g), _ = /Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(g), O = /Edge\/(\d+)/.exec(g), p = J || _ || O, F = p && (J ? document.documentMode || 6 : +(O || _)[1]), B = !O && /WebKit\//.test(g), G = B && /Qt\/\d+\.\d+/.test(g), M = !O && /Chrome\/(\d+)/.exec(g), K = M && +M[1], D = /Opera\//.test(g), Q = /Apple Computer/.test(navigator.vendor), ie = /Mac OS X 1\d\D([8-9]|\d\d)\D/.test(g), w = /PhantomJS/.test(g), m = Q && (/Mobile\/\w+/.test(g) || navigator.maxTouchPoints > 2), x = /Android/.test(g), k = m || x || /webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(g), S = m || /Mac/.test(W), R = /\bCrOS\b/.test(g), z = /win/i.test(W), h = D && g.match(/Version\/(\d*\.\d*)/);
       h && (h = Number(h[1])), h && h >= 15 && (D = !1, B = !0);
       var A = S && (G || D && (h == null || h < 12.11)), L = Y || p && F >= 9;
@@ -171,7 +171,7 @@ function ot() {
           n[r] = t(e[r], r);
         return n;
       }
-      function fl(e, t, n) {
+      function ll(e, t, n) {
         for (var r = 0, i = n(t); r < e.length && n(e[r]) <= i; )
           r++;
         e.splice(r, 0, t);
@@ -182,9 +182,9 @@ function ot() {
         var n;
         return Object.create ? n = Object.create(e) : (Qi.prototype = e, n = new Qi()), t && ht(t, n), n;
       }
-      var cl = /[\u00df\u0587\u0590-\u05f4\u0600-\u06ff\u3040-\u309f\u30a0-\u30ff\u3400-\u4db5\u4e00-\u9fcc\uac00-\ud7af]/;
+      var sl = /[\u00df\u0587\u0590-\u05f4\u0600-\u06ff\u3040-\u309f\u30a0-\u30ff\u3400-\u4db5\u4e00-\u9fcc\uac00-\ud7af]/;
       function zn(e) {
-        return /\w/.test(e) || e > "" && (e.toUpperCase() != e.toLowerCase() || cl.test(e));
+        return /\w/.test(e) || e > "" && (e.toUpperCase() != e.toLowerCase() || sl.test(e));
       }
       function tn(e, t) {
         return t ? t.source.indexOf("\\w") > -1 && zn(e) ? !0 : t.test(e) : zn(e);
@@ -195,9 +195,9 @@ function ot() {
             return !1;
         return !0;
       }
-      var hl = /[\u0300-\u036f\u0483-\u0489\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u065e\u0670\u06d6-\u06dc\u06de-\u06e4\u06e7\u06e8\u06ea-\u06ed\u0711\u0730-\u074a\u07a6-\u07b0\u07eb-\u07f3\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0900-\u0902\u093c\u0941-\u0948\u094d\u0951-\u0955\u0962\u0963\u0981\u09bc\u09be\u09c1-\u09c4\u09cd\u09d7\u09e2\u09e3\u0a01\u0a02\u0a3c\u0a41\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a70\u0a71\u0a75\u0a81\u0a82\u0abc\u0ac1-\u0ac5\u0ac7\u0ac8\u0acd\u0ae2\u0ae3\u0b01\u0b3c\u0b3e\u0b3f\u0b41-\u0b44\u0b4d\u0b56\u0b57\u0b62\u0b63\u0b82\u0bbe\u0bc0\u0bcd\u0bd7\u0c3e-\u0c40\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0cbc\u0cbf\u0cc2\u0cc6\u0ccc\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0d3e\u0d41-\u0d44\u0d4d\u0d57\u0d62\u0d63\u0dca\u0dcf\u0dd2-\u0dd4\u0dd6\u0ddf\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0eb1\u0eb4-\u0eb9\u0ebb\u0ebc\u0ec8-\u0ecd\u0f18\u0f19\u0f35\u0f37\u0f39\u0f71-\u0f7e\u0f80-\u0f84\u0f86\u0f87\u0f90-\u0f97\u0f99-\u0fbc\u0fc6\u102d-\u1030\u1032-\u1037\u1039\u103a\u103d\u103e\u1058\u1059\u105e-\u1060\u1071-\u1074\u1082\u1085\u1086\u108d\u109d\u135f\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17b7-\u17bd\u17c6\u17c9-\u17d3\u17dd\u180b-\u180d\u18a9\u1920-\u1922\u1927\u1928\u1932\u1939-\u193b\u1a17\u1a18\u1a56\u1a58-\u1a5e\u1a60\u1a62\u1a65-\u1a6c\u1a73-\u1a7c\u1a7f\u1b00-\u1b03\u1b34\u1b36-\u1b3a\u1b3c\u1b42\u1b6b-\u1b73\u1b80\u1b81\u1ba2-\u1ba5\u1ba8\u1ba9\u1c2c-\u1c33\u1c36\u1c37\u1cd0-\u1cd2\u1cd4-\u1ce0\u1ce2-\u1ce8\u1ced\u1dc0-\u1de6\u1dfd-\u1dff\u200c\u200d\u20d0-\u20f0\u2cef-\u2cf1\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua66f-\ua672\ua67c\ua67d\ua6f0\ua6f1\ua802\ua806\ua80b\ua825\ua826\ua8c4\ua8e0-\ua8f1\ua926-\ua92d\ua947-\ua951\ua980-\ua982\ua9b3\ua9b6-\ua9b9\ua9bc\uaa29-\uaa2e\uaa31\uaa32\uaa35\uaa36\uaa43\uaa4c\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uabe5\uabe8\uabed\udc00-\udfff\ufb1e\ufe00-\ufe0f\ufe20-\ufe26\uff9e\uff9f]/;
+      var ul = /[\u0300-\u036f\u0483-\u0489\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u065e\u0670\u06d6-\u06dc\u06de-\u06e4\u06e7\u06e8\u06ea-\u06ed\u0711\u0730-\u074a\u07a6-\u07b0\u07eb-\u07f3\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0900-\u0902\u093c\u0941-\u0948\u094d\u0951-\u0955\u0962\u0963\u0981\u09bc\u09be\u09c1-\u09c4\u09cd\u09d7\u09e2\u09e3\u0a01\u0a02\u0a3c\u0a41\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a70\u0a71\u0a75\u0a81\u0a82\u0abc\u0ac1-\u0ac5\u0ac7\u0ac8\u0acd\u0ae2\u0ae3\u0b01\u0b3c\u0b3e\u0b3f\u0b41-\u0b44\u0b4d\u0b56\u0b57\u0b62\u0b63\u0b82\u0bbe\u0bc0\u0bcd\u0bd7\u0c3e-\u0c40\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0cbc\u0cbf\u0cc2\u0cc6\u0ccc\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0d3e\u0d41-\u0d44\u0d4d\u0d57\u0d62\u0d63\u0dca\u0dcf\u0dd2-\u0dd4\u0dd6\u0ddf\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0eb1\u0eb4-\u0eb9\u0ebb\u0ebc\u0ec8-\u0ecd\u0f18\u0f19\u0f35\u0f37\u0f39\u0f71-\u0f7e\u0f80-\u0f84\u0f86\u0f87\u0f90-\u0f97\u0f99-\u0fbc\u0fc6\u102d-\u1030\u1032-\u1037\u1039\u103a\u103d\u103e\u1058\u1059\u105e-\u1060\u1071-\u1074\u1082\u1085\u1086\u108d\u109d\u135f\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17b7-\u17bd\u17c6\u17c9-\u17d3\u17dd\u180b-\u180d\u18a9\u1920-\u1922\u1927\u1928\u1932\u1939-\u193b\u1a17\u1a18\u1a56\u1a58-\u1a5e\u1a60\u1a62\u1a65-\u1a6c\u1a73-\u1a7c\u1a7f\u1b00-\u1b03\u1b34\u1b36-\u1b3a\u1b3c\u1b42\u1b6b-\u1b73\u1b80\u1b81\u1ba2-\u1ba5\u1ba8\u1ba9\u1c2c-\u1c33\u1c36\u1c37\u1cd0-\u1cd2\u1cd4-\u1ce0\u1ce2-\u1ce8\u1ced\u1dc0-\u1de6\u1dfd-\u1dff\u200c\u200d\u20d0-\u20f0\u2cef-\u2cf1\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua66f-\ua672\ua67c\ua67d\ua6f0\ua6f1\ua802\ua806\ua80b\ua825\ua826\ua8c4\ua8e0-\ua8f1\ua926-\ua92d\ua947-\ua951\ua980-\ua982\ua9b3\ua9b6-\ua9b9\ua9bc\uaa29-\uaa2e\uaa31\uaa32\uaa35\uaa36\uaa43\uaa4c\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uabe5\uabe8\uabed\udc00-\udfff\ufb1e\ufe00-\ufe0f\ufe20-\ufe26\uff9e\uff9f]/;
       function Fn(e) {
-        return e.charCodeAt(0) >= 768 && hl.test(e);
+        return e.charCodeAt(0) >= 768 && ul.test(e);
       }
       function Zi(e, t, n) {
         for (; (n < 0 ? t > 0 : t < e.length) && Fn(e.charAt(t)); )
@@ -214,7 +214,7 @@ function ot() {
           e(o) ? n = o : t = o + r;
         }
       }
-      function dl(e, t, n, r) {
+      function fl(e, t, n, r) {
         if (!e)
           return r(t, n, "ltr", 0);
         for (var i = !1, o = 0; o < e.length; ++o) {
@@ -235,7 +235,7 @@ function ot() {
         }
         return r ?? kr;
       }
-      var pl = /* @__PURE__ */ function() {
+      var cl = /* @__PURE__ */ function() {
         var e = "bbbbbbbbbtstwsbbbbbbbbbbbbbbssstwNN%%%NNNNNN,N,N1111111111NNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNbbbbbbsbbbbbbbbbbbbbbbbbbbbbbbbbb,N%%%%NNNNLNNNNN%%11NLNNN1LNNNNNLLLLLLLLLLLLLLLLLLLLLLLNLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLN", t = "nnnnnnNNr%%r,rNNmmmmmmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnn%nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111";
         function n(u) {
           return u <= 247 ? e.charAt(u) : 1424 <= u && u <= 1524 ? "R" : 1536 <= u && u <= 1785 ? t.charAt(u - 1536) : 1774 <= u && u <= 2220 ? "r" : 8192 <= u && u <= 8203 ? "w" : u == 8204 ? "b" : "L";
@@ -314,7 +314,7 @@ function ot() {
       }();
       function xt(e, t) {
         var n = e.order;
-        return n == null && (n = e.order = pl(e.text, t)), n;
+        return n == null && (n = e.order = cl(e.text, t)), n;
       }
       var Ji = [], ae = function(e, t, n) {
         if (e.addEventListener)
@@ -388,13 +388,13 @@ function ot() {
         var t = e.which;
         return t == null && (e.button & 1 ? t = 1 : e.button & 2 ? t = 3 : e.button & 4 && (t = 2)), S && e.ctrlKey && t == 1 && (t = 3), t;
       }
-      var gl = function() {
+      var hl = function() {
         if (p && F < 9)
           return !1;
         var e = d("div");
         return "draggable" in e || "dragDrop" in e;
       }(), Bn;
-      function vl(e) {
+      function dl(e) {
         if (Bn == null) {
           var t = d("span", "​");
           E(e, d("span", [t, document.createTextNode("x")])), e.firstChild.offsetHeight != 0 && (Bn = t.offsetWidth <= 1 && t.offsetHeight > 2 && !(p && F < 8));
@@ -403,7 +403,7 @@ function ot() {
         return n.setAttribute("cm-text", ""), n;
       }
       var qn;
-      function ml(e) {
+      function pl(e) {
         if (qn != null)
           return qn;
         var t = E(e, document.createTextNode("AخA")), n = H(t, 0, 1).getBoundingClientRect(), r = H(t, 1, 2).getBoundingClientRect();
@@ -422,7 +422,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         return n;
       } : function(e) {
         return e.split(/\r\n?|\n/);
-      }, yl = window.getSelection ? function(e) {
+      }, gl = window.getSelection ? function(e) {
         try {
           return e.selectionStart != e.selectionEnd;
         } catch {
@@ -435,21 +435,21 @@ b`.split(/\n/).length != 3 ? function(e) {
         } catch {
         }
         return !t || t.parentElement() != e ? !1 : t.compareEndPoints("StartToEnd", t) != 0;
-      }, bl = function() {
+      }, vl = function() {
         var e = d("div");
         return "oncopy" in e ? !0 : (e.setAttribute("oncopy", "return;"), typeof e.oncopy == "function");
       }(), Gn = null;
-      function xl(e) {
+      function ml(e) {
         if (Gn != null)
           return Gn;
         var t = E(e, d("span", "x")), n = t.getBoundingClientRect(), r = H(t, 0, 1).getBoundingClientRect();
         return Gn = Math.abs(n.left - r.left) > 1;
       }
       var Kn = {}, tr = {};
-      function wl(e, t) {
+      function yl(e, t) {
         arguments.length > 2 && (t.dependencies = Array.prototype.slice.call(arguments, 2)), Kn[e] = t;
       }
-      function _l(e, t) {
+      function bl(e, t) {
         tr[e] = t;
       }
       function rn(e) {
@@ -483,7 +483,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         return r;
       }
       var rr = {};
-      function kl(e, t) {
+      function xl(e, t) {
         var n = rr.hasOwnProperty(e) ? rr[e] : rr[e] = {};
         ht(t, n);
       }
@@ -665,9 +665,9 @@ b`.split(/\n/).length != 3 ? function(e) {
         if (t.line < e.first)
           return q(e.first, 0);
         var n = e.first + e.size - 1;
-        return t.line > n ? q(n, re(e, n).text.length) : Sl(t, re(e, t.line).text.length);
+        return t.line > n ? q(n, re(e, n).text.length) : wl(t, re(e, t.line).text.length);
       }
-      function Sl(e, t) {
+      function wl(e, t) {
         var n = e.ch;
         return n == null || n > t ? q(e.line, t) : n < 0 ? q(e.line, 0) : e;
       }
@@ -746,7 +746,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var r = e.doc, i = e.display;
         if (!r.mode.startState)
           return new gt(r, !0, t);
-        var o = Cl(e, t, n), a = o > r.first && re(r, o - 1).stateAfter, l = a ? gt.fromSaved(r, a, o) : new gt(r, to(r.mode), o);
+        var o = _l(e, t, n), a = o > r.first && re(r, o - 1).stateAfter, l = a ? gt.fromSaved(r, a, o) : new gt(r, to(r.mode), o);
         return r.iter(o, t, function(s) {
           Vn(e, s.text, l);
           var u = l.line;
@@ -820,7 +820,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           i(N, u), s = N;
         }
       }
-      function Cl(e, t, n) {
+      function _l(e, t, n) {
         for (var r, i, o = e.doc, a = n ? -1 : t - (e.doc.mode.innerMode ? 1e3 : 100), l = t; l > a; --l) {
           if (l <= o.first)
             return o.first;
@@ -832,7 +832,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return i;
       }
-      function Ll(e, t) {
+      function kl(e, t) {
         if (e.modeFrontier = Math.min(e.modeFrontier, t), !(e.highlightFrontier < t - 10)) {
           for (var n = e.first, r = t - 1; r > n; r--) {
             var i = re(e, r).stateAfter;
@@ -845,10 +845,10 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
       }
       var co = !1, wt = !1;
-      function Tl() {
+      function Sl() {
         co = !0;
       }
-      function Nl() {
+      function Cl() {
         wt = !0;
       }
       function ln(e, t, n) {
@@ -862,16 +862,16 @@ b`.split(/\n/).length != 3 ? function(e) {
               return r;
           }
       }
-      function Ml(e, t) {
+      function Ll(e, t) {
         for (var n, r = 0; r < e.length; ++r)
           e[r] != t && (n || (n = [])).push(e[r]);
         return n;
       }
-      function Al(e, t, n) {
+      function Tl(e, t, n) {
         var r = n && window.WeakSet && (n.markedSpans || (n.markedSpans = /* @__PURE__ */ new WeakSet()));
         r && e.markedSpans && r.has(e.markedSpans) ? e.markedSpans.push(t) : (e.markedSpans = e.markedSpans ? e.markedSpans.concat([t]) : [t], r && r.add(e.markedSpans)), t.marker.attachLine(e);
       }
-      function Ol(e, t, n) {
+      function Nl(e, t, n) {
         var r;
         if (e)
           for (var i = 0; i < e.length; ++i) {
@@ -883,7 +883,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         return r;
       }
-      function Dl(e, t, n) {
+      function Ml(e, t, n) {
         var r;
         if (e)
           for (var i = 0; i < e.length; ++i) {
@@ -905,7 +905,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var n = Lr(e, t.from.line) && re(e, t.from.line).markedSpans, r = Lr(e, t.to.line) && re(e, t.to.line).markedSpans;
         if (!n && !r)
           return null;
-        var i = t.from.ch, o = t.to.ch, a = le(t.from, t.to) == 0, l = Ol(n, i, a), s = Dl(r, o, a), u = t.text.length == 1, f = ce(t.text).length + (u ? i : 0);
+        var i = t.from.ch, o = t.to.ch, a = le(t.from, t.to) == 0, l = Nl(n, i, a), s = Ml(r, o, a), u = t.text.length == 1, f = ce(t.text).length + (u ? i : 0);
         if (l)
           for (var c = 0; c < l.length; ++c) {
             var b = l[c];
@@ -943,7 +943,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return e.length ? e : null;
       }
-      function Hl(e, t, n) {
+      function Al(e, t, n) {
         var r = null;
         if (e.iter(t.line, n.line + 1, function(v) {
           if (v.markedSpans)
@@ -1007,7 +1007,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function fn(e) {
         return vo(e, !1);
       }
-      function El(e, t) {
+      function Ol(e, t) {
         var n = wt && e.markedSpans, r;
         if (n)
           for (var i = 0; i < n.length; ++i) {
@@ -1033,12 +1033,12 @@ b`.split(/\n/).length != 3 ? function(e) {
           e = t.find(-1, !0).line;
         return e;
       }
-      function Wl(e) {
+      function Dl(e) {
         for (var t; t = fn(e); )
           e = t.find(1, !0).line;
         return e;
       }
-      function zl(e) {
+      function Hl(e) {
         for (var t, n; t = fn(e); )
           e = t.find(1, !0).line, (n || (n = [])).push(e);
         return n;
@@ -1123,19 +1123,19 @@ b`.split(/\n/).length != 3 ? function(e) {
       nr.prototype.lineNo = function() {
         return de(this);
       }, er(nr);
-      function Fl(e, t, n, r) {
+      function El(e, t, n, r) {
         e.text = t, e.stateAfter && (e.stateAfter = null), e.styles && (e.styles = null), e.order != null && (e.order = null), po(e), go(e, n);
         var i = r ? r(e) : 1;
         i != e.height && pt(e, i);
       }
-      function Pl(e) {
+      function Wl(e) {
         e.parent = null, po(e);
       }
-      var Il = {}, Rl = {};
+      var zl = {}, Fl = {};
       function xo(e, t) {
         if (!e || /^\s*$/.test(e))
           return null;
-        var n = t.addModeClass ? Rl : Il;
+        var n = t.addModeClass ? Fl : zl;
         return n[e] || (n[e] = e.replace(/\S+/g, "cm-$&"));
       }
       function wo(e, t) {
@@ -1151,9 +1151,9 @@ b`.split(/\n/).length != 3 ? function(e) {
         t.measure = {};
         for (var i = 0; i <= (t.rest ? t.rest.length : 0); i++) {
           var o = i ? t.rest[i - 1] : t.line, a = void 0;
-          r.pos = 0, r.addToken = ql, ml(e.display.measure) && (a = xt(o, e.doc.direction)) && (r.addToken = Gl(r.addToken, a)), r.map = [];
+          r.pos = 0, r.addToken = Il, pl(e.display.measure) && (a = xt(o, e.doc.direction)) && (r.addToken = Bl(r.addToken, a)), r.map = [];
           var l = t != e.display.externalMeasured && de(o);
-          Kl(o, r, oo(e, o, l)), o.styleClasses && (o.styleClasses.bgClass && (r.bgClass = _e(o.styleClasses.bgClass, r.bgClass || "")), o.styleClasses.textClass && (r.textClass = _e(o.styleClasses.textClass, r.textClass || ""))), r.map.length == 0 && r.map.push(0, 0, r.content.appendChild(vl(e.display.measure))), i == 0 ? (t.measure.map = r.map, t.measure.cache = {}) : ((t.measure.maps || (t.measure.maps = [])).push(r.map), (t.measure.caches || (t.measure.caches = [])).push({}));
+          ql(o, r, oo(e, o, l)), o.styleClasses && (o.styleClasses.bgClass && (r.bgClass = _e(o.styleClasses.bgClass, r.bgClass || "")), o.styleClasses.textClass && (r.textClass = _e(o.styleClasses.textClass, r.textClass || ""))), r.map.length == 0 && r.map.push(0, 0, r.content.appendChild(dl(e.display.measure))), i == 0 ? (t.measure.map = r.map, t.measure.cache = {}) : ((t.measure.maps || (t.measure.maps = [])).push(r.map), (t.measure.caches || (t.measure.caches = [])).push({}));
         }
         if (B) {
           var s = r.content.lastChild;
@@ -1161,13 +1161,13 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return Ce(e, "renderLine", e, t.line, r.pre), r.pre.className && (r.textClass = _e(r.pre.className, r.textClass || "")), r;
       }
-      function Bl(e) {
+      function Pl(e) {
         var t = d("span", "•", "cm-invalidchar");
         return t.title = "\\u" + e.charCodeAt(0).toString(16), t.setAttribute("aria-label", t.title), t;
       }
-      function ql(e, t, n, r, i, o, a) {
+      function Il(e, t, n, r, i, o, a) {
         if (t) {
-          var l = e.splitSpaces ? Ul(t, e.trailingSpace) : t, s = e.cm.state.specialChars, u = !1, f;
+          var l = e.splitSpaces ? Rl(t, e.trailingSpace) : t, s = e.cm.state.specialChars, u = !1, f;
           if (!s.test(t))
             e.col += t.length, f = document.createTextNode(l), e.map.push(e.pos, e.pos + t.length, f), p && F < 9 && (u = !0), e.pos += t.length;
           else {
@@ -1203,7 +1203,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           e.content.appendChild(f);
         }
       }
-      function Ul(e, t) {
+      function Rl(e, t) {
         if (e.length > 1 && !/  /.test(e))
           return e;
         for (var n = t, r = "", i = 0; i < e.length; i++) {
@@ -1212,7 +1212,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return r;
       }
-      function Gl(e, t) {
+      function Bl(e, t) {
         return function(n, r, i, o, a, l, s) {
           i = i ? i + " cm-force-border" : "cm-force-border";
           for (var u = n.pos, f = u + r.length; ; ) {
@@ -1228,7 +1228,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var i = !r && n.widgetNode;
         i && e.map.push(e.pos, e.pos + t, i), !r && e.cm.display.input.needsContentAttribute && (i || (i = e.content.appendChild(document.createElement("span"))), i.setAttribute("cm-marker", n.id)), i && (e.cm.display.input.setUneditable(i), e.content.appendChild(i)), e.pos += t, e.trailingSpace = !1;
       }
-      function Kl(e, t, n) {
+      function ql(e, t, n) {
         var r = e.markedSpans, i = e.text, o = 0;
         if (!r) {
           for (var a = 1; a < n.length; a += 2)
@@ -1294,7 +1294,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
       }
       function ko(e, t, n) {
-        this.line = t, this.rest = zl(t), this.size = this.rest ? de(ce(this.rest)) - n + 1 : 1, this.node = this.text = null, this.hidden = Mt(e, t);
+        this.line = t, this.rest = Hl(t), this.size = this.rest ? de(ce(this.rest)) - n + 1 : 1, this.node = this.text = null, this.hidden = Mt(e, t);
       }
       function hn(e, t, n) {
         for (var r = [], i, o = t; o < n; o = i) {
@@ -1304,13 +1304,13 @@ b`.split(/\n/).length != 3 ? function(e) {
         return r;
       }
       var ir = null;
-      function Yl(e) {
+      function Ul(e) {
         ir ? ir.ops.push(e) : e.ownsGroup = ir = {
           ops: [e],
           delayedCallbacks: []
         };
       }
-      function Ql(e) {
+      function Gl(e) {
         var t = e.delayedCallbacks, n = 0;
         do {
           for (; n < t.length; n++)
@@ -1323,11 +1323,11 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         } while (n < t.length);
       }
-      function Xl(e, t) {
+      function Kl(e, t) {
         var n = e.ownsGroup;
         if (n)
           try {
-            Ql(n);
+            Gl(n);
           } finally {
             ir = null, t(n);
           }
@@ -1337,7 +1337,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var n = Pn(e, t);
         if (n.length) {
           var r = Array.prototype.slice.call(arguments, 2), i;
-          ir ? i = ir.delayedCallbacks : Mr ? i = Mr : (i = Mr = [], setTimeout(jl, 0));
+          ir ? i = ir.delayedCallbacks : Mr ? i = Mr : (i = Mr = [], setTimeout(Yl, 0));
           for (var o = function(l) {
             i.push(function() {
               return n[l].apply(null, r);
@@ -1346,7 +1346,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             o(a);
         }
       }
-      function jl() {
+      function Yl() {
         var e = Mr;
         Mr = null;
         for (var t = 0; t < e.length; ++t)
@@ -1355,14 +1355,14 @@ b`.split(/\n/).length != 3 ? function(e) {
       function So(e, t, n, r) {
         for (var i = 0; i < t.changes.length; i++) {
           var o = t.changes[i];
-          o == "text" ? Jl(e, t) : o == "gutter" ? Lo(e, t, n, r) : o == "class" ? oi(e, t) : o == "widget" && Vl(e, t, r);
+          o == "text" ? Xl(e, t) : o == "gutter" ? Lo(e, t, n, r) : o == "class" ? oi(e, t) : o == "widget" && jl(e, t, r);
         }
         t.changes = null;
       }
       function Ar(e) {
         return e.node == e.text && (e.node = d("div", null, null, "position: relative"), e.text.parentNode && e.text.parentNode.replaceChild(e.node, e.text), e.node.appendChild(e.text), p && F < 8 && (e.node.style.zIndex = 2)), e.node;
       }
-      function Zl(e, t) {
+      function Ql(e, t) {
         var n = t.bgClass ? t.bgClass + " " + (t.line.bgClass || "") : t.line.bgClass;
         if (n && (n += " CodeMirror-linebackground"), t.background)
           n ? t.background.className = n : (t.background.parentNode.removeChild(t.background), t.background = null);
@@ -1375,12 +1375,12 @@ b`.split(/\n/).length != 3 ? function(e) {
         var n = e.display.externalMeasured;
         return n && n.line == t.line ? (e.display.externalMeasured = null, t.measure = n.measure, n.built) : wo(e, t);
       }
-      function Jl(e, t) {
+      function Xl(e, t) {
         var n = t.text.className, r = Co(e, t);
         t.text == t.node && (t.node = r.pre), t.text.parentNode.replaceChild(r.pre, t.text), t.text = r.pre, r.bgClass != t.bgClass || r.textClass != t.textClass ? (t.bgClass = r.bgClass, t.textClass = r.textClass, oi(e, t)) : n && (t.text.className = n);
       }
       function oi(e, t) {
-        Zl(e, t), t.line.wrapClass ? Ar(t).className = t.line.wrapClass : t.node != t.text && (t.node.className = "");
+        Ql(e, t), t.line.wrapClass ? Ar(t).className = t.line.wrapClass : t.node != t.text && (t.node.className = "");
         var n = t.textClass ? t.textClass + " " + (t.line.textClass || "") : t.line.textClass;
         t.text.className = n || "";
       }
@@ -1416,13 +1416,13 @@ b`.split(/\n/).length != 3 ? function(e) {
             }
         }
       }
-      function Vl(e, t, n) {
+      function jl(e, t, n) {
         t.alignable && (t.alignable = null);
         for (var r = C("CodeMirror-linewidget"), i = t.node.firstChild, o = void 0; i; i = o)
           o = i.nextSibling, r.test(i.className) && t.node.removeChild(i);
         To(e, t, n);
       }
-      function $l(e, t, n, r) {
+      function Zl(e, t, n, r) {
         var i = Co(e, t);
         return t.text = t.node = i.pre, i.bgClass && (t.bgClass = i.bgClass), i.textClass && (t.textClass = i.textClass), oi(e, t), Lo(e, t, n, r), To(e, t, r), t.node;
       }
@@ -1435,10 +1435,10 @@ b`.split(/\n/).length != 3 ? function(e) {
         if (t.widgets)
           for (var o = Ar(n), a = 0, l = t.widgets; a < l.length; ++a) {
             var s = l[a], u = d("div", [s.node], "CodeMirror-linewidget" + (s.className ? " " + s.className : ""));
-            s.handleMouseEvents || u.setAttribute("cm-ignore-events", "true"), es(s, u, n, r), e.display.input.setUneditable(u), i && s.above ? o.insertBefore(u, n.gutter || n.text) : o.appendChild(u), Oe(s, "redraw");
+            s.handleMouseEvents || u.setAttribute("cm-ignore-events", "true"), Jl(s, u, n, r), e.display.input.setUneditable(u), i && s.above ? o.insertBefore(u, n.gutter || n.text) : o.appendChild(u), Oe(s, "redraw");
           }
       }
-      function es(e, t, n, r) {
+      function Jl(e, t, n, r) {
         if (e.noHScroll) {
           (n.alignable || (n.alignable = [])).push(t);
           var i = r.wrapperWidth;
@@ -1484,7 +1484,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function li(e) {
         return e.display.scroller.clientHeight - vt(e) - e.display.barHeight;
       }
-      function ts(e, t, n) {
+      function Vl(e, t, n) {
         var r = e.options.lineWrapping, i = r && Bt(e);
         if (!t.measure.heights || r && t.measure.width != i) {
           var o = t.measure.heights = [];
@@ -1510,7 +1510,7 @@ b`.split(/\n/).length != 3 ? function(e) {
               return { map: e.measure.maps[i], cache: e.measure.caches[i], before: !0 };
         }
       }
-      function rs(e, t) {
+      function $l(e, t) {
         t = st(t);
         var n = de(t), r = e.display.externalMeasured = new ko(e.doc, t, n);
         r.lineN = n;
@@ -1529,7 +1529,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       }
       function or(e, t) {
         var n = de(t), r = si(e, n);
-        r && !r.text ? r = null : r && r.changes && (So(e, r, n, di(e)), e.curOp.forceUpdate = !0), r || (r = rs(e, t));
+        r && !r.text ? r = null : r && r.changes && (So(e, r, n, di(e)), e.curOp.forceUpdate = !0), r || (r = $l(e, t));
         var i = Ao(r, t, n);
         return {
           line: t,
@@ -1544,7 +1544,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function mt(e, t, n, r, i) {
         t.before && (n = -1);
         var o = n + (r || ""), a;
-        return t.cache.hasOwnProperty(o) ? a = t.cache[o] : (t.rect || (t.rect = t.view.text.getBoundingClientRect()), t.hasHeights || (ts(e, t.view, t.rect), t.hasHeights = !0), a = is(e, t, n, r), a.bogus || (t.cache[o] = a)), {
+        return t.cache.hasOwnProperty(o) ? a = t.cache[o] : (t.rect || (t.rect = t.view.text.getBoundingClientRect()), t.hasHeights || (Vl(e, t.view, t.rect), t.hasHeights = !0), a = ts(e, t, n, r), a.bogus || (t.cache[o] = a)), {
           left: a.left,
           right: a.right,
           top: i ? a.rtop : a.top,
@@ -1565,7 +1565,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         return { node: r, start: i, end: o, collapse: a, coverStart: l, coverEnd: s };
       }
-      function ns(e, t) {
+      function es(e, t) {
         var n = Do;
         if (t == "left")
           for (var r = 0; r < e.length && (n = e[r]).left == n.right; r++)
@@ -1575,7 +1575,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             ;
         return n;
       }
-      function is(e, t, n, r) {
+      function ts(e, t, n, r) {
         var i = Ho(t.map, n, r), o = i.node, a = i.start, l = i.end, s = i.collapse, u;
         if (o.nodeType == 3) {
           for (var f = 0; f < 4; f++) {
@@ -1583,11 +1583,11 @@ b`.split(/\n/).length != 3 ? function(e) {
               --a;
             for (; i.coverStart + l < i.coverEnd && Fn(t.line.text.charAt(i.coverStart + l)); )
               ++l;
-            if (p && F < 9 && a == 0 && l == i.coverEnd - i.coverStart ? u = o.parentNode.getBoundingClientRect() : u = ns(H(o, a, l).getClientRects(), r), u.left || u.right || a == 0)
+            if (p && F < 9 && a == 0 && l == i.coverEnd - i.coverStart ? u = o.parentNode.getBoundingClientRect() : u = es(H(o, a, l).getClientRects(), r), u.left || u.right || a == 0)
               break;
             l = a, a = a - 1, s = "right";
           }
-          p && F < 11 && (u = os(e.display.measure, u));
+          p && F < 11 && (u = rs(e.display.measure, u));
         } else {
           a > 0 && (s = r = "right");
           var c;
@@ -1607,8 +1607,8 @@ b`.split(/\n/).length != 3 ? function(e) {
         };
         return !u.left && !u.right && (ee.bogus = !0), e.options.singleCursorHeightPerLine || (ee.rtop = v, ee.rbottom = N), ee;
       }
-      function os(e, t) {
-        if (!window.screen || screen.logicalXDPI == null || screen.logicalXDPI == screen.deviceXDPI || !xl(e))
+      function rs(e, t) {
+        if (!window.screen || screen.logicalXDPI == null || screen.logicalXDPI == screen.deviceXDPI || !ml(e))
           return t;
         var n = screen.logicalXDPI / screen.deviceXDPI, r = screen.logicalYDPI / screen.deviceYDPI;
         return {
@@ -1712,7 +1712,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           return fi(r.first + r.size - 1, re(r, o).text.length, null, 1, 1);
         t < 0 && (t = 0);
         for (var a = re(r, i); ; ) {
-          var l = as(e, a, i, t, n), s = El(a, l.ch + (l.xRel > 0 || l.outside > 0 ? 1 : 0));
+          var l = ns(e, a, i, t, n), s = Ol(a, l.ch + (l.xRel > 0 || l.outside > 0 ? 1 : 0));
           if (!s)
             return l;
           var u = s.find(1);
@@ -1738,11 +1738,11 @@ b`.split(/\n/).length != 3 ? function(e) {
       function hi(e, t, n, r) {
         return e.bottom <= n ? !1 : e.top > n ? !0 : (r ? e.left : e.right) > t;
       }
-      function as(e, t, n, r, i) {
+      function ns(e, t, n, r, i) {
         i -= _t(t);
         var o = or(e, t), a = ui(t), l = 0, s = t.text.length, u = !0, f = xt(t, e.doc.direction);
         if (f) {
-          var c = (e.options.lineWrapping ? ss : ls)(e, t, n, o, f, r, i);
+          var c = (e.options.lineWrapping ? os : is)(e, t, n, o, f, r, i);
           u = c.level != 1, l = u ? c.from : c.to - 1, s = u ? c.to : c.from - 1;
         }
         var b = null, v = null, N = _r(function(oe) {
@@ -1759,7 +1759,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return N = Zi(t.text, N, 1), fi(n, N, U, X, r - P);
       }
-      function ls(e, t, n, r, i, o, a) {
+      function is(e, t, n, r, i, o, a) {
         var l = _r(function(c) {
           var b = i[c], v = b.level != 1;
           return hi(ut(
@@ -1782,7 +1782,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return s;
       }
-      function ss(e, t, n, r, i, o, a) {
+      function os(e, t, n, r, i, o, a) {
         var l = Ro(e, t, r, a), s = l.begin, u = l.end;
         /\s/.test(t.text.charAt(u - 1)) && u--;
         for (var f = null, c = null, b = 0; b < i.length; b++) {
@@ -1933,7 +1933,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return { index: i, lineN: n };
       }
-      function us(e, t, n) {
+      function as(e, t, n) {
         var r = e.display, i = r.view;
         i.length == 0 || t >= r.viewTo || n <= r.viewFrom ? (r.view = hn(e, t, n), r.viewFrom = t) : (r.viewFrom > t ? r.view = hn(e, t, r.viewFrom).concat(r.view) : r.viewFrom < t && (r.view = r.view.slice(Gt(e, t))), r.viewFrom = t, r.viewTo < n ? r.view = r.view.concat(hn(e, r.viewTo, n)) : r.viewTo > n && (r.view = r.view.slice(0, Gt(e, n)))), r.viewTo = n;
       }
@@ -1960,7 +1960,7 @@ b`.split(/\n/).length != 3 ? function(e) {
                 var f = a(e, s);
                 f && vi(e, f, i);
               } else (u || e.options.showCursorWhenSelecting) && vi(e, s.head, i);
-              u || fs(e, s, o);
+              u || ls(e, s, o);
             }
           }
         return r;
@@ -1979,7 +1979,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function mn(e, t) {
         return e.top - t.top || e.left - t.left;
       }
-      function fs(e, t, n) {
+      function ls(e, t, n) {
         var r = e.display, i = e.doc, o = document.createDocumentFragment(), a = Mo(e.display), l = a.left, s = Math.max(r.sizerWidth, Bt(e) - r.sizer.offsetLeft) - a.right, u = i.direction == "ltr";
         function f(j, ee, oe, ne) {
           ee < 0 && (ee = 0), ee = Math.round(ee), ne = Math.round(ne), o.appendChild(d("div", null, "CodeMirror-selected", "position: absolute; left: " + j + `px;
@@ -1996,7 +1996,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             return be(we, Ne)[Ne];
           }
           var Ve = xt(ne, i.direction);
-          return dl(Ve, ee || 0, oe ?? fe, function(Te, $e, Ie, Me) {
+          return fl(Ve, ee || 0, oe ?? fe, function(Te, $e, Ie, Me) {
             var Ne = Ie == "ltr", we = be(Te, Ne ? "left" : "right"), et = be($e - 1, Ne ? "right" : "left"), xr = ee == null && Te == 0, Ft = oe == null && $e == fe, Ue = Me == 0, yt = !Ve || Me == Ve.length - 1;
             if (et.top - we.top <= 3) {
               var We = (u ? xr : Ft) && Ue, Ui = (u ? Ft : xr) && yt, Lt = We ? l : (Ne ? we : et).left, jt = Ui ? s : (Ne ? et : we).right;
@@ -2085,7 +2085,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return { from: o, to: Math.max(a, o + 1) };
       }
-      function cs(e, t) {
+      function ss(e, t) {
         if (!Ae(e, "scrollCursorIntoView")) {
           var n = e.display, r = n.sizer.getBoundingClientRect(), i = null, o = n.wrapper.ownerDocument;
           if (t.top + r.top < 0 ? i = !0 : t.bottom + r.top > (o.defaultView.innerHeight || o.documentElement.clientHeight) && (i = !1), i != null && !w) {
@@ -2097,7 +2097,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         }
       }
-      function hs(e, t, n, r) {
+      function us(e, t, n, r) {
         r == null && (r = 0);
         var i;
         !e.options.lineWrapping && t == n && (n = t.sticky == "before" ? q(t.line, t.ch + 1, "before") : t, t = t.ch ? q(t.line, t.sticky == "before" ? t.ch - 1 : t.ch, "after") : t);
@@ -2115,7 +2115,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return i;
       }
-      function ds(e, t) {
+      function fs(e, t) {
         var n = xi(e, t);
         n.scrollTop != null && Wr(e, n.scrollTop), n.scrollLeft != null && Kt(e, n.scrollLeft);
       }
@@ -2145,7 +2145,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function Er(e, t, n) {
         (t != null || n != null) && xn(e), t != null && (e.curOp.scrollLeft = t), n != null && (e.curOp.scrollTop = n);
       }
-      function ps(e, t) {
+      function cs(e, t) {
         xn(e), e.curOp.scrollToPos = t;
       }
       function xn(e) {
@@ -2262,7 +2262,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           n == "horizontal" ? Kt(e, t) : Wr(e, t);
         }, e), e.display.scrollbars.addClass && ue(e.display.wrapper, e.display.scrollbars.addClass);
       }
-      var gs = 0;
+      var hs = 0;
       function Qt(e) {
         e.curOp = {
           cm: e,
@@ -2292,59 +2292,59 @@ b`.split(/\n/).length != 3 ? function(e) {
           scrollToPos: null,
           // Used to scroll to a specific position
           focus: !1,
-          id: ++gs,
+          id: ++hs,
           // Unique ID
           markArrays: null
           // Used by addMarkedSpan
-        }, Yl(e.curOp);
+        }, Ul(e.curOp);
       }
       function Xt(e) {
         var t = e.curOp;
-        t && Xl(t, function(n) {
+        t && Kl(t, function(n) {
           for (var r = 0; r < n.ops.length; r++)
             n.ops[r].cm.curOp = null;
-          vs(n);
+          ds(n);
         });
       }
-      function vs(e) {
+      function ds(e) {
         for (var t = e.ops, n = 0; n < t.length; n++)
-          ms(t[n]);
+          ps(t[n]);
         for (var r = 0; r < t.length; r++)
-          ys(t[r]);
+          gs(t[r]);
         for (var i = 0; i < t.length; i++)
-          bs(t[i]);
+          vs(t[i]);
         for (var o = 0; o < t.length; o++)
-          xs(t[o]);
+          ms(t[o]);
         for (var a = 0; a < t.length; a++)
-          ws(t[a]);
+          ys(t[a]);
       }
-      function ms(e) {
+      function ps(e) {
         var t = e.cm, n = t.display;
-        ks(t), e.updateMaxLine && ii(t), e.mustUpdate = e.viewChanged || e.forceUpdate || e.scrollTop != null || e.scrollToPos && (e.scrollToPos.from.line < n.viewFrom || e.scrollToPos.to.line >= n.viewTo) || n.maxLineChanged && t.options.lineWrapping, e.update = e.mustUpdate && new wn(t, e.mustUpdate && { top: e.scrollTop, ensure: e.scrollToPos }, e.forceUpdate);
+        xs(t), e.updateMaxLine && ii(t), e.mustUpdate = e.viewChanged || e.forceUpdate || e.scrollTop != null || e.scrollToPos && (e.scrollToPos.from.line < n.viewFrom || e.scrollToPos.to.line >= n.viewTo) || n.maxLineChanged && t.options.lineWrapping, e.update = e.mustUpdate && new wn(t, e.mustUpdate && { top: e.scrollTop, ensure: e.scrollToPos }, e.forceUpdate);
       }
-      function ys(e) {
+      function gs(e) {
         e.updatedDisplay = e.mustUpdate && _i(e.cm, e.update);
       }
-      function bs(e) {
+      function vs(e) {
         var t = e.cm, n = t.display;
         e.updatedDisplay && yn(t), e.barMeasure = zr(t), n.maxLineChanged && !t.options.lineWrapping && (e.adjustWidthTo = Oo(t, n.maxLine, n.maxLine.text.length).left + 3, t.display.sizerWidth = e.adjustWidthTo, e.barMeasure.scrollWidth = Math.max(n.scroller.clientWidth, n.sizer.offsetLeft + e.adjustWidthTo + vt(t) + t.display.barWidth), e.maxScrollLeft = Math.max(0, n.sizer.offsetLeft + e.adjustWidthTo - Bt(t))), (e.updatedDisplay || e.selectionChanged) && (e.preparedSelection = n.input.prepareSelection());
       }
-      function xs(e) {
+      function ms(e) {
         var t = e.cm;
         e.adjustWidthTo != null && (t.display.sizer.style.minWidth = e.adjustWidthTo + "px", e.maxScrollLeft < t.doc.scrollLeft && Kt(t, Math.min(t.display.scroller.scrollLeft, e.maxScrollLeft), !0), t.display.maxLineChanged = !1);
         var n = e.focus && e.focus == te(ve(t));
         e.preparedSelection && t.display.input.showSelection(e.preparedSelection, n), (e.updatedDisplay || e.startHeight != t.doc.height) && fr(t, e.barMeasure), e.updatedDisplay && Ci(t, e.barMeasure), e.selectionChanged && mi(t), t.state.focused && e.updateInput && t.display.input.reset(e.typing), n && Ko(e.cm);
       }
-      function ws(e) {
+      function ys(e) {
         var t = e.cm, n = t.display, r = t.doc;
         if (e.updatedDisplay && Vo(t, e.update), n.wheelStartX != null && (e.scrollTop != null || e.scrollLeft != null || e.scrollToPos) && (n.wheelStartX = n.wheelStartY = null), e.scrollTop != null && Xo(t, e.scrollTop, e.forceScroll), e.scrollLeft != null && Kt(t, e.scrollLeft, !0, !0), e.scrollToPos) {
-          var i = hs(
+          var i = us(
             t,
             se(r, e.scrollToPos.from),
             se(r, e.scrollToPos.to),
             e.scrollToPos.margin
           );
-          cs(t, i);
+          ss(t, i);
         }
         var o = e.maybeHiddenMarkers, a = e.maybeUnhiddenMarkers;
         if (o)
@@ -2403,9 +2403,9 @@ b`.split(/\n/).length != 3 ? function(e) {
         };
       }
       function Pr(e, t) {
-        e.doc.highlightFrontier < e.display.viewTo && e.state.highlight.set(t, Fe(_s, e));
+        e.doc.highlightFrontier < e.display.viewTo && e.state.highlight.set(t, Fe(bs, e));
       }
-      function _s(e) {
+      function bs(e) {
         var t = e.doc;
         if (!(t.highlightFrontier >= e.display.viewTo)) {
           var n = +/* @__PURE__ */ new Date() + e.options.workTime, r = Tr(e, t.highlightFrontier), i = [];
@@ -2438,11 +2438,11 @@ b`.split(/\n/).length != 3 ? function(e) {
         for (var e = 0; e < this.events.length; e++)
           Ce.apply(null, this.events[e]);
       };
-      function ks(e) {
+      function xs(e) {
         var t = e.display;
         !t.scrollbarsClipped && t.scroller.offsetWidth && (t.nativeBarWidth = t.scroller.offsetWidth - t.scroller.clientWidth, t.heightForcer.style.height = vt(e) + "px", t.sizer.style.marginBottom = -t.nativeBarWidth + "px", t.sizer.style.borderRightWidth = vt(e) + "px", t.scrollbarsClipped = !0);
       }
-      function Ss(e) {
+      function ws(e) {
         if (e.hasFocus())
           return null;
         var t = te(ve(e));
@@ -2455,7 +2455,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return n;
       }
-      function Cs(e) {
+      function _s(e) {
         if (!(!e || !e.activeElt || e.activeElt == te(Ge(e.activeElt))) && (e.activeElt.focus(), !/^(INPUT|TEXTAREA)$/.test(e.activeElt.nodeName) && e.anchorNode && Z(document.body, e.anchorNode) && Z(document.body, e.focusNode))) {
           var t = e.activeElt.ownerDocument, n = t.defaultView.getSelection(), r = t.createRange();
           r.setEnd(e.anchorNode, e.anchorOffset), r.collapse(!1), n.removeAllRanges(), n.addRange(r), n.extend(e.focusNode, e.focusOffset);
@@ -2471,12 +2471,12 @@ b`.split(/\n/).length != 3 ? function(e) {
         var i = r.first + r.size, o = Math.max(t.visible.from - e.options.viewportMargin, r.first), a = Math.min(i, t.visible.to + e.options.viewportMargin);
         n.viewFrom < o && o - n.viewFrom < 20 && (o = Math.max(r.first, n.viewFrom)), n.viewTo > a && n.viewTo - a < 20 && (a = Math.min(i, n.viewTo)), wt && (o = ri(e.doc, o), a = bo(e.doc, a));
         var l = o != n.viewFrom || a != n.viewTo || n.lastWrapHeight != t.wrapperHeight || n.lastWrapWidth != t.wrapperWidth;
-        us(e, o, a), n.viewOffset = _t(re(e.doc, n.viewFrom)), e.display.mover.style.top = n.viewOffset + "px";
+        as(e, o, a), n.viewOffset = _t(re(e.doc, n.viewFrom)), e.display.mover.style.top = n.viewOffset + "px";
         var s = Uo(e);
         if (!l && s == 0 && !t.force && n.renderedView == n.view && (n.updateLineNumbers == null || n.updateLineNumbers >= n.viewTo))
           return !1;
-        var u = Ss(e);
-        return s > 4 && (n.lineDiv.style.display = "none"), Ls(e, n.updateLineNumbers, t.dims), s > 4 && (n.lineDiv.style.display = ""), n.renderedView = n.view, Cs(u), I(n.cursorDiv), I(n.selectionDiv), n.gutters.style.height = n.sizer.style.minHeight = 0, l && (n.lastWrapHeight = t.wrapperHeight, n.lastWrapWidth = t.wrapperWidth, Pr(e, 400)), n.updateLineNumbers = null, !0;
+        var u = ws(e);
+        return s > 4 && (n.lineDiv.style.display = "none"), ks(e, n.updateLineNumbers, t.dims), s > 4 && (n.lineDiv.style.display = ""), n.renderedView = n.view, _s(u), I(n.cursorDiv), I(n.selectionDiv), n.gutters.style.height = n.sizer.style.minHeight = 0, l && (n.lastWrapHeight = t.wrapperHeight, n.lastWrapWidth = t.wrapperWidth, Pr(e, 400)), n.updateLineNumbers = null, !0;
       }
       function Vo(e, t) {
         for (var n = t.viewport, r = !0; ; r = !1) {
@@ -2500,7 +2500,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           Hr(e), fr(e, r), Ci(e, r), n.finish();
         }
       }
-      function Ls(e, t, n) {
+      function ks(e, t, n) {
         var r = e.display, i = e.options.lineNumbers, o = r.lineDiv, a = o.firstChild;
         function l(N) {
           var P = N.nextSibling;
@@ -2509,7 +2509,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         for (var s = r.view, u = r.viewFrom, f = 0; f < s.length; f++) {
           var c = s[f];
           if (!c.hidden) if (!c.node || c.node.parentNode != o) {
-            var b = $l(e, c, u, n);
+            var b = Zl(e, c, u, n);
             o.insertBefore(b, a);
           } else {
             for (; a != c.node; )
@@ -2581,7 +2581,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function Ir(e) {
         ta(e.display), Ze(e), $o(e);
       }
-      function Ts(e, t, n, r) {
+      function Ss(e, t, n, r) {
         var i = this;
         this.input = n, i.scrollbarFiller = d("div", null, "CodeMirror-scrollbar-filler"), i.scrollbarFiller.setAttribute("cm-not-content", "true"), i.gutterFiller = d("div", null, "CodeMirror-gutter-filler"), i.gutterFiller.setAttribute("cm-not-content", "true"), i.lineDiv = T("div", null, "CodeMirror-code"), i.selectionDiv = d("div", null, null, "position: relative; z-index: 1"), i.cursorDiv = d("div", null, "CodeMirror-cursors"), i.measure = d("div", null, "CodeMirror-measure"), i.lineMeasure = d("div", null, "CodeMirror-measure"), i.lineSpace = T(
           "div",
@@ -2598,7 +2598,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var t = e.wheelDeltaX, n = e.wheelDeltaY;
         return t == null && e.detail && e.axis == e.HORIZONTAL_AXIS && (t = e.detail), n == null && e.detail && e.axis == e.VERTICAL_AXIS ? n = e.detail : n == null && (n = e.wheelDelta), { x: t, y: n };
       }
-      function Ns(e) {
+      function Cs(e) {
         var t = ra(e);
         return t.x *= St, t.y *= St, t;
       }
@@ -2722,7 +2722,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function oa(e, t, n) {
         return e.line == t.line ? q(n.line, e.ch - t.ch + n.ch) : q(n.line + (e.line - t.line), e.ch);
       }
-      function Ms(e, t, n) {
+      function Ls(e, t, n) {
         for (var r = [], i = q(e.first, 0), o = i, a = 0; a < t.length; a++) {
           var l = t[a], s = oa(l.from, i, o), u = oa(Ht(l), i, o);
           if (i = l.to, o = u, n == "around") {
@@ -2749,7 +2749,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           return n ? n[V] : null;
         }
         function o(V, j, ee) {
-          Fl(V, j, ee, r), Oe(V, "change", V, t);
+          El(V, j, ee, r), Oe(V, "change", V, t);
         }
         function a(V, j) {
           for (var ee = [], oe = V; oe < j; ++oe)
@@ -2799,7 +2799,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function sa(e) {
         (e.doc.direction == "rtl" ? ue : y)(e.display.lineDiv, "CodeMirror-rtl");
       }
-      function As(e) {
+      function Ts(e) {
         tt(e, function() {
           sa(e), Ze(e);
         });
@@ -2822,7 +2822,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             break;
         }
       }
-      function Os(e, t) {
+      function Ns(e, t) {
         if (t)
           return ua(e.done), ce(e.done);
         if (e.done.length && !ce(e.done).ranges)
@@ -2834,7 +2834,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var i = e.history;
         i.undone.length = 0;
         var o = +/* @__PURE__ */ new Date(), a, l;
-        if ((i.lastOp == r || i.lastOrigin == t.origin && t.origin && (t.origin.charAt(0) == "+" && i.lastModTime > o - (e.cm ? e.cm.options.historyEventDelay : 500) || t.origin.charAt(0) == "*")) && (a = Os(i, i.lastOp == r)))
+        if ((i.lastOp == r || i.lastOrigin == t.origin && t.origin && (t.origin.charAt(0) == "+" && i.lastModTime > o - (e.cm ? e.cm.options.historyEventDelay : 500) || t.origin.charAt(0) == "*")) && (a = Ns(i, i.lastOp == r)))
           l = ce(a.changes), le(t.from, t.to) == 0 && le(t.from, l.to) == 0 ? l.to = Ht(t) : a.changes.push(Ai(e, t));
         else {
           var s = ce(i.done);
@@ -2846,13 +2846,13 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         i.done.push(n), i.generation = ++i.maxGeneration, i.lastModTime = i.lastSelTime = o, i.lastOp = i.lastSelOp = r, i.lastOrigin = i.lastSelOrigin = t.origin, l || Ce(e, "historyAdded");
       }
-      function Ds(e, t, n, r) {
+      function Ms(e, t, n, r) {
         var i = t.charAt(0);
         return i == "*" || i == "+" && n.ranges.length == r.ranges.length && n.somethingSelected() == r.somethingSelected() && /* @__PURE__ */ new Date() - e.history.lastSelTime <= (e.cm ? e.cm.options.historyEventDelay : 500);
       }
-      function Hs(e, t, n, r) {
+      function As(e, t, n, r) {
         var i = e.history, o = r && r.origin;
-        n == i.lastSelOp || o && i.lastSelOrigin == o && (i.lastModTime == i.lastSelTime && i.lastOrigin == o || Ds(e, o, ce(i.done), t)) ? i.done[i.done.length - 1] = t : Sn(t, i.done), i.lastSelTime = +/* @__PURE__ */ new Date(), i.lastSelOrigin = o, i.lastSelOp = n, r && r.clearRedo !== !1 && ua(i.undone);
+        n == i.lastSelOp || o && i.lastSelOrigin == o && (i.lastModTime == i.lastSelTime && i.lastOrigin == o || Ms(e, o, ce(i.done), t)) ? i.done[i.done.length - 1] = t : Sn(t, i.done), i.lastSelTime = +/* @__PURE__ */ new Date(), i.lastSelOrigin = o, i.lastSelOp = n, r && r.clearRedo !== !1 && ua(i.undone);
       }
       function Sn(e, t) {
         var n = ce(t);
@@ -2864,23 +2864,23 @@ b`.split(/\n/).length != 3 ? function(e) {
           a.markedSpans && ((i || (i = t["spans_" + e.id] = {}))[o] = a.markedSpans), ++o;
         });
       }
-      function Es(e) {
+      function Os(e) {
         if (!e)
           return null;
         for (var t, n = 0; n < e.length; ++n)
           e[n].marker.explicitlyCleared ? t || (t = e.slice(0, n)) : t && t.push(e[n]);
         return t ? t.length ? t : null : e;
       }
-      function Ws(e, t) {
+      function Ds(e, t) {
         var n = t["spans_" + e.id];
         if (!n)
           return null;
         for (var r = [], i = 0; i < t.text.length; ++i)
-          r.push(Es(n[i]));
+          r.push(Os(n[i]));
         return r;
       }
       function ha(e, t) {
-        var n = Ws(e, t), r = ei(e, t);
+        var n = Ds(e, t), r = ei(e, t);
         if (!n)
           return r;
         if (!r)
@@ -2943,7 +2943,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function pa(e, t, n, r) {
         qe(e, Dt(t, n), r);
       }
-      function zs(e, t, n) {
+      function Hs(e, t, n) {
         var r = {
           ranges: t.ranges,
           update: function(i) {
@@ -2963,10 +2963,10 @@ b`.split(/\n/).length != 3 ? function(e) {
         i && i.ranges ? (r[r.length - 1] = t, Ln(e, t, n)) : qe(e, t, n);
       }
       function qe(e, t, n) {
-        Ln(e, t, n), Hs(e, e.sel, e.cm ? e.cm.curOp.id : NaN, n);
+        Ln(e, t, n), As(e, e.sel, e.cm ? e.cm.curOp.id : NaN, n);
       }
       function Ln(e, t, n) {
-        (at(e, "beforeSelectionChange") || e.cm && at(e.cm, "beforeSelectionChange")) && (t = zs(e, t, n));
+        (at(e, "beforeSelectionChange") || e.cm && at(e.cm, "beforeSelectionChange")) && (t = Hs(e, t, n));
         var r = n && n.bias || (le(t.primary().head, e.sel.primary().head) < 0 ? -1 : 1);
         va(e, ya(e, t, r, !0)), !(n && n.scroll === !1) && e.cm && e.cm.getOption("readOnly") != "nocursor" && ur(e.cm);
       }
@@ -3041,7 +3041,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             return;
         }
         if (!((at(e, "beforeChange") || e.cm && at(e.cm, "beforeChange")) && (t = wa(e, t, !0), !t))) {
-          var r = co && !n && Hl(e, t.from, t.to);
+          var r = co && !n && Al(e, t.from, t.to);
           if (r)
             for (var i = r.length - 1; i >= 0; --i)
               _a(e, { from: r[i].from, to: r[i].to, text: i ? [""] : t.text, origin: t.origin });
@@ -3132,10 +3132,10 @@ b`.split(/\n/).length != 3 ? function(e) {
             to: q(o, re(e, o).text.length),
             text: [t.text[0]],
             origin: t.origin
-          }), t.removed = It(e, t.from, t.to), n || (n = Ti(e, t)), e.cm ? Fs(e.cm, t, r) : Mi(e, t, r), Ln(e, n, Xe), e.cantEdit && Tn(e, q(e.firstLine(), 0)) && (e.cantEdit = !1);
+          }), t.removed = It(e, t.from, t.to), n || (n = Ti(e, t)), e.cm ? Es(e.cm, t, r) : Mi(e, t, r), Ln(e, n, Xe), e.cantEdit && Tn(e, q(e.firstLine(), 0)) && (e.cantEdit = !1);
         }
       }
-      function Fs(e, t, n) {
+      function Es(e, t, n) {
         var r = e.doc, i = e.display, o = t.from, a = t.to, l = !1, s = o.line;
         e.options.lineWrapping || (s = de(st(re(r, o.line))), r.iter(s, a.line + 1, function(v) {
           if (v == i.maxLine)
@@ -3143,7 +3143,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         })), r.sel.contains(t.from, t.to) > -1 && Vi(e), Mi(r, t, n, qo(e)), e.options.lineWrapping || (r.iter(s, o.line + t.text.length, function(v) {
           var N = cn(v);
           N > i.maxLineLength && (i.maxLine = v, i.maxLineLength = N, i.maxLineChanged = !0, l = !1);
-        }), l && (e.curOp.updateMaxLine = !0)), Ll(r, o.line), Pr(e, 400);
+        }), l && (e.curOp.updateMaxLine = !0)), kl(r, o.line), Pr(e, 400);
         var u = t.text.length - (a.line - o.line) - 1;
         t.full ? Ze(e) : o.line == a.line && t.text.length == 1 && !aa(e.doc, t) ? At(e, o.line, "text") : Ze(e, o.line, a.line + 1, u);
         var f = at(e, "changes"), c = at(e, "change");
@@ -3209,7 +3209,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         removeInner: function(e, t) {
           for (var n = e, r = e + t; n < r; ++n) {
             var i = this.lines[n];
-            this.height -= i.height, Pl(i), Oe(i, "delete");
+            this.height -= i.height, Wl(i), Oe(i, "delete");
           }
           this.lines.splice(e, t);
         },
@@ -3343,7 +3343,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function Ta(e, t, n) {
         _t(t) < (e.curOp && e.curOp.scrollTop || e.doc.scrollTop) && wi(e, n);
       }
-      function Ps(e, t, n, r) {
+      function Ws(e, t, n, r) {
         var i = new Kr(e, n, r), o = e.cm;
         return o && i.noHScroll && (o.display.alignWidgets = !0), qr(e, t, "widget", function(a) {
           var l = a.widgets || (a.widgets = []);
@@ -3366,7 +3366,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
           for (var r = null, i = null, o = 0; o < this.lines.length; ++o) {
             var a = this.lines[o], l = Nr(a.markedSpans, this);
-            e && !this.collapsed ? At(e, de(a), "text") : e && (l.to != null && (i = de(a)), l.from != null && (r = de(a))), a.markedSpans = Ml(a.markedSpans, l), l.from == null && this.collapsed && !Mt(this.doc, a) && e && pt(a, ar(e.display));
+            e && !this.collapsed ? At(e, de(a), "text") : e && (l.to != null && (i = de(a)), l.from != null && (r = de(a))), a.markedSpans = Ll(a.markedSpans, l), l.from == null && this.collapsed && !Mt(this.doc, a) && e && pt(a, ar(e.display));
           }
           if (e && this.collapsed && !e.options.lineWrapping)
             for (var s = 0; s < this.lines.length; ++s) {
@@ -3411,7 +3411,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       }, er(Wt);
       function gr(e, t, n, r, i) {
         if (r && r.shared)
-          return Is(e, t, n, r, i);
+          return zs(e, t, n, r, i);
         if (e.cm && !e.cm.curOp)
           return De(e.cm, gr)(e, t, n, r, i);
         var o = new Wt(e, i), a = le(t, n);
@@ -3420,12 +3420,12 @@ b`.split(/\n/).length != 3 ? function(e) {
         if (o.replacedWith && (o.collapsed = !0, o.widgetNode = T("span", [o.replacedWith], "CodeMirror-widget"), r.handleMouseEvents || o.widgetNode.setAttribute("cm-ignore-events", "true"), r.insertLeft && (o.widgetNode.insertLeft = !0)), o.collapsed) {
           if (yo(e, t.line, t, n, o) || t.line != n.line && yo(e, n.line, t, n, o))
             throw new Error("Inserting collapsed marker partially overlapping an existing one");
-          Nl();
+          Cl();
         }
         o.addToHistory && fa(e, { from: t, to: n, origin: "markText" }, e.sel, NaN);
         var l = t.line, s = e.cm, u;
         if (e.iter(l, n.line + 1, function(c) {
-          s && o.collapsed && !s.options.lineWrapping && st(c) == s.display.maxLine && (u = !0), o.collapsed && l != t.line && pt(c, 0), Al(c, new ln(
+          s && o.collapsed && !s.options.lineWrapping && st(c) == s.display.maxLine && (u = !0), o.collapsed && l != t.line && pt(c, 0), Tl(c, new ln(
             o,
             l == t.line ? t.ch : null,
             l == n.line ? n.ch : null
@@ -3434,7 +3434,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           Mt(e, c) && pt(c, 0);
         }), o.clearOnEnter && ae(o, "beforeCursorEnter", function() {
           return o.clear();
-        }), o.readOnly && (Tl(), (e.history.done.length || e.history.undone.length) && e.clearHistory()), o.collapsed && (o.id = ++Na, o.atomic = !0), s) {
+        }), o.readOnly && (Sl(), (e.history.done.length || e.history.undone.length) && e.clearHistory()), o.collapsed && (o.id = ++Na, o.atomic = !0), s) {
           if (u && (s.curOp.updateMaxLine = !0), o.collapsed)
             Ze(s, t.line, n.line + 1);
           else if (o.className || o.startStyle || o.endStyle || o.css || o.attributes || o.title)
@@ -3459,7 +3459,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       }, Yr.prototype.find = function(e, t) {
         return this.primary.find(e, t);
       }, er(Yr);
-      function Is(e, t, n, r, i) {
+      function zs(e, t, n, r, i) {
         r = ht(r), r.shared = !1;
         var o = [gr(e, t, n, r, i)], a = o[0], l = r.widgetNode;
         return Et(e, function(s) {
@@ -3475,7 +3475,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           return t.parent;
         });
       }
-      function Rs(e, t) {
+      function Fs(e, t) {
         for (var n = 0; n < t.length; n++) {
           var r = t[n], i = r.find(), o = e.clipPos(i.from), a = e.clipPos(i.to);
           if (le(o, a)) {
@@ -3484,7 +3484,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         }
       }
-      function Bs(e) {
+      function Ps(e) {
         for (var t = function(r) {
           var i = e[r], o = [i.primary.doc];
           Et(i.primary.doc, function(s) {
@@ -3496,12 +3496,12 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         }, n = 0; n < e.length; n++) t(n);
       }
-      var qs = 0, Je = function(e, t, n, r, i) {
+      var Is = 0, Je = function(e, t, n, r, i) {
         if (!(this instanceof Je))
           return new Je(e, t, n, r, i);
         n == null && (n = 0), Gr.call(this, [new Ur([new nr("", null)])]), this.first = n, this.scrollTop = this.scrollLeft = 0, this.cantEdit = !1, this.cleanGeneration = 1, this.modeFrontier = this.highlightFrontier = n;
         var o = q(n, 0);
-        this.sel = Dt(o), this.history = new kn(null), this.id = ++qs, this.modeOption = t, this.lineSep = r, this.direction = i == "rtl" ? "rtl" : "ltr", this.extend = !1, typeof e == "string" && (e = this.splitLines(e)), Mi(this, { from: o, to: o, text: e }), qe(this, Dt(o), Xe);
+        this.sel = Dt(o), this.history = new kn(null), this.id = ++Is, this.modeOption = t, this.lineSep = r, this.direction = i == "rtl" ? "rtl" : "ltr", this.extend = !1, typeof e == "string" && (e = this.splitLines(e)), Mi(this, { from: o, to: o, text: e }), qe(this, Dt(o), Xe);
       };
       Je.prototype = Xi(Gr.prototype, {
         constructor: Je,
@@ -3634,7 +3634,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             var a = i.ranges[o];
             r[o] = { from: a.from(), to: a.to(), text: this.splitLines(e[o]), origin: n };
           }
-          for (var l = t && t != "end" && Ms(this, r, t), s = r.length - 1; s >= 0; s--)
+          for (var l = t && t != "end" && Ls(this, r, t), s = r.length - 1; s >= 0; s--)
             dr(this, r[s]);
           l ? ga(this, l) : this.cm && ur(this.cm);
         }),
@@ -3751,7 +3751,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           });
         }),
         addLineWidget: He(function(e, t, n) {
-          return Ps(this, e, t, n);
+          return Ws(this, e, t, n);
         }),
         removeLineWidget: function(e) {
           e.clear();
@@ -3835,14 +3835,14 @@ b`.split(/\n/).length != 3 ? function(e) {
           var t = this.first, n = this.first + this.size;
           e.from != null && e.from > t && (t = e.from), e.to != null && e.to < n && (n = e.to);
           var r = new Je(Xn(this, t, n), e.mode || this.modeOption, t, this.lineSep, this.direction);
-          return e.sharedHist && (r.history = this.history), (this.linked || (this.linked = [])).push({ doc: r, sharedHist: e.sharedHist }), r.linked = [{ doc: this, isParent: !0, sharedHist: e.sharedHist }], Rs(r, Ma(this)), r;
+          return e.sharedHist && (r.history = this.history), (this.linked || (this.linked = [])).push({ doc: r, sharedHist: e.sharedHist }), r.linked = [{ doc: this, isParent: !0, sharedHist: e.sharedHist }], Fs(r, Ma(this)), r;
         },
         unlinkDoc: function(e) {
           if (e instanceof me && (e = e.doc), this.linked)
             for (var t = 0; t < this.linked.length; ++t) {
               var n = this.linked[t];
               if (n.doc == e) {
-                this.linked.splice(t, 1), e.unlinkDoc(this), Bs(Ma(this));
+                this.linked.splice(t, 1), e.unlinkDoc(this), Ps(Ma(this));
                 break;
               }
             }
@@ -3872,11 +3872,11 @@ b`.split(/\n/).length != 3 ? function(e) {
         setDirection: He(function(e) {
           e != "rtl" && (e = "ltr"), e != this.direction && (this.direction = e, this.iter(function(t) {
             return t.order = null;
-          }), this.cm && As(this.cm));
+          }), this.cm && Ts(this.cm));
         })
       }), Je.prototype.eachLine = Je.prototype.iter;
       var Aa = 0;
-      function Us(e) {
+      function Rs(e) {
         var t = this;
         if (Oa(t), !(Ae(t, e) || kt(t.display, e))) {
           je(e), p && (Aa = +/* @__PURE__ */ new Date());
@@ -3937,7 +3937,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             }
         }
       }
-      function Gs(e, t) {
+      function Bs(e, t) {
         if (p && (!e.state.draggingText || +/* @__PURE__ */ new Date() - Aa < 100)) {
           Cr(t);
           return;
@@ -3947,7 +3947,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           n.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", D && (n.width = n.height = 1, e.display.wrapper.appendChild(n), n._top = n.offsetTop), t.dataTransfer.setDragImage(n, 0, 0), D && n.parentNode.removeChild(n);
         }
       }
-      function Ks(e, t) {
+      function qs(e, t) {
         var n = Ut(e, t);
         if (n) {
           var r = document.createDocumentFragment();
@@ -3970,20 +3970,20 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
       }
       var Ha = !1;
-      function Ys() {
-        Ha || (Qs(), Ha = !0);
+      function Us() {
+        Ha || (Gs(), Ha = !0);
       }
-      function Qs() {
+      function Gs() {
         var e;
         ae(window, "resize", function() {
           e == null && (e = setTimeout(function() {
-            e = null, Da(Xs);
+            e = null, Da(Ks);
           }, 100));
         }), ae(window, "blur", function() {
           return Da(sr);
         });
       }
-      function Xs(e) {
+      function Ks(e) {
         var t = e.display;
         t.cachedCharWidth = t.cachedTextHeight = t.cachedPaddingH = null, t.scrollbarsClipped = !1, e.setSize();
       }
@@ -4144,7 +4144,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         "Ctrl-Down": "goDocEnd",
         fallthrough: ["basic", "emacsy"]
       }, Ct.default = S ? Ct.macDefault : Ct.pcDefault;
-      function js(e) {
+      function Ys(e) {
         var t = e.split(/-(?!$)/);
         e = t[t.length - 1];
         for (var n, r, i, o, a = 0; a < t.length - 1; a++) {
@@ -4162,7 +4162,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return n && (e = "Alt-" + e), r && (e = "Ctrl-" + e), o && (e = "Cmd-" + e), i && (e = "Shift-" + e), e;
       }
-      function Zs(e) {
+      function Qs(e) {
         var t = {};
         for (var n in e)
           if (e.hasOwnProperty(n)) {
@@ -4173,7 +4173,7 @@ b`.split(/\n/).length != 3 ? function(e) {
               delete e[n];
               continue;
             }
-            for (var i = en(n.split(" "), js), o = 0; o < i.length; o++) {
+            for (var i = en(n.split(" "), Ys), o = 0; o < i.length; o++) {
               var a = void 0, l = void 0;
               o == i.length - 1 ? (l = i.join(" "), a = r) : (l = i.slice(0, o + 1).join(" "), a = "...");
               var s = t[l];
@@ -4269,7 +4269,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return new q(r, i < 0 ? n.text.length : 0, i < 0 ? "before" : "after");
       }
-      function Js(e, t, n, r) {
+      function Xs(e, t, n, r) {
         var i = xt(t, e.doc.direction);
         if (!i)
           return Ei(t, n, r);
@@ -4382,7 +4382,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         goLineEnd: function(e) {
           return e.extendSelectionsBy(
             function(t) {
-              return Vs(e, t.head.line);
+              return js(e, t.head.line);
             },
             { origin: "+move", bias: -1 }
           );
@@ -4538,8 +4538,8 @@ b`.split(/\n/).length != 3 ? function(e) {
         var n = re(e.doc, t), r = st(n);
         return r != n && (t = de(r)), Wi(!0, e, r, t, 1);
       }
-      function Vs(e, t) {
-        var n = re(e.doc, t), r = Wl(n);
+      function js(e, t) {
+        var n = re(e.doc, t), r = Dl(n);
         return r != n && (t = de(r)), Wi(!0, e, n, t, -1);
       }
       function Pa(e, t) {
@@ -4562,7 +4562,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return i;
       }
-      function $s(e, t, n) {
+      function Zs(e, t, n) {
         for (var r = 0; r < e.state.keyMaps.length; r++) {
           var i = vr(t, e.state.keyMaps[r], n, e);
           if (i)
@@ -4570,13 +4570,13 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return e.options.extraKeys && vr(t, e.options.extraKeys, n, e) || vr(t, e.options.keyMap, n, e);
       }
-      var eu = new dt();
+      var Js = new dt();
       function Zr(e, t, n, r) {
         var i = e.state.keySeq;
         if (i) {
           if (Ea(t))
             return "handled";
-          if (/\'$/.test(t) ? e.state.keySeq = null : eu.set(50, function() {
+          if (/\'$/.test(t) ? e.state.keySeq = null : Js.set(50, function() {
             e.state.keySeq == i && (e.state.keySeq = null, e.display.input.reset());
           }), Ia(e, i + " " + t, n, r))
             return !0;
@@ -4584,7 +4584,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         return Ia(e, t, n, r);
       }
       function Ia(e, t, n, r) {
-        var i = $s(e, t, r);
+        var i = Zs(e, t, r);
         return i == "multi" && (e.state.keySeq = t), i == "handled" && Oe(e, "keyHandled", e, t, n), (i == "handled" || i == "multi") && (je(n), mi(e)), !!i;
       }
       function Ra(e, t) {
@@ -4598,7 +4598,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           return On(e, r);
         }) : !1;
       }
-      function tu(e, t, n) {
+      function Vs(e, t, n) {
         return Zr(e, "'" + n + "'", t, function(r) {
           return On(e, r, !0);
         });
@@ -4611,10 +4611,10 @@ b`.split(/\n/).length != 3 ? function(e) {
           var n = e.keyCode;
           t.display.shift = n == 16 || e.shiftKey;
           var r = Ra(t, e);
-          D && (zi = r ? n : null, !r && n == 88 && !bl && (S ? e.metaKey : e.ctrlKey) && t.replaceSelection("", null, "cut")), Y && !S && !r && n == 46 && e.shiftKey && !e.ctrlKey && document.execCommand && document.execCommand("cut"), n == 18 && !/\bCodeMirror-crosshair\b/.test(t.display.lineDiv.className) && ru(t);
+          D && (zi = r ? n : null, !r && n == 88 && !vl && (S ? e.metaKey : e.ctrlKey) && t.replaceSelection("", null, "cut")), Y && !S && !r && n == 46 && e.shiftKey && !e.ctrlKey && document.execCommand && document.execCommand("cut"), n == 18 && !/\bCodeMirror-crosshair\b/.test(t.display.lineDiv.className) && $s(t);
         }
       }
-      function ru(e) {
+      function $s(e) {
         var t = e.display.lineDiv;
         ue(t, "CodeMirror-crosshair");
         function n(r) {
@@ -4635,18 +4635,18 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
           if (!(D && (!e.which || e.which < 10) && Ra(t, e))) {
             var i = String.fromCharCode(r ?? n);
-            i != "\b" && (tu(t, e, i) || t.display.input.onKeyPress(e));
+            i != "\b" && (Vs(t, e, i) || t.display.input.onKeyPress(e));
           }
         }
       }
-      var nu = 400, Fi = function(e, t, n) {
+      var eu = 400, Fi = function(e, t, n) {
         this.time = e, this.pos = t, this.button = n;
       };
       Fi.prototype.compare = function(e, t, n) {
-        return this.time + nu > e && le(t, this.pos) == 0 && n == this.button;
+        return this.time + eu > e && le(t, this.pos) == 0 && n == this.button;
       };
       var Jr, Vr;
-      function iu(e, t) {
+      function tu(e, t) {
         var n = +/* @__PURE__ */ new Date();
         return Vr && Vr.compare(n, e, t) ? (Jr = Vr = null, "triple") : Jr && Jr.compare(n, e, t) ? (Vr = new Fi(n, e, t), Jr = null, "double") : (Jr = new Fi(n, e, t), Vr = null, "single");
       }
@@ -4660,14 +4660,14 @@ b`.split(/\n/).length != 3 ? function(e) {
             return;
           }
           if (!Pi(t, e)) {
-            var r = Ut(t, e), i = eo(e), o = r ? iu(r, i) : "single";
-            lt(t).focus(), i == 1 && t.state.selectingText && t.state.selectingText(e), !(r && ou(t, i, r, o, e)) && (i == 1 ? r ? lu(t, r, o, e) : Rn(e) == n.scroller && je(e) : i == 2 ? (r && Cn(t.doc, r), setTimeout(function() {
+            var r = Ut(t, e), i = eo(e), o = r ? tu(r, i) : "single";
+            lt(t).focus(), i == 1 && t.state.selectingText && t.state.selectingText(e), !(r && ru(t, i, r, o, e)) && (i == 1 ? r ? iu(t, r, o, e) : Rn(e) == n.scroller && je(e) : i == 2 ? (r && Cn(t.doc, r), setTimeout(function() {
               return n.input.focus();
             }, 20)) : i == 3 && (L ? t.display.input.onContextMenu(e) : yi(t)));
           }
         }
       }
-      function ou(e, t, n, r, i) {
+      function ru(e, t, n, r, i) {
         var o = "Click";
         return r == "double" ? o = "Double" + o : r == "triple" && (o = "Triple" + o), o = (t == 1 ? "Left" : t == 2 ? "Middle" : "Right") + o, Zr(e, Wa(o, i), i, function(a) {
           if (typeof a == "string" && (a = jr[a]), !a)
@@ -4681,7 +4681,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           return l;
         });
       }
-      function au(e, t, n) {
+      function nu(e, t, n) {
         var r = e.getOption("configureMouse"), i = r ? r(e, t, n) : {};
         if (i.unit == null) {
           var o = R ? n.shiftKey && n.metaKey : n.altKey;
@@ -4689,12 +4689,12 @@ b`.split(/\n/).length != 3 ? function(e) {
         }
         return (i.extend == null || e.doc.extend) && (i.extend = e.doc.extend || n.shiftKey), i.addNew == null && (i.addNew = S ? n.metaKey : n.ctrlKey), i.moveOnDrag == null && (i.moveOnDrag = !(S ? n.altKey : n.ctrlKey)), i;
       }
-      function lu(e, t, n, r) {
+      function iu(e, t, n, r) {
         p ? setTimeout(Fe(Ko, e), 0) : e.curOp.focus = te(ve(e));
-        var i = au(e, n, r), o = e.doc.sel, a;
-        e.options.dragDrop && gl && !e.isReadOnly() && n == "single" && (a = o.contains(t)) > -1 && (le((a = o.ranges[a]).from(), t) < 0 || t.xRel > 0) && (le(a.to(), t) > 0 || t.xRel < 0) ? su(e, r, t, i) : uu(e, r, t, i);
+        var i = nu(e, n, r), o = e.doc.sel, a;
+        e.options.dragDrop && hl && !e.isReadOnly() && n == "single" && (a = o.contains(t)) > -1 && (le((a = o.ranges[a]).from(), t) < 0 || t.xRel > 0) && (le(a.to(), t) > 0 || t.xRel < 0) ? ou(e, r, t, i) : au(e, r, t, i);
       }
-      function su(e, t, n, r) {
+      function ou(e, t, n, r) {
         var i = e.display, o = !1, a = De(e, function(u) {
           B && (i.scroller.draggable = !1), e.state.draggingText = !1, e.state.delayingBlurEvent && (e.hasFocus() ? e.state.delayingBlurEvent = !1 : yi(e)), nt(i.wrapper.ownerDocument, "mouseup", a), nt(i.wrapper.ownerDocument, "mousemove", l), nt(i.scroller, "dragstart", s), nt(i.scroller, "drop", a), o || (je(u), r.addNew || Cn(e.doc, n, null, null, r.extend), B && !Q || p && F == 9 ? setTimeout(function() {
             i.wrapper.ownerDocument.body.focus({ preventScroll: !0 }), i.input.focus();
@@ -4718,7 +4718,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var r = n(e, t);
         return new he(r.from, r.to);
       }
-      function uu(e, t, n, r) {
+      function au(e, t, n, r) {
         p && yi(e);
         var i = e.display, o = e.doc;
         je(t);
@@ -4755,7 +4755,7 @@ b`.split(/\n/).length != 3 ? function(e) {
               var $e = a, Ie = Ka(e, j, r.unit), Me = $e.anchor, Ne;
               le(Ie.anchor, Me) > 0 ? (Ne = Ie.head, Me = on($e.from(), Ie.anchor)) : (Ne = Ie.anchor, Me = nn($e.to(), Ie.head));
               var we = s.ranges.slice(0);
-              we[l] = fu(e, new he(se(o, Me), Ne)), qe(o, ft(e, we, l), Vt);
+              we[l] = lu(e, new he(se(o, Me), Ne)), qe(o, ft(e, we, l), Vt);
             }
         }
         var v = i.wrapper.getBoundingClientRect(), N = 0;
@@ -4783,7 +4783,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }), V = De(e, U);
         e.state.selectingText = V, ae(i.wrapper.ownerDocument, "mousemove", X), ae(i.wrapper.ownerDocument, "mouseup", V);
       }
-      function fu(e, t) {
+      function lu(e, t) {
         var n = t.anchor, r = t.head, i = re(e.doc, n.line);
         if (le(n, r) == 0 && n.sticky == r.sticky)
           return t;
@@ -4835,9 +4835,9 @@ b`.split(/\n/).length != 3 ? function(e) {
         return Ya(e, t, "gutterClick", !0);
       }
       function Qa(e, t) {
-        kt(e.display, t) || cu(e, t) || Ae(e, t, "contextmenu") || L || e.display.input.onContextMenu(t);
+        kt(e.display, t) || su(e, t) || Ae(e, t, "contextmenu") || L || e.display.input.onContextMenu(t);
       }
-      function cu(e, t) {
+      function su(e, t) {
         return at(e, "gutterContextMenu") ? Ya(e, t, "gutterContextMenu", !1) : !1;
       }
       function Xa(e) {
@@ -4846,7 +4846,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       var yr = { toString: function() {
         return "CodeMirror.Init";
       } }, ja = {}, Dn = {};
-      function hu(e) {
+      function uu(e) {
         var t = e.optionHandlers;
         function n(r, i, o, a) {
           e.defaults[r] = i, o && (t[r] = a ? function(l, s, u) {
@@ -4876,7 +4876,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           }
         }), n("specialChars", /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b\u200e\u200f\u2028\u2029\u202d\u202e\u2066\u2067\u2069\ufeff\ufff9-\ufffc]/g, function(r, i, o) {
           r.state.specialChars = new RegExp(i.source + (i.test("	") ? "" : "|	"), "g"), o != yr && r.refresh();
-        }), n("specialCharPlaceholder", Bl, function(r) {
+        }), n("specialCharPlaceholder", Pl, function(r) {
           return r.refresh();
         }, !0), n("electricChars", !0), n("inputStyle", k ? "contenteditable" : "textarea", function() {
           throw new Error("inputStyle can not (yet) be changed in a running editor");
@@ -4891,7 +4891,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         }, !0), n("keyMap", "default", function(r, i, o) {
           var a = An(i), l = o != yr && An(o);
           l && l.detach && l.detach(r, a), a.attach && a.attach(r, l || null);
-        }), n("extraKeys", null), n("configureMouse", null), n("lineWrapping", !1, pu, !0), n("gutters", [], function(r, i) {
+        }), n("extraKeys", null), n("configureMouse", null), n("lineWrapping", !1, cu, !0), n("gutters", [], function(r, i) {
           r.display.gutterSpecs = Li(i, r.options.lineNumbers), Ir(r);
         }, !0), n("fixedGutter", !0, function(r, i) {
           r.display.gutters.style.left = i ? pi(r.display) + "px" : "0", r.refresh();
@@ -4909,7 +4909,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           i = i === "" ? null : i, r.display.input.screenReaderLabelChanged(i);
         }), n("disableInput", !1, function(r, i) {
           i || r.display.input.reset();
-        }, !0), n("dragDrop", !0, du), n("allowDropFileTypes", null), n("cursorBlinkRate", 530), n("cursorScrollMargin", 0), n("cursorHeight", 1, Hr, !0), n("singleCursorHeightPerLine", !0, Hr, !0), n("workTime", 100), n("workDelay", 100), n("flattenSpans", !0, Rr, !0), n("addModeClass", !1, Rr, !0), n("pollInterval", 100), n("undoDepth", 200, function(r, i) {
+        }, !0), n("dragDrop", !0, fu), n("allowDropFileTypes", null), n("cursorBlinkRate", 530), n("cursorScrollMargin", 0), n("cursorHeight", 1, Hr, !0), n("singleCursorHeightPerLine", !0, Hr, !0), n("workTime", 100), n("workDelay", 100), n("flattenSpans", !0, Rr, !0), n("addModeClass", !1, Rr, !0), n("pollInterval", 100), n("undoDepth", 200, function(r, i) {
           return r.doc.history.undoDepth = i;
         }), n("historyEventDelay", 1250), n("viewportMargin", 10, function(r) {
           return r.refresh();
@@ -4921,14 +4921,14 @@ b`.split(/\n/).length != 3 ? function(e) {
           return r.doc.setDirection(i);
         }, !0), n("phrases", null);
       }
-      function du(e, t, n) {
+      function fu(e, t, n) {
         var r = n && n != yr;
         if (!t != !r) {
           var i = e.display.dragFunctions, o = t ? ae : nt;
           o(e.display.scroller, "dragstart", i.start), o(e.display.scroller, "dragenter", i.enter), o(e.display.scroller, "dragover", i.over), o(e.display.scroller, "dragleave", i.leave), o(e.display.scroller, "drop", i.drop);
         }
       }
-      function pu(e) {
+      function cu(e) {
         e.options.lineWrapping ? (ue(e.display.wrapper, "CodeMirror-wrap"), e.display.sizer.style.minWidth = "", e.display.sizerWidth = null) : (y(e.display.wrapper, "CodeMirror-wrap"), ii(e)), gi(e), Ze(e), Dr(e), setTimeout(function() {
           return fr(e);
         }, 100);
@@ -4940,7 +4940,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         this.options = t = t ? ht(t) : {}, ht(ja, t, !1);
         var r = t.value;
         typeof r == "string" ? r = new Je(r, t.mode, null, t.lineSeparator, t.direction) : t.mode && (r.modeOption = t.mode), this.doc = r;
-        var i = new me.inputStyles[t.inputStyle](this), o = this.display = new Ts(e, r, i, t);
+        var i = new me.inputStyles[t.inputStyle](this), o = this.display = new Ss(e, r, i, t);
         o.wrapper.CodeMirror = this, Xa(this), t.lineWrapping && (this.display.wrapper.className += " CodeMirror-wrap"), Jo(this), this.state = {
           keyMaps: [],
           // stores maps added by addKeyMap
@@ -4965,7 +4965,7 @@ b`.split(/\n/).length != 3 ? function(e) {
           specialChars: null
         }, t.autofocus && !k && o.input.focus(), p && F < 11 && setTimeout(function() {
           return n.display.input.reset(!0);
-        }, 20), gu(this), Ys(), Qt(this), this.curOp.forceUpdate = !0, la(this, r), t.autofocus && !k || this.hasFocus() ? setTimeout(function() {
+        }, 20), hu(this), Us(), Qt(this), this.curOp.forceUpdate = !0, la(this, r), t.autofocus && !k || this.hasFocus() ? setTimeout(function() {
           n.hasFocus() && !n.state.focused && bi(n);
         }, 20) : sr(this);
         for (var a in Dn)
@@ -4976,7 +4976,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         Xt(this), B && t.lineWrapping && getComputedStyle(o.lineDiv).textRendering == "optimizelegibility" && (o.lineDiv.style.textRendering = "auto");
       }
       me.defaults = ja, me.optionHandlers = Dn;
-      function gu(e) {
+      function hu(e) {
         var t = e.display;
         ae(t.scroller, "mousedown", De(e, Ga)), p && F < 11 ? ae(t.scroller, "dblclick", De(e, function(s) {
           if (!Ae(e, s)) {
@@ -5044,12 +5044,12 @@ b`.split(/\n/).length != 3 ? function(e) {
             Ae(e, s) || Cr(s);
           },
           over: function(s) {
-            Ae(e, s) || (Ks(e, s), Cr(s));
+            Ae(e, s) || (qs(e, s), Cr(s));
           },
           start: function(s) {
-            return Gs(e, s);
+            return Bs(e, s);
           },
-          drop: De(e, Us),
+          drop: De(e, Rs),
           leave: function(s) {
             Ae(e, s) || Oa(e);
           }
@@ -5168,7 +5168,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var e = d("textarea", null, null, "position: absolute; bottom: -1em; padding: 0; width: 1px; height: 1em; min-height: 1em; outline: none"), t = d("div", [e], null, "overflow: hidden; position: relative; width: 3px; height: 0px;");
         return B ? e.style.width = "1000px" : e.setAttribute("wrap", "off"), m && (e.style.border = "1px solid black"), t;
       }
-      function vu(e) {
+      function du(e) {
         var t = e.optionHandlers, n = e.helpers = {};
         e.prototype = {
           constructor: e,
@@ -5197,7 +5197,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             var o = r.token ? r : e.getMode(this.options, r);
             if (o.startState)
               throw new Error("Overlays may not be stateful.");
-            fl(
+            ll(
               this.state.overlays,
               {
                 mode: o,
@@ -5336,7 +5336,7 @@ b`.split(/\n/).length != 3 ? function(e) {
               var c = Math.max(s.wrapper.clientHeight, this.doc.height), b = Math.max(s.sizer.clientWidth, s.lineSpace.clientWidth);
               (a == "above" || r.bottom + i.offsetHeight > c) && r.top > i.offsetHeight ? u = r.top - i.offsetHeight : r.bottom + i.offsetHeight <= c && (u = r.bottom), f + i.offsetWidth > b && (f = b - i.offsetWidth);
             }
-            i.style.top = u + "px", i.style.left = i.style.right = "", l == "right" ? (f = s.sizer.clientWidth - i.offsetWidth, i.style.right = "0px") : (l == "left" ? f = 0 : l == "middle" && (f = (s.sizer.clientWidth - i.offsetWidth) / 2), i.style.left = f + "px"), o && ds(this, { left: f, top: u, right: f + i.offsetWidth, bottom: u + i.offsetHeight });
+            i.style.top = u + "px", i.style.left = i.style.right = "", l == "right" ? (f = s.sizer.clientWidth - i.offsetWidth, i.style.right = "0px") : (l == "left" ? f = 0 : l == "middle" && (f = (s.sizer.clientWidth - i.offsetWidth) / 2), i.style.left = f + "px"), o && fs(this, { left: f, top: u, right: f + i.offsetWidth, bottom: u + i.offsetHeight });
           },
           triggerOnKeyDown: Ye(Ba),
           triggerOnKeyPress: Ye(Ua),
@@ -5435,7 +5435,7 @@ b`.split(/\n/).length != 3 ? function(e) {
             };
           },
           scrollIntoView: Ye(function(r, i) {
-            r == null ? (r = { from: this.doc.sel.primary().head, to: null }, i == null && (i = this.options.cursorScrollMargin)) : typeof r == "number" ? r = { from: q(r, 0), to: null } : r.from == null && (r = { from: r, to: null }), r.to || (r.to = r.from), r.margin = i || 0, r.from.line != null ? ps(this, r) : Qo(this, r.from, r.to, r.margin);
+            r == null ? (r = { from: this.doc.sel.primary().head, to: null }, i == null && (i = this.options.cursorScrollMargin)) : typeof r == "number" ? r = { from: q(r, 0), to: null } : r.from == null && (r = { from: r, to: null }), r.to || (r.to = r.from), r.margin = i || 0, r.from.line != null ? cs(this, r) : Qo(this, r.from, r.to, r.margin);
           }),
           setSize: Ye(function(r, i) {
             var o = this, a = function(s) {
@@ -5509,7 +5509,7 @@ b`.split(/\n/).length != 3 ? function(e) {
               var oe = n > 0 ? ee >= 55296 && ee < 56320 : ee >= 56320 && ee < 57343;
               j = new q(t.line, Math.max(0, Math.min(l.text.length, t.ch + n * (oe ? 2 : 1))), -n);
             }
-          } else i ? j = Js(e.cm, l, t, n) : j = Ei(l, t, n);
+          } else i ? j = Xs(e.cm, l, t, n) : j = Ei(l, t, n);
           if (j == null)
             if (!V && u())
               t = Wi(i, e.cm, l, t.line, s);
@@ -5689,7 +5689,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       }, pe.prototype.pollSelection = function() {
         if (!(this.readDOMTimeout != null || this.gracePeriod || !this.selectionChanged())) {
           var e = this.getSelection(), t = this.cm;
-          if (x && M && this.cm.display.gutterSpecs.length && mu(e.anchorNode)) {
+          if (x && M && this.cm.display.gutterSpecs.length && pu(e.anchorNode)) {
             this.cm.triggerOnKeyDown({ type: "keydown", keyCode: 8, preventDefault: Math.abs }), this.blur(), this.focus();
             return;
           }
@@ -5711,7 +5711,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var s = Gt(e, i.line), u, f;
         if (s == t.view.length - 1 ? (u = t.viewTo - 1, f = t.lineDiv.lastChild) : (u = de(t.view[s + 1].line) - 1, f = t.view[s + 1].node.previousSibling), !l)
           return !1;
-        for (var c = e.doc.splitLines(yu(e, l, f, a, u)), b = It(e.doc, q(a, 0), q(u, re(e.doc, u).text.length)); c.length > 1 && b.length > 1; )
+        for (var c = e.doc.splitLines(gu(e, l, f, a, u)), b = It(e.doc, q(a, 0), q(u, re(e.doc, u).text.length)); c.length > 1 && b.length > 1; )
           if (ce(c) == ce(b))
             c.pop(), b.pop(), u--;
           else if (c[0] == b[0])
@@ -5774,7 +5774,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         var s = Ho(i.map, t.ch, a);
         return s.offset = s.collapse == "right" ? s.end : s.start, s;
       }
-      function mu(e) {
+      function pu(e) {
         for (var t = e; t; t = t.parentNode)
           if (/CodeMirror-gutter-wrapper/.test(t.className))
             return !0;
@@ -5783,7 +5783,7 @@ b`.split(/\n/).length != 3 ? function(e) {
       function br(e, t) {
         return t && (e.bad = !0), e;
       }
-      function yu(e, t, n, r, i) {
+      function gu(e, t, n, r, i) {
         var o = "", a = !1, l = e.doc.lineSeparator(), s = !1;
         function u(v) {
           return function(N) {
@@ -5840,10 +5840,10 @@ b`.split(/\n/).length != 3 ? function(e) {
         for (var i = 0; i < e.display.view.length; i++) {
           var o = e.display.view[i];
           if (o.node == r)
-            return bu(o, t, n);
+            return vu(o, t, n);
         }
       }
-      function bu(e, t, n) {
+      function vu(e, t, n) {
         var r = e.text.firstChild, i = !1;
         if (!t || !Z(r, t))
           return br(q(de(e.line), 0), !0);
@@ -5987,7 +5987,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         t.polling.set(20, n);
       }, ke.prototype.poll = function() {
         var e = this, t = this.cm, n = this.textarea, r = this.prevInput;
-        if (this.contextMenuPending || this.resetting || !t.state.focused || yl(n) && !r && !this.composing || t.isReadOnly() || t.options.disableInput || t.state.keySeq)
+        if (this.contextMenuPending || this.resetting || !t.state.focused || gl(n) && !r && !this.composing || t.isReadOnly() || t.options.disableInput || t.state.keySeq)
           return !1;
         var i = n.value;
         if (i == r && !t.somethingSelected())
@@ -6061,7 +6061,7 @@ b`.split(/\n/).length != 3 ? function(e) {
         e || this.reset(), this.textarea.disabled = e == "nocursor", this.textarea.readOnly = !!e;
       }, ke.prototype.setUneditable = function() {
       }, ke.prototype.needsContentAttribute = !1;
-      function xu(e, t) {
+      function mu(e, t) {
         if (t = t ? ht(t) : {}, t.value = e.value, !t.tabindex && e.tabIndex && (t.tabindex = e.tabIndex), !t.placeholder && e.placeholder && (t.placeholder = e.placeholder), t.autofocus == null) {
           var n = te(Ge(e));
           t.autofocus = n == e || e.getAttribute("autofocus") != null && n == document.body;
@@ -6095,20 +6095,20 @@ b`.split(/\n/).length != 3 ? function(e) {
         );
         return l;
       }
-      function wu(e) {
-        e.off = nt, e.on = ae, e.wheelEventPixels = Ns, e.Doc = Je, e.splitLines = Un, e.countColumn = Pe, e.findColumn = Ke, e.isWordChar = zn, e.Pass = bt, e.signal = Ce, e.Line = nr, e.changeEnd = Ht, e.scrollbarModel = Zo, e.Pos = q, e.cmpPos = le, e.modes = Kn, e.mimeModes = tr, e.resolveMode = rn, e.getMode = Yn, e.modeExtensions = rr, e.extendMode = kl, e.copyState = Pt, e.startState = to, e.innerMode = Qn, e.commands = jr, e.keyMap = Ct, e.keyName = za, e.isModifierKey = Ea, e.lookupKey = vr, e.normalizeKeyMap = Zs, e.StringStream = Le, e.SharedTextMarker = Yr, e.TextMarker = Wt, e.LineWidget = Kr, e.e_preventDefault = je, e.e_stopPropagation = $i, e.e_stop = Cr, e.addClass = ue, e.contains = Z, e.rmClass = y, e.keyNames = zt;
+      function yu(e) {
+        e.off = nt, e.on = ae, e.wheelEventPixels = Cs, e.Doc = Je, e.splitLines = Un, e.countColumn = Pe, e.findColumn = Ke, e.isWordChar = zn, e.Pass = bt, e.signal = Ce, e.Line = nr, e.changeEnd = Ht, e.scrollbarModel = Zo, e.Pos = q, e.cmpPos = le, e.modes = Kn, e.mimeModes = tr, e.resolveMode = rn, e.getMode = Yn, e.modeExtensions = rr, e.extendMode = xl, e.copyState = Pt, e.startState = to, e.innerMode = Qn, e.commands = jr, e.keyMap = Ct, e.keyName = za, e.isModifierKey = Ea, e.lookupKey = vr, e.normalizeKeyMap = Qs, e.StringStream = Le, e.SharedTextMarker = Yr, e.TextMarker = Wt, e.LineWidget = Kr, e.e_preventDefault = je, e.e_stopPropagation = $i, e.e_stop = Cr, e.addClass = ue, e.contains = Z, e.rmClass = y, e.keyNames = zt;
       }
-      hu(me), vu(me);
-      var _u = "iter insert remove copy getEditor constructor".split(" ");
+      uu(me), du(me);
+      var bu = "iter insert remove copy getEditor constructor".split(" ");
       for (var Wn in Je.prototype)
-        Je.prototype.hasOwnProperty(Wn) && Se(_u, Wn) < 0 && (me.prototype[Wn] = /* @__PURE__ */ function(e) {
+        Je.prototype.hasOwnProperty(Wn) && Se(bu, Wn) < 0 && (me.prototype[Wn] = /* @__PURE__ */ function(e) {
           return function() {
             return e.apply(this.doc, arguments);
           };
         }(Je.prototype[Wn]));
       return er(Je), me.inputStyles = { textarea: ke, contenteditable: pe }, me.defineMode = function(e) {
-        !me.defaults.mode && e != "null" && (me.defaults.mode = e), wl.apply(this, arguments);
-      }, me.defineMIME = _l, me.defineMode("null", function() {
+        !me.defaults.mode && e != "null" && (me.defaults.mode = e), yl.apply(this, arguments);
+      }, me.defineMIME = bl, me.defineMode("null", function() {
         return { token: function(e) {
           return e.skipToEnd();
         } };
@@ -6116,317 +6116,315 @@ b`.split(/\n/).length != 3 ? function(e) {
         me.prototype[e] = t;
       }, me.defineDocExtension = function(e, t) {
         Je.prototype[e] = t;
-      }, me.fromTextArea = xu, wu(me), me.version = "5.65.17", me;
+      }, me.fromTextArea = mu, yu(me), me.version = "5.65.18", me;
     });
   }(Ki)), Ki.exports;
 }
-var Lu = ot();
-const Re = /* @__PURE__ */ Su(Lu);
-var nl = { exports: {} }, il;
-function sl() {
-  return il || (il = 1, function(xe, $) {
-    (function(g) {
-      g(ot());
-    })(function(g) {
-      g.defineMode("sql", function(B, G) {
-        var M = G.client || {}, K = G.atoms || { false: !0, true: !0, null: !0 }, D = G.builtin || p(F), Q = G.keywords || p(O), ie = G.operatorChars || /^[*+\-%<>!=&|~^\/]/, w = G.support || {}, m = G.hooks || {}, x = G.dateSQL || { date: !0, time: !0, timestamp: !0 }, k = G.backslashStringEscapes !== !1, S = G.brackets || /^[\{}\(\)\[\]]/, R = G.punctuation || /^[;.,:]/;
-        function z(y, I) {
-          var E = y.next();
-          if (m[E]) {
-            var d = m[E](y, I);
-            if (d !== !1) return d;
-          }
-          if (w.hexNumber && (E == "0" && y.match(/^[xX][0-9a-fA-F]+/) || (E == "x" || E == "X") && y.match(/^'[0-9a-fA-F]*'/)))
-            return "number";
-          if (w.binaryNumber && ((E == "b" || E == "B") && y.match(/^'[01]*'/) || E == "0" && y.match(/^b[01]+/)))
-            return "number";
-          if (E.charCodeAt(0) > 47 && E.charCodeAt(0) < 58)
-            return y.match(/^[0-9]*(\.[0-9]+)?([eE][-+]?[0-9]+)?/), w.decimallessFloat && y.match(/^\.(?!\.)/), "number";
-          if (E == "?" && (y.eatSpace() || y.eol() || y.eat(";")))
-            return "variable-3";
-          if (E == "'" || E == '"' && w.doubleQuote)
-            return I.tokenize = h(E), I.tokenize(y, I);
-          if ((w.nCharCast && (E == "n" || E == "N") || w.charsetCast && E == "_" && y.match(/[a-z][a-z0-9]*/i)) && (y.peek() == "'" || y.peek() == '"'))
-            return "keyword";
-          if (w.escapeConstant && (E == "e" || E == "E") && (y.peek() == "'" || y.peek() == '"' && w.doubleQuote))
-            return I.tokenize = function(H, Z) {
-              return (Z.tokenize = h(H.next(), !0))(H, Z);
-            }, "keyword";
-          if (w.commentSlashSlash && E == "/" && y.eat("/"))
-            return y.skipToEnd(), "comment";
-          if (w.commentHash && E == "#" || E == "-" && y.eat("-") && (!w.commentSpaceRequired || y.eat(" ")))
-            return y.skipToEnd(), "comment";
-          if (E == "/" && y.eat("*"))
-            return I.tokenize = A(1), I.tokenize(y, I);
-          if (E == ".") {
-            if (w.zerolessFloat && y.match(/^(?:\d+(?:e[+-]?\d+)?)/i))
-              return "number";
-            if (y.match(/^\.+/))
-              return null;
-            if (y.match(/^[\w\d_$#]+/))
-              return "variable-2";
-          } else {
-            if (ie.test(E))
-              return y.eatWhile(ie), "operator";
-            if (S.test(E))
-              return "bracket";
-            if (R.test(E))
-              return y.eatWhile(R), "punctuation";
-            if (E == "{" && (y.match(/^( )*(d|D|t|T|ts|TS)( )*'[^']*'( )*}/) || y.match(/^( )*(d|D|t|T|ts|TS)( )*"[^"]*"( )*}/)))
-              return "number";
-            y.eatWhile(/^[_\w\d]/);
-            var T = y.current().toLowerCase();
-            return x.hasOwnProperty(T) && (y.match(/^( )+'[^']*'/) || y.match(/^( )+"[^"]*"/)) ? "number" : K.hasOwnProperty(T) ? "atom" : D.hasOwnProperty(T) ? "type" : Q.hasOwnProperty(T) ? "keyword" : M.hasOwnProperty(T) ? "builtin" : null;
-          }
+var ku = ot();
+const Re = /* @__PURE__ */ wu(ku);
+var Su = { exports: {} };
+(function(xe, $) {
+  (function(g) {
+    g(ot());
+  })(function(g) {
+    g.defineMode("sql", function(B, G) {
+      var M = G.client || {}, K = G.atoms || { false: !0, true: !0, null: !0 }, D = G.builtin || p(F), Q = G.keywords || p(O), ie = G.operatorChars || /^[*+\-%<>!=&|~^\/]/, w = G.support || {}, m = G.hooks || {}, x = G.dateSQL || { date: !0, time: !0, timestamp: !0 }, k = G.backslashStringEscapes !== !1, S = G.brackets || /^[\{}\(\)\[\]]/, R = G.punctuation || /^[;.,:]/;
+      function z(y, I) {
+        var E = y.next();
+        if (m[E]) {
+          var d = m[E](y, I);
+          if (d !== !1) return d;
         }
-        function h(y, I) {
-          return function(E, d) {
-            for (var T = !1, H; (H = E.next()) != null; ) {
-              if (H == y && !T) {
-                d.tokenize = z;
-                break;
-              }
-              T = (k || I) && !T && H == "\\";
+        if (w.hexNumber && (E == "0" && y.match(/^[xX][0-9a-fA-F]+/) || (E == "x" || E == "X") && y.match(/^'[0-9a-fA-F]*'/)))
+          return "number";
+        if (w.binaryNumber && ((E == "b" || E == "B") && y.match(/^'[01]*'/) || E == "0" && y.match(/^b[01]+/)))
+          return "number";
+        if (E.charCodeAt(0) > 47 && E.charCodeAt(0) < 58)
+          return y.match(/^[0-9]*(\.[0-9]+)?([eE][-+]?[0-9]+)?/), w.decimallessFloat && y.match(/^\.(?!\.)/), "number";
+        if (E == "?" && (y.eatSpace() || y.eol() || y.eat(";")))
+          return "variable-3";
+        if (E == "'" || E == '"' && w.doubleQuote)
+          return I.tokenize = h(E), I.tokenize(y, I);
+        if ((w.nCharCast && (E == "n" || E == "N") || w.charsetCast && E == "_" && y.match(/[a-z][a-z0-9]*/i)) && (y.peek() == "'" || y.peek() == '"'))
+          return "keyword";
+        if (w.escapeConstant && (E == "e" || E == "E") && (y.peek() == "'" || y.peek() == '"' && w.doubleQuote))
+          return I.tokenize = function(H, Z) {
+            return (Z.tokenize = h(H.next(), !0))(H, Z);
+          }, "keyword";
+        if (w.commentSlashSlash && E == "/" && y.eat("/"))
+          return y.skipToEnd(), "comment";
+        if (w.commentHash && E == "#" || E == "-" && y.eat("-") && (!w.commentSpaceRequired || y.eat(" ")))
+          return y.skipToEnd(), "comment";
+        if (E == "/" && y.eat("*"))
+          return I.tokenize = A(1), I.tokenize(y, I);
+        if (E == ".") {
+          if (w.zerolessFloat && y.match(/^(?:\d+(?:e[+-]?\d+)?)/i))
+            return "number";
+          if (y.match(/^\.+/))
+            return null;
+          if (y.match(/^[\w\d_$#]+/))
+            return "variable-2";
+        } else {
+          if (ie.test(E))
+            return y.eatWhile(ie), "operator";
+          if (S.test(E))
+            return "bracket";
+          if (R.test(E))
+            return y.eatWhile(R), "punctuation";
+          if (E == "{" && (y.match(/^( )*(d|D|t|T|ts|TS)( )*'[^']*'( )*}/) || y.match(/^( )*(d|D|t|T|ts|TS)( )*"[^"]*"( )*}/)))
+            return "number";
+          y.eatWhile(/^[_\w\d]/);
+          var T = y.current().toLowerCase();
+          return x.hasOwnProperty(T) && (y.match(/^( )+'[^']*'/) || y.match(/^( )+"[^"]*"/)) ? "number" : K.hasOwnProperty(T) ? "atom" : D.hasOwnProperty(T) ? "type" : Q.hasOwnProperty(T) ? "keyword" : M.hasOwnProperty(T) ? "builtin" : null;
+        }
+      }
+      function h(y, I) {
+        return function(E, d) {
+          for (var T = !1, H; (H = E.next()) != null; ) {
+            if (H == y && !T) {
+              d.tokenize = z;
+              break;
             }
-            return "string";
-          };
-        }
-        function A(y) {
-          return function(I, E) {
-            var d = I.match(/^.*?(\/\*|\*\/)/);
-            return d ? d[1] == "/*" ? E.tokenize = A(y + 1) : y > 1 ? E.tokenize = A(y - 1) : E.tokenize = z : I.skipToEnd(), "comment";
-          };
-        }
-        function L(y, I, E) {
-          I.context = {
-            prev: I.context,
-            indent: y.indentation(),
-            col: y.column(),
-            type: E
-          };
-        }
-        function C(y) {
-          y.indent = y.context.indent, y.context = y.context.prev;
-        }
-        return {
-          startState: function() {
-            return { tokenize: z, context: null };
-          },
-          token: function(y, I) {
-            if (y.sol() && I.context && I.context.align == null && (I.context.align = !1), I.tokenize == z && y.eatSpace()) return null;
-            var E = I.tokenize(y, I);
-            if (E == "comment") return E;
-            I.context && I.context.align == null && (I.context.align = !0);
-            var d = y.current();
-            return d == "(" ? L(y, I, ")") : d == "[" ? L(y, I, "]") : I.context && I.context.type == d && C(I), E;
-          },
-          indent: function(y, I) {
-            var E = y.context;
-            if (!E) return g.Pass;
-            var d = I.charAt(0) == E.type;
-            return E.align ? E.col + (d ? 0 : 1) : E.indent + (d ? 0 : B.indentUnit);
-          },
-          blockCommentStart: "/*",
-          blockCommentEnd: "*/",
-          lineComment: w.commentSlashSlash ? "//" : w.commentHash ? "#" : "--",
-          closeBrackets: "()[]{}''\"\"``",
-          config: G
+            T = (k || I) && !T && H == "\\";
+          }
+          return "string";
         };
-      });
-      function W(B) {
-        for (var G; (G = B.next()) != null; )
-          if (G == "`" && !B.eat("`")) return "variable-2";
-        return B.backUp(B.current().length - 1), B.eatWhile(/\w/) ? "variable-2" : null;
       }
-      function Y(B) {
-        for (var G; (G = B.next()) != null; )
-          if (G == '"' && !B.eat('"')) return "variable-2";
-        return B.backUp(B.current().length - 1), B.eatWhile(/\w/) ? "variable-2" : null;
+      function A(y) {
+        return function(I, E) {
+          var d = I.match(/^.*?(\/\*|\*\/)/);
+          return d ? d[1] == "/*" ? E.tokenize = A(y + 1) : y > 1 ? E.tokenize = A(y - 1) : E.tokenize = z : I.skipToEnd(), "comment";
+        };
       }
-      function J(B) {
-        return B.eat("@") && (B.match("session."), B.match("local."), B.match("global.")), B.eat("'") ? (B.match(/^.*'/), "variable-2") : B.eat('"') ? (B.match(/^.*"/), "variable-2") : B.eat("`") ? (B.match(/^.*`/), "variable-2") : B.match(/^[0-9a-zA-Z$\.\_]+/) ? "variable-2" : null;
+      function L(y, I, E) {
+        I.context = {
+          prev: I.context,
+          indent: y.indentation(),
+          col: y.column(),
+          type: E
+        };
       }
-      function _(B) {
-        return B.eat("N") ? "atom" : B.match(/^[a-zA-Z.#!?]/) ? "variable-2" : null;
+      function C(y) {
+        y.indent = y.context.indent, y.context = y.context.prev;
       }
-      var O = "alter and as asc between by count create delete desc distinct drop from group having in insert into is join like not on or order select set table union update values where limit ";
-      function p(B) {
-        for (var G = {}, M = B.split(" "), K = 0; K < M.length; ++K) G[M[K]] = !0;
-        return G;
-      }
-      var F = "bool boolean bit blob enum long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text bigint int int1 int2 int3 int4 int8 integer float float4 float8 double char varbinary varchar varcharacter precision real date datetime year unsigned signed decimal numeric";
-      g.defineMIME("text/x-sql", {
-        name: "sql",
-        keywords: p(O + "begin"),
-        builtin: p(F),
-        atoms: p("false true null unknown"),
-        dateSQL: p("date time timestamp"),
-        support: p("doubleQuote binaryNumber hexNumber")
-      }), g.defineMIME("text/x-mssql", {
-        name: "sql",
-        client: p("$partition binary_checksum checksum connectionproperty context_info current_request_id error_line error_message error_number error_procedure error_severity error_state formatmessage get_filestream_transaction_context getansinull host_id host_name isnull isnumeric min_active_rowversion newid newsequentialid rowcount_big xact_state object_id"),
-        keywords: p(O + "begin trigger proc view index for add constraint key primary foreign collate clustered nonclustered declare exec go if use index holdlock nolock nowait paglock readcommitted readcommittedlock readpast readuncommitted repeatableread rowlock serializable snapshot tablock tablockx updlock with"),
-        builtin: p("bigint numeric bit smallint decimal smallmoney int tinyint money float real char varchar text nchar nvarchar ntext binary varbinary image cursor timestamp hierarchyid uniqueidentifier sql_variant xml table "),
-        atoms: p("is not null like and or in left right between inner outer join all any some cross unpivot pivot exists"),
-        operatorChars: /^[*+\-%<>!=^\&|\/]/,
-        brackets: /^[\{}\(\)]/,
-        punctuation: /^[;.,:/]/,
-        backslashStringEscapes: !1,
-        dateSQL: p("date datetimeoffset datetime2 smalldatetime datetime time"),
-        hooks: {
-          "@": J
-        }
-      }), g.defineMIME("text/x-mysql", {
-        name: "sql",
-        client: p("charset clear connect edit ego exit go help nopager notee nowarning pager print prompt quit rehash source status system tee"),
-        keywords: p(O + "accessible action add after algorithm all analyze asensitive at authors auto_increment autocommit avg avg_row_length before binary binlog both btree cache call cascade cascaded case catalog_name chain change changed character check checkpoint checksum class_origin client_statistics close coalesce code collate collation collations column columns comment commit committed completion concurrent condition connection consistent constraint contains continue contributors convert cross current current_date current_time current_timestamp current_user cursor data database databases day_hour day_microsecond day_minute day_second deallocate dec declare default delay_key_write delayed delimiter des_key_file describe deterministic dev_pop dev_samp deviance diagnostics directory disable discard distinctrow div dual dumpfile each elseif enable enclosed end ends engine engines enum errors escape escaped even event events every execute exists exit explain extended fast fetch field fields first flush for force foreign found_rows full fulltext function general get global grant grants group group_concat handler hash help high_priority hosts hour_microsecond hour_minute hour_second if ignore ignore_server_ids import index index_statistics infile inner innodb inout insensitive insert_method install interval invoker isolation iterate key keys kill language last leading leave left level limit linear lines list load local localtime localtimestamp lock logs low_priority master master_heartbeat_period master_ssl_verify_server_cert masters match max max_rows maxvalue message_text middleint migrate min min_rows minute_microsecond minute_second mod mode modifies modify mutex mysql_errno natural next no no_write_to_binlog offline offset one online open optimize option optionally out outer outfile pack_keys parser partition partitions password phase plugin plugins prepare preserve prev primary privileges procedure processlist profile profiles purge query quick range read read_write reads real rebuild recover references regexp relaylog release remove rename reorganize repair repeatable replace require resignal restrict resume return returns revoke right rlike rollback rollup row row_format rtree savepoint schedule schema schema_name schemas second_microsecond security sensitive separator serializable server session share show signal slave slow smallint snapshot soname spatial specific sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_no_cache sql_small_result sqlexception sqlstate sqlwarning ssl start starting starts status std stddev stddev_pop stddev_samp storage straight_join subclass_origin sum suspend table_name table_statistics tables tablespace temporary terminated to trailing transaction trigger triggers truncate uncommitted undo uninstall unique unlock upgrade usage use use_frm user user_resources user_statistics using utc_date utc_time utc_timestamp value variables varying view views warnings when while with work write xa xor year_month zerofill begin do then else loop repeat"),
-        builtin: p("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text bigint int int1 int2 int3 int4 int8 integer float float4 float8 double char varbinary varchar varcharacter precision date datetime year unsigned signed numeric"),
-        atoms: p("false true null unknown"),
-        operatorChars: /^[*+\-%<>!=&|^]/,
-        dateSQL: p("date time timestamp"),
-        support: p("decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
-        hooks: {
-          "@": J,
-          "`": W,
-          "\\": _
-        }
-      }), g.defineMIME("text/x-mariadb", {
-        name: "sql",
-        client: p("charset clear connect edit ego exit go help nopager notee nowarning pager print prompt quit rehash source status system tee"),
-        keywords: p(O + "accessible action add after algorithm all always analyze asensitive at authors auto_increment autocommit avg avg_row_length before binary binlog both btree cache call cascade cascaded case catalog_name chain change changed character check checkpoint checksum class_origin client_statistics close coalesce code collate collation collations column columns comment commit committed completion concurrent condition connection consistent constraint contains continue contributors convert cross current current_date current_time current_timestamp current_user cursor data database databases day_hour day_microsecond day_minute day_second deallocate dec declare default delay_key_write delayed delimiter des_key_file describe deterministic dev_pop dev_samp deviance diagnostics directory disable discard distinctrow div dual dumpfile each elseif enable enclosed end ends engine engines enum errors escape escaped even event events every execute exists exit explain extended fast fetch field fields first flush for force foreign found_rows full fulltext function general generated get global grant grants group group_concat handler hard hash help high_priority hosts hour_microsecond hour_minute hour_second if ignore ignore_server_ids import index index_statistics infile inner innodb inout insensitive insert_method install interval invoker isolation iterate key keys kill language last leading leave left level limit linear lines list load local localtime localtimestamp lock logs low_priority master master_heartbeat_period master_ssl_verify_server_cert masters match max max_rows maxvalue message_text middleint migrate min min_rows minute_microsecond minute_second mod mode modifies modify mutex mysql_errno natural next no no_write_to_binlog offline offset one online open optimize option optionally out outer outfile pack_keys parser partition partitions password persistent phase plugin plugins prepare preserve prev primary privileges procedure processlist profile profiles purge query quick range read read_write reads real rebuild recover references regexp relaylog release remove rename reorganize repair repeatable replace require resignal restrict resume return returns revoke right rlike rollback rollup row row_format rtree savepoint schedule schema schema_name schemas second_microsecond security sensitive separator serializable server session share show shutdown signal slave slow smallint snapshot soft soname spatial specific sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_no_cache sql_small_result sqlexception sqlstate sqlwarning ssl start starting starts status std stddev stddev_pop stddev_samp storage straight_join subclass_origin sum suspend table_name table_statistics tables tablespace temporary terminated to trailing transaction trigger triggers truncate uncommitted undo uninstall unique unlock upgrade usage use use_frm user user_resources user_statistics using utc_date utc_time utc_timestamp value variables varying view views virtual warnings when while with work write xa xor year_month zerofill begin do then else loop repeat"),
-        builtin: p("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text bigint int int1 int2 int3 int4 int8 integer float float4 float8 double char varbinary varchar varcharacter precision date datetime year unsigned signed numeric"),
-        atoms: p("false true null unknown"),
-        operatorChars: /^[*+\-%<>!=&|^]/,
-        dateSQL: p("date time timestamp"),
-        support: p("decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
-        hooks: {
-          "@": J,
-          "`": W,
-          "\\": _
-        }
-      }), g.defineMIME("text/x-sqlite", {
-        name: "sql",
-        // commands of the official SQLite client, ref: https://www.sqlite.org/cli.html#dotcmd
-        client: p("auth backup bail binary changes check clone databases dbinfo dump echo eqp exit explain fullschema headers help import imposter indexes iotrace limit lint load log mode nullvalue once open output print prompt quit read restore save scanstats schema separator session shell show stats system tables testcase timeout timer trace vfsinfo vfslist vfsname width"),
-        // ref: http://sqlite.org/lang_keywords.html
-        keywords: p(O + "abort action add after all analyze attach autoincrement before begin cascade case cast check collate column commit conflict constraint cross current_date current_time current_timestamp database default deferrable deferred detach each else end escape except exclusive exists explain fail for foreign full glob if ignore immediate index indexed initially inner instead intersect isnull key left limit match natural no notnull null of offset outer plan pragma primary query raise recursive references regexp reindex release rename replace restrict right rollback row savepoint temp temporary then to transaction trigger unique using vacuum view virtual when with without"),
-        // SQLite is weakly typed, ref: http://sqlite.org/datatype3.html. This is just a list of some common types.
-        builtin: p("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text clob bigint int int2 int8 integer float double char varchar date datetime year unsigned signed numeric real"),
-        // ref: http://sqlite.org/syntax/literal-value.html
-        atoms: p("null current_date current_time current_timestamp"),
-        // ref: http://sqlite.org/lang_expr.html#binaryops
-        operatorChars: /^[*+\-%<>!=&|/~]/,
-        // SQLite is weakly typed, ref: http://sqlite.org/datatype3.html. This is just a list of some common types.
-        dateSQL: p("date time timestamp datetime"),
-        support: p("decimallessFloat zerolessFloat"),
-        identifierQuote: '"',
-        //ref: http://sqlite.org/lang_keywords.html
-        hooks: {
-          // bind-parameters ref:http://sqlite.org/lang_expr.html#varparam
-          "@": J,
-          ":": J,
-          "?": J,
-          $: J,
-          // The preferred way to escape Identifiers is using double quotes, ref: http://sqlite.org/lang_keywords.html
-          '"': Y,
-          // there is also support for backticks, ref: http://sqlite.org/lang_keywords.html
-          "`": W
-        }
-      }), g.defineMIME("text/x-cassandra", {
-        name: "sql",
-        client: {},
-        keywords: p("add all allow alter and any apply as asc authorize batch begin by clustering columnfamily compact consistency count create custom delete desc distinct drop each_quorum exists filtering from grant if in index insert into key keyspace keyspaces level limit local_one local_quorum modify nan norecursive nosuperuser not of on one order password permission permissions primary quorum rename revoke schema select set storage superuser table three to token truncate ttl two type unlogged update use user users using values where with writetime"),
-        builtin: p("ascii bigint blob boolean counter decimal double float frozen inet int list map static text timestamp timeuuid tuple uuid varchar varint"),
-        atoms: p("false true infinity NaN"),
-        operatorChars: /^[<>=]/,
-        dateSQL: {},
-        support: p("commentSlashSlash decimallessFloat"),
-        hooks: {}
-      }), g.defineMIME("text/x-plsql", {
-        name: "sql",
-        client: p("appinfo arraysize autocommit autoprint autorecovery autotrace blockterminator break btitle cmdsep colsep compatibility compute concat copycommit copytypecheck define describe echo editfile embedded escape exec execute feedback flagger flush heading headsep instance linesize lno loboffset logsource long longchunksize markup native newpage numformat numwidth pagesize pause pno recsep recsepchar release repfooter repheader serveroutput shiftinout show showmode size spool sqlblanklines sqlcase sqlcode sqlcontinue sqlnumber sqlpluscompatibility sqlprefix sqlprompt sqlterminator suffix tab term termout time timing trimout trimspool ttitle underline verify version wrap"),
-        keywords: p("abort accept access add all alter and any array arraylen as asc assert assign at attributes audit authorization avg base_table begin between binary_integer body boolean by case cast char char_base check close cluster clusters colauth column comment commit compress connect connected constant constraint crash create current currval cursor data_base database date dba deallocate debugoff debugon decimal declare default definition delay delete desc digits dispose distinct do drop else elseif elsif enable end entry escape exception exception_init exchange exclusive exists exit external fast fetch file for force form from function generic goto grant group having identified if immediate in increment index indexes indicator initial initrans insert interface intersect into is key level library like limited local lock log logging long loop master maxextents maxtrans member minextents minus mislabel mode modify multiset new next no noaudit nocompress nologging noparallel not nowait number_base object of off offline on online only open option or order out package parallel partition pctfree pctincrease pctused pls_integer positive positiven pragma primary prior private privileges procedure public raise range raw read rebuild record ref references refresh release rename replace resource restrict return returning returns reverse revoke rollback row rowid rowlabel rownum rows run savepoint schema segment select separate session set share snapshot some space split sql start statement storage subtype successful synonym tabauth table tables tablespace task terminate then to trigger truncate type union unique unlimited unrecoverable unusable update use using validate value values variable view views when whenever where while with work"),
-        builtin: p("abs acos add_months ascii asin atan atan2 average bfile bfilename bigserial bit blob ceil character chartorowid chr clob concat convert cos cosh count dec decode deref dual dump dup_val_on_index empty error exp false float floor found glb greatest hextoraw initcap instr instrb int integer isopen last_day least length lengthb ln lower lpad ltrim lub make_ref max min mlslabel mod months_between natural naturaln nchar nclob new_time next_day nextval nls_charset_decl_len nls_charset_id nls_charset_name nls_initcap nls_lower nls_sort nls_upper nlssort no_data_found notfound null number numeric nvarchar2 nvl others power rawtohex real reftohex round rowcount rowidtochar rowtype rpad rtrim serial sign signtype sin sinh smallint soundex sqlcode sqlerrm sqrt stddev string substr substrb sum sysdate tan tanh to_char text to_date to_label to_multi_byte to_number to_single_byte translate true trunc uid unlogged upper user userenv varchar varchar2 variance varying vsize xml"),
-        operatorChars: /^[*\/+\-%<>!=~]/,
-        dateSQL: p("date time timestamp"),
-        support: p("doubleQuote nCharCast zerolessFloat binaryNumber hexNumber")
-      }), g.defineMIME("text/x-hive", {
-        name: "sql",
-        keywords: p("select alter $elem$ $key$ $value$ add after all analyze and archive as asc before between binary both bucket buckets by cascade case cast change cluster clustered clusterstatus collection column columns comment compute concatenate continue create cross cursor data database databases dbproperties deferred delete delimited desc describe directory disable distinct distribute drop else enable end escaped exclusive exists explain export extended external fetch fields fileformat first format formatted from full function functions grant group having hold_ddltime idxproperties if import in index indexes inpath inputdriver inputformat insert intersect into is items join keys lateral left like limit lines load local location lock locks mapjoin materialized minus msck no_drop nocompress not of offline on option or order out outer outputdriver outputformat overwrite partition partitioned partitions percent plus preserve procedure purge range rcfile read readonly reads rebuild recordreader recordwriter recover reduce regexp rename repair replace restrict revoke right rlike row schema schemas semi sequencefile serde serdeproperties set shared show show_database sort sorted ssl statistics stored streamtable table tables tablesample tblproperties temporary terminated textfile then tmp to touch transform trigger unarchive undo union uniquejoin unlock update use using utc utc_tmestamp view when where while with admin authorization char compact compactions conf cube current current_date current_timestamp day decimal defined dependency directories elem_type exchange file following for grouping hour ignore inner interval jar less logical macro minute month more none noscan over owner partialscan preceding pretty principals protection reload rewrite role roles rollup rows second server sets skewed transactions truncate unbounded unset uri user values window year"),
-        builtin: p("bool boolean long timestamp tinyint smallint bigint int float double date datetime unsigned string array struct map uniontype key_type utctimestamp value_type varchar"),
-        atoms: p("false true null unknown"),
-        operatorChars: /^[*+\-%<>!=]/,
-        dateSQL: p("date timestamp"),
-        support: p("doubleQuote binaryNumber hexNumber")
-      }), g.defineMIME("text/x-pgsql", {
-        name: "sql",
-        client: p("source"),
-        // For PostgreSQL - https://www.postgresql.org/docs/11/sql-keywords-appendix.html
-        // For pl/pgsql lang - https://github.com/postgres/postgres/blob/REL_11_2/src/pl/plpgsql/src/pl_scanner.c
-        keywords: p(O + "a abort abs absent absolute access according action ada add admin after aggregate alias all allocate also alter always analyse analyze and any are array array_agg array_max_cardinality as asc asensitive assert assertion assignment asymmetric at atomic attach attribute attributes authorization avg backward base64 before begin begin_frame begin_partition bernoulli between bigint binary bit bit_length blob blocked bom boolean both breadth by c cache call called cardinality cascade cascaded case cast catalog catalog_name ceil ceiling chain char char_length character character_length character_set_catalog character_set_name character_set_schema characteristics characters check checkpoint class class_origin clob close cluster coalesce cobol collate collation collation_catalog collation_name collation_schema collect column column_name columns command_function command_function_code comment comments commit committed concurrently condition condition_number configuration conflict connect connection connection_name constant constraint constraint_catalog constraint_name constraint_schema constraints constructor contains content continue control conversion convert copy corr corresponding cost count covar_pop covar_samp create cross csv cube cume_dist current current_catalog current_date current_default_transform_group current_path current_role current_row current_schema current_time current_timestamp current_transform_group_for_type current_user cursor cursor_name cycle data database datalink datatype date datetime_interval_code datetime_interval_precision day db deallocate debug dec decimal declare default defaults deferrable deferred defined definer degree delete delimiter delimiters dense_rank depends depth deref derived desc describe descriptor detach detail deterministic diagnostics dictionary disable discard disconnect dispatch distinct dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue do document domain double drop dump dynamic dynamic_function dynamic_function_code each element else elseif elsif empty enable encoding encrypted end end_frame end_partition endexec enforced enum equals errcode error escape event every except exception exclude excluding exclusive exec execute exists exit exp explain expression extension external extract false family fetch file filter final first first_value flag float floor following for force foreach foreign fortran forward found frame_row free freeze from fs full function functions fusion g general generated get global go goto grant granted greatest group grouping groups handler having header hex hierarchy hint hold hour id identity if ignore ilike immediate immediately immutable implementation implicit import in include including increment indent index indexes indicator info inherit inherits initially inline inner inout input insensitive insert instance instantiable instead int integer integrity intersect intersection interval into invoker is isnull isolation join k key key_member key_type label lag language large last last_value lateral lead leading leakproof least left length level library like like_regex limit link listen ln load local localtime localtimestamp location locator lock locked log logged loop lower m map mapping match matched materialized max max_cardinality maxvalue member merge message message_length message_octet_length message_text method min minute minvalue mod mode modifies module month more move multiset mumps name names namespace national natural nchar nclob nesting new next nfc nfd nfkc nfkd nil no none normalize normalized not nothing notice notify notnull nowait nth_value ntile null nullable nullif nulls number numeric object occurrences_regex octet_length octets of off offset oids old on only open operator option options or order ordering ordinality others out outer output over overlaps overlay overriding owned owner p pad parallel parameter parameter_mode parameter_name parameter_ordinal_position parameter_specific_catalog parameter_specific_name parameter_specific_schema parser partial partition pascal passing passthrough password path percent percent_rank percentile_cont percentile_disc perform period permission pg_context pg_datatype_name pg_exception_context pg_exception_detail pg_exception_hint placing plans pli policy portion position position_regex power precedes preceding precision prepare prepared preserve primary print_strict_params prior privileges procedural procedure procedures program public publication query quote raise range rank read reads real reassign recheck recovery recursive ref references referencing refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope regr_sxx regr_sxy regr_syy reindex relative release rename repeatable replace replica requiring reset respect restart restore restrict result result_oid return returned_cardinality returned_length returned_octet_length returned_sqlstate returning returns reverse revoke right role rollback rollup routine routine_catalog routine_name routine_schema routines row row_count row_number rows rowtype rule savepoint scale schema schema_name schemas scope scope_catalog scope_name scope_schema scroll search second section security select selective self sensitive sequence sequences serializable server server_name session session_user set setof sets share show similar simple size skip slice smallint snapshot some source space specific specific_name specifictype sql sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable stacked standalone start state statement static statistics stddev_pop stddev_samp stdin stdout storage strict strip structure style subclass_origin submultiset subscription substring substring_regex succeeds sum symmetric sysid system system_time system_user t table table_name tables tablesample tablespace temp template temporary text then ties time timestamp timezone_hour timezone_minute to token top_level_count trailing transaction transaction_active transactions_committed transactions_rolled_back transform transforms translate translate_regex translation treat trigger trigger_catalog trigger_name trigger_schema trim trim_array true truncate trusted type types uescape unbounded uncommitted under unencrypted union unique unknown unlink unlisten unlogged unnamed unnest until untyped update upper uri usage use_column use_variable user user_defined_type_catalog user_defined_type_code user_defined_type_name user_defined_type_schema using vacuum valid validate validator value value_of values var_pop var_samp varbinary varchar variable_conflict variadic varying verbose version versioning view views volatile warning when whenever where while whitespace width_bucket window with within without work wrapper write xml xmlagg xmlattributes xmlbinary xmlcast xmlcomment xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable xmltext xmlvalidate year yes zone"),
-        // https://www.postgresql.org/docs/11/datatype.html
-        builtin: p("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time zone timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
-        atoms: p("false true null unknown"),
-        operatorChars: /^[*\/+\-%<>!=&|^\/#@?~]/,
-        backslashStringEscapes: !1,
-        dateSQL: p("date time timestamp"),
-        support: p("decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast escapeConstant")
-      }), g.defineMIME("text/x-gql", {
-        name: "sql",
-        keywords: p("ancestor and asc by contains desc descendant distinct from group has in is limit offset on order select superset where"),
-        atoms: p("false true"),
-        builtin: p("blob datetime first key __key__ string integer double boolean null"),
-        operatorChars: /^[*+\-%<>!=]/
-      }), g.defineMIME("text/x-gpsql", {
-        name: "sql",
-        client: p("source"),
-        //https://github.com/greenplum-db/gpdb/blob/master/src/include/parser/kwlist.h
-        keywords: p("abort absolute access action active add admin after aggregate all also alter always analyse analyze and any array as asc assertion assignment asymmetric at authorization backward before begin between bigint binary bit boolean both by cache called cascade cascaded case cast chain char character characteristics check checkpoint class close cluster coalesce codegen collate column comment commit committed concurrency concurrently configuration connection constraint constraints contains content continue conversion copy cost cpu_rate_limit create createdb createexttable createrole createuser cross csv cube current current_catalog current_date current_role current_schema current_time current_timestamp current_user cursor cycle data database day deallocate dec decimal declare decode default defaults deferrable deferred definer delete delimiter delimiters deny desc dictionary disable discard distinct distributed do document domain double drop dxl each else enable encoding encrypted end enum errors escape every except exchange exclude excluding exclusive execute exists explain extension external extract false family fetch fields filespace fill filter first float following for force foreign format forward freeze from full function global grant granted greatest group group_id grouping handler hash having header hold host hour identity if ignore ilike immediate immutable implicit in including inclusive increment index indexes inherit inherits initially inline inner inout input insensitive insert instead int integer intersect interval into invoker is isnull isolation join key language large last leading least left level like limit list listen load local localtime localtimestamp location lock log login mapping master match maxvalue median merge minute minvalue missing mode modifies modify month move name names national natural nchar new newline next no nocreatedb nocreateexttable nocreaterole nocreateuser noinherit nologin none noovercommit nosuperuser not nothing notify notnull nowait null nullif nulls numeric object of off offset oids old on only operator option options or order ordered others out outer over overcommit overlaps overlay owned owner parser partial partition partitions passing password percent percentile_cont percentile_disc placing plans position preceding precision prepare prepared preserve primary prior privileges procedural procedure protocol queue quote randomly range read readable reads real reassign recheck recursive ref references reindex reject relative release rename repeatable replace replica reset resource restart restrict returning returns revoke right role rollback rollup rootpartition row rows rule savepoint scatter schema scroll search second security segment select sequence serializable session session_user set setof sets share show similar simple smallint some split sql stable standalone start statement statistics stdin stdout storage strict strip subpartition subpartitions substring superuser symmetric sysid system table tablespace temp template temporary text then threshold ties time timestamp to trailing transaction treat trigger trim true truncate trusted type unbounded uncommitted unencrypted union unique unknown unlisten until update user using vacuum valid validation validator value values varchar variadic varying verbose version view volatile web when where whitespace window with within without work writable write xml xmlattributes xmlconcat xmlelement xmlexists xmlforest xmlparse xmlpi xmlroot xmlserialize year yes zone"),
-        builtin: p("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time without zone with timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
-        atoms: p("false true null unknown"),
-        operatorChars: /^[*+\-%<>!=&|^\/#@?~]/,
-        dateSQL: p("date time timestamp"),
-        support: p("decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast")
-      }), g.defineMIME("text/x-sparksql", {
-        name: "sql",
-        keywords: p("add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
-        builtin: p("abs acos acosh add_months aggregate and any approx_count_distinct approx_percentile array array_contains array_distinct array_except array_intersect array_join array_max array_min array_position array_remove array_repeat array_sort array_union arrays_overlap arrays_zip ascii asin asinh assert_true atan atan2 atanh avg base64 between bigint bin binary bit_and bit_count bit_get bit_length bit_or bit_xor bool_and bool_or boolean bround btrim cardinality case cast cbrt ceil ceiling char char_length character_length chr coalesce collect_list collect_set concat concat_ws conv corr cos cosh cot count count_if count_min_sketch covar_pop covar_samp crc32 cume_dist current_catalog current_database current_date current_timestamp current_timezone current_user date date_add date_format date_from_unix_date date_part date_sub date_trunc datediff day dayofmonth dayofweek dayofyear decimal decode degrees delimited dense_rank div double e element_at elt encode every exists exp explode explode_outer expm1 extract factorial filter find_in_set first first_value flatten float floor forall format_number format_string from_csv from_json from_unixtime from_utc_timestamp get_json_object getbit greatest grouping grouping_id hash hex hour hypot if ifnull in initcap inline inline_outer input_file_block_length input_file_block_start input_file_name inputformat instr int isnan isnotnull isnull java_method json_array_length json_object_keys json_tuple kurtosis lag last last_day last_value lcase lead least left length levenshtein like ln locate log log10 log1p log2 lower lpad ltrim make_date make_dt_interval make_interval make_timestamp make_ym_interval map map_concat map_entries map_filter map_from_arrays map_from_entries map_keys map_values map_zip_with max max_by md5 mean min min_by minute mod monotonically_increasing_id month months_between named_struct nanvl negative next_day not now nth_value ntile nullif nvl nvl2 octet_length or outputformat overlay parse_url percent_rank percentile percentile_approx pi pmod posexplode posexplode_outer position positive pow power printf quarter radians raise_error rand randn random rank rcfile reflect regexp regexp_extract regexp_extract_all regexp_like regexp_replace repeat replace reverse right rint rlike round row_number rpad rtrim schema_of_csv schema_of_json second sentences sequence sequencefile serde session_window sha sha1 sha2 shiftleft shiftright shiftrightunsigned shuffle sign signum sin sinh size skewness slice smallint some sort_array soundex space spark_partition_id split sqrt stack std stddev stddev_pop stddev_samp str_to_map string struct substr substring substring_index sum tan tanh textfile timestamp timestamp_micros timestamp_millis timestamp_seconds tinyint to_csv to_date to_json to_timestamp to_unix_timestamp to_utc_timestamp transform transform_keys transform_values translate trim trunc try_add try_divide typeof ucase unbase64 unhex uniontype unix_date unix_micros unix_millis unix_seconds unix_timestamp upper uuid var_pop var_samp variance version weekday weekofyear when width_bucket window xpath xpath_boolean xpath_double xpath_float xpath_int xpath_long xpath_number xpath_short xpath_string xxhash64 year zip_with"),
-        atoms: p("false true null"),
-        operatorChars: /^[*\/+\-%<>!=~&|^]/,
-        dateSQL: p("date time timestamp"),
-        support: p("doubleQuote zerolessFloat")
-      }), g.defineMIME("text/x-esper", {
-        name: "sql",
-        client: p("source"),
-        // http://www.espertech.com/esper/release-5.5.0/esper-reference/html/appendix_keywords.html
-        keywords: p("alter and as asc between by count create delete desc distinct drop from group having in insert into is join like not on or order select set table union update values where limit after all and as at asc avedev avg between by case cast coalesce count create current_timestamp day days delete define desc distinct else end escape events every exists false first from full group having hour hours in inner insert instanceof into irstream is istream join last lastweekday left limit like max match_recognize matches median measures metadatasql min minute minutes msec millisecond milliseconds not null offset on or order outer output partition pattern prev prior regexp retain-union retain-intersection right rstream sec second seconds select set some snapshot sql stddev sum then true unidirectional until update variable weekday when where window"),
-        builtin: {},
-        atoms: p("false true null"),
-        operatorChars: /^[*+\-%<>!=&|^\/#@?~]/,
-        dateSQL: p("time"),
-        support: p("decimallessFloat zerolessFloat binaryNumber hexNumber")
-      }), g.defineMIME("text/x-trino", {
-        name: "sql",
-        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/core/trino-parser/src/main/antlr4/io/trino/sql/parser/SqlBase.g4#L859-L1129
-        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/docs/src/main/sphinx/functions/list.rst
-        keywords: p("abs absent acos add admin after all all_match alter analyze and any any_match approx_distinct approx_most_frequent approx_percentile approx_set arbitrary array_agg array_distinct array_except array_intersect array_join array_max array_min array_position array_remove array_sort array_union arrays_overlap as asc asin at at_timezone atan atan2 authorization avg bar bernoulli beta_cdf between bing_tile bing_tile_at bing_tile_coordinates bing_tile_polygon bing_tile_quadkey bing_tile_zoom_level bing_tiles_around bit_count bitwise_and bitwise_and_agg bitwise_left_shift bitwise_not bitwise_or bitwise_or_agg bitwise_right_shift bitwise_right_shift_arithmetic bitwise_xor bool_and bool_or both by call cardinality cascade case cast catalogs cbrt ceil ceiling char2hexint checksum chr classify coalesce codepoint column columns combinations comment commit committed concat concat_ws conditional constraint contains contains_sequence convex_hull_agg copartition corr cos cosh cosine_similarity count count_if covar_pop covar_samp crc32 create cross cube cume_dist current current_catalog current_date current_groups current_path current_role current_schema current_time current_timestamp current_timezone current_user data date_add date_diff date_format date_parse date_trunc day day_of_month day_of_week day_of_year deallocate default define definer degrees delete dense_rank deny desc describe descriptor distinct distributed dow doy drop e element_at else empty empty_approx_set encoding end error escape evaluate_classifier_predictions every except excluding execute exists exp explain extract false features fetch filter final first first_value flatten floor following for format format_datetime format_number from from_base from_base32 from_base64 from_base64url from_big_endian_32 from_big_endian_64 from_encoded_polyline from_geojson_geometry from_hex from_ieee754_32 from_ieee754_64 from_iso8601_date from_iso8601_timestamp from_iso8601_timestamp_nanos from_unixtime from_unixtime_nanos from_utf8 full functions geometric_mean geometry_from_hadoop_shape geometry_invalid_reason geometry_nearest_points geometry_to_bing_tiles geometry_union geometry_union_agg grant granted grants graphviz great_circle_distance greatest group grouping groups hamming_distance hash_counts having histogram hmac_md5 hmac_sha1 hmac_sha256 hmac_sha512 hour human_readable_seconds if ignore in including index infinity initial inner input insert intersect intersection_cardinality into inverse_beta_cdf inverse_normal_cdf invoker io is is_finite is_infinite is_json_scalar is_nan isolation jaccard_index join json_array json_array_contains json_array_get json_array_length json_exists json_extract json_extract_scalar json_format json_object json_parse json_query json_size json_value keep key keys kurtosis lag last last_day_of_month last_value lateral lead leading learn_classifier learn_libsvm_classifier learn_libsvm_regressor learn_regressor least left length level levenshtein_distance like limit line_interpolate_point line_interpolate_points line_locate_point listagg ln local localtime localtimestamp log log10 log2 logical lower lpad ltrim luhn_check make_set_digest map_agg map_concat map_entries map_filter map_from_entries map_keys map_union map_values map_zip_with match match_recognize matched matches materialized max max_by md5 measures merge merge_set_digest millisecond min min_by minute mod month multimap_agg multimap_from_entries murmur3 nan natural next nfc nfd nfkc nfkd ngrams no none none_match normal_cdf normalize not now nth_value ntile null nullif nulls numeric_histogram object objectid_timestamp of offset omit on one only option or order ordinality outer output over overflow parse_data_size parse_datetime parse_duration partition partitions passing past path pattern per percent_rank permute pi position pow power preceding prepare privileges properties prune qdigest_agg quarter quotes radians rand random range rank read recursive reduce reduce_agg refresh regexp_count regexp_extract regexp_extract_all regexp_like regexp_position regexp_replace regexp_split regr_intercept regr_slope regress rename render repeat repeatable replace reset respect restrict returning reverse revoke rgb right role roles rollback rollup round row_number rows rpad rtrim running scalar schema schemas second security seek select sequence serializable session set sets sha1 sha256 sha512 show shuffle sign simplify_geometry sin skewness skip slice some soundex spatial_partitioning spatial_partitions split split_part split_to_map split_to_multimap spooky_hash_v2_32 spooky_hash_v2_64 sqrt st_area st_asbinary st_astext st_boundary st_buffer st_centroid st_contains st_convexhull st_coorddim st_crosses st_difference st_dimension st_disjoint st_distance st_endpoint st_envelope st_envelopeaspts st_equals st_exteriorring st_geometries st_geometryfromtext st_geometryn st_geometrytype st_geomfrombinary st_interiorringn st_interiorrings st_intersection st_intersects st_isclosed st_isempty st_isring st_issimple st_isvalid st_length st_linefromtext st_linestring st_multipoint st_numgeometries st_numinteriorring st_numpoints st_overlaps st_point st_pointn st_points st_polygon st_relate st_startpoint st_symdifference st_touches st_union st_within st_x st_xmax st_xmin st_y st_ymax st_ymin start starts_with stats stddev stddev_pop stddev_samp string strpos subset substr substring sum system table tables tablesample tan tanh tdigest_agg text then ties timestamp_objectid timezone_hour timezone_minute to to_base to_base32 to_base64 to_base64url to_big_endian_32 to_big_endian_64 to_char to_date to_encoded_polyline to_geojson_geometry to_geometry to_hex to_ieee754_32 to_ieee754_64 to_iso8601 to_milliseconds to_spherical_geography to_timestamp to_unixtime to_utf8 trailing transaction transform transform_keys transform_values translate trim trim_array true truncate try try_cast type typeof uescape unbounded uncommitted unconditional union unique unknown unmatched unnest update upper url_decode url_encode url_extract_fragment url_extract_host url_extract_parameter url_extract_path url_extract_port url_extract_protocol url_extract_query use user using utf16 utf32 utf8 validate value value_at_quantile values values_at_quantiles var_pop var_samp variance verbose version view week week_of_year when where width_bucket wilson_interval_lower wilson_interval_upper window with with_timezone within without word_stem work wrapper write xxhash64 year year_of_week yow zip zip_with"),
-        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/core/trino-main/src/main/java/io/trino/metadata/TypeRegistry.java#L131-L168
-        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-ml/src/main/java/io/trino/plugin/ml/MLPlugin.java#L35
-        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-mongodb/src/main/java/io/trino/plugin/mongodb/MongoPlugin.java#L32
-        // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-geospatial/src/main/java/io/trino/plugin/geospatial/GeoPlugin.java#L37
-        builtin: p("array bigint bingtile boolean char codepoints color date decimal double function geometry hyperloglog int integer interval ipaddress joniregexp json json2016 jsonpath kdbtree likepattern map model objectid p4hyperloglog precision qdigest re2jregexp real regressor row setdigest smallint sphericalgeography tdigest time timestamp tinyint uuid varbinary varchar zone"),
-        atoms: p("false true null unknown"),
-        // https://trino.io/docs/current/functions/list.html#id1
-        operatorChars: /^[[\]|<>=!\-+*/%]/,
-        dateSQL: p("date time timestamp zone"),
-        // hexNumber is necessary for VARBINARY literals, e.g. X'65683F'
-        // but it also enables 0xFF hex numbers, which Trino doesn't support.
-        support: p("decimallessFloat zerolessFloat hexNumber")
-      });
+      return {
+        startState: function() {
+          return { tokenize: z, context: null };
+        },
+        token: function(y, I) {
+          if (y.sol() && I.context && I.context.align == null && (I.context.align = !1), I.tokenize == z && y.eatSpace()) return null;
+          var E = I.tokenize(y, I);
+          if (E == "comment") return E;
+          I.context && I.context.align == null && (I.context.align = !0);
+          var d = y.current();
+          return d == "(" ? L(y, I, ")") : d == "[" ? L(y, I, "]") : I.context && I.context.type == d && C(I), E;
+        },
+        indent: function(y, I) {
+          var E = y.context;
+          if (!E) return g.Pass;
+          var d = I.charAt(0) == E.type;
+          return E.align ? E.col + (d ? 0 : 1) : E.indent + (d ? 0 : B.indentUnit);
+        },
+        blockCommentStart: "/*",
+        blockCommentEnd: "*/",
+        lineComment: w.commentSlashSlash ? "//" : w.commentHash ? "#" : "--",
+        closeBrackets: "()[]{}''\"\"``",
+        config: G
+      };
     });
-  }()), nl.exports;
-}
-sl();
+    function W(B) {
+      for (var G; (G = B.next()) != null; )
+        if (G == "`" && !B.eat("`")) return "variable-2";
+      return B.backUp(B.current().length - 1), B.eatWhile(/\w/) ? "variable-2" : null;
+    }
+    function Y(B) {
+      for (var G; (G = B.next()) != null; )
+        if (G == '"' && !B.eat('"')) return "variable-2";
+      return B.backUp(B.current().length - 1), B.eatWhile(/\w/) ? "variable-2" : null;
+    }
+    function J(B) {
+      return B.eat("@") && (B.match("session."), B.match("local."), B.match("global.")), B.eat("'") ? (B.match(/^.*'/), "variable-2") : B.eat('"') ? (B.match(/^.*"/), "variable-2") : B.eat("`") ? (B.match(/^.*`/), "variable-2") : B.match(/^[0-9a-zA-Z$\.\_]+/) ? "variable-2" : null;
+    }
+    function _(B) {
+      return B.eat("N") ? "atom" : B.match(/^[a-zA-Z.#!?]/) ? "variable-2" : null;
+    }
+    var O = "alter and as asc between by count create delete desc distinct drop from group having in insert into is join like not on or order select set table union update values where limit ";
+    function p(B) {
+      for (var G = {}, M = B.split(" "), K = 0; K < M.length; ++K) G[M[K]] = !0;
+      return G;
+    }
+    var F = "bool boolean bit blob enum long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text bigint int int1 int2 int3 int4 int8 integer float float4 float8 double char varbinary varchar varcharacter precision real date datetime year unsigned signed decimal numeric";
+    g.defineMIME("text/x-sql", {
+      name: "sql",
+      keywords: p(O + "begin"),
+      builtin: p(F),
+      atoms: p("false true null unknown"),
+      dateSQL: p("date time timestamp"),
+      support: p("doubleQuote binaryNumber hexNumber")
+    }), g.defineMIME("text/x-mssql", {
+      name: "sql",
+      client: p("$partition binary_checksum checksum connectionproperty context_info current_request_id error_line error_message error_number error_procedure error_severity error_state formatmessage get_filestream_transaction_context getansinull host_id host_name isnull isnumeric min_active_rowversion newid newsequentialid rowcount_big xact_state object_id"),
+      keywords: p(O + "begin trigger proc view index for add constraint key primary foreign collate clustered nonclustered declare exec go if use index holdlock nolock nowait paglock readcommitted readcommittedlock readpast readuncommitted repeatableread rowlock serializable snapshot tablock tablockx updlock with"),
+      builtin: p("bigint numeric bit smallint decimal smallmoney int tinyint money float real char varchar text nchar nvarchar ntext binary varbinary image cursor timestamp hierarchyid uniqueidentifier sql_variant xml table "),
+      atoms: p("is not null like and or in left right between inner outer join all any some cross unpivot pivot exists"),
+      operatorChars: /^[*+\-%<>!=^\&|\/]/,
+      brackets: /^[\{}\(\)]/,
+      punctuation: /^[;.,:/]/,
+      backslashStringEscapes: !1,
+      dateSQL: p("date datetimeoffset datetime2 smalldatetime datetime time"),
+      hooks: {
+        "@": J
+      }
+    }), g.defineMIME("text/x-mysql", {
+      name: "sql",
+      client: p("charset clear connect edit ego exit go help nopager notee nowarning pager print prompt quit rehash source status system tee"),
+      keywords: p(O + "accessible action add after algorithm all analyze asensitive at authors auto_increment autocommit avg avg_row_length before binary binlog both btree cache call cascade cascaded case catalog_name chain change changed character check checkpoint checksum class_origin client_statistics close coalesce code collate collation collations column columns comment commit committed completion concurrent condition connection consistent constraint contains continue contributors convert cross current current_date current_time current_timestamp current_user cursor data database databases day_hour day_microsecond day_minute day_second deallocate dec declare default delay_key_write delayed delimiter des_key_file describe deterministic dev_pop dev_samp deviance diagnostics directory disable discard distinctrow div dual dumpfile each elseif enable enclosed end ends engine engines enum errors escape escaped even event events every execute exists exit explain extended fast fetch field fields first flush for force foreign found_rows full fulltext function general get global grant grants group group_concat handler hash help high_priority hosts hour_microsecond hour_minute hour_second if ignore ignore_server_ids import index index_statistics infile inner innodb inout insensitive insert_method install interval invoker isolation iterate key keys kill language last leading leave left level limit linear lines list load local localtime localtimestamp lock logs low_priority master master_heartbeat_period master_ssl_verify_server_cert masters match max max_rows maxvalue message_text middleint migrate min min_rows minute_microsecond minute_second mod mode modifies modify mutex mysql_errno natural next no no_write_to_binlog offline offset one online open optimize option optionally out outer outfile pack_keys parser partition partitions password phase plugin plugins prepare preserve prev primary privileges procedure processlist profile profiles purge query quick range read read_write reads real rebuild recover references regexp relaylog release remove rename reorganize repair repeatable replace require resignal restrict resume return returns revoke right rlike rollback rollup row row_format rtree savepoint schedule schema schema_name schemas second_microsecond security sensitive separator serializable server session share show signal slave slow smallint snapshot soname spatial specific sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_no_cache sql_small_result sqlexception sqlstate sqlwarning ssl start starting starts status std stddev stddev_pop stddev_samp storage straight_join subclass_origin sum suspend table_name table_statistics tables tablespace temporary terminated to trailing transaction trigger triggers truncate uncommitted undo uninstall unique unlock upgrade usage use use_frm user user_resources user_statistics using utc_date utc_time utc_timestamp value variables varying view views warnings when while with work write xa xor year_month zerofill begin do then else loop repeat"),
+      builtin: p("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text bigint int int1 int2 int3 int4 int8 integer float float4 float8 double char varbinary varchar varcharacter precision date datetime year unsigned signed numeric"),
+      atoms: p("false true null unknown"),
+      operatorChars: /^[*+\-%<>!=&|^]/,
+      dateSQL: p("date time timestamp"),
+      support: p("decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
+      hooks: {
+        "@": J,
+        "`": W,
+        "\\": _
+      }
+    }), g.defineMIME("text/x-mariadb", {
+      name: "sql",
+      client: p("charset clear connect edit ego exit go help nopager notee nowarning pager print prompt quit rehash source status system tee"),
+      keywords: p(O + "accessible action add after algorithm all always analyze asensitive at authors auto_increment autocommit avg avg_row_length before binary binlog both btree cache call cascade cascaded case catalog_name chain change changed character check checkpoint checksum class_origin client_statistics close coalesce code collate collation collations column columns comment commit committed completion concurrent condition connection consistent constraint contains continue contributors convert cross current current_date current_time current_timestamp current_user cursor data database databases day_hour day_microsecond day_minute day_second deallocate dec declare default delay_key_write delayed delimiter des_key_file describe deterministic dev_pop dev_samp deviance diagnostics directory disable discard distinctrow div dual dumpfile each elseif enable enclosed end ends engine engines enum errors escape escaped even event events every execute exists exit explain extended fast fetch field fields first flush for force foreign found_rows full fulltext function general generated get global grant grants group group_concat handler hard hash help high_priority hosts hour_microsecond hour_minute hour_second if ignore ignore_server_ids import index index_statistics infile inner innodb inout insensitive insert_method install interval invoker isolation iterate key keys kill language last leading leave left level limit linear lines list load local localtime localtimestamp lock logs low_priority master master_heartbeat_period master_ssl_verify_server_cert masters match max max_rows maxvalue message_text middleint migrate min min_rows minute_microsecond minute_second mod mode modifies modify mutex mysql_errno natural next no no_write_to_binlog offline offset one online open optimize option optionally out outer outfile pack_keys parser partition partitions password persistent phase plugin plugins prepare preserve prev primary privileges procedure processlist profile profiles purge query quick range read read_write reads real rebuild recover references regexp relaylog release remove rename reorganize repair repeatable replace require resignal restrict resume return returns revoke right rlike rollback rollup row row_format rtree savepoint schedule schema schema_name schemas second_microsecond security sensitive separator serializable server session share show shutdown signal slave slow smallint snapshot soft soname spatial specific sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_no_cache sql_small_result sqlexception sqlstate sqlwarning ssl start starting starts status std stddev stddev_pop stddev_samp storage straight_join subclass_origin sum suspend table_name table_statistics tables tablespace temporary terminated to trailing transaction trigger triggers truncate uncommitted undo uninstall unique unlock upgrade usage use use_frm user user_resources user_statistics using utc_date utc_time utc_timestamp value variables varying view views virtual warnings when while with work write xa xor year_month zerofill begin do then else loop repeat"),
+      builtin: p("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text bigint int int1 int2 int3 int4 int8 integer float float4 float8 double char varbinary varchar varcharacter precision date datetime year unsigned signed numeric"),
+      atoms: p("false true null unknown"),
+      operatorChars: /^[*+\-%<>!=&|^]/,
+      dateSQL: p("date time timestamp"),
+      support: p("decimallessFloat zerolessFloat binaryNumber hexNumber doubleQuote nCharCast charsetCast commentHash commentSpaceRequired"),
+      hooks: {
+        "@": J,
+        "`": W,
+        "\\": _
+      }
+    }), g.defineMIME("text/x-sqlite", {
+      name: "sql",
+      // commands of the official SQLite client, ref: https://www.sqlite.org/cli.html#dotcmd
+      client: p("auth backup bail binary changes check clone databases dbinfo dump echo eqp exit explain fullschema headers help import imposter indexes iotrace limit lint load log mode nullvalue once open output print prompt quit read restore save scanstats schema separator session shell show stats system tables testcase timeout timer trace vfsinfo vfslist vfsname width"),
+      // ref: http://sqlite.org/lang_keywords.html
+      keywords: p(O + "abort action add after all analyze attach autoincrement before begin cascade case cast check collate column commit conflict constraint cross current_date current_time current_timestamp database default deferrable deferred detach each else end escape except exclusive exists explain fail for foreign full glob if ignore immediate index indexed initially inner instead intersect isnull key left limit match natural no notnull null of offset outer plan pragma primary query raise recursive references regexp reindex release rename replace restrict right rollback row savepoint temp temporary then to transaction trigger unique using vacuum view virtual when with without"),
+      // SQLite is weakly typed, ref: http://sqlite.org/datatype3.html. This is just a list of some common types.
+      builtin: p("bool boolean bit blob decimal double float long longblob longtext medium mediumblob mediumint mediumtext time timestamp tinyblob tinyint tinytext text clob bigint int int2 int8 integer float double char varchar date datetime year unsigned signed numeric real"),
+      // ref: http://sqlite.org/syntax/literal-value.html
+      atoms: p("null current_date current_time current_timestamp"),
+      // ref: http://sqlite.org/lang_expr.html#binaryops
+      operatorChars: /^[*+\-%<>!=&|/~]/,
+      // SQLite is weakly typed, ref: http://sqlite.org/datatype3.html. This is just a list of some common types.
+      dateSQL: p("date time timestamp datetime"),
+      support: p("decimallessFloat zerolessFloat"),
+      identifierQuote: '"',
+      //ref: http://sqlite.org/lang_keywords.html
+      hooks: {
+        // bind-parameters ref:http://sqlite.org/lang_expr.html#varparam
+        "@": J,
+        ":": J,
+        "?": J,
+        $: J,
+        // The preferred way to escape Identifiers is using double quotes, ref: http://sqlite.org/lang_keywords.html
+        '"': Y,
+        // there is also support for backticks, ref: http://sqlite.org/lang_keywords.html
+        "`": W
+      }
+    }), g.defineMIME("text/x-cassandra", {
+      name: "sql",
+      client: {},
+      keywords: p("add all allow alter and any apply as asc authorize batch begin by clustering columnfamily compact consistency count create custom delete desc distinct drop each_quorum exists filtering from grant if in index insert into key keyspace keyspaces level limit local_one local_quorum modify nan norecursive nosuperuser not of on one order password permission permissions primary quorum rename revoke schema select set storage superuser table three to token truncate ttl two type unlogged update use user users using values where with writetime"),
+      builtin: p("ascii bigint blob boolean counter decimal double float frozen inet int list map static text timestamp timeuuid tuple uuid varchar varint"),
+      atoms: p("false true infinity NaN"),
+      operatorChars: /^[<>=]/,
+      dateSQL: {},
+      support: p("commentSlashSlash decimallessFloat"),
+      hooks: {}
+    }), g.defineMIME("text/x-plsql", {
+      name: "sql",
+      client: p("appinfo arraysize autocommit autoprint autorecovery autotrace blockterminator break btitle cmdsep colsep compatibility compute concat copycommit copytypecheck define describe echo editfile embedded escape exec execute feedback flagger flush heading headsep instance linesize lno loboffset logsource long longchunksize markup native newpage numformat numwidth pagesize pause pno recsep recsepchar release repfooter repheader serveroutput shiftinout show showmode size spool sqlblanklines sqlcase sqlcode sqlcontinue sqlnumber sqlpluscompatibility sqlprefix sqlprompt sqlterminator suffix tab term termout time timing trimout trimspool ttitle underline verify version wrap"),
+      keywords: p("abort accept access add all alter and any array arraylen as asc assert assign at attributes audit authorization avg base_table begin between binary_integer body boolean by case cast char char_base check close cluster clusters colauth column comment commit compress connect connected constant constraint crash create current currval cursor data_base database date dba deallocate debugoff debugon decimal declare default definition delay delete desc digits dispose distinct do drop else elseif elsif enable end entry escape exception exception_init exchange exclusive exists exit external fast fetch file for force form from function generic goto grant group having identified if immediate in increment index indexes indicator initial initrans insert interface intersect into is key level library like limited local lock log logging long loop master maxextents maxtrans member minextents minus mislabel mode modify multiset new next no noaudit nocompress nologging noparallel not nowait number_base object of off offline on online only open option or order out package parallel partition pctfree pctincrease pctused pls_integer positive positiven pragma primary prior private privileges procedure public raise range raw read rebuild record ref references refresh release rename replace resource restrict return returning returns reverse revoke rollback row rowid rowlabel rownum rows run savepoint schema segment select separate session set share snapshot some space split sql start statement storage subtype successful synonym tabauth table tables tablespace task terminate then to trigger truncate type union unique unlimited unrecoverable unusable update use using validate value values variable view views when whenever where while with work"),
+      builtin: p("abs acos add_months ascii asin atan atan2 average bfile bfilename bigserial bit blob ceil character chartorowid chr clob concat convert cos cosh count dec decode deref dual dump dup_val_on_index empty error exp false float floor found glb greatest hextoraw initcap instr instrb int integer isopen last_day least length lengthb ln lower lpad ltrim lub make_ref max min mlslabel mod months_between natural naturaln nchar nclob new_time next_day nextval nls_charset_decl_len nls_charset_id nls_charset_name nls_initcap nls_lower nls_sort nls_upper nlssort no_data_found notfound null number numeric nvarchar2 nvl others power rawtohex real reftohex round rowcount rowidtochar rowtype rpad rtrim serial sign signtype sin sinh smallint soundex sqlcode sqlerrm sqrt stddev string substr substrb sum sysdate tan tanh to_char text to_date to_label to_multi_byte to_number to_single_byte translate true trunc uid unlogged upper user userenv varchar varchar2 variance varying vsize xml"),
+      operatorChars: /^[*\/+\-%<>!=~]/,
+      dateSQL: p("date time timestamp"),
+      support: p("doubleQuote nCharCast zerolessFloat binaryNumber hexNumber")
+    }), g.defineMIME("text/x-hive", {
+      name: "sql",
+      keywords: p("select alter $elem$ $key$ $value$ add after all analyze and archive as asc before between binary both bucket buckets by cascade case cast change cluster clustered clusterstatus collection column columns comment compute concatenate continue create cross cursor data database databases dbproperties deferred delete delimited desc describe directory disable distinct distribute drop else enable end escaped exclusive exists explain export extended external fetch fields fileformat first format formatted from full function functions grant group having hold_ddltime idxproperties if import in index indexes inpath inputdriver inputformat insert intersect into is items join keys lateral left like limit lines load local location lock locks mapjoin materialized minus msck no_drop nocompress not of offline on option or order out outer outputdriver outputformat overwrite partition partitioned partitions percent plus preserve procedure purge range rcfile read readonly reads rebuild recordreader recordwriter recover reduce regexp rename repair replace restrict revoke right rlike row schema schemas semi sequencefile serde serdeproperties set shared show show_database sort sorted ssl statistics stored streamtable table tables tablesample tblproperties temporary terminated textfile then tmp to touch transform trigger unarchive undo union uniquejoin unlock update use using utc utc_tmestamp view when where while with admin authorization char compact compactions conf cube current current_date current_timestamp day decimal defined dependency directories elem_type exchange file following for grouping hour ignore inner interval jar less logical macro minute month more none noscan over owner partialscan preceding pretty principals protection reload rewrite role roles rollup rows second server sets skewed transactions truncate unbounded unset uri user values window year"),
+      builtin: p("bool boolean long timestamp tinyint smallint bigint int float double date datetime unsigned string array struct map uniontype key_type utctimestamp value_type varchar"),
+      atoms: p("false true null unknown"),
+      operatorChars: /^[*+\-%<>!=]/,
+      dateSQL: p("date timestamp"),
+      support: p("doubleQuote binaryNumber hexNumber")
+    }), g.defineMIME("text/x-pgsql", {
+      name: "sql",
+      client: p("source"),
+      // For PostgreSQL - https://www.postgresql.org/docs/11/sql-keywords-appendix.html
+      // For pl/pgsql lang - https://github.com/postgres/postgres/blob/REL_11_2/src/pl/plpgsql/src/pl_scanner.c
+      keywords: p(O + "a abort abs absent absolute access according action ada add admin after aggregate alias all allocate also alter always analyse analyze and any are array array_agg array_max_cardinality as asc asensitive assert assertion assignment asymmetric at atomic attach attribute attributes authorization avg backward base64 before begin begin_frame begin_partition bernoulli between bigint binary bit bit_length blob blocked bom boolean both breadth by c cache call called cardinality cascade cascaded case cast catalog catalog_name ceil ceiling chain char char_length character character_length character_set_catalog character_set_name character_set_schema characteristics characters check checkpoint class class_origin clob close cluster coalesce cobol collate collation collation_catalog collation_name collation_schema collect column column_name columns command_function command_function_code comment comments commit committed concurrently condition condition_number configuration conflict connect connection connection_name constant constraint constraint_catalog constraint_name constraint_schema constraints constructor contains content continue control conversion convert copy corr corresponding cost count covar_pop covar_samp create cross csv cube cume_dist current current_catalog current_date current_default_transform_group current_path current_role current_row current_schema current_time current_timestamp current_transform_group_for_type current_user cursor cursor_name cycle data database datalink datatype date datetime_interval_code datetime_interval_precision day db deallocate debug dec decimal declare default defaults deferrable deferred defined definer degree delete delimiter delimiters dense_rank depends depth deref derived desc describe descriptor detach detail deterministic diagnostics dictionary disable discard disconnect dispatch distinct dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue do document domain double drop dump dynamic dynamic_function dynamic_function_code each element else elseif elsif empty enable encoding encrypted end end_frame end_partition endexec enforced enum equals errcode error escape event every except exception exclude excluding exclusive exec execute exists exit exp explain expression extension external extract false family fetch file filter final first first_value flag float floor following for force foreach foreign fortran forward found frame_row free freeze from fs full function functions fusion g general generated get global go goto grant granted greatest group grouping groups handler having header hex hierarchy hint hold hour id identity if ignore ilike immediate immediately immutable implementation implicit import in include including increment indent index indexes indicator info inherit inherits initially inline inner inout input insensitive insert instance instantiable instead int integer integrity intersect intersection interval into invoker is isnull isolation join k key key_member key_type label lag language large last last_value lateral lead leading leakproof least left length level library like like_regex limit link listen ln load local localtime localtimestamp location locator lock locked log logged loop lower m map mapping match matched materialized max max_cardinality maxvalue member merge message message_length message_octet_length message_text method min minute minvalue mod mode modifies module month more move multiset mumps name names namespace national natural nchar nclob nesting new next nfc nfd nfkc nfkd nil no none normalize normalized not nothing notice notify notnull nowait nth_value ntile null nullable nullif nulls number numeric object occurrences_regex octet_length octets of off offset oids old on only open operator option options or order ordering ordinality others out outer output over overlaps overlay overriding owned owner p pad parallel parameter parameter_mode parameter_name parameter_ordinal_position parameter_specific_catalog parameter_specific_name parameter_specific_schema parser partial partition pascal passing passthrough password path percent percent_rank percentile_cont percentile_disc perform period permission pg_context pg_datatype_name pg_exception_context pg_exception_detail pg_exception_hint placing plans pli policy portion position position_regex power precedes preceding precision prepare prepared preserve primary print_strict_params prior privileges procedural procedure procedures program public publication query quote raise range rank read reads real reassign recheck recovery recursive ref references referencing refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope regr_sxx regr_sxy regr_syy reindex relative release rename repeatable replace replica requiring reset respect restart restore restrict result result_oid return returned_cardinality returned_length returned_octet_length returned_sqlstate returning returns reverse revoke right role rollback rollup routine routine_catalog routine_name routine_schema routines row row_count row_number rows rowtype rule savepoint scale schema schema_name schemas scope scope_catalog scope_name scope_schema scroll search second section security select selective self sensitive sequence sequences serializable server server_name session session_user set setof sets share show similar simple size skip slice smallint snapshot some source space specific specific_name specifictype sql sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable stacked standalone start state statement static statistics stddev_pop stddev_samp stdin stdout storage strict strip structure style subclass_origin submultiset subscription substring substring_regex succeeds sum symmetric sysid system system_time system_user t table table_name tables tablesample tablespace temp template temporary text then ties time timestamp timezone_hour timezone_minute to token top_level_count trailing transaction transaction_active transactions_committed transactions_rolled_back transform transforms translate translate_regex translation treat trigger trigger_catalog trigger_name trigger_schema trim trim_array true truncate trusted type types uescape unbounded uncommitted under unencrypted union unique unknown unlink unlisten unlogged unnamed unnest until untyped update upper uri usage use_column use_variable user user_defined_type_catalog user_defined_type_code user_defined_type_name user_defined_type_schema using vacuum valid validate validator value value_of values var_pop var_samp varbinary varchar variable_conflict variadic varying verbose version versioning view views volatile warning when whenever where while whitespace width_bucket window with within without work wrapper write xml xmlagg xmlattributes xmlbinary xmlcast xmlcomment xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable xmltext xmlvalidate year yes zone"),
+      // https://www.postgresql.org/docs/11/datatype.html
+      builtin: p("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time zone timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
+      atoms: p("false true null unknown"),
+      operatorChars: /^[*\/+\-%<>!=&|^\/#@?~]/,
+      backslashStringEscapes: !1,
+      dateSQL: p("date time timestamp"),
+      support: p("decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast escapeConstant")
+    }), g.defineMIME("text/x-gql", {
+      name: "sql",
+      keywords: p("ancestor and asc by contains desc descendant distinct from group has in is limit offset on order select superset where"),
+      atoms: p("false true"),
+      builtin: p("blob datetime first key __key__ string integer double boolean null"),
+      operatorChars: /^[*+\-%<>!=]/
+    }), g.defineMIME("text/x-gpsql", {
+      name: "sql",
+      client: p("source"),
+      //https://github.com/greenplum-db/gpdb/blob/master/src/include/parser/kwlist.h
+      keywords: p("abort absolute access action active add admin after aggregate all also alter always analyse analyze and any array as asc assertion assignment asymmetric at authorization backward before begin between bigint binary bit boolean both by cache called cascade cascaded case cast chain char character characteristics check checkpoint class close cluster coalesce codegen collate column comment commit committed concurrency concurrently configuration connection constraint constraints contains content continue conversion copy cost cpu_rate_limit create createdb createexttable createrole createuser cross csv cube current current_catalog current_date current_role current_schema current_time current_timestamp current_user cursor cycle data database day deallocate dec decimal declare decode default defaults deferrable deferred definer delete delimiter delimiters deny desc dictionary disable discard distinct distributed do document domain double drop dxl each else enable encoding encrypted end enum errors escape every except exchange exclude excluding exclusive execute exists explain extension external extract false family fetch fields filespace fill filter first float following for force foreign format forward freeze from full function global grant granted greatest group group_id grouping handler hash having header hold host hour identity if ignore ilike immediate immutable implicit in including inclusive increment index indexes inherit inherits initially inline inner inout input insensitive insert instead int integer intersect interval into invoker is isnull isolation join key language large last leading least left level like limit list listen load local localtime localtimestamp location lock log login mapping master match maxvalue median merge minute minvalue missing mode modifies modify month move name names national natural nchar new newline next no nocreatedb nocreateexttable nocreaterole nocreateuser noinherit nologin none noovercommit nosuperuser not nothing notify notnull nowait null nullif nulls numeric object of off offset oids old on only operator option options or order ordered others out outer over overcommit overlaps overlay owned owner parser partial partition partitions passing password percent percentile_cont percentile_disc placing plans position preceding precision prepare prepared preserve primary prior privileges procedural procedure protocol queue quote randomly range read readable reads real reassign recheck recursive ref references reindex reject relative release rename repeatable replace replica reset resource restart restrict returning returns revoke right role rollback rollup rootpartition row rows rule savepoint scatter schema scroll search second security segment select sequence serializable session session_user set setof sets share show similar simple smallint some split sql stable standalone start statement statistics stdin stdout storage strict strip subpartition subpartitions substring superuser symmetric sysid system table tablespace temp template temporary text then threshold ties time timestamp to trailing transaction treat trigger trim true truncate trusted type unbounded uncommitted unencrypted union unique unknown unlisten until update user using vacuum valid validation validator value values varchar variadic varying verbose version view volatile web when where whitespace window with within without work writable write xml xmlattributes xmlconcat xmlelement xmlexists xmlforest xmlparse xmlpi xmlroot xmlserialize year yes zone"),
+      builtin: p("bigint int8 bigserial serial8 bit varying varbit boolean bool box bytea character char varchar cidr circle date double precision float float8 inet integer int int4 interval json jsonb line lseg macaddr macaddr8 money numeric decimal path pg_lsn point polygon real float4 smallint int2 smallserial serial2 serial serial4 text time without zone with timetz timestamp timestamptz tsquery tsvector txid_snapshot uuid xml"),
+      atoms: p("false true null unknown"),
+      operatorChars: /^[*+\-%<>!=&|^\/#@?~]/,
+      dateSQL: p("date time timestamp"),
+      support: p("decimallessFloat zerolessFloat binaryNumber hexNumber nCharCast charsetCast")
+    }), g.defineMIME("text/x-sparksql", {
+      name: "sql",
+      keywords: p("add after all alter analyze and anti archive array as asc at between bucket buckets by cache cascade case cast change clear cluster clustered codegen collection column columns comment commit compact compactions compute concatenate cost create cross cube current current_date current_timestamp database databases data dbproperties defined delete delimited deny desc describe dfs directories distinct distribute drop else end escaped except exchange exists explain export extended external false fields fileformat first following for format formatted from full function functions global grant group grouping having if ignore import in index indexes inner inpath inputformat insert intersect interval into is items join keys last lateral lazy left like limit lines list load local location lock locks logical macro map minus msck natural no not null nulls of on optimize option options or order out outer outputformat over overwrite partition partitioned partitions percent preceding principals purge range recordreader recordwriter recover reduce refresh regexp rename repair replace reset restrict revoke right rlike role roles rollback rollup row rows schema schemas select semi separated serde serdeproperties set sets show skewed sort sorted start statistics stored stratify struct table tables tablesample tblproperties temp temporary terminated then to touch transaction transactions transform true truncate unarchive unbounded uncache union unlock unset use using values view when where window with"),
+      builtin: p("abs acos acosh add_months aggregate and any approx_count_distinct approx_percentile array array_contains array_distinct array_except array_intersect array_join array_max array_min array_position array_remove array_repeat array_sort array_union arrays_overlap arrays_zip ascii asin asinh assert_true atan atan2 atanh avg base64 between bigint bin binary bit_and bit_count bit_get bit_length bit_or bit_xor bool_and bool_or boolean bround btrim cardinality case cast cbrt ceil ceiling char char_length character_length chr coalesce collect_list collect_set concat concat_ws conv corr cos cosh cot count count_if count_min_sketch covar_pop covar_samp crc32 cume_dist current_catalog current_database current_date current_timestamp current_timezone current_user date date_add date_format date_from_unix_date date_part date_sub date_trunc datediff day dayofmonth dayofweek dayofyear decimal decode degrees delimited dense_rank div double e element_at elt encode every exists exp explode explode_outer expm1 extract factorial filter find_in_set first first_value flatten float floor forall format_number format_string from_csv from_json from_unixtime from_utc_timestamp get_json_object getbit greatest grouping grouping_id hash hex hour hypot if ifnull in initcap inline inline_outer input_file_block_length input_file_block_start input_file_name inputformat instr int isnan isnotnull isnull java_method json_array_length json_object_keys json_tuple kurtosis lag last last_day last_value lcase lead least left length levenshtein like ln locate log log10 log1p log2 lower lpad ltrim make_date make_dt_interval make_interval make_timestamp make_ym_interval map map_concat map_entries map_filter map_from_arrays map_from_entries map_keys map_values map_zip_with max max_by md5 mean min min_by minute mod monotonically_increasing_id month months_between named_struct nanvl negative next_day not now nth_value ntile nullif nvl nvl2 octet_length or outputformat overlay parse_url percent_rank percentile percentile_approx pi pmod posexplode posexplode_outer position positive pow power printf quarter radians raise_error rand randn random rank rcfile reflect regexp regexp_extract regexp_extract_all regexp_like regexp_replace repeat replace reverse right rint rlike round row_number rpad rtrim schema_of_csv schema_of_json second sentences sequence sequencefile serde session_window sha sha1 sha2 shiftleft shiftright shiftrightunsigned shuffle sign signum sin sinh size skewness slice smallint some sort_array soundex space spark_partition_id split sqrt stack std stddev stddev_pop stddev_samp str_to_map string struct substr substring substring_index sum tan tanh textfile timestamp timestamp_micros timestamp_millis timestamp_seconds tinyint to_csv to_date to_json to_timestamp to_unix_timestamp to_utc_timestamp transform transform_keys transform_values translate trim trunc try_add try_divide typeof ucase unbase64 unhex uniontype unix_date unix_micros unix_millis unix_seconds unix_timestamp upper uuid var_pop var_samp variance version weekday weekofyear when width_bucket window xpath xpath_boolean xpath_double xpath_float xpath_int xpath_long xpath_number xpath_short xpath_string xxhash64 year zip_with"),
+      atoms: p("false true null"),
+      operatorChars: /^[*\/+\-%<>!=~&|^]/,
+      dateSQL: p("date time timestamp"),
+      support: p("doubleQuote zerolessFloat")
+    }), g.defineMIME("text/x-esper", {
+      name: "sql",
+      client: p("source"),
+      // http://www.espertech.com/esper/release-5.5.0/esper-reference/html/appendix_keywords.html
+      keywords: p("alter and as asc between by count create delete desc distinct drop from group having in insert into is join like not on or order select set table union update values where limit after all and as at asc avedev avg between by case cast coalesce count create current_timestamp day days delete define desc distinct else end escape events every exists false first from full group having hour hours in inner insert instanceof into irstream is istream join last lastweekday left limit like max match_recognize matches median measures metadatasql min minute minutes msec millisecond milliseconds not null offset on or order outer output partition pattern prev prior regexp retain-union retain-intersection right rstream sec second seconds select set some snapshot sql stddev sum then true unidirectional until update variable weekday when where window"),
+      builtin: {},
+      atoms: p("false true null"),
+      operatorChars: /^[*+\-%<>!=&|^\/#@?~]/,
+      dateSQL: p("time"),
+      support: p("decimallessFloat zerolessFloat binaryNumber hexNumber")
+    }), g.defineMIME("text/x-trino", {
+      name: "sql",
+      // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/core/trino-parser/src/main/antlr4/io/trino/sql/parser/SqlBase.g4#L859-L1129
+      // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/docs/src/main/sphinx/functions/list.rst
+      keywords: p("abs absent acos add admin after all all_match alter analyze and any any_match approx_distinct approx_most_frequent approx_percentile approx_set arbitrary array_agg array_distinct array_except array_intersect array_join array_max array_min array_position array_remove array_sort array_union arrays_overlap as asc asin at at_timezone atan atan2 authorization avg bar bernoulli beta_cdf between bing_tile bing_tile_at bing_tile_coordinates bing_tile_polygon bing_tile_quadkey bing_tile_zoom_level bing_tiles_around bit_count bitwise_and bitwise_and_agg bitwise_left_shift bitwise_not bitwise_or bitwise_or_agg bitwise_right_shift bitwise_right_shift_arithmetic bitwise_xor bool_and bool_or both by call cardinality cascade case cast catalogs cbrt ceil ceiling char2hexint checksum chr classify coalesce codepoint column columns combinations comment commit committed concat concat_ws conditional constraint contains contains_sequence convex_hull_agg copartition corr cos cosh cosine_similarity count count_if covar_pop covar_samp crc32 create cross cube cume_dist current current_catalog current_date current_groups current_path current_role current_schema current_time current_timestamp current_timezone current_user data date_add date_diff date_format date_parse date_trunc day day_of_month day_of_week day_of_year deallocate default define definer degrees delete dense_rank deny desc describe descriptor distinct distributed dow doy drop e element_at else empty empty_approx_set encoding end error escape evaluate_classifier_predictions every except excluding execute exists exp explain extract false features fetch filter final first first_value flatten floor following for format format_datetime format_number from from_base from_base32 from_base64 from_base64url from_big_endian_32 from_big_endian_64 from_encoded_polyline from_geojson_geometry from_hex from_ieee754_32 from_ieee754_64 from_iso8601_date from_iso8601_timestamp from_iso8601_timestamp_nanos from_unixtime from_unixtime_nanos from_utf8 full functions geometric_mean geometry_from_hadoop_shape geometry_invalid_reason geometry_nearest_points geometry_to_bing_tiles geometry_union geometry_union_agg grant granted grants graphviz great_circle_distance greatest group grouping groups hamming_distance hash_counts having histogram hmac_md5 hmac_sha1 hmac_sha256 hmac_sha512 hour human_readable_seconds if ignore in including index infinity initial inner input insert intersect intersection_cardinality into inverse_beta_cdf inverse_normal_cdf invoker io is is_finite is_infinite is_json_scalar is_nan isolation jaccard_index join json_array json_array_contains json_array_get json_array_length json_exists json_extract json_extract_scalar json_format json_object json_parse json_query json_size json_value keep key keys kurtosis lag last last_day_of_month last_value lateral lead leading learn_classifier learn_libsvm_classifier learn_libsvm_regressor learn_regressor least left length level levenshtein_distance like limit line_interpolate_point line_interpolate_points line_locate_point listagg ln local localtime localtimestamp log log10 log2 logical lower lpad ltrim luhn_check make_set_digest map_agg map_concat map_entries map_filter map_from_entries map_keys map_union map_values map_zip_with match match_recognize matched matches materialized max max_by md5 measures merge merge_set_digest millisecond min min_by minute mod month multimap_agg multimap_from_entries murmur3 nan natural next nfc nfd nfkc nfkd ngrams no none none_match normal_cdf normalize not now nth_value ntile null nullif nulls numeric_histogram object objectid_timestamp of offset omit on one only option or order ordinality outer output over overflow parse_data_size parse_datetime parse_duration partition partitions passing past path pattern per percent_rank permute pi position pow power preceding prepare privileges properties prune qdigest_agg quarter quotes radians rand random range rank read recursive reduce reduce_agg refresh regexp_count regexp_extract regexp_extract_all regexp_like regexp_position regexp_replace regexp_split regr_intercept regr_slope regress rename render repeat repeatable replace reset respect restrict returning reverse revoke rgb right role roles rollback rollup round row_number rows rpad rtrim running scalar schema schemas second security seek select sequence serializable session set sets sha1 sha256 sha512 show shuffle sign simplify_geometry sin skewness skip slice some soundex spatial_partitioning spatial_partitions split split_part split_to_map split_to_multimap spooky_hash_v2_32 spooky_hash_v2_64 sqrt st_area st_asbinary st_astext st_boundary st_buffer st_centroid st_contains st_convexhull st_coorddim st_crosses st_difference st_dimension st_disjoint st_distance st_endpoint st_envelope st_envelopeaspts st_equals st_exteriorring st_geometries st_geometryfromtext st_geometryn st_geometrytype st_geomfrombinary st_interiorringn st_interiorrings st_intersection st_intersects st_isclosed st_isempty st_isring st_issimple st_isvalid st_length st_linefromtext st_linestring st_multipoint st_numgeometries st_numinteriorring st_numpoints st_overlaps st_point st_pointn st_points st_polygon st_relate st_startpoint st_symdifference st_touches st_union st_within st_x st_xmax st_xmin st_y st_ymax st_ymin start starts_with stats stddev stddev_pop stddev_samp string strpos subset substr substring sum system table tables tablesample tan tanh tdigest_agg text then ties timestamp_objectid timezone_hour timezone_minute to to_base to_base32 to_base64 to_base64url to_big_endian_32 to_big_endian_64 to_char to_date to_encoded_polyline to_geojson_geometry to_geometry to_hex to_ieee754_32 to_ieee754_64 to_iso8601 to_milliseconds to_spherical_geography to_timestamp to_unixtime to_utf8 trailing transaction transform transform_keys transform_values translate trim trim_array true truncate try try_cast type typeof uescape unbounded uncommitted unconditional union unique unknown unmatched unnest update upper url_decode url_encode url_extract_fragment url_extract_host url_extract_parameter url_extract_path url_extract_port url_extract_protocol url_extract_query use user using utf16 utf32 utf8 validate value value_at_quantile values values_at_quantiles var_pop var_samp variance verbose version view week week_of_year when where width_bucket wilson_interval_lower wilson_interval_upper window with with_timezone within without word_stem work wrapper write xxhash64 year year_of_week yow zip zip_with"),
+      // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/core/trino-main/src/main/java/io/trino/metadata/TypeRegistry.java#L131-L168
+      // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-ml/src/main/java/io/trino/plugin/ml/MLPlugin.java#L35
+      // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-mongodb/src/main/java/io/trino/plugin/mongodb/MongoPlugin.java#L32
+      // https://github.com/trinodb/trino/blob/bc7a4eeedde28684c7ae6f74cefcaf7c6e782174/plugin/trino-geospatial/src/main/java/io/trino/plugin/geospatial/GeoPlugin.java#L37
+      builtin: p("array bigint bingtile boolean char codepoints color date decimal double function geometry hyperloglog int integer interval ipaddress joniregexp json json2016 jsonpath kdbtree likepattern map model objectid p4hyperloglog precision qdigest re2jregexp real regressor row setdigest smallint sphericalgeography tdigest time timestamp tinyint uuid varbinary varchar zone"),
+      atoms: p("false true null unknown"),
+      // https://trino.io/docs/current/functions/list.html#id1
+      operatorChars: /^[[\]|<>=!\-+*/%]/,
+      dateSQL: p("date time timestamp zone"),
+      // hexNumber is necessary for VARBINARY literals, e.g. X'65683F'
+      // but it also enables 0xFF hex numbers, which Trino doesn't support.
+      support: p("decimallessFloat zerolessFloat hexNumber")
+    });
+  });
+})();
+var Cu = Su.exports;
 (function(xe, $) {
   (function(g) {
     g(ot());
@@ -6757,7 +6755,7 @@ sl();
 })();
 (function(xe, $) {
   (function(g) {
-    g(ot(), sl());
+    g(ot(), Cu);
   })(function(g) {
     var W, Y, J, _, O = {
       QUERY_DIV: ";",
@@ -6904,7 +6902,7 @@ sl();
     });
   });
 })();
-var Tu = { exports: {} };
+var Lu = { exports: {} };
 (function(xe, $) {
   (function(g) {
     g(ot());
@@ -6972,7 +6970,7 @@ var Tu = { exports: {} };
     });
   });
 })();
-var ul = Tu.exports, Nu = { exports: {} };
+var al = Lu.exports, Tu = { exports: {} };
 (function(xe, $) {
   (function(g) {
     g(ot());
@@ -7034,9 +7032,9 @@ var ul = Tu.exports, Nu = { exports: {} };
     };
   });
 })();
-var Mu = Nu.exports, ol = { exports: {} }, al;
+var Nu = Tu.exports, nl = { exports: {} }, il;
 function Yi() {
-  return al || (al = 1, function(xe, $) {
+  return il || (il = 1, function(xe, $) {
     (function(g) {
       g(ot());
     })(function(g) {
@@ -7267,11 +7265,11 @@ function Yi() {
         k.length && this.setSelections(k, 0);
       });
     });
-  }()), ol.exports;
+  }()), nl.exports;
 }
 (function(xe, $) {
   (function(g) {
-    g(ot(), Yi(), ul);
+    g(ot(), Yi(), al);
   })(function(g) {
     g.defineOption("search", { bottom: !1 });
     function W(h, A) {
@@ -7508,7 +7506,7 @@ function Yi() {
 })();
 (function(xe, $) {
   (function(g) {
-    g(ot(), ul);
+    g(ot(), al);
   })(function(g) {
     g.defineOption("search", { bottom: !1 });
     function W(_, O, p, F, B) {
@@ -7539,7 +7537,7 @@ function Yi() {
 })();
 (function(xe, $) {
   (function(g) {
-    g(ot(), Yi(), Mu);
+    g(ot(), Yi(), Nu);
   })(function(g) {
     g.defineExtension("showMatchesOnScrollbar", function(_, O, p) {
       return typeof p == "string" && (p = { className: p }), p || (p = {}), new W(this, _, O, p);
@@ -8117,7 +8115,7 @@ Yi();
     }
   });
 })();
-const Au = {
+const Mu = {
   startContext: [
     { tokenType: "ir-string", begin: /"/, end: /"/ },
     { tokenType: "ir-input", begin: /\[/, end: /\]/ },
@@ -8140,7 +8138,7 @@ Re.defineMode("ir-rule-exp", (xe, $) => {
       if (!F) return null;
       if (Y.lastChar = F, /\s/.test(F))
         return W.eatSpace(), null;
-      const B = Au.startContext.find(({ begin: G }) => G.test(F));
+      const B = Mu.startContext.find(({ begin: G }) => G.test(F));
       if (B)
         return J(B), B.tokenType;
     }
@@ -8205,15 +8203,15 @@ Re.defineMIME("text/ir-db-rule", "ir-db-rule");
 Re.defineMIME("text/db-rule-input-parser", "db-rule-input-parser");
 Re.defineMIME("text/db-rule-rule-parser", "db-rule-rule-parser");
 Re.defineMIME("text/db-rule-comment-parser", "db-rule-comment-parser");
-const ll = () => {
-}, Ou = {
+const ol = () => {
+}, Au = {
   "ir-db-rule": "text/ir-db-rule",
   "ir-rule-exp": "text/ir-rule-exp",
   "sql-mysql": "text/x-mysql",
   "sql-oracle": "text/x-plsql",
   xml: "text/html"
 };
-class Du {
+class Ou {
   _gutterSet;
   _editor;
   constructor($, g) {
@@ -8234,8 +8232,8 @@ class Du {
     this._editor.setGutterMarker($, g, null);
   }
 }
-const Hu = ["CodeMirror-linenumbers"];
-class Pu extends Cu {
+const Du = ["CodeMirror-linenumbers"];
+class Fu extends _u {
   editor;
   _showWhitespace = !1;
   _showNextLineSymbol = !1;
@@ -8245,12 +8243,12 @@ class Pu extends Cu {
     mode: g = "ir-db-rule",
     code: W = "",
     keyEvents: Y,
-    gutters: J = Hu
+    gutters: J = Du
   }) {
     super({ contextElement: $ }), $.classList.add("editor"), this.editor = Re($, {
       lineNumbers: !0,
       gutters: J,
-      mode: Ou[g] ?? "text/plain",
+      mode: Au[g] ?? "text/plain",
       theme: "idea",
       tabSize: 4,
       indentWithTabs: !1,
@@ -8258,8 +8256,8 @@ class Pu extends Cu {
       autofocus: !0,
       extraKeys: {
         "Ctrl-Space": "autocomplete",
-        "Ctrl-F": ll,
-        "Shift-Ctrl-F": ll,
+        "Ctrl-F": ol,
+        "Shift-Ctrl-F": ol,
         Tab: (_) => {
           _.replaceSelection("    ");
         },
@@ -8269,19 +8267,22 @@ class Pu extends Cu {
       dragDrop: !0,
       allowDropFileTypes: ["text/x-sql", "text/plain"],
       phrases: {
-        "Search:": Tt.editor.search,
-        "(Use /re/ syntax for regexp search)": Tt.editor.regex,
-        "Replace:": Tt.editor.replace,
-        "With:": Tt.editor.with,
-        "Replace?": Tt.editor.replaceYN,
-        Yes: Tt.editor.yes,
-        No: Tt.editor.no,
-        All: Tt.editor.all,
-        Stop: Tt.editor.stop
+        "Search:": Tt.t("editor.search"),
+        "(Use /re/ syntax for regexp search)": Tt.t("editor.regex"),
+        "Replace:": Tt.t("editor.replace"),
+        "With:": Tt.t("editor.with"),
+        "Replace?": Tt.t("editor.replaceYN"),
+        Yes: Tt.t("editor.yes"),
+        No: Tt.t("editor.no"),
+        All: Tt.t("editor.all"),
+        Stop: Tt.t("editor.stop")
       }
     }), this.editor.on("gutterClick", (_, O) => {
       this.onGutterClick(O);
-    }), this._gutterManager = new Du(this.editor, J), this.editor.setSize("100%", "100%"), this.code = W, this.onDestroy = () => this.editor.getWrapperElement().remove();
+    }), this._gutterManager = new Ou(this.editor, J), this.editor.setSize("100%", "100%"), this.code = W, this.onDestroy = () => this.editor.getWrapperElement().remove();
+  }
+  get componentLabel() {
+    return "editor";
   }
   get cursor() {
     const $ = this.editor.getCursor("from"), g = this.editor.getCursor("to"), W = this.contextElement.querySelector(".CodeMirror-cursor") ?? this.contextElement.querySelector(".CodeMirror-selected");
@@ -8408,6 +8409,6 @@ class Pu extends Cu {
   }
 }
 export {
-  Pu as IREditor
+  Fu as IREditor
 };
 //# sourceMappingURL=editor.js.map

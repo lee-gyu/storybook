@@ -191,6 +191,7 @@ export const IRIconClassList = [
     "ir-icon--eye-closed",
     "ir-icon--eye",
     "ir-icon--features",
+    "ir-icon--filter",
     "ir-icon--folder-add",
     "ir-icon--folder-arrow-right",
     "ir-icon--folder-auth-info",
@@ -288,6 +289,7 @@ export const IRIconClassList = [
     "ir-icon--undo",
     "ir-icon--upload",
     "ir-icon--uppercase",
+    "ir-icon--user-circle-solid",
     "ir-icon--user-fill",
     "ir-icon--user-group",
     "ir-icon--user-management-fill",
@@ -353,4 +355,3 @@ export const IRIconClassList = [
     "ir-icon--rule-condition",
     "ir-icon--select-allowed-value",
 ];
-//# sourceMappingURL=icon-class.js.map

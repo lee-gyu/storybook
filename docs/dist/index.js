@@ -1,19 +1,15 @@
-import { Q as de, X as ne, V as te, h as T, T as ie, M as I, R as Oe, P as Ae, j as Ve, n as ke, q as be, W as Ee, K as Re, r as xe, w as $, D as Fe, A as pe, O as Be, z as Ue } from "./chunks/_init-Cv3gCb_1.js";
-import { a as oe, b as ze, s as Y, d as me, e as ge, c as Ie, g as le, r as $e, u as je, o as Ge, f as We } from "./chunks/floating-fOdDS7jf.js";
-import { h as Di, j as Si, i as Mi, p as Pi } from "./chunks/floating-fOdDS7jf.js";
-import { I as K } from "./chunks/index-C-Ilyvxg.js";
-import { e as x, f as q, g as M, b as W, h as Ke, c as Te, x as qe, l as Ye, i as X, a as Xe } from "./chunks/rx-state-wgOnLidQ.js";
-import { C as Ai, R as Vi, o as Fi, j as Bi, d as Ui, n as zi, s as $i, r as ji, k as Gi, p as Wi, m as Ki, q as qi } from "./chunks/rx-state-wgOnLidQ.js";
-import { uuid as Je } from "./utility.js";
-import { createLoadingHandler as Xi, createSplitContainer as Ji, createTooltipContainer as Qi } from "./utility.js";
-import { c as Qe, s as Le, a as Ze } from "./chunks/command-manager-VeiVFn1Y.js";
-import { f as eo, e as to, I as io, b as oo, d as no } from "./chunks/command-manager-VeiVFn1Y.js";
-import { c as et } from "./chunks/clsx-OuTLNxxd.js";
-import { d as S, i as j } from "./chunks/ko-DexDDk13.js";
-import { IRContextMenuAdapter as ro } from "./react.js";
-import { a as lo, c as co, d as ho, g as uo, b as po } from "./chunks/image-Y3tFDdOU.js";
-import { L as go } from "./chunks/logger-C1WxLZjH.js";
-class fe {
+import { j as xe, k as yt, l as Ce, m as Ke, n as qe, b as at, g as Ae, u as It, h as Lt, p as Tt } from "./chunks/floating-DlacX8th.js";
+import { q as zn, w as Fn, d as Vn, t as Bn, r as Un } from "./chunks/floating-DlacX8th.js";
+import { I as pe, c as St, d as Y, a as Ht, i as le, b as ye } from "./chunks/command-manager-BpzD-JV7.js";
+import { j as jn, h as Gn, g as Wn, e as Kn, f as qn } from "./chunks/command-manager-BpzD-JV7.js";
+import { f as P, h as ge, i as Z, d as he, j as Dt, c as dt, k as _e, a as Pt } from "./chunks/rx-state-ZWe0-z5g.js";
+import { C as Xn, L as Jn, R as Zn, q as Qn, l as eo, e as to, p as io, r as no, v as oo, u as so, n as ro, m as ao, s as lo, o as co, t as ho } from "./chunks/rx-state-ZWe0-z5g.js";
+import { u as Mt, x as Ot, l as At } from "./chunks/utility-D14ZXKIY.js";
+import { e as po, c as go, b as fo, a as mo, d as wo, g as Co, f as _o } from "./chunks/utility-D14ZXKIY.js";
+import { G as ze, H as Te, I as Ie, k as O, J as Le, K as q, L as M, M as zt, N as Ft, O as Vt, P as Ye, Q as lt, R as ct, S as ht, T as ut, U as pt, V as de, W as Bt, X as Ut, Y as Xe, Z as Je, _ as Ze, $ as Se } from "./chunks/css-F1iGWdNw.js";
+import { c as $t } from "./chunks/clsx-OuTLNxxd.js";
+import { I as vo } from "./chunks/index-DF0EIZtR.js";
+class Qe {
   _height;
   _visible;
   _top;
@@ -27,11 +23,11 @@ class fe {
     rowId: e,
     top: t,
     height: i,
-    defaultHeight: o,
+    defaultHeight: n,
     object: s,
-    visible: n
+    visible: o
   }) {
-    this._rowId = e, this._top = t, this._height = i, this._object = s ?? null, this._visible = n, this._defaultHeight = o;
+    this._rowId = e, this._top = t, this._height = i, this._object = s ?? null, this._visible = o, this._defaultHeight = n;
   }
   get object() {
     return this._object;
@@ -128,7 +124,7 @@ class fe {
     return this.isCachedElement && this.getRowElement().isConnected;
   }
 }
-class tt {
+class jt {
   _rows = [];
   _visibleRowList = [];
   _totalHeight = 0;
@@ -147,11 +143,11 @@ class tt {
   }
   createRowsFragment(e, t) {
     const i = document.createDocumentFragment();
-    for (let o = e; o <= t; o++) {
-      const s = this._rows[o];
+    for (let n = e; n <= t; n++) {
+      const s = this._rows[n];
       if (s.visible) {
-        const n = s.getRowElement();
-        i.appendChild(n), s.onMounted(s, n);
+        const o = s.getRowElement();
+        i.appendChild(o), s.onMounted(s, o);
       }
     }
     return i;
@@ -168,10 +164,10 @@ class tt {
   getRowByTop(e) {
     let t = 0, i = this._visibleRowList.length - 1;
     for (; t <= i; ) {
-      const o = Math.floor((t + i) / 2), s = this._visibleRowList[o];
+      const n = Math.floor((t + i) / 2), s = this._visibleRowList[n];
       if (e >= s.top && e <= s.bottom)
         return s;
-      e < s.top ? i = o - 1 : t = o + 1;
+      e < s.top ? i = n - 1 : t = n + 1;
     }
     return null;
   }
@@ -188,8 +184,8 @@ class tt {
     if (e < this._headerRowsCount || t >= this.rowCount)
       throw new Error("removing row id must be in between headerRow and rowCount");
     for (let i = e; i <= t; i++) {
-      const o = this._rows[i];
-      o.remove(), o.visible && (this._totalHeight -= o.height);
+      const n = this._rows[i];
+      n.remove(), n.visible && (this._totalHeight -= n.height);
     }
     this._rows.splice(e, t - e + 1);
   }
@@ -198,48 +194,48 @@ class tt {
       const t = this._rows[e];
       t.isConnectedInDOM && t.remove();
     }
-    this._rows.length = this._headerRowsCount, this._visibleRowList.length = this._headerRowsCount, this._totalHeight = this._freezedHeight;
+    this._rows.length = this._headerRowsCount, this.updateVisibleRowList(), this._totalHeight = this._freezedHeight;
   }
-  addRow(e, t, i, o = !0) {
-    const s = new fe({
+  addRow(e, t, i, n = !0) {
+    const s = new Qe({
       rowId: this._rows.length,
       height: e,
       top: this._totalHeight,
       defaultHeight: t,
       object: i,
-      visible: o
+      visible: n
     });
-    return this._rows.push(s), o && (this._visibleRowList.push(s), this._totalHeight += e), s;
+    return this._rows.push(s), n && (this._visibleRowList.push(s), this._totalHeight += e), s;
   }
   /**
    * row를 rowId에 넣는다. (이미 row가 존재하면 뒤로 민다.)
    */
-  insertRow(e, t, i, o, s = !0) {
-    const n = this.insertRows(1, e, t, i, [o], s);
-    return o && n[0].updateObject(o, !1), n[0];
+  insertRow(e, t, i, n, s = !0) {
+    const o = this.insertRows(1, e, t, i, [n], s);
+    return n && o[0].updateObject(n, !1), o[0];
   }
-  insertRows(e, t, i, o, s, n = !0) {
+  insertRows(e, t, i, n, s, o = !0) {
     if (t < this._headerRowsCount || t > this.rowCount)
       throw new Error(`invalid row range. it must be between ${this._headerRowsCount} ~ ${this.rowCount}`);
     const d = this._rows[t], a = [];
-    let l = d ? d.top : this._totalHeight;
-    for (let c = 0; c < e; ++c) {
-      const m = t + c, u = typeof n == "function" ? n(c, m) : n;
-      a.push(new fe({
-        rowId: m,
+    let h = d ? d.top : this._totalHeight;
+    for (let l = 0; l < e; ++l) {
+      const C = t + l, g = typeof o == "function" ? o(l, C) : o;
+      a.push(new Qe({
+        rowId: C,
         height: i,
-        defaultHeight: o,
+        defaultHeight: n,
         // row가 존재하면 해당 row로 설정 없다면, 맨 끝이니 totalHeight
-        top: l,
-        visible: u,
-        object: s?.[c] ?? void 0
-      })), l += i, u && (this._totalHeight += i);
+        top: h,
+        visible: g,
+        object: s?.[l] ?? void 0
+      })), h += i, g && (this._totalHeight += i);
     }
     return d ? this._rows.splice(t, 0, ...a) : this._rows.push(...a), a;
   }
   setRowHeight(e, t) {
-    const i = this.getRowById(e), o = i.height;
-    i.setHeight(t), i.visible && (this._totalHeight += t - o, i.isFreezed && (this._freezedHeight += t - o));
+    const i = this.getRowById(e), n = i.height;
+    i.setHeight(t), i.visible && (this._totalHeight += t - n, i.isFreezed && (this._freezedHeight += t - n));
   }
   moveRows(e, t, i) {
     if (e < this._headerRowsCount || t >= this.rowCount)
@@ -255,8 +251,8 @@ class tt {
   setRowVisible(e, t) {
     const i = this.getRowById(e);
     if (i.visible === t) return;
-    const o = t ? 1 : -1, s = i.height * o;
-    i.setVisible(t), this._totalHeight += s, e < this._headerRowsCount && (this._freezedHeight += s, this._hiddenHeaderRowsCount += o), i.visible || i.remove();
+    const n = t ? 1 : -1, s = i.height * n;
+    i.setVisible(t), this._totalHeight += s, e < this._headerRowsCount && (this._freezedHeight += s, this._hiddenHeaderRowsCount += n), i.visible || i.remove();
   }
   freezeRows(e) {
     if (e < 0)
@@ -305,15 +301,15 @@ class tt {
     return this._headerRowsCount + this._hiddenHeaderRowsCount;
   }
 }
-function it(r) {
+function Gt(r) {
   const e = document.createElement("div"), t = document.createElement("div");
   return t.className = "ir-vd-container__viewport ir-vd-container__viewport--freezed", e.className = "ir-vd-container__viewport", r?.className && (e.classList.add(r.className), t.classList.add(r.className)), r?.role && e.setAttribute("role", r.role), r?.tabIndex !== void 0 && e.setAttribute("tabindex", String(r.tabIndex)), {
     viewport: e,
     freezedViewport: t
   };
 }
-const ot = 4;
-function nt() {
+const Wt = 4;
+function Kt() {
   return {
     rAFHandler: -1,
     startRowId: -1,
@@ -322,18 +318,18 @@ function nt() {
     afterRenderTasks: []
   };
 }
-class st extends K {
+class qt extends pe {
   constructor(e) {
-    super(e), this.args = e, this.contextElement.classList.add("ir-vd-container"), this._viewportElements = it(e.rowContainer), this.contextElement.append(
+    super(e), this.args = e, this.contextElement.classList.add("ir-vd-container"), this._viewportElements = Gt(e.rowContainer), this.contextElement.append(
       this._viewportElements.freezedViewport,
       this._viewportElements.viewport
-    ), this._itemManager = new tt(), this.resizeObserve(() => {
+    ), this._itemManager = new jt(), this.resizeObserve(() => {
       this.scheduleTasks("update-viewport");
-    }), e.onMountedRow && (this.onMountedRow = e.onMountedRow), e.onCreatedRowElement && (this.onCreatedRowElement = e.onCreatedRowElement), e.onUpdatedRowObject && (this.onUpdatedRowObject = e.onUpdatedRowObject), this._defaultRowHeight = e.defaultRowHeight ?? oe("virtual-dom.defaultHeight"), this._viewportGap = this._defaultRowHeight * ot, this.contextElement.style.setProperty("--ir-vd-default-row-height", `${this._defaultRowHeight}px`), this.initScrollEvent(), this.initRowCol();
+    }), e.onMountedRow && (this.onMountedRow = e.onMountedRow), e.onCreatedRowElement && (this.onCreatedRowElement = e.onCreatedRowElement), e.onUpdatedRowObject && (this.onUpdatedRowObject = e.onUpdatedRowObject), this._defaultRowHeight = e.defaultRowHeight ?? xe("virtual-dom.defaultHeight"), this._viewportGap = this._defaultRowHeight * Wt, this.contextElement.style.setProperty("--ir-vd-default-row-height", `${this._defaultRowHeight}px`), this.initScrollEvent(), this.initRowCol();
   }
   _viewportElements;
   _itemManager;
-  _debounceContext = nt();
+  _debounceContext = Kt();
   _defaultRowHeight;
   _viewportGap;
   initScrollEvent() {
@@ -352,9 +348,12 @@ class st extends K {
       viewport: t
     } = this._viewportElements, {
       freezedHeight: i,
-      totalHeight: o
+      totalHeight: n
     } = this._itemManager;
-    e.style.setProperty("--ir-vd-container-height", `${String(i)}px`), e.style.setProperty("--ir-vd-row-count", `${this._itemManager.headerRowsCount}`), t.style.setProperty("--ir-vd-container-height", `${String(o)}px`), t.style.setProperty("--ir-vd-row-count", `${this._itemManager.rowCount}`);
+    e.style.setProperty("--ir-vd-container-height", `${String(i)}px`), e.style.setProperty("--ir-vd-row-count", `${this._itemManager.headerRowsCount}`), t.style.setProperty("--ir-vd-container-height", `${String(n)}px`), t.style.setProperty("--ir-vd-row-count", `${this._itemManager.rowCount}`);
+  }
+  get componentLabel() {
+    return "virtual-dom";
   }
   get height() {
     return this._itemManager.totalHeight;
@@ -391,8 +390,8 @@ class st extends K {
   unmountNotInViewport(e, t) {
     let i = this._viewportElements.viewport.firstElementChild;
     for (; i; ) {
-      const o = this._itemManager.getRowByElement(i);
-      i = i.nextElementSibling, o && (o.rowId < e || o.rowId > t) && o.isConnectedInDOM && o.remove();
+      const n = this._itemManager.getRowByElement(i);
+      i = i.nextElementSibling, n && (n.rowId < e || n.rowId > t) && n.isConnectedInDOM && n.remove();
     }
   }
   clearFreezedViewport() {
@@ -414,24 +413,24 @@ class st extends K {
   // 현재 scroll에 맞는 요소 viewport 업데이트
   mountViewportRows() {
     if (this._itemManager.rowCount === 0 || this.isElementMounted() === !1) return;
-    const e = this.contextElement.scrollTop, t = Math.max(0, e - this._viewportGap, this._itemManager.freezedHeight + 1), i = e + this.contextElement.clientHeight + this._viewportGap, o = this._itemManager.getRowByTop(t), s = this._itemManager.getRowByTop(i) ?? this._itemManager.lastRow;
-    if (!o)
+    const e = this.contextElement.scrollTop, t = Math.max(0, e - this._viewportGap, this._itemManager.freezedHeight + 1), i = e + this.contextElement.clientHeight + this._viewportGap, n = this._itemManager.getRowByTop(t), s = this._itemManager.getRowByTop(i) ?? this._itemManager.lastRow;
+    if (!n)
       return;
-    this.unmountNotInViewport(o.rowId, s.rowId);
-    const { viewport: n } = this._viewportElements;
-    if (n.childElementCount === 0) {
-      n.append(this._itemManager.createRowsFragment(o.rowId, s.rowId));
+    this.unmountNotInViewport(n.rowId, s.rowId);
+    const { viewport: o } = this._viewportElements;
+    if (o.childElementCount === 0) {
+      o.append(this._itemManager.createRowsFragment(n.rowId, s.rowId));
       return;
     }
     let d = null;
-    for (let a = o.rowId; a <= s.rowId; ++a) {
-      const l = this._itemManager.getRowById(a);
-      if (l.visible) {
-        if (!l.isConnectedInDOM) {
-          const c = l.getRowElement();
-          d ? d.getRowElement().after(c) : n.prepend(c), l.onMounted(l, c);
+    for (let a = n.rowId; a <= s.rowId; ++a) {
+      const h = this._itemManager.getRowById(a);
+      if (h.visible) {
+        if (!h.isConnectedInDOM) {
+          const l = h.getRowElement();
+          d ? d.getRowElement().after(l) : o.prepend(l), h.onMounted(h, l);
         }
-        d = l;
+        d = h;
       }
     }
   }
@@ -442,8 +441,8 @@ class st extends K {
     const t = this._itemManager.getRowById(e);
     if (!t)
       return !1;
-    const i = this.contextElement.scrollTop + this._itemManager.freezedHeight, o = this.contextElement.scrollTop + this.contextElement.clientHeight;
-    return t.top >= i && t.bottom <= o;
+    const i = this.contextElement.scrollTop + this._itemManager.freezedHeight, n = this.contextElement.scrollTop + this.contextElement.clientHeight;
+    return t.top >= i && t.bottom <= n;
   }
   moveRows(e, t, i) {
     this._itemManager.moveRows(e, t, i), this.scheduleCascadeRowInfoUpdate(Math.min(e, i)), this.scheduleTasks("update-visible-row", "update-viewport");
@@ -467,22 +466,22 @@ class st extends K {
     return this._itemManager.getRowByTop(e);
   }
   bindEventsToRow(e) {
-    e.onMounted = (t, i) => this.onMountedRow(t, i), e.onCreatedElement = (t, i) => this.onCreatedRowElement(t, i), e.onUpdatedObject = (t, i, o) => this.onUpdatedRowObject(t, i, o);
+    e.onMounted = (t, i) => this.onMountedRow(t, i), e.onCreatedElement = (t, i) => this.onCreatedRowElement(t, i), e.onUpdatedObject = (t, i, n) => this.onUpdatedRowObject(t, i, n);
   }
-  insertRow(e, t, i, o = !0) {
-    const s = this.insertRows(1, e, t, [i], o);
+  insertRow(e, t, i, n = !0) {
+    const s = this.insertRows(1, e, t, [i], n);
     return i && s[0] && s[0].updateObject(i, !1), s[0];
   }
-  insertRows(e, t, i, o, s = !0) {
-    const n = this._itemManager.insertRows(
+  insertRows(e, t, i, n, s = !0) {
+    const o = this._itemManager.insertRows(
       e,
       t,
       i ?? this._defaultRowHeight,
       this._defaultRowHeight,
-      o,
+      n,
       s
     );
-    return n.forEach((d) => this.bindEventsToRow(d)), s && n[0] && (this.scheduleTasks("update-container-size", "update-viewport", "update-visible-row"), this.scheduleCascadeRowInfoUpdate(n[0].rowId + 1)), n;
+    return o.forEach((d) => this.bindEventsToRow(d)), s && o[0] && (this.scheduleTasks("update-container-size", "update-viewport", "update-visible-row"), this.scheduleCascadeRowInfoUpdate(o[0].rowId + 1)), o;
   }
   *getRowIter() {
     yield* this._itemManager.getRowIter();
@@ -491,8 +490,8 @@ class st extends K {
     return this._itemManager.getRowById(e).visible;
   }
   addRow(e, t, i = !0) {
-    const o = this._itemManager.addRow(e ?? this._defaultRowHeight, this._defaultRowHeight, t, i);
-    return this.bindEventsToRow(o), i && this.scheduleTasks("update-container-size", "update-viewport"), o;
+    const n = this._itemManager.addRow(e ?? this._defaultRowHeight, this._defaultRowHeight, t, i);
+    return this.bindEventsToRow(n), i && this.scheduleTasks("update-container-size", "update-viewport"), n;
   }
   removeRow(e) {
     this.removeRows(e, e);
@@ -501,10 +500,10 @@ class st extends K {
     this._itemManager.removeRows(e, t), this.scheduleTasks("update-container-size", "update-viewport", "update-visible-row"), this.scheduleCascadeRowInfoUpdate(e);
   }
   updateRowsVisible(e, t, i) {
-    const { freezedViewport: o } = this._viewportElements;
+    const { freezedViewport: n } = this._viewportElements;
     for (let s = e; s <= t; ++s) {
-      const n = this._itemManager.getRowById(s), d = i(n);
-      this._itemManager.setRowVisible(s, d), d && s < this._itemManager.headerRowsCount && o.append(this._itemManager.getRowById(s).getRowElement());
+      const o = this._itemManager.getRowById(s), d = i(o);
+      this._itemManager.setRowVisible(s, d), d && s < this._itemManager.headerRowsCount && n.append(this._itemManager.getRowById(s).getRowElement());
     }
     this.scheduleTasks("update-container-size", "update-viewport", "update-visible-row"), this.scheduleCascadeRowInfoUpdate(e);
   }
@@ -539,120 +538,120 @@ class st extends K {
     this._debounceContext.afterRenderTasks.push(e), this.scheduleTasks();
   }
 }
-function rt(r) {
-  const t = [{ list: r.filter((o) => !o.parentItem), index: 0 }], i = [];
+function Yt(r) {
+  const t = [{ list: r.filter((n) => !n.parentItem), index: 0 }], i = [];
   if (r.length === 0) return i;
   for (; t.length; ) {
-    const o = t[t.length - 1], { index: s, list: n } = o, d = n[s], { items: a, isDisabled: l } = d;
-    l || i.push(d), ++o.index, o.index === n.length && t.pop(), d.expanded && a.length > 0 && t.push({
+    const n = t[t.length - 1], { index: s, list: o } = n, d = o[s], { items: a, isDisabled: h } = d;
+    h || i.push(d), ++n.index, n.index === o.length && t.pop(), d.expanded && a.length > 0 && t.push({
       index: 0,
       list: a
     });
   }
   return i;
 }
-function at(r, e) {
-  let t = null, i = [], o = !1;
+function Xt(r, e) {
+  let t = null, i = [], n = !1;
   const s = {
     ArrowUp: a,
-    ArrowDown: l,
-    ArrowLeft: m,
-    ArrowRight: c,
-    " ": u
+    ArrowDown: h,
+    ArrowLeft: C,
+    ArrowRight: l,
+    " ": g
   };
   return r.addGlobalEventListener(e, "focus", () => {
-    t && w(t, !1);
+    t && N(t, !1);
   }), r.addGlobalEventListener(e, "blur", () => {
-    f();
-  }), r.addGlobalEventListener(e, "keydown", (v) => {
-    s[v.key] && (s[v.key](), v.preventDefault());
+    v();
+  }), r.addGlobalEventListener(e, "keydown", (R) => {
+    s[R.key] && (s[R.key](), R.preventDefault());
   }), {
-    updateTreeVisibleInfo: n,
-    setFocusNode: w
+    updateTreeVisibleInfo: o,
+    setFocusNode: N
   };
-  function n() {
-    o = !0;
+  function o() {
+    n = !0;
   }
   function d() {
-    return o && (i = rt(r.getOrderedNodes()), o = !1), i;
+    return n && (i = Yt(r.getOrderedNodes()), n = !1), i;
   }
   function a() {
-    const v = t, R = d();
-    if (v === null) {
-      w(R[0]);
+    const R = t, T = d();
+    if (R === null) {
+      N(T[0]);
       return;
     }
-    const L = R.findIndex((p) => p.uuid === v.uuid), h = R[L - 1];
-    h && w(h);
+    const H = T.findIndex((m) => m.uuid === R.uuid), p = T[H - 1];
+    p && N(p);
+  }
+  function h() {
+    const R = t, T = d();
+    if (R === null) {
+      N(T[0]);
+      return;
+    }
+    const H = T.findIndex((m) => m.uuid === R.uuid), p = T[H + 1];
+    p && N(p);
   }
   function l() {
-    const v = t, R = d();
-    if (v === null) {
-      w(R[0]);
-      return;
-    }
-    const L = R.findIndex((p) => p.uuid === v.uuid), h = R[L + 1];
-    h && w(h);
+    t !== null && t.items.length !== 0 && (t.expanded && !t.items[0].isDisabled ? N(t.items[0]) : t.expand());
   }
-  function c() {
-    t !== null && t.items.length !== 0 && (t.expanded && !t.items[0].isDisabled ? w(t.items[0]) : t.expand());
+  function C() {
+    t != null && (t.expanded ? t.collapse() : t.parentItem && N(t.parentItem));
   }
-  function m() {
-    t != null && (t.expanded ? t.collapse() : t.parentItem && w(t.parentItem));
-  }
-  function u() {
+  function g() {
     t && t.select();
   }
-  function w(v, R = !0) {
-    f(), t = v, t.liTreeItem.classList.add("is-focus"), R && v.scrollIntoView();
+  function N(R, T = !0) {
+    v(), t = R, t.liTreeItem.classList.add("is-focus"), T && R.scrollIntoView();
   }
-  function f() {
+  function v() {
     t && t.liTreeItem.classList.remove("is-focus");
   }
 }
-const D = "tree", b = {
+const W = "tree", L = {
   tree: {
-    "&": D
+    "&": W
   },
   treeList: {
-    "&": `${D}__list`
+    "&": `${W}__list`
   },
   treeListRoot: {
-    "&": `${D}__list--root`
+    "&": `${W}__list--root`
   },
   treeLabel: {
-    "&": `${D}__label`
+    "&": `${W}__label`
   },
   treeLabelText: {
-    "&": `${D}__label-text`
+    "&": `${W}__label-text`
   },
   treeItem: {
-    "&": `${D}__item`,
-    parent: `${D}__item--parent`,
+    "&": `${W}__item`,
+    parent: `${W}__item--parent`,
     "is-expanded": "is-expanded",
     "is-selected": "is-selected"
   },
   treeItemContent: {
-    "&": `${D}__item-content`
+    "&": `${W}__item-content`
   },
   treeIconFolder: {
-    "&": `${D}__icon-folder`
+    "&": `${W}__icon-folder`
   },
   treeIconExpand: {
-    "&": `${D}__icon-expand`
+    "&": `${W}__icon-expand`
   }
-}, ce = (r) => {
+}, Fe = (r) => {
   const e = document.createElement("div"), t = document.createElement("i"), i = document.createElement("span");
-  return e.className = b.treeLabel["&"], i.className = b.treeLabelText["&"], {
+  return e.className = L.treeLabel["&"], i.className = L.treeLabelText["&"], {
     get template() {
       return e;
     },
-    update: (o) => {
-      o.iconClass ? (t.isConnected || i.insertAdjacentElement("beforebegin", t), t.className = `${b.treeIconFolder["&"]} ir-icon ${o.iconClass}`, o.iconColor ? t.style.setProperty("--ir-icon-foreground-color", o.iconColor) : t.style.removeProperty("--ir-icon-foreground-color")) : t.remove(), o.caption ? (i.textContent = o.caption, e.appendChild(i)) : i.remove();
+    update: (n) => {
+      n.iconClass ? (t.isConnected || i.insertAdjacentElement("beforebegin", t), t.className = `${L.treeIconFolder["&"]} ir-icon ${n.iconClass}`, n.iconColor ? t.style.setProperty("--ir-icon-foreground-color", n.iconColor) : t.style.removeProperty("--ir-icon-foreground-color")) : t.remove(), n.caption ? (i.textContent = n.caption, e.appendChild(i)) : i.remove();
     }
   };
-}, dt = "ir-icon--triangle-small-right";
-class lt {
+}, Jt = "ir-icon--triangle-small-right";
+class Zt {
   liTreeItem;
   divTreeItemContent;
   nodeRenderContent;
@@ -674,21 +673,21 @@ class lt {
     parentItem: e,
     icon: t,
     caption: i,
-    data: o,
+    data: n,
     level: s,
-    uuid: n,
+    uuid: o,
     defaultChecked: d = !1,
-    renderer: a = ce,
-    disabled: l = !1,
-    draggable: c
+    renderer: a = Fe,
+    disabled: h = !1,
+    draggable: l
   }) {
-    this.children = [], this._parentItem = e, this.data = o, this._level = s, this._iconClass = t, this._caption = i, this._template = a(this), this._checked = d, this._subChecked = d, this._disabled = l, this._uuid = n, this.liTreeItem = document.createElement("li"), this.liTreeItem.classList.add(b.treeItem["&"]), this.liTreeItem.dataset.uuid = this._uuid, this.divTreeItemContent = x(this.liTreeItem, "div", b.treeItemContent["&"]), this.divTreeItemContent.style.setProperty("--ir-tree-node-level", this._level.toString()), this.ulTreeList = document.createElement("ul"), this.ulTreeList.classList.add(b.treeList["&"]), this.iconExpand = x(this.divTreeItemContent, "i", b.treeIconExpand["&"], "ir-icon", dt), this.divTreeItemContent.appendChild(this._template.template), this.divTreeItemContent.addEventListener("dragstart", (m) => this.onDragStart(m)), this.divTreeItemContent.addEventListener("dragenter", (m) => this.onDragOver(m) && this.divTreeItemContent.classList.add("is-dragging")), this.divTreeItemContent.addEventListener("dragover", (m) => this.onDragOver(m) && m.preventDefault()), this.divTreeItemContent.addEventListener("dragend", (m) => this.onDragEnd(m)), this.divTreeItemContent.addEventListener("dragleave", () => this.clearDragging()), this.divTreeItemContent.addEventListener("drop", (m) => {
+    this.children = [], this._parentItem = e, this.data = n, this._level = s, this._iconClass = t, this._caption = i, this._template = a(this), this._checked = d, this._subChecked = d, this._disabled = h, this._uuid = o, this.liTreeItem = document.createElement("li"), this.liTreeItem.classList.add(L.treeItem["&"]), this.liTreeItem.dataset.uuid = this._uuid, this.divTreeItemContent = P(this.liTreeItem, "div", L.treeItemContent["&"]), this.divTreeItemContent.style.setProperty("--ir-tree-node-level", this._level.toString()), this.ulTreeList = document.createElement("ul"), this.ulTreeList.classList.add(L.treeList["&"]), this.iconExpand = P(this.divTreeItemContent, "i", L.treeIconExpand["&"], "ir-icon", Jt), this.divTreeItemContent.appendChild(this._template.template), this.divTreeItemContent.addEventListener("dragstart", (C) => this.onDragStart(C)), this.divTreeItemContent.addEventListener("dragenter", (C) => this.onDragOver(C) && this.divTreeItemContent.classList.add("is-dragging")), this.divTreeItemContent.addEventListener("dragover", (C) => this.onDragOver(C) && C.preventDefault()), this.divTreeItemContent.addEventListener("dragend", (C) => this.onDragEnd(C)), this.divTreeItemContent.addEventListener("dragleave", () => this.clearDragging()), this.divTreeItemContent.addEventListener("drop", (C) => {
       try {
-        this.onDrop(m);
+        this.onDrop(C);
       } finally {
         this.clearDragging();
       }
-    }), c && this.divTreeItemContent.setAttribute("draggable", "true");
+    }), l && this.divTreeItemContent.setAttribute("draggable", "true");
   }
   get items() {
     return [...this.children];
@@ -724,16 +723,16 @@ class lt {
     return this._iconClass;
   }
   get hasChildren() {
-    return this.liTreeItem.classList.contains(b.treeItem.parent);
+    return this.liTreeItem.classList.contains(L.treeItem.parent);
   }
   get hasCheckedChildren() {
     return this.children.some((e) => e.checked || e.hasCheckedChildren);
   }
   get expanded() {
-    return this.liTreeItem.classList.contains(b.treeItem["is-expanded"]);
+    return this.liTreeItem.classList.contains(L.treeItem["is-expanded"]);
   }
   get selected() {
-    return this.liTreeItem.classList.contains(b.treeItem["is-selected"]);
+    return this.liTreeItem.classList.contains(L.treeItem["is-selected"]);
   }
   get iconColor() {
     return this._iconColor;
@@ -762,7 +761,7 @@ class lt {
     this._iconColor = e, this.render();
   }
   set hasChildren(e) {
-    e ? this.liTreeItem.classList.add(b.treeItem.parent) : this.liTreeItem.classList.remove(b.treeItem.parent);
+    e ? this.liTreeItem.classList.add(L.treeItem.parent) : this.liTreeItem.classList.remove(L.treeItem.parent);
   }
   removeItems() {
     [...this.children].forEach((e) => e.delete());
@@ -790,22 +789,22 @@ class lt {
     this.liTreeItem.remove(), this.emitDeleteRecursive(), this._parentItem && this._parentItem.removeChildNode(this);
   }
   collapse() {
-    this.hasChildren && this.expanded && this.onCollapsing(this) && (this.liTreeItem.classList.remove(b.treeItem["is-expanded"]), this.ulTreeList.remove(), this.onCollapse(this));
+    this.hasChildren && this.expanded && this.onCollapsing(this) && (this.liTreeItem.classList.remove(L.treeItem["is-expanded"]), this.ulTreeList.remove(), this.onCollapse(this));
   }
   scrollIntoView(e = { block: "nearest" }) {
     this.divTreeItemContent.scrollIntoView(e);
   }
   expand() {
-    this.hasChildren && (this.expanded || this.onExpanding(this) && (this.liTreeItem.classList.add(b.treeItem["is-expanded"]), this.liTreeItem.appendChild(this.ulTreeList), this.onExpand(this)));
+    this.hasChildren && (this.expanded || this.onExpanding(this) && (this.liTreeItem.classList.add(L.treeItem["is-expanded"]), this.liTreeItem.appendChild(this.ulTreeList), this.onExpand(this)));
   }
   toggle() {
-    this.liTreeItem.classList.contains(b.treeItem["is-expanded"]) ? this.collapse() : this.expand();
+    this.liTreeItem.classList.contains(L.treeItem["is-expanded"]) ? this.collapse() : this.expand();
   }
   select() {
-    this.selected || (this.liTreeItem.classList.add(b.treeItem["is-selected"]), this.onSelect(this));
+    this.selected || (this.liTreeItem.classList.add(L.treeItem["is-selected"]), this.onSelect(this));
   }
   release() {
-    this.selected && (this.liTreeItem.classList.remove(b.treeItem["is-selected"]), this.onRelease(this));
+    this.selected && (this.liTreeItem.classList.remove(L.treeItem["is-selected"]), this.onRelease(this));
   }
   render() {
     this._template.update(this), this.onRender(this._template.template);
@@ -859,7 +858,7 @@ class lt {
     this.divTreeItemContent.classList.remove("is-dragging");
   }
 }
-class Ni extends K {
+class bn extends pe {
   _keyboardInteraction;
   rootElement;
   nodes;
@@ -869,15 +868,18 @@ class Ni extends K {
   _nodeMap = /* @__PURE__ */ new Map();
   constructor({
     contextElement: e,
-    renderer: t = ce,
+    renderer: t = Fe,
     nodeDraggable: i = !0,
-    enabledKeyboard: o = !0
+    enabledKeyboard: n = !0
   }) {
-    super({ contextElement: e }), this.nodes = [], this.selectedNode = null, this.renderer = t, this._nodeDraggable = i, e.classList.add(b.tree["&"]), e.setAttribute("tabindex", "0"), e.setAttribute("role", "tree"), o && (this._keyboardInteraction = at(this, e)), i === !1 && e.setAttribute("draggable", "false"), this.rootElement = x(e, "ul", b.treeList["&"], b.treeListRoot["&"]), this.addCoreElement(this.rootElement), this.addGlobalEventListener(e, "contextmenu", (s) => {
+    super({ contextElement: e }), this.nodes = [], this.selectedNode = null, this.renderer = t, this._nodeDraggable = i, e.classList.add(L.tree["&"]), e.setAttribute("tabindex", "0"), e.setAttribute("role", "tree"), n && (this._keyboardInteraction = Xt(this, e)), i === !1 && e.setAttribute("draggable", "false"), this.rootElement = P(e, "ul", L.treeList["&"], L.treeListRoot["&"]), this.addCoreElement(this.rootElement), this.addGlobalEventListener(e, "contextmenu", (s) => {
       if (s.preventDefault(), !(s.target instanceof HTMLElement)) return;
-      const n = s.target.closest(`.${b.treeItem["&"]}`), d = n ? this.findNodeByUUID(n.dataset.uuid) : null;
+      const o = s.target.closest(`.${L.treeItem["&"]}`), d = o ? this.findNodeByUUID(o.dataset.uuid) : null;
       d?.select(), this.onContextMenu(s, d);
     });
+  }
+  get componentLabel() {
+    return "tree-legacy";
   }
   get items() {
     return [...this.nodes];
@@ -940,12 +942,12 @@ class Ni extends K {
    */
   compareNodeOrderKey(e, t) {
     const i = Math.max(e.length, t.length);
-    for (let o = 0; o < i; o++) {
-      const s = e[o], n = t[o];
+    for (let n = 0; n < i; n++) {
+      const s = e[n], o = t[n];
       if (s === void 0) return !0;
-      if (n === void 0) return !1;
-      if (s < n) return !0;
-      if (s > n) return !1;
+      if (o === void 0) return !1;
+      if (s < o) return !0;
+      if (s > o) return !1;
     }
     throw new Error("same key error!");
   }
@@ -963,10 +965,10 @@ class Ni extends K {
     if (!t) throw new Error(`not found node uuid: ${e}`);
     return t;
   }
-  addChild(e, t, i, o = void 0) {
-    const s = Je();
+  addChild(e, t, i, n = void 0) {
+    const s = Mt();
     if (this._nodeMap.has(s)) throw new Error("UUID already exists");
-    const n = new lt({
+    const o = new Zt({
       parentItem: e,
       caption: t,
       data: i,
@@ -976,29 +978,29 @@ class Ni extends K {
       draggable: this.nodeDraggable,
       uuid: s
     });
-    this._nodeMap.set(n.uuid, n), e && e.addNode(n), this.nodes.push(n), n.divTreeItemContent.ondblclick = (a) => {
-      a.target.classList.contains("checkbox__wrapper") || this.onDblClick(n);
-    }, n.divTreeItemContent.onclick = (a) => {
-      this.onLabelClick(n);
-    }, n.iconExpand.onclick = () => this.onToggleClick(n), n.onSelect = () => this.selected = n, n.onRelease = (a) => {
+    this._nodeMap.set(o.uuid, o), e && e.addNode(o), this.nodes.push(o), o.divTreeItemContent.ondblclick = (a) => {
+      a.target.classList.contains("checkbox__wrapper") || this.onDblClick(o);
+    }, o.divTreeItemContent.onclick = (a) => {
+      this.onLabelClick(o);
+    }, o.iconExpand.onclick = () => this.onToggleClick(o), o.onSelect = () => this.selected = o, o.onRelease = (a) => {
       this.selectedNode = null, this.onReleaseNode(a);
-    }, n.onRemove = () => {
-      this.nodes.indexOf(n) !== -1 && this.nodes.splice(this.nodes.indexOf(n), 1), this.onRemoveNode(n), this._nodeMap.delete(n.uuid), this._keyboardInteraction?.updateTreeVisibleInfo();
-    }, n.onExpanding = () => this.onExpanding(n), n.onExpand = () => {
-      this._keyboardInteraction?.updateTreeVisibleInfo(), this.onExpand(n);
-    }, n.onCollapsing = () => this.onCollapsing(n), n.onCollapse = () => {
-      this._keyboardInteraction?.updateTreeVisibleInfo(), this.onCollapse(n);
-    }, n.onDragStart = (a) => this.onDragStartNode(n, a), n.onDrop = (a) => this.onDropOnNode(n, a), n.onDragOver = (a) => this.onDragOverOnNode(n, a), n.onDragEnd = (a) => this.onDragEndNode(n, a), n.onRender = (a) => this.onRenderNode(n, a), n.render(), this._keyboardInteraction?.updateTreeVisibleInfo();
+    }, o.onRemove = () => {
+      this.nodes.indexOf(o) !== -1 && this.nodes.splice(this.nodes.indexOf(o), 1), this.onRemoveNode(o), this._nodeMap.delete(o.uuid), this._keyboardInteraction?.updateTreeVisibleInfo();
+    }, o.onExpanding = () => this.onExpanding(o), o.onExpand = () => {
+      this._keyboardInteraction?.updateTreeVisibleInfo(), this.onExpand(o);
+    }, o.onCollapsing = () => this.onCollapsing(o), o.onCollapse = () => {
+      this._keyboardInteraction?.updateTreeVisibleInfo(), this.onCollapse(o);
+    }, o.onDragStart = (a) => this.onDragStartNode(o, a), o.onDrop = (a) => this.onDropOnNode(o, a), o.onDragOver = (a) => this.onDragOverOnNode(o, a), o.onDragEnd = (a) => this.onDragEndNode(o, a), o.onRender = (a) => this.onRenderNode(o, a), o.render(), this._keyboardInteraction?.updateTreeVisibleInfo();
     const d = e ? e.ulTreeList : this.rootElement;
-    return o === void 0 ? d.appendChild(n.liTreeItem) : o >= d.children.length ? d.insertAdjacentElement("beforeend", n.liTreeItem) : d.children[o].insertAdjacentElement("beforebegin", n.liTreeItem), n;
+    return n === void 0 ? d.appendChild(o.liTreeItem) : n >= d.children.length ? d.insertAdjacentElement("beforeend", o.liTreeItem) : d.children[n].insertAdjacentElement("beforebegin", o.liTreeItem), o;
   }
   moveNode(e, t, i) {
     if (e === t.parentItem) {
       console.error("Could not move to the node own child node.");
       return;
     }
-    const o = e.order;
-    e.parentItem = t.parentItem, t.parentItem === null ? e.level = 0 : e.level = t.parentItem.level + 1, t.liTreeItem.insertAdjacentElement(i ? "beforebegin" : "afterend", e.liTreeItem), this.onNodeMoved(e, o);
+    const n = e.order;
+    e.parentItem = t.parentItem, t.parentItem === null ? e.level = 0 : e.level = t.parentItem.level + 1, t.liTreeItem.insertAdjacentElement(i ? "beforebegin" : "afterend", e.liTreeItem), this.onNodeMoved(e, n);
   }
   selectNode(e) {
     if (!this.nodes.includes(e))
@@ -1020,10 +1022,10 @@ class Ni extends K {
       t.expand(), t = t._parentItem;
   }
   getDropNode(e) {
-    const t = ze(
+    const t = yt(
       e.target,
       this.contextElement,
-      `.${b.treeLabel["&"]}`
+      `.${L.treeLabel["&"]}`
     );
     return t !== null ? t.parentElement?.parentElement : null;
   }
@@ -1031,46 +1033,46 @@ class Ni extends K {
     return null;
   }
 }
-const vi = ({ onCheck: r }) => (e) => {
-  const t = ce(), i = document.createElement("label"), o = document.createElement("input");
-  return o.type = "checkbox", i.classList.add(de), o.classList.add(ne), i.appendChild(o), t.template.insertAdjacentElement("afterbegin", i), o.addEventListener("click", () => {
-    e.updateCheckedWithPropagation(o.checked), e.parentItem?.updateCheckedStatus(), o.dataset.state = e.hasCheckedChildren ? "sub-checked" : "", r && r(e);
+const En = ({ onCheck: r }) => (e) => {
+  const t = Fe(), i = document.createElement("label"), n = document.createElement("input");
+  return n.type = "checkbox", i.classList.add(ze), n.classList.add(Te), i.appendChild(n), t.template.insertAdjacentElement("afterbegin", i), n.addEventListener("click", () => {
+    e.updateCheckedWithPropagation(n.checked), e.parentItem?.updateCheckedStatus(), n.dataset.state = e.hasCheckedChildren ? "sub-checked" : "", r && r(e);
   }), {
     get template() {
       return t.template;
     },
     update: (s) => {
-      t.update(s), s.checked !== o.checked && (o.checked = s.checked), s.parentItem?.updateCheckedStatus(), s.updateSubCheckedStatus(), o.dataset.state = s.subChecked ? "sub-checked" : "";
+      t.update(s), s.checked !== n.checked && (n.checked = s.checked), s.parentItem?.updateCheckedStatus(), s.updateSubCheckedStatus(), n.dataset.state = s.subChecked ? "sub-checked" : "";
     }
   };
-}, ct = 16, ki = (r) => {
+}, Qt = 16, Rn = (r) => {
   let e = null, t = null;
   const i = () => {
     t && (t.divTreeItemContent.classList.remove("is-top"), t.divTreeItemContent.classList.remove("is-bottom")), t = null;
   };
-  r.onDragStartNode = (o, s) => {
-    s.dataTransfer && (s.dataTransfer.dropEffect = "move", e = o);
-  }, r.onDragOverOnNode = (o, s) => {
-    if (e === o)
+  r.onDragStartNode = (n, s) => {
+    s.dataTransfer && (s.dataTransfer.dropEffect = "move", e = n);
+  }, r.onDragOverOnNode = (n, s) => {
+    if (e === n)
       return !1;
-    let n = o._parentItem;
-    for (; n !== null; ) {
-      if (n === e) return !1;
-      n = n._parentItem;
+    let o = n._parentItem;
+    for (; o !== null; ) {
+      if (o === e) return !1;
+      o = o._parentItem;
     }
-    return i(), o.divTreeItemContent.classList.add(s.offsetY < ct ? "is-top" : "is-bottom"), t = o, !0;
-  }, r.onDropOnNode = (o) => {
+    return i(), n.divTreeItemContent.classList.add(s.offsetY < Qt ? "is-top" : "is-bottom"), t = n, !0;
+  }, r.onDropOnNode = (n) => {
     if (!e) throw new Error("No start dragging node!");
     r.moveNode(
       e,
-      o,
-      o.divTreeItemContent.classList.contains("is-top")
+      n,
+      n.divTreeItemContent.classList.contains("is-top")
     );
   }, r.onDragEndNode = () => {
     i();
   };
 };
-class ht {
+class ei {
   _nodeLinkerMap = /* @__PURE__ */ new Map();
   _firstRootNode = null;
   _lastRootNode = null;
@@ -1081,12 +1083,12 @@ class ht {
       throw new Error(`NodeLinker: NodeLink already exists for key: ${e}`);
   }
   insertAsFirstChild(e, t, i) {
-    const o = this.getNodeLink(e), s = o.getFirstChildNode();
-    s === null ? this.addChildNode(e, t, i) : this.insertBeforeChildNode(o.key, t, i, s);
+    const n = this.getNodeLink(e), s = n.getFirstChildNode();
+    s === null ? this.addChildNode(e, t, i) : this.insertBeforeChildNode(n.key, t, i, s);
   }
-  insertBeforeChildNode(e, t, i, o) {
+  insertBeforeChildNode(e, t, i, n) {
     this.throwErrorIfExistsKey(t);
-    const s = this.getNodeLink(e), n = new A({
+    const s = this.getNodeLink(e), o = new oe({
       data: i,
       level: s.getNodeLevel() + 1,
       key: t,
@@ -1096,11 +1098,11 @@ class ht {
       nextNode: null,
       prevNode: null
     });
-    return s.insertBeforeChildNode(n, o), this.addLinkMap(t, n, !1), n;
+    return s.insertBeforeChildNode(o, n), this.addLinkMap(t, o, !1), o;
   }
-  insertAfterChildNode(e, t, i, o) {
+  insertAfterChildNode(e, t, i, n) {
     this.throwErrorIfExistsKey(t);
-    const s = this.getNodeLink(e), n = new A({
+    const s = this.getNodeLink(e), o = new oe({
       data: i,
       level: s.getNodeLevel() + 1,
       key: t,
@@ -1110,35 +1112,35 @@ class ht {
       nextNode: null,
       prevNode: null
     });
-    return s.insertAfterChildNode(n, o), this.addLinkMap(t, n, !1), n;
+    return s.insertAfterChildNode(o, n), this.addLinkMap(t, o, !1), o;
   }
   insertAfterRootNode(e, t, i) {
     this.throwErrorIfExistsKey(e);
-    const o = i.getNextNode(), s = new A({
+    const n = i.getNextNode(), s = new oe({
       key: e,
       data: t,
       level: 0,
       parentNode: null,
       prevNode: i,
-      nextNode: o,
+      nextNode: n,
       firstChildNode: null,
       lastChildNode: null
     });
-    return o?.setPrevNode(s), i.setNextNode(s), i === this._lastRootNode && this.setLastRootNode(s), this.addLinkMap(e, s, !0), s;
+    return n?.setPrevNode(s), i.setNextNode(s), i === this._lastRootNode && this.setLastRootNode(s), this.addLinkMap(e, s, !0), s;
   }
   insertBeforeRootNode(e, t, i) {
     this.throwErrorIfExistsKey(e);
-    const o = i.getPrevNode(), s = new A({
+    const n = i.getPrevNode(), s = new oe({
       key: e,
       data: t,
       level: 0,
       parentNode: null,
-      prevNode: o,
+      prevNode: n,
       nextNode: i,
       firstChildNode: null,
       lastChildNode: null
     });
-    return o?.setNextNode(s), i.setPrevNode(s), i === this._firstRootNode && this.setFirstRootNode(s), this.addLinkMap(e, s, !0), s;
+    return n?.setNextNode(s), i.setPrevNode(s), i === this._firstRootNode && this.setFirstRootNode(s), this.addLinkMap(e, s, !0), s;
   }
   addLinkMap(e, t, i) {
     this._nodeLinkerMap.set(e, t), i && ++this._rootNodeCount, ++this._nodeCount;
@@ -1158,7 +1160,7 @@ class ht {
   }
   addRootNode(e, t) {
     this.throwErrorIfExistsKey(e);
-    const i = new A({
+    const i = new oe({
       key: e,
       data: t,
       level: 0,
@@ -1170,22 +1172,22 @@ class ht {
     });
     return this._lastRootNode == null ? (this.setFirstRootNode(i), this.setLastRootNode(i)) : (this._lastRootNode.setNextNode(i), i.setPrevNode(this._lastRootNode), this._lastRootNode = i), this.addLinkMap(e, i, !0), i;
   }
-  createNodeLink(e, t, i, o) {
-    return i === void 0 ? o === void 0 ? this.addRootNode(t, e) : this.insertBeforeRootNode(t, e, this.getNodeLink(o)) : o === void 0 ? this.addChildNode(i, t, e) : this.insertBeforeChildNode(i, t, e, this.getNodeLink(o));
+  createNodeLink(e, t, i, n) {
+    return i === void 0 ? n === void 0 ? this.addRootNode(t, e) : this.insertBeforeRootNode(t, e, this.getNodeLink(n)) : n === void 0 ? this.addChildNode(i, t, e) : this.insertBeforeChildNode(i, t, e, this.getNodeLink(n));
   }
   addChildNode(e, t, i) {
     this.throwErrorIfExistsKey(t);
-    const o = this.getNodeLink(e), s = new A({
+    const n = this.getNodeLink(e), s = new oe({
       key: t,
       data: i,
-      level: o.getNodeLevel() + 1,
-      parentNode: o,
+      level: n.getNodeLevel() + 1,
+      parentNode: n,
       firstChildNode: null,
       lastChildNode: null,
       nextNode: null,
       prevNode: null
     });
-    return o.addChildNode(s), this.addLinkMap(t, s, !1), s;
+    return n.addChildNode(s), this.addLinkMap(t, s, !1), s;
   }
   clearChildNodes(e) {
     const t = this.getNodeLink(e);
@@ -1201,14 +1203,14 @@ class ht {
    * rootFirstNode를 넣으면, 모든 노드를 순회
    */
   async travelNodes(e, t, i) {
-    const o = [{
+    const n = [{
       link: e,
       level: e.getNodeLevel()
     }];
-    let s = o.pop();
+    let s = n.pop();
     for (; s; ) {
-      const { link: n, level: d } = s, a = n.getNextNode(), l = n.getFirstChildNode(), c = t(n, d);
-      c instanceof Promise && await c, a && o.push({ link: a, level: d }), l && (i === void 0 || await i(n, d)) && o.push({ link: l, level: d + 1 }), s = o.pop();
+      const { link: o, level: d } = s, a = o.getNextNode(), h = o.getFirstChildNode(), l = t(o, d);
+      l instanceof Promise && await l, a && n.push({ link: a, level: d }), h && (i === void 0 || await i(o, d)) && n.push({ link: h, level: d + 1 }), s = n.pop();
     }
   }
   travelChildNodes(e, t, i) {
@@ -1236,8 +1238,8 @@ class ht {
     --this._nodeCount, this._nodeLinkerMap.delete(e);
   }
   removeNode(e) {
-    const t = this.getNodeLink(e), i = t.getPrevNode(), o = t.getNextNode();
-    i?.setNextNode(o), o?.setPrevNode(i), t === this._firstRootNode && this.setFirstRootNode(o), t === this._lastRootNode && this.setLastRootNode(i), this.travelChildNodes(e, (n) => this.deleteNodeInMap(n.key)), this.deleteNodeInMap(e);
+    const t = this.getNodeLink(e), i = t.getPrevNode(), n = t.getNextNode();
+    i?.setNextNode(n), n?.setPrevNode(i), t === this._firstRootNode && this.setFirstRootNode(n), t === this._lastRootNode && this.setLastRootNode(i), this.travelChildNodes(e, (o) => this.deleteNodeInMap(o.key)), this.deleteNodeInMap(e);
     const s = t.getParentNode();
     s ? s.removeChildNode(t) : --this._rootNodeCount;
   }
@@ -1262,7 +1264,7 @@ class ht {
     return this._nodeCount;
   }
 }
-class A {
+class oe {
   constructor(e) {
     this._args = e;
   }
@@ -1350,7 +1352,7 @@ class A {
     return this._args.key;
   }
 }
-class ut {
+class ti {
   constructor(e) {
     this.args = e, this._nodeData = { ...e.nodeData }, this._nodeLinker = e.nodeLinker;
   }
@@ -1393,6 +1395,9 @@ class ut {
   get checked() {
     return this.data.checked === !0;
   }
+  get subChecked() {
+    return this.data.subChecked === !0;
+  }
   get iconColor() {
     return this.data.iconColor;
   }
@@ -1432,11 +1437,11 @@ class ut {
       ...this.data
     }, i = e.getFirstChildNode();
     if (i) {
-      const o = [];
+      const n = [];
       let s = i;
       for (; s; )
-        o.push(s.data.node.serialize()), s = s.getNextNode();
-      t.children = o;
+        n.push(s.data.node.serialize()), s = s.getNextNode();
+      t.children = n;
     }
     return t;
   }
@@ -1474,8 +1479,8 @@ class ut {
   async checkToggle() {
     await this.changeCheck(!this.checked);
   }
-  async changeCheck(e) {
-    this.checked !== e && await this.hook.emit("nodeChangeChecking", [this, e]) && (await this.updateNodeState({ checked: e }), await this.hook.emit("nodeChangeChecked", [this, e]));
+  async changeCheck(e, t = !0) {
+    this.checked !== e && await this.hook.emit("nodeChangeChecking", [this, e]) && (await this.updateNodeState({ checked: e }), t && await this.hook.emit("nodeChangeChecked", [this, e]));
   }
   async release() {
     this.selected && (this._selected = !1, await this.updateNodeState(), await this.hook.emit("nodeRelease", [this]));
@@ -1484,15 +1489,15 @@ class ut {
     e && Object.assign(this.data, e), await this.hook.emit("nodeUpdated", [this]);
   }
 }
-class pt extends K {
+class gt extends pe {
   constructor(e) {
     super({
-      contextElement: document.createElement("div")
+      contextElement: e.contextElement ?? document.createElement("div")
     }), this._hookArgs = e, this._pluginList = this._hookArgs.plugins ?? [], this.onInitDOMEvents(this.contextElement), this.onInitHooks(), this.onInitPlugins();
   }
-  _hook = Qe();
-  _pluginMap = /* @__PURE__ */ new Map();
+  _hook = St();
   _pluginList;
+  #e = /* @__PURE__ */ new Map();
   get hook() {
     return this._hook;
   }
@@ -1501,7 +1506,7 @@ class pt extends K {
   }
   async runPauseEmitContext(e, t) {
     try {
-      e.forEach((o) => this.hook.pauseEmit(o));
+      e.forEach((n) => this.hook.pauseEmit(n));
       const i = t();
       i instanceof Promise && await i;
     } finally {
@@ -1516,18 +1521,17 @@ class pt extends K {
   }
   addPlugin(e) {
     const t = Object.getPrototypeOf(e);
-    if (this._pluginMap.has(t))
+    if (this.#e.has(t))
       throw new Error("this plugin is already exists.");
-    e.mount(this, this._hook), this._pluginMap.set(t, e);
+    e.mount(this, this._hook, this.contextElement), this.#e.set(t, e);
   }
   removePlugin(e) {
-    const t = this.getPluginOrNull(e);
-    if (!t)
-      throw new Error("plugin is not exists.");
-    this._pluginMap.delete(e), t.unmount();
+    const t = Object.getPrototypeOf(e);
+    if (!(this.getPluginOrNull(t) !== null)) throw new Error("plugin is not exists.");
+    this.#e.delete(t), e.unmount();
   }
   getPluginOrNull(e) {
-    return this._pluginMap.get(e) ?? null;
+    return this.#e.get(e) ?? null;
   }
   addHook(e, t) {
     this._hook.addHook(e, t);
@@ -1563,7 +1567,7 @@ class pt extends K {
     e.appendChild(this.contextElement);
   }
 }
-class mt {
+class ii {
   _unmountTasks = [];
   addUnmountTask(e) {
     this._unmountTasks.push(e);
@@ -1575,345 +1579,341 @@ class mt {
     this._unmountTasks.forEach((e) => e()), this._unmountTasks.length = 0;
   }
 }
-class he extends mt {
+class fe extends ii {
 }
-class gt extends he {
+class ni extends fe {
   mount(e, t) {
     const i = {
       async ArrowLeft() {
         if (e.getSelectedNodesCount() > 1) return;
         const a = e.getSelectedNodeOrNull();
-        a && (a.expanded === !0 ? await a.collapse() : await n(a.getNodeLink().getParentNode()?.data.node));
+        a && (a.expanded === !0 ? await a.collapse() : await o(a.getNodeLink().getParentNode()?.data.node));
       },
       async ArrowRight() {
         if (e.getSelectedNodesCount() > 1) return;
         const a = e.getSelectedNodeOrNull();
-        !a || !a.expandable || (a.expanded === !1 ? await a.expand() : await n(a.getNodeLink().getFirstChildNode()?.data.node));
+        !a || !a.expandable || (a.expanded === !1 ? await a.expand() : await o(a.getNodeLink().getFirstChildNode()?.data.node));
       },
       async ArrowUp() {
         const a = e.getSelectedNodeOrNull();
         if (!a) return;
-        const l = e.getSelectedNodes().reduce((m, u) => e.getNodeRowId(u.key) < e.getNodeRowId(m.key) ? u : m, a), c = l.getNodeLink().getPrevNode();
-        c ? await n(s(c)) : await n(l.getNodeLink().getParentNode()?.data.node);
+        const h = e.getSelectedNodes().reduce((C, g) => e.getNodeRowId(g.key) < e.getNodeRowId(C.key) ? g : C, a), l = h.getNodeLink().getPrevNode();
+        l ? await o(s(l)) : await o(h.getNodeLink().getParentNode()?.data.node);
       },
       async ArrowDown() {
         const a = e.getSelectedNodeOrNull();
         if (!a) return;
-        const l = e.getSelectedNodes().reduce((c, m) => e.getNodeRowId(m.key) > e.getNodeRowId(c.key) ? m : c, a);
-        if (l.expanded === !1)
-          return await n(o(l.getNodeLink()));
-        await n(l.getNodeLink().getFirstChildNode()?.data.node);
+        const h = e.getSelectedNodes().reduce((l, C) => e.getNodeRowId(C.key) > e.getNodeRowId(l.key) ? C : l, a);
+        if (h.expanded === !1)
+          return await o(n(h.getNodeLink()));
+        await o(h.getNodeLink().getFirstChildNode()?.data.node);
       },
       // Space Bar
       " ": async function() {
         if (e.getSelectedNodesCount() === 0) return;
-        const a = e.getSelectedNodes(), l = a.some((c) => c.checked);
-        for (const c of a)
-          c.hasCheckbox && await c.changeCheck(!l);
+        const a = e.getSelectedNodes(), h = a.some((l) => l.checked);
+        for (const l of a)
+          l.hasCheckbox && await l.changeCheck(!h);
       }
     };
     this.addPluginHook(e, "keydown", d);
-    function o(a) {
-      const l = a.getNextNode();
-      if (l) return l.data.node;
-      let c = a.getParentNode();
-      for (; c && !c.getNextNode(); )
-        c = c.getParentNode();
-      return c?.getNextNode()?.data.node;
+    function n(a) {
+      const h = a.getNextNode();
+      if (h) return h.data.node;
+      let l = a.getParentNode();
+      for (; l && !l.getNextNode(); )
+        l = l.getParentNode();
+      return l?.getNextNode()?.data.node;
     }
     function s(a) {
-      let l = a;
-      for (; l && l.data.node.expanded; ) {
-        const c = l.getLastChildNode();
-        if (!c) break;
-        l = c;
+      let h = a;
+      for (; h && h.data.node.expanded; ) {
+        const l = h.getLastChildNode();
+        if (!l) break;
+        h = l;
       }
-      return l.data.node;
+      return h.data.node;
     }
-    async function n(a) {
+    async function o(a) {
       a && (await a.select(), e.scrollToNode(a.key));
     }
     async function d(a) {
-      const l = i[a.key];
-      l !== void 0 && (a.preventDefault(), await l());
+      const h = i[a.key];
+      h !== void 0 && (a.preventDefault(), await h());
     }
   }
 }
-const ft = "minmax(0, 1fr)";
-function wt(r) {
+const oi = "minmax(0, 1fr)";
+function si(r) {
   const e = [];
-  ue(r) && e.push(`${oe("tree-view.checkboxColumnWidth")}px`);
+  Ve(r) && e.push(`${xe("tree-view.checkboxColumnWidth")}px`);
   for (let t = 0; t < r.headerRow.columnCount; t++) {
     const i = r.headerRow.width[t] ?? "";
-    i.endsWith("px") ? e.push(`minmax(${i}, ${i})`) : e.push(ft);
+    i.endsWith("px") ? e.push(`minmax(${i}, ${i})`) : e.push(oi);
   }
   return e.join(" ");
 }
-function Ct(r) {
-  return q("[data-node-header='true']", ".ir-vd-container__viewport-row", r);
+function ri(r) {
+  return ge("[data-node-header='true']", ".ir-vd-container__viewport-row", r);
 }
-function _t(r) {
-  return q(".ir-vd-container__viewport-row", ".ir-vd-container__viewport-row", r);
+function ai(r) {
+  return ge(".ir-vd-container__viewport-row", ".ir-vd-container__viewport-row", r);
 }
-function we(r) {
-  return q("button[data-ir-role='node-expand-button']", ".ir-vd-container__viewport-row", r);
+function et(r) {
+  return ge("button[data-ir-role='node-expand-button']", ".ir-vd-container__viewport-row", r);
 }
-function Ce(r) {
-  return q("input[type='checkbox']", ".ir-vd-container__viewport-row", r);
+function tt(r) {
+  return ge("input[type='checkbox']", ".ir-vd-container__viewport-row", r);
 }
-function ue(r) {
+function Ve(r) {
   return r.showCheckbox && r.checkboxOptions.layout === "column";
 }
-function Nt(r) {
+function di(r) {
   return r.showCheckbox && r.headerRow.hasCheckbox;
 }
-function vt(r, e) {
+function li(r, e) {
   return r.showCheckbox && e.hasCheckbox;
 }
-function kt(r, e) {
-  let t = 1;
-  for (let i = 1; i < e && !r.getColumnText(i); i++)
-    ++t;
-  return t;
+function it(r, e) {
+  return e === "*" && r === 0 || e.endsWith("px");
 }
-function bt({ createNodeFunc: r, parentNodeOrNull: e, visible: t, nodeData: i }) {
-  return o([], i, t, e);
-  function o(s, n, d, a) {
-    const l = { ...n };
-    delete l.children;
-    const c = a?.key ?? null, m = r(l);
+function ci({ createNodeFunc: r, parentNodeOrNull: e, visible: t, nodeData: i }) {
+  return n([], i, t, e);
+  function n(s, o, d, a) {
+    const h = { ...o };
+    delete h.children;
+    const l = a?.key ?? null, C = r(h);
     if (s.push({
-      node: m,
+      node: C,
       visible: d,
-      parentKeyOrNull: c
-    }), n.children && n.children.length > 0)
-      for (const u of n.children)
-        o(s, u, d && l.expanded === !0, m);
+      parentKeyOrNull: l
+    }), o.children && o.children.length > 0)
+      for (const g of o.children)
+        n(s, g, d && h.expanded === !0, C);
     return s;
   }
 }
-function Et(r) {
+function hi(r) {
   const {
     nodeLinker: e,
     nodeList: t,
     virtualRowList: i,
-    positionArgs: o
+    positionArgs: n
   } = r, {
     insertKey: s,
-    parentKey: n,
+    parentKey: o,
     position: d
-  } = o;
-  a(), l();
+  } = n;
+  a(), h();
   function a() {
-    const c = t[0].node, m = i[0], u = { node: c, virtualRow: m };
+    if (t.length === 0) return;
+    const l = t[0].node, C = i[0], g = { node: l, virtualRow: C };
     if (s !== void 0) {
-      const w = e.getNodeLink(s);
+      const N = e.getNodeLink(s);
       if (d === "firstChild")
-        return e.insertAsFirstChild(w.key, c.key, u);
-      const f = w.getParentNode();
-      return f === null ? d === "after" ? e.insertAfterRootNode(c.key, u, w) : e.insertBeforeRootNode(c.key, u, w) : d === "after" ? e.insertAfterChildNode(f.key, c.key, u, w) : e.insertBeforeChildNode(f.key, c.key, u, w);
+        return e.insertAsFirstChild(N.key, l.key, g);
+      const v = N.getParentNode();
+      return v === null ? d === "after" ? e.insertAfterRootNode(l.key, g, N) : e.insertBeforeRootNode(l.key, g, N) : d === "after" ? e.insertAfterChildNode(v.key, l.key, g, N) : e.insertBeforeChildNode(v.key, l.key, g, N);
     }
-    n === void 0 ? e.addRootNode(c.key, u) : e.addChildNode(n, c.key, u);
+    o === void 0 ? e.addRootNode(l.key, g) : e.addChildNode(o, l.key, g);
   }
-  function l() {
-    for (let c = 1; c < t.length; c++) {
-      const { node: m, parentKeyOrNull: u } = t[c], w = i[c], f = { node: m, virtualRow: w };
-      u ? e.addChildNode(u, m.key, f) : s ? e.insertBeforeRootNode(m.key, f, e.getNodeLink(s)) : e.addRootNode(m.key, f);
+  function h() {
+    for (let l = 1; l < t.length; l++) {
+      const { node: C, parentKeyOrNull: g } = t[l], N = i[l], v = { node: C, virtualRow: N };
+      g ? e.addChildNode(g, C.key, v) : s ? e.insertBeforeRootNode(C.key, v, e.getNodeLink(s)) : e.addRootNode(C.key, v);
     }
   }
 }
-const Rt = {
+const ui = {
   nodeDraggable: !0
 };
-class xt extends he {
-  constructor(e = Rt) {
+class pi extends fe {
+  constructor(e = ui) {
     super(), this._args = e;
   }
   mount(e, t) {
-    this.addPluginHook(e, "contextMenu", o), this.addPluginHook(e, "treeClick", f), this.addPluginHook(e, "treeDoubleClick", L), this.addPluginHook(e, "nodeExpandIconClick", R);
+    this.addPluginHook(e, "contextMenu", n), this.addPluginHook(e, "treeClick", v), this.addPluginHook(e, "treeDoubleClick", H), this.addPluginHook(e, "nodeExpandIconClick", T);
     let i = null;
-    this._args.nodeDraggable && (this.addPluginHook(e, "nodeDragStart", d), this.addPluginHook(e, "treeMouseDown", s), this.addPluginHook(e, "treeMouseUp", n), this.addPluginHook(e, "nodeMouseDown", a));
-    async function o(h) {
-      h.preventDefault();
-      const p = u(h);
-      p && (e.multiSelect ? h.ctrlKey ? await p.addSelect() : h.shiftKey ? await v(p) : p.selected === !1 && await p.select() : await p.select(), await t.emit("nodeContextMenu", [h, p]));
+    this._args.nodeDraggable && (this.addPluginHook(e, "nodeDragStart", d), this.addPluginHook(e, "treeMouseDown", s), this.addPluginHook(e, "treeMouseUp", o), this.addPluginHook(e, "nodeMouseDown", a));
+    async function n(p) {
+      p.preventDefault();
+      const m = g(p);
+      m && (e.multiSelect ? p.ctrlKey ? await m.addSelect() : p.shiftKey ? await R(m) : m.selected === !1 && await m.select() : await m.select(), await t.emit("nodeContextMenu", [p, m]));
     }
-    function s(h) {
-      const p = u(h);
-      p && t.emit("nodeMouseDown", [h, p]);
+    function s(p) {
+      const m = g(p);
+      m && t.emit("nodeMouseDown", [p, m]);
     }
-    function n(h) {
-      const p = u(h);
-      p && t.emit("nodeMouseUp", [h, p]);
+    function o(p) {
+      const m = g(p);
+      m && t.emit("nodeMouseUp", [p, m]);
     }
-    function d(h, p) {
-      p.object && h.dataTransfer?.setData("application/json", JSON.stringify(p.object));
+    function d(p, m) {
+      m.object && p.dataTransfer?.setData("application/json", JSON.stringify(m.object));
     }
-    async function a(h, p) {
-      if (!await t.emit("nodeCheckDragging", [h, p])) return;
-      const _ = _t(h.target);
-      _ && (_.setAttribute("draggable", "true"), _.addEventListener("dragstart", c), i = p);
+    async function a(p, m) {
+      if (!await t.emit("nodeCheckDragging", [p, m])) return;
+      const b = ai(p.target);
+      b && (b.setAttribute("draggable", "true"), b.addEventListener("dragstart", l), i = m);
     }
-    function l(h) {
-      h.removeEventListener("dragstart", c), h.removeEventListener("dragend", m), h.removeAttribute("draggable"), i = null;
+    function h(p) {
+      p.removeEventListener("dragstart", l), p.removeEventListener("dragend", C), p.removeAttribute("draggable"), i = null;
     }
-    function c(h) {
-      h.target instanceof HTMLElement && i && (h.target.addEventListener("dragend", m), t.emit("nodeDragStart", [h, i]));
+    function l(p) {
+      p.target instanceof HTMLElement && i && (p.target.addEventListener("dragend", C), t.emit("nodeDragStart", [p, i]));
     }
-    function m(h) {
-      h.target instanceof HTMLElement && i && (l(h.target), t.emit("nodeDragEnd", [h, i]));
+    function C(p) {
+      p.target instanceof HTMLElement && i && (h(p.target), t.emit("nodeDragEnd", [p, i]));
     }
-    function u(h) {
-      if (!(h.target instanceof HTMLElement)) return null;
-      const N = q("[data-node-key]", ".ir-vd-container__viewport-row ", h.target)?.dataset.nodeKey;
-      return N ? e.getNodeOrNull(N) : null;
+    function g(p) {
+      if (!(p.target instanceof HTMLElement)) return null;
+      const k = ge("[data-node-key]", ".ir-vd-container__viewport-row ", p.target)?.dataset.nodeKey;
+      return k ? e.getNodeOrNull(k) : null;
     }
-    async function w(h) {
-      if (h.target instanceof HTMLInputElement && Ce(h.target)) {
-        const p = h.target.checked;
-        await t.emit("headerChangeChecking", [p]) ? await e.setHeaderRowChecked(p) : h.target.checked = !p;
+    async function N(p) {
+      if (p.target instanceof HTMLInputElement && tt(p.target)) {
+        const m = p.target.checked;
+        await t.emit("headerChangeChecking", [m]) ? await e.setHeaderRowChecked(m) : p.target.checked = !m;
         return;
       }
     }
-    async function f(h) {
-      if (Ct(h.target)) return w(h);
-      const p = u(h);
-      if (p) {
-        if (we(h.target)) {
-          t.emit("nodeExpandIconClick", [h, p]);
+    async function v(p) {
+      if (ri(p.target)) return N(p);
+      const m = g(p);
+      if (m) {
+        if (et(p.target)) {
+          t.emit("nodeExpandIconClick", [p, m]);
           return;
         }
-        if (Ce(h.target)) {
-          await p.checkToggle();
+        if (p.target instanceof HTMLInputElement && tt(p.target)) {
+          await m.checkToggle(), p.target.checked = m.checked;
           return;
         }
-        e.multiSelect ? h.ctrlKey ? await p.multiSelectToggle() : h.shiftKey ? await v(p) : await e.selectNode(p.key) : await p.selectToggle(), t.emit("nodeClick", [h, p]);
+        e.multiSelect ? p.ctrlKey ? await m.multiSelectToggle() : p.shiftKey ? await R(m) : await e.selectNode(m.key) : await m.selectToggle(), t.emit("nodeClick", [p, m]);
       }
     }
-    async function v(h) {
-      const p = e.getSelectedNodes();
-      if (p.length === 0) {
-        await h.select();
+    async function R(p) {
+      const m = e.getSelectedNodes();
+      if (m.length === 0) {
+        await p.select();
         return;
       }
-      await e.selectRange(p[0], h);
+      await e.selectRange(m[0], p);
     }
-    async function R(h, p) {
-      await p.toggleExpand();
+    async function T(p, m) {
+      await m.toggleExpand();
     }
-    function L(h) {
-      const p = u(h);
-      p && (we(h.target) || (h.preventDefault(), t.emit("nodeDoubleClick", [h, p])));
+    function H(p) {
+      const m = g(p);
+      m && (et(p.target) || (p.preventDefault(), t.emit("nodeDoubleClick", [p, m])));
     }
   }
 }
-function ye(r) {
-  const e = M("input");
+function ft(r) {
+  const e = Z("input");
   return e.type = "checkbox", e.classList.add(
-    r.checkboxOptions.ui === "favorite" ? Oe : ne
+    r.checkboxOptions.ui === "favorite" ? zt : Te
   ), e;
 }
-function It(r) {
-  const e = M("div", I.nodeMain, I.base, T.truncate), t = M("button", I.nodeExpandButton, I.nodeIcon), i = M("div", I.base, T.truncate, T.textAlign.center, I.headerCheckboxColumnDiv), o = M("span", I.nodeCaption, T.truncate), s = W("ir-icon--triangle-small-right"), n = W(""), d = ye(r);
-  return t.dataset.irRole = "node-expand-button", n.classList.add(I.nodeIcon), s.style.setProperty("--ir-icon-foreground-color", ie.expandIconColor), t.append(s), e.appendChild(t), r.showIcon && e.appendChild(n), e.appendChild(o), i.appendChild(d), {
+function gi(r) {
+  const e = Z("div", M.nodeMain, M.base, O.truncate), t = Z("button", M.nodeExpandButton, M.nodeIcon), i = Z("div", M.base, O.truncate, O.textAlign.center, M.headerCheckboxColumnDiv), n = Z("span", M.nodeCaption, O.truncate), s = he("ir-icon--triangle-small-right"), o = he(""), d = ft(r);
+  return t.dataset.irRole = "node-expand-button", o.classList.add(M.nodeIcon), s.style.setProperty("--ir-icon-foreground-color", q.expandIconColor), t.append(s), e.appendChild(t), r.showIcon && e.appendChild(o), e.appendChild(n), i.appendChild(d), r.hiddenExpandIcon && (s.style.display = "none"), {
     mainContentDiv: e,
     expandButton: t,
-    icon: n,
-    text: o,
+    icon: o,
+    text: n,
     checkbox: d,
     checkboxDiv: i
   };
 }
-function Tt(r) {
+function fi(r) {
   const e = document.createElement("div");
-  return e.textContent = r, e.classList.add(I.base, T.truncate, I.column), e;
+  return e.textContent = r, e.classList.add(M.base, O.truncate, M.column), e;
 }
-function Lt(r, e) {
+function mi(r, e) {
   return {
     columns: [],
-    ...It(e)
+    ...gi(e)
   };
 }
-function yt(r, e) {
+function wi(r, e) {
   const t = document.createElement("div");
-  return t.textContent = e.headerRow.text[r] ?? "", t.classList.add(I.base, T.truncate), r > 0 && t.classList.add(I.column), t;
+  return t.textContent = e.headerRow.text[r] ?? "", t.classList.add(M.base, O.truncate), r > 0 && t.classList.add(M.column), t;
 }
-function Ht(r) {
-  const e = ye(r);
-  return r.checkboxOptions.layout === "inner" && e.classList.add(T.verticalAlign.bottom, I.headerInnerCheckbox), {
+function Ci(r) {
+  const e = ft(r);
+  return r.checkboxOptions.layout === "inner" && e.classList.add(O.verticalAlign.bottom, M.headerInnerCheckbox), {
     checkbox: e,
-    checkboxDiv: M(
+    checkboxDiv: Z(
       "div",
-      I.base,
-      T.truncate,
-      T.textAlign.center,
-      I.headerCheckboxColumnDiv
+      M.base,
+      O.truncate,
+      O.textAlign.center,
+      M.headerCheckboxColumnDiv
     ),
     columns: []
   };
 }
-function Dt(r, e, t) {
-  const i = Lt(e, t), o = r.getRowElement();
-  r.setTemplateHelper(i), o.classList.add(
-    te.base,
-    T.userSelectNone,
-    te.node,
-    T.focusOutlineNone
-  ), o.role = "treeitem", o.dataset.nodeKey = e.key, He(r, e, t), ue(t) ? o.appendChild(i.checkboxDiv) : vt(t, e) && i.expandButton.insertAdjacentElement("afterend", i.checkbox), o.appendChild(i.mainContentDiv), i.columns.forEach((s) => o.appendChild(s));
+function _i(r, e, t) {
+  const i = mi(e, t), n = r.getRowElement();
+  r.setTemplateHelper(i), n.classList.add(
+    Ie.base,
+    O.userSelectNone,
+    Ie.node,
+    O.focusOutlineNone
+  ), n.role = "treeitem", n.dataset.nodeKey = e.key, mt(r, e, t), Ve(t) ? n.appendChild(i.checkboxDiv) : li(t, e) && i.expandButton.insertAdjacentElement("afterend", i.checkbox), n.appendChild(i.mainContentDiv), i.columns.forEach((s) => n.appendChild(s));
 }
-function St(r, e, t) {
-  const i = Ht(e), o = r.getRowElement();
-  r.setTemplateHelper(i), o.classList.add(te.base, te.header), o.dataset.nodeHeader = "true", De(r, e, t), i.columns.forEach((s) => o.appendChild(s));
+function Ni(r, e, t) {
+  const i = Ci(e), n = r.getRowElement();
+  r.setTemplateHelper(i), n.classList.add(Ie.base, Ie.header), n.dataset.nodeHeader = "true", wt(r, e, t), i.columns.forEach((s) => n.appendChild(s));
 }
-function He(r, e, t) {
+function mt(r, e, t) {
   if (!r.isCachedElement) return;
-  const i = r.getRowElement(), o = e.icon ?? t.defaultIcon, s = e.iconColor ?? t.defaultIconColor, { text: n, columns: d, icon: a, expandButton: l, checkbox: c, mainContentDiv: m } = r.template;
+  const i = r.getRowElement(), n = e.icon ?? t.defaultIcon, s = e.iconColor ?? t.defaultIconColor, { text: o, columns: d, icon: a, expandButton: h, checkbox: l } = r.template;
   e.level > 0 ? Le(i, {
-    [ie.nodeLevel]: String(e.level)
-  }) : i.style.removeProperty(ie.nodeLevel), Y(i, "selected", e.selected), Y(i, "disabled", e.disabled), Y(i, "expanded", e.expanded), Y(i, "expandable", e.expandable), e.expandable === !1 ? l.classList.add(T.invisible) : l.classList.remove(T.invisible), e.expanded ? l.classList.add(T.rotate.deg90) : l.classList.remove(T.rotate.deg90), c.checked = e.checked, e.hasCheckbox === !1 && c.remove(), m.style.gridColumnEnd = `span ${kt(e, t.headerRow.columnCount)}`, o ? (a.className = et(I.nodeIcon, "ir-icon", o), s && a.style.setProperty("--ir-icon-foreground-color", s)) : a.className = T.invisible, n.textContent = e.caption, d.forEach((f) => f.remove());
-  const u = t.headerRow.columnCount;
-  let w = !1;
-  for (let f = 1; f < u; f++) {
-    const v = e.getColumnText(f), R = Tt(v);
-    (v || w) && (w = !0, d.push(R), i.appendChild(R));
+    [q.nodeLevel]: String(e.level)
+  }) : i.style.removeProperty(q.nodeLevel), Ce(i, "selected", e.selected), Ce(i, "disabled", e.disabled), Ce(i, "expanded", e.expanded), Ce(i, "expandable", e.expandable), e.expandable === !1 ? h.classList.add(O.invisible) : h.classList.remove(O.invisible), e.expanded ? h.classList.add(O.rotate.deg90) : h.classList.remove(O.rotate.deg90), e.subChecked ? l.dataset.state = "sub-checked" : delete l.dataset.state, l.checked = e.checked, e.hasCheckbox === !1 && l.remove(), n ? (a.className = $t(M.nodeIcon, "ir-icon", n), s && a.style.setProperty("--ir-icon-foreground-color", s)) : a.className = O.invisible, o.textContent = e.caption, d.forEach((g) => g.remove()), d.length = 0;
+  const C = t.headerRow.columnCount;
+  for (let g = 1; g < C; g++) {
+    const N = fi(e.getColumnText(g));
+    d.push(N), i.appendChild(N);
   }
 }
-function De(r, e, t) {
+function wt(r, e, t) {
   const {
     columns: i,
-    checkbox: o,
+    checkbox: n,
     checkboxDiv: s
   } = r.template;
   i.forEach((a) => a.remove()), i.length = 0;
-  const n = ue(e);
-  n && (e.headerRow.hasCheckbox && s.appendChild(o), i.push(s), r.getRowElement().appendChild(s)), o.checked = t.headerRow.checked;
+  const o = Ve(e);
+  o && (e.headerRow.hasCheckbox && s.appendChild(n), i.push(s), r.getRowElement().appendChild(s)), n.checked = t.headerRow.checked;
   const d = e.headerRow.columnCount;
   for (let a = 0; a < d; a++) {
-    const l = yt(a, e);
-    i.push(l), r.getRowElement().appendChild(l);
+    const h = wi(a, e);
+    i.push(h), r.getRowElement().appendChild(h);
   }
-  !n && Nt(e) && i[0].prepend(o);
+  !o && di(e) && i[0].prepend(n);
 }
-const Mt = {
+const vi = "80px", ki = 4, bi = {
   columnCount: 1,
   text: [""],
   width: ["*"],
   hasCheckbox: !0
-}, Pt = {
+}, Ei = {
   layout: "inner",
-  ui: "checkbox",
-  cascade: !0
+  ui: "checkbox"
 };
-function Ot() {
+function Ri() {
   return [
-    new xt({
+    new pi({
       nodeDraggable: !0
     }),
-    new gt()
+    new ni()
   ];
 }
-class bi extends pt {
-  _nodeLinker = new ht();
+class xn extends gt {
+  _nodeLinker = new ei();
   _virtualDOMContainer = document.createElement("div");
   _virtualDOM;
   _args;
@@ -1921,8 +1921,11 @@ class bi extends pt {
   _context;
   constructor(e) {
     super({
-      plugins: e.plugins ?? Ot()
+      plugins: e.plugins ?? Ri()
     }), this._args = {
+      defaultRowHeight: e.defaultRowHeight ?? xe("tree-view.nodeRowHeight"),
+      hiddenExpandIcon: e.hiddenExpandIcon ?? !1,
+      removeIndent: e.removeIndent ?? !1,
       defaultIcon: e.defaultIcon,
       autoSizeColumnMode: e.autoSizeColumnMode ?? !1,
       defaultIconColor: e.defaultIconColor,
@@ -1931,18 +1934,19 @@ class bi extends pt {
       multiSelect: e.multiSelect ?? !1,
       className: e.className ?? "",
       displayHeader: e.displayHeader ?? !1,
-      stickyRightColumns: e.stickyRightColumns ?? !1,
-      headerRow: Object.assign({}, Mt, e.headerRow),
-      checkboxOptions: Object.assign({}, Pt, e.checkboxOptions),
+      headerRow: Object.assign({}, bi, e.headerRow),
+      checkboxOptions: Object.assign({}, Ei, e.checkboxOptions),
       plugins: this.pluginList
     }, this._context = {
       headerRow: {
         checked: !1
       }
-    }, this.initArgs(), this._virtualDOM = this.initVirtualDOM(), this.updateTreeTemplateColumns();
+    }, e.removeIndent && Le(this.contextElement, {
+      [q.nodeIndentPadding]: "0"
+    }), this.validateArgs(), this.initArgs(), this._virtualDOM = this.initVirtualDOM(), this.setDefaultColumnWidths(), this.updateTreeTemplateColumns();
   }
   onInitDOMEvents(e) {
-    e.classList.add(Ae), this.addGlobalEventListener(e, "contextmenu", (t) => this.emitHook("contextMenu", [t])), this.addGlobalEventListener(e, "focus", (t) => this.emitHook("focus", [t])), this.addGlobalEventListener(e, "keydown", (t) => this.emitHook("keydown", [t])), this.addGlobalEventListener(e, "blur", (t) => this.emitHook("blur", [t])), this.addGlobalEventListener(e, "click", (t) => this.emitHook("treeClick", [t])), this.addGlobalEventListener(e, "mousedown", (t) => this.emitHook("treeMouseDown", [t])), this.addGlobalEventListener(e, "mouseup", (t) => this.emitHook("treeMouseUp", [t])), this.addGlobalEventListener(e, "dblclick", (t) => this.emitHook("treeDoubleClick", [t])), this.addGlobalEventListener(e, "dragenter", (t) => this.treeDragEnterHandler(t)), this.addGlobalEventListener(e, "dragover", (t) => this.treeDragOverHandler(t)), this.addGlobalEventListener(e, "dragleave", (t) => this.treeDragLeaveHandler(t)), this.addGlobalEventListener(e, "drop", (t) => this.treeDropHandler(t)), this.addGlobalEventListener(e, "dragend", (t) => this.treeDragEndHandler(t));
+    e.classList.add(Ft), this.addGlobalEventListener(e, "contextmenu", (t) => this.emitHook("contextMenu", [t])), this.addGlobalEventListener(e, "focus", (t) => this.emitHook("focus", [t])), this.addGlobalEventListener(e, "keydown", (t) => this.emitHook("keydown", [t])), this.addGlobalEventListener(e, "blur", (t) => this.emitHook("blur", [t])), this.addGlobalEventListener(e, "click", (t) => this.emitHook("treeClick", [t])), this.addGlobalEventListener(e, "mousedown", (t) => this.emitHook("treeMouseDown", [t])), this.addGlobalEventListener(e, "mouseup", (t) => this.emitHook("treeMouseUp", [t])), this.addGlobalEventListener(e, "dblclick", (t) => this.emitHook("treeDoubleClick", [t])), this.addGlobalEventListener(e, "dragenter", (t) => this.treeDragEnterHandler(t)), this.addGlobalEventListener(e, "dragover", (t) => this.treeDragOverHandler(t)), this.addGlobalEventListener(e, "dragleave", (t) => this.treeDragLeaveHandler(t)), this.addGlobalEventListener(e, "drop", (t) => this.treeDropHandler(t)), this.addGlobalEventListener(e, "dragend", (t) => this.treeDragEndHandler(t));
   }
   /**
    * TreeView Hooks
@@ -2002,7 +2006,7 @@ class bi extends pt {
     this.pushSelectedNode(e), await this.emitSelectionChange();
   }
   onInitHooks() {
-    this.setBeginHook("createHeaderRow", St), this.setBeginHook("createNodeRow", Dt), this.setBeginHook("headerRender", De), this.setBeginHook("nodeRender", He), this.setBeginHook("nodeUpdated", this.beginNodeUpdatedHandler.bind(this)), this.setBeginHook("nodeExpanded", this.beginNodeExpanded.bind(this)), this.setBeginHook("nodeCollapsed", this.beginNodeCollapsed.bind(this)), this.addHook("nodeSelect", this.nodeSelectHandler.bind(this)), this.addHook("nodeAddSelect", this.nodeAddSelectionHandler.bind(this)), this.addHook("nodeRelease", this.nodeReleaseHandler.bind(this));
+    this.setBeginHook("createHeaderRow", Ni), this.setBeginHook("createNodeRow", _i), this.setBeginHook("headerRender", wt), this.setBeginHook("nodeRender", mt), this.setBeginHook("nodeUpdated", this.beginNodeUpdatedHandler.bind(this)), this.setBeginHook("nodeExpanded", this.beginNodeExpanded.bind(this)), this.setBeginHook("nodeCollapsed", this.beginNodeCollapsed.bind(this)), this.addHook("nodeSelect", this.nodeSelectHandler.bind(this)), this.addHook("nodeAddSelect", this.nodeAddSelectionHandler.bind(this)), this.addHook("nodeRelease", this.nodeReleaseHandler.bind(this));
   }
   onCreatedRowElement(e, t) {
     e.isFreezed ? this.emitHook("createHeaderRow", [e, this._args, this._context]) : this.emitHook("createNodeRow", [e, e.object, this._args]);
@@ -2011,13 +2015,13 @@ class bi extends pt {
     e.isFreezed ? this.emitHook("headerRender", [e, this._args, this._context]) : this.emitHook("nodeRender", [e, i, this._args]);
   }
   initVirtualDOM() {
-    this._virtualDOMContainer.classList.add(Ve), this._virtualDOMContainer.style.height = "100%";
-    const e = new st({
+    this._virtualDOMContainer.classList.add(Vt), this._virtualDOMContainer.style.height = "100%";
+    const e = new qt({
       contextElement: this._virtualDOMContainer,
       // 헤더용 row 추가
       rowCount: 1,
       headerRowCount: 1,
-      defaultRowHeight: oe("tree-view.nodeRowHeight"),
+      defaultRowHeight: this._args.defaultRowHeight,
       onCreatedRowElement: this.onCreatedRowElement.bind(this),
       onUpdatedRowObject: this.onUpdatedRowObject.bind(this),
       rowContainer: {
@@ -2025,13 +2029,20 @@ class bi extends pt {
         tabIndex: 0
       }
     });
-    return e.setRowHeight(0, oe("tree-view.nodeHeaderRowHeight")), e.setRowVisible(0, this._args.displayHeader === !0), this.contextElement.appendChild(this._virtualDOMContainer), e;
+    return e.setRowHeight(0, this._args.defaultRowHeight ?? xe("tree-view.nodeHeaderRowHeight")), e.setRowVisible(0, this._args.displayHeader === !0), this.contextElement.appendChild(this._virtualDOMContainer), e;
   }
   initArgs() {
     this._args.className && this.contextElement.classList.add(this._args.className);
   }
+  validateArgs() {
+    if (this._args.headerRow.width.some((e, t) => !it(t, e)))
+      throw new Error("Invalid width: Must end with 'px', and '*' is allowed for the content column.");
+  }
   onDestroy() {
     this._virtualDOM.destroy();
+  }
+  get componentLabel() {
+    return "tree-view";
   }
   get scrollTop() {
     return this._virtualDOM.scrollTop;
@@ -2047,6 +2058,9 @@ class bi extends pt {
   }
   set multiSelect(e) {
     this._args.multiSelect !== e && (this._args.multiSelect = e, this.releaseSelectedNodes());
+  }
+  get columnWidthList() {
+    return [...this._args.headerRow.width];
   }
   async renderHeaderRow() {
     const e = this._virtualDOM.getRowById(0);
@@ -2089,7 +2103,14 @@ class bi extends pt {
     t && (e !== void 0 && await this._nodeLinker.getNodeLink(e).data.node.collapse(), await this._nodeLinker.travelNodes(t, ({ data: { node: i } }) => i.collapse()));
   }
   setColumnCount(e) {
-    this._args.headerRow.columnCount = e, this.renderHeaderRow(), this.updateTreeTemplateColumns(), this.renderAllNode();
+    this._args.headerRow.columnCount = e, this.setDefaultColumnWidths(), this.renderHeaderRow(), this.updateTreeTemplateColumns(), this.renderAllNode(), this.emitHook("changeColumnCount", [e]);
+  }
+  setDefaultColumnWidths() {
+    const { width: e, columnCount: t } = this._args.headerRow;
+    if (t > e.length) {
+      const i = Array(t - e.length).fill(vi);
+      e[0] || (i[0] = "*"), this._args.headerRow.width.push(...i);
+    }
   }
   getColumnCount() {
     return this._args.headerRow.columnCount;
@@ -2100,8 +2121,8 @@ class bi extends pt {
   getRootNodeCount() {
     return this._nodeLinker.getRootNodeCount();
   }
-  async setHeaderRowChecked(e) {
-    this.setTreeContext({ headerRow: { checked: e } }), await this.emitHook("headerChangeChecked", [e]);
+  async setHeaderRowChecked(e, t = !0) {
+    this.setTreeContext({ headerRow: { checked: e } }), t && await this.emitHook("headerChangeChecked", [e]);
   }
   /**
    * 자식 포함 모든 노드 개수 반환
@@ -2112,7 +2133,9 @@ class bi extends pt {
   setColumnWidth(e, t) {
     if (e < 0 || e >= this._args.headerRow.columnCount)
       throw new Error(`columnId is out of range: ${e}`);
-    this._args.headerRow.width[e] = t, this.updateTreeTemplateColumns();
+    if (!it(e, t))
+      throw new Error("Invalid width: Must end with 'px', and '*' is allowed for the content column.");
+    this._args.headerRow.width[e] = t, this.emitHook("columnWidthChange", [[...this._args.headerRow.width]]), this.updateTreeTemplateColumns();
   }
   /**
    * 현재 선택된 모든 노드 해제
@@ -2120,8 +2143,8 @@ class bi extends pt {
   async releaseSelectedNodes(...e) {
     const t = new Set(e), i = this.getSelectedNodes();
     await this.runPauseEmitContext(["nodeSelectionChange"], async () => {
-      for (const o of i)
-        t.has(o.key) || await o.release();
+      for (const n of i)
+        t.has(n.key) || await n.release();
     }), await this.emitSelectionChange();
   }
   findNodeCallback(e, t) {
@@ -2148,14 +2171,24 @@ class bi extends pt {
   getSelectedNodesCount() {
     return this._selectedNode.length;
   }
+  getNodesWithPredicate(e) {
+    const t = [];
+    return this._nodeLinker.travelAllNodes(({ data: { node: i } }) => void (e(i) && t.push(i))), t;
+  }
   getCheckedNodes() {
-    return this.getSelectedNodes().filter((e) => e.checked);
+    return this.getNodesWithPredicate((e) => e.checked);
+  }
+  getSubCheckedNodes() {
+    return this.getNodesWithPredicate((e) => e.subChecked);
+  }
+  getUncheckedNodes() {
+    return this.getNodesWithPredicate((e) => !e.checked);
   }
   getSelectedNodeOrNull() {
     return this._selectedNode[0] ?? null;
   }
   getDefaultMainColumnWidth() {
-    const [e, t] = me(
+    const [e, t] = Ke(
       "tree-view.iconSize",
       "tree-view.defaultHorizontalPadding"
     );
@@ -2163,19 +2196,33 @@ class bi extends pt {
     return this._args.showIcon && (i += e), i;
   }
   async autoSizeColumn(e) {
-    const [t, i, o, s] = me(
-      "tree-view.fontSize",
-      "tree-view.fontFamily",
+    const [t, i] = Ke(
       "tree-view.defaultHorizontalPadding",
       "tree-view.levelIndentSize"
-    ), n = Ke(t, i);
-    let d = n.calculateWidth(this.getColumnText(e));
-    await this._nodeLinker.travelAllNodes(({ data: { node: a } }, l) => {
+    ), { fontFamily: n, fontSize: s } = getComputedStyle(this.contextElement), o = Dt(s, n);
+    let d = o.calculateWidth(this.getColumnText(e));
+    if (await this._nodeLinker.travelAllNodes(({ data: { node: a } }, h) => {
       d = Math.max(
         d,
-        n.calculateWidth(a.getColumnText(e)) + (e === 0 ? l * s : 0)
+        o.calculateWidth(a.getColumnText(e)) + (e === 0 ? h * i : 0)
       );
-    }, (a) => a.hasChild() && a.data.node.expanded === !0), d += e === 0 ? this.getDefaultMainColumnWidth() : o * 2, this.setColumnWidth(e, `${d}px`);
+    }, (a) => a.hasChild() && a.data.node.expanded === !0), d += e === 0 ? this.getDefaultMainColumnWidth() : t * 2, d += ki, e === 0) {
+      this.setColumnWidth(
+        e,
+        this.#e(d) ? "*" : `${d}px`
+      );
+      return;
+    }
+    this.setColumnWidth(e, `${d}px`);
+  }
+  #e(e) {
+    const t = this.getColumnCount();
+    let i = e;
+    for (let n = 1; n < t; n++) {
+      const s = parseInt(this._args.headerRow.width[n], 10);
+      Number.isNaN(s) || (i += s);
+    }
+    return i < this._virtualDOMContainer.clientWidth;
   }
   getNodeOrNull(e) {
     return this._nodeLinker.getNodeLinkOrNull(e)?.data.node ?? null;
@@ -2199,7 +2246,7 @@ class bi extends pt {
   }
   updateTreeTemplateColumns() {
     Le(this.contextElement, {
-      [ie.templateColumns]: wt(this._args)
+      [q.templateColumns]: si(this._args)
     });
   }
   async exceptInSelected(e) {
@@ -2216,10 +2263,10 @@ class bi extends pt {
       console.warn(`node not found: ${e}`);
       return;
     }
-    const { virtualRow: i, node: o } = t.data, s = t.getParentNode();
+    const { virtualRow: i, node: n } = t.data, s = t.getParentNode();
     this._virtualDOM.forceLayout();
-    const n = i.rowId, d = n + this._nodeLinker.getChildNodeCount(e), a = [o];
-    this._nodeLinker.travelChildNodes(e, ({ data: { node: l } }) => void (l.selected && a.push(l))), await this.exceptInSelected(a), this._virtualDOM.removeRows(n, d), this._nodeLinker.removeNode(e), s && await this.hook.emit("nodeUpdated", [s.data.node]);
+    const o = i.rowId, d = o + this._nodeLinker.getChildNodeCount(e), a = [n];
+    this._nodeLinker.travelChildNodes(e, ({ data: { node: h } }) => void (h.selected && a.push(h))), await this.exceptInSelected(a), this._virtualDOM.removeRows(o, d), this._nodeLinker.removeNode(e), s && await this.hook.emit("nodeUpdated", [s.data.node]);
   }
   getSortedNodeList() {
     return [...this._virtualDOM.getRowIter()].slice(1).map((e) => e.object);
@@ -2231,9 +2278,12 @@ class bi extends pt {
     return this._nodeLinker.getNodeLink(e).data;
   }
   async moveNode(e, t) {
-    const i = this.getNode(e), o = i.serialize(), s = i.getNodeLink().getParentNode();
+    const i = this.getNode(e);
+    if (await this.emitHook("nodeCheckMoving", [i, t]) === !1)
+      throw new Error("nodeCheckMoving hook return false");
+    const n = i.serialize(), s = i.getNodeLink().getParentNode();
     await this.removeNode(e), this.addNode({
-      ...o,
+      ...n,
       insertKey: t.targetKey,
       position: t.position
     }), t.position === "firstChild" && await this.getNode(t.targetKey).expand(), s && await s.data.node.updateNodeState(), await this.emitHook("nodeMoved", [i, t]);
@@ -2241,10 +2291,10 @@ class bi extends pt {
   clearChildNodes(e) {
     const t = this._nodeLinker.getNodeLink(e);
     if (t.hasChild() === !1) return;
-    const { node: i, virtualRow: o } = t.data;
+    const { node: i, virtualRow: n } = t.data;
     this._virtualDOM.forceLayout();
-    const s = o.rowId + 1, n = s + (this._nodeLinker.getChildNodeCount(e) - 1);
-    this._nodeLinker.clearChildNodes(e), this._virtualDOM.removeRows(s, n), this.hook.emit("nodeUpdated", [i]);
+    const s = n.rowId + 1, o = s + (this._nodeLinker.getChildNodeCount(e) - 1);
+    this._nodeLinker.clearChildNodes(e), this._virtualDOM.removeRows(s, o), this.hook.emit("nodeUpdated", [i]);
   }
   getNodeVisible(e) {
     return this.getNode(e).isVisible();
@@ -2279,13 +2329,13 @@ class bi extends pt {
     const {
       insertKey: t,
       parentKey: i,
-      position: o
+      position: n
     } = e;
     if (i === void 0 && t === void 0)
       return this._virtualDOM.getRowCount();
     if (this._virtualDOM.forceLayout(), t !== void 0) {
       const s = this.getMapValue(t).virtualRow.rowId;
-      switch (o) {
+      switch (n) {
         case "firstChild":
           return s + 1;
         case "after":
@@ -2303,59 +2353,60 @@ class bi extends pt {
   }
   createNode(e) {
     if (this.hasNode(e.key)) throw new Error(`node already exists: ${e.key}`);
-    return new ut({
+    return new ti({
       nodeData: e,
       hook: this.hook,
       nodeLinker: this._nodeLinker
     });
   }
   getParentNodeByPosArgs(e) {
-    const { parentKey: t, insertKey: i, position: o } = e;
-    return i !== void 0 && o === "firstChild" ? this.getNode(i) : t !== void 0 ? this.getNode(t) : null;
+    const { parentKey: t, insertKey: i, position: n } = e;
+    return i !== void 0 && n === "firstChild" ? this.getNode(i) : t !== void 0 ? this.getNode(t) : null;
   }
   /**
    * @param posArgsOrNull null 전달 시, rootNode 마지막에 추가
    * @param nodeList 추가할 노드 리스트
    */
   addNodeList(e, t) {
-    const i = e ?? {}, o = this.getParentNodeByPosArgs(i), { parentNodeOrNull: s, visible: n } = o ? {
-      parentNodeOrNull: o,
-      visible: o.isVisible() && o.expanded === !0
+    const i = e ?? {}, n = this.getParentNodeByPosArgs(i), { parentNodeOrNull: s, visible: o } = n ? {
+      parentNodeOrNull: n,
+      visible: n.isVisible() && n.expanded === !0
     } : {
       parentNodeOrNull: null,
       visible: !0
-    }, d = this.createNode.bind(this), a = t.flatMap((c) => bt({
-      visible: n,
-      nodeData: c,
+    }, d = this.createNode.bind(this), a = t.flatMap((l) => ci({
+      visible: o,
+      nodeData: l,
       createNodeFunc: d,
       parentNodeOrNull: s
-    })), l = this._virtualDOM.insertRows(
+    })), h = this._virtualDOM.insertRows(
       a.length,
       this.getAddingRowId(i),
       void 0,
-      a.map(({ node: c }) => c),
-      (c) => a[c].visible
+      a.map(({ node: l }) => l),
+      (l) => a[l].visible
     );
-    return Et({
+    return hi({
       positionArgs: i,
       nodeList: a,
-      virtualRowList: l,
+      virtualRowList: h,
       nodeLinker: this._nodeLinker
     }), s?.updateNodeState(), a;
   }
   addNode(e) {
+    if (typeof e.key != "string") throw new Error("key's type is not string");
     const {
       // position args
       parentKey: t,
       insertKey: i,
-      position: o,
+      position: n,
       ...s
-    } = e, [n] = this.addNodeList({ parentKey: t, insertKey: i, position: o }, [s]);
-    if (!n) throw new Error("first node is undefined");
-    return n.node;
+    } = e, [o] = this.addNodeList({ parentKey: t, insertKey: i, position: n }, [s]);
+    if (!o) throw new Error("first node is undefined");
+    return o.node;
   }
   async selectRange(e, t) {
-    const i = this.getMapValue(e.key), o = this.getMapValue(t.key), s = i.virtualRow.rowId, n = o.virtualRow.rowId, d = s < n ? [s, n] : [n, s];
+    const i = this.getMapValue(e.key), n = this.getMapValue(t.key), s = i.virtualRow.rowId, o = n.virtualRow.rowId, d = s < o ? [s, o] : [o, s];
     await this.runPauseEmitContext(["nodeSelectionChange"], async () => {
       await e.addSelect(), await this.releaseSelectedNodes();
       for (let a = d[0]; a <= d[1]; ++a)
@@ -2369,85 +2420,172 @@ class bi extends pt {
     this.contextElement.focus();
   }
 }
-const ae = "ir-style/tree-view-drag-drop-move", _e = 8;
-async function At(r) {
+const Me = "ir-style/tree-view-drag-drop-move", nt = 8;
+async function xi(r) {
   const e = r();
   return e === void 0 ? !0 : e instanceof Promise ? await e : e;
 }
-function Vt(r, e, t) {
-  return t - r < _e ? "before" : e - t < _e ? "after" : "firstChild";
+function yi(r, e, t) {
+  return t - r < nt ? "before" : e - t < nt ? "after" : "firstChild";
 }
-function Ft(r) {
-  const e = r.dataTransfer?.getData(ae);
+function Ii(r) {
+  const e = r.dataTransfer?.getData(Me);
   return e ? JSON.parse(e) : null;
 }
-const Ne = {
+const ot = {
   row: null,
   nodeKey: "",
   cursorType: "before"
-}, Bt = {
+}, Li = {
   srcNodeData: { key: "", caption: "" },
   srcTreeViewId: ""
 };
-class Ei extends he {
+class yn extends fe {
   constructor(e = {}) {
     super(), this._args = e;
   }
   mount(e, t) {
     const {
       canNodeMoveDrop: i,
-      canNodeMoveStart: o,
+      canNodeMoveStart: n,
       canNodeMoveDragOver: s,
-      onDropNodeData: n,
+      onDropNodeData: o,
       onDragEnd: d
     } = this._args;
-    this.addPluginHook(e, "nodeDragStart", f), this.addPluginHook(e, "nodeDragOver", v), this.addPluginHook(e, "nodeDragEnd", h), this.addPluginHook(e, "nodeDrop", p), this.addPluginHook(e, "treeDragLeave", m);
-    let a = { ...Ne }, l = { ...Bt }, c = !1;
-    function m() {
-      L();
+    this.addPluginHook(e, "nodeDragStart", v), this.addPluginHook(e, "nodeDragOver", R), this.addPluginHook(e, "nodeDragEnd", p), this.addPluginHook(e, "nodeDrop", m), this.addPluginHook(e, "treeDragLeave", C);
+    let a = { ...ot }, h = { ...Li }, l = !1;
+    function C() {
+      H();
     }
-    function u(N, _) {
-      if (!N.dataTransfer) throw new Error("dataTransfer is null");
-      c = !1, l = _, a = { ...Ne }, N.dataTransfer.setData(ae, JSON.stringify(_));
+    function g(k, b) {
+      if (!k.dataTransfer) throw new Error("dataTransfer is null");
+      l = !1, h = b, a = { ...ot }, k.dataTransfer.setData(Me, JSON.stringify(b));
     }
-    function w(N, _, C) {
-      if (!N.dataTransfer?.types.includes(ae)) return !1;
-      const k = l.srcTreeViewId === e.uuid;
-      return k && (_.key === l.srcNodeData.key || _.getNodeLink().isProgenyNode(l.srcNodeData.key)) ? !1 : s?.(k, _, C) ?? !0;
+    function N(k, b, E) {
+      if (!k.dataTransfer?.types.includes(Me)) return !1;
+      const x = h.srcTreeViewId === e.uuid;
+      return x && (b.key === h.srcNodeData.key || b.getNodeLink().isProgenyNode(h.srcNodeData.key)) ? !1 : s?.(x, b, E) ?? !0;
     }
-    function f(N, _) {
-      (o?.(_) ?? !0) && u(N, { srcNodeData: _.serialize(), srcTreeViewId: e.uuid });
+    function v(k, b) {
+      (n?.(b) ?? !0) && g(k, { srcNodeData: b.serialize(), srcTreeViewId: e.uuid });
     }
-    function v(N, _, C) {
-      const { top: k, bottom: y } = e.getNodeTopBottom(_.key), g = Vt(k, y, e.scrollTop + N.offsetY);
-      N.dataTransfer && w(N, _, g) ? (N.preventDefault(), N.dataTransfer.dropEffect = "move", R(_, C, g)) : L();
+    function R(k, b, E) {
+      const { top: x, bottom: S } = e.getNodeTopBottom(b.key), _ = yi(x, S, e.scrollTop + k.offsetY);
+      k.dataTransfer && N(k, b, _) ? (k.preventDefault(), k.dataTransfer.dropEffect = "move", T(b, E, _)) : H();
     }
-    function R(N, _, C) {
-      a.row === _ && a.cursorType === C || (L(), a = { nodeKey: N.key, row: _, cursorType: C }, _.getRowElement().dataset.drag = C);
+    function T(k, b, E) {
+      a.row === b && a.cursorType === E || (H(), a = { nodeKey: k.key, row: b, cursorType: E }, b.getRowElement().dataset.drag = E);
     }
-    function L() {
+    function H() {
       a.row && (delete a.row.getRowElement().dataset.drag, a.row = null);
     }
-    function h(N, _) {
+    function p(k, b) {
       try {
-        N.dataTransfer?.dropEffect === "move" && d?.(c, { ...l });
+        k.dataTransfer?.dropEffect === "move" && d?.(l, { ...h });
       } finally {
-        L();
+        H();
       }
     }
-    async function p(N, _) {
+    async function m(k, b) {
       try {
-        const C = Ft(N), k = { ...a };
-        if (!C || !await At(() => i?.(C, k))) return;
-        c = !0, n?.(C.srcTreeViewId === e.uuid, C, k);
+        const E = Ii(k), x = { ...a };
+        if (!E || !await xi(() => i?.(E, x))) return;
+        l = !0, o?.(E.srcTreeViewId === e.uuid, E, x);
       } finally {
-        L();
+        H();
       }
     }
   }
 }
-const ve = (r, e) => r instanceof Date ? S(r).startOf("D") : typeof r == "string" ? S(r, e) : S(null);
-class Ri extends K {
+class In extends fe {
+  constructor(e = {}) {
+    super(), this._options = e;
+  }
+  mount(e, t) {
+    const i = {
+      isRunning: !1,
+      updateInfoList: []
+    }, n = async (o) => {
+      if (!i.isRunning)
+        try {
+          i.isRunning = !0, i.updateInfoList.length = 0;
+          for (const d of Si(o))
+            await s(d);
+          for (const d of Hi(o))
+            await s(d);
+          this._options.onChanged?.(i.updateInfoList);
+        } finally {
+          i.isRunning = !1;
+        }
+    };
+    t.addHook("nodeChangeChecked", n);
+    async function s(o) {
+      const d = e.getNode(o.key);
+      i.updateInfoList.push(o), o.checked !== void 0 && await d.changeCheck(o.checked), o.subChecked !== void 0 && await d.updateNodeState({ subChecked: o.subChecked });
+    }
+    this.addUnmountTask(() => {
+      t.removeHook("nodeChangeChecked", n);
+    });
+  }
+}
+function Ti(r) {
+  let e = 0, t = 0, i = 0, n = r.getFirstChildNode();
+  for (; n; )
+    n.data.node.checked ? ++e : ++t, n.data.node.subChecked && ++i, n = n.getNextNode();
+  return { checked: e, unchecked: t, subChecked: i };
+}
+function* Si(r) {
+  const e = r.getNodeLink(), t = [], i = r.checked;
+  for (yield { key: r.key, checked: i, subChecked: !1 }, e.getFirstChildNode() && t.push(e.getFirstChildNode()); t.length; ) {
+    const n = t.pop(), s = n.getNextNode(), o = n.getFirstChildNode();
+    i !== n.data.node.checked && (yield { key: n.key, checked: i, subChecked: !1 }), s && t.push(s), o && t.push(o);
+  }
+}
+function* Hi(r) {
+  let e = r.getNodeLink().getParentNode();
+  for (; e; ) {
+    const t = Ti(e), i = t.unchecked === 0, n = !i && t.checked + t.subChecked > 0;
+    (e.data.node.checked !== i || e.data.node.subChecked !== n) && (yield {
+      key: e.key,
+      checked: i,
+      subChecked: n
+    }), e = e.getParentNode();
+  }
+}
+const Oe = [
+  q.stickyRightCol2,
+  q.stickyRightCol3,
+  q.stickyRightCol4,
+  q.stickyRightCol5
+];
+function* Di(r, e) {
+  let t = 0;
+  const i = e - 1, n = Math.min(Oe.length, i - 1);
+  for (let s = i; s > i - n; s--)
+    t += parseInt(r[s], 10), yield { right: t, varName: Oe[i - s] };
+}
+class Ln extends fe {
+  constructor() {
+    super();
+  }
+  mount(e, t, i) {
+    i.classList.add(Ye), n(), t.addHook("columnWidthChange", n), t.addHook("changeColumnCount", n), this.addUnmountTask(() => {
+      i.classList.remove(Ye), s(), t.removeHook("columnWidthChange", n), t.removeHook("changeColumnCount", n);
+    });
+    function n() {
+      for (const { right: o, varName: d } of Di(e.columnWidthList, e.getColumnCount()))
+        Le(i, {
+          [d]: `${o}px`
+        });
+    }
+    function s() {
+      for (const o of Oe)
+        i.style.removeProperty(o.match(/\((.*)\)/)[1]);
+    }
+  }
+}
+const st = (r, e) => r instanceof Date ? Y(r).startOf("D") : typeof r == "string" ? Y(r, e) : Y(null);
+class Tn extends pe {
   selectedDate = null;
   calendarDate = /* @__PURE__ */ new Date();
   format;
@@ -2461,46 +2599,46 @@ class Ri extends K {
   constructor({
     div: e,
     defaultDate: t,
-    format: i = j.datePicker.dateFormat,
-    checkbox: o = !1,
+    format: i = le.t("datePicker.dateFormat"),
+    checkbox: n = !1,
     disabled: s = !1,
-    allowedEmptyString: n = !0,
+    allowedEmptyString: o = !0,
     onSelect: d,
     onChange: a,
-    onCheckboxClick: l,
-    minDate: c = ge().getStoreValue("datePicker.minDate"),
-    maxDate: m = ge().getStoreValue("datePicker.maxDate")
+    onCheckboxClick: h,
+    minDate: l = qe().getStoreValue("datePicker.minDate"),
+    maxDate: C = qe().getStoreValue("datePicker.maxDate")
   }) {
     if (super({ contextElement: e }), t) {
-      const u = ve(t, i);
-      u.isValid() ? (this.calendarDate = u.toDate(), this.selectedDate = u.toDate()) : console.error(`invalid defaultDate format. it must follow ${i}`);
+      const g = st(t, i);
+      g.isValid() ? (this.calendarDate = g.toDate(), this.selectedDate = g.toDate()) : console.error(`invalid defaultDate format. it must follow ${i}`);
     }
-    if (!n && this.selectedDate == null) {
-      const u = ve(/* @__PURE__ */ new Date(), i);
-      this.calendarDate = u.toDate(), this.selectedDate = u.toDate();
+    if (!o && this.selectedDate == null) {
+      const g = st(/* @__PURE__ */ new Date(), i);
+      this.calendarDate = g.toDate(), this.selectedDate = g.toDate();
     }
-    if (this.format = i, this.div = e, this.input = document.createElement("input"), this.button = document.createElement("button"), this.button.appendChild(W("ir-icon--calendar")), this.div.innerHTML = "", this.div.classList.add(ke), this.input.setAttribute("type", "text"), this.input.setAttribute("placeHolder", this.format), this.input.classList.add(be, "tnum-adj"), this.button.className = Ee, this.button.type = "button", this._minDate = c, this._maxDate = m, d && (this.onSelect = d), a && (this.onChange = a), l && (this.onCheckboxClick = l), o) {
-      const u = document.createElement("div"), w = document.createElement("label"), f = document.createElement("input");
-      f.setAttribute("type", "checkbox"), u.classList.add(Re, xe), w.className = de, f.className = ne, w.appendChild(f), u.appendChild(w), this.div.appendChild(u), f.checked = !s, f.onchange = () => {
-        this.disabled = !f.checked, this.onCheckboxClick(f.checked);
-      }, this.addCoreElement(u);
+    if (this.format = i, this.div = e, this.input = document.createElement("input"), this.button = document.createElement("button"), this.button.appendChild(he("ir-icon--calendar")), this.div.innerHTML = "", this.div.classList.add(lt), this.input.setAttribute("type", "text"), this.input.setAttribute("placeHolder", this.format), this.input.classList.add(ct, "tnum-adj"), this.button.className = ht, this.button.type = "button", this._minDate = l, this._maxDate = C, d && (this.onSelect = d), a && (this.onChange = a), h && (this.onCheckboxClick = h), n) {
+      const g = document.createElement("div"), N = document.createElement("label"), v = document.createElement("input");
+      v.setAttribute("type", "checkbox"), g.classList.add(ut, pt), N.className = ze, v.className = Te, N.appendChild(v), g.appendChild(N), this.div.appendChild(g), v.checked = !s, v.onchange = () => {
+        this.disabled = !v.checked, this.onCheckboxClick(v.checked);
+      }, this.addCoreElement(g);
     }
-    this.disabled = s, this.div.appendChild(this.input), this.div.appendChild(this.button), this.addCoreElement(this.input), this.addCoreElement(this.button), this.selectedDate && (this.input.value = S(this.selectedDate).format(i)), this.button.addEventListener("click", () => {
+    this.disabled = s, this.div.appendChild(this.input), this.div.appendChild(this.button), this.addCoreElement(this.input), this.addCoreElement(this.button), this.selectedDate && (this.input.value = Y(this.selectedDate).format(i)), this.button.addEventListener("click", () => {
       this.isVisible === !1 && this.show();
     }), this.input.addEventListener("blur", () => {
       if (this.input.value === "") {
-        n ? this.setDate(null) : this.setDate(this.selectedDate);
+        o ? this.setDate(null) : this.setDate(this.selectedDate);
         return;
       }
-      const u = S(this.input.value, this.format, !0);
-      !u.isValid() || u.toDate() < this.minDate || u.toDate() > this.maxDate ? this.setDate(this.selectedDate) : this.setDate(u.toDate());
-    }), this.handler = Ze({
+      const g = Y(this.input.value, this.format, !0);
+      !g.isValid() || g.toDate() < this.minDate || g.toDate() > this.maxDate ? this.setDate(this.selectedDate) : this.setDate(g.toDate());
+    }), this.handler = Ht({
       uuid: this.uuid,
       refElement: this.div,
       minDate: this._minDate,
       maxDate: this._maxDate,
-      onClick: (u) => {
-        this.setDate(u), this.onSelect(u), this.hide();
+      onClick: (g) => {
+        this.setDate(g), this.onSelect(g), this.hide();
       }
     });
   }
@@ -2512,6 +2650,9 @@ class Ri extends K {
   }
   get date() {
     return this.selectedDate;
+  }
+  get componentLabel() {
+    return "date-picker";
   }
   get isVisible() {
     return this.handler.visible;
@@ -2535,7 +2676,7 @@ class Ri extends K {
     e ? (this.input.setAttribute("disabled", ""), this.button.setAttribute("disabled", "")) : (this.input.removeAttribute("disabled"), this.button.removeAttribute("disabled")), this.inputCheckbox && (this.inputCheckbox.checked = !e);
   }
   setDate(e) {
-    e ? (this.selectedDate = new Date(e), this.calendarDate = new Date(e), this.input.value = S(e).format(this.format), this.updateCalendar()) : (this.selectedDate = null, this.input.value = ""), this.latestValue !== this.input.value && this.onChange(this.input.value), this.latestValue = this.input.value;
+    e ? (this.selectedDate = new Date(e), this.calendarDate = new Date(e), this.input.value = Y(e).format(this.format), this.updateCalendar()) : (this.selectedDate = null, this.input.value = ""), this.latestValue !== this.input.value && this.onChange(this.input.value), this.latestValue = this.input.value;
   }
   show() {
     this.isVisible || (this.handler.update(this.calendarDate, this.selectedDate), this.handler.show());
@@ -2554,42 +2695,42 @@ class Ri extends K {
     this.handler.update(this.calendarDate, this.selectedDate);
   }
 }
-const H = "dialog", G = {
+const B = "dialog", ce = {
   dialog: {
-    "&": H,
-    transparent: `${H}--transparent`,
+    "&": B,
+    transparent: `${B}--transparent`,
     "is-visible": "is-visible"
   },
   dialogWrapper: {
-    "&": `${H}__wrapper`
+    "&": `${B}__wrapper`
   },
   dialogHeader: {
-    "&": `${H}__header`
+    "&": `${B}__header`
   },
   dialogHeaderTitle: {
-    "&": `${H}__header-title`
+    "&": `${B}__header-title`
   },
   dialogHeaderActions: {
-    "&": `${H}__header-actions`
+    "&": `${B}__header-actions`
   },
   dialogContent: {
-    "&": `${H}__content`
+    "&": `${B}__content`
   },
   dialogFooter: {
-    "&": `${H}__footer`
+    "&": `${B}__footer`
   },
   dialogFooterLeft: {
-    "&": `${H}__footer-left`
+    "&": `${B}__footer-left`
   },
   dialogFooterRight: {
-    "&": `${H}__footer-right`
+    "&": `${B}__footer-right`
   },
   dialogButtonClose: {
-    "&": `${H}__button-close`
+    "&": `${B}__button-close`
   }
-}, Ut = ["yes", "no", "ok", "cancel", "retry", "ignore", "stop"];
-function zt() {
-  const r = document.createElement("div"), e = document.createElement("div"), t = document.createElement("div"), i = document.createElement("div"), o = document.createElement("div"), s = document.createElement("i"), n = document.createElement("div"), d = {
+}, Pi = ["yes", "no", "ok", "cancel", "retry", "ignore", "stop"];
+function Mi() {
+  const r = document.createElement("div"), e = document.createElement("div"), t = document.createElement("div"), i = document.createElement("div"), n = document.createElement("div"), s = document.createElement("i"), o = document.createElement("div"), d = {
     cancel: document.createElement("button"),
     ignore: document.createElement("button"),
     no: document.createElement("button"),
@@ -2597,75 +2738,76 @@ function zt() {
     retry: document.createElement("button"),
     stop: document.createElement("button"),
     yes: document.createElement("button")
-  }, a = document.createElement("i"), l = document.createElement("button");
-  return r.tabIndex = -1, r.classList.add("ir-confirm", G.dialog["&"], Te.zIndex.message), e.className = G.dialogWrapper["&"], t.className = G.dialogContent["&"], i.className = $.modal, o.className = $.content, n.className = $.actions, Object.values(d).forEach((c) => c.classList.add(Fe)), d.yes.classList.add(pe), d.ok.classList.add(pe), d.retry.classList.add(Be), d.ignore.classList.add(Ue), a.classList.add("ir-icon", "ir-icon--close"), l.className = $.btnClose, n.appendChild(d.no), n.appendChild(d.stop), n.appendChild(d.ignore), n.appendChild(d.retry), n.appendChild(d.yes), n.appendChild(d.ok), l.appendChild(a), i.appendChild(l), i.appendChild(s), i.appendChild(o), i.appendChild(n), t.appendChild(i), e.appendChild(t), r.appendChild(e), {
+  }, a = document.createElement("i"), h = document.createElement("button");
+  return r.tabIndex = -1, r.classList.add("ir-confirm", ce.dialog["&"], dt.zIndex.message), e.className = ce.dialogWrapper["&"], t.className = ce.dialogContent["&"], i.className = de.modal, n.className = de.content, o.className = de.actions, a.classList.add("ir-icon", "ir-icon--close"), h.className = de.btnClose, o.appendChild(d.no), o.appendChild(d.stop), o.appendChild(d.ignore), o.appendChild(d.retry), o.appendChild(d.yes), o.appendChild(d.ok), h.appendChild(a), i.appendChild(h), i.appendChild(s), i.appendChild(n), i.appendChild(o), t.appendChild(i), e.appendChild(t), r.appendChild(e), {
     dialog: r,
     confirmIcon: s,
-    confirmContent: o,
-    confirmActions: n,
+    confirmContent: n,
+    confirmActions: o,
     buttonMap: d,
-    closeButton: l
+    closeButton: h,
+    resetButtonCls() {
+      Object.values(d).forEach((l) => l.className = Bt);
+    }
   };
 }
-const $t = /* @__PURE__ */ (() => {
+const Oi = /* @__PURE__ */ (() => {
   let r = null;
   return function() {
-    return r || (r = zt()), r;
+    return r || (r = Mi()), r;
   };
 })();
-function z() {
-  return $t();
+function re() {
+  return Oi();
 }
-const jt = {
+const Ai = {
   error: "ir-icon--cancel-circle-fill ir-icon--danger",
   info: "ir-icon--information-circle-fill ir-icon--info",
   question: "ir-icon--question ir-icon--info",
   warning: "ir-icon--error ir-icon--warning"
-}, Gt = /* @__PURE__ */ new Set([
+}, zi = /* @__PURE__ */ new Set([
   "class",
   "style",
   "title",
   "id"
-]), Wt = {
+]), Fi = {
   onTagAttr(r, e, t, i) {
-    if (!i && Gt.has(e))
-      return `${e}="${Ye.escapeAttrValue(t)}"`;
+    if (!i && zi.has(e))
+      return `${e}="${At.escapeAttrValue(t)}"`;
   }
-}, Z = {
+}, Ee = {
   count: 0
-}, xi = () => Z.count > 0;
-class Ii {
+}, Sn = () => Ee.count > 0;
+class Hn {
   constructor(e) {
     this.args = e;
     const {
       iconType: t = "info",
       buttonType: i = ["ok"],
-      messageHTML: o,
+      messageHTML: n,
       msgMap: s = {},
-      onClick: n,
+      onClick: o,
       escButton: d,
-      enterButton: a,
-      contentElement: l
+      contentElement: a
     } = e;
-    this.visible = !1, this.iconType = t, this.buttonType = i, o && (this.messageHTML = qe(o, Wt)), l && (this.contentElement = l), this.msgMap = {
+    this.visible = !1, this.iconType = t, this.buttonType = i, n && (this.messageHTML = Ot(n, Fi)), a && (this.contentElement = a), this.msgMap = {
       ...s
-    }, this.enterButton = a, this.escButton = d, this.escController = Ie(this), n && (this.onClick = n);
+    }, this.escButton = d, this.escController = at(this), o && (this.onClick = o);
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   contentElement;
+  activeButtonId = -1;
   iconType;
   buttonType;
   msgMap;
   visible;
   messageHTML;
-  enterButton;
   escButton;
   escHandler;
   enterHandler = null;
   escController;
-  activeElement = null;
   updateContent() {
-    const e = z();
+    const e = re();
     if (this.messageHTML)
       e.confirmContent.innerHTML = this.messageHTML;
     else if (this.contentElement)
@@ -2679,40 +2821,58 @@ class Ii {
       throw new Error("html or element must be provided!");
   }
   _show() {
-    const e = z();
-    Z.count++, this.updateContent(), this.visible = !0, this.activeElement = document.activeElement, e.confirmIcon.className = `${$.icon} ir-icon ${jt[this.iconType] || ""}`, e.closeButton.onclick = () => this.hide(), this.args.hideCloseButton ? e.closeButton.classList.add("display--none") : e.closeButton.classList.remove("display--none");
-    for (const t of Ut)
-      e.buttonMap[t].remove(), e.buttonMap[t].innerText = this.msgMap[t] ?? j.confirm[t], e.buttonMap[t].onclick = () => {
-        this.hide(), this._doClick(t);
+    const e = re();
+    Ee.count++, this.updateContent(), this.visible = !0, e.confirmIcon.className = `${de.icon} ir-icon ${Ai[this.iconType] || ""}`, e.closeButton.onclick = () => this.hide(), this.args.hideCloseButton ? e.closeButton.classList.add("display--none") : e.closeButton.classList.remove("display--none");
+    for (const i of Pi)
+      e.buttonMap[i].remove(), e.buttonMap[i].innerText = this.msgMap[i] ?? le.t(`confirm.${i}`), e.buttonMap[i].onclick = () => {
+        this.hide().then(() => this._doClick(i));
       };
-    for (const t of this.buttonType)
-      e.confirmActions.appendChild(e.buttonMap[t]);
-    e.dialog.isConnected || le("message").appendChild(e.dialog), e.dialog.classList.add(G.dialog["is-visible"]), e.dialog.focus(), this.args.disabledKeyAction !== !0 && this._registerEnterESCHandler();
+    for (const i of this.buttonType)
+      e.confirmActions.appendChild(e.buttonMap[i]);
+    e.dialog.isConnected || Ae("message").appendChild(e.dialog), e.dialog.classList.add(ce.dialog["is-visible"]), e.dialog.focus(), e.dialog.onkeydown = this.dialogKeyDownHandler.bind(this);
+    const t = this.buttonType.indexOf(this.args.enterButton ?? this.buttonType[0]);
+    this.setFocus(t === -1 ? 0 : t), this.args.disabledKeyAction !== !0 && this._registerEnterESCHandler();
+  }
+  setFocus(e) {
+    const { confirmActions: t, resetButtonCls: i } = re();
+    e < 0 ? e = 0 : e >= this.buttonType.length && (e = this.buttonType.length - 1), this.activeButtonId = e, i();
+    const n = t.children[e];
+    n.classList.add(Ut), n.focus();
+  }
+  prevFocus() {
+    this.activeButtonId === 0 ? this.setFocus(this.buttonType.length - 1) : this.setFocus(this.activeButtonId - 1);
+  }
+  nextFocus() {
+    this.activeButtonId === this.buttonType.length - 1 ? this.setFocus(0) : this.setFocus(this.activeButtonId + 1);
+  }
+  dialogKeyDownHandler(e) {
+    let t = null;
+    e.key === "ArrowRight" ? t = this.nextFocus : e.key === "ArrowLeft" ? t = this.prevFocus : e.key === "Tab" && (e.shiftKey ? t = this.prevFocus : t = this.nextFocus), t && (t.call(this), e.preventDefault());
   }
   _registerEnterESCHandler() {
-    this.enterHandler = () => {
-      const e = z();
-      this.enterButton ? e.buttonMap[this.enterButton].click() : this.buttonType.length === 1 ? e.buttonMap[this.buttonType[0]].click() : this.hide();
-    }, $e("Enter", this.enterHandler), this.escController.create();
+    this.escController.create();
   }
   show() {
-    if (Z.count > 0) {
+    if (Ee.count > 0) {
       console.warn("already opened a confirm");
       return;
     }
     setTimeout(() => this._show(), 0);
   }
   onESC() {
-    const e = z();
+    const e = re();
     this.escButton && e.buttonMap[this.escButton].click();
   }
-  hide() {
-    if (this.visible === !1) return;
-    this.escController.destroy(), Z.count = 0, setTimeout(() => {
-      this.activeElement instanceof HTMLElement && (this.activeElement.focus(), this.activeElement = null);
-    }, 0);
-    const e = z();
-    this.visible = !1, e.dialog.classList.remove(G.dialog["is-visible"]), this.enterHandler && je("Enter", this.enterHandler), this.enterHandler = null;
+  async hide() {
+    if (this.visible !== !1)
+      return this.escController.destroy(), Ee.count = 0, new Promise((e) => {
+        const t = re();
+        this.visible = !1, t.dialog.classList.remove(ce.dialog["is-visible"]), this.enterHandler && It("Enter", this.enterHandler), this.enterHandler = null;
+        const i = this.args.focusAfterHide;
+        i instanceof HTMLElement ? setTimeout(() => {
+          i.focus(), e();
+        }) : e();
+      });
   }
   _doClick(e) {
     this.onClick(e);
@@ -2720,36 +2880,36 @@ class Ii {
   onClick(e) {
   }
 }
-const V = "time-picker", P = {
+const se = "time-picker", ie = {
   timePicker: {
-    "&": V,
+    "&": se,
     "is-visible": "is-visible"
   },
   timePickerPanelWrapper: {
-    "&": `${V}__panel-wrapper`
+    "&": `${se}__panel-wrapper`
   },
   timePickerButtonPanel: {
-    "&": `${V}__button-panel`
+    "&": `${se}__button-panel`
   },
   timePickerPanel: {
-    "&": `${V}__panel`
+    "&": `${se}__panel`
   },
   timePickerPanelItem: {
-    "&": `${V}__panel-item`
+    "&": `${se}__panel-item`
   },
   timePickerDivider: {
-    "&": `${V}__divider`
+    "&": `${se}__divider`
   }
 };
-function Kt(r, e) {
+function Vi(r, e) {
   const t = e ? r : r + ":00";
   if (/^\d{1,2}:\d{1,2}:\d{1,2}$/.test(t)) {
-    const { hour: i, minute: o, second: s } = Se(t);
-    return i < 0 || i >= 24 || o < 0 || o >= 60 ? !1 : !(e && s < 0 || s >= 60);
+    const { hour: i, minute: n, second: s } = Ct(t);
+    return i < 0 || i >= 24 || n < 0 || n >= 60 ? !1 : !(e && s < 0 || s >= 60);
   } else
     return !1;
 }
-function Se(r) {
+function Ct(r) {
   const [e, t, i] = r.split(":");
   return {
     hour: parseInt(e),
@@ -2757,191 +2917,191 @@ function Se(r) {
     second: parseInt(i)
   };
 }
-function qt(r, e, t) {
+function Bi(r, e, t) {
   return [
     r.toString().padStart(2, "0"),
     e.toString().padStart(2, "0"),
     t.toString().padStart(2, "0")
   ].join(":");
 }
-const J = 12, Yt = 60, Xt = 60, Jt = ["period", "hour", "minute", "second"];
-function Qt() {
-  const r = document.createElement("div"), e = document.createElement("div"), t = document.createElement("div"), i = [document.createElement("div"), document.createElement("div"), document.createElement("div"), document.createElement("div")], [o, s, n, d] = i;
-  r.classList.add(P.timePicker["&"], Te.zIndex.popover), i.forEach((g, E) => {
-    g.setAttribute("data-type", Jt[E]), g.className = P.timePickerPanel["&"], e.appendChild(g);
-  }), e.className = P.timePickerPanelWrapper["&"], t.className = P.timePickerButtonPanel["&"];
+const Ne = 12, Ui = 60, $i = 60, ji = ["period", "hour", "minute", "second"];
+function Gi() {
+  const r = document.createElement("div"), e = document.createElement("div"), t = document.createElement("div"), i = [document.createElement("div"), document.createElement("div"), document.createElement("div"), document.createElement("div")], [n, s, o, d] = i;
+  r.classList.add(ie.timePicker["&"], dt.zIndex.popover), i.forEach((_, y) => {
+    _.setAttribute("data-type", ji[y]), _.className = ie.timePickerPanel["&"], e.appendChild(_);
+  }), e.className = ie.timePickerPanelWrapper["&"], t.className = ie.timePickerButtonPanel["&"];
   const a = document.createElement("button");
   a.classList.add("button"), a.type = "button", t.appendChild(a), r.appendChild(e), r.appendChild(t);
-  function l(g) {
-    const E = document.createElement("div");
-    return E.className = P.timePickerPanelItem["&"], E.dataset.text = g, E.innerText = g, E;
+  function h(_) {
+    const y = document.createElement("div");
+    return y.className = ie.timePickerPanelItem["&"], y.dataset.text = _, y.innerText = _, y;
   }
-  return X(2, () => i[0].appendChild(l(""))), X(J, (g) => i[1].appendChild(l(`${g}`))), X(Yt, (g) => i[2].appendChild(l(`${g}`))), X(Xt, (g) => i[3].appendChild(l(`${g}`))), {
+  return _e(2, () => i[0].appendChild(h(""))), _e(Ne, (_) => i[1].appendChild(h(`${_}`))), _e(Ui, (_) => i[2].appendChild(h(`${_}`))), _e($i, (_) => i[3].appendChild(h(`${_}`))), {
     elements: {
       nowButton: a,
       secondPanel: d,
       timePicker: r
     },
-    updateI18n: c,
-    removeSelected: m,
-    getTimeElements: u,
-    scrollIntoView: w,
-    selectTime: f,
-    isAM: v,
-    setPeriod: R,
-    setHourId: L,
-    setMinuteId: h,
-    setSecondId: p,
-    periodGenerator: N,
-    getCurrentTime: _,
-    hourGenerator: C,
-    minuteGenerator: k,
-    secondGenerator: y
+    updateI18n: l,
+    removeSelected: C,
+    getTimeElements: g,
+    scrollIntoView: N,
+    selectTime: v,
+    isAM: R,
+    setPeriod: T,
+    setHourId: H,
+    setMinuteId: p,
+    setSecondId: m,
+    periodGenerator: k,
+    getCurrentTime: b,
+    hourGenerator: E,
+    minuteGenerator: x,
+    secondGenerator: S
   };
-  function c() {
-    a.innerHTML = "", a.appendChild(W("ir-icon--check")), a.append(j.timePicker.btnNow), i[0].children[0].innerHTML = "", i[0].children[1].innerHTML = "", i[0].children[0].append(j.timePicker.am), i[0].children[1].append(j.timePicker.pm);
+  function l() {
+    a.innerHTML = "", a.appendChild(he("ir-icon--check")), a.append(le.t("timePicker.btnNow")), i[0].children[0].innerHTML = "", i[0].children[1].innerHTML = "", i[0].children[0].append(le.t("timePicker.am")), i[0].children[1].append(le.t("timePicker.pm"));
   }
-  function m() {
-    r.querySelectorAll(".is-selected").forEach((g) => g.classList.remove("is-selected"));
+  function C() {
+    r.querySelectorAll(".is-selected").forEach((_) => _.classList.remove("is-selected"));
   }
-  function u(g, E, F) {
-    const O = g < J, B = O ? g : g - J, U = O ? 0 : 1;
+  function g(_, y, X) {
+    const J = _ < Ne, V = J ? _ : _ - Ne, Q = J ? 0 : 1;
     return {
-      periodElement: o.children[U],
-      hourElement: s.children[B],
-      minuteElement: n.children[E],
-      secondElement: d.children[F]
+      periodElement: n.children[Q],
+      hourElement: s.children[V],
+      minuteElement: o.children[y],
+      secondElement: d.children[X]
     };
   }
-  function w(g, E, F) {
-    const { hourElement: O, minuteElement: B, secondElement: U } = u(g, E, F);
-    s.scrollTop = O.offsetTop - s.clientHeight / 2, n.scrollTop = B.offsetTop - n.clientHeight / 2, d.scrollTop = U.offsetTop - d.clientHeight / 2;
+  function N(_, y, X) {
+    const { hourElement: J, minuteElement: V, secondElement: Q } = g(_, y, X);
+    s.scrollTop = J.offsetTop - s.clientHeight / 2, o.scrollTop = V.offsetTop - o.clientHeight / 2, d.scrollTop = Q.offsetTop - d.clientHeight / 2;
   }
-  function f(g, E, F) {
-    const { periodElement: O, hourElement: B, minuteElement: U, secondElement: Pe } = u(g, E, F);
-    m(), O.classList.add("is-selected"), B.classList.add("is-selected"), U.classList.add("is-selected"), Pe.classList.add("is-selected");
+  function v(_, y, X) {
+    const { periodElement: J, hourElement: V, minuteElement: Q, secondElement: ne } = g(_, y, X);
+    C(), J.classList.add("is-selected"), V.classList.add("is-selected"), Q.classList.add("is-selected"), ne.classList.add("is-selected");
   }
-  function v() {
-    return o.children[0].classList.contains("is-selected");
+  function R() {
+    return n.children[0].classList.contains("is-selected");
   }
-  function R(g) {
-    o.children[(g + 1) % 2].classList.remove("is-selected"), o.children[g].classList.add("is-selected");
+  function T(_) {
+    n.children[(_ + 1) % 2].classList.remove("is-selected"), n.children[_].classList.add("is-selected");
   }
-  function L(g) {
-    s.querySelector(".is-selected")?.classList.remove("is-selected"), s.children[g].classList.add("is-selected");
+  function H(_) {
+    s.querySelector(".is-selected")?.classList.remove("is-selected"), s.children[_].classList.add("is-selected");
   }
-  function h(g) {
-    n.querySelector(".is-selected")?.classList.remove("is-selected"), n.children[g].classList.add("is-selected");
+  function p(_) {
+    o.querySelector(".is-selected")?.classList.remove("is-selected"), o.children[_].classList.add("is-selected");
   }
-  function p(g) {
-    d.querySelector(".is-selected")?.classList.remove("is-selected"), d.children[g].classList.add("is-selected");
-  }
-  function* N() {
-    yield [0, o.children[0]], yield [1, o.children[1]];
-  }
-  function _() {
-    return qt(
-      se(s) + (v() ? 0 : J),
-      se(n),
-      se(d)
-    );
-  }
-  function* C() {
-    let g = 0;
-    for (const E of s.children)
-      yield [g++, E];
+  function m(_) {
+    d.querySelector(".is-selected")?.classList.remove("is-selected"), d.children[_].classList.add("is-selected");
   }
   function* k() {
-    let g = 0;
-    for (const E of n.children)
-      yield [g++, E];
+    yield [0, n.children[0]], yield [1, n.children[1]];
   }
-  function* y() {
-    let g = 0;
-    for (const E of d.children)
-      yield [g++, E];
+  function b() {
+    return Bi(
+      He(s) + (R() ? 0 : Ne),
+      He(o),
+      He(d)
+    );
+  }
+  function* E() {
+    let _ = 0;
+    for (const y of s.children)
+      yield [_++, y];
+  }
+  function* x() {
+    let _ = 0;
+    for (const y of o.children)
+      yield [_++, y];
+  }
+  function* S() {
+    let _ = 0;
+    for (const y of d.children)
+      yield [_++, y];
   }
 }
-function se(r) {
+function He(r) {
   const e = r.querySelector(".is-selected");
   return e instanceof HTMLElement ? parseInt(e.innerText || "0", 10) : 0;
 }
-const Zt = /* @__PURE__ */ (() => {
+const Wi = /* @__PURE__ */ (() => {
   let r = null;
   return function() {
-    return r || (r = Qt()), r;
+    return r || (r = Gi()), r;
   };
 })();
-function ei({ uuid: r, refElement: e, onChange: t, visibleSeconds: i }) {
-  let o = !1, s = () => {
+function Ki({ uuid: r, refElement: e, onChange: t, visibleSeconds: i }) {
+  let n = !1, s = () => {
   };
   const {
-    elements: n,
+    elements: o,
     getCurrentTime: d,
     selectTime: a,
-    scrollIntoView: l,
-    updateI18n: c,
-    hourGenerator: m,
-    minuteGenerator: u,
-    secondGenerator: w,
-    periodGenerator: f,
-    setPeriod: v,
-    setHourId: R,
-    setMinuteId: L,
-    setSecondId: h
-  } = Zt(), p = {
-    setTime(C) {
-      const k = i ? C : C + ":00", { hour: y, minute: g, second: E } = Se(k);
-      a(y, g, E), l(y, g, E);
+    scrollIntoView: h,
+    updateI18n: l,
+    hourGenerator: C,
+    minuteGenerator: g,
+    secondGenerator: N,
+    periodGenerator: v,
+    setPeriod: R,
+    setHourId: T,
+    setMinuteId: H,
+    setSecondId: p
+  } = Wi(), m = {
+    setTime(E) {
+      const x = i ? E : E + ":00", { hour: S, minute: _, second: y } = Ct(x);
+      a(S, _, y), h(S, _, y);
     },
     show: () => {
-      if (!o) {
-        c(), o = !0, N.create(), _.create(), n.nowButton.onclick = (C) => {
-          const k = S().format("HH:mm:ss");
-          p.setTime(k), t(C, k);
+      if (!n) {
+        l(), n = !0, k.create(), b.create(), o.nowButton.onclick = (E) => {
+          const x = Y().format("HH:mm:ss");
+          m.setTime(x), t(E, x);
         };
-        for (const [C, k] of f())
-          k.onclick = (y) => {
-            v(C), t(y, d());
+        for (const [E, x] of v())
+          x.onclick = (S) => {
+            R(E), t(S, d());
           };
-        for (const [C, k] of m())
-          k.onclick = (y) => {
-            R(C), t(y, d());
+        for (const [E, x] of C())
+          x.onclick = (S) => {
+            T(E), t(S, d());
           };
-        for (const [C, k] of u())
-          k.onclick = (y) => {
-            L(C), t(y, d());
+        for (const [E, x] of g())
+          x.onclick = (S) => {
+            H(E), t(S, d());
           };
         if (i) {
-          for (const [C, k] of w())
-            k.onclick = (y) => {
-              h(C), t(y, d());
+          for (const [E, x] of N())
+            x.onclick = (S) => {
+              p(E), t(S, d());
             };
-          n.secondPanel.style.removeProperty("display");
+          o.secondPanel.style.removeProperty("display");
         } else
-          n.secondPanel.style.setProperty("display", "none");
-        n.timePicker.isConnected || le("popover").appendChild(n.timePicker), n.timePicker.style.removeProperty("display"), n.timePicker.setAttribute("data-uuid", r), setTimeout(() => {
-          n.timePicker.classList.add(P.timePicker["is-visible"]), s(), s = Ge(e, n.timePicker);
+          o.secondPanel.style.setProperty("display", "none");
+        o.timePicker.isConnected || Ae("popover").appendChild(o.timePicker), o.timePicker.style.removeProperty("display"), o.timePicker.setAttribute("data-uuid", r), setTimeout(() => {
+          o.timePicker.classList.add(ie.timePicker["is-visible"]), s(), s = Lt(e, o.timePicker);
         }, 0);
       }
     },
     hide: () => {
-      o && (N.destroy(), _.destroy(), n.timePicker.classList.remove(P.timePicker["is-visible"]), n.timePicker.addEventListener("transitionend", (C) => {
-        C.currentTarget === C.target && (o = !1, r === n.timePicker.getAttribute("data-uuid") && (s(), n.timePicker.remove()));
+      n && (k.destroy(), b.destroy(), o.timePicker.classList.remove(ie.timePicker["is-visible"]), o.timePicker.addEventListener("transitionend", (E) => {
+        E.currentTarget === E.target && (n = !1, r === o.timePicker.getAttribute("data-uuid") && (s(), o.timePicker.remove()));
       }, { once: !0 }));
     },
-    onESC: () => p.hide(),
+    onESC: () => m.hide(),
     get visible() {
-      return o;
+      return n;
     }
-  }, N = Ie(p), _ = Xe({
-    eventElements: [n.timePicker],
-    clickOutsideFunc: () => p.hide()
+  }, k = at(m), b = Pt({
+    eventElements: [o.timePicker],
+    clickOutsideFunc: () => m.hide()
   });
-  return p;
+  return m;
 }
-const re = { checkbox: Re, checkboxWrapper: de, checkboxInput: ne }, Q = { input: ke, inputNative: be, inputSuffix: Ee, inputPrefix: xe };
-class Ti extends K {
+const De = { checkbox: ut, checkboxWrapper: ze, checkboxInput: Te }, ve = { input: lt, inputNative: ct, inputSuffix: ht, inputPrefix: pt };
+class Dn extends pe {
   input;
   button;
   timePickerHandler;
@@ -2950,21 +3110,24 @@ class Ti extends K {
   constructor(e) {
     super(e);
     const { visibleSeconds: t = !1 } = e, i = t ? "HH:mm:ss" : "HH:mm";
-    if (this.contextElement.className = Q.input, this.input = document.createElement("input"), this.input.placeholder = i, this.input.className = Q.inputNative, this.button = document.createElement("button"), this.button.appendChild(W("ir-icon--watch")), this.button.className = Q.inputSuffix, this.latestValue = e.value || "", this.button.onclick = () => this.toggle(), this.timePickerHandler = ei({
+    if (this.contextElement.className = ve.input, this.input = document.createElement("input"), this.input.placeholder = i, this.input.className = ve.inputNative, this.button = document.createElement("button"), this.button.appendChild(he("ir-icon--watch")), this.button.className = ve.inputSuffix, this.latestValue = e.value || "", this.button.onclick = () => this.toggle(), this.timePickerHandler = Ki({
       uuid: this.uuid,
       refElement: this.contextElement,
       visibleSeconds: t,
-      onChange: (o, s) => {
-        const n = S(s, "HH:mm:ss", !0).format(i);
-        this.value = n, this.onChange(n);
+      onChange: (n, s) => {
+        const o = Y(s, "HH:mm:ss", !0).format(i);
+        this.value = o, this.onChange(o);
       }
     }), e.checkbox) {
-      const o = document.createElement("div"), s = document.createElement("label"), n = document.createElement("input");
-      n.setAttribute("type", "checkbox"), o.classList.add(re.checkbox, Q.inputPrefix), s.className = re.checkboxWrapper, n.className = re.checkboxInput, s.appendChild(n), o.appendChild(s), this.contextElement.appendChild(o), n.checked = !e.disabled, n.onchange = () => this.disabled = !n.checked, this.addCoreElement(o);
+      const n = document.createElement("div"), s = document.createElement("label"), o = document.createElement("input");
+      o.setAttribute("type", "checkbox"), n.classList.add(De.checkbox, ve.inputPrefix), s.className = De.checkboxWrapper, o.className = De.checkboxInput, s.appendChild(o), n.appendChild(s), this.contextElement.appendChild(n), o.checked = !e.disabled, o.onchange = () => this.disabled = !o.checked, this.addCoreElement(n);
     }
-    this.contextElement.appendChild(this.input), this.contextElement.appendChild(this.button), this.addCoreElement(this.input), this.addCoreElement(this.button), this.disabled = e.disabled === !0, e.onChange && (this.onChange = e.onChange), e.value && (this.value = S(e.value, i).format(i)), this.input.onblur = () => {
-      Kt(this.input.value, t) ? this.value = this.input.value : this.value = this.latestValue;
+    this.contextElement.appendChild(this.input), this.contextElement.appendChild(this.button), this.addCoreElement(this.input), this.addCoreElement(this.button), this.disabled = e.disabled === !0, e.onChange && (this.onChange = e.onChange), e.value && (this.value = Y(e.value, i).format(i)), this.input.onblur = () => {
+      Vi(this.input.value, t) ? this.value = this.input.value : this.value = this.latestValue;
     };
+  }
+  get componentLabel() {
+    return "time-picker";
   }
   get hour() {
     return 0;
@@ -3008,25 +3171,399 @@ class Ti extends K {
   onChange(e) {
   }
 }
-class ti {
+const F = typeof window < "u" ? window : null, Be = F === null, ue = Be ? void 0 : F.document, U = "addEventListener", $ = "removeEventListener", Pe = "getBoundingClientRect", ae = "_a", j = "_b", K = "_c", ke = "horizontal", G = () => !1, qi = Be ? "calc" : `${["", "-webkit-", "-moz-", "-o-"].filter((r) => {
+  const e = ue.createElement("div");
+  return e.style.cssText = `width:${r}calc(9px)`, !!e.style.length;
+}).shift()}calc`, _t = (r) => typeof r == "string" || r instanceof String, rt = (r) => {
+  if (_t(r)) {
+    const e = ue.querySelector(r);
+    if (!e)
+      throw new Error(`Selector ${r} did not match a DOM element`);
+    return e;
+  }
+  return r;
+}, D = (r, e, t) => {
+  const i = r[e];
+  return i !== void 0 ? i : t;
+}, be = (r, e, t, i) => {
+  if (e) {
+    if (i === "end")
+      return 0;
+    if (i === "center")
+      return r / 2;
+  } else if (t) {
+    if (i === "start")
+      return 0;
+    if (i === "center")
+      return r / 2;
+  }
+  return r;
+}, Yi = (r, e) => {
+  const t = ue.createElement("div");
+  return t.className = `gutter gutter-${e}`, t;
+}, Xi = (r, e, t) => {
+  const i = {};
+  return _t(e) ? i[r] = e : i[r] = `${qi}(${e}% - ${t}px)`, i;
+}, Ji = (r, e) => ({ [r]: `${e}px` }), Zi = (r, e = {}) => {
+  if (Be) return {};
+  let t = r, i, n, s, o, d, a;
+  Array.from && (t = Array.from(t));
+  const l = rt(t[0]).parentNode, C = getComputedStyle ? getComputedStyle(l) : null, g = C ? C.flexDirection : null;
+  let N = D(e, "sizes") || t.map(() => 100 / t.length);
+  const v = D(e, "minSize", 100), R = Array.isArray(v) ? v : t.map(() => v), T = D(e, "maxSize", 1 / 0), H = Array.isArray(T) ? T : t.map(() => T), p = D(e, "expandToMin", !1), m = D(e, "gutterSize", 10), k = D(e, "gutterAlign", "center"), b = D(e, "snapOffset", 30), E = Array.isArray(b) ? b : t.map(() => b), x = D(e, "dragInterval", 1), S = D(e, "direction", ke), _ = D(
+    e,
+    "cursor",
+    S === ke ? "col-resize" : "row-resize"
+  ), y = D(e, "gutter", Yi), X = D(
+    e,
+    "elementStyle",
+    Xi
+  ), J = D(e, "gutterStyle", Ji);
+  S === ke ? (i = "width", n = "clientX", s = "left", o = "right", d = "clientWidth") : S === "vertical" && (i = "height", n = "clientY", s = "top", o = "bottom", d = "clientHeight");
+  function V(f, c, u, w) {
+    const I = X(i, c, u, w);
+    Object.keys(I).forEach((A) => {
+      f.style[A] = I[A];
+    });
+  }
+  function Q(f, c, u) {
+    const w = J(i, c, u);
+    Object.keys(w).forEach((I) => {
+      f.style[I] = w[I];
+    });
+  }
+  function ne() {
+    return a.map((f) => f.size);
+  }
+  function Ue(f) {
+    return "touches" in f ? f.touches[0][n] : f[n];
+  }
+  function $e(f) {
+    const c = a[this.a], u = a[this.b], w = c.size + u.size;
+    c.size = f / this.size * w, u.size = w - f / this.size * w, V(c.element, c.size, this[j], c.i), V(u.element, u.size, this[K], u.i);
+  }
+  function vt(f) {
+    let c;
+    const u = a[this.a], w = a[this.b];
+    this.dragging && (c = Ue(f) - this.start + (this[j] - this.dragOffset), x > 1 && (c = Math.round(c / x) * x), c <= u.minSize + u.snapOffset + this[j] ? c = u.minSize + this[j] : c >= this.size - (w.minSize + w.snapOffset + this[K]) && (c = this.size - (w.minSize + this[K])), c >= u.maxSize - u.snapOffset + this[j] ? c = u.maxSize + this[j] : c <= this.size - (w.maxSize - w.snapOffset + this[K]) && (c = this.size - (w.maxSize + this[K])), $e.call(this, c), D(e, "onDrag", G)(ne()));
+  }
+  function je() {
+    const f = a[this.a].element, c = a[this.b].element, u = f[Pe](), w = c[Pe]();
+    this.size = u[i] + w[i] + this[j] + this[K], this.start = u[s], this.end = u[o];
+  }
+  function kt(f) {
+    if (!getComputedStyle) return null;
+    const c = getComputedStyle(f);
+    if (!c) return null;
+    let u = f[d];
+    return u === 0 ? null : (S === ke ? u -= parseFloat(c.paddingLeft) + parseFloat(c.paddingRight) : u -= parseFloat(c.paddingTop) + parseFloat(c.paddingBottom), u);
+  }
+  function Ge(f) {
+    const c = kt(l);
+    if (c === null || R.reduce((A, z) => A + z, 0) > c)
+      return f;
+    let u = 0;
+    const w = [], I = f.map((A, z) => {
+      const te = c * A / 100, me = be(
+        m,
+        z === 0,
+        z === f.length - 1,
+        k
+      ), we = R[z] + me;
+      return te < we ? (u += we - te, w.push(0), we) : (w.push(te - we), te);
+    });
+    return u === 0 ? f : I.map((A, z) => {
+      let te = A;
+      if (u > 0 && w[z] - u > 0) {
+        const me = Math.min(
+          u,
+          w[z] - u
+        );
+        u -= me, te = A - me;
+      }
+      return te / c * 100;
+    });
+  }
+  function bt() {
+    const f = this, c = a[f.a].element, u = a[f.b].element;
+    f.dragging && D(e, "onDragEnd", G)(ne()), f.dragging = !1, F[$]("mouseup", f.stop), F[$]("touchend", f.stop), F[$]("touchcancel", f.stop), F[$]("mousemove", f.move), F[$]("touchmove", f.move), f.stop = null, f.move = null, c[$]("selectstart", G), c[$]("dragstart", G), u[$]("selectstart", G), u[$]("dragstart", G), c.style.userSelect = "", c.style.webkitUserSelect = "", c.style.MozUserSelect = "", c.style.pointerEvents = "", u.style.userSelect = "", u.style.webkitUserSelect = "", u.style.MozUserSelect = "", u.style.pointerEvents = "", f.gutter.style.cursor = "", f.parent.style.cursor = "", ue.body.style.cursor = "";
+  }
+  function Et(f) {
+    if ("button" in f && f.button !== 0)
+      return;
+    const c = this, u = a[c.a].element, w = a[c.b].element;
+    c.dragging || D(e, "onDragStart", G)(ne()), f.preventDefault(), c.dragging = !0, c.move = vt.bind(c), c.stop = bt.bind(c), F[U]("mouseup", c.stop), F[U]("touchend", c.stop), F[U]("touchcancel", c.stop), F[U]("mousemove", c.move), F[U]("touchmove", c.move), u[U]("selectstart", G), u[U]("dragstart", G), w[U]("selectstart", G), w[U]("dragstart", G), u.style.userSelect = "none", u.style.webkitUserSelect = "none", u.style.MozUserSelect = "none", u.style.pointerEvents = "none", w.style.userSelect = "none", w.style.webkitUserSelect = "none", w.style.MozUserSelect = "none", w.style.pointerEvents = "none", c.gutter.style.cursor = _, c.parent.style.cursor = _, ue.body.style.cursor = _, je.call(c), c.dragOffset = Ue(f) - c.end;
+  }
+  N = Ge(N);
+  const ee = [];
+  a = t.map((f, c) => {
+    const u = {
+      element: rt(f),
+      size: N[c],
+      minSize: R[c],
+      maxSize: H[c],
+      snapOffset: E[c],
+      i: c
+    };
+    let w;
+    if (c > 0 && (w = {
+      a: c - 1,
+      b: c,
+      dragging: !1,
+      direction: S,
+      parent: l
+    }, w[j] = be(
+      m,
+      c - 1 === 0,
+      !1,
+      k
+    ), w[K] = be(
+      m,
+      !1,
+      c === t.length - 1,
+      k
+    ), g === "row-reverse" || g === "column-reverse")) {
+      const I = w.a;
+      w.a = w.b, w.b = I;
+    }
+    if (c > 0) {
+      const I = y(c, S, u.element);
+      Q(I, m, c), w[ae] = Et.bind(w), I[U](
+        "mousedown",
+        w[ae]
+      ), I[U](
+        "touchstart",
+        w[ae]
+      ), l.insertBefore(I, u.element), w.gutter = I;
+    }
+    return V(
+      u.element,
+      u.size,
+      be(
+        m,
+        c === 0,
+        c === t.length - 1,
+        k
+      ),
+      c
+    ), c > 0 && ee.push(w), u;
+  });
+  function We(f) {
+    const c = f.i === ee.length, u = c ? ee[f.i - 1] : ee[f.i];
+    je.call(u);
+    const w = c ? u.size - f.minSize - u[K] : f.minSize + u[j];
+    $e.call(u, w);
+  }
+  l.offsetWidth > 0 && a.forEach((f) => {
+    const c = f.element[Pe]()[i];
+    c < f.minSize && (p ? We(f) : f.minSize = c);
+  });
+  function Rt(f) {
+    const c = Ge(f);
+    c.forEach((u, w) => {
+      if (w > 0) {
+        const I = ee[w - 1], A = a[I.a], z = a[I.b];
+        A.size = c[w - 1], z.size = u, V(A.element, A.size, I[j], A.i), V(z.element, z.size, I[K], z.i);
+      }
+    });
+  }
+  function xt(f, c) {
+    ee.forEach((u) => {
+      if (c !== !0 ? u.parent.removeChild(u.gutter) : (u.gutter[$](
+        "mousedown",
+        u[ae]
+      ), u.gutter[$](
+        "touchstart",
+        u[ae]
+      )), f !== !0) {
+        const w = X(
+          i,
+          u.a.size,
+          u[j]
+        );
+        Object.keys(w).forEach((I) => {
+          a[u.a].element.style[I] = "", a[u.b].element.style[I] = "";
+        });
+      }
+    });
+  }
+  return {
+    setSizes: Rt,
+    getSizes: ne,
+    collapse(f) {
+      We(a[f]);
+    },
+    destroy: xt,
+    parent: l,
+    pairs: ee
+  };
+};
+function Qi(r) {
+  const e = r[0] instanceof HTMLElement ? r[0] : document.querySelector(r[0]);
+  ye(e, "First element is not found.");
+  const t = e.parentElement;
+  return ye(t, "Parent element is not found."), t;
+}
+const en = {
+  gutterCls: "thick",
+  direction: "horizontal",
+  snapOffset: 10,
+  dragInterval: 5,
+  minSize: 100
+}, tn = {
+  gutterSize: {
+    thin: 1,
+    thick: 6
+  }
+}, nn = 100, on = 0.1;
+class sn extends gt {
+  _splitHandler;
+  _splitElements;
+  #e;
+  #r = [];
+  #n = [];
+  #t = {
+    dragged: !1,
+    dragStartSize: 0,
+    beforeCollapsed: !1
+  };
+  #i = {
+    prevSize: 0
+  };
+  constructor({ elements: e, options: t }) {
+    super({
+      contextElement: Qi(e)
+    }), this.#e = Object.assign({}, en, t);
+    const { gutterCls: i } = this.#e;
+    this._splitElements = this.#a(), this._splitHandler = Zi(e, {
+      ...this.#e,
+      gutterSize: tn.gutterSize[i],
+      gutter: this.#d(),
+      onDragStart: (n) => {
+        Object.assign(this.#t, {
+          dragged: !1,
+          dragStartSize: this._splitHandler.getSizes()[0],
+          beforeCollapsed: this.isCollapsed()
+        }), this.#n = n, this.#e.onDragStart?.(n);
+      },
+      onDrag: (n) => {
+        this.#t.dragged = this.#t.dragged || this.#n.reduce((s, o, d) => s += Math.abs(o - n[d]), 0) > on, this.#e.onDrag?.(n);
+      },
+      onDragEnd: (n) => {
+        this.#t.dragged && !this.#t.beforeCollapsed && this.isCollapsed() && (this.#i.prevSize = this.#t.dragStartSize), this.#e.onDragEnd?.(n);
+      }
+    }), this.#u();
+  }
+  get componentLabel() {
+    return "split-container";
+  }
+  /**
+   * @deprecated 가능하면 컴포넌트 내부 DOM 요소 직접 접근은 지양합니다.
+   */
+  get pairs() {
+    return this._splitHandler.pairs;
+  }
+  isDisplayNone() {
+    return this.contextElement.offsetWidth === 0;
+  }
+  getFirstPanelSize() {
+    const { firstPanel: e } = this._splitElements;
+    return this.#e.direction === "horizontal" ? e.offsetWidth : e.offsetHeight;
+  }
+  isCollapsed() {
+    const { minSize: e, snapOffset: t } = this.#e, i = typeof e == "number" ? e : Array.isArray(e) ? e[0] : 0;
+    return this.getFirstPanelSize() <= i + t;
+  }
+  collapse(e) {
+    this._splitHandler.collapse(e);
+  }
+  getSizes() {
+    return this._splitHandler.getSizes();
+  }
+  setSizes(e) {
+    this._splitHandler.setSizes(e);
+  }
+  #a() {
+    const e = this.contextElement, t = e.firstElementChild;
+    return ye(e instanceof HTMLElement, "Split parent element is not found."), ye(t instanceof HTMLElement, "First panel element is not found."), { splitParent: e, firstPanel: t };
+  }
+  #d() {
+    const { direction: e, gutterCls: t } = this.#e, i = [
+      Se.base,
+      Se[t]
+    ].join(" ");
+    return (n) => {
+      const s = document.createElement("div");
+      return s.className = i, s.dataset.dir = e, this.#e.gutterClickAction === "toggleVisible" && n === 1 && (s.onclick = () => this.#l()), this.#r.push(s), s;
+    };
+  }
+  #l() {
+    if (this.#t.dragged) return this.#o();
+    this.isCollapsed() ? this.#h() : this.#c(), this.#o();
+  }
+  #c() {
+    this.#i.prevSize = this._splitHandler.getSizes()[0], this._splitHandler.collapse(0);
+  }
+  #h() {
+    const e = this._splitHandler.getSizes(), t = e.slice(2), i = t.reduce((o, d) => o += d, 0), n = this.#i.prevSize <= e[1] ? this.#i.prevSize : e[1], s = [
+      // 접히기 전 크기로 리셋
+      n,
+      // gutter 다음 패널의 크기 (100에서 나머지 패널 크기를 빼서 계산)
+      nn - i - n,
+      ...t
+    ];
+    this._splitHandler.setSizes(s);
+  }
+  #o() {
+    this.#t = {
+      beforeCollapsed: !1,
+      dragged: !1,
+      dragStartSize: 0
+    };
+  }
+  #u() {
+    const { splitParent: e } = this._splitElements, { direction: t } = this.#e;
+    e.classList.add(Xe), t === "vertical" && e.classList.add(Je({ flexDirection: "column" })), this.#s(e.firstElementChild, (i) => i.classList.add(Ze));
+  }
+  #s(e, t) {
+    let i = e;
+    for (; i; )
+      i.classList.contains(Se.base) || t(i), i = i.nextElementSibling;
+  }
+  #p() {
+    const { splitParent: e } = this._splitElements;
+    e.classList.remove(Xe, Je({ flexDirection: "column" })), this.#s(e.firstElementChild, (t) => t.classList.remove(Ze));
+  }
+  onInitDOMEvents(e) {
+  }
+  onInitHooks() {
+  }
+  destroy() {
+    super.destroy(), this._splitHandler.destroy();
+  }
+}
+function Pn(r, e) {
+  return new sn({ elements: r, options: e });
+}
+class rn {
   _dialogElement;
   _wrapperElement;
   _headerElement;
   _bodyElement;
   _footerElement;
   constructor() {
-    this._dialogElement = M("div", "dialog"), this._dialogElement.setAttribute("tabindex", "-1"), this._wrapperElement = x(this._dialogElement, "div", "dialog__wrapper"), this._headerElement = x(this._wrapperElement, "div", "dialog__header"), this._bodyElement = x(this._wrapperElement, "div", "dialog__content"), this._footerElement = x(this._wrapperElement, "div", "dialog__footer");
+    this._dialogElement = Z("div", "dialog"), this._dialogElement.setAttribute("tabindex", "-1"), this._wrapperElement = P(this._dialogElement, "div", "dialog__wrapper"), this._headerElement = P(this._wrapperElement, "div", "dialog__header"), this._bodyElement = P(this._wrapperElement, "div", "dialog__content"), this._footerElement = P(this._wrapperElement, "div", "dialog__footer");
   }
   setDialogWidth(e) {
     return this._wrapperElement.style.width = `${e}px`, this;
   }
   addStrongHeaderTitle(e) {
-    const t = x(this._headerElement, "strong", "dialog__header-title");
+    const t = P(this._headerElement, "strong", "dialog__header-title");
     return t.innerText = e, this;
   }
   createHeaderCloseButton(e) {
-    const t = x(this._headerElement, "div", "dialog__header-actions"), i = x(t, "button", "dialog__button-close");
-    return x(i, "i", "ir-icon", "ir-icon--close"), i.onclick = e, this;
+    const t = P(this._headerElement, "div", "dialog__header-actions"), i = P(t, "button", "dialog__button-close");
+    return P(i, "i", "ir-icon", "ir-icon--close"), i.onclick = e, this;
   }
   setFooterClass(...e) {
     return this._footerElement.classList.add(...e), this;
@@ -3037,35 +3574,35 @@ class ti {
     return this._bodyElement.append(...e), this;
   }
   addFooterButton(e, t, ...i) {
-    const o = x(this._footerElement, "button", "button", ...i);
-    return o.innerText = e, o.onclick = t, this;
+    const n = P(this._footerElement, "button", "button", ...i);
+    return n.innerText = e, n.onclick = t, this;
   }
   get element() {
     return this._dialogElement;
   }
 }
-const ii = {
+const an = {
   "#login-info-dialog.title": "Login Information",
   "#login-info-dialog.confirm-button": "Confirm",
   "AUTH.PASSWORD.NOTICE": "Deadline of Password Change",
   "AUTH.ACCESSIP": "Last Login IP",
   "AUTH.LASTESTLOGINTIME": "Last Login Date",
   "AUTH.SECURITY.NOTICE": "Security Issue"
-}, oi = {
+}, dn = {
   "#login-info-dialog.title": "ログイン情報",
   "#login-info-dialog.confirm-button": "確認",
   "AUTH.PASSWORD.NOTICE": "パスワード変更期限",
   "AUTH.ACCESSIP": "最終ログインIP",
   "AUTH.LASTESTLOGINTIME": "最終ログイン日時",
   "AUTH.SECURITY.NOTICE": "セキュリティ情報"
-}, Me = {
+}, Nt = {
   "#login-info-dialog.title": "로그인 정보",
   "#login-info-dialog.confirm-button": "확인",
   "AUTH.PASSWORD.NOTICE": "비밀번호 변경 기한",
   "AUTH.ACCESSIP": "최종 로그인 IP",
   "AUTH.LASTESTLOGINTIME": "최종 로그인 일시",
   "AUTH.SECURITY.NOTICE": "보안 사항"
-}, ni = {
+}, ln = {
   "#login-info-dialog.title": "登录信息",
   // TODO
   "#login-info-dialog.confirm-button": "?",
@@ -3073,79 +3610,79 @@ const ii = {
   "AUTH.ACCESSIP": "最终登录IP",
   "AUTH.LASTESTLOGINTIME": "最终登录时间",
   "AUTH.SECURITY.NOTICE": "保安事项"
-}, si = { ko: Me, en: ii, ja: oi, zh: ni };
-function ri(r, e) {
+}, cn = { ko: Nt, en: an, ja: dn, zh: ln };
+function hn(r, e) {
   return r in e;
 }
-function ai(r) {
-  const e = si[r] ?? Me;
+function un(r) {
+  const e = cn[r] ?? Nt;
   return {
     getMsg(t, ...i) {
-      return ri(t, e) ? e[t] : t;
+      return hn(t, e) ? e[t] : t;
     }
   };
 }
-const di = 550, ee = {
+const pn = 550, Re = {
   "AUTH.ACCESSIP": 1,
   "AUTH.LASTESTLOGINTIME": 2,
   "AUTH.PASSWORD.NOTICE": 3,
   "AUTH.SECURITY.NOTICE": 4
 };
-function li(r) {
-  return r.props.some(([e]) => ee[e] !== void 0);
+function gn(r) {
+  return r.props.some(([e]) => Re[e] !== void 0);
 }
-function ci(r) {
-  return r.props.filter(([e]) => ee[e] !== void 0).sort(([e], [t]) => ee[e] - ee[t]);
+function fn(r) {
+  return r.props.filter(([e]) => Re[e] !== void 0).sort(([e], [t]) => Re[e] - Re[t]);
 }
-function hi(r, e) {
-  const t = document.createDocumentFragment(), i = new DOMParser(), o = e.replace(/&/g, "&amp;");
-  let n = i.parseFromString(`<root>${o}</root>`, "application/xml").firstChild?.firstChild;
-  for (; n; ) {
-    if (n.nodeType === 1 && n instanceof Element)
-      if (n.tagName.toLowerCase() === "font") {
+function mn(r, e) {
+  const t = document.createDocumentFragment(), i = new DOMParser(), n = e.replace(/&/g, "&amp;");
+  let o = i.parseFromString(`<root>${n}</root>`, "application/xml").firstChild?.firstChild;
+  for (; o; ) {
+    if (o.nodeType === 1 && o instanceof Element)
+      if (o.tagName.toLowerCase() === "font") {
         const d = document.createElement("span");
-        d.textContent = n.textContent, d.style.cssText = n.getAttribute("style") ?? "";
-        const a = n.getAttribute("color"), l = n.getAttribute("bgcolor");
-        a && (d.style.color = a.replace("cl", "")), l && (d.style.backgroundColor = l.replace("cl", "")), t.append(d);
-      } else n.tagName.toLowerCase() === "br" ? t.append(document.createElement("br")) : console.warn(`loginInfoDialog-parser::not allowed tag ${n.tagName}`);
-    else n.textContent && t.append(n.textContent);
-    n = n.nextSibling;
+        d.textContent = o.textContent, d.style.cssText = o.getAttribute("style") ?? "";
+        const a = o.getAttribute("color"), h = o.getAttribute("bgcolor");
+        a && (d.style.color = a.replace("cl", "")), h && (d.style.backgroundColor = h.replace("cl", "")), t.append(d);
+      } else o.tagName.toLowerCase() === "br" ? t.append(document.createElement("br")) : console.warn(`loginInfoDialog-parser::not allowed tag ${o.tagName}`);
+    else o.textContent && t.append(o.textContent);
+    o = o.nextSibling;
   }
   r.append(t);
 }
-function Li(r) {
+function Mn(r) {
   const {
     irm010Data: e,
     lang: t = "ko",
     onClose: i
   } = r;
-  if (!li(e))
+  if (!gn(e))
     throw new Error("no login info data! check irm010 response");
-  const o = new ti(), { getMsg: s } = ai(t), n = () => {
+  const n = new rn(), { getMsg: s } = un(t), o = () => {
     a.hide();
-  }, d = (c) => {
-    c.key === "Enter" && n();
-  }, a = We({
-    element: o.element,
+  }, d = (l) => {
+    l.key === "Enter" && o();
+  }, a = Tt({
+    element: n.element,
     type: "dialog",
-    parentElement: le("dialog"),
+    parentElement: Ae("dialog"),
     onESC() {
       i?.(), window.removeEventListener("keyup", d);
     }
-  }), l = (() => {
-    const c = M("ul", "row", "gap-y--xs");
-    return ci(e).forEach(([u, w]) => {
-      const f = x(c, "li", "row", "col", "col--12");
-      x(f, "div", "col", "col--4").innerText = s(u), u === "AUTH.SECURITY.NOTICE" ? hi(
-        x(f, "div", "col", "col--8"),
-        w
-      ) : x(f, "div", "col", "col--8").innerText = w;
-    }), c;
+  }), h = (() => {
+    const l = Z("ul", "row", "gap-y--xs");
+    return fn(e).forEach(([g, N]) => {
+      const v = P(l, "li", "row", "col", "col--12");
+      P(v, "div", "col", "col--4").innerText = s(g), g === "AUTH.SECURITY.NOTICE" ? mn(
+        P(v, "div", "col", "col--8"),
+        N
+      ) : P(v, "div", "col", "col--8").innerText = N;
+    }), l;
   })();
-  return o.setDialogWidth(di).addStrongHeaderTitle(s("#login-info-dialog.title")).createHeaderCloseButton(n).setContentElement(l).setFooterClass("justify-content--end").addFooterButton(s("#login-info-dialog.confirm-button"), n, "button--primary"), {
+  return n.setDialogWidth(pn).addStrongHeaderTitle(s("#login-info-dialog.title")).createHeaderCloseButton(o).setContentElement(h).setFooterClass("justify-content--end").addFooterButton(s("#login-info-dialog.confirm-button"), o, "button--primary"), {
     popoverHandler: a,
     show() {
-      o.element.focus(), a.show(), window.addEventListener("keyup", d);
+      n.element.focus(), a.show(), window.addEventListener("keyup", d);
     },
     hide() {
       a.hide();
@@ -3153,70 +3690,75 @@ function Li(r) {
   };
 }
 export {
-  Ai as ClipboardManager,
-  eo as IRCommandBlock,
-  to as IRCommandManager,
-  Ii as IRConfirm,
-  ro as IRContextMenu,
-  Ri as IRDatePicker,
-  io as IRSelect,
-  Ti as IRTimePicker,
-  Ni as IRTree,
-  bi as IRTreeView,
-  Ei as IRTreeViewDragDropMovePlugin,
-  gt as IRTreeViewKeyboardPlugin,
-  xt as IRTreeViewMousePlugin,
-  he as IRTreeViewPlugin,
-  st as IRVirtualDOM,
-  go as Logger,
-  Vi as ReactiveState,
-  x as appendElement,
-  Fi as blobToStr,
-  Di as clearGlobalKeyListener,
-  q as closest,
-  Te as clsZId,
-  Xe as createClickOutsideHandler,
-  Bi as createCustomIcon,
-  oo as createDropdownDiv,
-  no as createDropdownItem,
-  Ie as createESCHideController,
-  M as createElement,
-  Si as createFloatingHandler,
-  W as createIconElement,
-  lo as createImageFromSrcUrl,
-  Xi as createLoadingHandler,
-  Li as createLoginInfoDialog,
-  co as createObjectURLFromSvg,
-  We as createPopover,
-  Ji as createSplitContainer,
-  Ui as createTooltip,
-  zi as createTooltipBySelector,
-  Qi as createTooltipContainer,
-  ho as downloadDataURL,
-  X as forEachBySize,
-  $i as forEachFilterBySize,
-  ji as get2DGenerator,
-  uo as getBase64FromSvg,
-  Gi as getIRIconPng,
-  po as getImageBlobFromImage,
-  le as getLayerElement,
-  Wi as getMinMaxBetween,
-  Ke as getTextWidthContext,
-  ge as getThemeStore,
-  Ki as getTooltipElements,
-  Mi as getVirtualEl,
-  xi as hasDisplayedConfirm,
-  li as hasLoginInfo,
-  j as i18n,
-  Ge as offsetBottomAutoUpdate,
-  qi as parseInt,
-  Pi as peekESCStack,
-  $e as registerGlobalKeyListener,
-  vi as renderCheckboxTreeNode,
-  ce as renderDefaultTreeNode,
-  ki as setTreeDragDropReorder,
-  je as unregisterGlobalKeyListener,
-  Je as uuid,
-  qe as xss
+  Xn as ClipboardManager,
+  jn as IRCommandBlock,
+  Gn as IRCommandManager,
+  Hn as IRConfirm,
+  vo as IRContextMenu,
+  Tn as IRDatePicker,
+  Wn as IRSelect,
+  sn as IRSplitContainer,
+  Dn as IRTimePicker,
+  bn as IRTree,
+  xn as IRTreeView,
+  In as IRTreeViewCascadeCheckingPlugin,
+  Ln as IRTreeViewColStickyPlugin,
+  yn as IRTreeViewDragDropMovePlugin,
+  ni as IRTreeViewKeyboardPlugin,
+  pi as IRTreeViewMousePlugin,
+  fe as IRTreeViewPlugin,
+  qt as IRVirtualDOM,
+  Jn as Logger,
+  Zn as ReactiveState,
+  P as appendElement,
+  Qn as blobToStr,
+  zn as clearGlobalKeyListener,
+  ge as closest,
+  dt as clsZId,
+  Pt as createClickOutsideHandler,
+  eo as createCustomIcon,
+  Kn as createDropdownDiv,
+  qn as createDropdownItem,
+  at as createESCHideController,
+  Z as createElement,
+  Fn as createFloatingHandler,
+  he as createIconElement,
+  po as createImageFromSrcUrl,
+  go as createLoadingHandler,
+  Mn as createLoginInfoDialog,
+  fo as createObjectURLFromSvg,
+  Tt as createPopover,
+  Pn as createSplitContainer,
+  to as createTooltip,
+  io as createTooltipBySelector,
+  mo as createTooltipContainer,
+  no as dispatchClickOutsideEvent,
+  wo as downloadDataURL,
+  _e as forEachBySize,
+  oo as forEachFilterBySize,
+  so as get2DGenerator,
+  Co as getBase64FromSvg,
+  ro as getIRIconFormat,
+  ao as getIRIconPng,
+  _o as getImageBlobFromImage,
+  Ae as getLayerElement,
+  lo as getMinMaxBetween,
+  Dt as getTextWidthContext,
+  qe as getThemeStore,
+  co as getTooltipElements,
+  Vn as getVirtualEl,
+  Sn as hasDisplayedConfirm,
+  gn as hasLoginInfo,
+  le as i18n,
+  Lt as offsetBottomAutoUpdate,
+  ho as parseInt,
+  Bn as peekESCStack,
+  Un as registerGlobalKeyListener,
+  En as renderCheckboxTreeNode,
+  Fe as renderDefaultTreeNode,
+  Rn as setTreeDragDropReorder,
+  It as unregisterGlobalKeyListener,
+  Mt as uuid,
+  Ot as xss
 };
 //# sourceMappingURL=index.js.map

@@ -192,6 +192,7 @@
     --ir-icon-eye-closed: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22m10.035%2010-2.83%202.83%205.85%205.85c-.68.61-1.35%201.26-1.99%201.95-2.06%202.2-3.53%204.39-4.41%205.84a29%2029%200%200%200-.94%201.68l-.49.92c-.3.59-.3%201.28%200%201.86l.49.93c.28.54.6%201.11.94%201.68.88%201.45%202.35%203.64%204.41%205.83%205.29%205.65%2011.83%208.63%2018.94%208.63%203.56%200%206.97-.75%2010.16-2.21l4.21%204.21%202.83-2.83zm19.97%2034c-7.26%200-12.51-3.61-16.03-7.37a32%2032%200%200%201-3.9-5.16c-.35-.59-.62-1.09-.82-1.47.2-.38.47-.88.82-1.46.86-1.42%202.15-3.3%203.9-5.17.59-.63%201.22-1.25%201.91-1.86l4.82%204.82c-.45%201.14-.7%202.37-.7%203.67%200%205.52%204.47%2010%2010%2010%201.3%200%202.53-.25%203.67-.7l3.44%203.44c-2.12.79-4.49%201.26-7.11%201.26M54.775%2030.93l-.49.93c-.28.54-.6%201.11-.94%201.68-.88%201.45-2.35%203.64-4.41%205.83-.64.68-1.3%201.32-1.97%201.93l-2.83-2.83c.68-.6%201.31-1.22%201.89-1.84%201.75-1.87%203.04-3.75%203.9-5.16.35-.59.62-1.09.82-1.47-.2-.38-.47-.88-.82-1.46a31.6%2031.6%200%200%200-3.9-5.17c-3.52-3.75-8.77-7.37-16.02-7.37-2.62%200-4.98.47-7.09%201.26l-3.06-3.06c3.18-1.45%206.59-2.2%2010.15-2.2%207.1%200%2013.64%202.99%2018.93%208.63%202.06%202.2%203.53%204.39%204.41%205.84.34.56.66%201.13.94%201.68l.49.92c.3.59.3%201.28%200%201.86%22%2F%3E%3Cpath%20d%3D%22M40.005%2030c0%201.29-.24%202.52-.69%203.65l-3.33-3.32v-.01c.02-.11.02-.21.02-.32%200-3.31-2.69-6-6-6-.11%200-.22%200-.33.02l-3.32-3.33c1.13-.45%202.36-.69%203.65-.69%205.52%200%2010%204.48%2010%2010%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-eye: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M9.228%2030c.2.381.475.882.828%201.466a31.3%2031.3%200%200%200%203.903%205.166C17.476%2040.383%2022.734%2044%2030%2044s12.524-3.617%2016.04-7.368a31.3%2031.3%200%200%200%203.904-5.166c.353-.584.628-1.085.828-1.466-.2-.381-.475-.882-.828-1.466a31.3%2031.3%200%200%200-3.903-5.166C42.524%2019.617%2037.266%2016%2030%2016s-12.524%203.617-16.04%207.368a31.3%2031.3%200%200%200-3.904%205.166A28%2028%200%200%200%209.228%2030M53%2030l1.832-.803-.004-.008-.006-.014-.021-.047-.074-.16a20%2020%200%200%200-.277-.563%2031%2031%200%200%200-1.082-1.94%2035.3%2035.3%200%200%200-4.409-5.833C44.976%2016.383%2038.734%2012%2030%2012s-14.976%204.383-18.96%208.632a35.3%2035.3%200%200%200-4.408%205.834%2031%2031%200%200%200-1.082%201.94%2021%2021%200%200%200-.35.722l-.022.047-.006.014-.003.006v.002S5.167%2029.198%207%2030l-1.832-.802a2%202%200%200%200%200%201.604L7%2030l-1.832.803.001.002.003.006.006.014.021.047.074.16c.063.134.155.325.277.563a31%2031%200%200%200%201.082%201.94%2035.3%2035.3%200%200%200%204.409%205.833C15.024%2043.617%2021.266%2048%2030%2048s14.976-4.383%2018.96-8.632a35.3%2035.3%200%200%200%204.408-5.834c.481-.796.84-1.464%201.082-1.94a20%2020%200%200%200%20.35-.722l.022-.047.006-.014.004-.008zm0%200%201.832.802a2%202%200%200%200%200-1.604z%22%20clip-rule%3D%22evenodd%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M30%2024a6%206%200%201%200%200%2012%206%206%200%200%200%200-12m-10%206c0-5.523%204.477-10%2010-10s10%204.477%2010%2010-4.477%2010-10%2010-10-4.477-10-10%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-features: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M50%2025a6%206%200%200%200-2%20.35V12H34.65a5.999%205.999%200%201%200-11.3%200H10v13.35a6%206%200%201%201%200%2011.3V50h13.35a5.999%205.999%200%201%201%2011.3%200H48V36.65A6%206%200%201%200%2050%2025%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-filter: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M28%2032.343v10.183l4-2.667v-7.516l14-14V14H14v4.343zM10%2020V10h40v10L36%2034v8l-12%208V34z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-folder-add: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M8%2011v37h44V16H33l-5-5zm31%2023h-7v7h-4v-7h-7v-4h7v-7h4v7h7z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-folder-arrow-right: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22m39.93%2020%206.99-7-6.99-7v5H14.92v4h25.01zM42.1%2028.12l-5-8H10v30h33l10-22zm-28.1-4h20.92l2.5%204H20l-6%2013.2zm26.42%2022H16.21l6.36-14h24.21z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-folder-auth-info: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22m33%2016-5-5H8v37h44V16zm-5.5%2024.12-8.41-8.41%202.82-2.83%205.59%205.58%2011.59-11.58%202.82%202.83z%22%2F%3E%3C%2Fsvg%3E);
@@ -289,6 +290,7 @@
     --ir-icon-undo: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M30%207a22.87%2022.87%200%200%200-18.51%209.35L7.28%2013.4v12.2l11.48-4.16-4-2.79A19%2019%200%201%201%2011%2030H7A23%2023%200%201%200%2030%207%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-upload: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M50%2046H10v4h40zM18.59%2021.29l2.82%202.83L28%2017.54V42h4V17.54l6.59%206.58%202.82-2.83L30%209.88z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-uppercase: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M40%2035H20v4h20z%22%2F%3E%3Cpath%20d%3D%22m28.25%2011-16%2039h4.32L30%2017.27%2043.43%2050h4.32l-16-39z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-user-circle-solid: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M30%2054c13.25%200%2024-10.75%2024-24S43.25%206%2030%206%206%2016.75%206%2030s10.75%2024%2024%2024m0-4c5.92%200%2011.24-2.57%2014.9-6.66C41.5%2040.45%2036.23%2039%2030%2039s-11.51%201.45-14.9%204.34C18.76%2047.43%2024.08%2050%2030%2050m0-15c5.25%200%209.5-4.25%209.5-9.5S35.25%2016%2030%2016s-9.5%204.25-9.5%209.5S24.75%2035%2030%2035%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-user-fill: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M30%2029a9.5%209.5%200%201%200%200-19%209.5%209.5%200%200%200%200%2019M49%2049v-2.5c0-9-8-13.5-19-13.5s-19%204.5-19%2013.5V49z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-user-group: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M21.41%2028.04a8.27%208.27%200%201%200%200-16.54%208.27%208.27%200%200%200%200%2016.54M22.4%2044.29a12.49%2012.49%200%200%201%206.73-11.22%2029%2029%200%200%200-7.72-1C11.79%2032.07%204%2035.99%204%2043.82v4.05h18.4zM41.2%2030.71a7.03%207.03%200%201%200%200-14.06%207.03%207.03%200%200%200%200%2014.06M56%2047.88v-3.59c0-6.66-6.63-10-14.8-10-8.18%200-14.8%203.33-14.8%2010v3.59z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-user-management-fill: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M53%2045h4V15h-4zM3%2045h4V15H3zM11%2011v38h38V11zm19%207a5.63%205.63%200%201%201-5.62%205.62A5.62%205.62%200%200%201%2030%2018m11.25%2023.39h-22.5v-1.48c0-5.33%204.71-8%2011.25-8s11.25%202.67%2011.25%208z%22%2F%3E%3C%2Fsvg%3E);
@@ -1057,6 +1059,9 @@
 .ir-icon--features {
     --ir-icon-src: var(--ir-icon-features);
 }
+.ir-icon--filter {
+    --ir-icon-src: var(--ir-icon-filter);
+}
 .ir-icon--folder-add {
     --ir-icon-src: var(--ir-icon-folder-add);
 }
@@ -1348,6 +1353,9 @@
 .ir-icon--uppercase {
     --ir-icon-src: var(--ir-icon-uppercase);
 }
+.ir-icon--user-circle-solid {
+    --ir-icon-src: var(--ir-icon-user-circle-solid);
+}
 .ir-icon--user-fill {
     --ir-icon-src: var(--ir-icon-user-fill);
 }
@@ -1542,10 +1550,12 @@
 }
 :root {
     --ir-icon-badge-l1: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2212%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-right-badge-l1: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M58 14C58 20.6274 52.6274 26 46 26C39.3726 26 34 20.6274 34 14C34 7.37258 39.3726 2 46 2C52.6274 2 58 7.37258 58 14Z'/%3E%3C/svg%3E");
     --ir-icon-badge-size: 6px;
 }
 
-.ir-icon-badge {
+.ir-icon-badge,
+.ir-icon-badge--right {
     position: relative;
     background-color: transparent;
     -webkit-mask-image: none;
@@ -1553,30 +1563,59 @@
 }
 
 .ir-icon-badge::before,
-.ir-icon-badge::after {
+.ir-icon-badge::after,
+.ir-icon-badge--right::before,
+.ir-icon-badge--right::after {
     position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
+    content: "";
     background-color: var(--ir-icon-foreground-color);
 }
 
 .ir-icon-badge::before {
+    -webkit-mask:
+        var(--ir-icon-src) left / cover,
+        var(--ir-icon-badge-l1) left / cover;
+
+    mask:
+        var(--ir-icon-src) left / cover,
+        var(--ir-icon-badge-l1) left / cover;
+}
+
+.ir-icon-badge--right::before {
+    -webkit-mask:
+        var(--ir-icon-src) left / cover,
+        var(--ir-icon-right-badge-l1) left / cover;
+
+    mask:
+        var(--ir-icon-src) left / cover,
+        var(--ir-icon-right-badge-l1) left / cover;
+}
+
+.ir-icon-badge::before,
+.ir-icon-badge--right::before {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-
-    -webkit-mask: var(--ir-icon-src) left / cover,
-        var(--ir-icon-badge-l1) left / cover;
-
-    mask: var(--ir-icon-src) left / cover,
-        var(--ir-icon-badge-l1) left / cover;
 
     -webkit-mask-composite: source-out;
     mask-composite: subtract;
 }
 
-.ir-icon-badge::after {
+.ir-icon-badge::after,
+.ir-icon-badge--right::after {
     width: var(--ir-icon-badge-size);
     height: var(--ir-icon-badge-size);
     border-radius: var(--ir-icon-badge-size);
+    background-color: var(--ir-icon-badge-color, var(--ir-icon-foreground-color));
+}
+
+.ir-icon-badge::after {
+    top: 0;
+    left: 0;
+}
+
+.ir-icon-badge--right::after {
+    top: 1px;
+    right: 1px;
 }
