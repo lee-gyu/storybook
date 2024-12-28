@@ -1,5 +1,5 @@
-import "./chunks/floating-DlacX8th.js";
-import { I as t } from "./chunks/index-DF0EIZtR.js";
+import "./chunks/_init-DoZKvVzM.js";
+import { I as t } from "./chunks/index-CsgILJcn.js";
 const n = t;
 export {
   n as IRContextMenuAdapter
