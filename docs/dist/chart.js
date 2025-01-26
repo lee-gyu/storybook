@@ -1,5 +1,5 @@
-import "./chunks/_init-DoZKvVzM.js";
-import { I as hn } from "./chunks/index-BK-o6tIM.js";
+import "./chunks/_init-DtYkg9NZ.js";
+import { I as hn } from "./chunks/index-D3h_uvNf.js";
 /*!
  * @kurkle/color v0.3.2
  * https://github.com/kurkle/color#readme
@@ -1141,6 +1141,7 @@ function zs(i, t, e, s, n) {
   }
   if (!(isNaN(p) || p <= 0)) {
     switch (i.beginPath(), u) {
+      // Default includes circle
       default:
         n ? i.ellipse(e, s, n / 2, p, 0, 0, F) : i.arc(e, s, p, 0, F), i.closePath();
         break;
@@ -1156,11 +1157,13 @@ function zs(i, t, e, s, n) {
           break;
         }
         m += mt;
+      /* falls through */
       case "rectRot":
         d = Math.cos(m) * (n ? n / 2 : p), r = Math.cos(m) * p, a = Math.sin(m) * p, f = Math.sin(m) * (n ? n / 2 : p), i.moveTo(e - d, s - a), i.lineTo(e + f, s - r), i.lineTo(e + d, s + a), i.lineTo(e - f, s + r), i.closePath();
         break;
       case "crossRot":
         m += mt;
+      /* falls through */
       case "cross":
         d = Math.cos(m) * (n ? n / 2 : p), r = Math.cos(m) * p, a = Math.sin(m) * p, f = Math.sin(m) * (n ? n / 2 : p), i.moveTo(e - d, s - a), i.lineTo(e + d, s + a), i.moveTo(e + f, s - r), i.lineTo(e - f, s + r);
         break;
