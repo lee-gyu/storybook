@@ -291,6 +291,7 @@ export const IRIconClassList = [
     "ir-icon--uppercase",
     "ir-icon--user-circle-solid",
     "ir-icon--user-fill",
+    "ir-icon--user-group-outline",
     "ir-icon--user-group",
     "ir-icon--user-management-fill",
     "ir-icon--user-management-outline",

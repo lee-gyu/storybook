@@ -1,7 +1,7 @@
-import "./chunks/_init-DtYkg9NZ.js";
+import "./chunks/_init-D7pcIR7n.js";
 import { g as Gu } from "./chunks/_commonjsHelpers-DaMA6jEr.js";
-import { i as Tt } from "./chunks/index-Dg1kU5Nj.js";
-import { I as Ku } from "./chunks/index-D3h_uvNf.js";
+import { i as Tt } from "./chunks/index-BI35NT3p.js";
+import { I as Ku } from "./chunks/index-Ba_KBjb6.js";
 var zn = { exports: {} }, Xu = zn.exports, ns;
 function ot() {
   return ns || (ns = 1, function(xe, $) {
@@ -8161,8 +8161,7 @@ const rf = {
     { tokenType: "ir-input", begin: /\[/, end: /\]/ },
     { tokenType: "ir-rule", begin: /\{/, end: /\}/ },
     { tokenType: "ir-number", begin: /\d/, end: /[^\d.]/ }
-  ],
-  operator: /(\||\+|-|\*|\/|%|\^|=|<=?|>=?|AND|OR|<>|::|:)/
+  ]
 };
 function nf(xe, $) {
   return {
