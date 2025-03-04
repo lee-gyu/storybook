@@ -763,7 +763,7 @@ const items = [
     { value: "en", text: "English" },
     { value: "sp", text: "Spanish" },
     { value: "en2", text: "English 길이를 길게" },
-    { value: "en3", text: "English3\\\\n길게길게\\\\n3줄" },
+    { value: "en3", text: "English3\\n길게길게\\n3줄" },
     { value: "en4", text: "English4 English4 English4 English4 English4 " },
     { value: "en5", text: "English5" },
     { value: "en7", text: "English6" },
@@ -988,10 +988,10 @@ grid.setCell( 1, 10, { text: "Icon", icon: "save" } );
 grid.setCell( 2, 10, { text: "", icon: "save" } );
 grid.setCell( 3, 10, { text: "", icon: "save", horizontalAlign: "center" } );
 
-grid.setCell( 1, 11, { text: "다중Row\\\\n다중다중\\\\n다중 텍스트", icon: "save" } );
-grid.setCell( 2, 11, { text: "다중Row\\\\n다중다중\\\\n다중 텍스트" } );
-grid.setCell( 3, 11, { text: "123\\\\n456\\\\n..." } );
-grid.setCell( 4, 11, { text: "1\\\\n2\\\\n3" } );
+grid.setCell( 1, 11, { text: "다중Row\\n다중다중\\n다중 텍스트", icon: "save", lineClamp: "none" } );
+grid.setCell( 2, 11, { text: "다중Row\\n다중다중\\n다중 텍스트" } );
+grid.setCell( 3, 11, { text: "123\\n456\\n..." } );
+grid.setCell( 4, 11, { text: "1\\n2\\n3" } );
 grid.setCell( 4, 11, { text: "길고 긴 텍스트 테스트 길이 너비" } );
 
 grid.setCell( 1, 2, { readonly: true, label: "레이블레이블레이블레이블" } );
@@ -1007,7 +1007,7 @@ grid.setCell( 10, 8, { disabled: true } );
 
 grid.setCell( 2, 8, { label: "저장" } );
 grid.setCell( 3, 8, { label: "룰 저장22019191 10-101" } );
-grid.setCell( 3, 11, { label: "A\\\\nB\\\\nC" } );
+grid.setCell( 3, 11, { label: "A\\nB\\nC" } );
 
 grid.setText( 1, 2, "true" );
 grid.setText( 1, 3, "한국어" );
@@ -1308,8 +1308,10 @@ const grid = new IRGrid( {
 } );
 
 grid.freezeRows( 5 );
-grid.freezeColumn( 4 );
+grid.freezeColumn( 3 );
 grid.setText( 0, 5, "drop 비활성화" );
+grid.mergeCells( 2, 4, 2, 5 );
+grid.mergeCells( 10, 4, 10, 5 );
 
 grid.onDropOnCell = ( row, col, ev ) =>
 {

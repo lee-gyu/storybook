@@ -1,6 +1,6 @@
 import "./chunks/_init-D7pcIR7n.js";
 import { a2 as vs, J as Rs, a3 as xs, L as bs, M as tr, a4 as ys, a5 as nr, n as Ss, p as Es, o as Is, v as ks, m as Ts, s as Ms, a6 as Ls, q as Hs, r as Os, t as zs, u as As, G as Ds, a7 as Fs, H as Vn, I as or, a8 as Ws, a9 as Ns, P as ze, aa as Bs, ab as Ps, ac as Vs, ad as Gs, ae as js, af as Us, Y as Ks, ag as $s, ah as qs, ai as Ys, aj as Xs, ak as Zs, al as Js, am as Qs, an as ei, ao as rr, ap as Gn, aq as ti, ar as ni, j as Ee, as as sr, at as oi, au as ri, av as si, aw as ir, ax as lr, ay as ar, az as ii, aA as li, aB as ai, aC as ci, aD as ui, aE as di, aF as fo, aG as hi, aH as fi, aI as gi, aJ as mi, aK as pi, aL as G, aM as _n, aN as _i, aO as wi, aP as Ci, aQ as vi, aR as Ri, l as go, aS as xi, aT as bi, aU as yi, aV as Si, aW as Ei, aX as Ii, aY as ki, aZ as Ti, a_ as Mi, a$ as Li, b0 as Hi, b1 as cr, b2 as ur, b3 as Ln, b4 as Oi, b5 as zi, N as Ai, b6 as Di, b7 as Fi, b8 as Wi, b9 as Ni, ba as Bi, bb as Pi, bc as Vi, bd as mo, be as Gi, bf as ji, bg as Ui, bh as po, bi as _o, bj as Ki, bk as $i, U as qi } from "./chunks/css-a1kmeZqX.js";
-import { r as N, g as Ue, h as Yi, I as Xi, d as Zi, e as Ji, i as Qi, c as el, f as tl } from "./chunks/command-manager-DUFk_YJB.js";
+import { r as N, g as Ue, h as Yi, I as Xi, d as Zi, e as Ji, i as Qi, c as el, f as tl } from "./chunks/command-manager-CmWZTW7C.js";
 import { h as dr, a as wn, b as jn, g as ct, j as Kt, r as nl, u as ol, v as rl, c as sl, o as il, f as ll, s as al } from "./chunks/floating-Cojv6uOA.js";
 import { c as Hn } from "./chunks/clsx-OuTLNxxd.js";
 import { i as se, d as Ie } from "./chunks/index-BI35NT3p.js";
@@ -10,7 +10,7 @@ import { c as hr, d as Qe, b as We } from "./chunks/outside-DpurI6XH.js";
 import { p as ml } from "./chunks/pick-BLZiDVxr.js";
 import { i as fr, r as pl, w as _l } from "./chunks/in-memory-clipboard-CBDV7nbf.js";
 import { g as $n } from "./chunks/_commonjsHelpers-DaMA6jEr.js";
-import { I as wl } from "./chunks/index-Ba_KBjb6.js";
+import { I as wl } from "./chunks/index-CeFD99q1.js";
 import { v as Cl } from "./chunks/v4-CKZ6klMF.js";
 class vl {
   /* 커맨드 실행 인자 */
@@ -102,7 +102,7 @@ function Rl(o) {
   for (; e; ) {
     let n = e.firstChild;
     for (; n; )
-      n instanceof HTMLElement && n.isConnected && (t = Math.max(n.offsetHeight, t)), n = n.nextSibling;
+      n instanceof HTMLElement && n.isConnected && n.dataset.ignoreAutoSize === void 0 && (t = Math.max(n.offsetHeight, t)), n = n.nextSibling;
     e = e.nextSibling;
   }
   return t;
@@ -125,6 +125,9 @@ class fe {
   getHorizontalCellPadding({ paddingLeft: e, paddingRight: t, gridStore: n }) {
     return (e ?? n.getThemeValue("grid.paddingLeft")) + (t ?? n.getThemeValue("grid.paddingRight"));
   }
+  getVerticalCellPadding({ paddingTop: e, paddingBottom: t, gridStore: n }) {
+    return (e ?? n.getThemeValue("grid.paddingTop")) + (t ?? n.getThemeValue("grid.paddingBottom"));
+  }
   getCellInnerWidth(e, t, n) {
     const r = Ke(e, t), s = [n.icon, n.sortOrder].reduce((u, a) => a ? u + 1 : u, 0) * (bl + yl), i = `${n.text ?? ""}`.split(`
 `), l = s + r.calculateWidth(i[0] ?? "");
@@ -137,8 +140,7 @@ class fe {
     return 0;
   }
   getCellInnerHeight(e, t) {
-    const n = t.gridStore, r = t.paddingTop ?? n.getThemeValue("grid.paddingTop"), s = t.paddingBottom ?? n.getThemeValue("grid.paddingBottom");
-    return r + s + Rl(e);
+    return this.getVerticalCellPadding(t) + Rl(e);
   }
   /**
    * 현재 셀 렌더러가 cell props를 write하여 변경이 일어났을 때 호출.
@@ -2724,7 +2726,7 @@ class Ic extends fe {
       defaultIcon: l,
       defaultLabel: u
     } = this.args, a = document.createElement("div"), c = document.createElement("button");
-    a.className = Ps, c.classList.add(Vs, "button");
+    a.className = Ps, c.classList.add(Vs, "button"), c.dataset.ignoreAutoSize = "";
     const h = n.intent ?? i;
     h && c.classList.add(Oo[h]), s ? (a.setAttribute("data-has-px", ""), a.classList.add($s)) : r && a.classList.add(qs), !this.args.iconDividerStyle && n.horizontalAlign && c.classList.add(Oo[n.horizontalAlign]), c.onclick = (w) => this.onClick(w, e, t);
     const d = n.icon ?? l, f = r ? n.text ?? "" : n.label ?? u ?? "";
@@ -2736,7 +2738,7 @@ class Ic extends fe {
       const w = Qe("span");
       if (w.innerText = f, r) {
         const g = document.createElement("div");
-        w.classList.add("text--multi-ellipsis"), g.setAttribute("data-has-px", ""), g.appendChild(w), a.insertAdjacentElement("afterbegin", g);
+        w.classList.add("text--multi-ellipsis"), g.setAttribute("data-has-px", ""), n.lineClamp === void 0 ? w.style.removeProperty("-webkit-line-clamp") : w.style.setProperty("-webkit-line-clamp", n.lineClamp), g.appendChild(w), a.insertAdjacentElement("afterbegin", g);
       } else
         w.classList.add("text--ellipsis"), c.appendChild(w);
     }
@@ -2754,6 +2756,11 @@ class Ic extends fe {
     return this.getHorizontalCellPadding(n) + r.calculateWidth(this.getCellLabel(n)) + this.getExtraWidth(n);
   }
   getCellInnerHeight(e, t) {
+    if (this.args.iconDividerStyle) {
+      const n = e.querySelector(".text--multi-ellipsis");
+      if (n)
+        return this.getVerticalCellPadding(t) + n.offsetHeight;
+    }
     return yc;
   }
   get renderType() {
@@ -4203,7 +4210,7 @@ class Iu {
   }
   clearRows() {
     this.runFuncEachRow(
-      (e) => e.unmount(),
+      (e) => e.remove(),
       this.headerRows
     ), this._rowList.length = this.headerRows, this._rowsHeight = this.headerRowsHeight, this._freezedRowsHeight = this.headerRowsHeight, this._updateVisibleRowList();
   }
@@ -5155,7 +5162,7 @@ class Bu {
    * Setters
    */
   set visible(e) {
-    e && !this.mergeMain ? (this._visible = !0, this.render()) : this._visible = !1;
+    e && !this.mergeMain ? (this._visible = !0, this.render()) : (this._visible = !1, this.unmount());
   }
   set isDragOver(e) {
     e ? this.element.classList.add("is-dragging") : this.element.classList.remove("is-dragging");
@@ -5179,7 +5186,7 @@ class Bu {
     this._rowSpan = e, this._colSpan = t, this.render();
   }
   set mergeMain(e) {
-    this._mergeMain = e, this.visible = e === void 0;
+    this._mergeMain = e, this.visible = e === void 0, e !== void 0 && this.unmount();
   }
   set row(e) {
     this._row = e, this.setNeedRender(), this._element?.setAttribute("data-row", e.toString());
@@ -5283,16 +5290,19 @@ class Bu {
     this._needRender = !0;
   }
   updateHeight(e) {
-    this._height = e, this._updateCellLayout();
+    this._height !== e && (this._height = e, this._updateCellLayout());
   }
   updateWidth(e) {
-    this._width = e, this._updateCellLayout();
+    this._width !== e && (this._width = e, this._updateCellLayout());
   }
   updateCellLayout(e, t, n, r, s) {
-    this._top = e, this._height = n, this._left = this._zIndex && Nu.has(this._zIndex) ? t + s : t, this._width = r, this._updateCellLayout();
+    this._zIndex && Nu.has(this._zIndex) && (t += s), !(this._top === e && this._left === t && this._height === n && this._width === r) && (this._top = e, this._height = n, this._left = t, this._width = r, this._updateCellLayout());
+  }
+  unmount() {
+    this._element?.remove();
   }
   remove() {
-    this._element?.remove(), this._isRemoved = !0;
+    this.unmount(), this._isRemoved = !0;
   }
   updateCellMetaInfo(e, t) {
     Object.assign(this._cellProps, e), t && Object.assign(this._cellProps, { text: t }), this.render();
@@ -5702,7 +5712,10 @@ class Uu {
         this._cells[n].render();
   }
   updateColumnWidth(e, t) {
-    this._cells[e].updateWidth(t);
+    const n = this._cells[e];
+    n.updateWidth(
+      n.colSpan === 1 ? t : this._grid.getColWidthWithSpan(n.col, n.colSpan)
+    );
   }
   removeCells(e, t) {
     const n = 1 + t - e;
@@ -5808,10 +5821,12 @@ class Uu {
   _removeCellsByColIdList() {
     const e = new Set(this._viewportCellList);
     for (const t of this._cells)
-      t.isConnected && (!e.has(t) || t.mergeMain) && t.remove();
+      t.isConnected && (!e.has(t) || t.mergeMain) && t.unmount();
   }
   updateRowHeight() {
-    this._cells.forEach((e) => e.updateHeight(this._height));
+    this._cells.forEach((e) => {
+      e.updateHeight(e.rowSpan === 1 ? this._height : this._grid.getRowHeightWithSpan(this._rowId, e.rowSpan));
+    });
   }
   updateViewportCells(e, t, n) {
     this._viewportCellList = e, this._removeCellsByColIdList();
@@ -6517,7 +6532,9 @@ class ds extends ce {
       }
     }), e.addGlobalEventListener(n, "mouseenter", (g) => {
       s && Ze(g.currentTarget) && w();
-    }), e.onDoubleClickCell = (g) => r.isIdle && e.doEditMode(g, !1, !0), e.onColumnClick = (g) => e.selectColumn(g.col), e.onRowClick = (g) => e.selectRow(g.row);
+    }), e.onDoubleClickCell = (g) => {
+      r.isIdle && (e.scrollInView(g.row, g.col), e.forceLayoutTask(), e.doEditMode(g, !1, !0));
+    }, e.onColumnClick = (g) => e.selectColumn(g.col), e.onRowClick = (g) => e.selectRow(g.row);
   }
   get pluginKey() {
     return "cell-selector";
