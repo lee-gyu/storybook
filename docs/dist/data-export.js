@@ -1,4 +1,4 @@
-import { E as c } from "./chunks/excel-C3qlPhvS.js";
+import { ExcelExportingModule as c } from "./data-modules.js";
 import { v as k } from "./chunks/v4-CKZ6klMF.js";
 const s = [];
 function d(e) {

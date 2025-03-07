@@ -1,4 +1,4 @@
-import { E as s } from "../chunks/excel-C3qlPhvS.js";
+import { ExcelExportingModule as s } from "../data-modules.js";
 const o = [];
 function a(t) {
   return t.format === "excel";
