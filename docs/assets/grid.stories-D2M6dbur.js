@@ -449,7 +449,7 @@ const grid = new IRGrid( {
             return defaultRenderer;
         },
     },
-} );`,g='<div id="ir_grid" style="height: 500; width: 800"></div>';function m(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{children:"열을 클릭하여 정렬 실행"}),n.jsx(r,{htmlRaw:g,code:u})]})}m.__docgenInfo={description:"",methods:[],displayName:"BulkColumns"};const R=`import {
+} );`,g='<div id="ir_grid" style="height: 500; width: 800"></div>';function R(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{children:"열을 클릭하여 정렬 실행"}),n.jsx(r,{htmlRaw:g,code:u})]})}R.__docgenInfo={description:"",methods:[],displayName:"BulkColumns"};const m=`import {
     IRGrid,
     IRGridCheckboxRenderer,
     IRGridDefaultCellRenderer,
@@ -515,7 +515,7 @@ const grid = new IRGrid( {
             }
         },
     },
-} );`,b='<div id="ir_grid" style="height: 500; width: 1300"></div>';function w(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{htmlRaw:b,code:R})]})}w.__docgenInfo={description:"",methods:[],displayName:"BulkRows"};const h=`import { IRGrid } from "@innorules/ir-style/lib/esm/grid.js";
+} );`,b='<div id="ir_grid" style="height: 500; width: 1300"></div>';function w(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{htmlRaw:b,code:m})]})}w.__docgenInfo={description:"",methods:[],displayName:"BulkRows"};const C=`import { IRGrid } from "@innorules/ir-style/lib/esm/grid.js";
 
 const grid = new IRGrid( {
     contextElement: ir_grid,
@@ -609,14 +609,14 @@ btn_hide.onclick = () =>
 btn_visible.onclick = () =>
 {
     grid.setRowVisibleBulk( 1, Array( grid.getRowCount() - 1 ).fill( true ) );
-};`,C=`<div class="mb--sm">
+};`,h=`<div class="mb--sm">
     <button id="btn_bulk" class="button">Append Bulk Data (Slow)</button>
     <button id="btn_bulk2" class="button">Append Bulk Data (Improved)</button>
     <button id="btn_clear" class="button">Clear</button>
     <button id="btn_hide" class="button">all hide</button>
     <button id="btn_visible" class="button">all visible</button>
 </div>
-<div id="ir_grid" style="height: 500; width: '100%'"></div>`;function p(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{htmlRaw:C,code:h})]})}p.__docgenInfo={description:"",methods:[],displayName:"BulkData"};const x=`import {
+<div id="ir_grid" style="height: 500; width: '100%'"></div>`;function p(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{htmlRaw:h,code:C})]})}p.__docgenInfo={description:"",methods:[],displayName:"BulkData"};const x=`import {
     IRGrid,
     IRGridRowNoHeaderCellRenderer,
     IRGridDefaultCellRenderer,
@@ -1513,12 +1513,46 @@ btn_freeze_col.onclick = () =>
 <div id="ir_grid" style=" height: 500; width: 800 "></div>`;function V(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{children:"헤더를 드래그하여 셀 내용 교체"}),n.jsx(r,{htmlRaw:O,code:$})]})}V.__docgenInfo={description:"",methods:[],displayName:"Exchange"};const L=`import {
     IRGrid,
     IRGridRowNoHeaderCellRenderer,
+    IRGridDefaultCellRenderer,
+    IRGridCheckboxRenderer,
+    IRGridDatePickerRenderer,
+    IRGridSelectCellRenderer,
+    createCustomRenderer,
 } from "@innorules/ir-style/lib/esm/grid.js";
+
+const defaultCellRenderer = new IRGridDefaultCellRenderer();
+const checkboxRenderer = new IRGridCheckboxRenderer( {} );
+const datePickerRenderer = new IRGridDatePickerRenderer( {} );
+const selectRenderer = new IRGridSelectCellRenderer( {
+    items: [
+        { value: "1", text: "ABC" },
+        { value: "2", text: "true" },
+        { value: "3", text: "CCC" },
+        { value: "4", text: "XXX" },
+    ],
+} );
+const customRenderer = createCustomRenderer( ( row, col, data ) =>
+{
+    const div = document.createElement( "div" );
+
+    div.textContent = data.text;
+
+    return div;
+} );
 
 const grid = new IRGrid( {
     contextElement: ir_grid,
     body: {
         rowCount: 30,
+        cellRenderer( row, col, cellProps )
+        {
+            if( col === 2 ) return checkboxRenderer;
+            if( col === 3 ) return datePickerRenderer;
+            if( col === 4 ) return selectRenderer;
+            if( col === 5 ) return customRenderer;
+
+            return defaultCellRenderer;
+        },
     },
     colHeader: {
         rowCount: 1,
@@ -1706,9 +1740,9 @@ const grid = new IRGrid( {
 grid.setText( 0, 1, "A" );
 grid.setText( 1, 1, "ABC" );
 grid.setText( 2, 1, "한글" );
-grid.setText( 3, 1, "はい" );`,q=`<div style="display:flex; flex-direction:column; height: 500; column-gap: 8">
+grid.setText( 3, 1, "はい" );`,X=`<div style="display:flex; flex-direction:column; height: 500; column-gap: 8">
     <div id="ir_grid" style="flex: 1 1 0; width: '100%'"></div>
-</div>`;function J(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{localeSelectVisible:!0,htmlRaw:q,code:U})]})}J.__docgenInfo={description:"",methods:[],displayName:"i18n"};const X=`import {
+</div>`;function q(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{localeSelectVisible:!0,htmlRaw:X,code:U})]})}q.__docgenInfo={description:"",methods:[],displayName:"i18n"};const J=`import {
     IRGrid,
     IRGridCheckboxRenderer,
     IRGridDefaultCellRenderer,
@@ -1843,7 +1877,7 @@ btn_freeze_col.onclick = () =>
     <button type='button' id="btn_freeze" class='button'>행 고정</button>
     <button type='button' id="btn_freeze_col" class='button'>열 고정</button>
 </div>
-<div id="ir_grid" style="height: 500; width: 800"></div>`;function Q(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{children:"헤더를 드래그하여 행/열 이동"}),n.jsx(r,{htmlRaw:Y,code:X})]})}Q.__docgenInfo={description:"",methods:[],displayName:"MoveAPI"};const Z=`import { IRGrid } from "@innorules/ir-style/lib/esm/grid.js";
+<div id="ir_grid" style="height: 500; width: 800"></div>`;function Q(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{children:"헤더를 드래그하여 행/열 이동"}),n.jsx(r,{htmlRaw:Y,code:J})]})}Q.__docgenInfo={description:"",methods:[],displayName:"MoveAPI"};const Z=`import { IRGrid } from "@innorules/ir-style/lib/esm/grid.js";
 
 const gridList = [];
 
@@ -2060,7 +2094,7 @@ grid.addPlugin( new IRGridOverflowPanelPlugin( {
 <br />
 <div style="height: 400; display: grid">
     <div id="ir_grid"></div>
-</div>`;function cn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid Overflow Panel"}),n.jsx("p",{children:"IRGrid가 overflow될 경우 Grid의 스크롤 제어를 간편하게 할 수 있는 편의 기능을 제공한다."}),n.jsx(r,{fixedHeight:500,htmlRaw:dn,code:ln})]})}cn.__docgenInfo={description:"",methods:[],displayName:"OverflowPanelPlugin"};const sn=`import { IRSelect, i18n } from "@innorules/ir-style";
+</div>`;function cn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid Overflow Panel"}),n.jsx("p",{children:"IRGrid가 overflow될 경우 Grid의 스크롤 제어를 간편하게 할 수 있는 편의 기능을 제공한다."}),n.jsx(r,{localeSelectVisible:!0,fixedHeight:550,htmlRaw:dn,code:ln})]})}cn.__docgenInfo={description:"",methods:[],displayName:"OverflowPanelPlugin"};const sn=`import { IRSelect, i18n } from "@innorules/ir-style";
 import {
     IRGrid,
     IRGridCheckboxRenderer,
@@ -2385,7 +2419,7 @@ const grid = new IRGrid( {
     ],
 } );
 
-grid.onSelectCell = ( cell ) => console.log( cell.row );`,mn='<div id="ir_grid" style="height: 500; width: 1300"></div>';function Rn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{}),n.jsx(r,{htmlRaw:mn,code:gn})]})}Rn.__docgenInfo={description:"",methods:[],displayName:"RowSelection"};const bn=`import {
+grid.onSelectCell = ( cell ) => console.log( cell.row );`,Rn='<div id="ir_grid" style="height: 500; width: 1300"></div>';function mn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx("p",{}),n.jsx(r,{htmlRaw:Rn,code:gn})]})}mn.__docgenInfo={description:"",methods:[],displayName:"RowSelection"};const bn=`import {
     IRGrid,
     IRGridDefaultCellRenderer,
     IRGridSelectCellRenderer,
@@ -2501,7 +2535,7 @@ grid.hook.addHook( "cellEditDoneBeforeRender", ( row, col, context ) =>
 grid.autoSizeColumns( 0, 10 );`,wn=`<div class="mb--lg">
     <button id="btn_check_commands" class="button">Check commands</button>
 </div>
-<div id="ir_grid" style="height: 500; width: 1300"></div>`;function hn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{htmlRaw:wn,code:bn})]})}hn.__docgenInfo={description:"",methods:[],displayName:"SelectMapping"};const Cn=`import {
+<div id="ir_grid" style="height: 500; width: 1300"></div>`;function Cn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(r,{htmlRaw:wn,code:bn})]})}Cn.__docgenInfo={description:"",methods:[],displayName:"SelectMapping"};const hn=`import {
     IRGrid,
     IRGridDefaultCellRenderer,
     IRGridSelectCellRenderer,
@@ -2564,7 +2598,7 @@ function createBulkItems()
 }`,pn=`<div class="mb--lg">
     <button id="btn_check_commands" class="button">Check commands</button>
 </div>
-<div id="ir_grid" style="height: 500; width: 1300"></div>`;function xn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(o,{children:"ir-style@^2.17.0"}),n.jsx(r,{htmlRaw:pn,code:Cn})]})}xn.__docgenInfo={description:"",methods:[],displayName:"SelectLazyItems"};const fn=`import {
+<div id="ir_grid" style="height: 500; width: 1300"></div>`;function xn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid"}),n.jsx(o,{children:"ir-style@^2.17.0"}),n.jsx(r,{htmlRaw:pn,code:hn})]})}xn.__docgenInfo={description:"",methods:[],displayName:"SelectLazyItems"};const fn=`import {
     createIRGridColumnSortManager,
     IRGrid,
     IRGridCheckboxRenderer,
@@ -3173,4 +3207,4 @@ grid.setColumnWidth( 0, 80 );
 grid.setColumnWidth( 1, 80 );
 grid.setColumnWidth( 2, 120 );
 grid.setColumnWidth( 3, 120 );
-grid.setColumnWidth( 4, 160 );`,En='<div id="ir_grid" style="height: 500"></div>';function Hn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid Configuration"}),n.jsx("p",{children:"Grid 기본 내부 패딩을 조절할 수 있습니다."}),n.jsx(r,{fixedHeight:600,htmlRaw:En,code:An})]})}Hn.__docgenInfo={description:"",methods:[],displayName:"ThemeConfig"};const zn={title:"JS Components/IRGrid"},Fn=["APIDemo","Basic","BulkColumns","BulkRows","BulkData","CellDrag","CellRenderer","ClipboardEvents","ColumnFill","ContextMenu","CustomRenderer","DragDrop","ExchangeAPI","Finder","i18n","MoveAPI","MultiInstance","OnDialog","OverflowPanelPlugin","RowFilterPlugin","RowSelectionPlugin","SelectValueMap","SelectLazyItems","Sort","SortRange","TableAndRowFilterPlugin","TablePlugin","ThemeConfig"];export{d as APIDemo,a as Basic,m as BulkColumns,p as BulkData,w as BulkRows,_ as CellDrag,y as CellRenderer,T as ClipboardEvents,D as ColumnFill,E as ContextMenu,B as CustomRenderer,F as DragDrop,V as ExchangeAPI,K as Finder,Q as MoveAPI,en as MultiInstance,on as OnDialog,cn as OverflowPanelPlugin,un as RowFilterPlugin,Rn as RowSelectionPlugin,xn as SelectLazyItems,hn as SelectValueMap,vn as Sort,kn as SortRange,Sn as TableAndRowFilterPlugin,Pn as TablePlugin,Hn as ThemeConfig,Fn as __namedExportsOrder,zn as default,J as i18n};
+grid.setColumnWidth( 4, 160 );`,En='<div id="ir_grid" style="height: 500"></div>';function Hn(){return n.jsxs(e,{children:[n.jsx(t,{children:"IRGrid Configuration"}),n.jsx("p",{children:"Grid 기본 내부 패딩을 조절할 수 있습니다."}),n.jsx(r,{fixedHeight:600,htmlRaw:En,code:An})]})}Hn.__docgenInfo={description:"",methods:[],displayName:"ThemeConfig"};const zn={title:"JS Components/IRGrid"},Fn=["APIDemo","Basic","BulkColumns","BulkRows","BulkData","CellDrag","CellRenderer","ClipboardEvents","ColumnFill","ContextMenu","CustomRenderer","DragDrop","ExchangeAPI","Finder","i18n","MoveAPI","MultiInstance","OnDialog","OverflowPanelPlugin","RowFilterPlugin","RowSelectionPlugin","SelectValueMap","SelectLazyItems","Sort","SortRange","TableAndRowFilterPlugin","TablePlugin","ThemeConfig"];export{d as APIDemo,a as Basic,R as BulkColumns,p as BulkData,w as BulkRows,_ as CellDrag,y as CellRenderer,T as ClipboardEvents,D as ColumnFill,E as ContextMenu,B as CustomRenderer,F as DragDrop,V as ExchangeAPI,K as Finder,Q as MoveAPI,en as MultiInstance,on as OnDialog,cn as OverflowPanelPlugin,un as RowFilterPlugin,mn as RowSelectionPlugin,xn as SelectLazyItems,Cn as SelectValueMap,vn as Sort,kn as SortRange,Sn as TableAndRowFilterPlugin,Pn as TablePlugin,Hn as ThemeConfig,Fn as __namedExportsOrder,zn as default,q as i18n};

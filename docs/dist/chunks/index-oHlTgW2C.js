@@ -1,4 +1,4 @@
-import { i as a } from "./_init-D7pcIR7n.js";
+import { i as a } from "./_init-BIZHSL6w.js";
 import { L as g } from "./logger-C1WxLZjH.js";
 import { v as u } from "./v4-CKZ6klMF.js";
 function d(s) {
@@ -6,7 +6,7 @@ function d(s) {
   return () => (e === null && (e = s()), e);
 }
 const m = {
-  version: "2.18.1"
+  version: "2.18.2"
 };
 function _() {
   return {
@@ -125,4 +125,4 @@ export {
   L as I,
   i as g
 };
-//# sourceMappingURL=index-BT2Mz6GA.js.map
+//# sourceMappingURL=index-oHlTgW2C.js.map
