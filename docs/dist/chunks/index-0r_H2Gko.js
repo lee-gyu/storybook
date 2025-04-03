@@ -6,7 +6,7 @@ function d(s) {
   return () => (e === null && (e = s()), e);
 }
 const m = {
-  version: "2.18.2"
+  version: "2.18.4"
 };
 function _() {
   return {
@@ -125,4 +125,4 @@ export {
   L as I,
   i as g
 };
-//# sourceMappingURL=index-oHlTgW2C.js.map
+//# sourceMappingURL=index-0r_H2Gko.js.map

@@ -5,7 +5,7 @@ import { L as Sn } from "./chunks/logger-C1WxLZjH.js";
 import { i as Cn, r as ur, w as fr } from "./chunks/in-memory-clipboard-CBDV7nbf.js";
 import { e as ot, b as gr } from "./chunks/outside-DpurI6XH.js";
 import { a as Xe, g as Fe, b as Ye, e as pr, d as _r } from "./chunks/image-Y3tFDdOU.js";
-import { I as yr } from "./chunks/index-oHlTgW2C.js";
+import { I as yr } from "./chunks/index-0r_H2Gko.js";
 function mr(n, t) {
   return {
     forEach(e) {
@@ -5909,6 +5909,7 @@ export {
   T as EVENT_TYPE,
   ac as IRFlowchart,
   cc as IRFlowchartCommands,
-  ie as POSITION_LIST
+  ie as POSITION_LIST,
+  He as RenderObject
 };
 //# sourceMappingURL=flowchart.js.map
