@@ -1,11 +1,11 @@
-import "./chunks/_init-BIZHSL6w.js";
+import "./chunks/_init-nhPfGQQu.js";
 import { a as ue } from "./chunks/asserts-CpwDJsre.js";
 import { c as On } from "./chunks/clone-CMP76bLO.js";
 import { L as Sn } from "./chunks/logger-C1WxLZjH.js";
 import { i as Cn, r as ur, w as fr } from "./chunks/in-memory-clipboard-CBDV7nbf.js";
-import { e as ot, b as gr } from "./chunks/outside-DpurI6XH.js";
+import { e as st, a as gr } from "./chunks/outside-CbbQ5fFh.js";
 import { a as Xe, g as Fe, b as Ye, e as pr, d as _r } from "./chunks/image-Y3tFDdOU.js";
-import { I as yr } from "./chunks/index-0r_H2Gko.js";
+import { I as yr } from "./chunks/index-BWYFssyG.js";
 function mr(n, t) {
   return {
     forEach(e) {
@@ -729,7 +729,7 @@ function io(n, t) {
 function oo() {
   return navigator.maxTouchPoints || "ontouchstart" in this;
 }
-function st() {
+function at() {
   var n = no, t = ro, e = io, r = oo, i = {}, o = oe("start", "drag", "end"), s = 0, a, c, l, h, f = 0;
   function u(p) {
     p.on("mousedown.drag", _).filter(r).on("touchstart.drag", I).on("touchmove.drag", b, eo).on("touchend.drag touchcancel.drag", P).style("touch-action", "none").style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
@@ -1046,7 +1046,7 @@ Ae($, xe, Hn(zt, {
     return this;
   },
   clamp() {
-    return new $(gt(this.r), gt(this.g), gt(this.b), Qt(this.opacity));
+    return new $(pt(this.r), pt(this.g), pt(this.b), Qt(this.opacity));
   },
   displayable() {
     return -0.5 <= this.r && this.r < 255.5 && -0.5 <= this.g && this.g < 255.5 && -0.5 <= this.b && this.b < 255.5 && 0 <= this.opacity && this.opacity <= 1;
@@ -1059,23 +1059,23 @@ Ae($, xe, Hn(zt, {
   toString: Ze
 }));
 function Ke() {
-  return `#${ft(this.r)}${ft(this.g)}${ft(this.b)}`;
+  return `#${gt(this.r)}${gt(this.g)}${gt(this.b)}`;
 }
 function yo() {
-  return `#${ft(this.r)}${ft(this.g)}${ft(this.b)}${ft((isNaN(this.opacity) ? 1 : this.opacity) * 255)}`;
+  return `#${gt(this.r)}${gt(this.g)}${gt(this.b)}${gt((isNaN(this.opacity) ? 1 : this.opacity) * 255)}`;
 }
 function Ze() {
   const n = Qt(this.opacity);
-  return `${n === 1 ? "rgb(" : "rgba("}${gt(this.r)}, ${gt(this.g)}, ${gt(this.b)}${n === 1 ? ")" : `, ${n})`}`;
+  return `${n === 1 ? "rgb(" : "rgba("}${pt(this.r)}, ${pt(this.g)}, ${pt(this.b)}${n === 1 ? ")" : `, ${n})`}`;
 }
 function Qt(n) {
   return isNaN(n) ? 1 : Math.max(0, Math.min(1, n));
 }
-function gt(n) {
+function pt(n) {
   return Math.max(0, Math.min(255, Math.round(n) || 0));
 }
-function ft(n) {
-  return n = gt(n), (n < 16 ? "0" : "") + n.toString(16);
+function gt(n) {
+  return n = pt(n), (n < 16 ? "0" : "") + n.toString(16);
 }
 function Je(n, t, e, r) {
   return r <= 0 ? n = t = e = NaN : e <= 0 || e >= 1 ? n = t = NaN : t <= 0 && (n = NaN), new U(n, t, e, r);
@@ -1160,7 +1160,7 @@ const tn = function n(t) {
   }
   return r.gamma = n, r;
 }(1);
-function at(n, t) {
+function ct(n, t) {
   return n = +n, t = +t, function(e) {
     return n * (1 - e) + t * e;
   };
@@ -1179,7 +1179,7 @@ function Oo(n) {
 function So(n, t) {
   var e = ve.lastIndex = pe.lastIndex = 0, r, i, o, s = -1, a = [], c = [];
   for (n = n + "", t = t + ""; (r = ve.exec(n)) && (i = pe.exec(t)); )
-    (o = i.index) > e && (o = t.slice(e, o), a[s] ? a[s] += o : a[++s] = o), (r = r[0]) === (i = i[0]) ? a[s] ? a[s] += i : a[++s] = i : (a[++s] = null, c.push({ i: s, x: at(r, i) })), e = pe.lastIndex;
+    (o = i.index) > e && (o = t.slice(e, o), a[s] ? a[s] += o : a[++s] = o), (r = r[0]) === (i = i[0]) ? a[s] ? a[s] += i : a[++s] = i : (a[++s] = null, c.push({ i: s, x: ct(r, i) })), e = pe.lastIndex;
   return e < t.length && (o = t.slice(e), a[s] ? a[s] += o : a[++s] = o), a.length < 2 ? c[0] ? Oo(c[0].x) : vo(t) : (t = c.length, function(l) {
     for (var h = 0, f; h < t; ++h) a[(f = c[h]).i] = f.x(l);
     return a.join("");
@@ -1219,19 +1219,19 @@ function Vn(n, t, e, r) {
   function o(l, h, f, u, _, x) {
     if (l !== f || h !== u) {
       var C = _.push("translate(", null, t, null, e);
-      x.push({ i: C - 4, x: at(l, f) }, { i: C - 2, x: at(h, u) });
+      x.push({ i: C - 4, x: ct(l, f) }, { i: C - 2, x: ct(h, u) });
     } else (f || u) && _.push("translate(" + f + t + u + e);
   }
   function s(l, h, f, u) {
-    l !== h ? (l - h > 180 ? h += 360 : h - l > 180 && (l += 360), u.push({ i: f.push(i(f) + "rotate(", null, r) - 2, x: at(l, h) })) : h && f.push(i(f) + "rotate(" + h + r);
+    l !== h ? (l - h > 180 ? h += 360 : h - l > 180 && (l += 360), u.push({ i: f.push(i(f) + "rotate(", null, r) - 2, x: ct(l, h) })) : h && f.push(i(f) + "rotate(" + h + r);
   }
   function a(l, h, f, u) {
-    l !== h ? u.push({ i: f.push(i(f) + "skewX(", null, r) - 2, x: at(l, h) }) : h && f.push(i(f) + "skewX(" + h + r);
+    l !== h ? u.push({ i: f.push(i(f) + "skewX(", null, r) - 2, x: ct(l, h) }) : h && f.push(i(f) + "skewX(" + h + r);
   }
   function c(l, h, f, u, _, x) {
     if (l !== f || h !== u) {
       var C = _.push(i(_) + "scale(", null, ",", null, ")");
-      x.push({ i: C - 4, x: at(l, f) }, { i: C - 2, x: at(h, u) });
+      x.push({ i: C - 4, x: ct(l, f) }, { i: C - 2, x: ct(h, u) });
     } else (f !== 1 || u !== 1) && _.push(i(_) + "scale(" + f + "," + u + ")");
   }
   return function(l, h) {
@@ -1281,14 +1281,14 @@ const Ao = function n(t, e, r) {
     return n(s, a, c);
   }, i;
 }(Math.SQRT2, 2, 4);
-var vt = 0, Mt = 0, St = 0, Un = 1e3, te, jt, ee = 0, pt = 0, ae = 0, At = typeof performance == "object" && performance.now ? performance : Date, Wn = typeof window == "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(n) {
+var vt = 0, Mt = 0, St = 0, Un = 1e3, te, jt, ee = 0, _t = 0, ae = 0, At = typeof performance == "object" && performance.now ? performance : Date, Wn = typeof window == "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(n) {
   setTimeout(n, 17);
 };
 function Ne() {
-  return pt || (Wn(No), pt = At.now() + ae);
+  return _t || (Wn(No), _t = At.now() + ae);
 }
 function No() {
-  pt = 0;
+  _t = 0;
 }
 function ne() {
   this._call = this._time = this._next = null;
@@ -1310,15 +1310,15 @@ function qn(n, t, e) {
 function zo() {
   Ne(), ++vt;
   for (var n = te, t; n; )
-    (t = pt - n._time) >= 0 && n._call.call(void 0, t), n = n._next;
+    (t = _t - n._time) >= 0 && n._call.call(void 0, t), n = n._next;
   --vt;
 }
 function rn() {
-  pt = (ee = At.now()) + ae, vt = Mt = 0;
+  _t = (ee = At.now()) + ae, vt = Mt = 0;
   try {
     zo();
   } finally {
-    vt = 0, Po(), pt = 0;
+    vt = 0, Po(), _t = 0;
   }
 }
 function Do() {
@@ -1333,7 +1333,7 @@ function Po() {
 function Se(n) {
   if (!vt) {
     Mt && (Mt = clearTimeout(Mt));
-    var t = n - pt;
+    var t = n - _t;
     t > 24 ? (n < 1 / 0 && (Mt = setTimeout(rn, n - At.now() - ae)), St && (St = clearInterval(St))) : (St || (ee = At.now(), St = setInterval(Do, Un)), vt = 1, Wn(rn));
   }
 }
@@ -1484,7 +1484,7 @@ function De(n, t, e) {
 }
 function Kn(n, t) {
   var e;
-  return (typeof t == "number" ? at : t instanceof Tt ? tn : (e = Tt(t)) ? (t = e, tn) : So)(n, t);
+  return (typeof t == "number" ? ct : t instanceof Tt ? tn : (e = Tt(t)) ? (t = e, tn) : So)(n, t);
 }
 function Bo(n) {
   return function() {
@@ -2187,7 +2187,7 @@ class le {
     return this;
   }
 }
-class ut extends le {
+class ft extends le {
   objDataList;
   constructor(t) {
     super("add"), this.objDataList = t;
@@ -2201,7 +2201,7 @@ class ut extends le {
     return this.objDataList.forEach((e) => t.addRenderObj(e)), this;
   }
 }
-class je extends ut {
+class je extends ft {
   constructor(t) {
     super(t), this.command = "delete";
   }
@@ -2290,7 +2290,7 @@ const he = {
   "node.commentForeColor": "black",
   "node.borderRadius": 0,
   "node.autoGeneratedConnectorRender": "elbow"
-}, ct = 10, Js = 10, Qs = /* @__PURE__ */ new Set([
+}, lt = 10, Js = 10, Qs = /* @__PURE__ */ new Set([
   // 공용
   "id",
   "type",
@@ -2888,7 +2888,7 @@ const ga = (n) => {
       break;
   }
   return t;
-}, ht = (n) => {
+}, dt = (n) => {
   const t = [];
   return n.forEach((e) => {
     t.push(On(e.data));
@@ -2939,7 +2939,7 @@ function cr(n, t, e, r, i) {
 }
 const pa = (n, t) => {
   n.selectAll("tspan").remove(), t.clear();
-}, _a = (n) => new Sn(n), un = (n) => Math.round(n / ct) * ct, fn = ["node.width", "node.height"];
+}, _a = (n) => new Sn(n), un = (n) => Math.round(n / lt) * lt, fn = ["node.width", "node.height"];
 class et {
   // TODO js -> ts화 중으로, 현재는 임시 방편.
   // 추후 Flowchart object data에 맞는 타입으로 변환 필요
@@ -2982,7 +2982,7 @@ class et {
     return this._propList;
   }
 }
-class lt extends le {
+class ht extends le {
   changeInfoList;
   constructor(t) {
     super("edit"), this.changeInfoList = t;
@@ -3133,7 +3133,7 @@ class ba {
     }
   }
   moveEndHandler() {
-    this.iContainer.getLogger().debug("MoveHandler.moveEndHandler()", "end"), this.movedInfo.forEach((t) => t.updateMoveNewValues()), this.movedInfo.some((t) => t.propList.some((e) => Cn(e.oldValue, e.newValue) === !1)) && this.actionController.addAction(new lt(this.movedInfo));
+    this.iContainer.getLogger().debug("MoveHandler.moveEndHandler()", "end"), this.movedInfo.forEach((t) => t.updateMoveNewValues()), this.movedInfo.some((t) => t.propList.some((e) => Cn(e.oldValue, e.newValue) === !1)) && this.actionController.addAction(new ht(this.movedInfo));
   }
 }
 const T = {
@@ -3207,13 +3207,13 @@ class wa {
       }
   }
   resizeDragEnd() {
-    this.iContainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end"), this.resizeInfo.forEach((t) => t.updateSizeNewValues()), this.resizeInfo.some((t) => t.propList.some((e) => Cn(e.oldValue, e.newValue) === !1)) && this.actionController.addAction(new lt(this.resizeInfo));
+    this.iContainer.getLogger().debug("ResizeHandler.resizeDragEnd()", "end"), this.resizeInfo.forEach((t) => t.updateSizeNewValues()), this.resizeInfo.some((t) => t.propList.some((e) => Cn(e.oldValue, e.newValue) === !1)) && this.actionController.addAction(new ht(this.resizeInfo));
   }
   addDragActionOnResizer(t) {
     t.renderer.resizers.forEach((e) => {
       const r = e.attr("cursor");
-      e.call(st().filter(() => this.iContainer.getReadOnly() === !1).on("start", (i) => {
-        ot(i.sourceEvent.target), this.resizeDragStart(), this.iContainer.initDrag("drag-node-resize");
+      e.call(at().filter(() => this.iContainer.getReadOnly() === !1).on("start", (i) => {
+        st(i.sourceEvent.target), this.resizeDragStart(), this.iContainer.initDrag("drag-node-resize");
       }).on("drag", (i) => {
         const o = i.x, s = i.y, a = t.width, c = t.height;
         switch (r) {
@@ -3255,16 +3255,16 @@ class wa {
 function xa(n) {
   const t = document.createElement("div"), e = document.createElementNS("http://www.w3.org/2000/svg", "svg"), r = document.createElement("span");
   e.setAttribute("xmlns", "http://www.w3.org/2000/svg"), e.style.background = "#fff", e.classList.add("ir-fw-svg"), t.classList.add("flowchart", "ir-flowchart"), t.tabIndex = 0, r.className = "ir-flowchart-hidden", r.textContent = "copy-range";
-  const i = ct * Js;
+  const i = lt * Js;
   return e.innerHTML = `
 <defs>
     <pattern
         id="${n}_small_grid"
-        width="${ct}"
-        height="${ct}"
+        width="${lt}"
+        height="${lt}"
         patternUnits="userSpaceOnUse">
         <path
-        d="M ${ct} 0 L 0 0 0 ${ct}"
+        d="M ${lt} 0 L 0 0 0 ${lt}"
         fill="none"
         stroke="gray"
         stroke-width="0.5"/>
@@ -3483,7 +3483,7 @@ class Oa extends He {
       throw new Error(`There is no id you received in this group!'${t}'`);
   }
 }
-const _t = 6, Sa = 2, gn = 5, it = [
+const yt = 6, Sa = 2, gn = 5, it = [
   ["ir-fw-top-l", "start", "TopLeft"],
   ["ir-fw-top-c", "middle", "TopCenter"],
   ["ir-fw-top-r", "end", "TopRight"],
@@ -3520,7 +3520,7 @@ class Ot extends Le {
   _createResizer() {
     const t = this.group;
     for (const e of this.getResizerPosition()) {
-      const r = t.append("rect").attr("x", e[0] - _t / 2).attr("y", e[1] - _t / 2).attr("width", _t).attr("height", _t).attr("fill", "rgb(173, 216, 230)").attr("stroke", "rgb(30, 144, 255)").attr("cursor", e[2]).attr("class", "ir-fw-resizer").attr("visibility", "hidden");
+      const r = t.append("rect").attr("x", e[0] - yt / 2).attr("y", e[1] - yt / 2).attr("width", yt).attr("height", yt).attr("fill", "rgb(173, 216, 230)").attr("stroke", "rgb(30, 144, 255)").attr("cursor", e[2]).attr("class", "ir-fw-resizer").attr("visibility", "hidden");
       this.resizers.push(r);
     }
   }
@@ -3577,7 +3577,7 @@ class Ot extends Le {
     let t = 0;
     for (const e of this.getResizerPosition()) {
       const r = this.resizers[t], i = r.node();
-      this.isHovered && this.resizerVisibility && this.containerInterface.getReadOnly() === !1 && i !== null ? (this.bringToFrontElement(i), r.attr("x", e[0] - _t / 2).attr("y", e[1] - _t / 2).attr("class", "ir-fw-resizer").attr("visibility", "visible").classed("ir-fw-active", !0)) : r.classed("ir-fw-active", !1).attr(
+      this.isHovered && this.resizerVisibility && this.containerInterface.getReadOnly() === !1 && i !== null ? (this.bringToFrontElement(i), r.attr("x", e[0] - yt / 2).attr("y", e[1] - yt / 2).attr("class", "ir-fw-resizer").attr("visibility", "visible").classed("ir-fw-active", !0)) : r.classed("ir-fw-active", !1).attr(
         "visibility",
         this.resizerVisibility && this.containerInterface.getReadOnly() === !1 ? "visible" : "hidden"
       ), ++t;
@@ -3831,7 +3831,7 @@ class Na extends Ot {
     this.objects.body.attr("x", -(e / 2)).attr("y", -(r / 2)).attr("rx", (e + r) / 6).style("width", `${e}px`).style("height", `${r}px`).style("fill", t.get("node.fill")).style("stroke-width", t.get("borderWidth")).attr("stroke", t.get("borderColor")).attr("stroke-dasharray", t.get("borderDash"));
   }
 }
-const yt = 15, za = -4, Da = 2;
+const mt = 15, za = -4, Da = 2;
 class Pa extends Ot {
   constructor(t, e) {
     super(t, "comment", e);
@@ -3841,7 +3841,7 @@ class Pa extends Ot {
   }
   _getPath() {
     const t = [], e = this.width / 2, r = this.height / 2, i = -e, o = -r;
-    return t.push(`M${i} ${o}`), t.push(`L${e - yt} ${o}`), t.push(`L${e},${o + yt}`), t.push(`L${e},${r}`), t.push(`L${i},${r}`), t.push("Z"), t.push(`M${e - yt} ${o}`), t.push(`L${e - (yt + za)} ${o + (yt + Da)}`), t.push(`L${e} ${o + yt}`), t.join(" ");
+    return t.push(`M${i} ${o}`), t.push(`L${e - mt} ${o}`), t.push(`L${e},${o + mt}`), t.push(`L${e},${r}`), t.push(`L${i},${r}`), t.push("Z"), t.push(`M${e - mt} ${o}`), t.push(`L${e - (mt + za)} ${o + (mt + Da)}`), t.push(`L${e} ${o + mt}`), t.join(" ");
   }
   _render() {
     const t = this.dataWrapper;
@@ -4061,7 +4061,7 @@ class La extends dr {
       this.objects.rect.style("fill", "transparent").style("stroke", "transparent");
   }
 }
-const Vt = 20, dt = 10, yn = dt / 2;
+const Vt = 20, ut = 10, yn = ut / 2;
 class Ha extends dr {
   constructor(t, e) {
     super(t, "elbow", e), this.adjusterList = [], this.elbowMap = {
@@ -4244,16 +4244,16 @@ class Ha extends dr {
       const s = !r;
       let a = 0, c = 0, l = null;
       r = !r;
-      const h = this.group.append("rect").attr("x", i.x - dt / 2).attr("y", i.y - dt / 2).attr("width", dt).attr("height", dt).attr("class", "adjuster").attr("cursor", "move").call(st().filter(() => this.containerInterface.getReadOnly() === !1).on("start", (f) => {
-        ot(f.sourceEvent.target), a = f.x, c = f.y, l = ke(this.data["connection.points"]), this.containerInterface.adjDragStartCallback();
+      const h = this.group.append("rect").attr("x", i.x - ut / 2).attr("y", i.y - ut / 2).attr("width", ut).attr("height", ut).attr("class", "adjuster").attr("cursor", "move").call(at().filter(() => this.containerInterface.getReadOnly() === !1).on("start", (f) => {
+        st(f.sourceEvent.target), a = f.x, c = f.y, l = ke(this.data["connection.points"]), this.containerInterface.adjDragStartCallback();
       }).on("drag", (f) => {
         const u = e["connection.points"], _ = u[o + 1];
         if (s) {
           const x = a - f.x;
-          _.x -= x, a = f.x, h.attr("x", _.x - dt / 2), o > 0 && (u[o].x -= x / 2), o + 3 < u.length && (u[o + 2].x -= x / 2);
+          _.x -= x, a = f.x, h.attr("x", _.x - ut / 2), o > 0 && (u[o].x -= x / 2), o + 3 < u.length && (u[o + 2].x -= x / 2);
         } else {
           const x = c - f.y;
-          _.y -= x, c = f.y, h.attr("y", _.y - dt / 2), o > 0 && (u[o].y -= x / 2), o + 3 < u.length && (u[o + 2].y -= x / 2);
+          _.y -= x, c = f.y, h.attr("y", _.y - ut / 2), o > 0 && (u[o].y -= x / 2), o + 3 < u.length && (u[o + 2].y -= x / 2);
         }
         this._render();
       }).on("end", () => {
@@ -4503,7 +4503,7 @@ function Ka(n) {
     }
   };
 }
-const Za = 255, bn = 8, wn = 8, me = "ir-style/flowchart", xn = 0.4, vn = 3, Ut = 5, Ja = /* @__PURE__ */ new Set(["isHovered", "isSelected"]), mt = ct;
+const Za = 255, bn = 8, wn = 8, me = "ir-style/flowchart", xn = 0.4, vn = 3, Ut = 5, Ja = /* @__PURE__ */ new Set(["isHovered", "isSelected"]), ot = lt;
 class ac extends yr {
   _defaultFontFamily;
   _wheelZoom = !0;
@@ -4536,7 +4536,6 @@ class ac extends yr {
   _div;
   _copySpan;
   _objectManager;
-  theme;
   _containerInterface;
   _renderManager;
   _seqMng;
@@ -4544,18 +4543,25 @@ class ac extends yr {
   _actionController;
   _moveHandler;
   _resizeHandler;
-  constructor({
-    contextElement: t,
-    width: e,
-    height: r,
-    theme: i,
-    fitSizeMode: o = !1
-  }) {
-    super({ contextElement: t }), this._fitSizeMode = o, this._logger = _a(this.uuid.substring(0, 4)), this.keyMap = {
-      ArrowLeft: [() => this.handleKeydownArrows(-10, 0)],
-      ArrowRight: [() => this.handleKeydownArrows(mt, 0)],
-      ArrowDown: [() => this.handleKeydownArrows(0, mt)],
-      ArrowUp: [() => this.handleKeydownArrows(0, -10)],
+  theme;
+  /**
+   * `IRFlowchart`는 `class` 형태로 제공된다. 그러므로, new 키워드를 이용하여 생성자 인자에 맞는 객체 인스턴스를 생성하여 사용한다.\
+   * 생성자 인자는 `IRFlowchartArgs`라는 단일 타입으로 정의된다.
+   */
+  constructor(t) {
+    super({ contextElement: t.contextElement });
+    const {
+      contextElement: e,
+      width: r,
+      height: i,
+      theme: o,
+      fitSizeMode: s = !1
+    } = t;
+    this._fitSizeMode = s, this._logger = _a(this.uuid.substring(0, 4)), this.keyMap = {
+      ArrowLeft: [() => this.handleKeydownArrows(-ot, 0)],
+      ArrowRight: [() => this.handleKeydownArrows(ot, 0)],
+      ArrowDown: [() => this.handleKeydownArrows(0, ot)],
+      ArrowUp: [() => this.handleKeydownArrows(0, -ot)],
       Delete: [() => this.handleKeydownDelete()],
       Escape: [() => this.handleKeydownEscape()],
       F2: [() => this.handleKeydownF2()],
@@ -4576,37 +4582,37 @@ class ac extends yr {
       "^v": [() => this._beforeCopyPaste(), !0],
       "^V": [() => this._beforeCopyPaste(), !0]
     }, this.emitter = Ka(this);
-    const { div: s, svg: a, span: c } = xa(this.uuid);
-    this._div = s, this._copySpan = c, s.addEventListener("keydown", (l) => {
+    const { div: a, svg: c, span: l } = xa(this.uuid);
+    this._div = a, this._copySpan = l, a.addEventListener("keydown", (h) => {
       if (this._editMode || this._readonly) {
         this._logger.debug("InnoFlowchart.handleKeydown()", "Cancel because of editMode or readonly mode");
         return;
       }
-      const h = `${l.ctrlKey ? "^" : ""}${l.key}`, f = this.keyMap[h];
-      f && (f[1] !== !0 && l.preventDefault(), f[0](l));
-    }), s.addEventListener("copy", this._onNativeCopy.bind(this)), s.addEventListener("cut", this._onNativeCut.bind(this)), s.addEventListener("paste", this._onNativePaste.bind(this)), this.addCoreElement(s), t.appendChild(s), this._initD3Elements(s, a, e, r), this._containerInterface = {
+      const f = `${h.ctrlKey ? "^" : ""}${h.key}`, u = this.keyMap[f];
+      u && (u[1] !== !0 && h.preventDefault(), u[0](h));
+    }), a.addEventListener("copy", this._onNativeCopy.bind(this)), a.addEventListener("cut", this._onNativeCut.bind(this)), a.addEventListener("paste", this._onNativePaste.bind(this)), this.addCoreElement(a), e.appendChild(a), this._initD3Elements(a, c, r, i), this._containerInterface = {
       // Manipulation API
       releaseAllObjects: () => this.releaseAllObjects(),
-      addRenderObj: (l) => this.add(l),
-      removeObject: (l) => this.remove(l),
-      initDrag: (l) => this._initDrag(l),
-      terminateDrag: (l) => this._terminateDrag(l),
+      addRenderObj: (h) => this.add(h),
+      removeObject: (h) => this.remove(h),
+      initDrag: (h) => this._initDrag(h),
+      terminateDrag: (h) => this._terminateDrag(h),
       isDragging: () => this._isDragging,
-      changeObjRender: (l, h) => this._changeObjRender(l, h),
+      changeObjRender: (h, f) => this._changeObjRender(h, f),
       // Callback
       adjDragStartCallback: () => this._adjDragStartCallbackHandler(),
-      adjDragEndCallback: (l, h, f) => this._adjDragEndCallbackHandler(l, h, f),
-      editTextCallback: (l, h, f) => this._editTextCallbackHandler(l, h, f),
-      editTextModeCallback: (l) => this._editTextModeCallback(l),
-      renderCallback: (l) => this._renderCallBack(l),
-      observerCallback: (l) => this._observerCallback(l),
-      selectCallback: (l, h, f) => this._selectCallbackHandler(l, h, f),
-      releaseCallback: (l, h) => this._releaseCallbackHandler(l, h),
+      adjDragEndCallback: (h, f, u) => this._adjDragEndCallbackHandler(h, f, u),
+      editTextCallback: (h, f, u) => this._editTextCallbackHandler(h, f, u),
+      editTextModeCallback: (h) => this._editTextModeCallback(h),
+      renderCallback: (h) => this._renderCallBack(h),
+      observerCallback: (h) => this._observerCallback(h),
+      selectCallback: (h, f, u) => this._selectCallbackHandler(h, f, u),
+      releaseCallback: (h, f) => this._releaseCallbackHandler(h, f),
       // getter / setter
-      setEditMode: (l) => this._editMode = l,
+      setEditMode: (h) => this._editMode = h,
       getLogger: () => this._logger,
       getSvg: () => this.d3Svg,
-      getObjectOrNull: (l) => this.getObjectOrNull(l),
+      getObjectOrNull: (h) => this.getObjectOrNull(h),
       getSelectNodeOnHover: () => this._selectNodeOnHover,
       getTooltipHidden: () => this._tooltipHidden,
       getReadOnly: () => this._readonly,
@@ -4614,84 +4620,174 @@ class ac extends yr {
       getUUID: () => this.uuid
     }, this._objectManager = new ma(), this._renderManager = new Va(), this._seqMng = new Ua(this._containerInterface), this._objMouseHandler = new Aa(this._containerInterface), this._actionController = new Zs(this._containerInterface, Za), this._moveHandler = new ba(this._actionController, this._objectManager, this._containerInterface), this._resizeHandler = new wa(this._actionController, this._objectManager, this._containerInterface), this._defaultFontFamily = getComputedStyle(this.contextElement).fontFamily, this.theme = {
       ...Wa,
-      ...i
+      ...o
     }, this.defaultRule = fa, this.zoomTo(1), this.render();
   }
+  /**
+   * @returns 문자열 "flowchart"를 반환한다.
+   */
   get componentLabel() {
     return "flowchart";
   }
+  /**
+   * @returns 현재 flowchart가 렌더링된 HTMLElement를 반환한다.
+   */
   get div() {
     return this._div;
   }
+  /**
+   * @returns 현재 flowchart가 렌더링된 svg요소를 반환한다.
+   */
   get svgElement() {
     return this.d3Svg.node();
   }
+  /**
+   * @returns 현재 flowchart의 undo와 redo 스택을 가지고 있는 ActionController를 반환한다.
+   */
   get actionController() {
     return this._actionController;
   }
+  /**
+   * 현재 flowchart가 읽기 전용 모드인지 확인한다.
+   */
   get readonly() {
     return this._readonly;
   }
+  /**
+   * 현재 flowchart가 연결선 최단 거리 자동 설정 모드인지 확인한다.
+   */
   get simpleConnectingMode() {
     return this._simpleConnectingMode;
   }
+  /**
+   * 현재 flowchart가 마우스 상호작용 비활성화 모드인지 확인한다.
+   */
   get editMode() {
     return this._editMode;
   }
+  /**
+   * 현재 flowchart가 눈금선 모드인지 확인한다.
+   */
   get gridMode() {
     return this._gridMode;
   }
+  /**
+   * 현재 flowchart가 툴팁 숨김 모드인지 확인한다.
+   */
   get tooltipHidden() {
     return this._tooltipHidden;
   }
+  /**
+   * 현재 flowchart에 설정된 fitSizeMode를 확인한다.\
+   * flowchart를 생성할 때만 설정 가능하며, setter로 설정할 수 없다.
+   */
   get fitSizeMode() {
     return this._fitSizeMode;
   }
+  /**
+   * 현재 flowchart가 노드 선택 시 스크롤 중앙 이동 모드인지 확인한다.
+   */
   get moveScreenOnSelect() {
     return this._moveScreenOnSelect;
   }
+  /**
+   * 현재 flowchart가 마우스 hover시 노드 선택 모드인지 확인한다.
+   */
   get selectNodeOnHover() {
     return this._selectNodeOnHover;
   }
+  /**
+   * 현재 flowchart가 ctrl + 마우스 wheel로 줌을 할 수 있는 모드인지 확인한다.
+   */
   get wheelZoom() {
     return this._wheelZoom;
   }
+  /**
+   * 현재 flowchart가 디버그 모드인지 확인한다.
+   */
   get traceMode() {
     return this._traceMode;
   }
+  /**
+   * 현재 flowchart가 단일 선택 모드인지 확인한다.
+   */
   get singleSelection() {
     return this._singleSelection;
   }
+  /**
+   * 현재 flowchart의 읽기 전용 모드를 설정한다.\
+   * `true` 할당 시, flowchart 모든 요소의 편집이 제한된다.
+   */
   set readonly(t) {
     this._readonly !== t && (this._readonly = t, this.classedOnSvg(t, "readonly"), this._logger.info(`readonly property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 연결선 최단 거리 자동 설정 모드를 설정한다.\
+   * `true` 할당 시, 노드를 조작할 때 노드간 연결선을 최단 거리로 자동으로 설정한다.
+   */
   set simpleConnectingMode(t) {
     this._simpleConnectingMode !== t && (this._simpleConnectingMode = t, this.classedOnSvg(t, "simple"), this._logger.info(`simpleConnectingMode property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 마우스 상호작용 비활성화 모드를 설정한다.\
+   * `true` 할당 시, flowchart 내부 요소의 마우스 상호작용이 비활성화 된다.
+   */
   set editMode(t) {
     this._editMode !== t && (this._editMode = t, this.classedOnSvg(t, "edit-mode"), this._logger.info(`editMode property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 눈금선 모드를 설정한다.\
+   * `true` 할당 시, flowchart 내부 패널에 눈금선을 보여준다.
+   */
   set gridMode(t) {
     this._gridMode !== t && (this._gridMode = t, this.d3Grid.attr("visibility", this._gridMode ? "visible" : "hidden"), this.classedOnSvg(t, "flowchart-grid"), this._logger.info(`gridMode property is changed to '${t}'`), this.render());
   }
+  /**
+   * 현재 flowchart의 툴팁 숨김 모드를 설정한다.\
+   * `true` 할당 시, flowchart의 툴팁이 숨김 처리된다.
+   */
   set tooltipHidden(t) {
     this._tooltipHidden !== t && (this._tooltipHidden = t, this.classedOnSvg(t, "ir-fw-tooltip-hidden"), this._logger.info(`tooltipHidden property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 노드 선택 시 스크롤 중앙 이동 모드를 설정한다.\
+   * `true` 할당 시, flowchart의 노드 선택 시 스크롤을 이동하여 노드를 중앙에 위치시킨다.
+   */
   set moveScreenOnSelect(t) {
     this._moveScreenOnSelect !== t && (this._moveScreenOnSelect = t, this.classedOnSvg(t, "move-screen-on-select"), this._logger.info(`moveScreenOnSelect property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 마우스 hover시 노드 선택 모드를 설정한다.\
+   * `true` 할당 시, flowchart의 노드가 마우스 hover시에도 선택된다.
+   */
   set selectNodeOnHover(t) {
     this._selectNodeOnHover !== t && (this._selectNodeOnHover = t, this.classedOnSvg(t, "select-node-on-hover"), this._logger.info(`selectNodeOnHover property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 ctrl + 마우스 wheel로 줌을 할 수 있는 모드인지를 설정한다.\
+   * 기본적으로 `true`가 할당되어 있으며, `false` 할당 시 flowchart 패널 내에서 ctrl + 마우스 wheel 줌은 동작하지 않는다.
+   */
   set wheelZoom(t) {
     this._wheelZoom !== t && (this._wheelZoom = t, this.classedOnSvg(t, "wheel-zoom"), this._logger.info(`wheelZoom property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 디버그 모드를 설정한다.\
+   * `true` 할당 시, 노드에 대한 자세한 로그를 확인할 수 있다.
+   */
   set traceMode(t) {
     this._traceMode !== t && (this._logger.logLevel = t ? "INFO" : "ERROR", this._traceMode = t, this.classedOnSvg(t, "trace"), this._logger.info(`traceMode property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 단일 선택 모드를 설정한다.\
+   * `true` 할당 시, 요소의 단일 선택만을 허용한다.
+   */
   set singleSelection(t) {
     this._singleSelection !== t && (this._singleSelection = t, this.classedOnSvg(t, "single-select"), this._logger.info(`singleSelection property is changed to '${t}'`));
   }
+  /**
+   * 현재 flowchart의 캔버스 이동 모드를 설정한다.\
+   * `true` 할당 시, flowchart의 내부 패널을 드래그 시 캔버스를 이동시킬 수 있다.
+   */
   set canvasMoveMode(t) {
     this._canvasMoveMode !== t && (this._canvasMoveMode = t, this.classedOnSvg(t, "canvas-move"), this._logger.info(`canvasMoveMode property is changed to '${t}'`));
   }
@@ -4724,8 +4820,8 @@ class ac extends yr {
   _initD3Elements(t, e, r, i) {
     t.addEventListener("contextmenu", (c) => this._onContextMenu(c));
     const o = isNaN(r) ? r : `${r}px`, s = isNaN(i) ? i : `${i}px`;
-    this.d3Div = V(t).style("width", o).style("height", s), this.d3Svg = V(e).on("mousemove", (c) => this._mouseMoveOnSheetHandler(c)).on("click", (c) => this._clickOnSheetHandler(c)).call(st().filter((c) => c.button === 0 && this._editMode === !1).on("start", (c) => {
-      ot(this.contextElement), this._dragController(c);
+    this.d3Div = V(t).style("width", o).style("height", s), this.d3Svg = V(e).on("mousemove", (c) => this._mouseMoveOnSheetHandler(c)).on("click", (c) => this._clickOnSheetHandler(c)).call(at().filter((c) => c.button === 0 && this._editMode === !1).on("start", (c) => {
+      st(this.contextElement), this._dragController(c);
     }).on("drag", (c) => this._dragController(c)).on("end", (c) => this._dragController(c))), this.d3Grid = this.d3Svg.append("g").attr("transform", "translate(-1, -1)").attr("class", "flowchart-grid").append("rect").attr("width", "100%").attr("height", "100%").attr("fill", `url(#${this.uuid}_grid)`).attr("visibility", "hidden"), this.d3Container = this.d3Svg.append("g").attr("class", "container");
     const a = Ks().filter((c) => this._wheelZoom && c.type === "wheel" && c.ctrlKey).wheelDelta((c) => -c.deltaY * (c.deltaMode === 1 ? 0.05 : c.deltaMode ? 1 : 2e-3)).scaleExtent([xn, vn]).on("zoom", (c) => this.zoomTo(c.transform.k));
     this.d3Div.call(a).on("dblclick.zoom", null), this._div.__zoom = { ...this._div.__zoom };
@@ -4736,12 +4832,45 @@ class ac extends yr {
     const e = document.createRange();
     e.selectNodeContents(this._copySpan), t.removeAllRanges(), t.addRange(e);
   }
+  /**
+   * 이벤트를 발생시키고, 등록된 핸들러를 실행한다.
+   *
+   * @example
+   * ```ts
+   * flowchart.$on( EVENT_TYPE.CLICK, ( {x, y} ) => {
+   *   console.log(EVENT_TYPE.CLICK, x, y);
+   * } );
+   *
+   * // click 이벤트를 발생시키고, $on에 등록된 핸들러를 실행한다.
+   * flowchart.$emit( EVENT_TYPE.CLICK, { x: 100, y: 200 } );
+   * ```
+   */
   $emit(t, ...e) {
     this.emitter.emit(t, e);
   }
+  /**
+   * 이벤트 리스너를 등록하여 특정 이벤트 발생 시 실행할 콜백을 지정한다.
+   *
+   * @example
+   * ```ts
+   * flowchart.$on( EVENT_TYPE.CLICK, ( {x, y} ) => {
+   *    console.log(EVENT_TYPE.CLICK, x, y);
+   * } );
+   * ```
+   */
   $on(t, e) {
     return this.emitter.on(t, e);
   }
+  /**
+   * 등록된 이벤트 리스너를 제거한다.
+   *
+   * @example
+   * ```ts
+   * flowchart.$off( EVENT_TYPE.CLICK, () => {
+   *    console.log(EVENT_TYPE.CLICK);
+   * } );
+   * ```
+   */
   $off(t, e) {
     return this.emitter.off(t, e);
   }
@@ -4752,9 +4881,22 @@ class ac extends yr {
       this._moveHandler.moveEndHandler(), this.refreshSvgSize();
     }
   }
+  /**
+   * flowchart의 svg 요소에 defs 요소를 추가한다.
+   *
+   * @param defsElement 추가할 defs 요소
+   */
   addSvgDefs(t) {
     this.d3Svg.node().appendChild(t);
   }
+  /**
+   * flowchart의 svg 요소에 linearGradient 요소를 추가한다.
+   *
+   * @param id linearGradient의 id
+   * @param rotate gradient의 회전 각도
+   * @param offsets gradient의 offset 값
+   * @param colors gradient의 색상 값
+   */
   addLinearGradientDefs(t, e, r, i) {
     if (typeof r.length != "number" || typeof i.length != "number")
       throw new Error("it must be an array type both offsets and colors!");
@@ -4764,6 +4906,20 @@ class ac extends yr {
       l.setAttribute("offset", a), l.setAttribute("stop-color", c), s.appendChild(l);
     }), o.appendChild(s), this.addSvgDefs(o);
   }
+  /**
+   * flowchart에 새로운 오브젝트를 추가한다.
+   *
+   * @param data 추가할 오브젝트의 정보
+   * @param zIndex 오브젝트의 정렬 순서 (오브젝트는 작성 순서대로 이전의 오브젝트보다 앞쪽에 위치)
+   *
+   * @example
+   * ```ts
+   * const startNode = flowchart.add( {
+   *      type: "node",
+   *      render: "start",
+   * } );
+   * ```
+   */
   add(t, e = void 0) {
     switch (t.type) {
       case void 0:
@@ -4813,6 +4969,15 @@ class ac extends yr {
       `created temp obj id is '${r.id}'`
     ) : (this._addObjectEvent(r), this.emitChangedStatus(), this.$emit(T.NEW_OBJECT, r), this._logger.debug("InnoFlowchart.add()", `created obj id is '${r.id}'`)), r;
   }
+  /**
+   * 선택된 개체를 제거한다.
+   *
+   * @example
+   * ```ts
+   * const object = flowchart.getObjectOrNull(2);
+   * flowchart.remove(object);
+   * ```
+   */
   remove(t) {
     if (t == null)
       throw this._logger.error(
@@ -4842,6 +5007,11 @@ class ac extends yr {
     else
       throw new Error("There is no such as object you received in this flowchart!");
   }
+  /**
+   * IRFlowchart의 줌 비율을 설정한다.
+   *
+   * @param scale 설정하고자 하는 크기 (0.4 이상 3 이하 설정 가능)
+   */
   zoomTo(t) {
     if (t < xn || t > vn)
       return;
@@ -4854,14 +5024,25 @@ class ac extends yr {
    * 음수 좌표가 있는 경우에는 해당 좌표를 조정합니다.
    */
   recordNewObjectsAction(...t) {
-    this._actionController.addAction(new ut(ht(t))), this._updateNegativePos();
+    this._actionController.addAction(new ft(dt(t))), this._updateNegativePos();
   }
+  /**
+   * IRFlowchart의 changed 상태를 true로 변경한다.
+   */
   emitChangedStatus() {
     this._isChanged || (this._isChanged = !0, this.classedOnSvg(!0, "changed"));
   }
+  /**
+   * IRFlowchart의 현재 scale을 반환한다.
+   *
+   * @returns `getTransform()` 메서드의 k 값을 반환
+   */
   getScale() {
     return this.getTransform().k;
   }
+  /**
+   * IRFlowchart 내의 선택된 모든 연결선을 반환한다.
+   */
   getSelectedConnections(t = !0) {
     const e = [];
     for (const r of this._objectManager.getConnectionIterator())
@@ -4872,7 +5053,7 @@ class ac extends yr {
     t.forEach((e) => {
       for (const r of e.propList)
         r.oldValue === void 0 && (r.oldValue = e.objData[r.key]), e.objData[r.key] = r.newValue;
-    }), this._actionController.addAction(new lt(t));
+    }), this._actionController.addAction(new ht(t));
   }
   /**
    * builder에서 사용함, 다만 내부 함수로 사용하므로 외부에서 사용하지 않도록 주의
@@ -4893,7 +5074,18 @@ class ac extends yr {
     this.__editObjProp(r);
   }
   /**
-   * append 모드로 전환
+   * 현재 flowchart를 append 모드로 전환한다.\
+   * 만약 현재 flowchart가 읽기 전용 모드라면 동작하지 않는다.
+   *
+   * @param mode "append"로 지정
+   * @param data
+   *  `type`: node | connection\
+   *  `render`: start | if | db | bridge | comment | return
+   *
+   * @example
+   * ```ts
+   * flowchart.append( "append", { type: "node", render: "start" } );
+   * ```
    */
   append(t, e) {
     if (this._readonly) {
@@ -4912,17 +5104,45 @@ class ac extends yr {
     );
   }
   /**
-   * 카메라 0,0 이동
+   * IRFlowchart의 스크롤을 (0, 0) 으로 이동한다.
    */
   resetScreen() {
     this._div.scrollLeft = 0, this._div.scrollTop = 0;
   }
+  /**
+   * 현재 flowchart가 렌더링된 HTMLElement의 DOMRect 객체를 반환한다.
+   *
+   * @returns
+   * ```ts
+   * {
+   *      "x": 31,
+   *      "y": 333,
+   *      "width": 870,
+   *      "height": 550,
+   *      "top": 333,
+   *      "right": 901,
+   *      "bottom": 883,
+   *      "left": 31
+   * }
+   * ```
+   */
   getWrapperSize() {
     return this._div.getBoundingClientRect();
   }
+  /**
+   * IRFlowchart의 현재 scale k와 translation(x, y)을 반환한다.
+   *
+   * @returns
+   * ```ts
+   * { k: number, x: number, y: number }
+   * ```
+   */
   getTransform() {
     return Qn(this._div);
   }
+  /**
+   *
+   */
   updateMinimumSvgSize() {
     const { width: t, height: e } = this.getWrapperSize();
     this._wrapperSize.width = t, this._wrapperSize.height = e, this.refreshSvgSize();
@@ -4947,14 +5167,14 @@ class ac extends yr {
     this._svgSize.width = t.right, this._svgSize.height = t.bottom, this._logger.info("InnoFlowchart.refreshSvgSize()", t), this.updateSvgSize();
   }
   /**
-  * Re-render this flowchart
-  */
+   * 현재 flowchart를 Re-render 한다.
+   */
   render() {
     this.updateMinimumSvgSize();
   }
   /**
-  * @returns {RenderObject[]}
-  */
+   * IRFlowchart의 모든 오브젝트 리스트를 반환한다.
+   */
   getObjectList() {
     const t = [];
     for (const e of this._objectManager.getAllObjIterator())
@@ -4962,14 +5182,15 @@ class ac extends yr {
     return t;
   }
   /**
-  * clear all actions of actionController
-  */
+   * actionController의 모든 actions를 제거한다.
+   */
   clearActionList() {
     this._logger.info("InnoFlowchart.clearActionList()"), this._actionController.clear();
   }
   /**
-  * Undo last action through actionController
-  */
+   * 이전에 수행된 작업을 실행 취소한다.\
+   * 만약 현재 flowchart가 읽기 전용 모드라면 동작하지 않는다.
+   */
   undoAction() {
     if (this._readonly) {
       this._logger.info("InnoFlowchart.undoAction()", "Preventing undo (readonly: true)");
@@ -4979,8 +5200,9 @@ class ac extends yr {
     this._logger.debug("InnoFlowchart.undoAction()", t), t !== null && (this.refreshSvgSize(), this.$emit(T.UNDO, t));
   }
   /**
-  * Redo recently undone action through actionController
-  */
+   * undoAction에 의해 실행 취소된 작업을 다시 수행한다.\
+   * 만약 현재 flowchart가 읽기 전용 모드라면 동작하지 않는다.
+   */
   redoAction() {
     if (this._readonly) {
       this._logger.info("InnoFlowchart.redoAction()", "Preventing redo (readonly: true)");
@@ -5058,7 +5280,7 @@ class ac extends yr {
       for (const r of this._objectManager.getConnectionIterator())
         if (r.comparePoints(e)) {
           e.forEach((i) => {
-            i.x += mt, i.y += mt;
+            i.x += ot, i.y += ot;
           });
           continue t;
         }
@@ -5070,7 +5292,7 @@ class ac extends yr {
     t: for (; ; ) {
       for (const i of this._objectManager.getNodeIterator())
         if (i.x === e && i.y === r) {
-          e += mt, r += mt;
+          e += ot, r += ot;
           continue t;
         }
       return { "node.x": e, "node.y": r };
@@ -5112,14 +5334,14 @@ class ac extends yr {
     this.emitChangedStatus(), this._actionController.addAction(new hr(e));
   }
   /**
-  * bring selected objects to front
-  */
+   * 선택한 오브젝트를 가장 앞으로 가져온다.
+   */
   bringToFront() {
     this._logger.info("InnoFlowchart.bringToFront()"), this._setZIndexOnSelected("front");
   }
   /**
-  * bring selected objects to back
-  */
+   * 선택한 오브젝트를 가장 뒤로 보낸다.
+   */
   bringToBack() {
     this._logger.info("InnoFlowchart.bringToBack()"), this._setZIndexOnSelected("back");
   }
@@ -5133,9 +5355,15 @@ class ac extends yr {
     for (const r of this._objectManager.getSelectedObjIterator())
       r.moveTo(...this._moveXY(r, t, e));
   }
+  /**
+   * 현재 flowchart의 오브젝트 또는 null을 반환한다.
+   */
   getObjectOrNull(t) {
     return this._objectManager.findOrNull(t);
   }
+  /**
+   * 현재 flowchart의 오브젝트를 선택한다.
+   */
   selectObjectById(t) {
     const e = this.getObjectOrNull(t);
     if (e === null)
@@ -5153,13 +5381,25 @@ class ac extends yr {
       t.data.editable && this._readonly === !1 && t.renderer.editLabelMode(), this._logger.info("InnoFlowchart.event.emit.dblClickNode", t), this.$emit(T.DOUBLE_CLICK_NODE, t);
     });
   }
+  /**
+   * IRFlowchart의 svg 요소에 class 속성을 할당하거나 제거한다.
+   *
+   * @param flag `true` 설정 시 class 속성을 할당, `false` 설정 시 class 속성을 제거
+   * @param classes 할당 또는 제거하고자 하는 class 속성의 값
+   *
+   * @example
+   * ```ts
+   * flowchart.classedOnSvg(true, ["add-class-name second"]);
+   * flowchart.classedOnSvg(false, ["add-class-name"]);
+   * ```
+   */
   classedOnSvg(t, ...e) {
     e.forEach((r) => this.d3Svg.classed(r, t)), this.$emit(T.CHANGE_CLASS, this.d3Svg.attr("class"));
   }
   _addDragActionOnNode(t) {
     let e = !1, r = 0, i = 0, o = 0, s = 0, a = 0, c = 0;
-    t.g.call(st().filter((u) => u.button === 0 && this._editMode === !1).on("start", (u) => {
-      ot(u.sourceEvent.target), this._isSingleSelection(u.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = u.x, i = u.y, o = t.width - (t.endX - u.x), s = t.height - (t.endY - u.y), t.select(!1), a = t.x, c = t.y;
+    t.g.call(at().filter((u) => u.button === 0 && this._editMode === !1).on("start", (u) => {
+      st(u.sourceEvent.target), this._isSingleSelection(u.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = u.x, i = u.y, o = t.width - (t.endX - u.x), s = t.height - (t.endY - u.y), t.select(!1), a = t.x, c = t.y;
     }).on("drag", (u) => {
       this._readonly || (!e && l(u) && h.call(this), e && this._moveSelectedObjects.call(this, ...f(u)));
     }).on("end", (u) => {
@@ -5192,8 +5432,8 @@ class ac extends yr {
   _addDragActionOnConnector(t) {
     for (const e of t.renderer.connectors) {
       const r = ca(e.attr("class"));
-      e.call(st().filter((i) => i.button === 0 && this._readonly === !1).on("start", (i) => {
-        ot(i.sourceEvent.target);
+      e.call(at().filter((i) => i.button === 0 && this._readonly === !1).on("start", (i) => {
+        st(i.sourceEvent.target);
         const o = t.x + t.width / 2 + i.x, s = t.y + t.height / 2 + i.y, a = this._appendMode.data?.render ?? this.theme["node.autoGeneratedConnectorRender"], c = t.getPositionXY(r);
         this._initDrag("drag-node-connector"), this._createAppendingConnection(c.x, c.y, o, s, {
           type: "connection",
@@ -5229,8 +5469,8 @@ class ac extends yr {
   }
   _addDragActionOnConnection(t) {
     let e = 0, r = 0, i = !1;
-    t.g.call(st().filter((o) => o.button === 0 && this._editMode === !1).on("start", (o) => {
-      ot(o.sourceEvent.target), this._isSingleSelection(o.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = o.x, r = o.y, i = !1, t.select();
+    t.g.call(at().filter((o) => o.button === 0 && this._editMode === !1).on("start", (o) => {
+      st(o.sourceEvent.target), this._isSingleSelection(o.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = o.x, r = o.y, i = !1, t.select();
     }).on("drag", (o) => {
       if (this._readonly) return;
       const s = o.x - e, a = o.y - r;
@@ -5250,8 +5490,8 @@ class ac extends yr {
     }));
   }
   _addDragActionOnConnectionConnector(t) {
-    const e = (r, i, o) => st().filter((s) => s.button === 0 && this._editMode === !1 && this._readonly === !1).on("start", (s) => {
-      ot(s.sourceEvent.target), this._moveHandler.moveStartHandler(), this._initDrag("drag-con-connector");
+    const e = (r, i, o) => at().filter((s) => s.button === 0 && this._editMode === !1 && this._readonly === !1).on("start", (s) => {
+      st(s.sourceEvent.target), this._moveHandler.moveStartHandler(), this._initDrag("drag-con-connector");
     }).on("drag", (s) => {
       const a = this._getNodeAndPosUnderXY(s.x, s.y), c = o === "start" ? t.firstPoint : t.endPoint;
       a.node === null ? (t[r] = null, t[i] = null, c.x = s.x, c.y = s.y) : (t[r] = a.node.id, a.hover ? this._setShortestPosition(t, o === "end", o === "start") : t[i] = a.pos), t.renderType === "elbow" && t.renderer.refreshAdjustList(), t.render();
@@ -5265,8 +5505,8 @@ class ac extends yr {
   }
   _addGroupEvent(t) {
     let e = !1, r = 0, i = 0, o = 0, s = 0;
-    t.g.call(st().filter((a) => a.button === 0 && this._editMode === !1 && this._readonly === !1).on("start", (a) => {
-      ot(a.sourceEvent.target), this._isSingleSelection(a.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = a.x, i = a.y, o = a.x, s = a.y, t.select();
+    t.g.call(at().filter((a) => a.button === 0 && this._editMode === !1 && this._readonly === !1).on("start", (a) => {
+      st(a.sourceEvent.target), this._isSingleSelection(a.sourceEvent.ctrlKey) && !t.isSelected && this.releaseAllObjects(t), e = !1, r = a.x, i = a.y, o = a.x, s = a.y, t.select();
     }).on("drag", (a) => {
       !e && Math.abs(r - a.x) + Math.abs(i - a.y) > wn && (e = !0, this._moveHandler.moveStartHandler(), this._initDrag("drag-group-move")), e && (this._moveSelectedObjects(a.x - o, a.y - s), o = a.x, s = a.y);
     }).on("end", () => {
@@ -5316,24 +5556,37 @@ class ac extends yr {
         }
       for (const s of this._objectManager.getGroupIterator())
         s.render();
-      e && (e.unshift(new lt(r)), this._actionController.addAction(...e)), this.refreshSvgSize();
+      e && (e.unshift(new ht(r)), this._actionController.addAction(...e)), this.refreshSvgSize();
     }
   }
+  /**
+   * IRFlowchart 내의 선택된 오브젝트의 개수를 반환한다.
+   */
   getCountOfSelectedObject() {
     let t = 0;
     for (const e of this._objectManager.getSelectedObjIterator())
       this._objectManager.getParentGroupOrNull(e) == null && e.isSelected && ++t;
     return t;
   }
+  /**
+   * IRFlowchart 내의 모든 오브젝트를 선택한다.
+   */
   selectAllObjects() {
     if (!this._singleSelection)
       for (const t of this._objectManager.getAllObjIterator())
         t.type !== "group" && t.select(!0);
   }
+  /**
+   * IRFlowchart 내의 오브젝트를 선택 해제한다.\
+   * `clickObj`가 있다면 해당 오브젝트는 선택 상태를 유지한다.
+   */
   releaseAllObjects(t) {
     for (const e of this._objectManager.getAllObjIterator())
       t !== e && e.release(!0);
   }
+  /**
+   * 현재 선택된 오브젝트를 정렬한다.
+   */
   align(t, e) {
     const r = e || this.getSelectedNodes();
     if (r.length <= 1)
@@ -5381,6 +5634,9 @@ class ac extends yr {
       i && this._moveHandler.moveEndHandler();
     }
   }
+  /**
+   * 현재 선택된 오브젝트를 수직 또는 수평으로 균등 분배한다.
+   */
   distribute(t, e) {
     const r = e || this.getSelectedNodes(!1);
     if (r.length <= 1)
@@ -5400,14 +5656,20 @@ class ac extends yr {
     const o = r.length - 1, s = r[0][i.end], a = r[o][i.start], c = r.slice(1, o).reduce((l, h) => l - h[i.size], a - s) / o;
     r.slice(1, o).reduce((l, h) => (h[i.start] = l, l + h[i.size] + c), s + c), this._moveHandler.moveEndHandler();
   }
+  /**
+   * IRFlowchart 내의 선택된 모든 오브젝트를 반환한다.
+   */
   getSelectedObjects(t = !0) {
     const e = Array.from(this._objectManager.getSelectedObjIterator());
     return t && e.sort((r, i) => r.clickedSeq - i.clickedSeq), e;
   }
+  /**
+   * 선택된 개체를 제거한다.
+   */
   removeSelected() {
     const t = this.getSelectedObjects(!1);
     t.forEach((e) => this.remove(e)), this._actionController.addAction(
-      new je(ht(t))
+      new je(dt(t))
     );
   }
   _getChildElementOrNull(t) {
@@ -5425,27 +5687,41 @@ class ac extends yr {
       }
     return { node: null, pos: null };
   }
+  /**
+   * 선택된 노드를 지정한 좌표로 이동시킨다.
+   */
   moveSelectedNode(t, e) {
     for (const r of this._objectManager.getNodeIterator())
       r.isSelected && (r.x = parseInt((r.x + t) / Ut) * Ut, r.y = parseInt((r.y + e) / Ut) * Ut);
   }
+  /**
+   * IRFlowchart 내의 선택된 모든 노드를 반환한다.
+   */
   getSelectedNodes(t = !0) {
     const e = [];
     for (const r of this._objectManager.getNodeIterator())
       r.isSelected && e.push(r);
     return t && e.sort((r, i) => r.clickedSeq - i.clickedSeq), e;
   }
+  /**
+   * 특정 노드와 연결되어 있는 연결선을 반환한다.
+   */
   getNodeConnections(t) {
     const e = t.observeProperties ? t.id : t, r = this.getObjectOrNull(e), i = Array.from(this._objectManager.getConnectedConnections(e));
     return i.sort((o, s) => ln(r, o) - ln(r, s)), i;
   }
   /**
-   * 개체에 맞게 스크롤 조정
+   * 특정 오브젝트에 맞추어 스크롤을 조정한다.
    */
   moveScreenByObject(t) {
     const e = this.getTransform().k;
     this._div.scrollLeft = t.centerX * e - this._wrapperSize.width / 2, this._div.scrollTop = t.centerY * e - this._wrapperSize.height / 2;
   }
+  /**
+   * 현재 IRFlowchart를 클립보드에 복사한다. ※ 비동기 처리
+   *
+   * @param imgType 기본값 "image/png"
+   */
   async copyToClipboard(t = "image/png") {
     this.releaseAllObjects();
     const e = await Xe(Fe(this.svgElement)), r = await Ye(e, t, this._getFlowchartRect(), bn), i = await pr(r);
@@ -5460,6 +5736,12 @@ class ac extends yr {
       height: r - t + 2
     };
   }
+  /**
+   * 현재 IRFlowchart를 이미지 파일로 저장한다. ※ 비동기 처리
+   *
+   * @param fileName
+   * @param imgType 기본값 "image/png"
+   */
   async saveAsImageFile(t, e = "image/png") {
     this.releaseAllObjects();
     const r = await this.getBlob(e), i = URL.createObjectURL(r);
@@ -5469,16 +5751,28 @@ class ac extends yr {
       URL.revokeObjectURL(i);
     }
   }
+  /**
+   * 현재 IRFlowchart의 이미지 정보(size, type)를 반환한다. ※ 비동기 처리
+   *
+   * @param imgType 기본값 "image/png"
+   * @returns
+   * ```ts
+   * Blob { size: number, type: ImageType }
+   * ```
+   */
   async getBlob(t = "image/png") {
     const e = await Xe(Fe(this.svgElement));
     return await Ye(e, t, this._getFlowchartRect(), bn);
   }
+  /**
+   * IRFlowchart의 내부 패널에 focus를 설정한다.
+   */
   focus() {
     this._div.focus();
   }
   /**
-  * clear info for appending or pasting objects
-  */
+   * 현재 설정된 appendMode의 context를 초기화한다. (appending 또는 pasting 객체 제거)
+   */
   clearAppendMode() {
     this._appendMode.data && this.classedOnSvg(!1, `is-appending-${this._appendMode.data.type}`), this._appendingObject !== null && this.remove(this._appendingObject), this._appendMode.mode = null, this._appendMode.data = null, this._appendMode.dragged = !1, this._appendingObject = null;
   }
@@ -5556,7 +5850,7 @@ class ac extends yr {
       }
     }), this.moveScreenByObject(o[0]), this.releaseAllObjects(), o.forEach((s) => {
       s.select();
-    }), this._actionController.addAction(new ut(ht(o)));
+    }), this._actionController.addAction(new ft(dt(o)));
   }
   /**
    * in-memory clipboard에 저장된 것을 붙여넣기 처리
@@ -5573,7 +5867,7 @@ class ac extends yr {
     this._logger.info("InnoFlowchart.paste()"), this._createPastingObjs(JSON.parse(ye.loadData()));
   }
   /**
-   * 텍스트에 맞추어 노드 크기 조정
+   * 컨텐츠에 맞게 오브젝트의 크기를 조정한다.
    */
   fitSizeOnText() {
     this._logger.info("InnoFlowchart.fitSizeOnText()"), this._resizeHandler.resizeDragStart(), this.getSelectedNodes(!1).forEach(
@@ -5599,11 +5893,11 @@ class ac extends yr {
           newValue: t.destinationPos
         }
       ]);
-      this._actionController.addAction(new lt([c]));
+      this._actionController.addAction(new ht([c]));
     }
   }
   /**
-   * 현재 선택된 연결선들을 최단 경로로 맞춥니다.
+   * 현재 선택된 연결선들을 최단 경로로 맞춘다.
    */
   updateShortestConnections() {
     this._logger.info("InnoFlowchart.updateShortestConnections()");
@@ -5611,7 +5905,7 @@ class ac extends yr {
       t.isSelected && this._setShortestPosition(t);
   }
   /**
-   * 현재 선택된 노드들의 연결선들을 최단 경로로 맞춥니다.
+   * 현재 선택된 노드들의 연결선들을 최단 경로로 맞춘다.
    */
   updateShortestNodes() {
     const t = [];
@@ -5622,7 +5916,9 @@ class ac extends yr {
     t.forEach((e) => this._setShortestPosition(e));
   }
   /**
-   * 특정 render의 개체를 모두 선택합니다.
+   * 특정 render의 개체를 모두 선택한다.
+   *
+   * @param render `start | if | db | bridge | comment | return | direct | elbow | group`
    */
   selectType(t) {
     this._logger.info("InnoFlowchart.selectType()", t);
@@ -5632,13 +5928,13 @@ class ac extends yr {
       r.renderType === e && r.select(!1, e);
   }
   /**
-   * 플로우차트 변경 상태 초기화
+   * IRFlowchart의 changed 상태를 초기화한다.
    */
   clearChangedStatus() {
     this._isChanged && (this._isChanged = !1, this.classedOnSvg(!1, "changed"));
   }
   /**
-   * 플로우차트 내 모든 개체 제거
+   * IRFlowchart 내의 모든 개체를 제거한다.
    */
   clear() {
     this.clearAppendMode();
@@ -5647,7 +5943,13 @@ class ac extends yr {
     this._objectManager.clear(), this._seqMng.clear(), this._actionController.clear();
   }
   /**
-   * 현재 선택된 오브젝트 그룹화 및 그룹 객체 생성
+   * 현재 선택된 오브젝트 그룹화 및 그룹 객체를 생성한다.
+   *
+   * @example
+   * ```ts
+   * const selected = flowchart.selectAllObjects();  // 모든 오브젝트를 선택한다.
+   * flowchart.group();
+   * ```
    */
   group(t = void 0) {
     const e = t || {};
@@ -5655,16 +5957,16 @@ class ac extends yr {
     for (const i of this._objectManager.getSelectedObjIterator())
       e.objectList.push(i.id);
     const r = this.add(e);
-    r.resize(), r.select(), this._actionController.addAction(new ut(ht([r])));
+    r.resize(), r.select(), this._actionController.addAction(new ft(dt([r])));
   }
   /**
-   * 현재 선택된 그룹화된 오브젝트의 자식의 그룹 상태를 해제
+   * 현재 선택된 그룹화된 오브젝트의 자식의 그룹 상태를 해제한다.
    */
   ungroup() {
     const t = [];
     for (const e of this._objectManager.getGroupIterator())
       e.isSelected && (e.clear(), t.push(e), this.remove(e));
-    this._actionController.addAction(new je(ht(t)));
+    this._actionController.addAction(new je(dt(t)));
   }
   _moveAppendingNode(t, e) {
     const r = this._getXYOnSheet(t, e);
@@ -5730,7 +6032,7 @@ class ac extends yr {
           "node.y": this._appendingObject.y,
           ...this._appendMode.data
         });
-        this._actionController.addAction(new ut(ht([t])));
+        this._actionController.addAction(new ft(dt([t])));
         break;
       }
     }
@@ -5796,7 +6098,12 @@ class ac extends yr {
     this._renderManager.changeRender(t, e, this._containerInterface), this._addObjectEvent(t);
   }
   /**
-   * 개체의 렌더링 타입을 변경합니다.
+   * 개체의 렌더링 타입을 변경한다.
+   *
+   * @param obj
+   * @param render
+   *      obj의 type이 node일 경우: "start" | "if" | "db" | "bridge" | "comment" | "return"\
+   *      obj의 type이 connection일 경우: "direct" | "elbow"
    */
   changeRender(t, e) {
     const r = t.renderType;
@@ -5807,7 +6114,7 @@ class ac extends yr {
       "InnoFlowchart._editTextCallbackHandler()",
       `oldText = '${e}'`,
       `newText = '${r}'`
-    ), this._actionController.addAction(new lt([
+    ), this._actionController.addAction(new ht([
       new et(t, [
         {
           key: "text",
@@ -5829,7 +6136,7 @@ class ac extends yr {
       "InnoFlowchart.adjDragEndCallbackHandler()",
       "record undo action"
     ), this._actionController.addAction(
-      new lt([new et(t, [{ key: "connection.points", oldValue: e, newValue: r }])])
+      new ht([new et(t, [{ key: "connection.points", oldValue: e, newValue: r }])])
     ), this._terminateDrag("drag-adj-move");
   }
   _renderCallBack(t) {
@@ -5873,8 +6180,14 @@ class ac extends yr {
       temp: !1,
       opacity: 1
     });
-    this._actionController.addAction(new ut(ht([e])));
+    this._actionController.addAction(new ft(dt([e])));
   }
+  /**
+   * @hidden
+   *
+   * 키보드의 F2 키를 눌렀을 경우, 오브젝트의 라벨을 변경한다.\
+   * 현재 flowchart가 수정모드가 아니고, 선택된 오브젝트가 1개일 경우에만 동작한다.
+   */
   handleKeydownF2() {
     if (!this._editMode && this.getCountOfSelectedObject() === 1)
       for (const t of this._objectManager.getSelectedObjIterator()) {
@@ -5882,15 +6195,30 @@ class ac extends yr {
         return;
       }
   }
+  /**
+   * @hidden
+   *
+   * 키보드의 Delete 키를 눌렀을 경우, 해당 오브젝트를 제거한다.
+   */
   handleKeydownDelete() {
     this.removeSelected();
   }
+  /**
+   * @hidden
+   *
+   * 키보드의 방향키를 눌렀을 경우, 해당 오브젝트를 이동시킨다.
+   */
   handleKeydownArrows(t, e) {
     const r = this.getSelectedObjects(!1);
     r.length > 0 ? this.moveWrapper(() => {
       r.filter((i) => i.isSelected).forEach((i) => i.moveTo(t, e));
     }) : (this._div.scrollLeft += t * 2, this._div.scrollTop += e * 2);
   }
+  /**
+   * @hidden
+   *
+   * 키보드의 방향키를 눌렀다 뗀 경우, 해당 오브젝트의 이동을 해제한다.
+   */
   handleKeydownEscape() {
     const t = this._appendMode, e = this._appendingObject;
     t.mode === null && e !== null ? (this._logger.info("InnoFlowchart.handleKeydownEscape()", "Cancel Creating Connection"), this.cancelCreatingConnection()) : t.mode !== null ? (this._logger.info("InnoFlowchart.handleKeydownEscape()", "Clear Appending Data"), this.clearAppendMode()) : (this._logger.info("InnoFlowchart.handleKeydownEscape()", "releaseAllObj"), this.releaseAllObjects());
@@ -5898,17 +6226,21 @@ class ac extends yr {
 }
 const cc = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  AddCommand: ut,
+  AddCommand: ft,
   ChangedInfo: et,
   DeleteCommand: je,
-  EditCommand: lt,
+  EditCommand: ht,
   RenderCommand: lr,
   ZIndexCommand: hr
 }, Symbol.toStringTag, { value: "Module" }));
 export {
+  Zs as ActionController,
+  va as Connection,
   T as EVENT_TYPE,
+  Oa as Group,
   ac as IRFlowchart,
   cc as IRFlowchartCommands,
+  Ma as Node,
   ie as POSITION_LIST,
   He as RenderObject
 };
