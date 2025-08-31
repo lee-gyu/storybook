@@ -1,17 +1,17 @@
 import { ExcelExportingModule as c } from "./data-modules.js";
 import { v as k } from "./chunks/v4-CKZ6klMF.js";
-const s = [];
-function d(e) {
+const n = [];
+function l(e) {
   return e.format === "excel";
 }
-const i = /* @__PURE__ */ (() => {
+const d = /* @__PURE__ */ (() => {
   let e = !1;
   return async () => {
     if (!e)
-      for (e = !0; s.length; ) {
-        const t = s.shift();
+      for (e = !0; n.length; ) {
+        const t = n.shift();
         try {
-          d(t) && new c(t.args).export(t.data).then((r) => {
+          l(t) && new c(t.args).export(t.data).then((r) => {
             postMessage({
               taskId: t.taskId,
               objectURL: URL.createObjectURL(r),
@@ -44,20 +44,20 @@ typeof WorkerGlobalScope < "u" && self instanceof WorkerGlobalScope && (self.onm
     taskItem: r
   } = e.data;
   if (t === "register-task-item")
-    s.push(r), i();
+    n.push(r), d();
   else
     throw console.error(`unknown command ${t}. Please check the docs`, r), new Error("unknown command");
 });
-const l = import.meta.url, a = /* @__PURE__ */ new Map(), u = /* @__PURE__ */ (() => {
+const i = import.meta.url, s = /* @__PURE__ */ new Map(), u = /* @__PURE__ */ (() => {
   let e = null;
   function t(r) {
-    const o = a.get(r);
+    const o = s.get(r);
     if (!o)
       throw new Error(`'${r}' taskLog is not defined`);
     return o;
   }
   return () => (e || (e = new Worker(
-    new URL(l),
+    new URL(i),
     {
       name: "ir-data-exporting-worker",
       type: "module"
@@ -66,15 +66,18 @@ const l = import.meta.url, a = /* @__PURE__ */ new Map(), u = /* @__PURE__ */ ((
     const o = r.data;
     if (!o.taskId)
       throw console.error(o), new Error("taskId is not defined.");
-    const n = t(o.taskId);
-    o.hasError ? n.reject(o.error ?? new Error("unknown error")) : n.resolve(o.objectURL), a.delete(o.taskId);
+    const a = t(o.taskId);
+    o.hasError ? a.reject(o.error ?? new Error("unknown error")) : a.resolve(o.objectURL), s.delete(o.taskId);
   }, e.onerror = (r) => {
+    for (const [o, a] of s)
+      a.reject(r.error ?? new Error("Worker internal error occurred."));
+    s.clear(), e = null;
   }, e);
 })();
 function f(e) {
   return new Promise((t, r) => {
     const o = u();
-    a.set(e.taskId, {
+    s.set(e.taskId, {
       taskId: e.taskId,
       createdDateTick: Date.now(),
       resolve: t,

@@ -1,49 +1,75 @@
-import { o as C, t as c, c as d, I as w, a as R, u as x, b as l, s as $, i as h, d as g, M as I, e as D, S as p, f as A, F as M, g as F, h as H, r as S } from "./chunks/grid-B8VKUE4o.js";
-import { g as O } from "./chunks/floating-C5P7I7tX.js";
-import { s as f, w as E, a as v, l as k, m as y, _ as V, n as W, o as _, p as z } from "./chunks/css-akUkFMHX.js";
+import { o as R, t as g, c as f, I as W, a as b, u as x, b as s, s as S, i as v, d as a, M as H, e as A, S as T, f as V, F, g as $, h as M, r as I, j as _, k as j, m as B } from "./chunks/grid-JHn50Ti0.js";
+import { g as G } from "./chunks/floating-C8SHvpqf.js";
+import { M as m, N as E, a as c, O as L, P as C, _ as O, Q as N, R as w, S as J, T as Q } from "./chunks/css-COHHTvb1.js";
 import "./chunks/index-Bmt0z1bM.js";
-import { I as G } from "./chunks/editor-DZdQciHe.js";
-import { c as u } from "./chunks/clsx-OuTLNxxd.js";
-import { I as P } from "./chunks/index-CIsJmAg4.js";
-var T = /* @__PURE__ */ c("<div>");
-function st(n) {
-  let e;
-  return C(() => {
-    const t = new w({
-      contextElement: e,
-      ...n
+import { I as Z } from "./chunks/flowchart-BrAWtA3S.js";
+import { I as q } from "./chunks/editor-C8hvjSht.js";
+import { c as d } from "./chunks/clsx-OuTLNxxd.js";
+import { I as z } from "./chunks/index-CtZXoe_l.js";
+import { d as K } from "./chunks/rx-state-PaqZIPpP.js";
+var U = /* @__PURE__ */ g("<div>");
+function Et(e) {
+  let n;
+  return R(() => {
+    const t = new W({
+      contextElement: n,
+      ...e
     });
-    n.ref instanceof Function ? n.ref?.(t) : n.ref = t, n.onInitGrid?.(t), R(() => {
-      n.onCleanup?.(t), t.destroy();
+    e.ref instanceof Function ? e.ref?.(t) : e.ref = t, e.onInitGrid?.(t), b(() => {
+      e.onCleanup?.(t), t.destroy();
     });
   }), (() => {
-    var t = T(), a = e;
-    return typeof a == "function" ? x(a, t) : e = t, d((o) => {
-      var i = n.class, r = n.style;
-      return i !== o.e && l(t, o.e = i), o.t = $(t, r, o.t), o;
+    var t = U(), i = n;
+    return typeof i == "function" ? x(i, t) : n = t, f((l) => {
+      var r = e.class, o = e.style;
+      return r !== l.e && s(t, l.e = r), l.t = S(t, o, l.t), l;
     }, {
       e: void 0,
       t: void 0
     }), t;
   })();
 }
-var B = /* @__PURE__ */ c("<div>");
-function ct(n) {
-  let e;
-  return C(() => {
-    const t = new G({
-      contextElement: e,
-      mode: n.mode,
-      code: n.code
+var X = /* @__PURE__ */ g("<div>");
+function Lt(e) {
+  let n;
+  return R(() => {
+    const t = new Z({
+      contextElement: n,
+      width: e.width,
+      height: e.height,
+      theme: e.theme
     });
-    n.ref = t, R(() => t.destroy());
+    e.ref instanceof Function ? e.ref?.(t) : e.ref = t, e.onInitFlowchart?.(t), b(() => {
+      t.destroy();
+    });
   }), (() => {
-    var t = B(), a = e;
-    return typeof a == "function" ? x(a, t) : e = t, t;
+    var t = X(), i = n;
+    return typeof i == "function" ? x(i, t) : n = t, f((l) => {
+      var r = e.class, o = e.style;
+      return r !== l.e && s(t, l.e = r), l.t = S(t, o, l.t), l;
+    }, {
+      e: void 0,
+      t: void 0
+    }), t;
   })();
 }
-var J = /* @__PURE__ */ c("<img width=16 height=16 alt=favicon>"), N = /* @__PURE__ */ c("<div><span>"), j = /* @__PURE__ */ c('<i class="ir-icon ir-icon-text ir-icon--md ir-icon--cloud">');
-const q = u(E, f({
+var Y = /* @__PURE__ */ g("<div>");
+function kt(e) {
+  let n;
+  return R(() => {
+    const t = new q({
+      contextElement: n,
+      mode: e.mode,
+      code: e.code
+    });
+    e.ref = t, b(() => t.destroy());
+  }), (() => {
+    var t = Y(), i = n;
+    return typeof i == "function" ? x(i, t) : n = t, t;
+  })();
+}
+var tt = /* @__PURE__ */ g("<img width=16 height=16 alt=favicon>"), et = /* @__PURE__ */ g("<div><span>"), nt = /* @__PURE__ */ g('<i class="ir-icon ir-icon-text ir-icon--md ir-icon--cloud">');
+const it = d(E, m({
   boxSizing: "border-box",
   display: "inline-flex",
   alignItems: "center",
@@ -53,102 +79,104 @@ const q = u(E, f({
   paddingRight: "sm",
   height: "input",
   gap: "xxs"
-})), K = u(v.textEllipsis, v.flex110);
-function dt(n) {
+})), rt = d(c.textEllipsis, c.flex110);
+function Pt(e) {
   return (() => {
-    var t = N(), a = t.firstChild, o = e;
-    return typeof o == "function" ? x(o, t) : e = t, h(t, g(p, {
+    var t = et(), i = t.firstChild, l = n;
+    return typeof l == "function" ? x(l, t) : n = t, v(t, a(T, {
       get fallback() {
         return (() => {
-          var i = j();
-          return d((r) => (r = n.displayOptions.color ?? "currentcolor") != null ? i.style.setProperty("color", r) : i.style.removeProperty("color")), i;
+          var r = nt();
+          return f((o) => (o = e.displayOptions.color ?? "currentcolor") != null ? r.style.setProperty("color", o) : r.style.removeProperty("color")), r;
         })();
       },
       get children() {
-        return g(I, {
+        return a(H, {
           get when() {
-            return n.displayOptions.icon;
+            return e.displayOptions.icon;
           },
           get children() {
-            var i = J();
-            return d((r) => {
-              var s = f({
+            var r = tt();
+            return f((o) => {
+              var u = m({
                 marginRight: "3xs"
-              }), m = n.displayOptions.icon;
-              return s !== r.e && l(i, r.e = s), m !== r.t && D(i, "src", r.t = m), r;
+              }), h = e.displayOptions.icon;
+              return u !== o.e && s(r, o.e = u), h !== o.t && A(r, "src", o.t = h), o;
             }, {
               e: void 0,
               t: void 0
-            }), i;
+            }), r;
           }
         });
       }
-    }), a), l(a, K), h(a, () => n.displayOptions.serverAlias), d((i) => {
-      var r = u(q, n.class), s = {
-        "background-color": `hsl(${V.backgroundHsl.light} / 0.2)`,
-        ...n.style
-      };
-      return r !== i.e && l(t, i.e = r), i.t = $(t, s, i.t), i;
+    }), i), s(i, rt), v(i, () => e.displayOptions.serverAlias), f((r) => {
+      var o = d(it, e.class), u = {
+        "background-color": `hsl(${O.backgroundHsl.light} / 0.2)`,
+        ...e.style
+      }, h = e.displayOptions.fontColor, y = e.displayOptions.fontSize;
+      return o !== r.e && s(t, r.e = o), r.t = S(t, u, r.t), h !== r.a && ((r.a = h) != null ? i.style.setProperty("color", h) : i.style.removeProperty("color")), y !== r.o && ((r.o = y) != null ? i.style.setProperty("font-size", y) : i.style.removeProperty("font-size")), r;
     }, {
       e: void 0,
-      t: void 0
+      t: void 0,
+      a: void 0,
+      o: void 0
     }), t;
   })();
-  function e(t) {
-    k(t, {
-      [y.maxWidth]: "180px"
+  function n(t) {
+    L(t, {
+      [C.maxWidth]: "180px"
     });
   }
 }
-var Q = /* @__PURE__ */ c("<div>"), U = /* @__PURE__ */ c("<button><i></i><span></span><i data-action=close>");
-const L = W.lg, X = f({
+var ot = /* @__PURE__ */ g("<div>"), lt = /* @__PURE__ */ g("<button><i></i><span></span><i data-action=close>");
+const P = N.lg, at = m({
   position: "fixed",
   display: "flex",
   gap: "xs"
 });
-function Y(n) {
+function st(e) {
   return (() => {
-    var a = Q(), o = e;
-    return typeof o == "function" ? x(o, a) : e = a, l(a, X), h(a, g(F, {
+    var i = ot(), l = n;
+    return typeof l == "function" ? x(l, i) : n = i, s(i, at), v(i, a($, {
       get when() {
-        return n.dialogList.length > 0;
+        return e.dialogList.length > 0;
       },
       get children() {
-        return g(M, {
+        return a(F, {
           get each() {
-            return n.dialogList;
+            return e.dialogList;
           },
-          children: (i) => g(tt, {
-            dialogInfo: i,
+          children: (r) => a(dt, {
+            dialogInfo: r,
             get handleClick() {
-              return n.onClick;
+              return e.onClick;
             }
           })
         });
       }
-    })), d((i) => $(a, t(n.placement, n.offset), i)), a;
+    })), f((r) => S(i, t(e.placement, e.offset), r)), i;
   })();
-  function e(a) {
-    k(a, {
-      [_.default]: "0.5",
-      [_.hover]: "1",
-      [_.active]: "0.8",
-      [y.minWidth]: "60px",
-      [y.maxWidth]: "170px"
+  function n(i) {
+    L(i, {
+      [w.default]: "0.5",
+      [w.hover]: "1",
+      [w.active]: "0.8",
+      [C.minWidth]: "60px",
+      [C.maxWidth]: "170px"
     });
   }
-  function t(a = "bottom-right", o = {
+  function t(i = "bottom-right", l = {
     x: 0,
     y: 0
   }) {
-    const [i, r] = a.split("-");
+    const [r, o] = i.split("-");
     return {
-      [i]: `calc(${L} + ${o.y}px)`,
-      [r]: `calc(${L} + ${o.x}px)`
+      [r]: `calc(${P} + ${l.y}px)`,
+      [o]: `calc(${P} + ${l.x}px)`
     };
   }
 }
-const Z = f({
+const ct = m({
   display: "flex",
   alignItems: "center",
   padding: "xxs",
@@ -158,49 +186,49 @@ const Z = f({
   borderRadius: "sm",
   color: "default"
 });
-function tt(n) {
+function dt(e) {
   return (() => {
-    var e = U(), t = e.firstChild, a = t.nextSibling, o = a.nextSibling;
-    return e.$$click = n.handleClick, e.$$clickData = n.dialogInfo.instance, h(a, () => n.dialogInfo.title), d((i) => {
-      var r = u(Z, z), s = u("ir-icon", n.dialogInfo.icon), m = u(E, v.textEllipsis, v.textAlign.left), b = `ir-icon ir-icon--close ${f({
+    var n = lt(), t = n.firstChild, i = t.nextSibling, l = i.nextSibling;
+    return n.$$click = e.handleClick, n.$$clickData = e.dialogInfo.instance, v(i, () => e.dialogInfo.title), f((r) => {
+      var o = d(ct, J), u = d("ir-icon", e.dialogInfo.icon), h = d(E, c.textEllipsis, c.textAlign.left), y = `ir-icon ir-icon--close ${m({
         marginLeft: "xs"
       })}`;
-      return r !== i.e && l(e, i.e = r), s !== i.t && l(t, i.t = s), m !== i.a && l(a, i.a = m), b !== i.o && l(o, i.o = b), i;
+      return o !== r.e && s(n, r.e = o), u !== r.t && s(t, r.t = u), h !== r.a && s(i, r.a = h), y !== r.o && s(l, r.o = y), r;
     }, {
       e: void 0,
       t: void 0,
       a: void 0,
       o: void 0
-    }), e;
+    }), n;
   })();
 }
-A(["click"]);
-class gt extends P {
-  constructor(e = {}) {
+V(["click"]);
+class Dt extends z {
+  constructor(n = {}) {
     super({
       contextElement: document.createElement("div")
-    }), this._args = e, this._mount();
+    }), this._args = n, this._mount();
   }
-  _dialogListSignal = H([]);
+  _dialogListSignal = M([]);
   _cleanupRender = null;
   get componentLabel() {
     return "dialog-manager";
   }
-  add(e) {
-    this._setDialogList([...this._dialogList, e]);
+  add(n) {
+    this._setDialogList([...this._dialogList, n]);
     const t = () => {
-      this.remove(e.instance), e.instance.hook.removeSyncHook("show", t);
+      this.remove(n.instance), n.instance.hook.removeSyncHook("show", t);
     };
-    e.instance.hook.addSyncHook("show", t);
+    n.instance.hook.addSyncHook("show", t);
   }
-  remove(e) {
-    this._setDialogList(this._dialogList.filter((t) => t.instance !== e));
+  remove(n) {
+    this._setDialogList(this._dialogList.filter((t) => t.instance !== n));
   }
   get _dialogList() {
     return this._dialogListSignal[0]();
   }
-  _setDialogList(e) {
-    this._dialogListSignal[1](e);
+  _setDialogList(n) {
+    this._dialogListSignal[1](n);
   }
   clear() {
     this._setDialogList([]);
@@ -210,31 +238,179 @@ class gt extends P {
   }
   /** 내부 렌더링 마운트 */
   _mount() {
-    this._cleanupRender = S(() => {
-      const e = this;
-      return g(Y, {
-        onClick: (t, a) => {
-          a.target instanceof HTMLElement && (a.target.closest("[data-action='close']") ? e.remove(t) : a.target.closest("button") && t.show());
+    this._cleanupRender = I(() => {
+      const n = this;
+      return a(st, {
+        onClick: (t, i) => {
+          i.target instanceof HTMLElement && (i.target.closest("[data-action='close']") ? n.remove(t) : i.target.closest("button") && t.show());
         },
         get placement() {
-          return e._args.placement;
+          return n._args.placement;
         },
         get offset() {
-          return e._args.offset;
+          return n._args.offset;
         },
         get dialogList() {
-          return e._dialogListSignal[0]();
+          return n._dialogListSignal[0]();
         }
       });
-    }, this.contextElement), O(this._args.layer ?? "floating").append(this.contextElement);
+    }, this.contextElement), G(this._args.layer ?? "floating").append(this.contextElement);
   }
 }
-const ut = { render: S };
+var k = /* @__PURE__ */ g("<div>"), ut = /* @__PURE__ */ g("<div><span>");
+const gt = d(m({
+  display: "flex",
+  alignItems: "center",
+  paddingLeft: "lg",
+  paddingRight: "lg",
+  whiteSpace: "nowrap",
+  backgroundColor: "light",
+  color: "light",
+  fontSize: "h5",
+  gap: "lg"
+}), Q, c.overflow.hidden, c.border.top), p = d(m({
+  display: "flex",
+  alignItems: "center",
+  gap: "lg"
+}), E, c.flex11Auto, c.minWidthZero, c.overflow.hidden), ht = d(p, m({
+  justifyContent: "flex-start"
+})), ft = d(p, m({
+  marginLeft: "auto",
+  justifyContent: "flex-end"
+}));
+function mt(e) {
+  const n = _(() => e.items.filter((o) => o.layout === "left")), t = _(() => e.items.filter((o) => o.layout === "right")), i = _(() => n().length > 0), l = _(() => t().length > 0);
+  return (() => {
+    var o = k(), u = r;
+    return typeof u == "function" ? x(u, o) : r = o, s(o, gt), v(o, a($, {
+      get when() {
+        return i();
+      },
+      get children() {
+        return a(D, {
+          layout: "left",
+          get items() {
+            return n();
+          },
+          class: ht
+        });
+      }
+    }), null), v(o, a($, {
+      get when() {
+        return l();
+      },
+      get children() {
+        return a(D, {
+          layout: "right",
+          get items() {
+            return t();
+          },
+          class: ft
+        });
+      }
+    }), null), o;
+  })();
+  function r(o) {
+    L(o, {
+      [C.height]: "26px"
+    });
+  }
+}
+function D(e) {
+  return (() => {
+    var n = k();
+    return v(n, a(F, {
+      get each() {
+        return e.items;
+      },
+      children: (t, i) => [a(vt, t), a($, {
+        get when() {
+          return i() < e.items.length - 1;
+        },
+        get children() {
+          return a(yt, {});
+        }
+      })]
+    })), f((t) => {
+      var i = e.class, l = e.layout;
+      return i !== t.e && s(n, t.e = i), l !== t.t && A(n, "data-layout", t.t = l), t;
+    }, {
+      e: void 0,
+      t: void 0
+    }), n;
+  })();
+}
+function vt(e) {
+  return (() => {
+    var n = ut(), t = n.firstChild;
+    return j(n, B({
+      get class() {
+        return d(c.textEllipsis, e.flexible ? c.flex01Auto : c.flex00Auto);
+      },
+      get style() {
+        return {
+          "max-width": e.maxWidth
+        };
+      }
+    }, () => e.tooltip ? {
+      "data-ir-tooltip": !0,
+      "data-ir-tooltip-text": e.tooltip
+    } : {}), !1, !0), v(t, () => e.text), n;
+  })();
+}
+function yt() {
+  return (() => {
+    var e = k();
+    return e.style.setProperty("height", "14px"), e.style.setProperty("width", "1px"), f((n) => {
+      var t = c.flex00Auto, i = O.borderColor.default;
+      return t !== n.e && s(e, n.e = t), i !== n.t && ((n.t = i) != null ? e.style.setProperty("background-color", i) : e.style.removeProperty("background-color")), n;
+    }, {
+      e: void 0,
+      t: void 0
+    }), e;
+  })();
+}
+class At extends z {
+  constructor(n) {
+    super({
+      contextElement: n.contextElement
+    }), this._args = n, this._tooltipContainer = K({
+      containerElement: this.contextElement,
+      placement: "top",
+      offset: 10
+    }), this.setItems(this._args.items), this._mount();
+  }
+  _itemsSignal = M([]);
+  _cleanupRender = null;
+  _tooltipContainer;
+  get componentLabel() {
+    return "status-bar";
+  }
+  setItems(n) {
+    this._itemsSignal[1](n);
+  }
+  onDestroy() {
+    this._tooltipContainer.destroy(), this.setItems([]), this._cleanupRender?.(), this._cleanupRender = null;
+  }
+  _mount() {
+    this._cleanupRender = I(() => {
+      const n = this;
+      return a(mt, {
+        get items() {
+          return n._itemsSignal[0]();
+        }
+      });
+    }, this.contextElement);
+  }
+}
+const Ft = { render: I, createComponent: a };
 export {
-  dt as DisplayAlias,
-  ct as Editor,
-  st as Grid,
-  gt as IRDialogManager,
-  ut as solidJS
+  Pt as DisplayAlias,
+  kt as Editor,
+  Lt as Flowchart,
+  Et as Grid,
+  Dt as IRDialogManager,
+  At as IRStatusBar,
+  Ft as solidJS
 };
 //# sourceMappingURL=solid.js.map

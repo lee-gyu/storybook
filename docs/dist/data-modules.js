@@ -31622,7 +31622,10 @@ class mn extends on {
         t.eachCell({ includeEmpty: !1 }, (s) => {
           if (s.isMerged) return;
           const f = `${s.font?.size ?? fn}pt`, i = s.font?.name ?? "'Malgun Gothic'", c = sn(an(s), i, f);
-          n = Math.max(n, c * cn), n > o && (C.getRow(parseInt(s.row)).alignment = { wrapText: !0 });
+          n = Math.max(n, c * cn), n > o && (s.alignment = {
+            ...s.alignment ?? {},
+            wrapText: !0
+          });
         }), t.width = Math.min(n, o);
       }
     }

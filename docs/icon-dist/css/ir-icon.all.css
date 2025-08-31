@@ -15,7 +15,9 @@
     --ir-icon-align-to-right: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M50%2010v40h-4V10zM42%2028H22V14h20zm-4-4v-6H26v6zM42%2046H10V32h32zm-4-4v-6H14v6z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-align-to-top: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M10%2010h40v4H10zM28%2018v20H14V18zm-4%204h-6v12h6zM46%2018v32H32V18zm-4%204h-6v24h6z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-branch-node: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M39.46%2028.8A10.58%2010.58%200%200%200%2043%2021c0-6.07-5.38-11-12-11H15v40h20c6.62%200%2012-4.93%2012-11a11.06%2011.06%200%200%200-7.54-10.2M19%2014h12c4.41%200%208%203.14%208%207s-3.59%207-8%207H19zm16%2032H19V32h16c4.41%200%208%203.14%208%207s-3.59%207-8%207%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-copy-alias: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M51%2017v27H27V32h9v-4h-6v-4h10v16h7V21H21v26h22v4H17V17zM31%2036v4h5v-4z%22%20clip-rule%3D%22evenodd%22%2F%3E%3Cpath%20d%3D%22M43%2013H13v30H9V9h34z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-copy-code: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M43%209H9v34h4V13h30z%22%2F%3E%3Cpath%20d%3D%22M47%2021v26H21V21zm4-4H17v34h34z%22%2F%3E%3Cpath%20d%3D%22M39%2025%2025%2043h4l14-18z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-copy-description: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M34%2040h-9v-4h9zM43%2028v4H25v-4z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M51%2051H17V17h34zm-30-4h26V21H21z%22%20clip-rule%3D%22evenodd%22%2F%3E%3Cpath%20d%3D%22M43%2013H13v30H9V9h34z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-copy-name: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M43%209H9v34h4V13h30z%22%2F%3E%3Cpath%20d%3D%22M47%2021v26H21V21zm4-4H17v34h34z%22%2F%3E%3Cpath%20d%3D%22M43%2025v18h-4V25zM29%2025v18h-4V25z%22%2F%3E%3Cpath%20d%3D%22m29%2025%2014%2018h-4L25%2025z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-data-management: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M28%2026H12V10h36v13h-4v-9H16v8h12z%22%2F%3E%3Cpath%20d%3D%22M27%2038H12V22h36v7h-4v-3H16v8h11z%22%2F%3E%3Cpath%20d%3D%22M27%2038H16v8h11v4H12V34h15M49.11%2043v-.62l2.45-2.15-2.87-5-3.07%201a8%208%200%200%200-1.09-.62l-.64-3.19h-5.72l-.64%203.19q-.57.266-1.09.62l-3.07-1-2.87%205%202.45%202.15v1.24l-2.45%202.15%202.87%205%203.07-1q.52.354%201.09.62l.64%203.19h5.72l.64-3.19a8%208%200%200%200%201.09-.62l3.07%201%202.87-5-2.45-2.15c-.01-.2%200-.41%200-.62M41%2047a4%204%200%201%201%200-7.999A4%204%200%200%201%2041%2047%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-execute: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M4%2012v36h52V12zm47.67%2031.53H8.33V16.47h43.34z%22%2F%3E%3Cpath%20d%3D%22M22%2020H11v20h11v-4h-7V24h7zM36.5%2040%2028%2020h-4.5L32%2040z%22%2F%3E%3Cpath%20d%3D%22M23.5%2040%2032%2020h4.5L28%2040zM22%2028H12v4h10zM49%2020H38v20h11v-4h-7V24h7z%22%2F%3E%3Cpath%20d%3D%22M49%2028H39v4h10z%22%2F%3E%3C%2Fsvg%3E);
@@ -532,8 +534,14 @@
 .ir-icon--branch-node {
     --ir-icon-src: var(--ir-icon-branch-node);
 }
+.ir-icon--copy-alias {
+    --ir-icon-src: var(--ir-icon-copy-alias);
+}
 .ir-icon--copy-code {
     --ir-icon-src: var(--ir-icon-copy-code);
+}
+.ir-icon--copy-description {
+    --ir-icon-src: var(--ir-icon-copy-description);
 }
 .ir-icon--copy-name {
     --ir-icon-src: var(--ir-icon-copy-name);
