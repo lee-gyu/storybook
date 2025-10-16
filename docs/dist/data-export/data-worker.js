@@ -51,4 +51,3 @@ const l = import.meta.url;
 export {
   l as default
 };
-//# sourceMappingURL=data-worker.js.map

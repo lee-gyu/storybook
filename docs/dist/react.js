@@ -4,4 +4,3 @@ const n = t;
 export {
   n as IRContextMenuAdapter
 };
-//# sourceMappingURL=react.js.map

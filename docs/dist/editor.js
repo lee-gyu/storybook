@@ -1,7 +1,7 @@
 import "./chunks/_init-DbWaCNow.js";
 import { g as Ku } from "./chunks/_commonjsHelpers-DaMA6jEr.js";
 import { i as Tt } from "./chunks/index-Bmt0z1bM.js";
-import { I as Xu } from "./chunks/index-5k0_58UU.js";
+import { I as Xu } from "./chunks/index-DB46QZ1i.js";
 import { a9 as Qu } from "./chunks/css-CjgUAAH1.js";
 var zn = { exports: {} }, Yu = zn.exports, ns;
 function ot() {
@@ -8469,4 +8469,3 @@ class gf extends Xu {
 export {
   gf as IREditor
 };
-//# sourceMappingURL=editor.js.map

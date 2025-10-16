@@ -53,4 +53,3 @@ function w(r) {
 export {
   w as requestExportingData
 };
-//# sourceMappingURL=data-export.js.map

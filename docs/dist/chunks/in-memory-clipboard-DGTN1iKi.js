@@ -36,4 +36,3 @@ export {
   c as r,
   i as w
 };
-//# sourceMappingURL=in-memory-clipboard-DGTN1iKi.js.map

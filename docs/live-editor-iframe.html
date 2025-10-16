@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Editor IFrame</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+    <link rel="stylesheet" href="./icon-dist/css/ir-icon.all.css">
+    <link rel="stylesheet" href="./dist/css/ir-style-common.css">
+    <style>
+        html,
+        body {
+            box-sizing: border-box;
+            height: auto;
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            overflow: auto;
+            width: 100%;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        .live-editor-view-top-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .live-editor-i18n-select {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #live_editor_wrapper {
+            min-height: 0;
+            min-width: 0;
+            width: 100%;
+        }
+    </style>
+    <style id="liveEditorCSS"></style>
+    <script type="importmap">
+        {
+            "imports": {
+                "@innorules/ir-style/lib/esm/grid.js": "./dist/grid.js",
+                "@innorules/ir-style/lib/esm/chart.js": "./dist/chart.js",
+                "@innorules/ir-style/lib/esm/editor.js": "./dist/editor.js",
+                "@innorules/ir-style/lib/esm/flowchart.js": "./dist/flowchart.js",
+                "@innorules/ir-style/lib/esm/data-export.js": "./dist/data-export.js",
+                "@innorules/ir-style/lib/esm/data-modules.js": "./dist/data-modules.js",
+                "@innorules/ir-style/lib/esm/solid.js": "./dist/solid.js",
+                "@innorules/ir-style/lib/esm/css.js": "./dist/css.js",
+                "@innorules/ir-style": "./dist/index.js"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script type="module" src="./iframe-ev.js"></script>
+    <script type="module" src="./init-controls.js"></script>
+    <div class="live-editor-view-top-panel">
+        <div class="live-editor-i18n-select">
+            <span>i18n : </span>
+            <div style='width: 100px'>
+                <select id='locale-select'>
+                    <option value="ko">ko</option>
+                    <option value="en">en</option>
+                    <option value="ja">jp</option>
+                    <option value="zh">zh</option>
+                </select>
+            </div>
+        </div>
+        <div class="switch">
+            <label class="switch__wrapper">
+                <span class="mr--md">Dark Mode</span>
+                <span class="switch__track">
+                    <input id="themeSwitch" type="checkbox" class="switch__input" />
+                    <span class="switch__slider"></span>
+                </span>
+            </label>
+        </div>
+    </div>
+    <div id='live_editor_wrapper' data-ir-style></div>
+    <script id="liveJS" type="module"></script>
+    <script id="liveJSExample" type="module"></script>
+</body>
+
+</html>

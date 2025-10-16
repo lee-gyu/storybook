@@ -1,22 +1,22 @@
 import "./chunks/_init-DbWaCNow.js";
-import { aa as On, ab as So, J as yo, ac as vo, L as ko, M as zn, ad as Io, ae as An, m as Eo, o as Mo, v as To, n as Lo, s as Ho, l as Oo, af as zo, p as Ao, q as Do, u as Fo, r as Wo, G as Po, ag as No, H as Dn, I as xt, ah as $o, ai as Bo, P as te, aj as Vo, ak as Go, al as jo, am as Uo, an as Ko, ao as qo, a5 as Xo, ap as Yo, aq as Zo, ar as Jo, as as Qo, at as er, au as tr, av as nr, aw as or, ax as Fn, ay as It, az as rr, aA as sr, a as Ve, aB as we, aC as ir, R as lr, aD as ar, aE as Wn, aF as cr, aG as dr, aH as ur, aI as hr, aJ as We, aK as fr, aL as gr, aM as mr, _ as pr, aN as Cr, aO as wr, aP as _r, aQ as Rr, aR as xr, aS as br, aT as W, aU as Ut, V as Kt, aV as Sr, aW as yr, aX as vr, aY as kr, aZ as Ir, a_ as Er, a$ as Mr, b0 as Tr, b1 as Lr, b2 as Hr, b3 as Or, b4 as zr, b5 as Ar, b6 as Dr, b7 as Fr, b8 as Pn, b9 as Nn, ba as ie, bb as Wr, bc as Pr, t as Nr, bd as $r, be as Br, bf as Vr, bg as Gr, bh as jr, bi as Ur, bj as Kr, bk as qt, bl as qr, bm as Xr, bn as Yr, bo as Xt, bp as Yt, bq as Zr, br as Jr, bs as Qr, a1 as es } from "./chunks/css-CjgUAAH1.js";
-import { r as P, e as ue, f as ts, b as ns, g as os, I as rs, d as ss } from "./chunks/command-manager-1FK2gVV5.js";
-import { c as _e } from "./chunks/asserts-CpwDJsre.js";
-import { $ as be, l as is, n as Zt, o as bt, f as he, m as ot, p as Le, q as ls, v as He, e as Et, t as q, a as $, i as G, b as J, w as as, s as Re, c as z, u as fe, F as Mt, r as $n, x as Tt, S as ge, h as cs, y as ds, j as us, k as Lt, M as de, g as hs, z as fs } from "./chunks/web-DZ7STt1e.js";
-import { o as gs, h as ms, g as me, a as Ht, e as Ge, c as ps, R as Ot, C as Cs, f as ws } from "./chunks/rx-state-CSpLghs6.js";
-import { d as Bn, a as zt, g as Me, e as rt, c as _s, o as Rs, f as xs, s as bs } from "./chunks/floating-CuQzApa0.js";
-import { i as X, d as ae } from "./chunks/index-Bmt0z1bM.js";
-import { d as B, a as Ss } from "./chunks/tooltip-container-Bg5HCQ20.js";
-import { c as je } from "./chunks/clsx-OuTLNxxd.js";
+import { aa as On, ab as vo, J as ko, ac as Io, L as Eo, M as An, ad as Mo, ae as Dn, m as To, o as Lo, v as Ho, n as zo, s as Oo, l as Ao, af as Do, p as Fo, q as Wo, u as Po, r as No, G as $o, ag as Bo, H as Fn, I as bt, ah as Go, ai as Vo, P as ne, aj as jo, ak as Uo, al as Ko, am as qo, an as Xo, ao as Yo, a5 as Zo, ap as Jo, aq as Qo, ar as es, as as ts, at as ns, au as os, av as ss, aw as rs, ax as Wn, ay as Mt, az as is, aA as ls, a as Ve, aB as _e, aC as as, R as cs, aD as ds, aE as Pn, aF as us, aG as hs, aH as fs, aI as gs, aJ as Pe, aK as ms, aL as ps, aM as Cs, _ as ws, aN as _s, aO as Rs, aP as xs, aQ as Ss, aR as bs, aS as ys, aT as W, aU as qt, V as Xt, aV as vs, aW as ks, aX as Is, aY as Es, aZ as Ms, a_ as Ts, a$ as Ls, b0 as Hs, b1 as zs, b2 as Os, b3 as As, b4 as Ds, b5 as Fs, b6 as Ws, b7 as Ps, b8 as Nn, b9 as $n, ba as le, bb as Ns, bc as $s, t as Bs, bd as Gs, be as Vs, bf as js, bg as Us, bh as Ks, bi as qs, bj as Xs, bk as Yt, bl as Ys, bm as Zs, bn as Js, bo as Zt, bp as Jt, bq as Qs, br as er, bs as tr, a1 as nr } from "./chunks/css-CjgUAAH1.js";
+import { r as P, e as he, f as or, b as sr, g as rr, I as ir, d as lr } from "./chunks/command-manager-Blh-h0ql.js";
+import { c as Re } from "./chunks/asserts-CpwDJsre.js";
+import { $ as be, l as ar, n as Qt, o as yt, f as fe, m as ot, p as He, q as cr, v as ze, e as Tt, t as q, a as $, i as G, b as J, w as dr, s as xe, c as O, u as ge, F as Lt, r as Bn, x as Ht, S as me, h as ur, y as hr, j as fr, k as zt, M as ue, g as gr, z as mr } from "./chunks/web-DZ7STt1e.js";
+import { o as pr, h as Cr, g as pe, a as Ot, e as je, c as wr, R as At, C as _r, f as Rr } from "./chunks/rx-state-CSpLghs6.js";
+import { d as Gn, a as Dt, g as Me, e as st, c as xr, o as Sr, f as br, s as yr } from "./chunks/floating-CuQzApa0.js";
+import { i as X, d as ce } from "./chunks/index-Bmt0z1bM.js";
+import { d as K, e as ct, a as vr } from "./chunks/tooltip-container-BnLoeWzv.js";
+import { c as Ue } from "./chunks/clsx-OuTLNxxd.js";
 import { c as Vn } from "./chunks/outside-DA89_Rlc.js";
-import { c as at, r as ys } from "./chunks/dom-6gXSYTzY.js";
-import { c as vs } from "./chunks/hook-flow-h5XBPdBp.js";
-import { p as ks } from "./chunks/pick-BLZiDVxr.js";
-import { b as xe, c as le } from "./chunks/dom-BFx2fdL6.js";
-import { i as Gn, c as Is, r as Es, w as Jt } from "./chunks/in-memory-clipboard-DGTN1iKi.js";
-import { I as Ms } from "./chunks/index-5k0_58UU.js";
-import { v as Ts } from "./chunks/v4-BysszJq8.js";
-class Ls {
+import { c as dt, r as kr } from "./chunks/dom-6gXSYTzY.js";
+import { c as Ir } from "./chunks/hook-flow-h5XBPdBp.js";
+import { p as Er } from "./chunks/pick-BLZiDVxr.js";
+import { b as Se, c as ae } from "./chunks/dom-BFx2fdL6.js";
+import { i as jn, c as Mr, r as Tr, w as en } from "./chunks/in-memory-clipboard-DGTN1iKi.js";
+import { I as Lr } from "./chunks/index-DB46QZ1i.js";
+import { v as Hr } from "./chunks/v4-BysszJq8.js";
+class zr {
   /* 커맨드 실행 인자 */
   _args;
   /* 실행을 위한 컴포넌트 인스턴스 */
@@ -75,31 +75,42 @@ class Ls {
   onExecute() {
   }
 }
-function ct(r, e) {
-  return gs(function(t, n) {
+function ut(s, e) {
+  return pr(function(t, n) {
     var o = 0;
-    t.subscribe(ms(n, function(s) {
-      n.next(r.call(e, s, o++));
+    t.subscribe(Cr(n, function(r) {
+      n.next(s.call(e, r, o++));
     }));
   });
 }
-function Qt(r, e, t) {
-  return jn(r, t) && Un(e, t);
+function Or(s, e) {
+  const t = {};
+  for (let n = 0; n < s.length; n++) {
+    const o = s[n], r = e(o);
+    Object.hasOwn(t, r) || (t[r] = []), t[r].push(o);
+  }
+  return t;
 }
-function oe(r) {
-  const e = parseInt(r.getAttribute("data-row") || "-1", 10), t = parseInt(r.getAttribute("data-col") || "-1", 10);
+function Ar(s) {
+  return [...new Set(s)];
+}
+function tn(s, e, t) {
+  return Un(s, t) && Kn(e, t);
+}
+function se(s) {
+  const e = parseInt(s.getAttribute("data-row") || "-1", 10), t = parseInt(s.getAttribute("data-col") || "-1", 10);
   if (e === -1 || t === -1)
     throw new Error("Invalid cell");
   return { row: e, col: t };
 }
-function jn(r, e) {
-  return r >= e.top && r <= e.bottom;
+function Un(s, e) {
+  return s >= e.top && s <= e.bottom;
 }
-function Un(r, e) {
-  return r >= e.left && r <= e.right;
+function Kn(s, e) {
+  return s >= e.left && s <= e.right;
 }
-function Hs(r, e) {
-  let t = r.firstChild, n = e;
+function Dr(s, e) {
+  let t = s.firstChild, n = e;
   for (; t; ) {
     let o = t.firstChild;
     for (; o; )
@@ -108,9 +119,9 @@ function Hs(r, e) {
   }
   return n;
 }
-function Os(r) {
-  let e = r.target, t = r.offsetX, n = r.offsetY;
-  for (; e !== r.currentTarget; ) {
+function Fr(s) {
+  let e = s.target, t = s.offsetX, n = s.offsetY;
+  for (; e !== s.currentTarget; ) {
     if (!(e instanceof HTMLElement))
       throw new Error("invalid event target!");
     if (e.tagName === "TR") {
@@ -122,7 +133,16 @@ function Os(r) {
   }
   return { x: t, y: n };
 }
-const zs = 20, As = 5;
+function Wr(s) {
+  const e = Object.keys(s);
+  if (e.length === 0) return !1;
+  if (e.length === 1) return !0;
+  const [t, ...n] = Object.values(s), o = new Set(t.map((r) => r.col));
+  for (const r of n)
+    if (r.length !== t.length || r.some((i) => !o.has(i.col))) return !1;
+  return !0;
+}
+const Pr = 20, Nr = 5;
 class Q {
   render(e, t, n) {
     throw new Error("Not implemented");
@@ -134,8 +154,8 @@ class Q {
     return (e ?? n.getThemeValue("grid.paddingTop")) + (t ?? n.getThemeValue("grid.paddingBottom"));
   }
   getCellInnerWidth(e, t, n) {
-    const o = me(e, t), s = [n.icon, n.sortOrder].reduce((d, c) => c ? d + 1 : d, 0) * (zs + As), i = `${this.getDisplayText(n)}`.split(`
-`), a = s + o.calculateWidth(i[0] ?? "");
+    const o = pe(e, t), r = [n.icon, n.sortOrder].reduce((d, c) => c ? d + 1 : d, 0) * (Pr + Nr), i = `${this.getDisplayText(n)}`.split(`
+`), a = r + o.calculateWidth(i[0] ?? "");
     return this.getHorizontalCellPadding(n) + P(1, i.length).reduce(
       (d, c) => Math.max(d, o.calculateWidth(i[c])),
       a
@@ -145,7 +165,7 @@ class Q {
     return 0;
   }
   getCellInnerHeight(e, t) {
-    return this.getVerticalCellPadding(t) + Hs(
+    return this.getVerticalCellPadding(t) + Dr(
       e,
       t.gridStore.getThemeValue("grid.emptyDefaultHeight")
     );
@@ -172,21 +192,21 @@ class Q {
     return !0;
   }
 }
-class j extends Ls {
+class V extends zr {
 }
-class se extends j {
+class ie extends V {
   _execute() {
     this._instance.setCell(...this._args);
   }
   _getUndoContext() {
-    const [e, t, n] = this._args, o = this._instance.getCellMetaInfo(e, t), s = new Set(Object.keys(o));
+    const [e, t, n] = this._args, o = this._instance.getCellMetaInfo(e, t), r = new Set(Object.keys(o));
     return {
       // cellInfo의 key 값만으로 기존 cell 내용 복사
-      beforeValue: ks(
+      beforeValue: Er(
         o,
         n
       ),
-      removeKeys: Object.keys(n).filter((i) => !s.has(i))
+      removeKeys: Object.keys(n).filter((i) => !r.has(i))
     };
   }
   _undo() {
@@ -206,42 +226,42 @@ class se extends j {
     return this._instance.cell(this._args[0], this._args[1]) !== void 0;
   }
 }
-const Pe = {
-  checkbox: yo,
-  checkboxWrapper: ko,
-  checkboxText: An,
-  checkboxInput: zn,
+const Ne = {
+  checkbox: ko,
+  checkboxWrapper: Eo,
+  checkboxText: Dn,
+  checkboxInput: An,
   horizontal_left: "justify-content--start",
   horizontal_center: "justify-content--center",
   horizontal_right: "justify-content--end"
-}, Ds = 16, St = 6, Fs = St * 2, Ws = 20;
-class Kn extends Q {
+}, $r = 16, vt = 6, Br = vt * 2, Gr = 20;
+class qn extends Q {
   constructor({ onCheckboxClick: e }) {
     super(), e && (this.onCheckboxClick = e.bind(this));
   }
   onCheckboxClick(e, t, n) {
   }
   render(e, t, n) {
-    const o = document.createElement("div"), s = document.createElement("label"), i = document.createElement("input");
-    if (o.setAttribute("data-has-px", ""), o.setAttribute("data-has-py", ""), o.classList.add(So, Pe.checkbox), s.classList.add(vo, Pe.checkboxWrapper), i.type = "checkbox", i.className = Pe.checkboxInput, s.appendChild(i), n.icon && s.appendChild(Ht(Ge(n.icon))), n.label) {
+    const o = document.createElement("div"), r = document.createElement("label"), i = document.createElement("input");
+    if (o.setAttribute("data-has-px", ""), o.setAttribute("data-has-py", ""), o.classList.add(vo, Ne.checkbox), r.classList.add(Io, Ne.checkboxWrapper), i.type = "checkbox", i.className = Ne.checkboxInput, r.appendChild(i), n.icon && r.appendChild(Ot(je(n.icon))), n.label) {
       const a = document.createElement("span");
-      a.className = `${Io} ${Pe.checkboxText}`, a.innerText = n.label, s.appendChild(a);
+      a.className = `${Mo} ${Ne.checkboxText}`, a.innerText = n.label, r.appendChild(a);
     }
-    return n.horizontalAlign && o.classList.add(Pe[`horizontal_${n.horizontalAlign}`]), o.appendChild(s), i.checked = n.text === "true", s.onkeydown = (a) => a.preventDefault(), i.onchange = () => {
-      const a = i.checked, d = a ? "true" : "false", { commandManager: c } = n.gridStore, l = new se(n.gridStore.commandContext, [e, t, { text: d }]);
+    return n.horizontalAlign && o.classList.add(Ne[`horizontal_${n.horizontalAlign}`]), o.appendChild(r), i.checked = n.text === "true", i.onclick = (a) => a.__IGNORE_CELL_CLICK__ = !0, r.onkeydown = (a) => a.preventDefault(), i.onchange = () => {
+      const a = i.checked, d = a ? "true" : "false", { commandManager: c } = n.gridStore, l = new ie(n.gridStore.commandContext, [e, t, { text: d }]);
       l.onUndo = () => {
         this.onCheckboxClick(e, t, !a);
       }, l.onExecute = () => {
         this.onCheckboxClick(e, t, a);
-      }, c.pushCommandBlock(new ue(
+      }, c.pushCommandBlock(new he(
         "Change checkbox",
         l
       )), n.text = d, this.onCheckboxClick(e, t, a);
     }, o;
   }
   getCellInnerWidth(e, t, n) {
-    const o = me(e, t), s = n.label ? St + o.calculateWidth(n.label) : 0, i = n.icon ? St + Ws : 0;
-    return Ds + Fs + s + i + this.getHorizontalCellPadding(n);
+    const o = pe(e, t), r = n.label ? vt + o.calculateWidth(n.label) : 0, i = n.icon ? vt + Gr : 0;
+    return $r + Br + r + i + this.getHorizontalCellPadding(n);
   }
   get renderType() {
     return "checkbox";
@@ -253,78 +273,78 @@ class Kn extends Q {
     return !1;
   }
 }
-function bc(r) {
-  const e = new Kn(r ?? {});
+function Ec(s) {
+  const e = new qn(s ?? {});
   return () => e;
 }
-function ve(r, e, t) {
+function ve(s, e, t) {
   let n = t.initialDeps ?? [], o;
-  function s() {
+  function r() {
     var i, a, d, c;
     let l;
     t.key && ((i = t.debug) != null && i.call(t)) && (l = Date.now());
-    const h = r();
+    const h = s();
     if (!(h.length !== n.length || h.some((g, R) => n[R] !== g)))
       return o;
     n = h;
     let f;
     if (t.key && ((a = t.debug) != null && a.call(t)) && (f = Date.now()), o = e(...h), t.key && ((d = t.debug) != null && d.call(t))) {
-      const g = Math.round((Date.now() - l) * 100) / 100, R = Math.round((Date.now() - f) * 100) / 100, E = R / 16, y = (H, L) => {
+      const g = Math.round((Date.now() - l) * 100) / 100, R = Math.round((Date.now() - f) * 100) / 100, T = R / 16, x = (H, L) => {
         for (H = String(H); H.length < L; )
           H = " " + H;
         return H;
       };
       console.info(
-        `%c⏱ ${y(R, 5)} /${y(g, 5)} ms`,
+        `%c⏱ ${x(R, 5)} /${x(g, 5)} ms`,
         `
             font-size: .6rem;
             font-weight: bold;
             color: hsl(${Math.max(
           0,
-          Math.min(120 - 120 * E, 120)
+          Math.min(120 - 120 * T, 120)
         )}deg 100% 31%);`,
         t?.key
       );
     }
     return (c = t?.onChange) == null || c.call(t, o), o;
   }
-  return s.updateDeps = (i) => {
+  return r.updateDeps = (i) => {
     n = i;
-  }, s;
+  }, r;
 }
-function en(r, e) {
-  if (r === void 0)
+function nn(s, e) {
+  if (s === void 0)
     throw new Error("Unexpected undefined");
-  return r;
+  return s;
 }
-const Ps = (r, e) => Math.abs(r - e) < 1.01, Ns = (r, e, t) => {
+const Vr = (s, e) => Math.abs(s - e) < 1.01, jr = (s, e, t) => {
   let n;
   return function(...o) {
-    r.clearTimeout(n), n = r.setTimeout(() => e.apply(this, o), t);
+    s.clearTimeout(n), n = s.setTimeout(() => e.apply(this, o), t);
   };
-}, tn = (r) => {
-  const { offsetWidth: e, offsetHeight: t } = r;
+}, on = (s) => {
+  const { offsetWidth: e, offsetHeight: t } = s;
   return { width: e, height: t };
-}, $s = (r) => r, Bs = (r) => {
-  const e = Math.max(r.startIndex - r.overscan, 0), t = Math.min(r.endIndex + r.overscan, r.count - 1), n = [];
+}, Ur = (s) => s, Kr = (s) => {
+  const e = Math.max(s.startIndex - s.overscan, 0), t = Math.min(s.endIndex + s.overscan, s.count - 1), n = [];
   for (let o = e; o <= t; o++)
     n.push(o);
   return n;
-}, Vs = (r, e) => {
-  const t = r.scrollElement;
+}, qr = (s, e) => {
+  const t = s.scrollElement;
   if (!t)
     return;
-  const n = r.targetWindow;
+  const n = s.targetWindow;
   if (!n)
     return;
   const o = (i) => {
     const { width: a, height: d } = i;
     e({ width: Math.round(a), height: Math.round(d) });
   };
-  if (o(tn(t)), !n.ResizeObserver)
+  if (o(on(t)), !n.ResizeObserver)
     return () => {
     };
-  const s = new n.ResizeObserver((i) => {
+  const r = new n.ResizeObserver((i) => {
     const a = () => {
       const d = i[0];
       if (d?.borderBoxSize) {
@@ -334,40 +354,40 @@ const Ps = (r, e) => Math.abs(r - e) < 1.01, Ns = (r, e, t) => {
           return;
         }
       }
-      o(tn(t));
+      o(on(t));
     };
-    r.options.useAnimationFrameWithResizeObserver ? requestAnimationFrame(a) : a();
+    s.options.useAnimationFrameWithResizeObserver ? requestAnimationFrame(a) : a();
   });
-  return s.observe(t, { box: "border-box" }), () => {
-    s.unobserve(t);
+  return r.observe(t, { box: "border-box" }), () => {
+    r.unobserve(t);
   };
-}, nn = {
+}, sn = {
   passive: !0
-}, on = typeof window > "u" ? !0 : "onscrollend" in window, Gs = (r, e) => {
-  const t = r.scrollElement;
+}, rn = typeof window > "u" ? !0 : "onscrollend" in window, Xr = (s, e) => {
+  const t = s.scrollElement;
   if (!t)
     return;
-  const n = r.targetWindow;
+  const n = s.targetWindow;
   if (!n)
     return;
   let o = 0;
-  const s = r.options.useScrollendEvent && on ? () => {
-  } : Ns(
+  const r = s.options.useScrollendEvent && rn ? () => {
+  } : jr(
     n,
     () => {
       e(o, !1);
     },
-    r.options.isScrollingResetDelay
+    s.options.isScrollingResetDelay
   ), i = (l) => () => {
-    const { horizontal: h, isRtl: u } = r.options;
-    o = h ? t.scrollLeft * (u && -1 || 1) : t.scrollTop, s(), e(o, l);
+    const { horizontal: h, isRtl: u } = s.options;
+    o = h ? t.scrollLeft * (u && -1 || 1) : t.scrollTop, r(), e(o, l);
   }, a = i(!0), d = i(!1);
-  d(), t.addEventListener("scroll", a, nn);
-  const c = r.options.useScrollendEvent && on;
-  return c && t.addEventListener("scrollend", d, nn), () => {
+  d(), t.addEventListener("scroll", a, sn);
+  const c = s.options.useScrollendEvent && rn;
+  return c && t.addEventListener("scrollend", d, sn), () => {
     t.removeEventListener("scroll", a), c && t.removeEventListener("scrollend", d);
   };
-}, js = (r, e, t) => {
+}, Yr = (s, e, t) => {
   if (e?.borderBoxSize) {
     const n = e.borderBoxSize[0];
     if (n)
@@ -375,26 +395,26 @@ const Ps = (r, e) => Math.abs(r - e) < 1.01, Ns = (r, e, t) => {
         n[t.options.horizontal ? "inlineSize" : "blockSize"]
       );
   }
-  return r[t.options.horizontal ? "offsetWidth" : "offsetHeight"];
-}, Us = (r, {
+  return s[t.options.horizontal ? "offsetWidth" : "offsetHeight"];
+}, Zr = (s, {
   adjustments: e = 0,
   behavior: t
 }, n) => {
-  var o, s;
-  const i = r + e;
-  (s = (o = n.scrollElement) == null ? void 0 : o.scrollTo) == null || s.call(o, {
+  var o, r;
+  const i = s + e;
+  (r = (o = n.scrollElement) == null ? void 0 : o.scrollTo) == null || r.call(o, {
     [n.options.horizontal ? "left" : "top"]: i,
     behavior: t
   });
 };
-class Ks {
+class Jr {
   constructor(e) {
     this.unsubs = [], this.scrollElement = null, this.targetWindow = null, this.isScrolling = !1, this.measurementsCache = [], this.itemSizeCache = /* @__PURE__ */ new Map(), this.pendingMeasuredCacheIndexes = [], this.scrollRect = null, this.scrollOffset = null, this.scrollDirection = null, this.scrollAdjustments = 0, this.elementsCache = /* @__PURE__ */ new Map(), this.observer = /* @__PURE__ */ (() => {
       let t = null;
       const n = () => t || (!this.targetWindow || !this.targetWindow.ResizeObserver ? null : t = new this.targetWindow.ResizeObserver((o) => {
-        o.forEach((s) => {
+        o.forEach((r) => {
           const i = () => {
-            this._measureElement(s.target, s);
+            this._measureElement(r.target, r);
           };
           this.options.useAnimationFrameWithResizeObserver ? requestAnimationFrame(i) : i();
         });
@@ -405,12 +425,12 @@ class Ks {
           (o = n()) == null || o.disconnect(), t = null;
         },
         observe: (o) => {
-          var s;
-          return (s = n()) == null ? void 0 : s.observe(o, { box: "border-box" });
+          var r;
+          return (r = n()) == null ? void 0 : r.observe(o, { box: "border-box" });
         },
         unobserve: (o) => {
-          var s;
-          return (s = n()) == null ? void 0 : s.unobserve(o);
+          var r;
+          return (r = n()) == null ? void 0 : r.unobserve(o);
         }
       };
     })(), this.range = null, this.setOptions = (t) => {
@@ -425,11 +445,11 @@ class Ks {
         scrollPaddingStart: 0,
         scrollPaddingEnd: 0,
         horizontal: !1,
-        getItemKey: $s,
-        rangeExtractor: Bs,
+        getItemKey: Ur,
+        rangeExtractor: Kr,
         onChange: () => {
         },
-        measureElement: js,
+        measureElement: Yr,
         initialRect: { width: 0, height: 0 },
         scrollMargin: 0,
         gap: 0,
@@ -486,24 +506,24 @@ class Ks {
             this.scrollRect = o, this.maybeNotify();
           })
         ), this.unsubs.push(
-          this.options.observeElementOffset(this, (o, s) => {
-            this.scrollAdjustments = 0, this.scrollDirection = s ? this.getScrollOffset() < o ? "forward" : "backward" : null, this.scrollOffset = o, this.isScrolling = s, this.maybeNotify();
+          this.options.observeElementOffset(this, (o, r) => {
+            this.scrollAdjustments = 0, this.scrollDirection = r ? this.getScrollOffset() < o ? "forward" : "backward" : null, this.scrollOffset = o, this.isScrolling = r, this.maybeNotify();
           })
         );
       }
     }, this.getSize = () => this.options.enabled ? (this.scrollRect = this.scrollRect ?? this.options.initialRect, this.scrollRect[this.options.horizontal ? "width" : "height"]) : (this.scrollRect = null, 0), this.getScrollOffset = () => this.options.enabled ? (this.scrollOffset = this.scrollOffset ?? (typeof this.options.initialOffset == "function" ? this.options.initialOffset() : this.options.initialOffset), this.scrollOffset) : (this.scrollOffset = null, 0), this.getFurthestMeasurement = (t, n) => {
-      const o = /* @__PURE__ */ new Map(), s = /* @__PURE__ */ new Map();
+      const o = /* @__PURE__ */ new Map(), r = /* @__PURE__ */ new Map();
       for (let i = n - 1; i >= 0; i--) {
         const a = t[i];
         if (o.has(a.lane))
           continue;
-        const d = s.get(
+        const d = r.get(
           a.lane
         );
-        if (d == null || a.end > d.end ? s.set(a.lane, a) : a.end < d.end && o.set(a.lane, !0), o.size === this.options.lanes)
+        if (d == null || a.end > d.end ? r.set(a.lane, a) : a.end < d.end && o.set(a.lane, !0), o.size === this.options.lanes)
           break;
       }
-      return s.size === this.options.lanes ? Array.from(s.values()).sort((i, a) => i.end === a.end ? i.index - a.index : i.end - a.end)[0] : void 0;
+      return r.size === this.options.lanes ? Array.from(r.values()).sort((i, a) => i.end === a.end ? i.index - a.index : i.end - a.end)[0] : void 0;
     }, this.getMeasurementOptions = ve(
       () => [
         this.options.count,
@@ -512,11 +532,11 @@ class Ks {
         this.options.getItemKey,
         this.options.enabled
       ],
-      (t, n, o, s, i) => (this.pendingMeasuredCacheIndexes = [], {
+      (t, n, o, r, i) => (this.pendingMeasuredCacheIndexes = [], {
         count: t,
         paddingStart: n,
         scrollMargin: o,
-        getItemKey: s,
+        getItemKey: r,
         enabled: i
       }),
       {
@@ -524,7 +544,7 @@ class Ks {
       }
     ), this.getMeasurements = ve(
       () => [this.getMeasurementOptions(), this.itemSizeCache],
-      ({ count: t, paddingStart: n, scrollMargin: o, getItemKey: s, enabled: i }, a) => {
+      ({ count: t, paddingStart: n, scrollMargin: o, getItemKey: r, enabled: i }, a) => {
         if (!i)
           return this.measurementsCache = [], this.itemSizeCache.clear(), [];
         this.measurementsCache.length === 0 && (this.measurementsCache = this.options.initialMeasurementsCache, this.measurementsCache.forEach((l) => {
@@ -534,14 +554,14 @@ class Ks {
         this.pendingMeasuredCacheIndexes = [];
         const c = this.measurementsCache.slice(0, d);
         for (let l = d; l < t; l++) {
-          const h = s(l), u = this.options.lanes === 1 ? c[l - 1] : this.getFurthestMeasurement(c, l), f = u ? u.end + this.options.gap : n + o, g = a.get(h), R = typeof g == "number" ? g : this.options.estimateSize(l), E = f + R, y = u ? u.lane : l % this.options.lanes;
+          const h = r(l), u = this.options.lanes === 1 ? c[l - 1] : this.getFurthestMeasurement(c, l), f = u ? u.end + this.options.gap : n + o, g = a.get(h), R = typeof g == "number" ? g : this.options.estimateSize(l), T = f + R, x = u ? u.lane : l % this.options.lanes;
           c[l] = {
             index: l,
             start: f,
             size: R,
-            end: E,
+            end: T,
             key: h,
-            lane: y
+            lane: x
           };
         }
         return this.measurementsCache = c, c;
@@ -557,11 +577,11 @@ class Ks {
         this.getScrollOffset(),
         this.options.lanes
       ],
-      (t, n, o, s) => this.range = t.length > 0 && n > 0 ? qs({
+      (t, n, o, r) => this.range = t.length > 0 && n > 0 ? Qr({
         measurements: t,
         outerSize: n,
         scrollOffset: o,
-        lanes: s
+        lanes: r
       }) : null,
       {
         key: !1,
@@ -579,8 +599,8 @@ class Ks {
           n
         ];
       },
-      (t, n, o, s, i) => s === null || i === null ? [] : t({
-        startIndex: s,
+      (t, n, o, r, i) => r === null || i === null ? [] : t({
+        startIndex: r,
         endIndex: i,
         overscan: n,
         count: o
@@ -595,16 +615,16 @@ class Ks {
         `Missing attribute name '${n}={index}' on measured element.`
       ), -1);
     }, this._measureElement = (t, n) => {
-      const o = this.indexFromElement(t), s = this.measurementsCache[o];
-      if (!s)
+      const o = this.indexFromElement(t), r = this.measurementsCache[o];
+      if (!r)
         return;
-      const i = s.key, a = this.elementsCache.get(i);
+      const i = r.key, a = this.elementsCache.get(i);
       a !== t && (a && this.observer.unobserve(a), this.observer.observe(t), this.elementsCache.set(i, t)), t.isConnected && this.resizeItem(o, this.options.measureElement(t, n, this));
     }, this.resizeItem = (t, n) => {
       const o = this.measurementsCache[t];
       if (!o)
         return;
-      const s = this.itemSizeCache.get(o.key) ?? o.size, i = n - s;
+      const r = this.itemSizeCache.get(o.key) ?? o.size, i = n - r;
       i !== 0 && ((this.shouldAdjustScrollPositionOnItemSizeChange !== void 0 ? this.shouldAdjustScrollPositionOnItemSizeChange(o, i, this) : o.start < this.getScrollOffset() + this.scrollAdjustments) && this._scrollToOffset(this.getScrollOffset(), {
         adjustments: this.scrollAdjustments += i,
         behavior: void 0
@@ -621,8 +641,8 @@ class Ks {
       () => [this.getVirtualIndexes(), this.getMeasurements()],
       (t, n) => {
         const o = [];
-        for (let s = 0, i = t.length; s < i; s++) {
-          const a = t[s], d = n[a];
+        for (let r = 0, i = t.length; r < i; r++) {
+          const a = t[r], d = n[a];
           o.push(d);
         }
         return o;
@@ -634,27 +654,27 @@ class Ks {
     ), this.getVirtualItemForOffset = (t) => {
       const n = this.getMeasurements();
       if (n.length !== 0)
-        return en(
-          n[qn(
+        return nn(
+          n[Xn(
             0,
             n.length - 1,
-            (o) => en(n[o]).start,
+            (o) => nn(n[o]).start,
             t
           )]
         );
     }, this.getOffsetForAlignment = (t, n, o = 0) => {
-      const s = this.getSize(), i = this.getScrollOffset();
-      n === "auto" && (n = t >= i + s ? "end" : "start"), n === "center" ? t += (o - s) / 2 : n === "end" && (t -= s);
-      const a = this.getTotalSize() + this.options.scrollMargin - s;
+      const r = this.getSize(), i = this.getScrollOffset();
+      n === "auto" && (n = t >= i + r ? "end" : "start"), n === "center" ? t += (o - r) / 2 : n === "end" && (t -= r);
+      const a = this.getTotalSize() + this.options.scrollMargin - r;
       return Math.max(Math.min(a, t), 0);
     }, this.getOffsetForIndex = (t, n = "auto") => {
       t = Math.max(0, Math.min(t, this.options.count - 1));
       const o = this.measurementsCache[t];
       if (!o)
         return;
-      const s = this.getSize(), i = this.getScrollOffset();
+      const r = this.getSize(), i = this.getScrollOffset();
       if (n === "auto")
-        if (o.end >= i + s - this.options.scrollPaddingEnd)
+        if (o.end >= i + r - this.options.scrollPaddingEnd)
           n = "end";
         else if (o.start <= i + this.options.scrollPaddingStart)
           n = "start";
@@ -676,7 +696,7 @@ class Ks {
       o === "smooth" && this.isDynamicMode() && console.warn(
         "The `smooth` scroll behavior is not fully supported with dynamic size."
       ), t = Math.max(0, Math.min(t, this.options.count - 1));
-      let s = 0;
+      let r = 0;
       const i = 10, a = (c) => {
         if (!this.targetWindow) return;
         const l = this.getOffsetForIndex(t, c);
@@ -691,10 +711,10 @@ class Ks {
             console.warn("Failed to get offset for index:", t);
             return;
           }
-          Ps(g[0], f) || d(u);
+          Vr(g[0], f) || d(u);
         });
       }, d = (c) => {
-        this.targetWindow && (s++, s < i ? this.targetWindow.requestAnimationFrame(() => a(c)) : console.warn(
+        this.targetWindow && (r++, r < i ? this.targetWindow.requestAnimationFrame(() => a(c)) : console.warn(
           `Failed to scroll to index ${t} after ${i} attempts.`
         ));
       };
@@ -715,13 +735,13 @@ class Ks {
       else if (this.options.lanes === 1)
         o = ((t = n[n.length - 1]) == null ? void 0 : t.end) ?? 0;
       else {
-        const s = Array(this.options.lanes).fill(null);
+        const r = Array(this.options.lanes).fill(null);
         let i = n.length - 1;
-        for (; i >= 0 && s.some((a) => a === null); ) {
+        for (; i >= 0 && r.some((a) => a === null); ) {
           const a = n[i];
-          s[a.lane] === null && (s[a.lane] = a.end), i--;
+          r[a.lane] === null && (r[a.lane] = a.end), i--;
         }
-        o = Math.max(...s.filter((a) => a !== null));
+        o = Math.max(...r.filter((a) => a !== null));
       }
       return Math.max(
         o - this.options.scrollMargin + this.options.paddingEnd,
@@ -737,64 +757,64 @@ class Ks {
     }, this.setOptions(e);
   }
 }
-const qn = (r, e, t, n) => {
-  for (; r <= e; ) {
-    const o = (r + e) / 2 | 0, s = t(o);
-    if (s < n)
-      r = o + 1;
-    else if (s > n)
+const Xn = (s, e, t, n) => {
+  for (; s <= e; ) {
+    const o = (s + e) / 2 | 0, r = t(o);
+    if (r < n)
+      s = o + 1;
+    else if (r > n)
       e = o - 1;
     else
       return o;
   }
-  return r > 0 ? r - 1 : 0;
+  return s > 0 ? s - 1 : 0;
 };
-function qs({
-  measurements: r,
+function Qr({
+  measurements: s,
   outerSize: e,
   scrollOffset: t,
   lanes: n
 }) {
-  const o = r.length - 1, s = (d) => r[d].start;
-  if (r.length <= n)
+  const o = s.length - 1, r = (d) => s[d].start;
+  if (s.length <= n)
     return {
       startIndex: 0,
       endIndex: o
     };
-  let i = qn(
+  let i = Xn(
     0,
     o,
-    s,
+    r,
     t
   ), a = i;
   if (n === 1)
-    for (; a < o && r[a].end < t + e; )
+    for (; a < o && s[a].end < t + e; )
       a++;
   else if (n > 1) {
     const d = Array(n).fill(0);
     for (; a < o && d.some((l) => l < t + e); ) {
-      const l = r[a];
+      const l = s[a];
       d[l.lane] = l.end, a++;
     }
     const c = Array(n).fill(t + e);
     for (; i >= 0 && c.some((l) => l >= t); ) {
-      const l = r[i];
+      const l = s[i];
       c[l.lane] = l.start, i--;
     }
     i = Math.max(0, i - i % n), a = Math.min(o, a + (n - 1 - a % n));
   }
   return { startIndex: i, endIndex: a };
 }
-const yt = Symbol("store-raw"), Ee = Symbol("store-node"), re = Symbol("store-has"), Xn = Symbol("store-self");
-function Yn(r) {
-  let e = r[be];
-  if (!e && (Object.defineProperty(r, be, {
-    value: e = new Proxy(r, Zs)
-  }), !Array.isArray(r))) {
-    const t = Object.keys(r), n = Object.getOwnPropertyDescriptors(r);
-    for (let o = 0, s = t.length; o < s; o++) {
+const kt = Symbol("store-raw"), Ee = Symbol("store-node"), re = Symbol("store-has"), Yn = Symbol("store-self");
+function Zn(s) {
+  let e = s[be];
+  if (!e && (Object.defineProperty(s, be, {
+    value: e = new Proxy(s, ni)
+  }), !Array.isArray(s))) {
+    const t = Object.keys(s), n = Object.getOwnPropertyDescriptors(s);
+    for (let o = 0, r = t.length; o < r; o++) {
       const i = t[o];
-      n[i].get && Object.defineProperty(r, i, {
+      n[i].get && Object.defineProperty(s, i, {
         enumerable: n[i].enumerable,
         get: n[i].get.bind(e)
       });
@@ -802,67 +822,67 @@ function Yn(r) {
   }
   return e;
 }
-function pe(r) {
+function Ce(s) {
   let e;
-  return r != null && typeof r == "object" && (r[be] || !(e = Object.getPrototypeOf(r)) || e === Object.prototype || Array.isArray(r));
+  return s != null && typeof s == "object" && (s[be] || !(e = Object.getPrototypeOf(s)) || e === Object.prototype || Array.isArray(s));
 }
-function Te(r, e = /* @__PURE__ */ new Set()) {
-  let t, n, o, s;
-  if (t = r != null && r[yt]) return t;
-  if (!pe(r) || e.has(r)) return r;
-  if (Array.isArray(r)) {
-    Object.isFrozen(r) ? r = r.slice(0) : e.add(r);
-    for (let i = 0, a = r.length; i < a; i++)
-      o = r[i], (n = Te(o, e)) !== o && (r[i] = n);
+function Te(s, e = /* @__PURE__ */ new Set()) {
+  let t, n, o, r;
+  if (t = s != null && s[kt]) return t;
+  if (!Ce(s) || e.has(s)) return s;
+  if (Array.isArray(s)) {
+    Object.isFrozen(s) ? s = s.slice(0) : e.add(s);
+    for (let i = 0, a = s.length; i < a; i++)
+      o = s[i], (n = Te(o, e)) !== o && (s[i] = n);
   } else {
-    Object.isFrozen(r) ? r = Object.assign({}, r) : e.add(r);
-    const i = Object.keys(r), a = Object.getOwnPropertyDescriptors(r);
+    Object.isFrozen(s) ? s = Object.assign({}, s) : e.add(s);
+    const i = Object.keys(s), a = Object.getOwnPropertyDescriptors(s);
     for (let d = 0, c = i.length; d < c; d++)
-      s = i[d], !a[s].get && (o = r[s], (n = Te(o, e)) !== o && (r[s] = n));
+      r = i[d], !a[r].get && (o = s[r], (n = Te(o, e)) !== o && (s[r] = n));
   }
-  return r;
+  return s;
 }
-function st(r, e) {
-  let t = r[e];
-  return t || Object.defineProperty(r, e, {
+function rt(s, e) {
+  let t = s[e];
+  return t || Object.defineProperty(s, e, {
     value: t = /* @__PURE__ */ Object.create(null)
   }), t;
 }
-function Ue(r, e, t) {
-  if (r[e]) return r[e];
-  const [n, o] = he(t, {
+function Ke(s, e, t) {
+  if (s[e]) return s[e];
+  const [n, o] = fe(t, {
     equals: !1,
     internal: !0
   });
-  return n.$ = o, r[e] = n;
+  return n.$ = o, s[e] = n;
 }
-function Xs(r, e) {
-  const t = Reflect.getOwnPropertyDescriptor(r, e);
-  return !t || t.get || !t.configurable || e === be || e === Ee || (delete t.value, delete t.writable, t.get = () => r[be][e]), t;
+function ei(s, e) {
+  const t = Reflect.getOwnPropertyDescriptor(s, e);
+  return !t || t.get || !t.configurable || e === be || e === Ee || (delete t.value, delete t.writable, t.get = () => s[be][e]), t;
 }
-function Zn(r) {
-  bt() && Ue(st(r, Ee), Xn)();
+function Jn(s) {
+  yt() && Ke(rt(s, Ee), Yn)();
 }
-function Ys(r) {
-  return Zn(r), Reflect.ownKeys(r);
+function ti(s) {
+  return Jn(s), Reflect.ownKeys(s);
 }
-const Zs = {
-  get(r, e, t) {
-    if (e === yt) return r;
+const ni = {
+  get(s, e, t) {
+    if (e === kt) return s;
     if (e === be) return t;
-    if (e === Zt)
-      return Zn(r), t;
-    const n = st(r, Ee), o = n[e];
-    let s = o ? o() : r[e];
-    if (e === Ee || e === re || e === "__proto__") return s;
+    if (e === Qt)
+      return Jn(s), t;
+    const n = rt(s, Ee), o = n[e];
+    let r = o ? o() : s[e];
+    if (e === Ee || e === re || e === "__proto__") return r;
     if (!o) {
-      const i = Object.getOwnPropertyDescriptor(r, e);
-      bt() && (typeof s != "function" || r.hasOwnProperty(e)) && !(i && i.get) && (s = Ue(n, e, s)());
+      const i = Object.getOwnPropertyDescriptor(s, e);
+      yt() && (typeof r != "function" || s.hasOwnProperty(e)) && !(i && i.get) && (r = Ke(n, e, r)());
     }
-    return pe(s) ? Yn(s) : s;
+    return Ce(r) ? Zn(r) : r;
   },
-  has(r, e) {
-    return e === yt || e === be || e === Zt || e === Ee || e === re || e === "__proto__" ? !0 : (bt() && Ue(st(r, re), e)(), e in r);
+  has(s, e) {
+    return e === kt || e === be || e === Qt || e === Ee || e === re || e === "__proto__" ? !0 : (yt() && Ke(rt(s, re), e)(), e in s);
   },
   set() {
     return !0;
@@ -870,179 +890,179 @@ const Zs = {
   deleteProperty() {
     return !0;
   },
-  ownKeys: Ys,
-  getOwnPropertyDescriptor: Xs
+  ownKeys: ti,
+  getOwnPropertyDescriptor: ei
 };
-function ee(r, e, t, n = !1) {
-  if (!n && r[e] === t) return;
-  const o = r[e], s = r.length;
-  t === void 0 ? (delete r[e], r[re] && r[re][e] && o !== void 0 && r[re][e].$()) : (r[e] = t, r[re] && r[re][e] && o === void 0 && r[re][e].$());
-  let i = st(r, Ee), a;
-  if ((a = Ue(i, e, o)) && a.$(() => t), Array.isArray(r) && r.length !== s) {
-    for (let d = r.length; d < s; d++) (a = i[d]) && a.$();
-    (a = Ue(i, "length", s)) && a.$(r.length);
+function te(s, e, t, n = !1) {
+  if (!n && s[e] === t) return;
+  const o = s[e], r = s.length;
+  t === void 0 ? (delete s[e], s[re] && s[re][e] && o !== void 0 && s[re][e].$()) : (s[e] = t, s[re] && s[re][e] && o === void 0 && s[re][e].$());
+  let i = rt(s, Ee), a;
+  if ((a = Ke(i, e, o)) && a.$(() => t), Array.isArray(s) && s.length !== r) {
+    for (let d = s.length; d < r; d++) (a = i[d]) && a.$();
+    (a = Ke(i, "length", r)) && a.$(s.length);
   }
-  (a = i[Xn]) && a.$();
+  (a = i[Yn]) && a.$();
 }
-function Jn(r, e) {
+function Qn(s, e) {
   const t = Object.keys(e);
   for (let n = 0; n < t.length; n += 1) {
     const o = t[n];
-    ee(r, o, e[o]);
+    te(s, o, e[o]);
   }
 }
-function Js(r, e) {
-  if (typeof e == "function" && (e = e(r)), e = Te(e), Array.isArray(e)) {
-    if (r === e) return;
+function oi(s, e) {
+  if (typeof e == "function" && (e = e(s)), e = Te(e), Array.isArray(e)) {
+    if (s === e) return;
     let t = 0, n = e.length;
     for (; t < n; t++) {
       const o = e[t];
-      r[t] !== o && ee(r, t, o);
+      s[t] !== o && te(s, t, o);
     }
-    ee(r, "length", n);
-  } else Jn(r, e);
+    te(s, "length", n);
+  } else Qn(s, e);
 }
-function $e(r, e, t = []) {
-  let n, o = r;
+function Be(s, e, t = []) {
+  let n, o = s;
   if (e.length > 1) {
     n = e.shift();
-    const i = typeof n, a = Array.isArray(r);
+    const i = typeof n, a = Array.isArray(s);
     if (Array.isArray(n)) {
       for (let d = 0; d < n.length; d++)
-        $e(r, [n[d]].concat(e), t);
+        Be(s, [n[d]].concat(e), t);
       return;
     } else if (a && i === "function") {
-      for (let d = 0; d < r.length; d++)
-        n(r[d], d) && $e(r, [d].concat(e), t);
+      for (let d = 0; d < s.length; d++)
+        n(s[d], d) && Be(s, [d].concat(e), t);
       return;
     } else if (a && i === "object") {
       const {
         from: d = 0,
-        to: c = r.length - 1,
+        to: c = s.length - 1,
         by: l = 1
       } = n;
       for (let h = d; h <= c; h += l)
-        $e(r, [h].concat(e), t);
+        Be(s, [h].concat(e), t);
       return;
     } else if (e.length > 1) {
-      $e(r[n], e, [n].concat(t));
+      Be(s[n], e, [n].concat(t));
       return;
     }
-    o = r[n], t = [n].concat(t);
+    o = s[n], t = [n].concat(t);
   }
-  let s = e[0];
-  typeof s == "function" && (s = s(o, t), s === o) || n === void 0 && s == null || (s = Te(s), n === void 0 || pe(o) && pe(s) && !Array.isArray(s) ? Jn(o, s) : ee(r, n, s));
+  let r = e[0];
+  typeof r == "function" && (r = r(o, t), r === o) || n === void 0 && r == null || (r = Te(r), n === void 0 || Ce(o) && Ce(r) && !Array.isArray(r) ? Qn(o, r) : te(s, n, r));
 }
-function Qs(...[r, e]) {
-  const t = Te(r || {}), n = Array.isArray(t), o = Yn(t);
-  function s(...i) {
-    is(() => {
-      n && i.length === 1 ? Js(t, i[0]) : $e(t, i);
+function si(...[s, e]) {
+  const t = Te(s || {}), n = Array.isArray(t), o = Zn(t);
+  function r(...i) {
+    ar(() => {
+      n && i.length === 1 ? oi(t, i[0]) : Be(t, i);
     });
   }
-  return [o, s];
+  return [o, r];
 }
-const vt = Symbol("store-root");
-function Ie(r, e, t, n, o) {
-  const s = e[t];
-  if (r === s) return;
-  const i = Array.isArray(r);
-  if (t !== vt && (!pe(r) || !pe(s) || i !== Array.isArray(s) || o && r[o] !== s[o])) {
-    ee(e, t, r);
+const It = Symbol("store-root");
+function Ie(s, e, t, n, o) {
+  const r = e[t];
+  if (s === r) return;
+  const i = Array.isArray(s);
+  if (t !== It && (!Ce(s) || !Ce(r) || i !== Array.isArray(r) || o && s[o] !== r[o])) {
+    te(e, t, s);
     return;
   }
   if (i) {
-    if (r.length && s.length && (!n || o && r[0] && r[0][o] != null)) {
-      let c, l, h, u, f, g, R, E;
-      for (h = 0, u = Math.min(s.length, r.length); h < u && (s[h] === r[h] || o && s[h] && r[h] && s[h][o] && s[h][o] === r[h][o]); h++)
-        Ie(r[h], s, h, n, o);
-      const y = new Array(r.length), H = /* @__PURE__ */ new Map();
-      for (u = s.length - 1, f = r.length - 1; u >= h && f >= h && (s[u] === r[f] || o && s[u] && r[f] && s[u][o] && s[u][o] === r[f][o]); u--, f--)
-        y[f] = s[u];
+    if (s.length && r.length && (!n || o && s[0] && s[0][o] != null)) {
+      let c, l, h, u, f, g, R, T;
+      for (h = 0, u = Math.min(r.length, s.length); h < u && (r[h] === s[h] || o && r[h] && s[h] && r[h][o] && r[h][o] === s[h][o]); h++)
+        Ie(s[h], r, h, n, o);
+      const x = new Array(s.length), H = /* @__PURE__ */ new Map();
+      for (u = r.length - 1, f = s.length - 1; u >= h && f >= h && (r[u] === s[f] || o && r[u] && s[f] && r[u][o] && r[u][o] === s[f][o]); u--, f--)
+        x[f] = r[u];
       if (h > f || h > u) {
-        for (l = h; l <= f; l++) ee(s, l, r[l]);
-        for (; l < r.length; l++)
-          ee(s, l, y[l]), Ie(r[l], s, l, n, o);
-        s.length > r.length && ee(s, "length", r.length);
+        for (l = h; l <= f; l++) te(r, l, s[l]);
+        for (; l < s.length; l++)
+          te(r, l, x[l]), Ie(s[l], r, l, n, o);
+        r.length > s.length && te(r, "length", s.length);
         return;
       }
       for (R = new Array(f + 1), l = f; l >= h; l--)
-        g = r[l], E = o && g ? g[o] : g, c = H.get(E), R[l] = c === void 0 ? -1 : c, H.set(E, l);
+        g = s[l], T = o && g ? g[o] : g, c = H.get(T), R[l] = c === void 0 ? -1 : c, H.set(T, l);
       for (c = h; c <= u; c++)
-        g = s[c], E = o && g ? g[o] : g, l = H.get(E), l !== void 0 && l !== -1 && (y[l] = s[c], l = R[l], H.set(E, l));
-      for (l = h; l < r.length; l++)
-        l in y ? (ee(s, l, y[l]), Ie(r[l], s, l, n, o)) : ee(s, l, r[l]);
+        g = r[c], T = o && g ? g[o] : g, l = H.get(T), l !== void 0 && l !== -1 && (x[l] = r[c], l = R[l], H.set(T, l));
+      for (l = h; l < s.length; l++)
+        l in x ? (te(r, l, x[l]), Ie(s[l], r, l, n, o)) : te(r, l, s[l]);
     } else
-      for (let c = 0, l = r.length; c < l; c++)
-        Ie(r[c], s, c, n, o);
-    s.length > r.length && ee(s, "length", r.length);
+      for (let c = 0, l = s.length; c < l; c++)
+        Ie(s[c], r, c, n, o);
+    r.length > s.length && te(r, "length", s.length);
     return;
   }
-  const a = Object.keys(r);
+  const a = Object.keys(s);
   for (let c = 0, l = a.length; c < l; c++)
-    Ie(r[a[c]], s, a[c], n, o);
-  const d = Object.keys(s);
+    Ie(s[a[c]], r, a[c], n, o);
+  const d = Object.keys(r);
   for (let c = 0, l = d.length; c < l; c++)
-    r[d[c]] === void 0 && ee(s, d[c], void 0);
+    s[d[c]] === void 0 && te(r, d[c], void 0);
 }
-function ei(r, e = {}) {
+function ri(s, e = {}) {
   const {
     merge: t,
     key: n = "id"
-  } = e, o = Te(r);
-  return (s) => {
-    if (!pe(s) || !pe(o)) return o;
+  } = e, o = Te(s);
+  return (r) => {
+    if (!Ce(r) || !Ce(o)) return o;
     const i = Ie(o, {
-      [vt]: s
-    }, vt, t, n);
-    return i === void 0 ? s : i;
+      [It]: r
+    }, It, t, n);
+    return i === void 0 ? r : i;
   };
 }
-function ti(r) {
-  const e = ot(r), t = new Ks(e), [n, o] = Qs(t.getVirtualItems()), [s, i] = he(t.getTotalSize()), a = {
+function ii(s) {
+  const e = ot(s), t = new Jr(e), [n, o] = si(t.getVirtualItems()), [r, i] = fe(t.getTotalSize()), a = {
     get(c, l) {
       switch (l) {
         case "getVirtualItems":
           return () => n;
         case "getTotalSize":
-          return () => s();
+          return () => r();
         default:
           return Reflect.get(c, l);
       }
     }
   }, d = new Proxy(t, a);
-  return d.setOptions(e), Le(() => {
+  return d.setOptions(e), He(() => {
     const c = d._didMount();
-    d._willUpdate(), He(c);
-  }), ls(() => {
-    d.setOptions(ot(e, r, {
+    d._willUpdate(), ze(c);
+  }), cr(() => {
+    d.setOptions(ot(e, s, {
       onChange: (c, l) => {
         var h;
-        c._willUpdate(), o(ei(c.getVirtualItems(), {
+        c._willUpdate(), o(ri(c.getVirtualItems(), {
           key: "index"
-        })), i(c.getTotalSize()), (h = r.onChange) == null || h.call(r, c, l);
+        })), i(c.getTotalSize()), (h = s.onChange) == null || h.call(s, c, l);
       }
     })), d.measure();
   }), d;
 }
-function Qn(r) {
-  return ti(ot({
-    observeElementRect: Vs,
-    observeElementOffset: Gs,
-    scrollToFn: Us
-  }, r));
+function eo(s) {
+  return ii(ot({
+    observeElementRect: qr,
+    observeElementOffset: Xr,
+    scrollToFn: Zr
+  }, s));
 }
-var ni = /* @__PURE__ */ q("<div><button type=button><i></i><span>");
-const oi = `${Mo} ir-icon ir-icon--check`;
-function ri(r) {
+var li = /* @__PURE__ */ q("<div><button type=button><i></i><span>");
+const ai = `${Lo} ir-icon ir-icon--check`;
+function ci(s) {
   return (() => {
-    var e = ni(), t = e.firstChild, n = t.firstChild, o = n.nextSibling;
-    return e.style.setProperty("position", "absolute"), e.style.setProperty("width", "100%"), t.$$click = r.onClick, t.$$clickData = r.row, $(t, Eo), $(n, oi), G(o, () => r.text), J((s) => {
+    var e = li(), t = e.firstChild, n = t.firstChild, o = n.nextSibling;
+    return e.style.setProperty("position", "absolute"), e.style.setProperty("width", "100%"), t.$$click = s.onClick, t.$$clickData = s.row, $(t, To), $(n, ai), G(o, () => s.text), J((r) => {
       var i = {
-        [Lo]: !0,
-        [To]: r.isSelected
-      }, a = r.row, d = r.value, c = `${r.top}px`, l = r.text;
-      return s.e = as(e, i, s.e), a !== s.t && Re(e, "data-row", s.t = a), d !== s.a && Re(e, "data-value", s.a = d), c !== s.o && ((s.o = c) != null ? e.style.setProperty("top", c) : e.style.removeProperty("top")), l !== s.i && Re(t, "title", s.i = l), s;
+        [zo]: !0,
+        [Ho]: s.isSelected
+      }, a = s.row, d = s.value, c = `${s.top}px`, l = s.text;
+      return r.e = dr(e, i, r.e), a !== r.t && xe(e, "data-row", r.t = a), d !== r.a && xe(e, "data-value", r.a = d), c !== r.o && ((r.o = c) != null ? e.style.setProperty("top", c) : e.style.removeProperty("top")), l !== r.i && xe(t, "title", r.i = l), r;
     }, {
       e: void 0,
       t: void 0,
@@ -1052,38 +1072,38 @@ function ri(r) {
     }), e;
   })();
 }
-Et(["click"]);
-var si = /* @__PURE__ */ q("<div><div>");
-const ii = `${Ho} ${ps.zIndex.popover} is-expanded`, li = 26;
-function ai(r) {
+Tt(["click"]);
+var di = /* @__PURE__ */ q("<div><div>");
+const ui = `${Oo} ${wr.zIndex.popover} is-expanded`, hi = 26;
+function fi(s) {
   const {
     items: e,
     selectedItem: t
-  } = r;
+  } = s;
   let n;
-  const o = Qn({
-    count: r.items.length,
+  const o = eo({
+    count: s.items.length,
     getScrollElement: () => n,
-    estimateSize: () => li,
+    estimateSize: () => hi,
     overscan: 4
-  }), s = r.refElement.offsetWidth, i = Math.max(s, r.breakWidth), a = Math.max(r.contentWidth, s);
-  return Le(() => {
-    const d = Bn(r.refElement, n, "bottom-start");
-    r.ref?.({
+  }), r = s.refElement.offsetWidth, i = Math.max(r, s.breakWidth), a = Math.max(s.contentWidth, r);
+  return He(() => {
+    const d = Gn(s.refElement, n, "bottom-start");
+    s.ref?.({
       divElement: n
     }), t && o.scrollToIndex(e.indexOf(t), {
       align: "center"
-    }), He(() => {
-      d(), r.ref?.(null);
+    }), ze(() => {
+      d(), s.ref?.(null);
     });
   }), (() => {
-    var d = si(), c = d.firstChild, l = n;
-    return typeof l == "function" ? fe(l, d) : n = d, $(d, ii), `${a}px` != null ? d.style.setProperty("width", `${a}px`) : d.style.removeProperty("width"), `${i}px` != null ? d.style.setProperty("max-width", `${i}px`) : d.style.removeProperty("max-width"), $(c, Oo), c.style.setProperty("position", "relative"), G(c, z(Mt, {
+    var d = di(), c = d.firstChild, l = n;
+    return typeof l == "function" ? ge(l, d) : n = d, $(d, ui), `${a}px` != null ? d.style.setProperty("width", `${a}px`) : d.style.removeProperty("width"), `${i}px` != null ? d.style.setProperty("max-width", `${i}px`) : d.style.removeProperty("max-width"), $(c, Ao), c.style.setProperty("position", "relative"), G(c, O(Lt, {
       get each() {
         return o.getVirtualItems();
       },
-      children: (h) => z(ri, {
-        onClick: (u) => r.onItemClick?.(r.items[u]),
+      children: (h) => O(ci, {
+        onClick: (u) => s.onItemClick?.(s.items[u]),
         get row() {
           return h.index;
         },
@@ -1091,18 +1111,18 @@ function ai(r) {
           return h.start;
         },
         get isSelected() {
-          return r.selectedItem === r.items[h.index];
+          return s.selectedItem === s.items[h.index];
         },
         get text() {
-          return r.items[h.index].text;
+          return s.items[h.index].text;
         },
         get value() {
-          return r.items[h.index].value;
+          return s.items[h.index].value;
         }
       })
     })), J((h) => {
-      var u = r.row, f = r.col, g = `${o.getTotalSize()}px`;
-      return u !== h.e && Re(d, "data-row", h.e = u), f !== h.t && Re(d, "data-col", h.t = f), g !== h.a && ((h.a = g) != null ? c.style.setProperty("height", g) : c.style.removeProperty("height")), h;
+      var u = s.row, f = s.col, g = `${o.getTotalSize()}px`;
+      return u !== h.e && xe(d, "data-row", h.e = u), f !== h.t && xe(d, "data-col", h.t = f), g !== h.a && ((h.a = g) != null ? c.style.setProperty("height", g) : c.style.removeProperty("height")), h;
     }, {
       e: void 0,
       t: void 0,
@@ -1110,8 +1130,8 @@ function ai(r) {
     }), d;
   })();
 }
-const Ze = { select: Ao, selectInput: Do, selectInputNative: Wo, selectInputIcon: Fo }, rn = /* @__PURE__ */ new WeakMap(), ci = 20, di = 4, sn = ci + di, ui = 18;
-class hi extends Q {
+const Ze = { select: Fo, selectInput: Wo, selectInputNative: No, selectInputIcon: Po }, ln = /* @__PURE__ */ new WeakMap(), gi = 20, mi = 4, an = gi + mi, pi = 18;
+class Ci extends Q {
   _itemTextMap;
   _allowCustomText;
   _allowEdit;
@@ -1131,13 +1151,13 @@ class hi extends Q {
     onChange: t,
     allowClear: n,
     customDisplayTextFunc: o,
-    lazyItems: s,
+    lazyItems: r,
     allowCustomText: i = !1,
     showErrorIfCustomText: a = !1,
     allowEdit: d = !1,
     mappingType: c = "text"
   }) {
-    super(), this._allowClear = n ?? !1, this._mappingType = c, this._items = e ?? [], this._lazyItems = s ?? null, this._itemTextMap = /* @__PURE__ */ new Map(), this._allowCustomText = i, this._allowEdit = d, d && (this._allowCustomText = !0), o ? this._customDisplayTextFunc = o : this._customDisplayTextFunc = c === "text" ? this._defaultTextCustomDisplayTextFunc.bind(this) : this._defaultValueCustomDisplayTextFunc.bind(this), this._showErrorIfCustomText = a, t && (this.onChange = t.bind(this));
+    super(), this._allowClear = n ?? !1, this._mappingType = c, this._items = e ?? [], this._lazyItems = r ?? null, this._itemTextMap = /* @__PURE__ */ new Map(), this._allowCustomText = i, this._allowEdit = d, d && (this._allowCustomText = !0), o ? this._customDisplayTextFunc = o : this._customDisplayTextFunc = c === "text" ? this._defaultTextCustomDisplayTextFunc.bind(this) : this._defaultValueCustomDisplayTextFunc.bind(this), this._showErrorIfCustomText = a, t && (this.onChange = t.bind(this));
   }
   _loadItems() {
     if (!this._isInitItems) {
@@ -1161,13 +1181,13 @@ class hi extends Q {
   render(e, t, n) {
     const {
       _allowCustomText: o,
-      _allowEdit: s,
+      _allowEdit: r,
       _showErrorIfCustomText: i,
       _customDisplayTextFunc: a
-    } = this, { element: d } = at({ tag: "div", className: je(zo, Ze.select, Ze.selectInput) }), { element: c } = at({ tag: "span", className: Ze.selectInputNative }), { element: l } = at({ tag: "i", className: je(Ze.selectInputIcon, "ir-icon", "ir-icon--chevron-down") });
+    } = this, { element: d } = dt({ tag: "div", className: Ue(Do, Ze.select, Ze.selectInput) }), { element: c } = dt({ tag: "span", className: Ze.selectInputNative }), { element: l } = dt({ tag: "i", className: Ue(Ze.selectInputIcon, "ir-icon", "ir-icon--chevron-down") });
     this._loadItems(), d.setAttribute("data-has-px", ""), l.setAttribute("data-ignore-auto-size", "");
     const h = n.text === "" || n.text === null || n.text === void 0;
-    s && d.classList.add("is-editable");
+    r && d.classList.add("is-editable");
     let u = this._getSelectedItemOrNull(n.text);
     const f = u !== null;
     u ? (c.textContent = a(u.value, u.text, !1), n.value = u.value) : o ? (c.textContent = a(n.value, n.text, !0), n.value = n.text) : (c.textContent = "", n.value = ""), // error 상태 표시 지정 시, error 속성 추가
@@ -1175,16 +1195,16 @@ class hi extends Q {
     !h && !f && (d.dataset.error = "true");
     let g = () => {
     }, R = [];
-    const E = Vn({
+    const T = Vn({
       eventElements: [d],
-      clickOutsideFunc: () => y.hide(),
+      clickOutsideFunc: () => x.hide(),
       getEventElements: () => R
-    }), y = {
+    }), x = {
       show: () => {
-        this._isExpanded = !0, H.create(), E.create(), this._beforeValue = n.value, this._beforeText = n.text, d.classList.add("is-expanded");
+        this._isExpanded = !0, H.create(), T.create(), this._beforeValue = n.value, this._beforeText = n.text, d.classList.add("is-expanded");
         const { breakWidth: I, contentWidth: b } = this._getCellWidthInfo(n);
-        g = $n(
-          () => ai({
+        g = Bn(
+          () => fi({
             ref: (C) => R = C ? [C.divElement] : [],
             row: e,
             col: t,
@@ -1194,42 +1214,42 @@ class hi extends Q {
             items: this._items,
             refElement: d,
             onItemClick: (C) => {
-              const { value: w, text: k } = C, p = new se(n.gridStore.commandContext, [e, t, { text: k, value: w }]);
-              p.onUndo = () => this.onChange(e, t, this._beforeValue, this._beforeText, w, k), p.onExecute = () => this.onChange(e, t, w, k, this._beforeValue, this._beforeText), n.gridStore.commandManager.pushCommandBlock(new ue(
+              const { value: w, text: E } = C, p = new ie(n.gridStore.commandContext, [e, t, { text: E, value: w }]);
+              p.onUndo = () => this.onChange(e, t, this._beforeValue, this._beforeText, w, E), p.onExecute = () => this.onChange(e, t, w, E, this._beforeValue, this._beforeText), n.gridStore.commandManager.pushCommandBlock(new he(
                 "Change select menu",
                 p
-              )), u = C, n.text = C[this._mappingType], n.value = w, c.textContent = a(w, k, !1), d.dataset.error && delete d.dataset.error, n.gridStore.gridTextarea.focus(), this.onChange(e, t, w, k, this._beforeValue, this._beforeText), y.hide();
+              )), u = C, n.text = C[this._mappingType], n.value = w, c.textContent = a(w, E, !1), d.dataset.error && delete d.dataset.error, n.gridStore.gridTextarea.focus(), this.onChange(e, t, w, E, this._beforeValue, this._beforeText), x.hide();
             }
           }),
           Me("popover")
         );
       },
       hide: () => {
-        this._isExpanded = !1, d.classList.remove("is-expanded"), H.destroy(), E.destroy(), g();
+        this._isExpanded = !1, d.classList.remove("is-expanded"), H.destroy(), T.destroy(), g();
       }
-    }, H = zt(y), L = () => {
-      d.classList.contains("is-expanded") ? y.hide() : y.show();
+    }, H = Dt(x), L = () => {
+      d.classList.contains("is-expanded") ? x.hide() : x.show();
     };
     return d.onclick = (I) => {
-      s && I.target !== l || L();
+      r && I.target !== l || L();
     }, d.appendChild(c), d.appendChild(l), d;
   }
-  onChange(e, t, n, o, s, i) {
+  onChange(e, t, n, o, r, i) {
   }
   getCellInnerWidth(e, t, n) {
     if (!n.text) return 0;
-    const o = me(e, t), s = this._itemTextMap.has(n.text), i = this._customDisplayTextFunc(n.value, n.text, !s), a = o.calculateWidth(i);
-    return sn + a + this.getHorizontalCellPadding(n);
+    const o = pe(e, t), r = this._itemTextMap.has(n.text), i = this._customDisplayTextFunc(n.value, n.text, !r), a = o.calculateWidth(i);
+    return an + a + this.getHorizontalCellPadding(n);
   }
   _getDropdownWidth(e, t, n) {
-    const o = me(e, t), s = this._items.reduce((i, a) => Math.max(i, o.calculateWidth(a.text)), 0);
-    return sn + s + this.getHorizontalCellPadding(n);
+    const o = pe(e, t), r = this._items.reduce((i, a) => Math.max(i, o.calculateWidth(a.text)), 0);
+    return an + r + this.getHorizontalCellPadding(n);
   }
   getRendererInnerWidth(e, t, n) {
-    const o = rn.get(this);
+    const o = ln.get(this);
     if (o) return o;
-    const s = this._getDropdownWidth(e, t, n);
-    return rn.set(this, s), s;
+    const r = this._getDropdownWidth(e, t, n);
+    return ln.set(this, r), r;
   }
   _getCellWidthInfo(e) {
     return {
@@ -1238,7 +1258,7 @@ class hi extends Q {
     };
   }
   getItemWidth(e, t, n) {
-    return this._itemWidth === null && (this._itemWidth = this.getRendererInnerWidth(e, t, n)), this._itemWidth + ui;
+    return this._itemWidth === null && (this._itemWidth = this.getRendererInnerWidth(e, t, n)), this._itemWidth + pi;
   }
   get renderType() {
     return "select";
@@ -1250,11 +1270,11 @@ class hi extends Q {
     return this._allowClear;
   }
 }
-const Sc = (r) => {
-  const e = new hi(r);
+const Mc = (s) => {
+  const e = new Ci(s);
   return () => e;
-}, dt = { input: Po, inputNative: Dn, inputSuffix: xt }, fi = 28, ke = /* @__PURE__ */ new WeakMap();
-class gi extends Q {
+}, ht = { input: $o, inputNative: Fn, inputSuffix: bt }, wi = 28, ke = /* @__PURE__ */ new WeakMap();
+class _i extends Q {
   _format;
   _minDate;
   _maxDate;
@@ -1262,47 +1282,47 @@ class gi extends Q {
   constructor({
     onDateClick: e,
     format: t = X.t("datePicker.dateFormat"),
-    minDate: n = rt().getStoreValue("datePicker.minDate"),
-    maxDate: o = rt().getStoreValue("datePicker.maxDate"),
-    allowedEmptyString: s = !0
+    minDate: n = st().getStoreValue("datePicker.minDate"),
+    maxDate: o = st().getStoreValue("datePicker.maxDate"),
+    allowedEmptyString: r = !0
   }) {
-    super(), this._format = t, this._minDate = n, this._maxDate = o, this._allowedEmptyString = s, e && (this.onDateClick = e.bind(this));
+    super(), this._format = t, this._minDate = n, this._maxDate = o, this._allowedEmptyString = r, e && (this.onDateClick = e.bind(this));
   }
   onDateClick(e, t, n, o) {
   }
   getCellInnerWidth(e, t, n) {
-    return me(e, t).calculateWidth(n.text || this._format) + fi + this.getHorizontalCellPadding(n);
+    return pe(e, t).calculateWidth(n.text || this._format) + wi + this.getHorizontalCellPadding(n);
   }
   render(e, t, n) {
-    const o = document.createElement("div"), s = document.createElement("input"), i = document.createElement("button"), a = document.createElement("i"), {
+    const o = document.createElement("div"), r = document.createElement("input"), i = document.createElement("button"), a = document.createElement("i"), {
       _minDate: d,
       _maxDate: c,
       _format: l,
       _allowedEmptyString: h
     } = this;
-    if (s.readOnly = !0, s.maxLength = l.length, o.setAttribute("data-has-px", ""), o.classList.add(dt.input, No), s.classList.add(dt.inputNative, "tnum-adj"), i.classList.add(dt.inputSuffix), a.classList.add("ir-icon", "ir-icon--calendar"), s.type = "text", s.placeholder = l, n.text !== "") {
+    if (r.readOnly = !0, r.maxLength = l.length, o.setAttribute("data-has-px", ""), o.classList.add(ht.input, Bo), r.classList.add(ht.inputNative, "tnum-adj"), i.classList.add(ht.inputSuffix), a.classList.add("ir-icon", "ir-icon--calendar"), r.type = "text", r.placeholder = l, n.text !== "") {
       const f = l.replace(/-/g, "");
-      let g = ae(n.text, l, !0);
-      g.isValid() || (g = ae(n.text, f, !0), n.text = g.format(l)), g.isValid() || (n.text = ke.get(n)), (g.isBefore(d) || g.isAfter(c)) && (n.text = ke.get(n));
+      let g = ce(n.text, l, !0);
+      g.isValid() || (g = ce(n.text, f, !0), n.text = g.format(l)), g.isValid() || (n.text = ke.get(n)), (g.isBefore(d) || g.isAfter(c)) && (n.text = ke.get(n));
     }
-    !h && (n.text === "" || n.text === void 0) && (n.text = ke.has(n) ? ke.get(n) : ae().format(l)), s.value = n.text || "", ke.set(n, n.text ?? ""), i.appendChild(a), o.appendChild(s), o.appendChild(i);
-    const u = ts({
-      uuid: Ts(),
+    !h && (n.text === "" || n.text === void 0) && (n.text = ke.has(n) ? ke.get(n) : ce().format(l)), r.value = n.text || "", ke.set(n, n.text ?? ""), i.appendChild(a), o.appendChild(r), o.appendChild(i);
+    const u = or({
+      uuid: Hr(),
       refElement: o,
       minDate: d,
       maxDate: c,
       onClick: (f) => {
-        const g = n.text ?? "", R = ae(f).format(l), E = new se(n.gridStore.commandContext, [e, t, { text: R }]);
-        E.onUndo = () => {
+        const g = n.text ?? "", R = ce(f).format(l), T = new ie(n.gridStore.commandContext, [e, t, { text: R }]);
+        T.onUndo = () => {
           this.onDateClick(e, t, g, R);
-        }, E.onExecute = () => {
+        }, T.onExecute = () => {
           this.onDateClick(e, t, R, g);
-        }, n.gridStore.commandManager.pushCommandBlock(new ue("Change datePicker", E)), s.value = R, n.text = R, ke.set(n, R), n.gridStore.gridTextarea.focus(), this.onDateClick(e, t, R, g), u.hide();
+        }, n.gridStore.commandManager.pushCommandBlock(new he("Change datePicker", T)), r.value = R, n.text = R, ke.set(n, R), n.gridStore.gridTextarea.focus(), this.onDateClick(e, t, R, g), u.hide();
       }
     });
     return i.onclick = () => {
       if (!u.visible) {
-        const f = ae(n.text, l, !0);
+        const f = ce(n.text, l, !0);
         f.isValid() ? u.update(f.toDate(), f.toDate()) : u.update(/* @__PURE__ */ new Date(), null), u.show();
       }
     }, o;
@@ -1311,19 +1331,19 @@ class gi extends Q {
     return "datePicker";
   }
 }
-const yc = (r) => {
-  const e = new gi(r);
+const Tc = (s) => {
+  const e = new _i(s);
   return () => e;
 }, Je = {
-  progress: Bo,
-  progressVariants: Vo
-}, mi = {
+  progress: Vo,
+  progressVariants: jo
+}, Ri = {
   min: 0,
   max: 100,
   defaultIntent: void 0,
   afterDecimalLen: 2
-}, pi = 100, Ci = 100;
-class wi extends Q {
+}, xi = 100, Si = 100;
+class bi extends Q {
   _min;
   _max;
   _defaultIntent;
@@ -1334,21 +1354,21 @@ class wi extends Q {
   render(e, t, n) {
     const {
       _min: o,
-      _max: s,
+      _max: r,
       _afterDecimalLen: i,
       _defaultIntent: a
     } = this, d = document.createElement("div"), c = document.createElement("div");
-    d.setAttribute("data-has-px", ""), d.className = $o, c.className = Je.progress;
+    d.setAttribute("data-has-px", ""), d.className = Go, c.className = Je.progress;
     const l = n.intent ?? a;
     l && c.classList.add(`${Je.progress}--${l}`);
-    const u = (B(parseFloat(n.text || "0"), o, s) - o) / (s - o) * pi;
-    return te(c, {
+    const u = (K(parseFloat(n.text || "0"), o, r) - o) / (r - o) * xi;
+    return ne(c, {
       [Je.progressVariants.progressPercent]: `${u}%`,
       [Je.progressVariants.progressText]: `'${u.toFixed(i)}%'`
     }), d.appendChild(c), d;
   }
   getCellInnerWidth(e, t, n) {
-    return Ci + this.getHorizontalCellPadding(n);
+    return Si + this.getHorizontalCellPadding(n);
   }
   get renderType() {
     return "progress";
@@ -1360,21 +1380,21 @@ class wi extends Q {
     return !1;
   }
 }
-const vc = (r = mi) => {
-  const e = new wi(r);
+const Lc = (s = Ri) => {
+  const e = new bi(s);
   return () => e;
-}, _i = 20, Ri = 4, xi = 24, bi = 24, Si = 29, ln = {
-  primary: Xo,
-  secondary: qo,
-  tertiary: Ko,
-  transparent: Uo,
+}, yi = 20, vi = 4, ki = 24, Ii = 24, Ei = 29, cn = {
+  primary: Zo,
+  secondary: Yo,
+  tertiary: Xo,
+  transparent: qo,
   left: "justify-content--start",
   center: "justify-content--center",
   right: "justify-content--end"
 };
-class yi extends Q {
+class Mi extends Q {
   constructor(e) {
-    super(), this.args = e, e.onClick && (this.onClick = e.onClick.bind(this)), e.iconDividerStyle ? this._extraWidth = Si : e.outlineStyle ? this._extraWidth = bi : this._extraWidth = 0;
+    super(), this.args = e, e.onClick && (this.onClick = e.onClick.bind(this)), e.iconDividerStyle ? this._extraWidth = Ei : e.outlineStyle ? this._extraWidth = Ii : this._extraWidth = 0;
   }
   _extraWidth;
   onClick(e, t, n) {
@@ -1382,21 +1402,21 @@ class yi extends Q {
   render(e, t, n) {
     const {
       iconDividerStyle: o,
-      outlineStyle: s,
+      outlineStyle: r,
       defaultColor: i,
       defaultIcon: a,
       defaultLabel: d
     } = this.args, c = document.createElement("div"), l = document.createElement("button");
-    c.className = Go, l.classList.add(jo, "button"), l.dataset.ignoreAutoSize = "";
+    c.className = Uo, l.classList.add(Ko, "button"), l.dataset.ignoreAutoSize = "";
     const h = n.intent ?? i;
-    h && l.classList.add(ln[h]), s ? (c.setAttribute("data-has-px", ""), c.classList.add(Yo)) : o && c.classList.add(Zo), !this.args.iconDividerStyle && n.horizontalAlign && l.classList.add(ln[n.horizontalAlign]), l.onclick = (g) => this.onClick(g, e, t);
+    h && l.classList.add(cn[h]), r ? (c.setAttribute("data-has-px", ""), c.classList.add(Jo)) : o && c.classList.add(Qo), !this.args.iconDividerStyle && n.horizontalAlign && l.classList.add(cn[n.horizontalAlign]), l.onclick = (g) => this.onClick(g, e, t);
     const u = n.icon ?? a, f = o ? n.text ?? "" : n.label ?? d ?? "";
     if (u) {
       const g = document.createElement("i");
-      g.className = `${Jo} ir-icon ${Ge(u)}`, l.appendChild(g);
+      g.className = `${es} ir-icon ${je(u)}`, l.appendChild(g);
     }
     if (f) {
-      const g = xe("span");
+      const g = Se("span");
       if (g.innerText = f, o) {
         const R = document.createElement("div");
         g.classList.add("text--multi-ellipsis"), R.setAttribute("data-has-px", ""), n.lineClamp === void 0 ? g.style.removeProperty("-webkit-line-clamp") : g.style.setProperty("-webkit-line-clamp", n.lineClamp), R.appendChild(g), c.insertAdjacentElement("afterbegin", R);
@@ -1410,10 +1430,10 @@ class yi extends Q {
   }
   getExtraWidth(e) {
     const t = e.icon || this.args.defaultIcon;
-    return this.args.iconDividerStyle || this.args.outlineStyle ? this._extraWidth : t ? _i + Ri : 0;
+    return this.args.iconDividerStyle || this.args.outlineStyle ? this._extraWidth : t ? yi + vi : 0;
   }
   getCellInnerWidth(e, t, n) {
-    const o = me(e, t);
+    const o = pe(e, t);
     return this.getHorizontalCellPadding(n) + o.calculateWidth(this.getCellLabel(n)) + this.getExtraWidth(n);
   }
   getCellInnerHeight(e, t) {
@@ -1422,7 +1442,7 @@ class yi extends Q {
       if (n)
         return this.getVerticalCellPadding(t) + n.offsetHeight;
     }
-    return xi;
+    return ki;
   }
   get renderType() {
     return "button";
@@ -1434,11 +1454,11 @@ class yi extends Q {
     return !1;
   }
 }
-const kc = (r) => {
-  const e = new yi(r ?? {});
+const Hc = (s) => {
+  const e = new Mi(s ?? {});
   return () => e;
-}, Qe = { radio: er, radioWrapper: tr, radioInput: nr, radioText: or }, vi = 16, eo = 6, ki = eo * 2;
-class to extends Q {
+}, Qe = { radio: ns, radioWrapper: os, radioInput: ss, radioText: rs }, Ti = 16, to = 6, Li = to * 2;
+class no extends Q {
   _radioItemStack = [];
   constructor({ onRadioClick: e }) {
     super(), e && (this.onRadioClick = e.bind(this));
@@ -1451,25 +1471,25 @@ class to extends Q {
     return this._radioItemStack[this._radioItemStack.length - 1] ?? null;
   }
   render(e, t, n) {
-    const o = document.createElement("div"), s = document.createElement("label"), i = document.createElement("input");
-    if (o.setAttribute("data-has-px", ""), o.className = `${Qo} ${Qe.radio}`, s.className = Qe.radioWrapper, i.type = "radio", i.className = Qe.radioInput, s.appendChild(i), n.label) {
+    const o = document.createElement("div"), r = document.createElement("label"), i = document.createElement("input");
+    if (o.setAttribute("data-has-px", ""), o.className = `${ts} ${Qe.radio}`, r.className = Qe.radioWrapper, i.type = "radio", i.className = Qe.radioInput, r.appendChild(i), n.label) {
       const a = document.createElement("span");
-      a.className = Qe.radioText, a.innerText = n.label, s.appendChild(a);
+      a.className = Qe.radioText, a.innerText = n.label, r.appendChild(a);
     }
-    return o.appendChild(s), i.checked = n.text === "true", i.checked === !0 && this.stackClickedRadio({ radio: i, data: n, row: e, col: t }), s.onkeydown = (a) => a.preventDefault(), i.onclick = () => {
-      const a = n.gridStore.commandContext, d = new se(a, [e, t, { text: "true" }]), c = this._radioItemStack[this._radioItemStack.length - 1];
+    return o.appendChild(r), i.checked = n.text === "true", i.checked === !0 && this.stackClickedRadio({ radio: i, data: n, row: e, col: t }), r.onkeydown = (a) => a.preventDefault(), i.onclick = () => {
+      const a = n.gridStore.commandContext, d = new ie(a, [e, t, { text: "true" }]), c = this._radioItemStack[this._radioItemStack.length - 1];
       d.onUndo = () => {
         c && (a.setCell(c.row, c.col, { text: "true" }), this.onRadioClick(c.row, c.col));
       }, d.onExecute = () => {
         this.onRadioClick(e, t);
-      }, a.commandManager.pushCommandBlock(new ue("Click radioButton", d)), this.stackClickedRadio({ radio: i, data: n, row: e, col: t }), n.text = "true", this.onRadioClick(e, t);
+      }, a.commandManager.pushCommandBlock(new he("Click radioButton", d)), this.stackClickedRadio({ radio: i, data: n, row: e, col: t }), n.text = "true", this.onRadioClick(e, t);
     }, o;
   }
   onRadioClick(e, t) {
   }
   getCellInnerWidth(e, t, n) {
-    const o = me(e, t), s = n.label ? eo + o.calculateWidth(n.label) : 0;
-    return vi + ki + s + this.getHorizontalCellPadding(n);
+    const o = pe(e, t), r = n.label ? to + o.calculateWidth(n.label) : 0;
+    return Ti + Li + r + this.getHorizontalCellPadding(n);
   }
   get renderType() {
     return "radio";
@@ -1481,39 +1501,39 @@ class to extends Q {
     return !1;
   }
 }
-const Ic = ({ onRadioClick: r }) => {
-  const e = new to({ onRadioClick: r });
+const zc = ({ onRadioClick: s }) => {
+  const e = new no({ onRadioClick: s });
   return () => e;
 };
-function no(r) {
+function oo(s) {
   const e = document.createElement("div");
-  if (e.setAttribute("data-has-px", ""), e.setAttribute("data-has-py", ""), e.className = It, r.sortOrder !== void 0) {
+  if (e.setAttribute("data-has-px", ""), e.setAttribute("data-has-py", ""), e.className = Mt, s.sortOrder !== void 0) {
     const t = document.createElement("i");
-    t.className = `ir-icon ${Ge(r.sortOrder === "ASC" ? "sort-ascending" : "sort-descending")}`, e.appendChild(t);
+    t.className = `ir-icon ${je(s.sortOrder === "ASC" ? "sort-ascending" : "sort-descending")}`, e.appendChild(t);
   }
-  if (r.icon) {
+  if (s.icon) {
     const t = document.createElement("i");
-    t.className = `ir-icon ${Ge(r.icon)}`, r.iconColor && t.style.setProperty("--ir-icon-foreground-color", r.iconColor), e.appendChild(t);
+    t.className = `ir-icon ${je(s.icon)}`, s.iconColor && t.style.setProperty("--ir-icon-foreground-color", s.iconColor), e.appendChild(t);
   }
-  if (r.text) {
+  if (s.text) {
     const t = document.createElement("span");
-    t.innerText = r.formatter ? r.formatter(r.text) : r.text, e.appendChild(t);
+    t.innerText = s.formatter ? s.formatter(s.text) : s.text, e.appendChild(t);
   }
   return e;
 }
-function Ii(r, e, t, n) {
+function Hi(s, e, t, n) {
   const o = document.createElement("div");
-  if (o.setAttribute("data-has-px", ""), o.setAttribute("data-has-py", ""), o.className = It, t.icon) {
-    const s = document.createElement("button"), i = document.createElement("i");
-    s.setAttribute("type", "button"), s.classList.add("icon-button", rr), n && (s.onclick = (a) => n(a, r, e)), i.className = `ir-icon ${Ge(t.icon)}`, t.iconColor && i.style.setProperty("--ir-icon-foreground-color", t.iconColor), s.appendChild(i), o.appendChild(s);
+  if (o.setAttribute("data-has-px", ""), o.setAttribute("data-has-py", ""), o.className = Mt, t.icon) {
+    const r = document.createElement("button"), i = document.createElement("i");
+    r.setAttribute("type", "button"), r.classList.add("icon-button", is), n && (r.onclick = (a) => n(a, s, e)), i.className = `ir-icon ${je(t.icon)}`, t.iconColor && i.style.setProperty("--ir-icon-foreground-color", t.iconColor), r.appendChild(i), o.appendChild(r);
   }
   if (t.text) {
-    const s = document.createElement("span");
-    s.innerText = t.text, o.appendChild(s);
+    const r = document.createElement("span");
+    r.innerText = t.text, o.appendChild(r);
   }
   return o;
 }
-class At extends Q {
+class Ft extends Q {
   constructor(e = {}) {
     super(), this._args = e;
   }
@@ -1521,22 +1541,22 @@ class At extends Q {
     return e.formatter ? e.formatter(e.text ?? "") : e.text ?? "";
   }
   render(e, t, n) {
-    const o = no(n), {
-      ellipsis: s = !0,
+    const o = oo(n), {
+      ellipsis: r = !0,
       whiteSpace: i
     } = this._args;
-    return s && o.classList.add(Fn), i && (o.style.whiteSpace = i), o;
+    return r && o.classList.add(Wn), i && (o.style.whiteSpace = i), o;
   }
   get renderType() {
     return "default";
   }
 }
-class Ei extends Q {
+class zi extends Q {
   constructor({ onClick: e }) {
     super(), e && (this.onClick = e);
   }
   render(e, t, n) {
-    return Ii(e, t, n, (o, s, i) => this.onClick(o, s, i));
+    return Hi(e, t, n, (o, r, i) => this.onClick(o, r, i));
   }
   onClick(e, t, n) {
   }
@@ -1544,7 +1564,7 @@ class Ei extends Q {
     return "iconButton";
   }
 }
-class Mi extends Q {
+class Oi extends Q {
   _fixedRowCount;
   _captionList;
   _prefix = "";
@@ -1564,26 +1584,26 @@ class Mi extends Q {
     this._prefix = e;
   }
   render(e, t, n) {
-    const o = document.createElement("div"), s = document.createElement("span"), i = e - this._fixedRowCount;
-    o.setAttribute("data-has-px", ""), o.setAttribute("data-has-py", ""), o.className = It;
+    const o = document.createElement("div"), r = document.createElement("span"), i = e - this._fixedRowCount;
+    o.setAttribute("data-has-px", ""), o.setAttribute("data-has-py", ""), o.className = Mt;
     const a = i < this._captionList.length ? this._captionList[i] : `${this._prefix}${1 + i - this._captionList.length}`;
-    return s.innerText = a, n.text = a, o.appendChild(s), o;
+    return r.innerText = a, n.text = a, o.appendChild(r), o;
   }
 }
-const Ec = () => {
-  const r = new At();
-  return () => r;
+const Oc = () => {
+  const s = new Ft();
+  return () => s;
 };
-function Mc({ onClick: r }) {
-  const e = new Ei({ onClick: r });
+function Ac({ onClick: s }) {
+  const e = new zi({ onClick: s });
   return () => e;
 }
-function Tc(r, ...e) {
-  const t = new Mi(r, ...e);
+function Dc(s, ...e) {
+  const t = new Oi(s, ...e);
   return () => t;
 }
-const an = /* @__PURE__ */ new WeakMap();
-class oo extends At {
+const dn = /* @__PURE__ */ new WeakMap();
+class so extends Ft {
   constructor(e) {
     super(), this.render = e.bind(this);
   }
@@ -1591,97 +1611,97 @@ class oo extends At {
     return "custom";
   }
 }
-function Lc(r) {
-  const e = an.get(r);
+function Fc(s) {
+  const e = dn.get(s);
   if (e)
     return e;
-  const t = new oo(r);
-  return an.set(r, t), t;
+  const t = new so(s);
+  return dn.set(s, t), t;
 }
-var Ti = /* @__PURE__ */ q("<button type=button><span>"), Li = /* @__PURE__ */ q("<i>");
-function Hi(r) {
+var Ai = /* @__PURE__ */ q("<button type=button><span>"), Di = /* @__PURE__ */ q("<i>");
+function Fi(s) {
   const {
     label: e,
     icon: t,
     onClick: n
-  } = r;
+  } = s;
   return (() => {
-    var o = Ti(), s = o.firstChild;
-    return Tt(o, "click", n, !0), $(o, sr), G(o, z(ge, {
+    var o = Ai(), r = o.firstChild;
+    return Ht(o, "click", n, !0), $(o, ls), G(o, O(me, {
       when: t,
       children: (i) => (() => {
-        var a = Li();
+        var a = Di();
         return J(() => $(a, `ir-icon ir-icon-text ${i()}`)), a;
       })()
-    }), s), G(s, e), o;
+    }), r), G(r, e), o;
   })();
 }
-Et(["click"]);
-const ro = cs({}), Oi = ro.Provider;
+Tt(["click"]);
+const ro = ur({}), Wi = ro.Provider;
 function Oe() {
-  return ds(ro);
+  return hr(ro);
 }
-var zi = /* @__PURE__ */ q("<div><span>"), Ai = /* @__PURE__ */ q("<label><input type=checkbox><span>"), Di = /* @__PURE__ */ q("<i>"), cn = /* @__PURE__ */ q("<div>"), Fi = /* @__PURE__ */ q("<div><div>");
-const Wi = `${Ve.display.flex} ${Ve.alignCenter}`, Pi = `${An} ${Ve.textEllipsis} ${Ve.flex110}`;
-function dn(r) {
-  const e = r.filter((n) => n.checked).length, t = r.length === e;
+var Pi = /* @__PURE__ */ q("<div><span>"), Ni = /* @__PURE__ */ q("<label><input type=checkbox><span>"), $i = /* @__PURE__ */ q("<i>"), un = /* @__PURE__ */ q("<div>"), Bi = /* @__PURE__ */ q("<div><div>");
+const Gi = `${Ve.display.flex} ${Ve.alignCenter}`, Vi = `${Dn} ${Ve.textEllipsis} ${Ve.flex110}`;
+function hn(s) {
+  const e = s.filter((n) => n.checked).length, t = s.length === e;
   return {
     subChecked: e > 0 && !t,
     checkedAll: t
   };
 }
-function Ni() {
+function ji() {
   return (() => {
-    var r = zi(), e = r.firstChild;
-    return $(r, Wi), `${we}px` != null ? r.style.setProperty("height", `${we}px`) : r.style.removeProperty("height"), G(e, () => X.t("rowFilter.list.no-result")), J(() => $(e, Ve.truncate)), r;
+    var s = Pi(), e = s.firstChild;
+    return $(s, Gi), `${_e}px` != null ? s.style.setProperty("height", `${_e}px`) : s.style.removeProperty("height"), G(e, () => X.t("rowFilter.list.no-result")), J(() => $(e, Ve.truncate)), s;
   })();
 }
-function un(r) {
+function fn(s) {
   return (() => {
-    var e = Ai(), t = e.firstChild, n = t.nextSibling;
-    return $(e, ar), $(t, zn), $(n, Pi), G(n, z(ge, {
+    var e = Ni(), t = e.firstChild, n = t.nextSibling;
+    return $(e, ds), $(t, An), $(n, Vi), G(n, O(me, {
       get fallback() {
-        return r.text;
+        return s.text;
       },
       get when() {
-        return r.icon;
+        return s.icon;
       },
       children: (o) => (() => {
-        var s = Di();
-        return J(() => $(s, `ir-icon ir-icon-text ${o()}`)), s;
+        var r = $i();
+        return J(() => $(r, `ir-icon ir-icon-text ${o()}`)), r;
       })()
-    })), J(() => Re(t, "data-state", r.subChecked ? "sub-checked" : "")), J(() => t.checked = r.checked), e;
+    })), J(() => xe(t, "data-state", s.subChecked ? "sub-checked" : "")), J(() => t.checked = s.checked), e;
   })();
 }
-function so(r) {
+function io(s) {
   const {
     makeCheckAll: e
-  } = r;
+  } = s;
   let t, n;
-  const o = dn(r.rowItems), [s, i] = he(o.subChecked), [a, d] = he(o.checkedAll), c = us(() => Qn({
+  const o = hn(s.rowItems), [r, i] = fe(o.subChecked), [a, d] = fe(o.checkedAll), c = fr(() => eo({
     getScrollElement: () => t,
-    estimateSize: () => we,
-    count: r.rowItems.length,
+    estimateSize: () => _e,
+    count: s.rowItems.length,
     overscan: 4
   }));
-  return r.ref?.({
+  return s.ref?.({
     checkAll(f) {
       d(f), i(!1);
     }
-  }), [z(ge, {
+  }), [O(me, {
     get when() {
-      return r.rowItems.length === 0;
+      return s.rowItems.length === 0;
     },
     get children() {
-      return z(Ni, {});
+      return O(ji, {});
     }
   }), (() => {
-    var f = Fi(), g = f.firstChild, R = t;
-    return typeof R == "function" ? fe(R, f) : t = f, f.style.setProperty("overflow", "auto"), f.style.setProperty("flex", "1 1 auto"), G(f, z(ge, {
+    var f = Bi(), g = f.firstChild, R = t;
+    return typeof R == "function" ? ge(R, f) : t = f, f.style.setProperty("overflow", "auto"), f.style.setProperty("flex", "1 1 auto"), G(f, O(me, {
       when: e,
       get children() {
-        var E = cn();
-        return E.addEventListener("change", h), `${we}px` != null ? E.style.setProperty("height", `${we}px`) : E.style.removeProperty("height"), G(E, z(un, {
+        var T = un();
+        return T.addEventListener("change", h), `${_e}px` != null ? T.style.setProperty("height", `${_e}px`) : T.style.removeProperty("height"), G(T, O(fn, {
           get text() {
             return `(${X.t("rowFilter.list.select-all")})`;
           },
@@ -1689,33 +1709,33 @@ function so(r) {
             return a();
           },
           get subChecked() {
-            return s();
+            return r();
           }
-        })), E;
+        })), T;
       }
-    }), g), $(g, ir), g.style.setProperty("position", "relative"), G(g, z(Mt, {
+    }), g), $(g, as), g.style.setProperty("position", "relative"), G(g, O(Lt, {
       get each() {
         return c().getVirtualItems();
       },
-      children: (E) => (() => {
-        var y = cn();
-        y.addEventListener("change", (L) => l(E.index, L));
+      children: (T) => (() => {
+        var x = un();
+        x.addEventListener("change", (L) => l(T.index, L));
         var H = n;
-        return typeof H == "function" ? fe(H, y) : n = y, y.style.setProperty("position", "absolute"), `${we}px` != null ? y.style.setProperty("height", `${we}px`) : y.style.removeProperty("height"), y.style.setProperty("width", "100%"), G(y, z(un, {
+        return typeof H == "function" ? ge(H, x) : n = x, x.style.setProperty("position", "absolute"), `${_e}px` != null ? x.style.setProperty("height", `${_e}px`) : x.style.removeProperty("height"), x.style.setProperty("width", "100%"), G(x, O(fn, {
           get text() {
-            return r.rowItems[E.index].text || `(${X.t("rowFilter.list.blanks")})`;
+            return s.rowItems[T.index].text || `(${X.t("rowFilter.list.blanks")})`;
           },
           get checked() {
-            return r.rowItems[E.index].checked;
+            return s.rowItems[T.index].checked;
           },
           get icon() {
-            return r.rowItems[E.index].icon;
+            return s.rowItems[T.index].icon;
           }
-        })), J((L) => (L = `${E.start}px`) != null ? y.style.setProperty("top", L) : y.style.removeProperty("top")), y;
+        })), J((L) => (L = `${T.start}px`) != null ? x.style.setProperty("top", L) : x.style.removeProperty("top")), x;
       })()
-    })), J((E) => {
-      var y = r.rowItems.length === 0 ? "none" : "block", H = `calc(-1 * ${lr.sm})`, L = `${c().getTotalSize()}px`;
-      return y !== E.e && ((E.e = y) != null ? f.style.setProperty("display", y) : f.style.removeProperty("display")), H !== E.t && ((E.t = H) != null ? f.style.setProperty("margin-right", H) : f.style.removeProperty("margin-right")), L !== E.a && ((E.a = L) != null ? g.style.setProperty("height", L) : g.style.removeProperty("height")), E;
+    })), J((T) => {
+      var x = s.rowItems.length === 0 ? "none" : "block", H = `calc(-1 * ${cs.sm})`, L = `${c().getTotalSize()}px`;
+      return x !== T.e && ((T.e = x) != null ? f.style.setProperty("display", x) : f.style.removeProperty("display")), H !== T.t && ((T.t = H) != null ? f.style.setProperty("margin-right", H) : f.style.removeProperty("margin-right")), L !== T.a && ((T.a = L) != null ? g.style.setProperty("height", L) : g.style.removeProperty("height")), T;
     }, {
       e: void 0,
       t: void 0,
@@ -1724,38 +1744,38 @@ function so(r) {
   })()];
   function l(f, g) {
     if (!(g.target instanceof HTMLInputElement)) return;
-    const R = r.rowItems[f], E = g.target.checked;
-    R.checked = E, u(), r.onChangeCheck?.(R, E);
+    const R = s.rowItems[f], T = g.target.checked;
+    R.checked = T, u(), s.onChangeCheck?.(R, T);
   }
   function h(f) {
     if (!(f.target instanceof HTMLInputElement)) return;
     const g = f.target.checked;
-    r.rowItems.forEach((E) => E.checked = g), u(), r.onChangeCheck?.(null, g);
+    s.rowItems.forEach((T) => T.checked = g), u(), s.onChangeCheck?.(null, g);
   }
   function u() {
-    const f = r.rowItems, {
+    const f = s.rowItems, {
       checkedAll: g,
       subChecked: R
-    } = dn(f);
+    } = hn(f);
     i(R), d(g);
   }
 }
-function $i() {
+function Ui() {
   const {
-    pluginAPI: r,
+    pluginAPI: s,
     columnId: e,
     operandsSignal: t,
     updateOperandsHandler: n
-  } = Oe(), o = a(), [s, i] = he(o);
-  return z(so, {
+  } = Oe(), o = a(), [r, i] = fe(o);
+  return O(io, {
     makeCheckAll: !0,
     get rowItems() {
-      return s();
+      return r();
     },
     onChangeCheck: d
   });
   function a() {
-    const c = r.getFilterOptionByCol(e) !== null, [l] = t, h = new Set(l().map((u) => u === "true"));
+    const c = s.getFilterOptionByCol(e) !== null, [l] = t, h = new Set(l().map((u) => u === "true"));
     return [{
       key: "true",
       text: "",
@@ -1772,62 +1792,62 @@ function $i() {
     c === null && i(o.map((h) => (h.checked = l, h))), n(o.filter((h) => h.checked).map((h) => h.key));
   }
 }
-var Bi = /* @__PURE__ */ q("<div>");
-function ut(r) {
+var Ki = /* @__PURE__ */ q("<div>");
+function ft(s) {
   const {
     defaultValue: e = "",
     format: t,
     onChange: n,
     placeholder: o
-  } = r, {
-    addOutSideElements: s
+  } = s, {
+    addOutSideElements: r
   } = Oe();
   let i;
-  return Le(() => {
-    const a = new ns({
+  return He(() => {
+    const a = new sr({
       div: i,
       defaultDate: e,
       format: t,
       onChange: n,
       placeholder: o
     }), d = a.input, c = a.button;
-    s(os().datePicker), d.oninput = () => n(a.textValue), c.onkeydown = (h) => {
+    r(rr().datePicker), d.oninput = () => n(a.textValue), c.onkeydown = (h) => {
       h.key === "Enter" && a.hide();
     }, d.addEventListener("blur", l, {
       capture: !0
-    }), r.inputRef?.(d);
+    }), s.inputRef?.(d);
     function l(h) {
-      h.relatedTarget instanceof HTMLElement && h.relatedTarget.closest(`.${Wn}`) && h.relatedTarget.textContent === X.t("rowFilter.ok") && h.stopPropagation();
+      h.relatedTarget instanceof HTMLElement && h.relatedTarget.closest(`.${Pn}`) && h.relatedTarget.textContent === X.t("rowFilter.ok") && h.stopPropagation();
     }
-    He(() => {
+    ze(() => {
       d.removeEventListener("blur", l), a.destroy();
     });
   }), (() => {
-    var a = Bi(), d = i;
-    return typeof d == "function" ? fe(d, a) : i = a, a;
+    var a = Ki(), d = i;
+    return typeof d == "function" ? ge(d, a) : i = a, a;
   })();
 }
-var Vi = /* @__PURE__ */ q("<select>");
-function Dt(r) {
+var qi = /* @__PURE__ */ q("<select>");
+function Wt(s) {
   const {
     defaultKey: e,
     options: t,
     onChange: n
-  } = r, {
+  } = s, {
     addOutSideElements: o
   } = Oe();
-  let s;
-  return Le(() => {
-    const i = new rs({
-      contextElement: s
+  let r;
+  return He(() => {
+    const i = new ir({
+      contextElement: r
     });
     t.forEach(({
       key: a,
       text: d
-    }) => i.addItem(a, X.t(d))), i.onChange = (a, d) => n(d.value), i.value = e, o(i.divDropDown), He(() => i.destroy());
+    }) => i.addItem(a, X.t(d))), i.onChange = (a, d) => n(d.value), i.value = e, o(i.divDropDown), ze(() => i.destroy());
   }), (() => {
-    var i = Vi(), a = s;
-    return typeof a == "function" ? fe(a, i) : s = i, i;
+    var i = qi(), a = r;
+    return typeof a == "function" ? ge(a, i) : r = i, i;
   })();
 }
 const it = [
@@ -1839,7 +1859,7 @@ const it = [
   { key: "greater-than-or-equal", text: "rowFilter.op.greater-eq" },
   { key: "in-range", text: "rowFilter.number.select.between" },
   { key: "blank", text: "rowFilter.number.select.blank" }
-], Gi = [
+], Xi = [
   { key: "equals", text: "rowFilter.op.equals" },
   { key: "not-equals", text: "rowFilter.op.not-equals" },
   { key: "contains", text: "rowFilter.op.like" },
@@ -1847,55 +1867,55 @@ const it = [
   { key: "starts-with", text: "rowFilter.op.starts-with" },
   { key: "ends-with", text: "rowFilter.op.ends-with" }
 ];
-function Ft(r = !0) {
+function Pt(s = !0) {
   let e = null;
   return {
     focus: () => e?.focus({ preventScroll: !0 }),
     setFocusRef(n) {
-      e = n, r && n.focus({ preventScroll: !0 });
+      e = n, s && n.focus({ preventScroll: !0 });
     }
   };
 }
-function ji() {
+function Yi() {
   const {
-    pluginAPI: r,
+    pluginAPI: s,
     columnId: e,
     operatorSignal: t,
     operandsSignal: n,
     updateOperandHandler: o
   } = Oe(), {
-    format: s = X.t("datePicker.dateFormat")
-  } = r.getColumnMetaInfo(e), [i, a] = t, [d, c] = n, l = i() ?? it[0].key, h = Ft();
-  return [z(Dt, {
+    format: r = X.t("datePicker.dateFormat")
+  } = s.getColumnMetaInfo(e), [i, a] = t, [d, c] = n, l = i() ?? it[0].key, h = Pt();
+  return [O(Wt, {
     defaultKey: l,
     options: it,
     onChange: f
-  }), z(Lt, {
+  }), O(zt, {
     get children() {
-      return [z(de, {
+      return [O(ue, {
         get when() {
           return i() === "in-range";
         },
         get children() {
-          return [z(ut, {
+          return [O(ft, {
             get inputRef() {
               return h.setFocusRef;
             },
             get defaultValue() {
               return d()[0] ?? "";
             },
-            format: s,
+            format: r,
             get placeholder() {
               return u("rowFilter.date.between.from");
             },
             get onChange() {
               return o(0);
             }
-          }), z(ut, {
+          }), O(ft, {
             get defaultValue() {
               return d()[1] ?? "";
             },
-            format: s,
+            format: r,
             get placeholder() {
               return u("rowFilter.date.between.to");
             },
@@ -1904,19 +1924,19 @@ function ji() {
             }
           })];
         }
-      }), z(de, {
+      }), O(ue, {
         get when() {
           return i() !== "blank";
         },
         get children() {
-          return z(ut, {
+          return O(ft, {
             get inputRef() {
               return h.setFocusRef;
             },
             get defaultValue() {
               return d()[0] ?? "";
             },
-            format: s,
+            format: r,
             get placeholder() {
               return u("rowFilter.date.input.placeholder");
             },
@@ -1929,64 +1949,64 @@ function ji() {
     }
   })];
   function u(g) {
-    return `${X.t(g)} (${s})`;
+    return `${X.t(g)} (${r})`;
   }
   function f(g) {
     g === "equals" && c(d().slice(0, 1)), a(g), h.focus();
   }
 }
-var Ui = /* @__PURE__ */ q("<button type=button><i>"), Ki = /* @__PURE__ */ q("<button aria-label=search type=submit><i>"), qi = /* @__PURE__ */ q("<div><input>");
-function tt(r) {
-  const e = () => r.class, t = () => r.suffixButtonIcon && r.matchCaseToggle ? "padding-right: 44px" : "";
+var Zi = /* @__PURE__ */ q("<button type=button><i>"), Ji = /* @__PURE__ */ q("<button aria-label=search type=submit><i>"), Qi = /* @__PURE__ */ q("<div><input>");
+function tt(s) {
+  const e = () => s.class, t = () => s.suffixButtonIcon && s.matchCaseToggle ? "padding-right: 44px" : "";
   return (() => {
-    var o = qi(), s = o.firstChild;
-    return hs(s, ot(r, {
+    var o = Qi(), r = o.firstChild;
+    return gr(r, ot(s, {
       get class() {
-        return je(Dn, e());
+        return Ue(Fn, e());
       },
       get style() {
         return t();
       }
-    }), !1, !1), G(o, z(ge, {
+    }), !1, !1), G(o, O(me, {
       get when() {
-        return r.matchCaseToggle;
+        return s.matchCaseToggle;
       },
       get children() {
-        var i = Ui(), a = i.firstChild;
-        return Tt(i, "click", n), $(i, xt), i.style.setProperty("right", "24px"), J(() => $(a, je("ir-icon ir-icon--lowercase", r.matchCase && "ir-icon--rounded"))), i;
+        var i = Zi(), a = i.firstChild;
+        return Ht(i, "click", n), $(i, bt), i.style.setProperty("right", "24px"), J(() => $(a, Ue("ir-icon ir-icon--lowercase", s.matchCase && "ir-icon--rounded"))), i;
       }
-    }), null), G(o, z(ge, {
+    }), null), G(o, O(me, {
       get when() {
-        return r.suffixButtonIcon;
+        return s.suffixButtonIcon;
       },
       get children() {
-        var i = Ki(), a = i.firstChild;
-        return $(i, xt), J(() => $(a, `ir-icon ${r.suffixButtonIcon}`)), i;
+        var i = Ji(), a = i.firstChild;
+        return $(i, bt), J(() => $(a, `ir-icon ${s.suffixButtonIcon}`)), i;
       }
-    }), null), J(() => $(o, r.wrapperClass)), o;
+    }), null), J(() => $(o, s.wrapperClass)), o;
   })();
   function n() {
-    r.onToggleMatchCase?.(!r.matchCase);
+    s.onToggleMatchCase?.(!s.matchCase);
   }
 }
-function Xi() {
+function el() {
   const {
-    operatorSignal: r,
+    operatorSignal: s,
     operandsSignal: e,
     onInputUpdateHandler: t
-  } = Oe(), n = Ft(), [o, s] = r, [i, a] = e, d = o() ?? it[0].key;
-  return [z(Dt, {
+  } = Oe(), n = Pt(), [o, r] = s, [i, a] = e, d = o() ?? it[0].key;
+  return [O(Wt, {
     defaultKey: d,
     options: it,
     onChange: c
-  }), z(Lt, {
+  }), O(zt, {
     get children() {
-      return [z(de, {
+      return [O(ue, {
         get when() {
           return o() === "in-range";
         },
         get children() {
-          return [z(tt, {
+          return [O(tt, {
             ref(l) {
               var h = n.setFocusRef;
               typeof h == "function" ? h(l) : n.setFocusRef = l;
@@ -2000,7 +2020,7 @@ function Xi() {
             get onInput() {
               return t(0);
             }
-          }), z(tt, {
+          }), O(tt, {
             get value() {
               return i()[1] ?? "";
             },
@@ -2012,12 +2032,12 @@ function Xi() {
             }
           })];
         }
-      }), z(de, {
+      }), O(ue, {
         get when() {
           return o() !== "blank";
         },
         get children() {
-          return z(tt, {
+          return O(tt, {
             ref(l) {
               var h = n.setFocusRef;
               typeof h == "function" ? h(l) : n.setFocusRef = l;
@@ -2037,62 +2057,62 @@ function Xi() {
     }
   })];
   function c(l) {
-    l === "equals" && a(i().slice(0, 1)), s(l), n.focus();
+    l === "equals" && a(i().slice(0, 1)), r(l), n.focus();
   }
 }
-const Yi = /^[-+]?[0-9]*(\.[0-9]+)?$/;
-function hn(r) {
-  return r === "" ? !0 : Yi.test(r);
+const tl = /^[-+]?[0-9]*(\.[0-9]+)?$/;
+function gn(s) {
+  return s === "" ? !0 : tl.test(s);
 }
-function fn(r) {
-  return r === "" ? Number.NEGATIVE_INFINITY : parseFloat(r);
+function mn(s) {
+  return s === "" ? Number.NEGATIVE_INFINITY : parseFloat(s);
 }
-function Wt(r, e) {
-  if (r === e) return 0;
-  const t = hn(r), n = hn(e);
-  return t && n ? fn(r) < fn(e) ? -1 : 1 : !t && !n ? r < e ? -1 : 1 : t ? -1 : 1;
+function Nt(s, e) {
+  if (s === e) return 0;
+  const t = gn(s), n = gn(e);
+  return t && n ? mn(s) < mn(e) ? -1 : 1 : !t && !n ? s < e ? -1 : 1 : t ? -1 : 1;
 }
-const Zi = (r) => (e, t) => Wt(e.getCell(r).text, t.getCell(r).text), Hc = ({
-  grid: r
+const nl = (s) => (e, t) => Nt(e.getCell(s).text, t.getCell(s).text), Wc = ({
+  grid: s
 }) => ({
   sortColumn(e, t, n, o) {
-    r.sort(Zi(e), t, n, o);
+    s.sort(nl(e), t, n, o);
   }
 });
-var Ji = /* @__PURE__ */ q("<form>");
-function Qi() {
-  const r = Ft(), {
+var ol = /* @__PURE__ */ q("<form>");
+function sl() {
+  const s = Pt(), {
     pluginAPI: e,
     columnId: t,
     operatorSignal: n,
     operandsSignal: o,
-    stringFilterOptions: s,
+    stringFilterOptions: r,
     ignoreCase: i
   } = Oe(), [a, d] = n, [c, l] = o, h = a();
   let u, f = [], g, R = "";
-  const E = e.getFilterOptionByCol(t), y = new Set(o[0]()), H = e.getFilteredTextListForCol(t).sort((S, T) => Wt(S, T)).map((S) => ({
-    text: S,
-    key: S,
+  const T = e.getFilterOptionByCol(t), x = new Set(o[0]()), H = e.getFilteredTextListForCol(t).sort((y, M) => Nt(y, M)).map((y) => ({
+    text: y,
+    key: y,
     // filterOptions이 있는 경우, 체크된 항목을 표시
-    checked: E ? y.has(S) : !1
-  })), [L, I] = he(H.filter(k())), b = h !== "equals" ? c()[0] : "";
-  return [z(Dt, {
+    checked: T ? x.has(y) : !1
+  })), [L, I] = fe(H.filter(E())), b = h !== "equals" ? c()[0] : "";
+  return [O(Wt, {
     defaultKey: h,
-    options: Gi,
+    options: Xi,
     onChange: p
   }), (() => {
-    var S = Ji();
-    S.addEventListener("submit", w);
-    var T = u;
-    return typeof T == "function" ? fe(T, S) : u = S, S.style.setProperty("display", "contents"), G(S, z(tt, {
+    var y = ol();
+    y.addEventListener("submit", w);
+    var M = u;
+    return typeof M == "function" ? ge(M, y) : u = y, y.style.setProperty("display", "contents"), G(y, O(tt, {
       ref(m) {
-        var _ = r.setFocusRef;
-        typeof _ == "function" ? _(m) : r.setFocusRef = m;
+        var S = s.setFocusRef;
+        typeof S == "function" ? S(m) : s.setFocusRef = m;
       },
       name: "search-text",
       autocomplete: "off",
       value: b,
-      wrapperClass: cr,
+      wrapperClass: us,
       get suffixButtonIcon() {
         return a() === "equals" ? "ir-icon--search" : void 0;
       },
@@ -2100,14 +2120,14 @@ function Qi() {
         return X.t("rowFilter.string.input.placeholder");
       },
       "on:input": C
-    })), S;
-  })(), z(ge, {
+    })), y;
+  })(), O(me, {
     get when() {
       return a() === "equals";
     },
     get children() {
-      return z(so, {
-        ref: (S) => g = S,
+      return O(io, {
+        ref: (y) => g = y,
         makeCheckAll: !0,
         get rowItems() {
           return L();
@@ -2119,42 +2139,42 @@ function Qi() {
   function C() {
     a() !== "equals" && l([u["search-text"].value]);
   }
-  function w(S) {
-    S.preventDefault();
-    const T = u["search-text"].value, m = a() !== "equals", x = m || T === R;
-    if (m && l([T]), x) {
+  function w(y) {
+    y.preventDefault();
+    const M = u["search-text"].value, m = a() !== "equals", _ = m || M === R;
+    if (m && l([M]), _) {
       if (a() === "equals" && f.length === 0) return;
       u.parentElement?.closest("form")?.requestSubmit();
       return;
     }
-    R = T, f = H.filter(k()), R === "" ? (I(f.map((M) => (M.checked = !1, M))), l([]), g.checkAll(!1)) : (I(f.map((M) => (M.checked = !0, M))), l([R, ...f.map((M) => M.text)]), g.checkAll(!0));
+    R = M, f = H.filter(E()), R === "" ? (I(f.map((k) => (k.checked = !1, k))), l([]), g.checkAll(!1)) : (I(f.map((k) => (k.checked = !0, k))), l([R, ...f.map((k) => k.text)]), g.checkAll(!0));
   }
-  function k() {
+  function E() {
     if (R === "") return () => !0;
-    const S = s === "equals" ? new RegExp(`^${R}$`, i ? "i" : "") : new RegExp(R, i ? "i" : "");
-    return (T) => S.test(T.text);
+    const y = r === "equals" ? new RegExp(`^${R}$`, i ? "i" : "") : new RegExp(R, i ? "i" : "");
+    return (M) => y.test(M.text);
   }
-  function p(S) {
-    d(S), r.focus();
+  function p(y) {
+    d(y), s.focus();
   }
-  function v(S, T) {
-    S === null && I(L().map((m) => m)), l(L().filter((m) => m.checked).map((m) => m.text));
+  function v(y, M) {
+    y === null && I(L().map((m) => m)), l(L().filter((m) => m.checked).map((m) => m.text));
   }
 }
-var el = /* @__PURE__ */ q("<div>");
-function tl(r) {
+var rl = /* @__PURE__ */ q("<div>");
+function il(s) {
   let e;
-  const t = fs(() => r.children);
-  return Le(() => {
-    const n = Bn(r.refElement, e, r.placement, r.offset);
-    He(() => n());
+  const t = mr(() => s.children);
+  return He(() => {
+    const n = Gn(s.refElement, e, s.placement, s.offset);
+    ze(() => n());
   }), (() => {
-    var n = el(), o = e;
-    return typeof o == "function" ? fe(o, n) : e = n, n.style.setProperty("position", "absolute"), G(n, t), n;
+    var n = rl(), o = e;
+    return typeof o == "function" ? ge(o, n) : e = n, n.style.setProperty("position", "absolute"), G(n, t), n;
   })();
 }
-var nl = /* @__PURE__ */ q("<div>"), ol = /* @__PURE__ */ q('<form><div></div><div><button class=button type=button></button><button type=submit class="button button--primary">');
-const gn = [{
+var ll = /* @__PURE__ */ q("<div>"), al = /* @__PURE__ */ q('<form><div></div><div><button class=button type=button></button><button type=submit class="button button--primary">');
+const pn = [{
   key: "ASC",
   i18nKey: "rowFilter.sort.ascending",
   icon: "ir-icon--sort-ascending"
@@ -2162,7 +2182,7 @@ const gn = [{
   key: "DESC",
   i18nKey: "rowFilter.sort.descending",
   icon: "ir-icon--sort-descending"
-}], rl = [{
+}], cl = [{
   key: "CHECK-ALL",
   i18nKey: "rowFilter.check.check-all",
   icon: "ir-icon--check-all-rectangle"
@@ -2170,88 +2190,88 @@ const gn = [{
   key: "UNCHECK-ALL",
   i18nKey: "rowFilter.check.uncheck-all",
   icon: "ir-icon--uncheck-all-rectangle"
-}], sl = {
+}], dl = {
   key: "DELETE",
   i18nKey: "rowFilter.sort.clear",
   icon: "ir-icon--delete"
-}, il = 500;
-function* ll(r) {
+}, ul = 500;
+function* hl(s) {
   const {
     visibleSortButton: e,
     sortOrder: t,
     pluginAPI: n,
     visibleCheckAllButton: o,
-    columnId: s
-  } = r, i = n.getColumnMetaInfo(s);
+    columnId: r
+  } = s, i = n.getColumnMetaInfo(r);
   yield* a(), yield* d();
   function* a() {
     if (e) {
       if (!t) {
-        yield* gn;
+        yield* pn;
         return;
       }
-      yield sl, yield gn[t === "ASC" ? 1 : 0];
+      yield dl, yield pn[t === "ASC" ? 1 : 0];
     }
   }
   function* d() {
-    o && i.textType === "checked" && (yield* rl);
+    o && i.textType === "checked" && (yield* cl);
   }
 }
-function al(r, e) {
+function fl(s, e) {
   const {
     visibleSortButton: t,
     pluginAPI: n,
     columnId: o,
-    resizerUI: s,
+    resizerUI: r,
     maxWidth: i,
     maxHeight: a
   } = e, d = n.getColumnMetaInfo(o);
-  t && te(r, {
-    [We.maxHeight]: "375px"
-  }), d.textType === "date" && te(r, {
-    [We.minWidth]: "200px"
-  }), s && (r.style.resize = "both", r.style.overflow = "auto", te(r, {
-    [We.maxHeight]: "510px"
-  }), r.style.minHeight = t ? "200px" : "125px"), te(r, {
-    [We.maxWidth]: `${i ?? il}px`
-  }), a && te(r, {
-    [We.maxHeight]: `${a}px`
+  t && ne(s, {
+    [Pe.maxHeight]: "375px"
+  }), d.textType === "date" && ne(s, {
+    [Pe.minWidth]: "200px"
+  }), r && (s.style.resize = "both", s.style.overflow = "auto", ne(s, {
+    [Pe.maxHeight]: "510px"
+  }), s.style.minHeight = t ? "200px" : "125px"), ne(s, {
+    [Pe.maxWidth]: `${i ?? ul}px`
+  }), a && ne(s, {
+    [Pe.maxHeight]: `${a}px`
   });
 }
-function cl(r) {
+function gl(s) {
   const {
     pluginAPI: e,
     refElement: t,
     rowId: n,
     columnId: o,
-    onClose: s,
+    onClose: r,
     onSubmit: i,
     onClear: a,
     onDropdownButtonClick: d,
     stringEqualsFilterOption: c = "contains",
     ignoreCase: l = !1
-  } = r, h = [...ll(r)], u = e.getColumnMetaInfo(o), f = e.getFilterOptionByCol(o), g = [];
+  } = s, h = [...hl(s)], u = e.getColumnMetaInfo(o), f = e.getFilterOptionByCol(o), g = [];
   let R;
-  const E = he(f?.operator ?? "equals"), y = he(f?.operand ?? []), [H] = E, [L, I] = y;
-  return Le(() => {
-    const p = zt({
-      hide: s
+  const T = fe(f?.operator ?? "equals"), x = fe(f?.operand ?? []), [H] = T, [L, I] = x;
+  return He(() => {
+    const p = Dt({
+      hide: r
     }), v = Vn({
       eventElements: [R, t],
       getEventElements: () => g,
-      clickOutsideFunc: s
+      clickOutsideFunc: r
     });
-    v.create(), p.create(), al(R, r), He(() => {
+    v.create(), p.create(), fl(R, s), ze(() => {
       p.destroy(), v.destroy();
     });
-  }), z(Oi, {
+  }), O(Wi, {
     value: {
       columnId: o,
       pluginAPI: e,
-      operatorSignal: E,
-      operandsSignal: y,
+      operatorSignal: T,
+      operandsSignal: x,
       updateOperandHandler: C,
-      updateOperandsHandler: (p) => y[1](p),
+      updateOperandsHandler: (p) => x[1](p),
       addOutSideElements: (p) => g.push(p),
       onInputUpdateHandler: (p) => (v) => C(p)(v.currentTarget.value),
       get stringFilterOptions() {
@@ -2262,83 +2282,83 @@ function cl(r) {
       }
     },
     get children() {
-      var p = ol(), v = p.firstChild, S = v.nextSibling, T = S.firstChild, m = T.nextSibling, _ = R;
-      return typeof _ == "function" ? fe(_, p) : R = p, Tt(p, "submit", b), $(p, dr), G(p, z(ge, {
+      var p = al(), v = p.firstChild, y = v.nextSibling, M = y.firstChild, m = M.nextSibling, S = R;
+      return typeof S == "function" ? ge(S, p) : R = p, Ht(p, "submit", b), $(p, hs), G(p, O(me, {
         get when() {
           return h.length > 0;
         },
         get children() {
-          var x = nl();
-          return $(x, ur), G(x, z(Mt, {
+          var _ = ll();
+          return $(_, fs), G(_, O(Lt, {
             each: h,
-            children: (M) => z(Hi, {
+            children: (k) => O(Fi, {
               get label() {
-                return X.t(M.i18nKey);
+                return X.t(k.i18nKey);
               },
               get icon() {
-                return M.icon;
+                return k.icon;
               },
-              onClick: () => k(M)
+              onClick: () => E(k)
             })
-          })), x;
+          })), _;
         }
-      }), v), $(v, hr), G(v, z(Lt, {
+      }), v), $(v, gs), G(v, O(zt, {
         get fallback() {
           return `unknown textType '${u.textType}'`;
         },
         get children() {
-          return [z(de, {
+          return [O(ue, {
             get when() {
               return u.textType === "date";
             },
             get children() {
-              return z(ji, {});
+              return O(Yi, {});
             }
-          }), z(de, {
+          }), O(ue, {
             get when() {
               return u.textType === "number";
             },
             get children() {
-              return z(Xi, {});
+              return O(el, {});
             }
-          }), z(de, {
+          }), O(ue, {
             get when() {
               return u.textType === "checked";
             },
             get children() {
-              return z($i, {});
+              return O(Ui, {});
             }
-          }), z(de, {
+          }), O(ue, {
             get when() {
               return u.textType === "string";
             },
             get children() {
-              return z(Qi, {});
+              return O(sl, {});
             }
           })];
         }
-      })), $(S, Wn), T.$$click = w, G(T, () => X.t("rowFilter.clear")), G(m, () => X.t("rowFilter.ok")), J(() => Re(p, "id", e.dropdownId)), p;
+      })), $(y, Pn), M.$$click = w, G(M, () => X.t("rowFilter.clear")), G(m, () => X.t("rowFilter.ok")), J(() => xe(p, "id", e.dropdownId)), p;
     }
   });
   function b(p) {
     p.preventDefault();
-    const v = L(), S = H();
+    const v = L(), y = H();
     v.length > 0 && (e.setColFilter({
-      operator: S,
+      operator: y,
       operand: v,
       column: o
-    }), i()), s();
+    }), i()), r();
   }
   function C(p) {
     return (v) => {
-      const S = L();
-      S[p] = v, I([...S]);
+      const y = L();
+      y[p] = v, I([...y]);
     };
   }
   function w() {
-    e.getFilterOptionByCol(o) && e.removeColFilter(o), a(), s();
+    e.getFilterOptionByCol(o) && e.removeColFilter(o), a(), r();
   }
-  function k(p) {
+  function E(p) {
     const {
       key: v
     } = p;
@@ -2355,30 +2375,30 @@ function cl(r) {
         e.setCheckAll(o, v === "CHECK-ALL");
         break;
     }
-    d?.(v), s();
+    d?.(v), r();
   }
 }
-function dl(r) {
-  return z(tl, {
+function ml(s) {
+  return O(il, {
     get refElement() {
-      return r.refElement;
+      return s.refElement;
     },
     placement: "bottom-start",
     get children() {
-      return z(cl, r);
+      return O(gl, s);
     }
   });
 }
-Et(["click"]);
-const ht = 20;
-class Oc extends Q {
+Tt(["click"]);
+const gt = 20;
+class Pc extends Q {
   constructor(e) {
     super(), this._args = e;
   }
   render(e, t, n) {
     const {
       plugin: o,
-      onDropdownButtonClick: s,
+      onDropdownButtonClick: r,
       visibleSortButton: i = !0,
       visibleCheckAllButton: a = !0,
       stringEqualsFilterOption: d = "contains",
@@ -2387,21 +2407,21 @@ class Oc extends Q {
       maxWidth: h,
       maxHeight: u
     } = this._args, f = document.createElement("div"), g = o.pluginAPI;
-    f.className = fr, f.setAttribute("data-has-px", "");
-    const R = no(n);
-    return R.removeAttribute("data-has-px"), R.removeAttribute("data-has-py"), R.classList.add(Fn, gr), f.append(R), g.getColumnMetaInfo(t).enabled !== !1 && f.appendChild(y()), f;
-    function y() {
-      const H = Ht("ir-icon--filter", mr);
-      H.style.setProperty("--ir-icon-badge-color", pr.info.active), b();
+    f.className = ms, f.setAttribute("data-has-px", "");
+    const R = oo(n);
+    return R.removeAttribute("data-has-px"), R.removeAttribute("data-has-py"), R.classList.add(Wn, ps), f.append(R), g.getColumnMetaInfo(t).enabled !== !1 && f.appendChild(x()), f;
+    function x() {
+      const H = Ot("ir-icon--filter", Cs);
+      H.style.setProperty("--ir-icon-badge-color", ws.info.active), b();
       let L = null;
-      return H.onclick = () => {
-        if (L) return I();
-        L = $n(
-          () => dl({
+      return H.onclick = (C) => {
+        if (C.__IGNORE_CELL_CLICK__ = !0, L) return I();
+        L = Bn(
+          () => ml({
             pluginAPI: g,
             visibleSortButton: i,
             visibleCheckAllButton: a,
-            onDropdownButtonClick: s,
+            onDropdownButtonClick: r,
             refElement: H,
             rowId: e,
             columnId: t,
@@ -2428,8 +2448,8 @@ class Oc extends Q {
     }
   }
   getCellInnerWidth(e, t, n) {
-    const o = me(e, t);
-    return this.getHorizontalCellPadding(n) + o.calculateWidth(n.text ?? "") + (n.sortOrder ? ht : 0) + (n.icon ? ht : 0) + ht;
+    const o = pe(e, t);
+    return this.getHorizontalCellPadding(n) + o.calculateWidth(n.text ?? "") + (n.sortOrder ? gt : 0) + (n.icon ? gt : 0) + gt;
   }
   get renderType() {
     return "filter";
@@ -2441,18 +2461,18 @@ class Oc extends Q {
     return !1;
   }
 }
-function ul(r, e) {
+function pl(s, e) {
   const { rowSpan: t, colSpan: n, skipFiltered: o } = e;
   return {
     getPastingRange: a,
     beforePastingList: d,
     pasteTask: c
   };
-  function s(l, h) {
-    const u = r.getRowCount();
+  function r(l, h) {
+    const u = s.getRowCount();
     let f = 0, g = l;
     for (; g < u; ) {
-      if (r.isFilteredRow(g) || f++, f === h) return g;
+      if (s.isFilteredRow(g) || f++, f === h) return g;
       ++g;
     }
     return g - 1 + (h - f);
@@ -2462,29 +2482,29 @@ function ul(r, e) {
   }
   function a(l, h) {
     if (h.length === 0) throw new Error("No pasting data.");
-    const u = { ...l }, f = h.length, g = h[0].length, R = i(l) ? s(l.top, f) + 1 : u.top + f, E = u.left + g;
-    for (let y = l.bottom + 1; y < R; ++y)
-      (r.hasRow(y) || r.onAutoInsertRow(y)) && (u.bottom = y);
-    for (let y = l.right + 1; y < E; ++y)
-      (r.hasColumn(y) || r.onAutoInsertColumn(y)) && (u.right = y);
+    const u = { ...l }, f = h.length, g = h[0].length, R = i(l) ? r(l.top, f) + 1 : u.top + f, T = u.left + g;
+    for (let x = l.bottom + 1; x < R; ++x)
+      (s.hasRow(x) || s.onAutoInsertRow(x)) && (u.bottom = x);
+    for (let x = l.right + 1; x < T; ++x)
+      (s.hasColumn(x) || s.onAutoInsertColumn(x)) && (u.right = x);
     return u;
   }
   function d(l, h) {
     if (h.length === 0) throw new Error("No pasting data.");
-    const u = [], f = h.length, g = h[0].length, R = l.bottom - l.top, E = l.right - l.left;
-    let y = 0;
+    const u = [], f = h.length, g = h[0].length, R = l.bottom - l.top, T = l.right - l.left;
+    let x = 0;
     for (let b = 0; b <= R; ++b) {
       const C = b + l.top;
-      if (H(C), !!r.hasRow(C)) {
-        if (o && r.isFilteredRow(C)) {
-          ++y;
+      if (H(C), !!s.hasRow(C)) {
+        if (o && s.isFilteredRow(C)) {
+          ++x;
           continue;
         }
-        for (let w = 0; w <= E; ++w) {
-          const k = w + l.left;
-          if (L(k), !r.hasColumn(k)) break;
-          const p = r.cell(C, k), v = I(b - y, w), S = r.onCheckPasteCell(p, v.text);
-          v.cellVisible && S && u.push({
+        for (let w = 0; w <= T; ++w) {
+          const E = w + l.left;
+          if (L(E), !s.hasColumn(E)) break;
+          const p = s.cell(C, E), v = I(b - x, w), y = s.onCheckPasteCell(p, v.text);
+          v.cellVisible && y && u.push({
             cell: p,
             cellMetaInfo: {
               text: v.text,
@@ -2493,45 +2513,45 @@ function ul(r, e) {
               colSpan: n ? v.colSpan : 1,
               isFormatted: !1
             },
-            pasteOption: typeof S == "object" ? S : void 0
+            pasteOption: typeof y == "object" ? y : void 0
           });
         }
       }
     }
     return u;
     function H(b) {
-      !r.hasRow(b) && r.onAutoInsertRow(b) && (r.addRow(), r.onAutoInsertedRow(b));
+      !s.hasRow(b) && s.onAutoInsertRow(b) && (s.addRow(), s.onAutoInsertedRow(b));
     }
     function L(b) {
-      !r.hasColumn(b) && r.onAutoInsertColumn(b) && (r.addColumn(), r.onAutoInsertedColumn(b));
+      !s.hasColumn(b) && s.onAutoInsertColumn(b) && (s.addColumn(), s.onAutoInsertedColumn(b));
     }
     function I(b, C) {
-      const [w, k] = [b % f, C % g];
-      return h[w][k];
+      const [w, E] = [b % f, C % g];
+      return h[w][E];
     }
   }
   function c(l) {
     for (const { cell: h, cellMetaInfo: u, pasteOption: f } of l) {
-      const { rowSpan: g, colSpan: R, cellVisible: E } = u;
-      if (!E) continue;
-      const { row: y, col: H } = h;
+      const { rowSpan: g, colSpan: R, cellVisible: T } = u;
+      if (!T) continue;
+      const { row: x, col: H } = h;
       if (f?.ignoreRowSpan !== !0 && g > 1 || f?.ignoreColSpan !== !0 && R > 1) {
-        const I = { top: y, left: H, bottom: y + g - 1, right: H + R - 1 };
-        r.mergeCells(I.top, I.left, I.bottom, I.right);
+        const I = { top: x, left: H, bottom: x + g - 1, right: H + R - 1 };
+        s.mergeCells(I.top, I.left, I.bottom, I.right);
       }
-      f?.ignoreText || r.setCell(y, H, { text: u.text }), r.onClipboardAfterPasteCell(h);
+      f?.ignoreText || s.setCell(x, H, { text: u.text }), s.onClipboardAfterPasteCell(h);
     }
   }
 }
-function hl(r) {
-  return JSON.stringify(r);
+function Cl(s) {
+  return JSON.stringify(s);
 }
-function fl(r) {
-  return JSON.parse(r);
+function wl(s) {
+  return JSON.parse(s);
 }
-function gl(r) {
+function _l(s) {
   const e = [], t = [];
-  for (const n of r)
+  for (const n of s)
     switch (n) {
       case " ":
         t.push(" ");
@@ -2546,13 +2566,13 @@ function gl(r) {
     }
   return e.push(document.createTextNode(t.join(""))), e;
 }
-function ml(r) {
+function Rl(s) {
   const e = document.createElement("table");
-  return r.forEach((t) => {
+  return s.forEach((t) => {
     const n = document.createElement("tr");
     t.filter((o) => o.cellVisible).forEach((o) => {
-      const s = document.createElement("td");
-      s.setAttribute("rowSpan", `${o.rowSpan}`), s.setAttribute("colSpan", `${o.colSpan}`), s.append(...gl(o.text)), n.append(s);
+      const r = document.createElement("td");
+      r.setAttribute("rowSpan", `${o.rowSpan}`), r.setAttribute("colSpan", `${o.colSpan}`), r.append(..._l(o.text)), n.append(r);
     }), e.appendChild(n);
   }), `
     <meta name="generator" content="innorules/ir-grid"/>
@@ -2560,28 +2580,28 @@ function ml(r) {
     ${e.outerHTML}
 `;
 }
-function pl(r) {
-  const n = new DOMParser().parseFromString(r, "text/html").querySelectorAll("tr");
+function xl(s) {
+  const n = new DOMParser().parseFromString(s, "text/html").querySelectorAll("tr");
   if (n.length === 0) return [];
   const o = Array(n.length).fill(null).map(() => []);
-  let s = 0;
+  let r = 0;
   for (const d of n) {
     const c = d.querySelectorAll("td");
     let l = i(0);
     for (const h of c)
-      (h.rowSpan > 1 || h.colSpan > 1) && a(s, l, h.rowSpan, h.colSpan), o[s][l] = {
-        text: Cl(h),
+      (h.rowSpan > 1 || h.colSpan > 1) && a(r, l, h.rowSpan, h.colSpan), o[r][l] = {
+        text: Sl(h),
         rowSpan: h.rowSpan,
         colSpan: h.colSpan,
         cellVisible: !0,
         isFormatted: h.hasAttribute("class")
       }, l = i(l);
-    ++s;
+    ++r;
   }
   return o;
   function i(d) {
     let c = d;
-    for (; o[s][c]; )
+    for (; o[r][c]; )
       ++c;
     return c;
   }
@@ -2597,19 +2617,19 @@ function pl(r) {
         };
   }
 }
-function Cl(r) {
+function Sl(s) {
   const e = [], t = [];
-  let n = r.firstChild;
+  let n = s.firstChild;
   for (; n; )
     n.nodeType === Node.TEXT_NODE && n.nodeValue ? t.push(n.nodeValue) : n.nodeName === "BR" && t.push(`
 
 `), n.nextSibling && e.push(n.nextSibling), n.firstChild && e.push(n.firstChild), n = e.pop();
-  return wl(t);
+  return bl(t);
 }
-function wl(r) {
+function bl(s) {
   const e = [];
   let t = !1;
-  for (const n of r) {
+  for (const n of s) {
     if (n === `
 
 `) {
@@ -2618,8 +2638,8 @@ function wl(r) {
       continue;
     }
     let o = !1;
-    for (const s of n)
-      switch (s) {
+    for (const r of n)
+      switch (r) {
         // Ideographic Space
         case "　":
         case " ":
@@ -2628,29 +2648,29 @@ function wl(r) {
           o && (t = !0);
           break;
         default:
-          t && (e.push(" "), t = !1), o = !0, e.push(s === " " ? " " : s);
+          t && (e.push(" "), t = !1), o = !0, e.push(r === " " ? " " : r);
           break;
       }
   }
   return e.join("");
 }
-function _l(r) {
-  if (r.length === 0) return !0;
-  const e = r[0].length;
-  return r.every((t) => t.length === e);
+function yl(s) {
+  if (s.length === 0) return !0;
+  const e = s[0].length;
+  return s.every((t) => t.length === e);
 }
-const io = "	", lo = `
+const lo = "	", ao = `
 `;
-function Rl(r) {
-  if (!_l(r)) throw new Error("Wrong text matrix dimension");
-  return r.map(
+function vl(s) {
+  if (!yl(s)) throw new Error("Wrong text matrix dimension");
+  return s.map(
     (e) => e.map(
       ({ text: t, cellVisible: n }) => n ? t : ""
-    ).join(io)
-  ).join(lo);
+    ).join(lo)
+  ).join(ao);
 }
-function xl(r) {
-  if (r.length === 0) return [];
+function kl(s) {
+  if (s.length === 0) return [];
   const e = [], t = [], n = [];
   function o() {
     n.push({
@@ -2661,73 +2681,98 @@ function xl(r) {
       isFormatted: !1
     }), t.length = 0;
   }
-  function s() {
+  function r() {
     o(), (e.length === 0 || n.length === e[0]?.length) && e.push([...n]), n.length = 0;
   }
-  for (const i of r)
-    i !== "\r" && (i === io ? o() : i === lo ? s() : t.push(i));
-  return (t.length > 0 || n.length > 0) && s(), e;
+  for (const i of s)
+    i !== "\r" && (i === lo ? o() : i === ao ? r() : t.push(i));
+  return (t.length > 0 || n.length > 0) && r(), e;
 }
 const nt = [
   {
     format: "ir-grid/cell",
-    parseFunc: fl,
-    payloadFunc: hl
+    parseFunc: wl,
+    payloadFunc: Cl
   },
   {
     format: "text/html",
-    parseFunc: pl,
-    payloadFunc: ml
+    parseFunc: xl,
+    payloadFunc: Rl
   },
   {
     format: "text/plain",
-    parseFunc: xl,
-    payloadFunc: Rl
+    parseFunc: kl,
+    payloadFunc: vl
   }
 ];
-function mn(r, e) {
+function Cn(s, e) {
   nt.forEach(
-    ({ format: t, payloadFunc: n }) => r.setData(t, n(e))
+    ({ format: t, payloadFunc: n }) => s.setData(t, n(e))
   );
 }
-function ao(r) {
-  return r.isFormatted && r.text.startsWith("#");
+function co(s) {
+  return s.isFormatted && s.text.startsWith("#");
 }
-function bl(r) {
-  return r.some((e) => e.some((t) => ao(t)));
+function Il(s) {
+  return s.some((e) => e.some((t) => co(t)));
 }
-function Sl(r, e) {
-  for (let t = 0; t < r.length; ++t) {
-    const n = r[t].length;
+function El(s, e) {
+  for (let t = 0; t < s.length; ++t) {
+    const n = s[t].length;
     for (let o = 0; o < n; ++o)
-      e[t]?.[o]?.text && ao(r[t][o]) && (r[t][o].text = e[t][o].text);
+      e[t]?.[o]?.text && co(s[t][o]) && (s[t][o].text = e[t][o].text);
   }
-  return r;
+  return s;
 }
-function pn(r) {
+function wn(s) {
   for (const { format: e, parseFunc: t } of nt) {
-    const n = r.getData(e);
+    const n = s.getData(e);
     if (n !== "") {
       const o = t(n);
-      if (!bl(o))
+      if (!Il(o))
         return o;
-      const s = r.getData(nt[2].format);
-      return Sl(
+      const r = s.getData(nt[2].format);
+      return El(
         o,
-        nt[2].parseFunc(s)
+        nt[2].parseFunc(r)
       );
     }
   }
   return console.warn("No relevant data format in clipboard!"), [];
 }
-const Pt = 1, Ke = 1, co = -1;
-class Cn {
+const Ml = 9999;
+class uo {
+  _minSize;
+  _maxSize;
+  constructor(e) {
+    this._minSize = e.minSize, this._maxSize = e.maxSize;
+  }
+  get minSize() {
+    return this._minSize;
+  }
+  get maxSize() {
+    return this._maxSize;
+  }
+  getBoundSize(e) {
+    return ct(e, this._minSize, this._maxSize);
+  }
+  setMinSize(e) {
+    e !== this._minSize && (this._minSize = ct(e, 0, this._maxSize));
+  }
+  setMaxSize(e) {
+    e !== this._maxSize && (this._maxSize = ct(e, this._minSize, Ml));
+  }
+}
+const $t = 1, lt = 1, ho = -1;
+class Tl extends uo {
   _left = 0;
   _columnId = 0;
   _width = 0;
   _visible = !0;
-  constructor({ columnId: e, width: t, left: n }) {
-    this.columnId = e, this.width = t, this.left = n;
+  constructor(e) {
+    super(e);
+    const { columnId: t, width: n, left: o } = e;
+    this.columnId = t, this.width = n, this.left = o;
   }
   get columnId() {
     return this._columnId;
@@ -2739,7 +2784,7 @@ class Cn {
     return this._width;
   }
   get widthWithBorder() {
-    return this._width + Ke;
+    return this._width + lt;
   }
   get visible() {
     return this._visible;
@@ -2763,7 +2808,7 @@ class Cn {
     return e >= this.left && e < this.right;
   }
 }
-class yl {
+class Ll {
   _rowHeaderColumns;
   _gridHookFlow;
   _freezedColumns;
@@ -2776,12 +2821,7 @@ class yl {
     this._rowHeaderColumns = e, this._freezedColumns = t, this._gridHookFlow = n;
   }
   addColumn(e) {
-    const t = new Cn({
-      columnId: this._columnsList.length,
-      width: e,
-      left: this._columnsWidth
-    });
-    return this._columnsList.push(t), this._visibleColumnsList.push(t), this.updateColumnWidth(t, "add"), this.addFixedWidth(t), t;
+    this._columnsList.push(e), this._visibleColumnsList.push(e), this.updateColumnWidth(e, "add"), this.addFixedWidth(e);
   }
   isHeaderColumnId(e) {
     return e < this.headerColumns;
@@ -2806,13 +2846,14 @@ class yl {
   _changeColumnWidth(e, t) {
     this._columnsWidth -= t, e.columnId < this.headerColumns && (this._rowHeaderColumnsWidth -= t), e.columnId < this.freezedColumns && (this._freezedColumnsWidth -= t, this._gridHookFlow.emitSync("changedFreezedColumnWidth", [this._freezedColumnsWidth, this.freezedColumns]));
   }
-  insertColumns(e, t, n) {
-    const s = this.getColumn(e).left, i = P(t).map((a) => new Cn({
-      columnId: e + a,
-      width: n,
-      left: s + (n + Ke) * a
-    }));
-    this._columnsList.splice(e, 0, ...i), i.forEach((a) => this.updateColumnWidth(a, "add")), this.updateVisibleColumnList(), this.updateFixedWidth();
+  insertColumns(e, t) {
+    let n = this._columnsList[e].left;
+    this._columnsList.splice(e, 0, ...t);
+    for (let o = 0; o < t.length; o++) {
+      const r = t[o];
+      r.left = n, this.updateColumnWidth(r, "add"), n = r.right;
+    }
+    this.updateVisibleColumnList(), this.updateFixedWidth();
   }
   addFixedWidth(e, t = 1) {
     e.columnId < this.headerColumns && (this._rowHeaderColumnsWidth += e.widthWithBorder * t), e.columnId < this.freezedColumns && (this._freezedColumnsWidth += e.widthWithBorder * t);
@@ -2861,7 +2902,7 @@ class yl {
   updateColumnsLeftFrom(e) {
     P(e, this._columnsList.length).reduce((t, n) => {
       const o = this._columnsList[n];
-      return o.left = t, o.visible ? t + o.width + Ke : t;
+      return o.left = t, o.visible ? t + o.width + lt : t;
     }, this.getColumn(e).left);
   }
   get firstColumn() {
@@ -2895,7 +2936,7 @@ class yl {
     return this._freezedColumns;
   }
 }
-class vl {
+class Hl {
   _headerRows;
   _gridHookFlow;
   _rowList = [];
@@ -2938,19 +2979,19 @@ class vl {
   }
   insertColumns(e, t, n) {
     this._rowList.forEach((o) => {
-      const s = P(t).map((i) => n(o.rowId, e + i));
-      o.insertCells(s, e);
+      const r = P(t).map((i) => n(o.rowId, e + i));
+      o.insertCells(r, e);
     });
   }
   removeRows(e, t, n) {
-    const o = this._rowList.slice(e, t + 1), s = n?.ignoreFiltered === !0 ? o.filter((i) => !i.filtered) : o;
+    const o = this._rowList.slice(e, t + 1), r = n?.ignoreFiltered === !0 ? o.filter((i) => !i.filtered) : o;
     if (this._rowList = [
       ...this._rowList.slice(0, e),
       // filter 되지 않은 row
-      ...o.filter((i) => !s.includes(i)),
+      ...o.filter((i) => !r.includes(i)),
       ...this._rowList.slice(t + 1)
-    ], s.length !== 0) {
-      for (const i of s)
+    ], r.length !== 0) {
+      for (const i of r)
         this._updateRowHeight(i, "remove"), i.remove();
       this._updateVisibleRowList(), this._updateFixedHeight();
     }
@@ -2965,8 +3006,8 @@ class vl {
     let n = this._rowList[e].top;
     this._rowList.splice(e, 0, ...t);
     for (let o = 0; o < t.length; o++) {
-      const s = t[o];
-      s.top = n, this._updateRowHeight(s, "add"), n = s.bottom;
+      const r = t[o];
+      r.top = n, this._updateRowHeight(r, "add"), n = r.bottom;
     }
     this._updateVisibleRowList(), this._updateFixedHeight();
   }
@@ -2974,11 +3015,11 @@ class vl {
     const t = [...this._rowList];
     this._rowList.length = 0;
     const n = t[Symbol.iterator](), o = e[Symbol.iterator]();
-    let s = o.next().value, i = n.next().value, a = 0;
+    let r = o.next().value, i = n.next().value, a = 0;
     for (; i; )
-      s && s.rowId === a ? (s.recover(), this._rowList.push(s), this._updateRowHeight(s, "add"), s = o.next().value) : (this._rowList.push(i), i = n.next().value), ++a;
-    for (; s; )
-      s.recover(), this._rowList.push(s), this._updateRowHeight(s, "add"), s = o.next().value;
+      r && r.rowId === a ? (r.recover(), this._rowList.push(r), this._updateRowHeight(r, "add"), r = o.next().value) : (this._rowList.push(i), i = n.next().value), ++a;
+    for (; r; )
+      r.recover(), this._rowList.push(r), this._updateRowHeight(r, "add"), r = o.next().value;
     this._updateVisibleRowList(), this._updateFixedHeight();
   }
   moveRows([e, t], n) {
@@ -2987,8 +3028,8 @@ class vl {
       throw new Error(`Ranges overlap! source: ${e},${t}, target: ${n}`);
     const o = this._rowList.splice(e, t - e + 1);
     o.forEach((i) => i.unmount());
-    const s = e < n ? n - o.length : n;
-    this._rowList.splice(s, 0, ...o), this._updateVisibleRowList();
+    const r = e < n ? n - o.length : n;
+    this._rowList.splice(r, 0, ...o), this._updateVisibleRowList();
   }
   getAdjustTargetRow(e) {
     return e >= this.length ? this.length : e < this.freezedRows ? this.freezedRows : this.getStartOfRowId(e);
@@ -2998,9 +3039,9 @@ class vl {
     if (o < n) throw new Error("targetStart should be less than targetEnd!");
     if (e <= o && t >= n)
       throw new Error(`Ranges overlap! source: ${e},${t}, targetRow: ${n},${o}`);
-    const [s, i, a, d] = e < n ? [e, t, n, o] : [n, o, e, t], c = this._rowList.slice(s, i + 1), l = this._rowList.slice(a, d + 1);
+    const [r, i, a, d] = e < n ? [e, t, n, o] : [n, o, e, t], c = this._rowList.slice(r, i + 1), l = this._rowList.slice(a, d + 1);
     c.forEach((h) => h.unmount()), l.forEach((h) => h.unmount()), this._rowList = [
-      ...this._rowList.slice(0, s),
+      ...this._rowList.slice(0, r),
       ...l,
       ...this._rowList.slice(i + 1, a),
       ...c,
@@ -3046,8 +3087,8 @@ class vl {
   setRowVisibleBulk(e, t) {
     const { length: n } = t;
     for (let o = 0; o < n; ++o) {
-      const s = this._rowList[e + o], i = t[o];
-      s.visible !== i && (s.setVisible(i), this._updateRowHeight(s, i ? "show" : "hide"));
+      const r = this._rowList[e + o], i = t[o];
+      r.visible !== i && (r.setVisible(i), this._updateRowHeight(r, i ? "show" : "hide"));
     }
     this._updateVisibleRowList(), this._updateFixedHeight();
   }
@@ -3073,16 +3114,16 @@ class vl {
   }
   _updateRowHeight(e, t) {
     if (t === "remove" && !e.visible) return;
-    const n = e.height + Pt, o = t === "add" || t === "show" ? n : -n;
+    const n = e.height + $t, o = t === "add" || t === "show" ? n : -n;
     this._rowsHeight += o;
   }
   sort(e, t, n, o) {
-    const s = this._rowList.slice(0, n), i = this._rowList.slice(n, o), a = this._rowList.slice(o);
+    const r = this._rowList.slice(0, n), i = this._rowList.slice(n, o), a = this._rowList.slice(o);
     i.forEach((d) => d.unmount()), i.sort((d, c) => {
       let l = e(d, c);
       return l === 0 && (l = d.seq - c.seq), l * (t === "ASC" ? 1 : -1);
     }), this._rowList = [
-      ...s,
+      ...r,
       ...i,
       ...a
     ], this._updateVisibleRowList();
@@ -3135,8 +3176,8 @@ class vl {
     return this._visibleRowList.length;
   }
   runFuncEachRow(e, t, n) {
-    const o = t ?? 0, s = n ?? this.length;
-    for (let i = o; i < s; i++) {
+    const o = t ?? 0, r = n ?? this.length;
+    for (let i = o; i < r; i++) {
       const a = this._rowList[i];
       a && e(a);
     }
@@ -3214,18 +3255,18 @@ class vl {
       bottom: n = this._rowList.length
     } = e;
     let o = e.initValue;
-    for (let s = t; s < n; s++)
-      o = e.func(o, this._rowList[s]);
+    for (let r = t; r < n; r++)
+      o = e.func(o, this._rowList[r]);
     return o;
   }
   getRowByTop(e) {
     const t = this.visibleRowList;
     let n = 0, o = t.length - 1;
     for (; n <= o; ) {
-      const s = n + Math.floor((o - n) / 2), i = t[s];
+      const r = n + Math.floor((o - n) / 2), i = t[r];
       if (i.isBetweenTop(e))
         return i;
-      e < i.top ? o = s - 1 : n = s + 1;
+      e < i.top ? o = r - 1 : n = r + 1;
     }
     return null;
   }
@@ -3260,31 +3301,31 @@ class vl {
     return this._rowList[this._rowList.length - 1];
   }
 }
-function kl() {
-  const r = document.createElement("table"), e = document.createElement("div"), t = document.createElement("div"), n = document.createElement("div"), o = document.createElement("div"), s = document.createElement("div");
-  return e.style.transform = "translateZ(0)", e.className = Cr, r.className = wr, t.className = _r, n.className = Rr, o.className = xr, s.className = br, r.appendChild(t), r.appendChild(n), r.appendChild(o), r.appendChild(s), e.appendChild(r), {
-    table: r,
+function zl() {
+  const s = document.createElement("table"), e = document.createElement("div"), t = document.createElement("div"), n = document.createElement("div"), o = document.createElement("div"), r = document.createElement("div");
+  return e.style.transform = "translateZ(0)", e.className = _s, s.className = Rs, t.className = xs, n.className = Ss, o.className = bs, r.className = ys, s.appendChild(t), s.appendChild(n), s.appendChild(o), s.appendChild(r), e.appendChild(s), {
+    table: s,
     wrapper: e,
     freezedColRowArea: t,
     freezedRows: n,
     freezedColArea: o,
-    bodyRows: s
+    bodyRows: r
   };
 }
-const Il = 1e4;
-function El(r) {
+const Ol = 1e4;
+function Al(s) {
   return {
-    rowAdjust: r.row === 0 ? 1 : 0,
-    colAdjust: r.col === 0 ? 1 : 0
+    rowAdjust: s.row === 0 ? 1 : 0,
+    colAdjust: s.col === 0 ? 1 : 0
   };
 }
-function Ml({ rowManager: r, colManager: e, commandManager: t, cursorManager: n, elements: o }) {
-  const { bodyRows: s, freezedColRowArea: i, freezedColArea: a, freezedRows: d } = o, c = {
+function Dl({ rowManager: s, colManager: e, commandManager: t, cursorManager: n, elements: o }) {
+  const { bodyRows: r, freezedColRowArea: i, freezedColArea: a, freezedRows: d } = o, c = {
     "top-left": { zIndex: W.zLevel9, container: i },
     "top-right": { zIndex: W.zLevel6, container: d },
     "bottom-left": { zIndex: W.zLevel4, container: a },
-    "bottom-right": { zIndex: W.zLevel2, container: s }
-  }, l = xe("textarea", On);
+    "bottom-right": { zIndex: W.zLevel2, container: r }
+  }, l = Se("textarea", On);
   l.style.padding = "0";
   let h = null;
   o.bodyRows.appendChild(l), b();
@@ -3293,17 +3334,17 @@ function Ml({ rowManager: r, colManager: e, commandManager: t, cursorManager: n,
     runEditMode: L,
     hide() {
     },
-    onEditDone(m, _, x, M, O, D) {
+    onEditDone(m, S, _, k, z, A) {
     },
-    onEditKeyDown(m, _, x, M) {
+    onEditKeyDown(m, S, _, k) {
     },
-    onEnterOnEdit(m, _) {
+    onEnterOnEdit(m, S) {
     },
-    onEditInput(m, _) {
+    onEditInput(m, S) {
     },
     onDragEnd(m) {
     }
-  }, f = zt(u);
+  }, f = Dt(u);
   return l.ondragend = (m) => u.onDragEnd(m), u;
   function g() {
     l.focus({ preventScroll: !0 });
@@ -3311,40 +3352,40 @@ function Ml({ rowManager: r, colManager: e, commandManager: t, cursorManager: n,
   function R(m) {
     l.value = m;
   }
-  function E(m) {
-    const _ = m.row < r.freezedRows, x = m.col < e.freezedColumns;
-    return _ ? x ? "top-left" : "top-right" : x ? "bottom-left" : "bottom-right";
+  function T(m) {
+    const S = m.row < s.freezedRows, _ = m.col < e.freezedColumns;
+    return S ? _ ? "top-left" : "top-right" : _ ? "bottom-left" : "bottom-right";
   }
-  function y(m) {
-    const _ = r.getRow(m.row), x = e.getColumn(m.col), { rowAdjust: M, colAdjust: O } = El(m), D = _.top + M, A = x.left + O, N = m.height - M - 1, F = m.width - O - 1, Se = E(m);
+  function x(m) {
+    const S = s.getRow(m.row), _ = e.getColumn(m.col), { rowAdjust: k, colAdjust: z } = Al(m), A = S.top + k, D = _.left + z, N = m.height - k - 1, F = m.width - z - 1, ye = T(m);
     return {
-      layer: Se,
+      layer: ye,
       bounds: {
-        top: `${D}px`,
-        left: `${A}px`,
+        top: `${A}px`,
+        left: `${D}px`,
         height: `${N}px`,
         width: `${F}px`
       },
-      zIndex: c[Se].zIndex,
-      container: c[Se].container
+      zIndex: c[ye].zIndex,
+      container: c[ye].container
     };
   }
   function H(m) {
-    const _ = y(m);
-    l.style.top = _.bounds.top, l.style.left = _.bounds.left, l.style.height = _.bounds.height, l.style.width = _.bounds.width, l.style.zIndex = _.zIndex, l.parentElement !== _.container && _.container.appendChild(l);
+    const S = x(m);
+    l.style.top = S.bounds.top, l.style.left = S.bounds.left, l.style.height = S.bounds.height, l.style.width = S.bounds.width, l.style.zIndex = S.zIndex, l.parentElement !== S.container && S.container.appendChild(l);
   }
-  function L(m, _ = !1, x = !1) {
+  function L(m, S = !1, _ = !1) {
     H(m), h = {
       cell: m,
       beforeText: m.props.text ?? "",
       cancelEndEdit: !1
-    }, l.style.removeProperty("padding"), _ || R(h.beforeText), l.maxLength = m.props.maxLength ?? Il, g(), l.scrollTo(0, l.scrollHeight), x && l.setSelectionRange(0, l.value.length), f.destroy(), f.create();
+    }, l.style.removeProperty("padding"), S || R(h.beforeText), l.maxLength = m.props.maxLength ?? Ol, g(), l.scrollTo(0, l.scrollHeight), _ && l.setSelectionRange(0, l.value.length), f.destroy(), f.create();
   }
   function I() {
     R(""), h = null, l.style.removeProperty("height"), l.style.removeProperty("width"), l.style.removeProperty("z-index");
   }
   function b() {
-    l.addEventListener("keydown", k), l.addEventListener("blur", p), l.addEventListener("keyup", w), l.addEventListener("input", C);
+    l.addEventListener("keydown", E), l.addEventListener("blur", p), l.addEventListener("keyup", w), l.addEventListener("input", C);
   }
   function C(m) {
     h && u.onEditInput(m, l.value);
@@ -3352,72 +3393,72 @@ function Ml({ rowManager: r, colManager: e, commandManager: t, cursorManager: n,
   function w() {
     h || R("");
   }
-  function k(m) {
+  function E(m) {
     if (!h) return;
-    const { beforeText: _, cell: x } = h;
+    const { beforeText: S, cell: _ } = h;
     if (m.key === "Escape") {
       v(l.value, !1, m.key);
       return;
     }
     if (m.key === " " && !m.ctrlKey) {
       m.preventDefault();
-      const M = l.value, { selectionStart: O, selectionEnd: D } = l;
-      l.value = M.slice(0, O) + " " + M.slice(D), l.selectionStart = O + 1, l.selectionEnd = O + 1, u.onEditInput(m, l.value);
+      const k = l.value, { selectionStart: z, selectionEnd: A } = l;
+      l.value = k.slice(0, z) + " " + k.slice(A), l.selectionStart = z + 1, l.selectionEnd = z + 1, u.onEditInput(m, l.value);
       return;
     }
-    if (m.key === "Enter" && m.altKey && x.metaInfo.editSingleLine !== !0) {
+    if (m.key === "Enter" && m.altKey && _.metaInfo.editSingleLine !== !0) {
       m.preventDefault();
-      const M = l.selectionStart;
+      const k = l.selectionStart;
       try {
         h.cancelEndEdit = !0, l.blur(), l.value = [
-          l.value.substring(0, M),
+          l.value.substring(0, k),
           l.value.substring(l.selectionEnd)
         ].join(`
-`), g(), l.setSelectionRange(M + 1, M + 1, "backward"), u.onEditKeyDown(m, x.row, x.col, x.props);
+`), g(), l.setSelectionRange(k + 1, k + 1, "backward"), u.onEditKeyDown(m, _.row, _.col, _.props);
       } finally {
         h.cancelEndEdit = !1;
       }
       return;
     }
-    if (S(m)) {
-      m.preventDefault(), v(l.value, _ !== l.value, m.key), m.key === "Enter" ? u.onEnterOnEdit(m.ctrlKey, m.shiftKey) : T(m.key, m.shiftKey);
+    if (y(m)) {
+      m.preventDefault(), v(l.value, S !== l.value, m.key), m.key === "Enter" ? u.onEnterOnEdit(m.ctrlKey, m.shiftKey) : M(m.key, m.shiftKey);
       return;
     }
-    u.onEditKeyDown(m, x.row, x.col, x.metaInfo);
+    u.onEditKeyDown(m, _.row, _.col, _.metaInfo);
   }
   function p() {
     !h || h.cancelEndEdit || (v(l.value, h.beforeText !== l.value, ""), f.destroy());
   }
-  function v(m, _, x) {
+  function v(m, S, _) {
     if (h)
       try {
-        const { cell: M, beforeText: O } = h;
-        if (_ && M.checkInputValidation(m)) {
-          const D = { text: m, beforeText: O };
-          M.props.gridStore.hook.emit("cellEditDoneBeforeRender", [M.row, M.col, D]);
-          const A = new se(t.commandContext, [
-            M.row,
-            M.col,
-            { text: D.text }
+        const { cell: k, beforeText: z } = h;
+        if (S && k.checkInputValidation(m)) {
+          const A = { text: m, beforeText: z };
+          k.props.gridStore.hook.emit("cellEditDoneBeforeRender", [k.row, k.col, A]);
+          const D = new ie(t.commandContext, [
+            k.row,
+            k.col,
+            { text: A.text }
           ]);
-          A.onUndo = () => {
-            u.onEditDone(M, _, O, x, l.selectionStart, l.selectionEnd);
-          }, A.onExecute = () => {
-            u.onEditDone(M, _, O, x, l.selectionStart, l.selectionEnd);
-          }, t.pushCommandBlock(new ue(
-            `Edit cell (${M.row}, ${M.col}) `,
-            A
-          )), M.props = { text: D.text };
+          D.onUndo = () => {
+            u.onEditDone(k, S, z, _, l.selectionStart, l.selectionEnd);
+          }, D.onExecute = () => {
+            u.onEditDone(k, S, z, _, l.selectionStart, l.selectionEnd);
+          }, t.pushCommandBlock(new he(
+            `Edit cell (${k.row}, ${k.col}) `,
+            D
+          )), k.props = { text: A.text };
         }
-        u.onEditDone(M, _, O, x, l.selectionStart, l.selectionEnd);
+        u.onEditDone(k, S, z, _, l.selectionStart, l.selectionEnd);
       } finally {
         l.style.padding = "0", I();
       }
   }
-  function S(m) {
+  function y(m) {
     return m.key === "ArrowLeft" && l.selectionStart === 0 && l.selectionEnd === 0 || m.key === "ArrowUp" && l.selectionStart === 0 && l.selectionEnd === 0 || m.key === "ArrowRight" && l.selectionStart === l.textLength && l.selectionEnd === l.textLength || m.key === "ArrowDown" && l.selectionStart === l.textLength && l.selectionEnd === l.textLength || m.key === "Tab" ? !0 : m.key === "Enter" && !m.altKey && !m.ctrlKey && !m.shiftKey;
   }
-  function T(m, _) {
+  function M(m, S) {
     switch (m) {
       case "ArrowLeft":
         return n.selectNextSelection(0, -1, !1);
@@ -3428,11 +3469,11 @@ function Ml({ rowManager: r, colManager: e, commandManager: t, cursorManager: n,
       case "ArrowDown":
         return n.selectNextSelection(1, 0, !1);
       case "Tab":
-        return _ ? n.selectBeforeActiveCell() : n.selectNextActiveCell();
+        return S ? n.selectBeforeActiveCell() : n.selectNextActiveCell();
     }
   }
 }
-class ze {
+class Ae {
   _rowManager;
   _colManager;
   constructor(e, t) {
@@ -3440,18 +3481,18 @@ class ze {
   }
   *getSelectionGenerator({ top: e, left: t, bottom: n, right: o }) {
     o = Math.min(o, this._colManager.getColCount() - 1), n = Math.min(n, this._rowManager.getRowCount() - 1);
-    for (let s = e; s <= n; s++)
+    for (let r = e; r <= n; r++)
       for (let i = t; i <= o; i++)
-        yield this._rowManager.cell(s, i);
+        yield this._rowManager.cell(r, i);
   }
   *getSelectionHeaderIterator({ top: e, left: t, bottom: n, right: o }) {
     o = Math.min(o, this._colManager.getColCount() - 1), n = Math.min(n, this._rowManager.getRowCount() - 1);
-    for (let s = 0; s < this._rowManager.headerRows; ++s)
+    for (let r = 0; r < this._rowManager.headerRows; ++r)
       for (let i = t; i <= o; ++i)
-        yield this._rowManager.cell(s, i);
-    for (let s = e; s <= n; ++s)
+        yield this._rowManager.cell(r, i);
+    for (let r = e; r <= n; ++r)
       for (let i = 0; i < this._colManager.headerColumns; ++i)
-        yield this._rowManager.cell(s, i);
+        yield this._rowManager.cell(r, i);
   }
   getCanClearCellCount(e, t) {
     let n = 0;
@@ -3460,18 +3501,18 @@ class ze {
     return n;
   }
 }
-function Tl(r) {
-  return r.top === r.bottom && r.left === r.right;
+function Fl(s) {
+  return s.top === s.bottom && s.left === s.right;
 }
-function Ll(r) {
-  return r.top > r.bottom || r.left > r.right;
+function Wl(s) {
+  return s.top > s.bottom || s.left > s.right;
 }
-function Hl(r, e) {
+function Pl(s, e) {
   let t = [];
-  const n = new ze(r, e), o = ({ top: c, left: l, bottom: h, right: u }) => t.some(({ mergeArea: f }) => l <= f.right && u >= f.left && c <= f.bottom && h >= f.top) === !1, s = (c, l) => {
+  const n = new Ae(s, e), o = ({ top: c, left: l, bottom: h, right: u }) => t.some(({ mergeArea: f }) => l <= f.right && u >= f.left && c <= f.bottom && h >= f.top) === !1, r = (c, l) => {
     let h = 0;
     for (let u = c; u <= l; ++u)
-      r.getRowVisible(u) && ++h;
+      s.getRowVisible(u) && ++h;
     return h;
   }, i = (c, l) => {
     let h = 0;
@@ -3480,12 +3521,12 @@ function Hl(r, e) {
     return h;
   }, a = ({ top: c, left: l, bottom: h, right: u }) => {
     for (let f = c; f <= h; ++f)
-      if (r.getRowVisible(f) === !1) return !0;
+      if (s.getRowVisible(f) === !1) return !0;
     for (let f = l; f <= u; ++f)
       if (e.getColumnVisible(f) === !1) return !0;
     return !1;
   }, d = (c, l) => {
-    const h = r.getCell(c, l), u = t.indexOf(h);
+    const h = s.getCell(c, l), u = t.indexOf(h);
     return u < 0 ? null : t[u];
   };
   return {
@@ -3498,16 +3539,16 @@ function Hl(r, e) {
       t = t.filter(({ row: l }) => l < c);
     },
     mergeCells(c) {
-      if (Ll(c))
+      if (Wl(c))
         throw new Error("Invalid range");
       if (o(c) === !1)
         throw new Error("Could not merging with Conflicted cells!");
       if (a(c))
         throw new Error("Could not merging with hidden cells!");
-      if (Tl(c))
+      if (Fl(c))
         throw new Error("Could not merging with single cell!");
-      const l = r.getCell(c.top, c.left);
-      l.mergeInfo = { rowSpan: s(c.top, c.bottom), colSpan: i(c.left, c.right) }, t.push(l);
+      const l = s.getCell(c.top, c.left);
+      l.mergeInfo = { rowSpan: r(c.top, c.bottom), colSpan: i(c.left, c.right) }, t.push(l);
       for (const h of n.getSelectionGenerator(c))
         (h.row !== c.top || h.col !== c.left) && (h.mergeMain = l);
     },
@@ -3564,8 +3605,8 @@ function Hl(r, e) {
     }
   };
 }
-class Ol {
-  _gridHookFlow = vs();
+class Nl {
+  _gridHookFlow = Ir();
   // HTML Elements
   _elements;
   _gridThemeConfig;
@@ -3577,7 +3618,7 @@ class Ol {
   _gridStateContext;
   _gridCursorManager;
   constructor(e) {
-    const t = rt();
+    const t = st();
     this._gridThemeConfig = {
       "grid.paddingTop": t.getStoreValue("grid.paddingTop"),
       "grid.paddingBottom": t.getStoreValue("grid.paddingBottom"),
@@ -3595,7 +3636,7 @@ class Ol {
       "grid.forceRenderLeftCol": t.getStoreValue("grid.forceRenderLeftCol"),
       "grid.forceRenderRightCol": t.getStoreValue("grid.forceRenderRightCol"),
       "grid.emptyDefaultHeight": t.getStoreValue("grid.emptyDefaultHeight")
-    }, this._commandManager = e.gridCommandManager, this._rowManager = new vl(e.headerRowCount, e.freezedRowCount, this._gridHookFlow), this._columnManager = new yl(e.headerColumnCount, e.freezedColumnCount, this._gridHookFlow), this._gridCursorManager = e.cursorManager, this._mergeHandler = Hl(this._rowManager, this._columnManager), this._elements = kl(), this._gridTextarea = Ml({
+    }, this._commandManager = e.gridCommandManager, this._rowManager = new Hl(e.headerRowCount, e.freezedRowCount, this._gridHookFlow), this._columnManager = new Ll(e.headerColumnCount, e.freezedColumnCount, this._gridHookFlow), this._gridCursorManager = e.cursorManager, this._mergeHandler = Pl(this._rowManager, this._columnManager), this._elements = zl(), this._gridTextarea = Dl({
       rowManager: this._rowManager,
       colManager: this._columnManager,
       commandManager: this._commandManager,
@@ -3649,14 +3690,14 @@ class Ol {
     return this._gridCursorManager;
   }
 }
-const zl = /^var\((.+)\)$/;
-function Nt(r) {
-  const e = zl.exec(r);
+const $l = /^var\((.+)\)$/;
+function Bt(s) {
+  const e = $l.exec(s);
   if (e && e.length > 0)
     return e[1];
-  throw new Error(`'${r}' is not custom-property name.`);
+  throw new Error(`'${s}' is not custom-property name.`);
 }
-const Al = [
+const Bl = [
   W.zLevel0,
   W.zLevel1,
   W.zLevel2,
@@ -3667,7 +3708,7 @@ const Al = [
   W.zLevel7,
   W.zLevel8,
   W.zLevel9
-], Dl = [
+], Gl = [
   [
     "horizontalAlign",
     { key: "text-align" }
@@ -3707,7 +3748,7 @@ const Al = [
     "fontWeight",
     { key: "font-weight" }
   ]
-], ce = {
+], de = {
   lv9: 9,
   lv8: 8,
   lv7: 7,
@@ -3715,12 +3756,12 @@ const Al = [
   lv5: 5,
   lv4: 4,
   lv3: 3
-}, Fl = /* @__PURE__ */ new Set([
-  ce.lv9,
-  ce.lv7,
-  ce.lv3
+}, Vl = /* @__PURE__ */ new Set([
+  de.lv9,
+  de.lv7,
+  de.lv3
 ]);
-class Wl {
+class jl {
   _tag;
   _cellProps;
   _row = -1;
@@ -3741,14 +3782,14 @@ class Wl {
   _element = null;
   _mark;
   _cellType;
-  constructor({ row: e, col: t, tag: n, props: o, cellRenderer: s, cellType: i }) {
-    this._cellProps = { ...o }, this._tag = n, this._cellRenderer = s, this._row = e, this._col = t, this._cellType = i;
+  constructor({ row: e, col: t, tag: n, props: o, cellRenderer: r, cellType: i }) {
+    this._cellProps = { ...o }, this._tag = n, this._cellRenderer = r, this._row = e, this._col = t, this._cellType = i;
   }
   /*
    * Getters
    */
   get isFreezed() {
-    return this.element.classList.contains(Ut) || this.element.tagName === "TH";
+    return this.element.classList.contains(qt) || this.element.tagName === "TH";
   }
   /**
    * @version ^2.18.0
@@ -3787,10 +3828,10 @@ class Wl {
     return this._getRenderInstance().getCellInnerHeight(this.element, this._cellProps);
   }
   get fontSize() {
-    return this._cellProps.fontSize ? this._cellProps.fontSize : this._element ? getComputedStyle(this._element).fontSize : wn("grid.defaultFontSize", Kt.fontSizeBase, "fontSize");
+    return this._cellProps.fontSize ? this._cellProps.fontSize : this._element ? getComputedStyle(this._element).fontSize : _n("grid.defaultFontSize", Xt.fontSizeBase, "fontSize");
   }
   get fontFamily() {
-    return this._cellProps.fontFamily ? this._cellProps.fontFamily : this._element ? getComputedStyle(this._element).fontFamily : wn("grid.defaultFontFamily", Kt.fontFamilyBase, "fontFamily");
+    return this._cellProps.fontFamily ? this._cellProps.fontFamily : this._element ? getComputedStyle(this._element).fontFamily : _n("grid.defaultFontFamily", Xt.fontFamilyBase, "fontFamily");
   }
   get mergeArea() {
     return {
@@ -3895,7 +3936,7 @@ class Wl {
     return this._cellProps;
   }
   get zIndexVariant() {
-    return this.element.style.getPropertyValue(Nt(W.stickyCellZId));
+    return this.element.style.getPropertyValue(Bt(W.stickyCellZId));
   }
   /*
    * Setters
@@ -3960,7 +4001,7 @@ class Wl {
       if (e instanceof Q)
         return e;
       if (e instanceof HTMLElement)
-        return new oo(() => e);
+        return new so(() => e);
     }
     throw new Error("Invalid cell renderer");
   }
@@ -3968,7 +4009,7 @@ class Wl {
     return this._getRenderInstance().render(this._row, this._col, this._cellProps);
   }
   _applyCustomProp(e, t) {
-    t !== void 0 ? te(this._element, { [e]: `${t}px` }) : te(this._element, { [e]: void 0 });
+    t !== void 0 ? ne(this._element, { [e]: `${t}px` }) : ne(this._element, { [e]: void 0 });
   }
   _updateCellAttr() {
     const {
@@ -3981,22 +4022,22 @@ class Wl {
   }
   _updateCellCls() {
     if (!this._element) return;
-    const e = [Sr, this._tag === "th" ? yr : vr];
-    this.props.class && e.push(this.props.class), this._zIndex !== null && e.push(Ut), (this._rowSpan > 1 || this._colSpan > 1) && e.push(kr), this._cellProps.disabled && e.push("is-disabled"), this._cellProps.sortOrder === "ASC" && e.push("is-asc"), this._cellProps.sortOrder === "DESC" && e.push("is-desc"), this.isSelected && e.push("is-selected"), this.onCheckReadonly() && e.push("is-readonly"), this._isDragOver && e.push("is-dragging"), this._isActivate && e.push("is-active"), this._element.className = e.join(" ");
+    const e = [vs, this._tag === "th" ? ks : Is];
+    this.props.class && e.push(this.props.class), this._zIndex !== null && e.push(qt), (this._rowSpan > 1 || this._colSpan > 1) && e.push(Es), this._cellProps.disabled && e.push("is-disabled"), this._cellProps.sortOrder === "ASC" && e.push("is-asc"), this._cellProps.sortOrder === "DESC" && e.push("is-desc"), this.isSelected && e.push("is-selected"), this.onCheckReadonly() && e.push("is-readonly"), this._isDragOver && e.push("is-dragging"), this._isActivate && e.push("is-active"), this._element.className = e.join(" ");
   }
   _isSticky() {
-    return this._zIndex !== null && Fl.has(this._zIndex);
+    return this._zIndex !== null && Vl.has(this._zIndex);
   }
   _updateCellLayout() {
     const e = this._element;
-    e && (this._left === co ? e.style.removeProperty("left") : e.style.left = `${this._left}px`, e.style.width = `${this._width}px`, e.style.height = `${this._height}px`);
+    e && (this._left === ho ? e.style.removeProperty("left") : e.style.left = `${this._left}px`, e.style.width = `${this._width}px`, e.style.height = `${this._height}px`);
   }
   _updateCellStatus() {
-    this._element && (this._cellProps.isError ? this._addMark(Ir) : this._cellProps.hasMemo ? this._addMark(Er) : this._mark && this._removeMark(), this._applyCellStyle());
+    this._element && (this._cellProps.isError ? this._addMark(Ms) : this._cellProps.hasMemo ? this._addMark(Ts) : this._mark && this._removeMark(), this._applyCellStyle());
   }
   _applyCellStyle() {
     if (this._element)
-      for (const [e, t] of Dl) {
+      for (const [e, t] of Gl) {
         const n = this._cellProps[e];
         if (n === void 0) {
           this._element.style.removeProperty(t.key);
@@ -4055,7 +4096,7 @@ class Wl {
     this._updateCellCls();
   }
   _updateStickyZId() {
-    this._element && (this._zIndex === null ? this._element.style.removeProperty(W.stickyCellZId) : te(this._element, { [W.stickyCellZId]: Al[this._zIndex] }), this._updatePosition());
+    this._element && (this._zIndex === null ? this._element.style.removeProperty(W.stickyCellZId) : ne(this._element, { [W.stickyCellZId]: Bl[this._zIndex] }), this._updatePosition());
   }
   _updatePosition() {
     this._element && (this._element.style.position = this._isSticky() ? "sticky" : "");
@@ -4100,16 +4141,16 @@ class Wl {
     return this._cellProps.readonly === !0;
   }
 }
-function wn(r, e, t) {
-  const n = rt().getStoreValue(r);
+function _n(s, e, t) {
+  const n = st().getStoreValue(s);
   return n === e ? getComputedStyle(document.documentElement)[t] : n;
 }
-class Pl extends Ot {
+class Ul extends At {
   constructor() {
     super([]);
   }
 }
-class Nl extends Ot {
+class Kl extends At {
   constructor() {
     super({ mode: "idle", contextParam: {} });
   }
@@ -4117,27 +4158,27 @@ class Nl extends Ot {
     return this.value.mode === "idle";
   }
 }
-class lt {
+class at {
   _grid;
   _generator;
   constructor(e) {
-    this._grid = e, this._generator = new ze(e, e);
+    this._grid = e, this._generator = new Ae(e, e);
   }
   adjustRange(e) {
-    const [t, n] = [this._grid.headerRows, this._grid.getRowCount() - 1], [o, s] = [this._grid.headerColumns, this._grid.getColCount() - 1], i = {
-      top: B(e.top, t, n),
-      left: B(e.left, o, s),
-      bottom: B(e.bottom, t, n),
-      right: B(e.right, o, s)
+    const [t, n] = [this._grid.headerRows, this._grid.getRowCount() - 1], [o, r] = [this._grid.headerColumns, this._grid.getColCount() - 1], i = {
+      top: K(e.top, t, n),
+      left: K(e.left, o, r),
+      bottom: K(e.bottom, t, n),
+      right: K(e.right, o, r)
     };
-    return i.top > n || i.bottom < t || i.left > s || i.right < o ? null : i;
+    return i.top > n || i.bottom < t || i.left > r || i.right < o ? null : i;
   }
   extendRange(e) {
     const t = this._generator, n = { ...e }, o = [...t.getSelectionGenerator(e)];
     for (; o.length; ) {
-      const s = o.pop();
-      if (!s.isMerged && !s.mergeMain) continue;
-      const i = s.mergeMain ? s.mergeMain.mergeArea : s.mergeArea;
+      const r = o.pop();
+      if (!r.isMerged && !r.mergeMain) continue;
+      const i = r.mergeMain ? r.mergeMain.mergeArea : r.mergeArea;
       if (i.top < n.top) {
         const a = t.getSelectionGenerator(
           {
@@ -4217,38 +4258,38 @@ class lt {
     return P(e, t + 1).map((n) => this._grid.getColumn(n));
   }
 }
-class $l extends Ot {
+class ql extends At {
   constructor(e) {
     super(null, (t) => {
-      const n = new lt(e);
+      const n = new at(e);
       return t.pipe(
         // activeCell이, range를 벗어난다면 재조정
-        ct((o) => {
+        ut((o) => {
           if (!o || e.getRowCount() === e.headerRows && e.getColCount() === e.headerColumns) return null;
-          const { activeCell: s, range: i } = o;
-          return s.row >= i.top && s.row <= i.bottom && s.col >= i.left && s.col <= i.right ? o : {
+          const { activeCell: r, range: i } = o;
+          return r.row >= i.top && r.row <= i.bottom && r.col >= i.left && r.col <= i.right ? o : {
             activeCell: e.cell(i.top, i.left),
             range: o.range
           };
         }),
         // grid row / column에 맞게 재조정 (adjust)
-        ct((o) => {
+        ut((o) => {
           if (!o) return null;
-          const s = n.adjustRange(o.range);
-          return s ? { activeCell: o.activeCell, range: s } : null;
+          const r = n.adjustRange(o.range);
+          return r ? { activeCell: o.activeCell, range: r } : null;
         }),
         // 범위 내 병합 셀에 따라 범위 확장 (extend)
-        ct((o) => o ? { activeCell: o.activeCell, range: n.extendRange(o.range) } : null)
+        ut((o) => o ? { activeCell: o.activeCell, range: n.extendRange(o.range) } : null)
       );
     });
   }
 }
-class Bl {
+class Xl {
   _selectionState;
   _gridModeState;
   _headerCellListState;
   constructor(e) {
-    this._selectionState = new $l(e), this._gridModeState = new Nl(), this._headerCellListState = new Pl();
+    this._selectionState = new ql(e), this._gridModeState = new Kl(), this._headerCellListState = new Ul();
   }
   setIdle() {
     this.setMode({ mode: "idle", contextParam: {} });
@@ -4316,7 +4357,7 @@ class Y {
     return this._isMounted;
   }
 }
-class Vl {
+class Yl extends uo {
   _grid;
   _rowType;
   _cells;
@@ -4333,8 +4374,10 @@ class Vl {
   _seq;
   _visible = !0;
   _isCalledOnMounted = !1;
-  constructor({ grid: e, rowId: t, height: n, top: o, rowType: s, seq: i }) {
-    this._grid = e, this._cells = [], this._rowType = s, this._rowId = t, this._seq = i, this._isMounted = !1, this._isFreezed = !1, this._isHeaderRow = !1, this._filtered = !1, this._height = n, this._top = o;
+  constructor(e) {
+    super(e);
+    const { grid: t, rowId: n, height: o, top: r, rowType: i, seq: a } = e;
+    this._grid = t, this._cells = [], this._rowType = i, this._rowId = n, this._seq = a, this._isMounted = !1, this._isFreezed = !1, this._isHeaderRow = !1, this._filtered = !1, this._height = o, this._top = r;
   }
   /**
    * Getters
@@ -4388,7 +4431,7 @@ class Vl {
     return this._height;
   }
   get heightWithBorder() {
-    return this._height + Pt;
+    return this._height + $t;
   }
   get bottom() {
     return this.visible ? this._top + this.heightWithBorder : this._top;
@@ -4458,8 +4501,8 @@ class Vl {
   }
   getMaxCellWidth(e, t) {
     return P(e, t).reduce((n, o) => {
-      const s = this._cells[o];
-      return s.visible && s.mergeInfo.colSpan === 1 ? Math.max(n, s.innerWidth) : n;
+      const r = this._cells[o];
+      return r.visible && r.mergeInfo.colSpan === 1 ? Math.max(n, r.innerWidth) : n;
     }, 0);
   }
   renderColumns(e, t) {
@@ -4475,7 +4518,7 @@ class Vl {
   }
   removeCells(e, t) {
     const n = 1 + t - e;
-    this._cells.splice(e, n).forEach((s) => s.remove()), P(e, this._cells.length).forEach((s) => this._cells[s].col -= n);
+    this._cells.splice(e, n).forEach((r) => r.remove()), P(e, this._cells.length).forEach((r) => this._cells[r].col -= n);
   }
   /**
    * 현재 row에서 가장 위에 있는 rowId 반환
@@ -4502,7 +4545,7 @@ class Vl {
   }
   getFreezedCellType(e) {
     const t = e < this._grid.getFreezedColumnCount();
-    return this.isHeaderRow ? t ? ce.lv9 : ce.lv4 : this.isFreezed ? t ? ce.lv7 : ce.lv4 : t ? ce.lv3 : null;
+    return this.isHeaderRow ? t ? de.lv9 : de.lv4 : this.isFreezed ? t ? de.lv7 : de.lv4 : t ? de.lv3 : null;
   }
   addCell(e) {
     this._cells.push(e), e.setStickyZIndex(this.getFreezedCellType(e.col));
@@ -4515,19 +4558,19 @@ class Vl {
   reorderCells() {
     this._cells.forEach((t, n) => void (t.col = n));
     const e = this._rowElement;
-    e && (ys(e), this._cells.forEach((t) => void e.appendChild(t.element)));
+    e && (kr(e), this._cells.forEach((t) => void e.appendChild(t.element)));
   }
   exchangeCells([e, t], [n, o]) {
     if (t < e) throw new Error("sourceStart should be less than sourceEnd!");
     if (o < n) throw new Error("targetStart should be less than targetEnd!");
     if (e <= o && t >= n)
       throw new Error(`Ranges overlap! source: ${e},${t}, target: ${n},${o}`);
-    const [s, i, a, d] = e < n ? [e, t, n, o] : [n, o, e, t];
+    const [r, i, a, d] = e < n ? [e, t, n, o] : [n, o, e, t];
     this._cells = [
-      ...this._cells.slice(0, s),
+      ...this._cells.slice(0, r),
       ...this._cells.slice(a, d + 1),
       ...this._cells.slice(i + 1, a),
-      ...this._cells.slice(s, i + 1),
+      ...this._cells.slice(r, i + 1),
       ...this._cells.slice(d + 1)
     ], this.reorderCells();
   }
@@ -4535,8 +4578,8 @@ class Vl {
     if (t < e) throw new Error("sourceStart should be less than sourceEnd!");
     if (e <= n && t >= n)
       throw new Error(`Ranges overlap! source: ${e},${t}, target: ${n}`);
-    const o = this._cells.splice(e, t - e + 1), s = e < n ? n - o.length : n;
-    this._cells.splice(s, 0, ...o), this.reorderCells();
+    const o = this._cells.splice(e, t - e + 1), r = e < n ? n - o.length : n;
+    this._cells.splice(r, 0, ...o), this.reorderCells();
   }
   render() {
     if (this._viewportCellList.length !== 0 && this._rowElement && this.visible) {
@@ -4558,7 +4601,7 @@ class Vl {
       textData: t,
       cellMetaInfo: n
     } = e;
-    this._cells.forEach((o, s) => o.updateCellMetaInfo(n, t?.[s]));
+    this._cells.forEach((o, r) => o.updateCellMetaInfo(n, t?.[r]));
   }
   *getCellGenerator(e = 0, t = this._cells.length - 1) {
     for (let n = e; n <= t; ++n)
@@ -4571,7 +4614,7 @@ class Vl {
     return this._cells[e].visible;
   }
   setAutoHeight(e, t) {
-    const n = Math.ceil(this.rowInnerHeight), o = B(isNaN(n) ? 0 : n, e, t);
+    const n = Math.ceil(this.rowInnerHeight), o = K(isNaN(n) ? 0 : n, e, t);
     return this.height !== o ? (this.height = o, !0) : !1;
   }
   _removeCellsByColIdList() {
@@ -4588,16 +4631,16 @@ class Vl {
     this._viewportCellList = e, this._removeCellsByColIdList();
     const { rowId: t, heightWithBorder: n } = this;
     let o = null;
-    for (const s of e) {
-      if (s.mergeMain) continue;
-      const { needRender: i } = s, a = s.element;
-      s.isConnected || (o === null ? this.element.prepend(a) : o.after(a));
-      const { rowSpan: d, colSpan: c, col: l } = s, h = {
+    for (const r of e) {
+      if (r.mergeMain) continue;
+      const { needRender: i } = r, a = r.element;
+      r.isConnected || (o === null ? this.element.prepend(a) : o.after(a));
+      const { rowSpan: d, colSpan: c, col: l } = r, h = {
         left: this._grid.getColumnLeft(l),
         width: c === 1 ? this._grid.getColumnWidth(l) + 1 : this._grid.getColWidthWithSpan(l, c),
         height: d === 1 ? n : this._grid.getRowHeightWithSpan(t, d)
       };
-      this._grid.hook.emitSync("cellLayout", [t, l, h]), s.updateCellLayout(h), i && s.render(), o = a;
+      this._grid.hook.emitSync("cellLayout", [t, l, h]), r.updateCellLayout(h), i && r.render(), o = a;
     }
   }
   mount(e, t) {
@@ -4610,7 +4653,7 @@ class Vl {
     return e >= this.top && e < this.bottom;
   }
   updateStickyStatus() {
-    this._rowElement && this._cells.reduce((e, t, n) => (t.setStickyZIndex(this.getFreezedCellType(n)), e + (this._grid.getColumnVisible(n) ? this._grid.getColumnWidth(n) + Ke : 0)), 0);
+    this._rowElement && this._cells.reduce((e, t, n) => (t.setStickyZIndex(this.getFreezedCellType(n)), e + (this._grid.getColumnVisible(n) ? this._grid.getColumnWidth(n) + lt : 0)), 0);
   }
   // row에 있는 모든 셀에 metaInfo 일괄 적용
   updateCellMetaInfo(e) {
@@ -4633,62 +4676,62 @@ class Vl {
     this._grid.hook.emit("renderRowElement", [this, e]);
   }
 }
-function Gl(r, e) {
-  const { top: t, bottom: n, left: o, right: s } = r, { freezedRows: i, freezedColumns: a } = e, d = t < i, c = n >= i, l = o < a, h = s >= a, u = [];
+function Zl(s, e) {
+  const { top: t, bottom: n, left: o, right: r } = s, { freezedRows: i, freezedColumns: a } = e, d = t < i, c = n >= i, l = o < a, h = r >= a, u = [];
   return d && l && u.push("top-left"), d && h && u.push("top-right"), c && l && u.push("bottom-left"), c && h && u.push("bottom-right"), u;
 }
-function jl(r, e) {
-  return r.top > e.bottom || e.top > r.bottom || r.left > e.right || e.left > r.right ? null : {
-    top: Math.max(r.top, e.top),
-    left: Math.max(r.left, e.left),
-    bottom: Math.min(r.bottom, e.bottom),
-    right: Math.min(r.right, e.right)
+function Jl(s, e) {
+  return s.top > e.bottom || e.top > s.bottom || s.left > e.right || e.left > s.right ? null : {
+    top: Math.max(s.top, e.top),
+    left: Math.max(s.left, e.left),
+    bottom: Math.min(s.bottom, e.bottom),
+    right: Math.min(s.right, e.right)
   };
 }
-function Ul(r, e, t) {
-  const { headerRows: n, headerColumns: o, freezedRows: s, freezedColumns: i, rowCount: a, colCount: d } = t, c = a - 1, l = d - 1, h = r.startsWith("top"), u = r.endsWith("left"), f = {
-    top: h ? n : s,
+function Ql(s, e, t) {
+  const { headerRows: n, headerColumns: o, freezedRows: r, freezedColumns: i, rowCount: a, colCount: d } = t, c = a - 1, l = d - 1, h = s.startsWith("top"), u = s.endsWith("left"), f = {
+    top: h ? n : r,
     left: u ? o : i,
-    bottom: h ? s - 1 : c,
+    bottom: h ? r - 1 : c,
     right: u ? i - 1 : l
   };
-  return jl(e, f);
+  return Jl(e, f);
 }
-function Kl(r, e) {
+function ea(s, e) {
   if (e.length === 1) return ["top", "bottom", "left", "right"];
-  const [t, n] = r.split("-"), o = new Set(e.map((i) => i.split("-")[0])), s = new Set(e.map((i) => i.split("-")[1]));
+  const [t, n] = s.split("-"), o = new Set(e.map((i) => i.split("-")[0])), r = new Set(e.map((i) => i.split("-")[1]));
   if (e.length === 2) {
     if (o.size === 1)
       return ["top", "bottom", n];
-    if (s.size === 1)
+    if (r.size === 1)
       return [t, "left", "right"];
   }
   return [t, n];
 }
-const Be = "is-hidden", kt = ["top-left", "top-right", "bottom-left", "bottom-right"], ql = {
-  "top-left": Or,
-  "top-right": Hr,
-  "bottom-left": Lr,
-  "bottom-right": Tr
+const Ge = "is-hidden", Et = ["top-left", "top-right", "bottom-left", "bottom-right"], ta = {
+  "top-left": As,
+  "top-right": Os,
+  "bottom-left": zs,
+  "bottom-right": Hs
 };
-function Xl() {
-  const r = {};
-  for (const e of kt) {
+function na() {
+  const s = {};
+  for (const e of Et) {
     const t = document.createElement("div");
-    t.className = je(Mr, ql[e], Be), r[e] = t;
+    t.className = Ue(Ls, ta[e], Ge), s[e] = t;
   }
-  return r;
+  return s;
 }
-class Yl {
+class oa {
   constructor(e, t) {
-    this._grid = e, this._gridStore = t, this._selectionMap = Xl(), this._gridStore.elements.freezedColRowArea.append(this._selectionMap["top-left"]), this._gridStore.elements.freezedRows.append(this._selectionMap["top-right"]), this._gridStore.elements.freezedColArea.append(this._selectionMap["bottom-left"]), this._gridStore.elements.bodyRows.append(this._selectionMap["bottom-right"]);
+    this._grid = e, this._gridStore = t, this._selectionMap = na(), this._gridStore.elements.freezedColRowArea.append(this._selectionMap["top-left"]), this._gridStore.elements.freezedRows.append(this._selectionMap["top-right"]), this._gridStore.elements.freezedColArea.append(this._selectionMap["bottom-left"]), this._gridStore.elements.bodyRows.append(this._selectionMap["bottom-right"]);
   }
   _selectionMap;
   updateScroll() {
     this._grid.getSelection();
   }
   releaseRange() {
-    kt.forEach((e) => this._selectionMap[e].classList.add(Be));
+    Et.forEach((e) => this._selectionMap[e].classList.add(Ge));
   }
   update() {
     const e = this._gridStore.gridStateContext.selectionRangeState.value;
@@ -4710,32 +4753,32 @@ class Yl {
     };
   }
   _updateArea(e) {
-    for (const o of kt) this._clearStyle(o);
-    const t = this._getMeta(), n = Gl(e, t);
+    for (const o of Et) this._clearStyle(o);
+    const t = this._getMeta(), n = Zl(e, t);
     for (const o of n) {
-      const s = Ul(o, e, t);
-      if (!s) continue;
-      this._selectionMap[o].classList.remove(Be);
-      const a = Kl(o, n);
-      this._setStyleByRange(o, s), this._setBorderStyle(o, a), this._drawBoundaryBorders(o, e, s);
+      const r = Ql(o, e, t);
+      if (!r) continue;
+      this._selectionMap[o].classList.remove(Ge);
+      const a = ea(o, n);
+      this._setStyleByRange(o, r), this._setBorderStyle(o, a), this._drawBoundaryBorders(o, e, r);
     }
   }
   _drawBoundaryBorders(e, t, n) {
-    const o = this._grid.getFreezedRowCount(), s = this._grid.getFreezedColumnCount(), [i, a] = e.split("-"), { top: d, bottom: c, left: l, right: h } = this._getRect(n), u = h - l, f = c - d, g = (R, E, y, H) => {
+    const o = this._grid.getFreezedRowCount(), r = this._grid.getFreezedColumnCount(), [i, a] = e.split("-"), { top: d, bottom: c, left: l, right: h } = this._getRect(n), u = h - l, f = c - d, g = (R, T, x, H) => {
       const L = this._selectionMap[R];
-      L.classList.remove(Be), L.style.top = `${d}px`, L.style.left = `${l}px`, L.style.width = `${E}px`, L.style.height = `${y}px`, this._setBorderStyle(R, [H]);
+      L.classList.remove(Ge), L.style.top = `${d}px`, L.style.left = `${l}px`, L.style.width = `${T}px`, L.style.height = `${x}px`, this._setBorderStyle(R, [H]);
     };
-    o > 0 && o === t.top && g(`top-${a}`, u, 1, "bottom"), s > 0 && s === t.left && g(`${i}-left`, 1, f, "right");
+    o > 0 && o === t.top && g(`top-${a}`, u, 1, "bottom"), r > 0 && r === t.left && g(`${i}-left`, 1, f, "right");
   }
   _setStyleByRange(e, t) {
-    const n = this._selectionMap[e], { top: o, bottom: s, left: i, right: a } = this._getRect(t);
+    const n = this._selectionMap[e], { top: o, bottom: r, left: i, right: a } = this._getRect(t);
     Object.assign(n.dataset, {
       top: String(t.top),
       left: String(t.left),
       bottom: String(t.bottom),
       right: String(t.right),
       visible: "true"
-    }), n.style.top = `${o}px`, n.style.left = `${i}px`, n.style.height = `${s - o}px`, n.style.width = `${a - i}px`;
+    }), n.style.top = `${o}px`, n.style.left = `${i}px`, n.style.height = `${r - o}px`, n.style.width = `${a - i}px`;
   }
   _setBorderStyle(e, t) {
     const n = this._selectionMap[e];
@@ -4744,7 +4787,7 @@ class Yl {
   }
   _clearStyle(e) {
     const t = this._selectionMap[e];
-    t.classList.add(Be), delete t.dataset.top, delete t.dataset.left, delete t.dataset.bottom, delete t.dataset.right, delete t.dataset.visible, this._clearAllBorder(e);
+    t.classList.add(Ge), delete t.dataset.top, delete t.dataset.left, delete t.dataset.bottom, delete t.dataset.right, delete t.dataset.visible, this._clearAllBorder(e);
   }
   _clearAllBorder(e) {
     this._selectionMap[e].classList.remove(
@@ -4756,14 +4799,14 @@ class Yl {
   }
   _getRect(e) {
     return {
-      top: Math.max(this._grid.getRow(e.top).top - Pt, 0),
-      left: Math.max(this._grid.getColumn(e.left).left - Ke, 0),
+      top: Math.max(this._grid.getRow(e.top).top - $t, 0),
+      left: Math.max(this._grid.getColumn(e.left).left - lt, 0),
       bottom: this._grid.getRow(e.bottom).bottom,
       right: this._grid.getColumn(e.right).right
     };
   }
 }
-const et = -1, _n = 2, Rn = 2, Zl = 2, Jl = [
+const et = -1, Rn = 2, xn = 2, sa = 2, ra = [
   "nothing",
   // row id, column id, left top, height 영향
   "updateColumnId",
@@ -4784,10 +4827,10 @@ const et = -1, _n = 2, Rn = 2, Zl = 2, Jl = [
   "updateSelection",
   "updateSelectionByScroll"
 ];
-function Ql(r) {
-  return r.mergeMain ?? r;
+function ia(s) {
+  return s.mergeMain ?? s;
 }
-class ea {
+class la {
   _args;
   _store;
   _gridRangeUtil;
@@ -4797,7 +4840,7 @@ class ea {
   _rafHandler = et;
   constructor(e) {
     const { grid: t, store: n } = e;
-    this._args = e, this._store = n, this._gridRangeUtil = new lt(t), n.hook.addSyncHook("contextScroll", (o) => {
+    this._args = e, this._store = n, this._gridRangeUtil = new at(t), n.hook.addSyncHook("contextScroll", (o) => {
       this.addTask("virtualRender").addTask("updateSelectionByScroll").forceRunTasks();
     });
   }
@@ -4805,18 +4848,18 @@ class ea {
     this._updateScrollInfo = { row: -1, col: -1 };
   }
   _renderTask(e = 0) {
-    if (e > Zl) {
+    if (e > sa) {
       console.warn("ignore render task because of possible infinite loop");
       return;
     }
     const t = new Set(this._scheduledTaskSet);
     this._scheduledTaskSet.clear(), this._rafHandler = et;
-    for (const o of Jl)
+    for (const o of ra)
       if (!(!t.has(o) || o === "nothing"))
         try {
           this[o].call(this);
-        } catch (s) {
-          console.error(o, s);
+        } catch (r) {
+          console.error(o, r);
         }
     const n = [...this._afterRenderCallbackList];
     this._afterRenderCallbackList.length = 0, n.forEach((o) => o()), this.checkScheduled("updateTop") && this.forceRunTasks(e + 1);
@@ -4826,13 +4869,13 @@ class ea {
   }
   _scrollOnRowTask() {
     if (this._updateScrollInfo.row === -1) return;
-    const e = this._updateScrollInfo.row, { grid: t, store: { tableElement: n } } = this._args, o = B(e, 0, t.getRowCount() - 1), s = t.getRow(o), i = s.top, a = s.bottom, { fixedRowHeight: d, scrollBottom: c, scrollTop: l } = t, h = l + d;
+    const e = this._updateScrollInfo.row, { grid: t, store: { tableElement: n } } = this._args, o = K(e, 0, t.getRowCount() - 1), r = t.getRow(o), i = r.top, a = r.bottom, { fixedRowHeight: d, scrollBottom: c, scrollTop: l } = t, h = l + d;
     c < a ? n.scrollTop = l + (a - c) : h > i && (n.scrollTop = i - d), this._updateScrollInfo.row = -1;
   }
   _scrollOnColTask() {
     if (this._updateScrollInfo.col === -1) return;
-    const e = this._updateScrollInfo.col, { grid: t, store: { tableElement: n } } = this._args, o = B(e, 0, t.getColCount() - 1), s = t.getColumnLeft(o), i = s + t.getColumnWidth(o), { fixedColumnWidth: a, scrollRight: d, scrollLeft: c } = t, l = c + a;
-    d < i ? n.scrollLeft = c + (i - d) : l > s && (n.scrollLeft = s - a), this._updateScrollInfo.col = -1;
+    const e = this._updateScrollInfo.col, { grid: t, store: { tableElement: n } } = this._args, o = K(e, 0, t.getColCount() - 1), r = t.getColumnLeft(o), i = r + t.getColumnWidth(o), { fixedColumnWidth: a, scrollRight: d, scrollLeft: c } = t, l = c + a;
+    d < i ? n.scrollLeft = c + (i - d) : l > r && (n.scrollLeft = r - a), this._updateScrollInfo.col = -1;
   }
   updateScroll() {
     this._scrollOnRowTask(), this._scrollOnColTask();
@@ -4847,28 +4890,28 @@ class ea {
     this.addTask("virtualRender").addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass");
   }
   _getViewportRowMap() {
-    const e = /* @__PURE__ */ new Map(), { grid: t, store: n } = this._args, { rowManager: o, columnManager: s, tableElement: i } = n, { fixedRowHeight: a, fixedColumnWidth: d } = t, {
+    const e = /* @__PURE__ */ new Map(), { grid: t, store: n } = this._args, { rowManager: o, columnManager: r, tableElement: i } = n, { fixedRowHeight: a, fixedColumnWidth: d } = t, {
       scrollTop: c,
       scrollLeft: l,
       clientHeight: h,
       clientWidth: u
-    } = i, f = t.getRowCount() - 1, g = t.getColCount() - 1, R = Math.min(t.getFreezedRowCount(), f), E = Math.min(t.getFreezedColumnCount(), g), y = t.getRowByTop(a + c + 1) ?? t.firstRow, H = t.getRowByTop(c + h) ?? t.lastRow, L = t.getColumnByLeft(d + l + 1) ?? s.firstColumn, I = t.getColumnByLeft(l + u) ?? s.lastColumn;
-    if (!y || !H || !L || !I) return e;
-    const b = o.getRowUnstable(Math.max(y.rowId - _n, R)), C = o.getRowUnstable(Math.min(H.rowId + _n, f)), w = s.getColumnUnstable(Math.max(L.columnId - Rn, E)), k = s.getColumnUnstable(Math.min(I.columnId + Rn, g));
-    let p = P(0, R).asList(), v = P(0, Math.max(E, n.getThemeValue("grid.forceRenderLeftCol"))).asList();
-    p = p.concat(P(b.rowId, C.rowId + 1).asList()), v = v.concat(P(w.columnId, k.columnId + 1).asList());
-    const S = g - n.getThemeValue("grid.forceRenderRightCol") + 1;
-    S > k.columnId && (v = v.concat(P(S, g + 1).asList()));
+    } = i, f = t.getRowCount() - 1, g = t.getColCount() - 1, R = Math.min(t.getFreezedRowCount(), f), T = Math.min(t.getFreezedColumnCount(), g), x = t.getRowByTop(a + c + 1) ?? t.firstRow, H = t.getRowByTop(c + h) ?? t.lastRow, L = t.getColumnByLeft(d + l + 1) ?? r.firstColumn, I = t.getColumnByLeft(l + u) ?? r.lastColumn;
+    if (!x || !H || !L || !I) return e;
+    const b = o.getRowUnstable(Math.max(x.rowId - Rn, R)), C = o.getRowUnstable(Math.min(H.rowId + Rn, f)), w = r.getColumnUnstable(Math.max(L.columnId - xn, T)), E = r.getColumnUnstable(Math.min(I.columnId + xn, g));
+    let p = P(0, R).asList(), v = P(0, Math.max(T, n.getThemeValue("grid.forceRenderLeftCol"))).asList();
+    p = p.concat(P(b.rowId, C.rowId + 1).asList()), v = v.concat(P(w.columnId, E.columnId + 1).asList());
+    const y = g - n.getThemeValue("grid.forceRenderRightCol") + 1;
+    y > E.columnId && (v = v.concat(P(y, g + 1).asList()));
     for (const m of p) {
-      const _ = o.getRowUnstable(m);
-      if (_.visible)
-        for (const x of v)
-          s.getColumnUnstable(x).visible && T(Ql(_.getCellUnstable(x)));
+      const S = o.getRowUnstable(m);
+      if (S.visible)
+        for (const _ of v)
+          r.getColumnUnstable(_).visible && M(ia(S.getCellUnstable(_)));
     }
     return e;
-    function T(m) {
-      const _ = e.get(m.row);
-      _ ? _.push(m) : e.set(m.row, [m]);
+    function M(m) {
+      const S = e.get(m.row);
+      S ? S.push(m) : e.set(m.row, [m]);
     }
   }
   virtualRender() {
@@ -4880,18 +4923,18 @@ class ea {
           freezedRows: n,
           bodyRows: o
         },
-        rowManager: s
+        rowManager: r
       }
     } = this._args;
     if (t.offsetWidth === 0) return;
     const i = e.getFreezedRowCount(), a = this._getViewportRowMap();
     d(), c(), l();
     function d() {
-      s.runFuncEachRow((h) => !a.has(h.rowId) && h.unmount());
+      r.runFuncEachRow((h) => !a.has(h.rowId) && h.unmount());
     }
     function c() {
       const { headerRows: h } = e;
-      s.runFuncEachRow((u) => {
+      r.runFuncEachRow((u) => {
         const f = a.get(u.rowId);
         f && (u.updateViewportCells(f), u.isFreezed || u.freeze(u.rowId < h), u.isMounted && u.element.parentElement === o && u.unmount(), u.isMounted || u.mount(n, "beforeend"));
       }, 0, i);
@@ -4900,7 +4943,7 @@ class ea {
       let h = null;
       for (const [u, f] of a.entries()) {
         if (u < i) continue;
-        const g = s.getRowUnstable(u);
+        const g = r.getRowUnstable(u);
         if (g.updateViewportCells(f), g.isMounted)
           if (g.element.parentElement === n)
             g.unmount();
@@ -4922,16 +4965,16 @@ class ea {
     const { grid: e } = this._args, t = e.getColCount();
     let n = 0, o = 0;
     for (; n < t; ) {
-      const s = e.getColumn(n);
-      s.left = o, s.visible && (o = s.right), ++n;
+      const r = e.getColumn(n);
+      r.left = o, r.visible && (o = r.right), ++n;
     }
   }
   updateTop() {
     const { grid: e } = this._args, t = e.getRowCount();
     let n = 0, o = 0;
     for (; n < t; ) {
-      const s = e.getRow(n);
-      s.top = o, s.visible && (o = s.bottom), ++n;
+      const r = e.getRow(n);
+      r.top = o, r.visible && (o = r.bottom), ++n;
     }
   }
   updateColumnId() {
@@ -4946,16 +4989,16 @@ class ea {
     const { grid: e } = this._args, t = e.getRowCount(), n = e.getFreezedRowCount();
     let o = 0;
     for (; o < t; ) {
-      const s = e.getRow(o);
-      s.rowId = o, s.isFreezed && o >= n ? s.unfreeze() : !s.isFreezed && o < n && s.freeze(), ++o;
+      const r = e.getRow(o);
+      r.rowId = o, r.isFreezed && o >= n ? r.unfreeze() : !r.isFreezed && o < n && r.freeze(), ++o;
     }
   }
   adjustSelection() {
     const { grid: e, store: t } = this._args, { gridStateContext: n } = t, o = n.selectionRangeState.value;
     if (!o) return e.releaseCells();
-    const s = this._gridRangeUtil.adjustRange(o.range);
-    if (!s) return e.releaseCells();
-    e.select(this._gridRangeUtil.extendRange(s));
+    const r = this._gridRangeUtil.adjustRange(o.range);
+    if (!r) return e.releaseCells();
+    e.select(this._gridRangeUtil.extendRange(r));
   }
   updateSelectionByScroll() {
     this._args.selector.updateScroll();
@@ -4977,7 +5020,7 @@ class ea {
     return this._scheduledTaskSet.has(e);
   }
 }
-class uo extends j {
+class fo extends V {
   _execute() {
     this._instance.setRowHeight(...this._args);
   }
@@ -4996,14 +5039,14 @@ class uo extends j {
     return this._args[0] < this._instance.getRowCount();
   }
 }
-const ta = {
-  "col-resizing": Pn,
-  "row-resizing": Nn
-}, ft = {
-  "col-resizing": Dr,
-  "row-resizing": Fr
-}, gt = (r) => r.mergeInfo ? r.col + r.mergeInfo.colSpan - 1 : r.col, xn = (r) => r.mergeInfo ? r.row + r.mergeInfo.rowSpan - 1 : r.row, na = 500, bn = 4;
-class ho extends Y {
+const aa = {
+  "col-resizing": Nn,
+  "row-resizing": $n
+}, mt = {
+  "col-resizing": Ws,
+  "row-resizing": Ps
+}, pt = (s) => s.mergeInfo ? s.col + s.mergeInfo.colSpan - 1 : s.col, Sn = (s) => s.mergeInfo ? s.row + s.mergeInfo.rowSpan - 1 : s.row, ca = 500, bn = 4;
+class go extends Y {
   _options;
   constructor(e) {
     super(), this._options = e;
@@ -5011,7 +5054,7 @@ class ho extends Y {
   _mountTask({ grid: e, gridStore: t, contextElement: n }) {
     const {
       enabledColResizer: o,
-      enabledRowResizer: s,
+      enabledRowResizer: r,
       disabledColumns: i,
       disabledRows: a,
       enabledColRatioResizer: d
@@ -5020,120 +5063,129 @@ class ho extends Y {
       gridStateContext: l,
       columnManager: h
     } = t, u = new Set(i), f = new Set(a), g = (I, b, C) => {
-      e.commandManager.pushCommandBlock(new ue(I, new uo(e, [b, C])));
+      e.commandManager.pushCommandBlock(new he(I, new fo(e, [b, C])));
     };
     {
       const I = document.createElement("div");
-      let b = null, C = !1, w = 0, k = null, p = !1;
-      const v = (x, M) => {
-        p && (p = !1, M.__IGNORE_CELL_CLICK__ = !0);
+      let b = null, C = !1, w = 0, E = null, p = !1;
+      const v = (_, k) => {
+        p && (p = !1, k.__IGNORE_CELL_CLICK__ = !0);
       };
       t.hook.addSyncBeginHook("cellClick", v), this.addRollbackTask(() => t.hook.removeSyncBeginHook("cellClick", v));
-      const S = () => {
-        b && (b.element.classList.remove(ft["col-resizing"]), b.element.classList.remove(ft["row-resizing"]), b = null), n.classList.remove(Pn), n.classList.remove(Nn), n.classList.remove(ie), k && n.removeEventListener("mousedown", k);
-      }, T = (x, M) => {
-        b = x, n.classList.add(ie), n.classList.add(ta[M]), x.element.classList.add(ft[M]);
-        let O = 0, D = 0, A = 0, N = 0, F = 0;
-        const Se = () => x.col < e.getFreezedColumnCount() ? N : N - e.scrollLeft, $t = () => x.row < e.getFreezedRowCount() ? N : N - e.scrollTop;
-        k = (Z) => {
-          const ne = (/* @__PURE__ */ new Date()).getTime();
+      const y = () => {
+        b && (b.element.classList.remove(mt["col-resizing"]), b.element.classList.remove(mt["row-resizing"]), b = null), n.classList.remove(Nn), n.classList.remove($n), n.classList.remove(le), E && n.removeEventListener("mousedown", E);
+      }, M = (_, k) => {
+        b = _, n.classList.add(le), n.classList.add(aa[k]), _.element.classList.add(mt[k]);
+        let z = 0, A = 0, D = 0, N = 0, F = 0;
+        const ye = () => _.col < e.getFreezedColumnCount() ? N : N - e.scrollLeft, Gt = () => _.row < e.getFreezedRowCount() ? N : N - e.scrollTop;
+        E = (Z) => {
+          const oe = (/* @__PURE__ */ new Date()).getTime();
           if (l.setMode({
-            mode: M,
+            mode: k,
             contextParam: {}
-          }), ne - w <= na) {
-            if (M === "col-resizing") {
-              const ye = gt(x);
-              H(ye, t.rowManager.getMaxCellWidth(ye, ye + 1));
+          }), oe - w <= ca) {
+            if (k === "col-resizing") {
+              const ee = pt(_);
+              H(ee, t.rowManager.getMaxCellWidth(ee, ee + 1));
             } else
               e.commandManager.doRecording("Autosize row", () => {
-                e.autoSizeRow(x.row);
+                e.autoSizeRow(_.row);
               });
             w = 0, l.setIdle();
             return;
           }
-          C = !0, w = ne, M === "col-resizing" ? (I.className = Wr, F = e.getColumnWidth(gt(x)), O = Z.pageX, D = O - F + e.minColWidth, A = O - F + e.maxColWidth, N = e.getColumnLeft(x.col) + e.getCellWidth(x), I.style.top = "0px", I.style.width = "0px", I.style.height = `${e.height}px`, I.style.left = `${Se()}px`) : (I.className = Pr, F = e.getRowHeight(xn(x)), O = Z.pageY, D = O - F + e.minRowHeight, A = O - F + e.maxRowHeight, N = e.getRow(x.row).top + e.getCellHeight(x), I.style.top = `${$t()}px`, I.style.width = `${e.width}px`, I.style.height = "0px", I.style.left = "0px"), c.wrapper.appendChild(I), e.addGlobalEventListener(document, "keydown", jt), e.addGlobalEventListener(document, "mouseup", Vt), e.addGlobalEventListener(document, "mousemove", Bt);
-        };
-        const Bt = (Z) => {
-          if (M === "col-resizing") {
-            const ne = B(Z.pageX, D, A) - O;
-            I.style.left = `${Se() + ne}px`;
+          if (C = !0, w = oe, k === "col-resizing") {
+            I.className = Ns;
+            const ee = e.getColumn(_.col);
+            F = e.getColumnWidth(pt(_)), z = Z.pageX, A = z - F + ee.minSize, D = z - F + ee.maxSize, N = e.getColumnLeft(_.col) + e.getCellWidth(_), I.style.top = "0px", I.style.width = "0px", I.style.height = `${e.height}px`, I.style.left = `${ye()}px`;
           } else {
-            const ne = B(Z.pageY, D, A) - O;
-            I.style.top = `${$t() + ne}px`;
+            I.className = $s;
+            const ee = e.getRow(_.row);
+            F = e.getRowHeight(Sn(_)), z = Z.pageY, A = z - F + ee.minSize, D = z - F + ee.maxSize, N = e.getRow(_.row).top + e.getCellHeight(_), I.style.top = `${Gt()}px`, I.style.width = `${e.width}px`, I.style.height = "0px", I.style.left = "0px";
           }
-        }, Vt = (Z) => {
-          if (M === "col-resizing") {
-            const De = B(Z.pageX, D, A) - O;
-            if (Math.abs(De) > bn) {
-              const Ye = gt(x), bo = F + De;
-              H(Ye, bo), w = 0;
-            }
-            const Fe = R(Z);
-            Fe && Fe === x && (p = !0);
-          } else {
-            const De = B(Z.pageY, D, A) - O;
-            if (Math.abs(De) > bn) {
-              const Fe = xn(x), Ye = F + De;
-              g("Resize row", Fe, Ye), e.setRowHeight(Fe, Ye), w = 0;
-            }
-          }
-          Gt(), l.setIdle();
-          const ne = R(Z);
-          if (!ne) return;
-          const ye = E(Z, ne);
-          ye !== null && T(ne, ye);
+          c.wrapper.appendChild(I), e.addGlobalEventListener(document, "keydown", Kt), e.addGlobalEventListener(document, "mouseup", jt), e.addGlobalEventListener(document, "mousemove", Vt);
         };
-        function Gt() {
-          C = !1, I.remove(), S(), document.removeEventListener("mousemove", Bt), document.removeEventListener("mouseup", Vt), document.removeEventListener("keydown", jt);
+        const Vt = (Z) => {
+          if (k === "col-resizing") {
+            const oe = K(Z.pageX, A, D) - z;
+            I.style.left = `${ye() + oe}px`;
+          } else {
+            const oe = K(Z.pageY, A, D) - z;
+            I.style.top = `${Gt() + oe}px`;
+          }
+        }, jt = (Z) => {
+          if (k === "col-resizing") {
+            const Fe = K(Z.pageX, A, D) - z;
+            if (Math.abs(Fe) > bn) {
+              const Ye = pt(_), yo = F + Fe;
+              H(Ye, yo), w = 0;
+            }
+            const We = R(Z);
+            We && We === _ && (p = !0);
+          } else {
+            const Fe = K(Z.pageY, A, D) - z;
+            if (Math.abs(Fe) > bn) {
+              const We = Sn(_), Ye = F + Fe;
+              g("Resize row", We, Ye), e.setRowHeight(We, Ye), w = 0;
+            }
+          }
+          Ut(), l.setIdle();
+          const oe = R(Z);
+          if (!oe) return;
+          const ee = T(Z, oe);
+          ee !== null && M(oe, ee);
+        };
+        function Ut() {
+          C = !1, I.remove(), y(), document.removeEventListener("mousemove", Vt), document.removeEventListener("mouseup", jt), document.removeEventListener("keydown", Kt);
         }
-        const jt = (Z) => {
-          Z.key === "Escape" && Gt();
+        const Kt = (Z) => {
+          Z.key === "Escape" && Ut();
         };
-        e.addGlobalEventListener(n, "mousedown", k);
-      }, m = (x) => {
+        e.addGlobalEventListener(n, "mousedown", E);
+      }, m = (_) => {
         if (C) return;
-        const M = R(x);
-        if (S(), M === null) return;
-        const O = E(x, M);
-        O && T(M, O);
-      }, _ = (x) => {
-        C || S();
+        const k = R(_);
+        if (y(), k === null) return;
+        const z = T(_, k);
+        z && M(k, z);
+      }, S = (_) => {
+        C || y();
       };
-      e.addGlobalEventListener(n, "mousemove", m), e.addGlobalEventListener(n, "mouseleave", _);
+      e.addGlobalEventListener(n, "mousemove", m), e.addGlobalEventListener(n, "mouseleave", S);
     }
     const R = (I) => {
-      const b = le("th", "tr", I.target);
+      const b = ae("th", "tr", I.target);
       if (!b) return null;
       const [C, w] = [
         parseInt(b.getAttribute("data-row") || "-1"),
         parseInt(b.getAttribute("data-col") || "-1")
       ];
       return e.cell(C, w);
-    }, E = (I, b) => {
+    }, T = (I, b) => {
       if (b.cellType === "body-cell") return null;
       if (d) {
         const { visibleColumnList: C } = h, w = C[C.length - 1];
         if (C.length > 0 && b.col === w.columnId) return null;
       }
-      return o && Math.abs(e.getCellWidth(b) - I.offsetX) <= zr && !u.has(b.col) ? "col-resizing" : s && Math.abs(e.getCellHeight(b) - I.offsetY) <= Ar && !f.has(b.row) ? "row-resizing" : null;
+      return o && Math.abs(e.getCellWidth(b) - I.offsetX) <= Ds && !u.has(b.col) ? "col-resizing" : r && Math.abs(e.getCellHeight(b) - I.offsetY) <= Fs && !f.has(b.row) ? "row-resizing" : null;
     };
-    function y(I, b, C) {
+    function x(I, b, C) {
       const w = e.getColumnWidth(b) - C;
       e.setColumnWidth(b, w);
-      const k = w - e.getColumnWidth(b);
-      if (k !== 0) {
+      const E = w - e.getColumnWidth(b);
+      if (E !== 0) {
         const p = b - I;
         e.setColumnWidth(
           // gap 만큼 이전 열 크기 조정
           b - p,
-          e.getColumnWidth(b - p) + k
+          e.getColumnWidth(b - p) + E
         );
       }
     }
     function H(I, b) {
       const C = e.getColumnWidth(I);
       e.commandManager.doRecording("resize column by Resizer", () => {
-        e.setColumnWidth(I, b), d && y(I, L(I), e.getColumnWidth(I) - C);
+        e.setColumnWidth(I, b), d && x(I, L(I), e.getColumnWidth(I) - C);
       });
     }
     function L(I) {
@@ -5147,113 +5199,113 @@ class ho extends Y {
     return "resizer";
   }
 }
-function zc(r) {
-  return new ho(r);
+function Nc(s) {
+  return new go(s);
 }
-const oa = 16;
-class fo extends Y {
+const da = 16;
+class mo extends Y {
   _enableHeaderClick = !0;
   _mountTask({ grid: e, gridStore: t, contextElement: n }) {
-    const { gridStateContext: o, hook: s, tableElement: i } = t;
+    const { gridStateContext: o, hook: r, tableElement: i } = t;
     let a = null, d = null, c, l = null;
-    const h = (w, k) => {
+    const h = (w, E) => {
       const p = [
         w.row,
         w.bottom,
-        k.row,
-        k.bottom
+        E.row,
+        E.bottom
       ], v = [
         w.col,
         w.right,
-        k.col,
-        k.right
-      ], S = {
+        E.col,
+        E.right
+      ], y = {
         top: Math.min(...p),
         left: Math.min(...v),
         bottom: Math.max(...p),
         right: Math.max(...v)
       };
-      Gn(S, l) || (e.select(S, e.activeCell ?? a), this.onChangedSelection(S));
-    }, u = (w, k) => {
+      jn(y, l) || (e.select(y, e.activeCell ?? a), this.onChangedSelection(y));
+    }, u = (w, E) => {
       const p = e.activeCell;
-      k.shiftKey && p ? (a = p, h(p, e.cell(w.row, w.col))) : (a = w, e.selectRange(a.row, a.col, a.bottom, a.right, a), this.onChangedSelection({ top: a.row, left: a.col, bottom: a.bottom, right: a.right })), d = a, o.setMode({ mode: "selecting-mouse", contextParam: {} });
-    }, f = (w, k) => {
-      this._enableHeaderClick && (k.__IGNORE_HEADER_SELECT__ || (a = w, R(a, a), o.setMode({ mode: "selecting-mouse", contextParam: {} })));
+      E.shiftKey && p ? (a = p, h(p, e.cell(w.row, w.col))) : (a = w, e.selectRange(a.row, a.col, a.bottom, a.right, a), this.onChangedSelection({ top: a.row, left: a.col, bottom: a.bottom, right: a.right })), d = a, o.setMode({ mode: "selecting-mouse", contextParam: {} });
+    }, f = (w, E) => {
+      this._enableHeaderClick && (E.__IGNORE_HEADER_SELECT__ || (a = w, R(a, a), o.setMode({ mode: "selecting-mouse", contextParam: {} })));
     };
-    function g(w, k) {
-      const p = k.closest("td,th");
+    function g(w, E) {
+      const p = E.closest("td,th");
       if (!p) return;
-      const v = oe(p);
+      const v = se(p);
       d = e.cell(v.row, v.col), R(w, d);
     }
-    function R(w, k) {
-      w.cellType === "body-cell" ? h(w, k) : w.cellType === "col-header" ? e.selectColumns(...Sn(w.col, k.right)) : w.cellType === "row-header" && e.selectRows(...Sn(w.row, k.bottom));
+    function R(w, E) {
+      w.cellType === "body-cell" ? h(w, E) : w.cellType === "col-header" ? e.selectColumns(...yn(w.col, E.right)) : w.cellType === "row-header" && e.selectRows(...yn(w.row, E.bottom));
     }
-    function E(w, k) {
-      const { offsetX: p, offsetY: v, target: S } = w;
-      if (!_e(S)) return null;
-      const T = p + S.scrollLeft, m = v + S.scrollTop, _ = T > e.width ? e.width : T, x = m > e.height ? e.height : m, M = e.findCellOrNull(x, _);
-      M && (d = M, R(k, M));
+    function T(w, E) {
+      const { offsetX: p, offsetY: v, target: y } = w;
+      if (!Re(y)) return null;
+      const M = p + y.scrollLeft, m = v + y.scrollTop, S = M > e.width ? e.width : M, _ = m > e.height ? e.height : m, k = e.findCellOrNull(_, S);
+      k && (d = k, R(E, k));
     }
-    function y(w) {
-      const k = w.clientWidth + w.scrollLeft, p = w.clientHeight + w.scrollTop, v = w.scrollTop + e.headerHeight, S = w.scrollLeft + e.headerWidth, T = p > e.height ? e.height : p, m = k > e.width ? e.width : k, _ = e.findCellOrNull(v, S), x = e.findCellOrNull(T, m - 1);
+    function x(w) {
+      const E = w.clientWidth + w.scrollLeft, p = w.clientHeight + w.scrollTop, v = w.scrollTop + e.headerHeight, y = w.scrollLeft + e.headerWidth, M = p > e.height ? e.height : p, m = E > e.width ? e.width : E, S = e.findCellOrNull(v, y), _ = e.findCellOrNull(M, m - 1);
       return {
-        top: _?.row ?? 0,
-        bottom: x?.row ?? 0,
-        left: _?.col ?? 0,
-        right: x?.col ?? 0
+        top: S?.row ?? 0,
+        bottom: _?.row ?? 0,
+        left: S?.col ?? 0,
+        right: _?.col ?? 0
       };
     }
-    function H(w, k, p, v) {
+    function H(w, E, p, v) {
       c = window.setTimeout(() => {
         if (!a) return;
-        const m = S(), _ = T(), { top: x, bottom: M, left: O, right: D } = y(w), A = {
+        const m = y(), S = M(), { top: _, bottom: k, left: z, right: A } = x(w), D = {
           top: w.scrollTop,
           left: w.scrollLeft,
           targetRow: p,
           targetCol: v
         };
-        m && (k === "t" ? (A.top -= e.getRowHeight(x), A.targetRow = x) : (A.top += e.getRowHeight(M), A.targetRow = M)), _ && (k === "l" ? (A.left -= e.getColumnWidth(O), A.targetCol = O) : (A.left += e.getColumnWidth(D), A.targetCol = D)), (m || _) && (w.scrollTo({ top: A.top, left: A.left }), R(a, e.cell(A.targetRow, A.targetCol)), H(w, k, A.targetRow, A.targetCol));
-      }, oa);
-      function S() {
-        return k === "t" ? w.scrollTop > 0 : k === "b" ? w.scrollHeight - (w.scrollTop + w.clientHeight) > 0 : !1;
+        m && (E === "t" ? (D.top -= e.getRowHeight(_), D.targetRow = _) : (D.top += e.getRowHeight(k), D.targetRow = k)), S && (E === "l" ? (D.left -= e.getColumnWidth(z), D.targetCol = z) : (D.left += e.getColumnWidth(A), D.targetCol = A)), (m || S) && (w.scrollTo({ top: D.top, left: D.left }), R(a, e.cell(D.targetRow, D.targetCol)), H(w, E, D.targetRow, D.targetCol));
+      }, da);
+      function y() {
+        return E === "t" ? w.scrollTop > 0 : E === "b" ? w.scrollHeight - (w.scrollTop + w.clientHeight) > 0 : !1;
       }
-      function T() {
-        return k === "l" ? w.scrollLeft > 0 : k === "r" ? w.scrollWidth - (w.scrollLeft + w.clientWidth) > 0 : !1;
+      function M() {
+        return E === "l" ? w.scrollLeft > 0 : E === "r" ? w.scrollWidth - (w.scrollLeft + w.clientWidth) > 0 : !1;
       }
     }
     function L() {
       c && (clearTimeout(c), c = void 0);
     }
     function I(w) {
-      if (n.classList.contains(ie) || w.button !== 0 || !_e(w.target) || // textArea, button 에서는 pass
-      w.target instanceof HTMLTextAreaElement || le(".button", "tr", w.target)) return;
-      const k = le("td,th", "tr", w.target);
-      if (!k) return;
-      const p = oe(k), v = e.cell(p.row, p.col);
-      k.tagName === "TD" ? u(v, w) : k.tagName === "TH" && f(v, w);
+      if (n.classList.contains(le) || w.button !== 0 || !Re(w.target) || // textArea, button 에서는 pass
+      w.target instanceof HTMLTextAreaElement || ae(".button", "tr", w.target)) return;
+      const E = ae("td,th", "tr", w.target);
+      if (!E) return;
+      const p = se(E), v = e.cell(p.row, p.col);
+      E.tagName === "TD" ? u(v, w) : E.tagName === "TH" && f(v, w);
     }
     function b(w) {
-      a && _e(w.target) && (w.target === i ? E(w, a) : g(a, w.target));
+      a && Re(w.target) && (w.target === i ? T(w, a) : g(a, w.target));
     }
     function C(w) {
       l = w;
     }
-    s.addHook("contextMouseMove", b), s.addHook("contextMouseDown", I), s.addSyncHook("selectChanged", C), this.addRollbackTask(() => {
-      s.removeHook("contextMouseMove", b), s.removeHook("contextMouseDown", I), s.removeSyncHook("selectChanged", C);
+    r.addHook("contextMouseMove", b), r.addHook("contextMouseDown", I), r.addSyncHook("selectChanged", C), this.addRollbackTask(() => {
+      r.removeHook("contextMouseMove", b), r.removeHook("contextMouseDown", I), r.removeSyncHook("selectChanged", C);
     }), e.addGlobalEventListener(document, "mouseup", () => {
       a && (L(), a = null, d = null, o.setIdle());
-    }), e.addGlobalEventListener(i, "mouseleave", ({ currentTarget: w, clientY: k, clientX: p }) => {
-      if (!a || !d || !_e(w)) return;
-      const { top: v, bottom: S, left: T, right: m } = w.getBoundingClientRect();
-      if (v < k && S > k && T < p && m > p) return;
-      const _ = x();
-      _ && H(w, _, d.row, d.col);
-      function x() {
-        return k < v ? "t" : k > S ? "b" : p < T ? "l" : p > m ? "r" : null;
+    }), e.addGlobalEventListener(i, "mouseleave", ({ currentTarget: w, clientY: E, clientX: p }) => {
+      if (!a || !d || !Re(w)) return;
+      const { top: v, bottom: y, left: M, right: m } = w.getBoundingClientRect();
+      if (v < E && y > E && M < p && m > p) return;
+      const S = _();
+      S && H(w, S, d.row, d.col);
+      function _() {
+        return E < v ? "t" : E > y ? "b" : p < M ? "l" : p > m ? "r" : null;
       }
     }), e.addGlobalEventListener(i, "mouseenter", (w) => {
-      a && _e(w.currentTarget) && L();
+      a && Re(w.currentTarget) && L();
     }), e.onDoubleClickCell = (w) => {
       w.cellType === "body-cell" && o.isIdle && (e.scrollInView(w.row, w.col), e.forceLayoutTask(), e.doEditMode(w, !1, !0));
     };
@@ -5267,20 +5319,20 @@ class fo extends Y {
     this._enableHeaderClick = e;
   }
 }
-function Sn(r, e) {
-  return r < e ? [r, e] : [e, r];
+function yn(s, e) {
+  return s < e ? [s, e] : [e, s];
 }
-function Ac() {
-  return new fo();
+function $c() {
+  return new mo();
 }
-class go extends j {
+class po extends V {
   _getUndoContext() {
-    const [e, t] = this._args, n = [], o = new ze(this._instance, this._instance);
-    for (const s of o.getSelectionGenerator(e))
-      t && this._instance.isFilteredRow(s.row) || this._instance.onClearCellCheck(s) && n.push({
-        row: s.row,
-        col: s.col,
-        text: s.text
+    const [e, t] = this._args, n = [], o = new Ae(this._instance, this._instance);
+    for (const r of o.getSelectionGenerator(e))
+      t && this._instance.isFilteredRow(r.row) || this._instance.onClearCellCheck(r) && n.push({
+        row: r.row,
+        col: r.col,
+        text: r.text
       });
     return { textSnapshot: n };
   }
@@ -5302,247 +5354,247 @@ class go extends j {
     return !0;
   }
 }
-function mo(r, e) {
-  const t = (p, v, S) => {
-    const T = r.headerRows;
-    let m = S, _ = p;
+function Co(s, e) {
+  const t = (p, v, y) => {
+    const M = s.headerRows;
+    let m = y, S = p;
     for (; m !== 0; ) {
-      const x = r.cell(_, v), O = (x.mergeMain ?? x).row - 1;
-      if (O < T) break;
-      r.getRowVisible(O) && ++m, _ = O;
+      const _ = s.cell(S, v), z = (_.mergeMain ?? _).row - 1;
+      if (z < M) break;
+      s.getRowVisible(z) && ++m, S = z;
     }
-    return r.getRowVisible(_) ? _ : p;
-  }, n = (p, v, S) => {
-    const T = r.getRowCount() - 1;
-    let m = S, _ = p;
+    return s.getRowVisible(S) ? S : p;
+  }, n = (p, v, y) => {
+    const M = s.getRowCount() - 1;
+    let m = y, S = p;
     for (; m > 0; ) {
-      const x = r.cell(_, v), O = (x.mergeMain ?? x).bottom + 1;
-      if (O > T) break;
-      r.getRowVisible(O) && --m, _ = O;
+      const _ = s.cell(S, v), z = (_.mergeMain ?? _).bottom + 1;
+      if (z > M) break;
+      s.getRowVisible(z) && --m, S = z;
     }
-    return r.getRowVisible(_) ? _ : p;
-  }, o = (p, v, S) => {
-    const T = r.headerColumns;
-    let m = S, _ = v;
+    return s.getRowVisible(S) ? S : p;
+  }, o = (p, v, y) => {
+    const M = s.headerColumns;
+    let m = y, S = v;
     for (; m !== 0; ) {
-      const x = r.cell(p, _), O = (x.mergeMain ?? x).col - 1;
-      if (O < T) break;
-      r.getColumnVisible(O) && ++m, _ = O;
+      const _ = s.cell(p, S), z = (_.mergeMain ?? _).col - 1;
+      if (z < M) break;
+      s.getColumnVisible(z) && ++m, S = z;
     }
-    return r.getColumnVisible(_) ? _ : v;
-  }, s = (p, v, S) => {
-    const T = r.getColCount() - 1;
-    let m = S, _ = v;
+    return s.getColumnVisible(S) ? S : v;
+  }, r = (p, v, y) => {
+    const M = s.getColCount() - 1;
+    let m = y, S = v;
     for (; m !== 0; ) {
-      const x = r.cell(p, _), O = (x.mergeMain ?? x).right + 1;
-      if (O > T) break;
-      r.getColumnVisible(O) && --m, _ = O;
+      const _ = s.cell(p, S), z = (_.mergeMain ?? _).right + 1;
+      if (z > M) break;
+      s.getColumnVisible(z) && --m, S = z;
     }
-    return r.getColumnVisible(_) ? _ : v;
+    return s.getColumnVisible(S) ? S : v;
   }, i = () => {
-    let p = r.headerColumns;
-    for (; !r.getColumnVisible(p); )
+    let p = s.headerColumns;
+    for (; !s.getColumnVisible(p); )
       ++p;
     return p;
   }, a = () => {
-    let p = r.getColCount() - 1;
-    for (; !r.getColumnVisible(p); )
+    let p = s.getColCount() - 1;
+    for (; !s.getColumnVisible(p); )
       --p;
     return p;
   }, d = () => {
-    let p = r.headerRows;
-    for (; !r.getRowVisible(p); )
+    let p = s.headerRows;
+    for (; !s.getRowVisible(p); )
       ++p;
     return p;
   }, c = () => {
-    let p = r.getRowCount() - 1;
-    for (; !r.getRowVisible(p); )
+    let p = s.getRowCount() - 1;
+    for (; !s.getRowVisible(p); )
       --p;
     return p;
   }, l = (p) => {
-    if (r.getRowCount() - 1 === p) return p;
-    let S = p + 1;
-    for (; !r.getRowVisible(S); )
-      ++S;
-    return S;
+    if (s.getRowCount() - 1 === p) return p;
+    let y = p + 1;
+    for (; !s.getRowVisible(y); )
+      ++y;
+    return y;
   }, h = (p) => {
-    const v = r.headerRows;
+    const v = s.headerRows;
     if (p === v) return p;
-    let S = p - 1;
-    for (; !r.getRowVisible(S); )
-      ++S;
-    return S;
+    let y = p - 1;
+    for (; !s.getRowVisible(y); )
+      ++y;
+    return y;
   }, u = () => {
-    const { activeCell: p } = r;
+    const { activeCell: p } = s;
     if (!p) {
       console.warn("No active cell warning.");
       return;
     }
-    const v = c(), S = a(), T = p.mergeMain ?? p;
-    if (T.right === S) {
+    const v = c(), y = a(), M = p.mergeMain ?? p;
+    if (M.right === y) {
       if (p.row === v) return;
-      const m = i(), _ = l(p.row);
-      e ? r.selectRow(_, r.cell(_, m)) : r.selectCell(_, m), r.scrollInView(_, m);
+      const m = i(), S = l(p.row);
+      e ? s.selectRow(S, s.cell(S, m)) : s.selectCell(S, m), s.scrollInView(S, m);
     } else {
-      const m = s(p.row, T.right, 1);
-      e ? r.selectRow(p.row, r.cell(p.row, m)) : r.selectCell(p.row, m), r.scrollOnCol(m);
+      const m = r(p.row, M.right, 1);
+      e ? s.selectRow(p.row, s.cell(p.row, m)) : s.selectCell(p.row, m), s.scrollOnCol(m);
     }
   }, f = () => {
-    const { activeCell: p } = r;
+    const { activeCell: p } = s;
     if (!p) {
       console.warn("No active cell warning.");
       return;
     }
-    const v = d(), S = i(), T = p.mergeMain ?? p;
-    if (T.col === S) {
+    const v = d(), y = i(), M = p.mergeMain ?? p;
+    if (M.col === y) {
       if (p.row === v) return;
-      const m = a(), _ = h(p.row);
-      e ? r.selectRow(_, r.cell(_, m)) : r.selectCell(_, m), r.scrollInView(_, m);
+      const m = a(), S = h(p.row);
+      e ? s.selectRow(S, s.cell(S, m)) : s.selectCell(S, m), s.scrollInView(S, m);
     } else {
-      const m = o(p.row, T.col, -1);
-      e ? r.selectRow(p.row, r.cell(p.row, m)) : r.selectCell(p.row, m), r.scrollOnCol(m);
+      const m = o(p.row, M.col, -1);
+      e ? s.selectRow(p.row, s.cell(p.row, m)) : s.selectCell(p.row, m), s.scrollOnCol(m);
     }
-  }, g = (p, v, S) => {
-    let T = -1, m = -1;
-    for (let _ = v; _ <= S; _++) {
-      const x = r.cell(p, _), M = x.mergeMain ?? x, { rowSpan: O } = M.mergeInfo;
-      O > T && (T = O, m = _);
-    }
-    return m;
-  }, R = (p, v, S) => {
-    let T = -1;
-    for (let m = v; m <= S; m++) {
-      const _ = r.cell(p, m), x = _.mergeMain ?? _, { bottom: M } = x;
-      M > T && (T = M);
-    }
-    return T;
-  }, E = (p, v, S) => {
-    let T = 999999999;
-    for (let m = v; m <= S; m++) {
-      const _ = r.cell(p, m), x = _.mergeMain ?? _;
-      T > x.row && (T = x.row);
-    }
-    return T;
-  }, y = (p, v, S) => {
-    let T = -1, m = -1;
-    for (let _ = v; _ <= S; _++) {
-      const x = r.cell(_, p), M = x.mergeMain ?? x, { colSpan: O } = M.mergeInfo;
-      O > T && (T = O, m = _);
+  }, g = (p, v, y) => {
+    let M = -1, m = -1;
+    for (let S = v; S <= y; S++) {
+      const _ = s.cell(p, S), k = _.mergeMain ?? _, { rowSpan: z } = k.mergeInfo;
+      z > M && (M = z, m = S);
     }
     return m;
-  }, H = (p, v, S) => {
-    let T = -1;
-    for (let m = v; m <= S; m++) {
-      const _ = r.cell(m, p), x = _.mergeMain ?? _, { right: M } = x;
-      M > T && (T = M);
+  }, R = (p, v, y) => {
+    let M = -1;
+    for (let m = v; m <= y; m++) {
+      const S = s.cell(p, m), _ = S.mergeMain ?? S, { bottom: k } = _;
+      k > M && (M = k);
     }
-    return T;
-  }, L = (p, v, S) => {
-    let T = 999999999;
-    for (let m = v; m <= S; m++) {
-      const _ = r.cell(m, p), x = _.mergeMain ?? _;
-      T > x.col && (T = x.col);
+    return M;
+  }, T = (p, v, y) => {
+    let M = 999999999;
+    for (let m = v; m <= y; m++) {
+      const S = s.cell(p, m), _ = S.mergeMain ?? S;
+      M > _.row && (M = _.row);
     }
-    return T;
+    return M;
+  }, x = (p, v, y) => {
+    let M = -1, m = -1;
+    for (let S = v; S <= y; S++) {
+      const _ = s.cell(S, p), k = _.mergeMain ?? _, { colSpan: z } = k.mergeInfo;
+      z > M && (M = z, m = S);
+    }
+    return m;
+  }, H = (p, v, y) => {
+    let M = -1;
+    for (let m = v; m <= y; m++) {
+      const S = s.cell(m, p), _ = S.mergeMain ?? S, { right: k } = _;
+      k > M && (M = k);
+    }
+    return M;
+  }, L = (p, v, y) => {
+    let M = 999999999;
+    for (let m = v; m <= y; m++) {
+      const S = s.cell(m, p), _ = S.mergeMain ?? S;
+      M > _.col && (M = _.col);
+    }
+    return M;
   };
   return {
     getNextYAbove: t,
     getNextYBelow: n,
     getNextXLeft: o,
-    getNextXRight: s,
+    getNextXRight: r,
     getFirstActiveRow: d,
     selectNextActiveCell: u,
     selectBeforeActiveCell: f,
-    selectNextSelection: (p, v, S) => {
-      const T = r.getSelection(), { activeCell: m } = r;
-      if (T == null || m == null) {
+    selectNextSelection: (p, v, y) => {
+      const M = s.getSelection(), { activeCell: m } = s;
+      if (M == null || m == null) {
         console.warn("No selection warning");
         return;
       }
-      const _ = m.mergeMain ?? m;
-      if (S && e) return;
-      if (!S) {
+      const S = m.mergeMain ?? m;
+      if (y && e) return;
+      if (!y) {
         if (p !== 0) {
-          const A = p < 0 ? t(_.row, m.col, p) : n(_.bottom, m.col, p);
-          e ? r.selectRow(A, r.cell(A, m.col)) : r.selectCell(A, m.col), r.scrollOnRow(A);
+          const D = p < 0 ? t(S.row, m.col, p) : n(S.bottom, m.col, p);
+          e ? s.selectRow(D, s.cell(D, m.col)) : s.selectCell(D, m.col), s.scrollOnRow(D);
         } else {
-          const A = v < 0 ? o(m.row, _.col, v) : s(m.row, _.right, v);
-          e ? r.selectRow(m.row, r.cell(m.row, A)) : r.selectCell(m.row, A), r.scrollOnCol(A);
+          const D = v < 0 ? o(m.row, S.col, v) : r(m.row, S.right, v);
+          e ? s.selectRow(m.row, s.cell(m.row, D)) : s.selectCell(m.row, D), s.scrollOnCol(D);
         }
         return;
       }
-      const { top: x, bottom: M, left: O, right: D } = T;
+      const { top: _, bottom: k, left: z, right: A } = M;
       if (p !== 0)
         if (p < 0)
-          if (R(m.row, O, D) === M) {
-            const N = g(x, O, D), F = t(x, N, p);
-            r.selectRange(F, O, M, D, m), r.scrollOnRow(F);
+          if (R(m.row, z, A) === k) {
+            const N = g(_, z, A), F = t(_, N, p);
+            s.selectRange(F, z, k, A, m), s.scrollOnRow(F);
           } else {
-            const N = g(M, O, D), F = t(M, N, p);
-            r.selectRange(x, O, F, D, m), r.scrollOnRow(F);
+            const N = g(k, z, A), F = t(k, N, p);
+            s.selectRange(_, z, F, A, m), s.scrollOnRow(F);
           }
-        else if (E(m.row, O, D) === x) {
-          const N = g(M, O, D), F = n(M, N, p);
-          r.selectRange(x, O, F, D, m), r.scrollOnRow(F);
+        else if (T(m.row, z, A) === _) {
+          const N = g(k, z, A), F = n(k, N, p);
+          s.selectRange(_, z, F, A, m), s.scrollOnRow(F);
         } else {
-          const N = g(x, O, D), F = n(x, N, p);
-          r.selectRange(F, O, M, D, m), r.scrollOnRow(F);
+          const N = g(_, z, A), F = n(_, N, p);
+          s.selectRange(F, z, k, A, m), s.scrollOnRow(F);
         }
       else if (v < 0)
-        if (H(m.col, x, M) === D) {
-          const N = y(O, x, M), F = o(N, O, v);
-          r.selectRange(x, F, M, D, m), r.scrollOnCol(F);
+        if (H(m.col, _, k) === A) {
+          const N = x(z, _, k), F = o(N, z, v);
+          s.selectRange(_, F, k, A, m), s.scrollOnCol(F);
         } else {
-          const N = y(D, x, M), F = o(N, D, v);
-          r.selectRange(x, O, M, F, m), r.scrollOnCol(F);
+          const N = x(A, _, k), F = o(N, A, v);
+          s.selectRange(_, z, k, F, m), s.scrollOnCol(F);
         }
-      else if (L(m.col, x, M) === O) {
-        const N = y(D, x, M), F = s(N, D, v);
-        r.selectRange(x, O, M, F, m), r.scrollOnCol(F);
+      else if (L(m.col, _, k) === z) {
+        const N = x(A, _, k), F = r(N, A, v);
+        s.selectRange(_, z, k, F, m), s.scrollOnCol(F);
       } else {
-        const N = y(O, x, M), F = s(N, O, v);
-        r.selectRange(x, F, M, D, m), r.scrollOnCol(F);
+        const N = x(z, _, k), F = r(N, z, v);
+        s.selectRange(_, F, k, A, m), s.scrollOnCol(F);
       }
     },
     selectMoveToLastColumn: (p) => {
-      const v = r.getSelection(), { activeCell: S } = r;
-      if (v == null || S == null) {
+      const v = s.getSelection(), { activeCell: y } = s;
+      if (v == null || y == null) {
         console.warn("No selection warning");
         return;
       }
-      const T = a();
-      p && e || (p ? r.selectRange(v.top, S.col, v.bottom, T, S) : e ? r.selectRow(S.row, r.cell(S.row, T)) : r.selectCell(S.row, T), r.scrollOnCol(T));
+      const M = a();
+      p && e || (p ? s.selectRange(v.top, y.col, v.bottom, M, y) : e ? s.selectRow(y.row, s.cell(y.row, M)) : s.selectCell(y.row, M), s.scrollOnCol(M));
     },
     selectMoveToFirstColumn: (p) => {
-      const v = r.getSelection(), { activeCell: S } = r;
-      if (v == null || S == null) {
+      const v = s.getSelection(), { activeCell: y } = s;
+      if (v == null || y == null) {
         console.warn("No selection warning");
         return;
       }
-      const T = i();
-      p && e || (p ? r.selectRange(v.top, T, v.bottom, S.col, S) : e ? r.selectRow(S.row, r.cell(S.row, T)) : r.selectCell(S.row, T), r.scrollOnCol(T));
+      const M = i();
+      p && e || (p ? s.selectRange(v.top, M, v.bottom, y.col, y) : e ? s.selectRow(y.row, s.cell(y.row, M)) : s.selectCell(y.row, M), s.scrollOnCol(M));
     },
     selectMoveToLastRow: (p) => {
-      const v = r.getSelection(), { activeCell: S } = r;
-      if (v == null || S == null) {
+      const v = s.getSelection(), { activeCell: y } = s;
+      if (v == null || y == null) {
         console.warn("No selection warning");
         return;
       }
-      const T = c();
-      p && e || (p ? r.selectRange(S.row, v.left, T, v.right, S) : r.selectCell(T, S.col), r.scrollOnRow(T));
+      const M = c();
+      p && e || (p ? s.selectRange(y.row, v.left, M, v.right, y) : s.selectCell(M, y.col), s.scrollOnRow(M));
     },
     selectMoveToFirstRow: (p) => {
-      const v = r.getSelection(), { activeCell: S } = r;
-      if (v == null || S == null) {
+      const v = s.getSelection(), { activeCell: y } = s;
+      if (v == null || y == null) {
         console.warn("No selection warning");
         return;
       }
-      const T = d();
-      p && e || (p ? r.selectRange(T, v.left, S.bottom, v.right, S) : r.selectCell(T, S.col), r.scrollOnRow(T));
+      const M = d();
+      p && e || (p ? s.selectRange(M, v.left, y.bottom, v.right, y) : s.selectCell(M, y.col), s.scrollOnRow(M));
     }
   };
 }
-class ra {
+class ua {
   keyMap;
   constructor() {
     this.keyMap = {};
@@ -5573,8 +5625,8 @@ class ra {
   onEndKeyActionHook(e) {
   }
 }
-const yn = 10;
-class po extends Y {
+const vn = 10;
+class wo extends Y {
   _keyMiddleware;
   _rowSelection;
   constructor({
@@ -5584,17 +5636,17 @@ class po extends Y {
     super(), this._keyMiddleware = e, this._rowSelection = t;
   }
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
-    const o = new ra(), { gridStateContext: s, hook: i } = n;
+    const o = new ua(), { gridStateContext: r, hook: i } = n;
     o.onStartKeyActionHook = (C) => i.emitSync("keyAction", [C, C.key]), o.onEndKeyActionHook = (C) => {
       !C.ctrlKey && !C.shiftKey && C.key === " " && I() === !1 || b(C.key) || C.preventDefault();
     };
     const a = (C = !1) => {
-      if (!s.isIdle) return;
+      if (!r.isIdle) return;
       const w = e.activeCell?.mergeMain ?? e.activeCell;
       w && (e.scrollInView(w.row, w.col), e.forceLayoutTask(), e.doEditMode(w, C));
     };
     this._keyMiddleware.forEach(([C, w]) => o.addKeyAction(C, w));
-    const d = new ze(n.rowManager, n.columnManager), {
+    const d = new Ae(n.rowManager, n.columnManager), {
       selectNextActiveCell: c,
       selectNextSelection: l,
       selectBeforeActiveCell: h,
@@ -5602,14 +5654,14 @@ class po extends Y {
       selectMoveToFirstColumn: f,
       selectMoveToLastColumn: g,
       selectMoveToLastRow: R
-    } = mo(e, this._rowSelection), E = (C) => (w) => {
-      s.gridModeState.value.mode !== "edit-cell" && e.getSelection() && C(w);
+    } = Co(e, this._rowSelection), T = (C) => (w) => {
+      r.gridModeState.value.mode !== "edit-cell" && e.getSelection() && C(w);
     };
-    this.addPluginSyncHook("cut", E((C) => e.onNativeCut(C))), this.addPluginSyncHook("copy", E((C) => e.onNativeCopy(C))), this.addPluginSyncHook("paste", E((C) => e.onNativePaste(C))), o.addKeyAction("Tab", (C) => (C.shiftKey ? h() : c(), !0)), o.addKeyAction("ArrowRight", (C) => (C.ctrlKey ? g(C.shiftKey) : l(0, 1, C.shiftKey), !0)), o.addKeyAction("ArrowUp", (C) => (C.ctrlKey ? u(C.shiftKey) : l(-1, 0, C.shiftKey), !0)), o.addKeyAction("ArrowLeft", (C) => (C.ctrlKey ? f(C.shiftKey) : l(0, -1, C.shiftKey), !0)), o.addKeyAction("ArrowDown", (C) => (C.ctrlKey ? R(C.shiftKey) : l(1, 0, C.shiftKey), !0)), o.addKeyAction("Home", (C) => (C.ctrlKey ? (f(C.shiftKey), u(C.shiftKey)) : f(C.shiftKey), !0)), o.addKeyAction("End", (C) => (C.ctrlKey ? (g(C.shiftKey), R(C.shiftKey)) : g(C.shiftKey), !0)), o.addKeyAction("PageUp", (C) => (l(-yn, 0, C.shiftKey), !0)), o.addKeyAction("PageDown", (C) => (l(yn, 0, C.shiftKey), !0)), o.addKeyAction("Enter", () => {
+    this.addPluginSyncHook("cut", T((C) => e.onNativeCut(C))), this.addPluginSyncHook("copy", T((C) => e.onNativeCopy(C))), this.addPluginSyncHook("paste", T((C) => e.onNativePaste(C))), o.addKeyAction("Tab", (C) => (C.shiftKey ? h() : c(), !0)), o.addKeyAction("ArrowRight", (C) => (C.ctrlKey ? g(C.shiftKey) : l(0, 1, C.shiftKey), !0)), o.addKeyAction("ArrowUp", (C) => (C.ctrlKey ? u(C.shiftKey) : l(-1, 0, C.shiftKey), !0)), o.addKeyAction("ArrowLeft", (C) => (C.ctrlKey ? f(C.shiftKey) : l(0, -1, C.shiftKey), !0)), o.addKeyAction("ArrowDown", (C) => (C.ctrlKey ? R(C.shiftKey) : l(1, 0, C.shiftKey), !0)), o.addKeyAction("Home", (C) => (C.ctrlKey ? (f(C.shiftKey), u(C.shiftKey)) : f(C.shiftKey), !0)), o.addKeyAction("End", (C) => (C.ctrlKey ? (g(C.shiftKey), R(C.shiftKey)) : g(C.shiftKey), !0)), o.addKeyAction("PageUp", (C) => (l(-vn, 0, C.shiftKey), !0)), o.addKeyAction("PageDown", (C) => (l(vn, 0, C.shiftKey), !0)), o.addKeyAction("Enter", () => {
       const C = e.getSelection();
       return C && (C.top === e.getRowCount() - 1 ? (l(0, 1, !1), C.left !== e.getSelection()?.left && u(!1)) : l(1, 0, !1)), !0;
-    }), o.addKeyAction("a", y), o.addKeyAction("A", y), o.addKeyAction("z", H), o.addKeyAction("Z", H), o.addKeyAction("y", L), o.addKeyAction("Y", L);
-    function y(C) {
+    }), o.addKeyAction("a", x), o.addKeyAction("A", x), o.addKeyAction("z", H), o.addKeyAction("Z", H), o.addKeyAction("y", L), o.addKeyAction("Y", L);
+    function x(C) {
       return C.ctrlKey ? (e.selectAll(), C.preventDefault(), !1) : !0;
     }
     function H(C) {
@@ -5619,13 +5671,13 @@ class po extends Y {
       return C.ctrlKey ? (e.redo(), C.preventDefault(), !1) : !0;
     }
     o.addKeyAction("F2", (C) => (a(), !0)), o.addKeyAction("Backspace", (C) => {
-      const w = e.getSelection(), k = e.activeCell;
-      return !w || !k || e.doEditMode(k, !0), !0;
+      const w = e.getSelection(), E = e.activeCell;
+      return !w || !E || e.doEditMode(E, !0), !0;
     }), o.addKeyAction("Delete", (C) => {
       const w = e.getSelection();
       if (!w || d.getCanClearCellCount(w, (p) => e.onClearCellCheck(p)) === 0) return !0;
-      const k = new go(e, [w, !0]);
-      return e.commandManager.pushCommandBlock(new ue("Clear cells", k)), e.clearCells(w, !0), !0;
+      const E = new po(e, [w, !0]);
+      return e.commandManager.pushCommandBlock(new he("Clear cells", E)), e.clearCells(w, !0), !0;
     }), o.addKeyAction(" ", (C) => {
       const w = e.getSelection();
       if (w === null) return !0;
@@ -5633,30 +5685,30 @@ class po extends Y {
         return e.selectColumns(w.left, w.right), !0;
       if (C.shiftKey)
         return e.selectRows(w.top, w.bottom), !0;
-      const k = [...d.getSelectionGenerator(w)];
-      if (k.length === 0) return !0;
-      const p = k[0], S = p.text === "true" ? "false" : "true", T = new ue("Typing space"), m = (x, M) => {
-        T.pushCommand(new se(e, [x.row, x.col, { text: S }])), e.setText(x.row, x.col, S), M.onCheckboxClick(x.row, x.col, S === "true");
-      }, _ = (x, M) => {
-        if (x.text === "true") return;
-        const O = M.lastClickedRadio;
-        O && T.pushCommand(new se(e, [O.row, O.col, { text: "false" }])), T.pushCommand(new se(e, [x.row, x.col, { text: "true" }])), e.setText(x.row, x.col, "true"), M.onRadioClick(x.row, x.col);
+      const E = [...d.getSelectionGenerator(w)];
+      if (E.length === 0) return !0;
+      const p = E[0], y = p.text === "true" ? "false" : "true", M = new he("Typing space"), m = (_, k) => {
+        M.pushCommand(new ie(e, [_.row, _.col, { text: y }])), e.setText(_.row, _.col, y), k.onCheckboxClick(_.row, _.col, y === "true");
+      }, S = (_, k) => {
+        if (_.text === "true") return;
+        const z = k.lastClickedRadio;
+        z && M.pushCommand(new ie(e, [z.row, z.col, { text: "false" }])), M.pushCommand(new ie(e, [_.row, _.col, { text: "true" }])), e.setText(_.row, _.col, "true"), k.onRadioClick(_.row, _.col);
       };
-      for (const x of k) {
-        if (x.onCheckReadonly() || x.props.disabled) continue;
-        const M = x.renderInstance;
-        M instanceof Kn && m(x, M), x === p && M instanceof to && _(x, M);
+      for (const _ of E) {
+        if (_.onCheckReadonly() || _.props.disabled) continue;
+        const k = _.renderInstance;
+        k instanceof qn && m(_, k), _ === p && k instanceof no && S(_, k);
       }
-      return T.commandLength > 0 && e.commandManager.pushCommandBlock(T), !0;
+      return M.commandLength > 0 && e.commandManager.pushCommandBlock(M), !0;
     }), this.addPluginSyncHook("input", (C) => {
-      s.gridModeState.isIdle && C.data && a(!0);
+      r.gridModeState.isIdle && C.data && a(!0);
     }), this.addPluginSyncHook("keydown", (C) => {
       if (
         // editMode에서 온 입력은 pass
-        !(!s.gridModeState.isIdle || // selection이 없으면 pass
+        !(!r.gridModeState.isIdle || // selection이 없으면 pass
         e.getSelection() === null)
       ) {
-        if (!s.isIdle) {
+        if (!r.isIdle) {
           C.preventDefault();
           return;
         }
@@ -5675,26 +5727,26 @@ class po extends Y {
       return !1;
     }
     function b(C) {
-      return C === "Process" || sa.test(C);
+      return C === "Process" || ha.test(C);
     }
   }
   get pluginKey() {
     return "default-key";
   }
 }
-const sa = /^[\w]$/;
-function Dc(r) {
-  return new po(r ?? {});
+const ha = /^[\w]$/;
+function Bc(s) {
+  return new wo(s ?? {});
 }
-class ia extends Y {
+class fa extends Y {
   _mountTask({ grid: e, gridStore: t }) {
     const { table: n } = t.elements;
     let o = null;
-    n.addEventListener("mousedown", (s) => {
-      if (s.button !== 0) return;
-      const i = le("td", "tr", s.target);
+    n.addEventListener("mousedown", (r) => {
+      if (r.button !== 0) return;
+      const i = ae("td", "tr", r.target);
       if (!i || i?.tagName === "TH") return;
-      const a = oe(i);
+      const a = se(i);
       o = e.cell(a.row, a.col), e.selectRow(o.row, o);
     }), e.addGlobalEventListener(document, "mouseup", () => o = null);
   }
@@ -5702,14 +5754,14 @@ class ia extends Y {
     return "row-selection";
   }
 }
-function Fc() {
-  return new ia();
+function Gc() {
+  return new fa();
 }
-const la = /^\d+px$/;
-function aa(r) {
-  for (const e of r)
+const ga = /^\d+px$/;
+function ma(s) {
+  for (const e of s)
     if (typeof e == "string") {
-      if (la.test(e) === !1)
+      if (ga.test(e) === !1)
         throw new Error(`invalid column weight: ${e}`);
     } else if (typeof e == "number") {
       if (e <= 0)
@@ -5717,40 +5769,40 @@ function aa(r) {
     } else
       throw new Error("weight type is allowed string or number");
 }
-function ca(r) {
+function pa(s) {
   let e = 0;
-  for (const t of r)
-    typeof t == "string" && (e += Co(t));
+  for (const t of s)
+    typeof t == "string" && (e += _o(t));
   return e;
 }
-function Co(r) {
-  return parseInt(r.substring(0, r.length - 2), 10);
+function _o(s) {
+  return parseInt(s.substring(0, s.length - 2), 10);
 }
-class da extends Y {
+class Ca extends Y {
   _columnWeightList = [];
   _fixedColumnWidth;
   constructor({ columnWeight: e }) {
-    super(), aa(e), this._fixedColumnWidth = ca(e), this._columnWeightList = e;
+    super(), ma(e), this._fixedColumnWidth = pa(e), this._columnWeightList = e;
   }
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
-    const { hook: o, tableElement: s } = n, i = () => {
-      const { clientWidth: c } = s;
+    const { hook: o, tableElement: r } = n, i = () => {
+      const { clientWidth: c } = r;
       if (c === 0) return;
-      const l = e.getColCount() - 1, h = c - l - this._fixedColumnWidth, u = P(e.getColCount()).reduce((R, E) => {
-        if (!e.getColumnVisible(E)) return R;
-        const y = this._columnWeightList[E];
-        return y === void 0 ? R + 1 : typeof y == "number" ? R + y : R;
+      const l = e.getColCount() - 1, h = c - l - this._fixedColumnWidth, u = P(e.getColCount()).reduce((R, T) => {
+        if (!e.getColumnVisible(T)) return R;
+        const x = this._columnWeightList[T];
+        return x === void 0 ? R + 1 : typeof x == "number" ? R + x : R;
       }, 0);
       let f = 0;
       P(l).forEach((R) => {
         if (!e.getColumnVisible(R)) return;
-        const E = this._columnWeightList[R] ?? 1;
-        if (typeof E == "string" && E.endsWith("px")) {
-          const y = Co(E);
-          e.setColumnWidth(R, y);
-        } else if (typeof E == "number") {
-          const y = E / u;
-          e.setColumnWidth(R, Math.floor(y * h));
+        const T = this._columnWeightList[R] ?? 1;
+        if (typeof T == "string" && T.endsWith("px")) {
+          const x = _o(T);
+          e.setColumnWidth(R, x);
+        } else if (typeof T == "number") {
+          const x = T / u;
+          e.setColumnWidth(R, Math.floor(x * h));
         }
         f += e.getColumnWidth(R);
       });
@@ -5779,42 +5831,49 @@ class da extends Y {
     return "column-fill";
   }
 }
-function Wc(r) {
-  return new da(r ?? { columnWeight: [] });
+function Vc(s) {
+  return new Ca(s ?? { columnWeight: [] });
 }
-class wo extends Y {
+function Le(s, e) {
+  const { offsetX: t, offsetY: n, scrollTop: o, scrollLeft: r } = e, i = n > s.fixedRowHeight ? n + o : n;
+  return {
+    adjustOffsetX: t > s.fixedColumnWidth ? t + r : t,
+    adjustOffsetY: i
+  };
+}
+class Ro extends Y {
   constructor() {
     super();
   }
   _mountTask({ grid: e, gridStore: t }) {
-    const { gridStateContext: n } = t, { table: o } = t.elements, s = {
+    const { gridStateContext: n } = t, { table: o } = t.elements, r = {
       latestDragOverCell: null
     }, i = () => {
       o.classList.remove("is-dragging"), a();
     }, a = () => {
-      s.latestDragOverCell && (s.latestDragOverCell.isDragOver = !1, s.latestDragOverCell = null);
+      r.latestDragOverCell && (r.latestDragOverCell.isDragOver = !1, r.latestDragOverCell = null);
     }, d = (l) => {
-      a(), s.latestDragOverCell = l, l.isDragOver = !0;
+      a(), r.latestDragOverCell = l, l.isDragOver = !0;
     }, c = () => o.classList.contains("is-dragging");
     o.addEventListener("mouseup", () => c() && i()), o.addEventListener("dragenter", () => {
       n.setMode({ mode: "dragging", contextParam: {} }), o.classList.add("is-dragging");
     }), o.addEventListener("dragover", (l) => {
       if (!l.dataTransfer || !o.classList.contains("is-dragging")) return;
-      const { scrollTop: h, scrollLeft: u } = o, f = e.findCellOrNull(l.offsetY + h, l.offsetX + u);
-      if (!f || l.dataTransfer.types.includes("ir-grid/disabled-cell-drop")) return null;
+      const { offsetX: h, offsetY: u } = l, { scrollTop: f, scrollLeft: g } = o, { adjustOffsetX: R, adjustOffsetY: T } = Le(e, { offsetY: u, offsetX: h, scrollLeft: g, scrollTop: f }), x = e.findCellOrNull(T, R);
+      if (!x || l.dataTransfer.types.includes("ir-grid/disabled-cell-drop")) return null;
       if (
         // drop 비활성화가 false 일치라면 무조건 실행
-        f.dropDisabled !== !1 && // disabled
-        (f.props.disabled === !0 || // readonly
-        f.onCheckReadonly() === !0 || f.dropDisabled === !0)
+        x.dropDisabled !== !1 && // disabled
+        (x.props.disabled === !0 || // readonly
+        x.onCheckReadonly() === !0 || x.dropDisabled === !0)
       )
         return a(), null;
-      e.onDragOverCell(f, l) === !0 && (f !== s.latestDragOverCell && d(f), l.preventDefault());
+      e.onDragOverCell(x, l) === !0 && (x !== r.latestDragOverCell && d(x), l.preventDefault());
     }), o.addEventListener("dragleave", (l) => {
       l.target === o ? i() : a();
     }), o.addEventListener("drop", (l) => {
       try {
-        s.latestDragOverCell && e.onDropOnCell(s.latestDragOverCell.row, s.latestDragOverCell.col, l);
+        r.latestDragOverCell && e.onDropOnCell(r.latestDragOverCell.row, r.latestDragOverCell.col, l);
       } finally {
         i();
       }
@@ -5824,18 +5883,18 @@ class wo extends Y {
     return "cell-drop";
   }
 }
-function Pc() {
-  return new wo();
+function jc() {
+  return new Ro();
 }
-const vn = 10;
-class ua extends Y {
+const kn = 10;
+class wa extends Y {
   _mountTask({ grid: e, gridStore: t }) {
-    const { hook: n } = t, { table: o } = t.elements, s = {
+    const { hook: n } = t, { table: o } = t.elements, r = {
       cell: null
     }, i = () => {
-      s.cell = null, o.draggable = !1;
+      r.cell = null, o.draggable = !1;
     }, a = (u) => {
-      o.draggable = !0, s.cell = u;
+      o.draggable = !0, r.cell = u;
     };
     n.addHook("contextMouseDown", l), n.addHook("contextMouseUp", d), n.addHook("contextDragStart", h), n.addHook("contextDragEnd", c), this.addRollbackTask(() => {
       n.removeHook("contextMouseDown", l), n.removeHook("contextMouseUp", d), n.removeHook("contextDragStart", h), n.removeHook("contextDragEnd", c);
@@ -5848,72 +5907,72 @@ class ua extends Y {
     }
     function l(u) {
       if (u.button !== 0) return;
-      const f = le("td", "tr", u.target);
+      const f = ae("td", "tr", u.target);
       if (!f) {
         i();
         return;
       }
-      const g = oe(f), R = e.cell(g.row, g.col);
+      const g = se(f), R = e.cell(g.row, g.col);
       u.__IGNORE_CELL_DRAG_SELECT_CELL__ || e.selectCell(g.row, g.col), R.props.draggable === !0 && R.props.object ? a(R) : i();
     }
     function h(u) {
-      if (!u.dataTransfer || !s.cell || !e.onDragStartCell(s.cell, u)) {
+      if (!u.dataTransfer || !r.cell || !e.onDragStartCell(r.cell, u)) {
         u.preventDefault();
         return;
       }
-      u.dataTransfer.setDragImage(s.cell.element, vn, vn);
+      u.dataTransfer.setDragImage(r.cell.element, kn, kn);
     }
   }
   get pluginKey() {
     return "single-cell-drag";
   }
 }
-function Nc() {
-  return new ua();
+function Uc() {
+  return new wa();
 }
-const kn = 10;
-class $c extends Y {
+const In = 10;
+class Kc extends Y {
   constructor(e = {}) {
     super(), this.args = e;
   }
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
     const {
       enabledRow: o = !0,
-      enabledColumn: s = !0
+      enabledColumn: r = !0
     } = this.args, { table: i } = n.elements, { mergeHandler: a, rowManager: d, gridStateContext: c } = n;
     let l = null, h = null;
-    i.addEventListener("mousedown", u), i.addEventListener("dragstart", f), i.addEventListener("dragover", g), i.addEventListener("drop", R), i.addEventListener("dragleave", E), i.addEventListener("dragend", y), i.addEventListener("mouseup", y), this.addRollbackTask(() => {
-      i.removeEventListener("mousedown", u), i.removeEventListener("dragstart", f), i.removeEventListener("dragover", g), i.removeEventListener("drop", R), i.removeEventListener("dragleave", E), i.removeEventListener("dragend", y), i.removeEventListener("mouseup", y);
+    i.addEventListener("mousedown", u), i.addEventListener("dragstart", f), i.addEventListener("dragover", g), i.addEventListener("drop", R), i.addEventListener("dragleave", T), i.addEventListener("dragend", x), i.addEventListener("mouseup", x), this.addRollbackTask(() => {
+      i.removeEventListener("mousedown", u), i.removeEventListener("dragstart", f), i.removeEventListener("dragover", g), i.removeEventListener("drop", R), i.removeEventListener("dragleave", T), i.removeEventListener("dragend", x), i.removeEventListener("mouseup", x);
     });
     function u(b) {
-      if (b.button !== 0 || t.classList.contains(ie)) return;
-      const C = le("th", "tr", b.target);
+      if (b.button !== 0 || t.classList.contains(le)) return;
+      const C = ae("th", "tr", b.target);
       if (!C) return;
-      const w = oe(C), k = e.cell(w.row, w.col);
-      if (k.cellType === "body-cell" || T(k)) return;
+      const w = se(C), E = e.cell(w.row, w.col);
+      if (E.cellType === "body-cell" || M(E)) return;
       Object.assign(b, { __IGNORE_HEADER_SELECT__: !0 }), H({
-        direction: k.cellType,
+        direction: E.cellType,
         source: p(),
-        cell: k
+        cell: E
       });
       function p() {
-        const { row: m, col: _ } = k;
-        return k.cellType === "row-header" ? [
+        const { row: m, col: S } = E;
+        return E.cellType === "row-header" ? [
           d.getStartOfRowId(m),
           d.getEndOfRowId(m)
         ] : [
-          d.getStartOfColumnId(_),
-          d.getEndOfColumnId(_)
+          d.getStartOfColumnId(S),
+          d.getEndOfColumnId(S)
         ];
       }
       function v(m) {
         return !o || m.row < e.getFreezedRowCount();
       }
-      function S(m) {
-        return !s || m.col < e.getFreezedColumnCount();
+      function y(m) {
+        return !r || m.col < e.getFreezedColumnCount();
       }
-      function T(m) {
-        return m.cellType === "row-header" && v(m) || m.cellType === "col-header" && S(m);
+      function M(m) {
+        return m.cellType === "row-header" && v(m) || m.cellType === "col-header" && y(m);
       }
     }
     function f(b) {
@@ -5921,21 +5980,21 @@ class $c extends Y {
         b.preventDefault();
         return;
       }
-      c.setMode({ mode: "dragging", contextParam: {} }), i.classList.add("is-dragging"), b.dataTransfer.effectAllowed = "move", b.dataTransfer.setData("ir-grid/disabled-cell-drop", ""), b.dataTransfer.setData("ir-grid/exchange-by-header-dragging", ""), b.dataTransfer.setDragImage(l.cell.element, kn, kn);
+      c.setMode({ mode: "dragging", contextParam: {} }), i.classList.add("is-dragging"), b.dataTransfer.effectAllowed = "move", b.dataTransfer.setData("ir-grid/disabled-cell-drop", ""), b.dataTransfer.setData("ir-grid/exchange-by-header-dragging", ""), b.dataTransfer.setDragImage(l.cell.element, In, In);
     }
     function g(b) {
       if (!l || !b.dataTransfer || !b.dataTransfer.types.includes("ir-grid/exchange-by-header-dragging")) return;
-      const { scrollTop: C, scrollLeft: w } = i, k = e.findCellOrNull(b.offsetY + C, b.offsetX + w);
-      if (!k || !k.isHeaderCell || l.direction === "row-header" && p(k, l) || l.direction === "col-header" && v(k, l)) {
-        L(), h = k;
+      const { offsetX: C, offsetY: w } = b, { scrollTop: E, scrollLeft: p } = i, { adjustOffsetX: v, adjustOffsetY: y } = Le(e, { scrollLeft: p, scrollTop: E, offsetX: C, offsetY: w }), M = e.findCellOrNull(y, v);
+      if (!M || !M.isHeaderCell || l.direction === "row-header" && m(M, l) || l.direction === "col-header" && S(M, l)) {
+        L(), h = M;
         return;
       }
-      k !== h && I(k, l.direction), b.preventDefault();
-      function p(S, T) {
-        return S.row === T.cell.row || S.row < e.getFreezedRowCount() || a.checkConflictingInRows(S.row, S.row);
+      M !== h && I(M, l.direction), b.preventDefault();
+      function m(_, k) {
+        return _.row === k.cell.row || _.row < e.getFreezedRowCount() || a.checkConflictingInRows(_.row, _.row);
       }
-      function v(S, T) {
-        return S.col === T.cell.col || S.col < e.getFreezedColumnCount() || a.checkConflictingInColumns(S.col, S.col);
+      function S(_, k) {
+        return _.col === k.cell.col || _.col < e.getFreezedColumnCount() || a.checkConflictingInColumns(_.col, _.col);
       }
     }
     function R() {
@@ -5946,10 +6005,10 @@ class $c extends Y {
         e.exchangeColumns(b.source, [C.col, C.col]);
       }), e.forceLayoutTask(), e.selectColumn(b.cell.col)));
     }
-    function E() {
+    function T() {
       L(), h = null;
     }
-    function y() {
+    function x() {
       i.classList.remove("is-dragging"), L(), l = null, i.draggable = !1, h = null, c.setIdle();
     }
     function H({ direction: b, source: C, cell: w }) {
@@ -5968,36 +6027,36 @@ class $c extends Y {
     function I(b, C) {
       L(), h = b;
       const w = C === "row-header" ? e.headerColumns : e.headerRows;
-      for (let k = 0; k < w; k++)
-        C === "row-header" ? e.cell(b.row, k).element.classList.add("is-dragging") : e.cell(k, b.col).element.classList.add("is-dragging");
+      for (let E = 0; E < w; E++)
+        C === "row-header" ? e.cell(b.row, E).element.classList.add("is-dragging") : e.cell(E, b.col).element.classList.add("is-dragging");
     }
   }
   get pluginKey() {
     return "exchange-by-header-cell";
   }
 }
-const _o = 8, ha = {
-  normal: Vr,
-  error: Br
-}, In = (r, e, t, n) => {
-  r.isConnected === !1 || r.offsetParent === null || _s(r, e, {
+const xo = 8, _a = {
+  normal: js,
+  error: Vs
+}, En = (s, e, t, n) => {
+  s.isConnected === !1 || s.offsetParent === null || xr(s, e, {
     placement: t,
     strategy: "fixed",
     middleware: [
-      Rs({
-        mainAxis: _o,
+      Sr({
+        mainAxis: xo,
         crossAxis: n ?? 0
       }),
-      xs(),
-      bs({ padding: 5 })
+      br(),
+      yr({ padding: 5 })
     ]
-  }).then(({ x: o, y: s, placement: i }) => {
-    e.style.left = `${o}px`, e.style.top = `${s}px`, e.dataset.placement = i;
+  }).then(({ x: o, y: r, placement: i }) => {
+    e.style.left = `${o}px`, e.style.top = `${r}px`, e.dataset.placement = i;
   });
-}, fa = (r) => r.cellInfo.tooltip ?? r.cellInfo.text ?? "", ga = (r) => r.cellInfo.memo ?? "";
-class ma extends Y {
+}, Ra = (s) => s.cellInfo.tooltip ?? s.cellInfo.text ?? "", xa = (s) => s.cellInfo.memo ?? "";
+class Sa extends Y {
   constructor(e) {
-    super(), this.options = e, this._tooltipElement = document.createElement("div"), this._memoElement = document.createElement("div"), this._tooltipElement.className = Nr;
+    super(), this.options = e, this._tooltipElement = document.createElement("div"), this._memoElement = document.createElement("div"), this._tooltipElement.className = Bs;
   }
   _tooltipElement;
   _memoElement;
@@ -6014,14 +6073,14 @@ class ma extends Y {
       tooltipInterval: n,
       hideTooltipWhenHasMemo: o
     } = this.options, {
-      hasMemo: s,
+      hasMemo: r,
       memoIntent: i = "normal",
       tooltipDisabled: a = !1
-    } = e.cellInfo, d = this.options.getTooltipText?.(e) ?? fa(e), c = this.options.getMemoText?.(e) ?? ga(e), l = () => {
-      this._tooltipElement.textContent = d, Me("popover").appendChild(this._tooltipElement), In(e.element, this._tooltipElement, "bottom");
+    } = e.cellInfo, d = this.options.getTooltipText?.(e) ?? Ra(e), c = this.options.getMemoText?.(e) ?? xa(e), l = () => {
+      this._tooltipElement.textContent = d, Me("popover").appendChild(this._tooltipElement), En(e.element, this._tooltipElement, "bottom");
     }, h = () => {
-      this._memoElement.textContent = c ?? "", this._memoElement.className = `${$r} ${ha[i]}`, Me("popover").appendChild(this._memoElement), In(e.element, this._memoElement, "right-start", _o);
-    }, u = !(s && o) && a === !1 && d ? window.setTimeout(() => l(), n) : -1, f = s && c ? window.setTimeout(() => h(), t) : -1;
+      this._memoElement.textContent = c ?? "", this._memoElement.className = `${Gs} ${_a[i]}`, Me("popover").appendChild(this._memoElement), En(e.element, this._memoElement, "right-start", xo);
+    }, u = !(r && o) && a === !1 && d ? window.setTimeout(() => l(), n) : -1, f = r && c ? window.setTimeout(() => h(), t) : -1;
     return {
       targetCell: e,
       tooltipTimeoutHandler: u,
@@ -6032,170 +6091,170 @@ class ma extends Y {
     };
   }
   _mountTask({ grid: e, gridStore: t, contextElement: n }) {
-    const { gridStateContext: o } = t, s = () => this.context?.cleanup(), i = (a) => {
-      if (!_e(a.target)) return;
-      const d = le("td,th", "tr", a.target);
+    const { gridStateContext: o } = t, r = () => this.context?.cleanup(), i = (a) => {
+      if (!Re(a.target)) return;
+      const d = ae("td,th", "tr", a.target);
       if (!d) {
-        s();
+        r();
         return;
       }
-      const c = oe(d), l = e.cell(c.row, c.col);
-      this.context?.targetCell !== l && (s(), this.context = this.createContext(l));
+      const c = se(d), l = e.cell(c.row, c.col);
+      this.context?.targetCell !== l && (r(), this.context = this.createContext(l));
     };
     o.gridModeState.addSubscription((a, { mode: d }) => {
-      n.removeEventListener("mousemove", i), s(), (d === "idle" || d === "edit-cell") && e.addGlobalEventListener(n, "mousemove", i);
-    }), e.addGlobalEventListener(n, "mouseleave", s), e.hook.addSyncHook("contextScroll", s), this.addRollbackTask(() => {
-      s(), n.removeEventListener("mouseleave", s), e.hook.removeSyncHook("contextScroll", s);
+      n.removeEventListener("mousemove", i), r(), (d === "idle" || d === "edit-cell") && e.addGlobalEventListener(n, "mousemove", i);
+    }), e.addGlobalEventListener(n, "mouseleave", r), e.hook.addSyncHook("contextScroll", r), this.addRollbackTask(() => {
+      r(), n.removeEventListener("mouseleave", r), e.hook.removeSyncHook("contextScroll", r);
     });
   }
   get pluginKey() {
     return "popover";
   }
 }
-const En = 10;
-class Bc extends Y {
+const Mn = 10;
+class qc extends Y {
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
-    const { rowManager: o, gridStateContext: s } = n, { table: i } = n.elements, a = document.createElement("div");
-    a.className = Gr;
+    const { rowManager: o, gridStateContext: r } = n, { table: i } = n.elements, a = document.createElement("div");
+    a.className = Us;
     let d = null, c = -1;
     i.addEventListener("mousedown", l), i.addEventListener("dragstart", h), i.addEventListener("dragover", u), i.addEventListener("drop", f), i.addEventListener("dragleave", g), i.addEventListener("dragend", R), i.addEventListener("mouseup", R), this.addRollbackTask(() => {
       i.removeEventListener("mousedown", l), i.removeEventListener("dragstart", h), i.removeEventListener("dragover", u), i.removeEventListener("drop", f), i.removeEventListener("dragleave", g), i.removeEventListener("dragend", R), i.removeEventListener("mouseup", R);
     });
     function l(L) {
-      if (L.button !== 0 || t.classList.contains(ie)) return;
-      const I = le("th", "tr", L.target);
+      if (L.button !== 0 || t.classList.contains(le)) return;
+      const I = ae("th", "tr", L.target);
       if (!I) return;
-      const b = oe(I), C = e.cell(b.row, b.col);
+      const b = se(I), C = e.cell(b.row, b.col);
       if (w(C)) return;
-      Object.assign(L, { __IGNORE_HEADER_SELECT__: !0 }), E({
+      Object.assign(L, { __IGNORE_HEADER_SELECT__: !0 }), T({
         source: [
           o.getStartOfRowId(C.row),
           o.getEndOfRowId(C.row)
         ],
         cell: C
       });
-      function w(k) {
-        return k.cellType !== "row-header" || k.row < e.getFreezedRowCount() || k.row < e.headerRows;
+      function w(E) {
+        return E.cellType !== "row-header" || E.row < e.getFreezedRowCount() || E.row < e.headerRows;
       }
     }
     function h(L) {
-      const { offsetY: I, offsetX: b } = L, { scrollTop: C, scrollLeft: w } = i;
-      if (e.findCellOrNull(I + C, b + w)?.cellType === "row-header") {
+      const { offsetY: I, offsetX: b } = L, { scrollTop: C, scrollLeft: w } = i, { adjustOffsetX: E, adjustOffsetY: p } = Le(e, { offsetX: b, offsetY: I, scrollLeft: w, scrollTop: C });
+      if (e.findCellOrNull(p, E)?.cellType === "row-header") {
         if (!L.dataTransfer || !d) {
           L.preventDefault();
           return;
         }
-        s.setMode({ mode: "dragging", contextParam: {} }), i.classList.add("is-dragging"), L.dataTransfer.effectAllowed = "move", L.dataTransfer.setData("ir-grid/disabled-cell-drop", ""), L.dataTransfer.setData("ir-grid/move-rows-dragging", ""), L.dataTransfer.setDragImage(d.cell.element, En, En);
+        r.setMode({ mode: "dragging", contextParam: {} }), i.classList.add("is-dragging"), L.dataTransfer.effectAllowed = "move", L.dataTransfer.setData("ir-grid/disabled-cell-drop", ""), L.dataTransfer.setData("ir-grid/move-rows-dragging", ""), L.dataTransfer.setDragImage(d.cell.element, Mn, Mn);
       }
     }
     function u(L) {
       const { dataTransfer: I, offsetY: b, offsetX: C } = L;
       if (!d || !I || !I.types.includes("ir-grid/move-rows-dragging")) return;
-      const { scrollTop: w, scrollLeft: k } = i, p = e.findCellOrNull(b + w, C + k);
-      if (!p) return;
-      const v = S(p.row);
-      if (p.cellType !== "row-header" || T(v, d)) {
-        y(), c = -1;
+      const { scrollTop: w, scrollLeft: E } = i, { adjustOffsetX: p, adjustOffsetY: v } = Le(e, { offsetX: C, offsetY: b, scrollLeft: E, scrollTop: w }), y = e.findCellOrNull(v, p);
+      if (!y) return;
+      const M = m(y.row);
+      if (y.cellType !== "row-header" || S(M, d)) {
+        x(), c = -1;
         return;
       }
-      v !== c && H(v, p.col), L.preventDefault();
-      function S(m) {
-        const _ = e.getRow(m), x = b + w - _.top < _.height / 2;
-        return _.rowId + (x ? 0 : 1);
+      M !== c && H(M, y.col), L.preventDefault();
+      function m(_) {
+        const k = e.getRow(_), z = v - k.top < k.height / 2;
+        return k.rowId + (z ? 0 : 1);
       }
-      function T(m, _) {
-        const [x, M] = _.source;
-        return m >= x && m <= M || m < e.headerRows;
+      function S(_, k) {
+        const [z, A] = k.source;
+        return _ >= z && _ <= A || _ < e.headerRows;
       }
     }
     function f() {
       const L = d, I = c;
-      !L || I < 0 || (y(), e.commandManager.doRecording("Move Rows", () => {
+      !L || I < 0 || (x(), e.commandManager.doRecording("Move Rows", () => {
         e.moveRows(L.source, I);
       }), e.forceLayoutTask(), e.selectRow(L.cell.row));
     }
     function g() {
-      y(), c = -1;
+      x(), c = -1;
     }
     function R() {
-      i.classList.remove("is-dragging"), y(), d = null, i.draggable = !1, c = -1, s.setIdle();
+      i.classList.remove("is-dragging"), x(), d = null, i.draggable = !1, c = -1, r.setIdle();
     }
-    function E({ source: L, cell: I }) {
+    function T({ source: L, cell: I }) {
       i.draggable = !0, d = {
         source: L,
         cell: I
       };
     }
-    function y() {
+    function x() {
       c < 0 || !d || a.remove();
     }
     function H(L, I) {
-      y(), c = L;
-      const b = Math.min(c, o.length - 1), C = e.getRow(b), w = C.getCell(I).element.getBoundingClientRect(), k = {
+      x(), c = L;
+      const b = Math.min(c, o.length - 1), C = e.getRow(b), w = C.getCell(I).element.getBoundingClientRect(), E = {
         top: w.top,
         height: 16
-      }, p = k.height / 2;
-      L === o.length && (k.top += C.height, k.height = p + 1), a.style.top = `${k.top - p}px`, a.style.left = `${w.left}px`, a.style.width = `${e.headerWidth}px`, a.style.height = `${k.height}px`, Me("popover").appendChild(a);
+      }, p = E.height / 2;
+      L === o.length && (E.top += C.height, E.height = p + 1), a.style.top = `${E.top - p}px`, a.style.left = `${w.left}px`, a.style.width = `${e.headerWidth}px`, a.style.height = `${E.height}px`, Me("popover").appendChild(a);
     }
   }
   get pluginKey() {
     return "move-row";
   }
 }
-const Mn = 10;
-class Vc extends Y {
+const Tn = 10;
+class Xc extends Y {
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
-    const { rowManager: o, columnManager: s, gridStateContext: i } = n, { table: a } = n.elements, d = document.createElement("div");
-    d.className = jr;
+    const { rowManager: o, columnManager: r, gridStateContext: i } = n, { table: a } = n.elements, d = document.createElement("div");
+    d.className = Ks;
     let c = null, l = -1;
-    a.addEventListener("mousedown", h), a.addEventListener("dragstart", u), a.addEventListener("dragover", f), a.addEventListener("drop", g), a.addEventListener("dragleave", R), a.addEventListener("dragend", E), a.addEventListener("mouseup", E), this.addRollbackTask(() => {
-      a.removeEventListener("mousedown", h), a.removeEventListener("dragstart", u), a.removeEventListener("dragover", f), a.removeEventListener("drop", g), a.removeEventListener("dragleave", R), a.removeEventListener("dragend", E), a.removeEventListener("mouseup", E);
+    a.addEventListener("mousedown", h), a.addEventListener("dragstart", u), a.addEventListener("dragover", f), a.addEventListener("drop", g), a.addEventListener("dragleave", R), a.addEventListener("dragend", T), a.addEventListener("mouseup", T), this.addRollbackTask(() => {
+      a.removeEventListener("mousedown", h), a.removeEventListener("dragstart", u), a.removeEventListener("dragover", f), a.removeEventListener("drop", g), a.removeEventListener("dragleave", R), a.removeEventListener("dragend", T), a.removeEventListener("mouseup", T);
     });
     function h(I) {
-      if (I.button !== 0 || t.classList.contains(ie)) return;
-      const b = le("th", "tr", I.target);
+      if (I.button !== 0 || t.classList.contains(le)) return;
+      const b = ae("th", "tr", I.target);
       if (!b) return;
-      const C = oe(b), w = e.cell(C.row, C.col);
-      if (k(w)) return;
-      Object.assign(I, { __IGNORE_HEADER_SELECT__: !0 }), y({
+      const C = se(b), w = e.cell(C.row, C.col);
+      if (E(w)) return;
+      Object.assign(I, { __IGNORE_HEADER_SELECT__: !0 }), x({
         source: [
           o.getStartOfColumnId(w.col),
           o.getEndOfColumnId(w.col)
         ],
         cell: w
       });
-      function k(p) {
+      function E(p) {
         return p.cellType !== "col-header" || p.col < e.getFreezedColumnCount() || p.col < e.headerColumns;
       }
     }
     function u(I) {
-      const { offsetY: b, offsetX: C } = I, { scrollTop: w, scrollLeft: k } = a;
-      if (e.findCellOrNull(b + w, C + k)?.cellType === "col-header") {
+      const { offsetY: b, offsetX: C } = I, { scrollTop: w, scrollLeft: E } = a, { adjustOffsetX: p, adjustOffsetY: v } = Le(e, { offsetX: C, offsetY: b, scrollLeft: E, scrollTop: w });
+      if (e.findCellOrNull(v, p)?.cellType === "col-header") {
         if (!I.dataTransfer || !c) {
           I.preventDefault();
           return;
         }
-        i.setMode({ mode: "dragging", contextParam: {} }), a.classList.add("is-dragging"), I.dataTransfer.effectAllowed = "move", I.dataTransfer.setData("ir-grid/disabled-cell-drop", ""), I.dataTransfer.setData("ir-grid/move-columns-dragging", ""), I.dataTransfer.setDragImage(c.cell.element, Mn, Mn);
+        i.setMode({ mode: "dragging", contextParam: {} }), a.classList.add("is-dragging"), I.dataTransfer.effectAllowed = "move", I.dataTransfer.setData("ir-grid/disabled-cell-drop", ""), I.dataTransfer.setData("ir-grid/move-columns-dragging", ""), I.dataTransfer.setDragImage(c.cell.element, Tn, Tn);
       }
     }
     function f(I) {
       const { dataTransfer: b, offsetY: C, offsetX: w } = I;
       if (!c || !b || !b.types.includes("ir-grid/move-columns-dragging")) return;
-      const { scrollTop: k, scrollLeft: p } = a, v = e.findCellOrNull(C + k, w + p);
-      if (!v) return;
-      const S = T(v.col);
-      if (v.cellType !== "col-header" || m(S, c)) {
+      const { scrollTop: E, scrollLeft: p } = a, { adjustOffsetX: v, adjustOffsetY: y } = Le(e, { offsetX: w, offsetY: C, scrollLeft: p, scrollTop: E }), M = e.findCellOrNull(y, v);
+      if (!M) return;
+      const m = S(M.col);
+      if (M.cellType !== "col-header" || _(m, c)) {
         H(), l = -1;
         return;
       }
-      S !== l && L(v.row, S), I.preventDefault();
-      function T(_) {
-        const x = e.getColumn(_), M = w + p - x.left < x.width / 2;
-        return x.columnId + (M ? 0 : 1);
+      m !== l && L(M.row, m), I.preventDefault();
+      function S(k) {
+        const z = e.getColumn(k), A = v - z.left < z.width / 2;
+        return z.columnId + (A ? 0 : 1);
       }
-      function m(_, x) {
-        const [M, O] = x.source;
-        return _ >= M && _ <= O || _ < e.headerColumns;
+      function _(k, z) {
+        const [A, D] = z.source;
+        return k >= A && k <= D || k < e.headerColumns;
       }
     }
     function g() {
@@ -6207,10 +6266,10 @@ class Vc extends Y {
     function R() {
       H(), l = -1;
     }
-    function E() {
+    function T() {
       a.classList.remove("is-dragging"), H(), c = null, a.draggable = !1, l = -1, i.setIdle();
     }
-    function y({ source: I, cell: b }) {
+    function x({ source: I, cell: b }) {
       a.draggable = !0, c = {
         source: I,
         cell: b
@@ -6221,20 +6280,20 @@ class Vc extends Y {
     }
     function L(I, b) {
       H(), l = b;
-      const C = Math.min(l, s.length - 1), w = e.getColumn(C), k = e.cell(I, C);
-      if (!k.isConnected) return;
-      const p = k.element.getBoundingClientRect(), v = {
+      const C = Math.min(l, r.length - 1), w = e.getColumn(C), E = e.cell(I, C);
+      if (!E.isConnected) return;
+      const p = E.element.getBoundingClientRect(), v = {
         left: p.left,
         width: 12
-      }, S = v.width / 2;
-      b === s.length && (v.left += w.width, v.width = S + 1), d.style.top = `${p.top}px`, d.style.left = `${v.left - S}px`, d.style.height = `${e.headerHeight}px`, d.style.width = `${v.width}px`, Me("popover").appendChild(d);
+      }, y = v.width / 2;
+      b === r.length && (v.left += w.width, v.width = y + 1), d.style.top = `${p.top}px`, d.style.left = `${v.left - y}px`, d.style.height = `${e.headerHeight}px`, d.style.width = `${v.width}px`, Me("popover").appendChild(d);
     }
   }
   get pluginKey() {
     return "move-column";
   }
 }
-const pa = [
+const ba = [
   { type: "col", value: "right" },
   { type: "col", value: "left" },
   { type: "row", value: "up" },
@@ -6244,24 +6303,24 @@ const pa = [
   { type: "col", value: "double-left" },
   { type: "row", value: "double-top" },
   { type: "row", value: "double-bottom" }
-], Ca = Nt(W.minWidth), wa = Nt(W.minHeight);
-function _a() {
-  const r = xe("div", qr), e = [];
-  for (const n of pa)
+], ya = Bt(W.minWidth), va = Bt(W.minHeight);
+function ka() {
+  const s = Se("div", Ys), e = [];
+  for (const n of ba)
     if (n.type === "divider") {
-      const o = xe("div", Xr);
-      r.append(o);
+      const o = Se("div", Zs);
+      s.append(o);
     } else {
-      const o = xe("button", Yr), s = Ht(`ir-icon--chevron-${n.value}`);
-      o.dataset.type = n.type, o.append(s), o.onclick = () => t.onButtonClick(n.value), o.setAttribute("data-ir-tooltip", ""), o.setAttribute("data-ir-tooltip-text", X.t("gridOverflowPanel." + n.value)), r.append(o), e.push(o);
+      const o = Se("button", Js), r = Ot(`ir-icon--chevron-${n.value}`);
+      o.dataset.type = n.type, o.append(r), o.onclick = () => t.onButtonClick(n.value), o.setAttribute("data-ir-tooltip", ""), o.setAttribute("data-ir-tooltip-text", X.t("gridOverflowPanel." + n.value)), s.append(o), e.push(o);
     }
   const t = {
-    buttonGroup: r,
+    buttonGroup: s,
     visibleButtonGroup(n, o) {
-      r.style.display = n || o ? "" : "none";
-      for (const s of e) {
-        const a = s.dataset.type === "row" ? n : o;
-        s.style.display = a ? "" : "none";
+      s.style.display = n || o ? "" : "none";
+      for (const r of e) {
+        const a = r.dataset.type === "row" ? n : o;
+        r.style.display = a ? "" : "none";
       }
     },
     onButtonClick(n) {
@@ -6269,12 +6328,12 @@ function _a() {
   };
   return t;
 }
-class Gc extends Y {
+class Yc extends Y {
   constructor(e = {}) {
     super(), this.args = e;
   }
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
-    const { rowManager: o, columnManager: s, tableElement: i } = n, a = xe("div", Ur), d = xe("div", Kr), c = _a(), l = Ss({
+    const { rowManager: o, columnManager: r, tableElement: i } = n, a = Se("div", qs), d = Se("div", Xs), c = ka(), l = vr({
       containerElement: c.buttonGroup,
       placement: "right",
       offset: 8
@@ -6282,24 +6341,24 @@ class Gc extends Y {
     this.args.className && a.classList.add(this.args.className), Object.assign(a.style, this.args.style);
     const h = {
       up() {
-        const y = f(d.scrollTop);
-        if (!y) return;
-        const H = y.rowId - 1, L = H < 0 ? 0 : e.getRow(H).top;
+        const x = f(d.scrollTop);
+        if (!x) return;
+        const H = x.rowId - 1, L = H < 0 ? 0 : e.getRow(H).top;
         d.scrollTop = L;
       },
       down() {
-        const y = f(d.scrollTop);
-        y && (d.scrollTop = y.bottom);
+        const x = f(d.scrollTop);
+        x && (d.scrollTop = x.bottom);
       },
       left() {
-        const y = g(d.scrollLeft);
-        if (!y) return;
-        const H = y.columnId - 1, L = H < 0 ? 0 : e.getColumn(H).left;
+        const x = g(d.scrollLeft);
+        if (!x) return;
+        const H = x.columnId - 1, L = H < 0 ? 0 : e.getColumn(H).left;
         d.scrollLeft = L;
       },
       right() {
-        const y = g(d.scrollLeft);
-        y && (d.scrollLeft = y.right);
+        const x = g(d.scrollLeft);
+        x && (d.scrollLeft = x.right);
       },
       "double-top"() {
         d.scrollTo({ top: 0 }), e.scrollOnRow(0);
@@ -6314,53 +6373,53 @@ class Gc extends Y {
         d.scrollTo({ left: d.scrollWidth }), e.scrollOnCol(e.getColCount() - 1);
       }
     };
-    c.onButtonClick = (y) => h[y](), t.insertAdjacentElement("beforebegin", a), d.appendChild(t), a.append(d), a.append(c.buttonGroup), e.afterRender(() => {
-      R(o.freezedRowsHeight, o.freezedRows), E(s.fixedColumnsWidth, s.freezedColumns);
-    }), n.hook.addHook("resize", u), n.hook.addSyncHook("changedFreezedRowHeight", R), n.hook.addSyncHook("changedFreezedColumnWidth", E), this.addRollbackTask(() => {
-      l.destroy(), n.hook.removeHook("resize", u), n.hook.removeSyncHook("changedFreezedRowHeight", R), n.hook.removeSyncHook("changedFreezedColumnWidth", E);
+    c.onButtonClick = (x) => h[x](), t.insertAdjacentElement("beforebegin", a), d.appendChild(t), a.append(d), a.append(c.buttonGroup), e.afterRender(() => {
+      R(o.freezedRowsHeight, o.freezedRows), T(r.fixedColumnsWidth, r.freezedColumns);
+    }), n.hook.addHook("resize", u), n.hook.addSyncHook("changedFreezedRowHeight", R), n.hook.addSyncHook("changedFreezedColumnWidth", T), this.addRollbackTask(() => {
+      l.destroy(), n.hook.removeHook("resize", u), n.hook.removeSyncHook("changedFreezedRowHeight", R), n.hook.removeSyncHook("changedFreezedColumnWidth", T);
     }), this.addRollbackTask(() => {
-      const y = a.nextElementSibling;
-      y ? y.insertAdjacentElement("beforebegin", t) : a.parentElement?.appendChild(t), a.remove();
+      const x = a.nextElementSibling;
+      x ? x.insertAdjacentElement("beforebegin", t) : a.parentElement?.appendChild(t), a.remove();
     });
     function u() {
-      const y = parseInt(t.style.getPropertyValue(Ca)), H = parseInt(t.style.getPropertyValue(wa));
+      const x = parseInt(t.style.getPropertyValue(ya)), H = parseInt(t.style.getPropertyValue(va));
       c.visibleButtonGroup(
         H >= d.clientHeight,
-        y >= d.clientWidth
+        x >= d.clientWidth
       );
     }
-    function f(y) {
+    function f(x) {
       let H = 0, L = o.visibleRowList.length - 1;
       for (; H <= L; ) {
         const I = H + Math.floor((L - H) / 2), b = o.visibleRowList[I];
-        if (y >= b.top && y < b.bottom)
+        if (x >= b.top && x < b.bottom)
           return b;
-        y < b.top ? L = I - 1 : H = I + 1;
+        x < b.top ? L = I - 1 : H = I + 1;
       }
       return null;
     }
-    function g(y) {
-      let H = 0, L = s.visibleColumnList.length - 1;
+    function g(x) {
+      let H = 0, L = r.visibleColumnList.length - 1;
       for (; H <= L; ) {
-        const I = H + Math.floor((L - H) / 2), b = s.visibleColumnList[I];
-        if (y >= b.left && y < b.right)
+        const I = H + Math.floor((L - H) / 2), b = r.visibleColumnList[I];
+        if (x >= b.left && x < b.right)
           return b;
-        y < b.left ? L = I - 1 : H = I + 1;
+        x < b.left ? L = I - 1 : H = I + 1;
       }
       return null;
     }
-    function R(y, H) {
-      const L = H, I = y + (L < e.getRowCount() ? o.getRowHeight(L) : 0) + (b() ? qt : 0);
-      te(t, {
+    function R(x, H) {
+      const L = H, I = x + (L < e.getRowCount() ? o.getRowHeight(L) : 0) + (b() ? Yt : 0);
+      ne(t, {
         [W.minHeight]: `${I}px`
       }), u();
       function b() {
         return i.className.includes("has-both-scroll") || i.className.includes("has-horizontal-scroll");
       }
     }
-    function E(y, H) {
-      const L = H, I = y + (L < e.getColCount() ? e.getColumnWidth(L) : 0) + (b() ? qt : 0);
-      te(t, {
+    function T(x, H) {
+      const L = H, I = x + (L < e.getColCount() ? e.getColumnWidth(L) : 0) + (b() ? Yt : 0);
+      ne(t, {
         [W.minWidth]: `${I}px`
       }), u();
       function b() {
@@ -6372,8 +6431,8 @@ class Gc extends Y {
     return "overflow-panel";
   }
 }
-const Tn = 10;
-class jc extends Y {
+const Ln = 10;
+class Zc extends Y {
   /**
   * 플러그인 생성자
   * @param _args - 플러그인 설정 값
@@ -6385,75 +6444,75 @@ class jc extends Y {
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
     const {
       freezeLastColumn: o,
-      multipleSelect: s = !1,
+      multipleSelect: r = !1,
       selectOnRightClick: i = !1,
       rowDraggable: a = !1,
       onRowClick: d
-    } = this._args, { hook: c, columnManager: l, elements: { table: h } } = n, { visibleColumnList: u } = l, f = this.setPluginAPI(new Ra(e, s, a)), g = () => this._dragStartCell, R = (_) => {
-      this._dragStartCell = _;
-    }, E = () => this._dragStartCell = null, y = /* @__PURE__ */ new Set([0]);
-    if (i && y.add(2), t.classList.add(Xt), o) {
-      t.classList.add(Yt);
-      const _ = n.getThemeValue("grid.forceRenderRightCol");
+    } = this._args, { hook: c, columnManager: l, elements: { table: h } } = n, { visibleColumnList: u } = l, f = this.setPluginAPI(new Ia(e, r, a)), g = () => this._dragStartCell, R = (S) => {
+      this._dragStartCell = S;
+    }, T = () => this._dragStartCell = null, x = /* @__PURE__ */ new Set([0]);
+    if (i && x.add(2), t.classList.add(Zt), o) {
+      t.classList.add(Jt);
+      const S = n.getThemeValue("grid.forceRenderRightCol");
       n.setGridConfig({
         "grid.forceRenderRightCol": 1
       }), c.addSyncHook("cellLayout", L), c.addHook("postRenderCell", I), this.addRollbackTask(() => {
-        n.setGridConfig({ "grid.forceRenderRightCol": _ }), c.removeSyncHook("cellLayout", L), c.removeHook("postRenderCell", I);
+        n.setGridConfig({ "grid.forceRenderRightCol": S }), c.removeSyncHook("cellLayout", L), c.removeHook("postRenderCell", I);
       });
     }
-    const H = (_) => e.onNativeCopy(_);
-    c.addBeginHook("contextMouseDown", C), c.addHook("contextMouseDown", w), c.addHook("contextMouseUp", k), c.addHook("renderRowElement", S), c.addHook("contextDragStart", p), c.addHook("contextDragEnd", v), e.addGlobalEventListener(t, "copy", H), this.addRollbackTask(() => {
-      E(), f.clearAllSelections(), t.classList.remove(Xt, Yt), c.removeBeginHook("contextMouseDown", C), c.removeHook("contextMouseDown", w), c.removeHook("contextMouseUp", k), c.removeHook("renderRowElement", S), c.removeHook("contextDragStart", p), c.removeHook("contextDragEnd", v), t.removeEventListener("copy", H);
+    const H = (S) => e.onNativeCopy(S);
+    c.addBeginHook("contextMouseDown", C), c.addHook("contextMouseDown", w), c.addHook("contextMouseUp", E), c.addHook("renderRowElement", y), c.addHook("contextDragStart", p), c.addHook("contextDragEnd", v), e.addGlobalEventListener(t, "copy", H), this.addRollbackTask(() => {
+      T(), f.clearAllSelections(), t.classList.remove(Zt, Jt), c.removeBeginHook("contextMouseDown", C), c.removeHook("contextMouseDown", w), c.removeHook("contextMouseUp", E), c.removeHook("renderRowElement", y), c.removeHook("contextDragStart", p), c.removeHook("contextDragEnd", v), t.removeEventListener("copy", H);
     });
-    function L(_, x, M) {
-      b(x) && (M.left = co);
+    function L(S, _, k) {
+      b(_) && (k.left = ho);
     }
-    function I(_) {
-      if (!b(_.col)) return;
-      const x = _.element;
-      x.style.marginLeft = "auto", x.style.position = "sticky", x.style.right = "0", x.style.zIndex = `calc(${W.stickyCellZId} + ${W.zLevel1})`;
+    function I(S) {
+      if (!b(S.col)) return;
+      const _ = S.element;
+      _.style.marginLeft = "auto", _.style.position = "sticky", _.style.right = "0", _.style.zIndex = `calc(${W.stickyCellZId} + ${W.zLevel1})`;
     }
-    function b(_) {
-      return _ === u.length - 1;
+    function b(S) {
+      return S === u.length - 1;
     }
-    function C(_) {
-      _.__IGNORE_CELL_DRAG_SELECT_CELL__ = !0;
+    function C(S) {
+      S.__IGNORE_CELL_DRAG_SELECT_CELL__ = !0;
     }
-    function w(_) {
-      if (!y.has(_.button) || _.target instanceof HTMLButtonElement) return;
-      const x = _.target.closest("td");
-      if (!x) return;
-      const M = oe(x), O = e.cell(M.row, M.col);
-      O.cellType === "body-cell" && (f.rowDraggable && !_.ctrlKey && !_.shiftKey && f.isRowSelected(O.row) && f.onCheckDraggable(O) ? T(O) : f.runMouseDownTask(O, _), d?.(e, O.row, _));
+    function w(S) {
+      if (!x.has(S.button) || S.target instanceof HTMLButtonElement) return;
+      const _ = S.target.closest("td");
+      if (!_) return;
+      const k = se(_), z = e.cell(k.row, k.col);
+      z.cellType === "body-cell" && (f.rowDraggable && !S.ctrlKey && !S.shiftKey && f.isRowSelected(z.row) && f.onCheckDraggable(z) ? M(z) : f.runMouseDownTask(z, S), d?.(e, z.row, S));
     }
-    function k() {
+    function E() {
       m();
     }
-    function p(_) {
+    function p(S) {
       if (!f.rowDraggable) return;
-      const x = g();
-      if (!_.dataTransfer || !x || !f.onDragStartRowIds(_))
-        return _.preventDefault();
-      _.dataTransfer.setDragImage(x.element, Tn, Tn);
+      const _ = g();
+      if (!S.dataTransfer || !_ || !f.onDragStartRowIds(S))
+        return S.preventDefault();
+      S.dataTransfer.setDragImage(_.element, Ln, Ln);
     }
     function v() {
       m();
     }
-    function S(_, x) {
-      x.classList.toggle(Zr, f.isRowSelected(_.rowId, !0));
+    function y(S, _) {
+      _.classList.toggle(Qs, f.isRowSelected(S.rowId, !0));
     }
-    function T(_) {
-      R(_), h.draggable = !0;
+    function M(S) {
+      R(S), h.draggable = !0;
     }
     function m() {
-      f.rowDraggable && (E(), h.draggable = !1);
+      f.rowDraggable && (T(), h.draggable = !1);
     }
   }
   get pluginKey() {
     return "grid-table";
   }
 }
-class Ra {
+class Ia {
   constructor(e, t, n) {
     this._grid = e, this._multipleSelect = t, this._rowDraggable = n, this.setRowDragEnabled(n), this.setMultipleSelect(t);
   }
@@ -6517,10 +6576,10 @@ class Ra {
   onDragStartRowIds(e) {
     if (!e.dataTransfer) return !1;
     const t = [];
-    for (const n of this.getSelectedRows().sort((o, s) => o - s)) {
+    for (const n of this.getSelectedRows().sort((o, r) => o - r)) {
       const o = [];
-      for (const s of this._grid.getRow(n).getCellGenerator())
-        s.props.object && o.push(s.props.object);
+      for (const r of this._grid.getRow(n).getCellGenerator())
+        r.props.object && o.push(r.props.object);
       o.length > 0 && t.push(o);
     }
     return e.dataTransfer.setData("application/json", JSON.stringify(t)), !0;
@@ -6561,38 +6620,35 @@ class Ra {
     }
   }
 }
-function xa(r) {
-  return [...new Set(r)];
-}
-function ba(r) {
-  const { filterOption: e } = r;
-  if (!e || r.metaInfo.enabled === !1) return Sa;
-  const { metaInfo: t } = r, { operand: n, operator: o } = e, s = () => {
+function Ea(s) {
+  const { filterOption: e } = s;
+  if (!e || s.metaInfo.enabled === !1) return Ma;
+  const { metaInfo: t } = s, { operand: n, operator: o } = e, r = () => {
     const c = n.map((h) => parseFloat(h)), l = new Set(c);
     switch (o) {
       case "equals":
-        return Ce((h) => l.has(h));
+        return we((h) => l.has(h));
       case "not-equals":
-        return Ce((h) => !l.has(h));
+        return we((h) => !l.has(h));
       case "less-than":
-        return Ce((h) => c.some((u) => h < u));
+        return we((h) => c.some((u) => h < u));
       case "less-than-or-equal":
-        return Ce((h) => c.some((u) => h <= u));
+        return we((h) => c.some((u) => h <= u));
       case "greater-than":
-        return Ce((h) => c.some((u) => h > u));
+        return we((h) => c.some((u) => h > u));
       case "greater-than-or-equal":
-        return Ce((h) => c.some((u) => h >= u));
+        return we((h) => c.some((u) => h >= u));
       case "in-range":
-        return Ce((h) => c[0] <= h && h <= c[1]);
+        return we((h) => c[0] <= h && h <= c[1]);
       case "blank":
-        return mt;
+        return Ct;
       default:
-        return Ne;
+        return $e;
     }
   }, i = () => {
     const { format: c } = t;
     if (!c) throw new Error("format is required for date type column");
-    const l = n.map((u) => va(u, c));
+    const l = n.map((u) => La(u, c));
     switch (o) {
       case "equals":
         return h((u) => l.some((f) => u.isSame(f)));
@@ -6609,13 +6665,13 @@ function ba(r) {
       case "in-range":
         return h((u) => u.isBetween(l[0], l[1], null, "[]"));
       case "blank":
-        return mt;
+        return Ct;
       default:
-        return Ne;
+        return $e;
     }
     function h(u) {
       return (f) => {
-        const g = ae(f, c);
+        const g = ce(f, c);
         return g.isValid() ? u(g) : !1;
       };
     }
@@ -6635,24 +6691,24 @@ function ba(r) {
       case "ends-with":
         return (l) => n.some((h) => l.endsWith(h));
       case "blank":
-        return mt;
+        return Ct;
       default:
-        return Ne;
+        return $e;
     }
   }, d = () => {
     const c = new Set(n.map((l) => l === "true"));
     switch (o) {
       case "equals":
-        return Ln((l) => c.has(l));
+        return Hn((l) => c.has(l));
       case "not-equals":
-        return Ln((l) => !c.has(l));
+        return Hn((l) => !c.has(l));
       default:
-        return Ne;
+        return $e;
     }
   };
   switch (t.textType) {
     case "number":
-      return s();
+      return r();
     case "date":
       return i();
     case "string":
@@ -6660,38 +6716,38 @@ function ba(r) {
     case "checked":
       return d();
     default:
-      return Ne;
+      return $e;
   }
 }
-function mt(r) {
-  return r === "";
+function Ct(s) {
+  return s === "";
 }
-function Ne() {
+function $e() {
   return !1;
 }
-function Sa() {
+function Ma() {
   return !0;
 }
-const ya = /^[-+]?[0-9]*(\.[0-9]+)?$/;
-function Ce(r) {
-  return (e) => ya.test(e) ? r(parseFloat(e)) : !1;
+const Ta = /^[-+]?[0-9]*(\.[0-9]+)?$/;
+function we(s) {
+  return (e) => Ta.test(e) ? s(parseFloat(e)) : !1;
 }
-function Ln(r) {
-  return (e) => r(e === "true");
+function Hn(s) {
+  return (e) => s(e === "true");
 }
-function va(r, e) {
-  const t = ae(r, e);
-  return t.isValid() ? t : ae(r.replace(/[-/]/g, ""), e.replace(/[-/]/g, ""));
+function La(s, e) {
+  const t = ce(s, e);
+  return t.isValid() ? t : ce(s.replace(/[-/]/g, ""), e.replace(/[-/]/g, ""));
 }
-const ka = (r) => {
-  let e = null, t = !0, n = Object.freeze(r.getSnapshotRows());
+const Ha = (s) => {
+  let e = null, t = !0, n = Object.freeze(s.getSnapshotRows());
   return {
     saveSnapshot: o,
     get enabledColumnClick() {
       return t;
     },
-    set enabledColumnClick(s) {
-      t = s;
+    set enabledColumnClick(r) {
+      t = r;
     },
     clearSortOrder() {
       e && (e.cellInfo = { sortOrder: void 0 }), e = null;
@@ -6720,24 +6776,24 @@ const ka = (r) => {
     setNumberColumns() {
       console.warn("setNumberColumns function is deprecated. Please remove this calling");
     },
-    compareTo(s, i) {
-      return Wt(s.text, i.text);
+    compareTo(r, i) {
+      return Nt(r.text, i.text);
     },
     overrideColumnClickEvent() {
-      console.debug(`Overrode IRGrid Column Sort Manager target-uuid::${r.uuid}`), r.onColumnClick = (s, i) => {
-        !t || i.target instanceof HTMLElement && i.target.classList.contains("ir-grid-filter-icon") || this.toggleSortColumn(s);
+      console.debug(`Overrode IRGrid Column Sort Manager target-uuid::${s.uuid}`), s.onColumnClick = (r, i) => {
+        t && this.toggleSortColumn(r);
       };
     },
-    sortColumn(s, i) {
-      r.sort((a, d) => this.compareTo(a.getCell(s), d.getCell(s)), i);
+    sortColumn(r, i) {
+      s.sort((a, d) => this.compareTo(a.getCell(r), d.getCell(r)), i);
     },
     /**
      *
      * @version 2.20.0
      */
-    sortColumns(...s) {
-      r.sort((i, a) => {
-        for (const [d, c] of s) {
+    sortColumns(...r) {
+      s.sort((i, a) => {
+        for (const [d, c] of r) {
           const l = this.compareTo(i.getCell(d), a.getCell(d));
           if (l !== 0)
             return c === "ASC" ? l : -l;
@@ -6745,32 +6801,32 @@ const ka = (r) => {
         return 0;
       }, "ASC");
     },
-    toggleSortColumn(s) {
-      if (r.className.indexOf(ie) >= 0)
+    toggleSortColumn(r) {
+      if (s.className.indexOf(le) >= 0)
         return;
-      if (s.cellType !== "col-header")
+      if (r.cellType !== "col-header")
         throw new Error("Can only execute in col-header");
       e || o();
-      const i = s.cellInfo.sortOrder === "ASC" ? "DESC" : "ASC";
-      e !== s && this.clearSortOrder(), e = s, s.cellInfo = { sortOrder: i }, this.sortColumn(s.col, i);
+      const i = r.cellInfo.sortOrder === "ASC" ? "DESC" : "ASC";
+      e !== r && this.clearSortOrder(), e = r, r.cellInfo = { sortOrder: i }, this.sortColumn(r.col, i);
     }
   };
   function o() {
-    n = Object.freeze(r.getSnapshotRows());
+    n = Object.freeze(s.getSnapshotRows());
   }
 };
-var Ia = Object.defineProperty, Ea = Object.getOwnPropertyDescriptor, qe = (r, e, t, n) => {
-  for (var o = Ea(e, t), s = r.length - 1, i; s >= 0; s--)
-    (i = r[s]) && (o = i(e, t, o) || o);
-  return o && Ia(e, t, o), o;
+var za = Object.defineProperty, Oa = Object.getOwnPropertyDescriptor, qe = (s, e, t, n) => {
+  for (var o = Oa(e, t), r = s.length - 1, i; r >= 0; r--)
+    (i = s[r]) && (o = i(e, t, o) || o);
+  return o && za(e, t, o), o;
 };
-const pt = Object.freeze({
+const wt = Object.freeze({
   textType: "string",
   enabled: !0
 });
-class Ae {
+class De {
   constructor(e, t) {
-    this._grid = e, this._columnMetaInfo = t, this._columnSortManager = ka(e), this._columnSortManager.overrideColumnClickEvent(), this._defaultDateFormat = X.t("datePicker.dateFormat"), Object.entries(t).forEach(([n, o]) => this._filterMap.set(parseInt(n, 10), { metaInfo: o }));
+    this._grid = e, this._columnMetaInfo = t, this._columnSortManager = Ha(e), this._columnSortManager.overrideColumnClickEvent(), this._defaultDateFormat = X.t("datePicker.dateFormat"), Object.entries(t).forEach(([n, o]) => this._filterMap.set(parseInt(n, 10), { metaInfo: o }));
   }
   _columnSortManager;
   _filterMap = /* @__PURE__ */ new Map();
@@ -6783,9 +6839,9 @@ class Ae {
     this.columnSortManager.clearSortOrder();
   }
   setCheckAll(e, t) {
-    const n = this._grid, o = `${t}`, s = n.getSnapshotRows().slice(n.headerRows).filter((i) => !i.filtered && `${i.getCell(e).text === "true"}` !== o);
-    s.length !== 0 && n.commandManager.doRecording(`check all to ${t}`, () => {
-      for (const i of s)
+    const n = this._grid, o = `${t}`, r = n.getSnapshotRows().slice(n.headerRows).filter((i) => !i.filtered && `${i.getCell(e).text === "true"}` !== o);
+    r.length !== 0 && n.commandManager.doRecording(`check all to ${t}`, () => {
+      for (const i of r)
         n.setCell(i.rowId, e, { text: o });
     });
   }
@@ -6796,7 +6852,7 @@ class Ae {
     return `rowFilterDropdown__${this._grid.uuid}`;
   }
   getColumnMetaInfo(e) {
-    return this._filterMap.get(e)?.metaInfo ?? pt;
+    return this._filterMap.get(e)?.metaInfo ?? wt;
   }
   setColumnMetaInfo(e, t) {
     this._filterMap.set(e, {
@@ -6809,7 +6865,7 @@ class Ae {
   }
   _getBodyRowText(e, t) {
     let n = this._grid.getSnapshotRows().slice(this._grid.headerRows);
-    return t && (n = n.filter(t)), xa(n.map((o) => o.getCell(e).text));
+    return t && (n = n.filter(t)), Ar(n.map((o) => o.getCell(e).text));
   }
   getTextListForCol(e) {
     return this._getBodyRowText(e);
@@ -6827,7 +6883,7 @@ class Ae {
   setColFilter(e) {
     const { column: t, ...n } = e, o = this._filterMap.get(t);
     o ? o.filterOption = n : this._filterMap.set(t, {
-      metaInfo: pt,
+      metaInfo: wt,
       filterOption: n
     });
   }
@@ -6846,19 +6902,19 @@ class Ae {
   }
   adjustRemoveColumns(e, t) {
     const n = Math.max(1, t - e + 1), o = /* @__PURE__ */ new Map();
-    for (const [s, i] of this._filterMap.entries())
-      s < e ? o.set(s, i) : s > e + n - 1 && o.set(s - n, i);
+    for (const [r, i] of this._filterMap.entries())
+      r < e ? o.set(r, i) : r > e + n - 1 && o.set(r - n, i);
     this._filterMap = o;
   }
   adjustInsertColumns(e, t) {
     const n = Math.max(1, t - e + 1), o = /* @__PURE__ */ new Map();
-    for (const [s, i] of this._filterMap.entries())
-      s < e ? o.set(s, i) : o.set(s + n, i);
+    for (const [r, i] of this._filterMap.entries())
+      r < e ? o.set(r, i) : o.set(r + n, i);
     this._filterMap = o;
   }
   _getMatcher(e) {
-    const t = this._filterMap.get(e) ?? { metaInfo: pt };
-    return t.metaInfo.textType === "date" && !t.metaInfo.format && (t.metaInfo.format = this._defaultDateFormat), ba(t);
+    const t = this._filterMap.get(e) ?? { metaInfo: wt };
+    return t.metaInfo.textType === "date" && !t.metaInfo.format && (t.metaInfo.format = this._defaultDateFormat), Ea(t);
   }
   _applyFilter() {
     const e = this._getMatcherList();
@@ -6869,29 +6925,29 @@ class Ae {
 }
 qe([
   Xe()
-], Ae.prototype, "clearFilters");
+], De.prototype, "clearFilters");
 qe([
   Xe()
-], Ae.prototype, "removeColFilter");
+], De.prototype, "removeColFilter");
 qe([
   Xe()
-], Ae.prototype, "setColFilter");
+], De.prototype, "setColFilter");
 qe([
   Xe()
-], Ae.prototype, "adjustRemoveColumns");
+], De.prototype, "adjustRemoveColumns");
 qe([
   Xe()
-], Ae.prototype, "adjustInsertColumns");
+], De.prototype, "adjustInsertColumns");
 function Xe() {
-  return function(r, e, t) {
+  return function(s, e, t) {
     const n = t.value;
     return t.value = function(...o) {
-      const s = n.apply(this, o);
-      return this._applyFilter(), s;
+      const r = n.apply(this, o);
+      return this._applyFilter(), r;
     }, t;
   };
 }
-class Uc extends Y {
+class Jc extends Y {
   /**
    * 플러그인 생성자
    * @param _args - 플러그인 설정 값
@@ -6900,37 +6956,37 @@ class Uc extends Y {
     super(), this._args = e;
   }
   _mountTask(e) {
-    const { grid: t, gridStore: n } = e, o = this.setPluginAPI(new Ae(t, this._args?.columnMetaInfo ?? {})), s = (a, d, c) => {
+    const { grid: t, gridStore: n } = e, o = this.setPluginAPI(new De(t, this._args?.columnMetaInfo ?? {})), r = (a, d, c) => {
       c === "insertColumns" && o.adjustInsertColumns(a, d), c === "removeColumns" && o.adjustRemoveColumns(a, d);
     }, i = (a) => {
       document.getElementById(o.dropdownId)?.isConnected && (a.__IGNORE_GRID_FOCUS__ = !0);
     };
-    n.hook.addHook("columnChanged", s), n.hook.addHook("contextMouseUp", i), this.addRollbackTask(() => {
-      o.clearFilters(), o.clearSortOrder(), n.hook.removeHook("columnChanged", s), n.hook.removeHook("contextMouseUp", i);
+    n.hook.addHook("columnChanged", r), n.hook.addHook("contextMouseUp", i), this.addRollbackTask(() => {
+      o.clearFilters(), o.clearSortOrder(), n.hook.removeHook("columnChanged", r), n.hook.removeHook("contextMouseUp", i);
     });
   }
   get pluginKey() {
     return "row-filter";
   }
 }
-class Kc extends Y {
+class Qc extends Y {
   constructor(e = {}) {
     super(), this._args = e;
   }
   _mountTask({ grid: e, contextElement: t, gridStore: n }) {
-    const { onCopyFail: o } = this._args, { hook: s } = n, i = this.setPluginAPI(new Ma(e));
+    const { onCopyFail: o } = this._args, { hook: r } = n, i = this.setPluginAPI(new Aa(e));
     let a = !1;
-    s.addSyncHook("selectChanged", d), s.addBeginHook("contextMouseDown", c), s.addSyncBeginHook("copy", h), s.addSyncBeginHook("cut", u), s.addHook("postRenderCell", f), this.addRollbackTask(() => {
-      i.clearSelectedCells(), s.removeSyncHook("selectChanged", d), s.removeBeginHook("contextMouseDown", c), s.removeSyncBeginHook("copy", h), s.removeSyncBeginHook("cut", u), s.removeHook("postRenderCell", f);
+    r.addSyncHook("selectChanged", d), r.addBeginHook("contextMouseDown", c), r.addSyncBeginHook("copy", h), r.addSyncBeginHook("cut", u), r.addHook("postRenderCell", f), this.addRollbackTask(() => {
+      i.clearSelectedCells(), r.removeSyncHook("selectChanged", d), r.removeBeginHook("contextMouseDown", c), r.removeSyncBeginHook("copy", h), r.removeSyncBeginHook("cut", u), r.removeHook("postRenderCell", f);
     });
     function d() {
       !a && i.hasMultipleSelection() && i.clearSelectedCells();
     }
     function c(R) {
-      if (R.button !== 0 || t.classList.contains(ie) || !R.target.closest("td,th")) return;
+      if (R.button !== 0 || t.classList.contains(le) || !R.target.closest("td,th")) return;
       if (!R.ctrlKey || R.shiftKey) return i.clearSelectedCells();
-      const y = e.getSelection();
-      y && i.toggleCells(g(y)), a = !0, document.addEventListener("mouseup", l);
+      const x = e.getSelection();
+      x && i.toggleCells(g(x)), a = !0, document.addEventListener("mouseup", l);
     }
     function l() {
       const R = e.getSelection();
@@ -6941,29 +6997,29 @@ class Kc extends Y {
     }
     function u(R) {
       if (!i.hasMultipleSelection()) return !0;
-      const E = i.getSelectedCells();
-      return e.onMultipleCellsNativeCopy(R, E) === !1 ? (o?.(), !1) : (e.commandManager.doRecording("Multiple Cut", () => {
-        E.forEach((y) => e.setText(y.row, y.col, ""));
+      const T = i.getSelectedCells();
+      return e.onMultipleCellsNativeCopy(R, T) === !1 ? (o?.(), !1) : (e.commandManager.doRecording("Multiple Cut", () => {
+        T.forEach((x) => e.setText(x.row, x.col, ""));
       }), !1);
     }
     function f(R) {
-      R.element.classList.toggle(Jr, i.isCellSelected(R));
+      R.element.classList.toggle(er, i.isCellSelected(R));
     }
     function g(R) {
-      const E = [], { top: y, bottom: H, left: L, right: I } = R;
-      for (let b = y; b <= H; b++)
+      const T = [], { top: x, bottom: H, left: L, right: I } = R;
+      for (let b = x; b <= H; b++)
         for (let C = L; C <= I; C++)
-          E.push(e.cell(b, C));
-      return E;
+          T.push(e.cell(b, C));
+      return T;
     }
   }
   get pluginKey() {
     return "grid-multi-select-cell";
   }
 }
-class Ma {
+class Aa {
   constructor(e) {
-    this._grid = e, this._debouncedRender = Is(() => this._render());
+    this._grid = e, this._debouncedRender = Mr(() => this._render());
   }
   _selectedSet = /* @__PURE__ */ new Set();
   _pendingRenderCellSet = /* @__PURE__ */ new Set();
@@ -6975,18 +7031,18 @@ class Ma {
     return this._selectedSet.has(e);
   }
   hasSelectedCellInRange(e) {
-    const { top: t, bottom: n, left: o, right: s } = e;
+    const { top: t, bottom: n, left: o, right: r } = e;
     for (let i = t; i <= n; i++)
-      for (let a = o; a <= s; a++)
+      for (let a = o; a <= r; a++)
         if (this._selectedSet.has(this._grid.cell(i, a))) return !0;
     return !1;
   }
   getSelectedCells() {
     const e = new Set(this._selectedSet), t = this._grid.getSelection();
     if (t) {
-      const { top: n, bottom: o, left: s, right: i } = t;
+      const { top: n, bottom: o, left: r, right: i } = t;
       for (let a = n; a <= o; a++)
-        for (let d = s; d <= i; d++)
+        for (let d = r; d <= i; d++)
           e.add(this._grid.cell(a, d));
     }
     return [...e];
@@ -7009,7 +7065,7 @@ class Ma {
     this._pendingRenderCellSet.forEach((e) => e.render()), this._pendingRenderCellSet.clear();
   }
 }
-function Ta(r, e) {
+function Da(s, e) {
   const t = new Set(e.allowCellRenderType ?? ["default", "select", "datePicker", "custom"]), n = {
     text: "",
     ignoreCase: !0,
@@ -7017,7 +7073,7 @@ function Ta(r, e) {
     area: "all",
     direction: "by-rows"
   };
-  let o = !1, s = !1, i = 0, a = 0;
+  let o = !1, r = !1, i = 0, a = 0;
   const d = {
     setRow(g) {
       i = g;
@@ -7025,42 +7081,42 @@ function Ta(r, e) {
     setCol(g) {
       a = g;
     }
-  }, c = () => n.hasHeaderRows ? 0 : r.headerRows, l = () => n.hasHeaderColumns ? 0 : r.headerColumns;
+  }, c = () => n.hasHeaderRows ? 0 : s.headerRows, l = () => n.hasHeaderColumns ? 0 : s.headerColumns;
   function* h() {
     d.setRow(c()), d.setCol(l());
-    const g = r.getSelection();
+    const g = s.getSelection();
     for (o = !1; ; ) {
       switch (n.area) {
         case "all":
-          yield r.cell(i, a);
+          yield s.cell(i, a);
           break;
         case "selected-col":
           if (!g) throw new Error("No selection in finding");
-          Un(a, g) && (yield r.cell(i, a));
+          Kn(a, g) && (yield s.cell(i, a));
           break;
         case "selected-row":
           if (!g) throw new Error("No selection in finding");
-          jn(i, g) && (yield r.cell(i, a));
+          Un(i, g) && (yield s.cell(i, a));
           break;
         case "selection":
           if (!g) throw new Error("No selection in finding");
-          Qt(i, a, g) && (yield r.cell(i, a));
+          tn(i, a, g) && (yield s.cell(i, a));
           break;
         case "custom":
           if (!n.customRange) throw new Error("Please call with customRange in 'custom' finding.");
-          Qt(i, a, n.customRange) && (yield r.cell(i, a));
+          tn(i, a, n.customRange) && (yield s.cell(i, a));
           break;
       }
       if (R()) break;
     }
     function R() {
-      const E = n.direction;
-      if (E === "by-columns" || E === "left-right") {
-        if (++i, i >= r.getRowCount() && (++a, i = c()), a >= r.getColCount())
+      const T = n.direction;
+      if (T === "by-columns" || T === "left-right") {
+        if (++i, i >= s.getRowCount() && (++a, i = c()), a >= s.getColCount())
           if (o)
             o = !1, i = c(), a = l();
           else return !0;
-      } else if (++a, a >= r.getColCount() && (++i, a = l()), i >= r.getRowCount())
+      } else if (++a, a >= s.getColCount() && (++i, a = l()), i >= s.getRowCount())
         if (o)
           o = !1, i = c(), a = l();
         else return !0;
@@ -7068,29 +7124,29 @@ function Ta(r, e) {
   }
   function u(g) {
     if (!t.has(g.renderType)) return !1;
-    const R = n.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"), E = n.matchAll ? `^${R}$` : R, y = n.ignoreCase ? "i" : "", H = new RegExp(E, y);
+    const R = n.text.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"), T = n.matchAll ? `^${R}$` : R, x = n.ignoreCase ? "i" : "", H = new RegExp(T, x);
     return e.onCellCheck ? e.onCellCheck(H, g) : H.test(g.text);
   }
   let f = h();
   return {
     resetCursor() {
-      s = !0;
+      r = !0;
     },
     findNext(g) {
-      for (Gn(n, g) || (Object.assign(n, g), s = !0), s && (f = h(), s = !1); ; ) {
+      for (jn(n, g) || (Object.assign(n, g), r = !0), r && (f = h(), r = !1); ; ) {
         const R = f.next();
         if (!R.done && R.value && u(R.value))
           return o = !0, R.value;
         if (R.done)
           break;
       }
-      return s = !0, null;
+      return r = !0, null;
     },
     getAllMatchedCell(g) {
       const R = [];
       g && Object.assign(n, g);
-      for (const E of h())
-        u(E) && R.push(E);
+      for (const T of h())
+        u(T) && R.push(T);
       return R;
     },
     setCursor(g, R) {
@@ -7099,16 +7155,16 @@ function Ta(r, e) {
     }
   };
 }
-function Ct(r) {
-  if (!(r instanceof Function))
+function _t(s) {
+  if (!(s instanceof Function))
     throw new Error("func is not a function");
   try {
-    return r();
+    return s();
   } catch (e) {
     console.error(e);
   }
 }
-class La extends j {
+class Fa extends V {
   _execute() {
     return this._instance.addColumn(...this._args);
   }
@@ -7129,7 +7185,7 @@ class La extends j {
     return this._undoContext ? this._instance.getColCount() > this._undoContext.addedColumn : !1;
   }
 }
-class Ha extends j {
+class Wa extends V {
   _execute() {
     if (!this._undoContext.row) throw new Error("not recorded the added row in undoContext!");
     return this._instance.insertRowByList([this._undoContext.row]), this._undoContext.row.rowId;
@@ -7152,7 +7208,7 @@ class Ha extends j {
     return this._undoContext ? this._instance.getRowCount() > this._undoContext.addedRow : !1;
   }
 }
-class Oa extends j {
+class Pa extends V {
   _undo() {
     this._instance.setColumnVisible(this._args[0], this._undoContext.visible);
   }
@@ -7171,16 +7227,16 @@ class Oa extends j {
     return !0;
   }
 }
-function Ro(r, e) {
-  const [t, n] = r, [o, s] = e, i = n - t, a = s - o;
-  return i === a ? [e, r] : t < o ? [[s - i, s], [t, t + a]] : [[o, o + i], [n - a, n]];
+function So(s, e) {
+  const [t, n] = s, [o, r] = e, i = n - t, a = r - o;
+  return i === a ? [e, s] : t < o ? [[r - i, r], [t, t + a]] : [[o, o + i], [n - a, n]];
 }
-class za extends j {
+class Na extends V {
   _execute() {
     this._instance.exchangeRows(this._args[0], this._args[1]);
   }
   _undo() {
-    this._instance.exchangeRows(...Ro(...this._args));
+    this._instance.exchangeRows(...So(...this._args));
   }
   _getUndoContext() {
     return null;
@@ -7192,12 +7248,12 @@ class za extends j {
     return !0;
   }
 }
-class Aa extends j {
+class $a extends V {
   _execute() {
     this._instance.exchangeColumns(this._args[0], this._args[1]);
   }
   _undo() {
-    this._instance.exchangeColumns(...Ro(...this._args));
+    this._instance.exchangeColumns(...So(...this._args));
   }
   _getUndoContext() {
     return null;
@@ -7209,7 +7265,7 @@ class Aa extends j {
     return !0;
   }
 }
-class Da extends j {
+class Ba extends V {
   _undo() {
     const [e, t = 1] = this._args;
     this._instance.removeColumns(e, e + t - 1), this._undoContext.selection && this._instance.select(this._undoContext.selection, this._undoContext.activeCell);
@@ -7230,7 +7286,7 @@ class Da extends j {
     return !0;
   }
 }
-class Fa extends j {
+class Ga extends V {
   _undo() {
     const [e, t = 1] = this._args, n = e + t - 1;
     this._undoContext.rows = P(e, n + 1).map((o) => this._instance.getRow(o)), this._instance.removeRows(e, n), this._instance.forceLayoutTask(), this._undoContext.selection && this._instance.select(this._undoContext.selection, this._undoContext.activeCell);
@@ -7252,19 +7308,19 @@ class Fa extends j {
     return !0;
   }
 }
-class Wa extends j {
+class Va extends V {
   _undo() {
     const [e, t] = this._args;
-    this._instance.splitCells(e, t), this._undoContext.textSnapshot.forEach(({ row: n, col: o, text: s }) => {
-      this._instance.setText(n, o, s);
+    this._instance.splitCells(e, t), this._undoContext.textSnapshot.forEach(({ row: n, col: o, text: r }) => {
+      this._instance.setText(n, o, r);
     });
   }
   _execute() {
     this._instance.mergeCells(...this._args);
   }
   _getUndoContext() {
-    const e = new ze(this._instance, this._instance), [t, n, o, s] = this._args, i = [];
-    for (const a of e.getSelectionGenerator({ top: t, left: n, bottom: o, right: s }))
+    const e = new Ae(this._instance, this._instance), [t, n, o, r] = this._args, i = [];
+    for (const a of e.getSelectionGenerator({ top: t, left: n, bottom: o, right: r }))
       i.push({ row: a.row, col: a.col, text: a.text });
     return {
       textSnapshot: i
@@ -7277,16 +7333,16 @@ class Wa extends j {
     return !0;
   }
 }
-function xo(r, e) {
-  const [t, n] = r, o = n - t;
+function bo(s, e) {
+  const [t, n] = s, o = n - t;
   return t < e ? [[e - o - 1, e - 1], t] : [[e, e + o], n + 1];
 }
-class Pa extends j {
+class ja extends V {
   _execute() {
     return this._instance.moveRows(this._args[0], this._args[1]);
   }
   _undo() {
-    this._instance.moveRows(...xo(this._args[0], this._undoContext.targetId));
+    this._instance.moveRows(...bo(this._args[0], this._undoContext.targetId));
   }
   _getUndoContext() {
     return {
@@ -7300,12 +7356,12 @@ class Pa extends j {
     return !0;
   }
 }
-class Na extends j {
+class Ua extends V {
   _execute() {
     this._instance.moveColumns(this._args[0], this._args[1]);
   }
   _undo() {
-    this._instance.moveColumns(...xo(this._args[0], this._undoContext.targetId));
+    this._instance.moveColumns(...bo(this._args[0], this._undoContext.targetId));
   }
   _getUndoContext() {
     return {
@@ -7319,7 +7375,7 @@ class Na extends j {
     return !0;
   }
 }
-class $a extends j {
+class Ka extends V {
   _undo() {
     const e = this._args[1] - this._args[0] + 1;
     this._instance.insertColumns(this._args[0], e), this._undoContext.columnList.forEach((t, n) => {
@@ -7337,7 +7393,7 @@ class $a extends j {
     );
   }
   _getUndoContext() {
-    const e = new lt(this._instance), [t, n] = this._args;
+    const e = new at(this._instance), [t, n] = this._args;
     return {
       removedCells: e.getCellListByColumn(t, n),
       columnList: e.getColumnListByColumn(t, n),
@@ -7355,7 +7411,7 @@ class $a extends j {
     return !0;
   }
 }
-class Ba extends j {
+class qa extends V {
   _undo() {
     this._instance.forceLayoutTask(), this._instance.insertRowByList(this._undoContext.removedRows), this._undoContext.removedRows.forEach((e) => {
       const t = e.rowId;
@@ -7380,9 +7436,9 @@ class Ba extends j {
   }
   _getUndoContext() {
     this._instance.forceLayoutTask();
-    const [e, t, n] = this._args, o = P(e, t + 1).map((s) => this._instance.getRow(s));
+    const [e, t, n] = this._args, o = P(e, t + 1).map((r) => this._instance.getRow(r));
     return {
-      removedRows: n?.ignoreFiltered === !0 ? o.filter((s) => !s.filtered) : o,
+      removedRows: n?.ignoreFiltered === !0 ? o.filter((r) => !r.filtered) : o,
       selection: this._instance.getSelection(),
       activeCell: this._instance.activeCell
     };
@@ -7394,7 +7450,7 @@ class Ba extends j {
     return !0;
   }
 }
-class Va extends j {
+class Xa extends V {
   _execute() {
     this._instance.setColumnWidth(...this._args);
   }
@@ -7413,7 +7469,7 @@ class Va extends j {
     return this._args[0] < this._instance.getColCount();
   }
 }
-class Ga extends j {
+class Ya extends V {
   _undo() {
     this._instance.setRowVisible(this._args[0], this._undoContext.visible);
   }
@@ -7432,7 +7488,7 @@ class Ga extends j {
     return !0;
   }
 }
-class ja extends j {
+class Za extends V {
   _execute() {
     this._instance.setCellRenderer(...this._args);
   }
@@ -7454,7 +7510,7 @@ class ja extends j {
     return this._instance.cell(this._args[0], this._args[1]) !== void 0;
   }
 }
-class Ua extends j {
+class Ja extends V {
   _undo() {
     const [e, t] = this._args;
     this._instance.mergeCells(e, t, e + this._undoContext.rowSpan - 1, t + this._undoContext.colSpan - 1);
@@ -7476,99 +7532,99 @@ class Ua extends j {
     return !0;
   }
 }
-const Hn = {
-  addRow: Ha,
-  addColumn: La,
-  setCell: se,
-  clearCells: go,
-  setRowHeight: uo,
-  setColumnWidth: Va,
-  insertRows: Fa,
-  insertColumns: Da,
-  setRowVisible: Ga,
-  setColumnVisible: Oa,
-  mergeCells: Wa,
-  splitCells: Ua,
-  removeRows: Ba,
-  removeColumns: $a,
-  exchangeRows: za,
-  exchangeColumns: Aa,
-  moveRows: Pa,
-  moveColumns: Na,
-  setCellRenderer: ja
+const zn = {
+  addRow: Wa,
+  addColumn: Fa,
+  setCell: ie,
+  clearCells: po,
+  setRowHeight: fo,
+  setColumnWidth: Xa,
+  insertRows: Ga,
+  insertColumns: Ba,
+  setRowVisible: Ya,
+  setColumnVisible: Pa,
+  mergeCells: Va,
+  splitCells: Ja,
+  removeRows: qa,
+  removeColumns: Ka,
+  exchangeRows: Na,
+  exchangeColumns: $a,
+  moveRows: ja,
+  moveColumns: Ua,
+  setCellRenderer: Za
 };
-function Ka(r) {
-  if (!(r in Hn)) {
-    console.warn(`There is no method named ${r} in IRGridCommandMap`);
+function Qa(s) {
+  if (!(s in zn)) {
+    console.warn(`There is no method named ${s} in IRGridCommandMap`);
     return;
   }
-  return Hn[r];
+  return zn[s];
 }
-function qa(r) {
-  if (r === V.name)
-    return Ka;
+function ec(s) {
+  if (s === B.name)
+    return Qa;
 }
-function Xa(r, e, t, n, o) {
-  const s = qa(e);
-  if (!s) {
+function tc(s, e, t, n, o) {
+  const r = ec(e);
+  if (!r) {
     console.warn("No component class in COMMAND_MAP.");
     return;
   }
-  const i = s(t);
+  const i = r(t);
   if (!i) {
     console.warn("No command class in COMMAND_MAP.");
     return;
   }
-  r.pushCommand(new i(n, o));
+  s.pushCommand(new i(n, o));
 }
-function U() {
+function j() {
   return function(e, t, n) {
     const o = n.value;
-    return n.value = function(...s) {
+    return n.value = function(...r) {
       const { commandManager: i } = this;
-      return i ? i.isRecording && Xa(i, this.constructor.name, t, this, s) : console.warn("No commandManager in this context"), o.apply(this, s);
+      return i ? i.isRecording && tc(i, this.constructor.name, t, this, r) : console.warn("No commandManager in this context"), o.apply(this, r);
     }, n;
   };
 }
-function wt(r) {
-  if (!(r.target instanceof HTMLElement)) return null;
-  const e = r.target.closest("td,th");
-  return e ? oe(e) : null;
+function Rt(s) {
+  if (!(s.target instanceof HTMLElement)) return null;
+  const e = s.target.closest("td,th");
+  return e ? se(e) : null;
 }
-var Ya = Object.defineProperty, Za = Object.getOwnPropertyDescriptor, K = (r, e, t, n) => {
-  for (var o = Za(e, t), s = r.length - 1, i; s >= 0; s--)
-    (i = r[s]) && (o = i(e, t, o) || o);
-  return o && Ya(e, t, o), o;
+var nc = Object.defineProperty, oc = Object.getOwnPropertyDescriptor, U = (s, e, t, n) => {
+  for (var o = oc(e, t), r = s.length - 1, i; r >= 0; r--)
+    (i = s[r]) && (o = i(e, t, o) || o);
+  return o && nc(e, t, o), o;
 };
-const _t = new At(), Ja = Object.freeze({
+const xt = new Ft(), sc = Object.freeze({
   colSpan: !0,
   rowSpan: !0,
   skipFiltered: !0
-}), Qa = Object.freeze({
+}), rc = Object.freeze({
   colSpan: !1,
   rowSpan: !1,
   skipFiltered: !0
-}), Rt = {}, ec = [
+}), St = {}, ic = [
   "text/html",
   "text/plain"
 ];
-function tc() {
+function lc() {
   return [
-    new po({}),
-    new fo(),
-    new wo(),
-    new ho({
+    new wo({}),
+    new mo(),
+    new Ro(),
+    new go({
       enabledColResizer: !0,
       enabledRowResizer: !0
     }),
-    new ma({
+    new Sa({
       memoInterval: 500,
       tooltipInterval: 500,
       hideTooltipWhenHasMemo: !0
     })
   ];
 }
-class V extends Ms {
+class B extends Lr {
   _colHeaderInfo;
   _rowHeaderInfo;
   _bodyInfo;
@@ -7577,7 +7633,7 @@ class V extends Ms {
   // IRGrid Util
   _scheduleManager;
   _gridStore;
-  _gridRangeUtils = new lt(this);
+  _gridRangeUtils = new at(this);
   _generator;
   _selector;
   _copyOptions;
@@ -7594,7 +7650,7 @@ class V extends Ms {
       colHeader: t,
       rowHeader: n,
       body: o,
-      defaultColumnCellFormat: s,
+      defaultColumnCellFormat: r,
       plugins: i
     } = e;
     if (this._defaultColumnCellFormat = {
@@ -7603,29 +7659,29 @@ class V extends Ms {
         text: ""
       }
     }, this._copyOptions = {
-      ...Ja,
+      ...sc,
       ...e.copyOptions
     }, this._pasteOptions = {
-      ...Qa,
+      ...rc,
       ...e.copyOptions,
       ...e.pasteOptions
-    }, s)
-      for (const [u, f] of Object.entries(s))
+    }, r)
+      for (const [u, f] of Object.entries(r))
         this._defaultColumnCellFormat[u] = Object.assign(this._defaultColumnCellFormat[u] || {}, f);
-    this._gridStore = new Ol(
+    this._gridStore = new Nl(
       {
         freezedColumnCount: 0,
         freezedRowCount: 0,
         headerColumnCount: n?.colCount ?? 0,
         headerRowCount: t?.rowCount ?? 0,
-        gridCommandManager: new ss({ context: this }),
-        gridStateContext: new Bl(this),
-        cursorManager: mo(this, !1)
+        gridCommandManager: new lr({ context: this }),
+        gridStateContext: new Xl(this),
+        cursorManager: Co(this, !1)
       }
     ), this._initGridCellPadding(), this._colHeaderInfo = Object.assign({
       rowCount: 0,
       colCount: 5,
-      cellRenderer: _t,
+      cellRenderer: xt,
       defaultSize: this._gridStore.getThemeValue("grid.defaultColumnWidth"),
       minSize: this._gridStore.getThemeValue("grid.defaultColumnMinSize"),
       maxSize: this._gridStore.getThemeValue("grid.defaultColumnMaxSize")
@@ -7634,16 +7690,16 @@ class V extends Ms {
       /**
        * cellRenderer 설명
        */
-      cellRenderer: _t,
+      cellRenderer: xt,
       defaultSize: this._gridStore.getThemeValue("grid.defaultRowHeight"),
       minSize: this._gridStore.getThemeValue("grid.defaultRowMinSize"),
       maxSize: this._gridStore.getThemeValue("grid.defaultRowMaxSize")
     }, n), this._rowHeaderInfo.minSize = Math.min(this._rowHeaderInfo.defaultSize, this._rowHeaderInfo.minSize), this._rowHeaderInfo.maxSize = Math.max(this._rowHeaderInfo.defaultSize, this._rowHeaderInfo.maxSize), this._bodyInfo = Object.assign({
       rowCount: 5,
-      cellRenderer: _t
-    }, o), this.contextElement.classList.add(Qr), this.contextElement.tabIndex = 0, this.contextElement.role = "grid";
+      cellRenderer: xt
+    }, o), this.contextElement.classList.add(tr), this.contextElement.tabIndex = 0, this.contextElement.role = "grid";
     const { wrapper: a, table: d } = this._gridStore.elements, { gridStateContext: c } = this._gridStore;
-    d.classList.add(es), this.contextElement.appendChild(a);
+    d.classList.add(nr), this.contextElement.appendChild(a);
     let l = {
       offsetWidth: 0,
       offsetHeight: 0,
@@ -7655,19 +7711,19 @@ class V extends Ms {
       l.offsetWidth === f && l.offsetHeight === u && l.className === g || (l = { offsetWidth: f, offsetHeight: u, className: g }, h = !0, this._gridStore.hook.emit("resize", []).finally(() => {
         h = !1, this._scheduleManager.addTask("virtualRender").addTask("generateScrollBarClass").addTask("updateSelection");
       }));
-    }), this.addCoreElement(a), this._generator = new ze(this._rowManager, this._colManager), this._selector = new Yl(this, this._gridStore), this._scheduleManager = new ea({
+    }), this.addCoreElement(a), this._generator = new Ae(this._rowManager, this._colManager), this._selector = new oa(this, this._gridStore), this._scheduleManager = new la({
       grid: this,
       store: this._gridStore,
       contextElement: this.contextElement,
       selector: this._selector
-    }), this._initPlugins(i ?? tc()), c.selectionRangeState.addSubscription((u, f) => {
+    }), this._initPlugins(i ?? lc()), c.selectionRangeState.addSubscription((u, f) => {
       u?.activeCell !== f?.activeCell && (u?.activeCell.deactivate(), f?.activeCell.activate());
     }), c.activateHeaderCellState.addSubscription((u, f) => {
       u.forEach((g) => g.deactivate()), f.forEach((g) => g.activate());
     }), c.selectionRangeState.addSubscription((u, f) => {
       f ? c.activateHeaderCellState.next([...this._generator.getSelectionHeaderIterator(f.range)]) : c.activateHeaderCellState.next([]);
     }), c.selectionRangeState.addSubscription((u, f) => {
-      u?.activeCell !== f?.activeCell && Ct(() => this.onChangeCell(f?.activeCell ?? null)), Ct(f ? () => this.onSelectCell(f.activeCell) : () => this.onActiveCellNull());
+      u?.activeCell !== f?.activeCell && _t(() => this.onChangeCell(f?.activeCell ?? null)), _t(f ? () => this.onSelectCell(f.activeCell) : () => this.onActiveCellNull());
     }), c.selectionRangeState.addSubscription((u, f) => {
       const g = f?.range ?? null, R = u?.range ?? null;
       this.hook.emitSync("selectChanged", [g, R]), this.onSelectChanged(g, R);
@@ -7676,27 +7732,27 @@ class V extends Ms {
     }), c.gridModeState.next({ mode: "idle", contextParam: {} }), this.addGlobalEventListener(this.contextElement, "contextmenu", (u) => this.hook.emit("contextMenu", [u])), this.addGlobalEventListener(this.contextElement, "focus", (u) => this.hook.emit("contextFocus", [u])), this.addGlobalEventListener(this.contextElement, "blur", (u) => this.hook.emit("contextBlur", [u])), this.addGlobalEventListener(this.contextElement, "dragstart", (u) => this.hook.emit("contextDragStart", [u])), this.addGlobalEventListener(this.contextElement, "dragend", (u) => this.hook.emit("contextDragEnd", [u])), this.addGlobalEventListener(d, "scroll", (u) => {
       this.hook.emitSync("contextScroll", [u, this.scrollTop, this.scrollLeft]);
     }, { passive: !1 }), this.addGlobalEventListener(this.contextElement, "cut", (u) => this.hook.emitSync("cut", [u])), this.addGlobalEventListener(this.contextElement, "copy", (u) => this.hook.emitSync("copy", [u])), this.addGlobalEventListener(this.contextElement, "paste", (u) => this.hook.emitSync("paste", [u])), this.addGlobalEventListener(this.contextElement, "input", (u) => this.hook.emitSync("input", [u]), !0), this.addGlobalEventListener(this.contextElement, "keydown", (u) => this.hook.emitSync("keydown", [u]), !0), this.addGlobalEventListener(this.contextElement, "mousedown", (u) => this.hook.emit("contextMouseDown", [u])), this.addGlobalEventListener(this.contextElement, "mousemove", (u) => this.hook.emit("contextMouseMove", [u])), this.addGlobalEventListener(this.contextElement, "mouseup", (u) => this.hook.emit("contextMouseUp", [u])), this.addGlobalEventListener(this.contextElement, "click", (u) => this.hook.emitSync("contextClick", [u])), this.addGlobalEventListener(this.contextElement, "dblclick", (u) => this.hook.emitSync("contextDoubleClick", [u])), this.addGlobalEventListener(this.contextElement, "mousedown", (u) => this.hook.emitSync("contextMouseDown", [u])), this.addGlobalEventListener(this.contextElement, "mouseup", (u) => this.hook.emitSync("contextMouseUp", [u])), this.hook.addBeginHook("contextMenu", (u) => void u.preventDefault()), this.hook.addEndHook("contextMenu", (u) => {
-      const { y: f, x: g } = Os(u);
+      const { y: f, x: g } = Fr(u);
       this.onContextMenu(u, this.findCellOrNull(f, g));
     }), this.hook.addEndHook("contextFocus", this._gridEvFocus.bind(this)), this.hook.addEndHook("contextMouseUp", this._gridEvFocus.bind(this)), this.hook.addEndHook("contextDragEnd", this._gridEvFocus.bind(this)), this.hook.addSyncHook("cellRightClick", (u, f) => this.onCellRightClick(f, u)), this.hook.addSyncHook("cellClear", (u) => this.onClearCell(u)), this.hook.addSyncHook("cellDblClick", (u) => this.onDoubleClickCell(u)), this.hook.addSyncHook("cellSelect", (u) => this.selectCell(u.row, u.col)), this.hook.addSyncHook("cellClick", (u, f) => {
-      f.__IGNORE_CELL_CLICK__ || this.contextElement.classList.contains(ie) || (u.cellType === "row-header" && this.onRowClick(u, f), u.cellType === "col-header" && this.onColumnClick(u, f));
+      f.__IGNORE_CELL_CLICK__ || this.contextElement.classList.contains(le) || (u.cellType === "row-header" && this.onRowClick(u, f), u.cellType === "col-header" && this.onColumnClick(u, f));
     }), this.hook.addSyncHook("contextMouseUp", (u) => {
       if (u.button !== 2) return;
-      const f = wt(u);
+      const f = Rt(u);
       if (f) {
         const g = this.cell(f.row, f.col);
         g.onRightClick(g, u);
       }
     }), this.hook.addSyncHook("contextClick", (u) => {
       if (!u.target.isConnected) return;
-      const f = wt(u);
+      const f = Rt(u);
       if (f) {
         const g = this.cell(f.row, f.col);
         g.onClick(g, u);
       }
     }), this.hook.addSyncHook("contextDoubleClick", (u) => {
-      if (!_e(u.target) || u.target.tagName === "I" || u.target.tagName === "TEXTAREA") return;
-      const f = wt(u);
+      if (!Re(u.target) || u.target.tagName === "I" || u.target.tagName === "TEXTAREA") return;
+      const f = Rt(u);
       if (f) {
         const g = this.cell(f.row, f.col);
         g.onDblClick(g);
@@ -8028,10 +8084,10 @@ class V extends Ms {
     const t = this._colManager.visibleColumnList;
     let n = 0, o = t.length - 1;
     for (; n <= o; ) {
-      const s = n + Math.floor((o - n) / 2), i = t[s];
+      const r = n + Math.floor((o - n) / 2), i = t[r];
       if (i.isBetweenLeft(e))
         return i;
-      e < i.left ? o = s - 1 : n = s + 1;
+      e < i.left ? o = r - 1 : n = r + 1;
     }
     return null;
   }
@@ -8103,8 +8159,8 @@ class V extends Ms {
   }
   mergeCells(e, t, n, o) {
     this.forceLayoutTask(), this._mergeHandler.mergeCells({ top: e, left: t, bottom: n, right: o }), this._scheduleManager.addTask("virtualRender");
-    const s = this.getSelection();
-    s && this.selectRange(s.top, s.left, s.bottom, s.right);
+    const r = this.getSelection();
+    r && this.selectRange(r.top, r.left, r.bottom, r.right);
   }
   /**
    * 마지막 명령을 실행 취소한다.
@@ -8141,8 +8197,8 @@ class V extends Ms {
     if (!n) return null;
     const o = this.getColumnByLeft(t);
     if (!o) return null;
-    const s = this.cell(n.rowId, o.columnId);
-    return s.mergeMain ?? s;
+    const r = this.cell(n.rowId, o.columnId);
+    return r.mergeMain ?? r;
   }
   /**
    * 해당 셀의 기준이되는 셀을 반환한다.
@@ -8218,8 +8274,8 @@ class V extends Ms {
    * grid.selectRange( 0, 0, 2, 2, grid.getCell(1, 1) );
    * ```
    */
-  selectRange(e, t, n, o, s = this.activeCell) {
-    this.select({ top: e, left: t, bottom: n, right: o }, s);
+  selectRange(e, t, n, o, r = this.activeCell) {
+    this.select({ top: e, left: t, bottom: n, right: o }, r);
   }
   /**
    * 그리드 내의 모든 셀을 선택한다.
@@ -8426,12 +8482,12 @@ class V extends Ms {
    */
   setData(e) {
     const { row: t, col: n, data: o } = e;
-    o.forEach((s, i) => {
-      s.forEach((a, d) => this.setText(t + i, n + d, a));
+    o.forEach((r, i) => {
+      r.forEach((a, d) => this.setText(t + i, n + d, a));
     });
   }
   setColumnWidth(e, t) {
-    const n = B(t, this._colHeaderInfo.minSize, this._colHeaderInfo.maxSize);
+    const n = this._colManager.getColumn(e).getBoundSize(t);
     this._colManager.setColumnWidth(e, n), this._rowManager.setColumnWidth(e, n), this._gridStore.hook.emit("columnChanged", [e, e, "setWidth"]), this._scheduleManager.addTask("updateLeft").addTask("generateScrollBarClass").addTask("resizeGridWrapperWidth").addTask("updateSelection").addTask("virtualRender"), e < this._colManager.freezedColumns && this._scheduleManager.addTask("updateRowsStickyLeft");
   }
   /**
@@ -8456,7 +8512,7 @@ class V extends Ms {
     return n;
   }
   setRowHeight(e, t) {
-    const n = B(t, this.minRowHeight, this.maxRowHeight);
+    const n = this._rowManager.getRow(e).getBoundSize(t);
     this._rowManager.setRowHeight(e, n), this._scheduleManager.addTask("virtualRender").addTask("updateTop").addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass").addTask("updateSelection");
   }
   /**
@@ -8699,10 +8755,66 @@ class V extends Ms {
     t < 0 || this.setColumnWidth(e, t);
   }
   /**
+   * @version ^2.22.1
+   * 지정한 컬럼의 최소 너비를 설정한다.
+   *
+   * @param colId - 대상 컬럼의 고유 ID
+   * @param size - 설정할 최소 너비 (px)
+   *
+   * @remarks
+   * 기존 최소 너비보다 크면 컬럼 너비도 업데이트된다.
+   */
+  setColumnMinSize(e, t) {
+    const n = this._colManager.getColumn(e), o = n.minSize;
+    n.setMinSize(t), n.minSize > o && this.setColumnWidth(e, t);
+  }
+  /**
+   * @version ^2.22.1
+   * 지정한 컬럼의 최대 너비를 설정한다.
+   *
+   * @param colId - 대상 컬럼의 고유 ID
+   * @param size - 최대 너비 (px)
+   *
+   * @remarks
+   * 기존 최대 너비보다 작으면 컬럼 너비도 업데이트된다.
+   */
+  setColumnMaxSize(e, t) {
+    const n = this._colManager.getColumn(e), o = n.maxSize;
+    n.setMaxSize(t), n.maxSize < o && this.setColumnWidth(e, t);
+  }
+  /**
+   * @version ^2.22.1
+   * 지정한 행의 최소 높이를 설정한다.
+   *
+   * @param rowId - 대상 행의 고유 ID
+   * @param size - 최소 높이 (px)
+   *
+   * @remarks
+   * 기존 최소 높이보다 크면 행 높이도 업데이트된다.
+   */
+  setRowMinSize(e, t) {
+    const n = this._rowManager.getRow(e), o = n.minSize;
+    n.setMinSize(t), n.minSize > o && this.setRowHeight(e, t);
+  }
+  /**
+   * @version ^2.22.1
+   * 지정한 행의 최대 높이를 설정한다.
+   *
+   * @param rowId - 대상 행의 고유 ID
+   * @param size - 최대 높이 (px)
+   *
+   * @remarks
+   * 기존 최대 높이보다 작으면 행 높이도 업데이트된다.
+   */
+  setRowMaxSize(e, t) {
+    const n = this._rowManager.getRow(e), o = n.maxSize;
+    n.setMaxSize(t), n.maxSize < o && this.setRowHeight(e, t);
+  }
+  /**
    * command 처리 제거용 (벌크 addRow 성능)
    */
   _addRow(e = this._rowHeaderInfo.defaultSize) {
-    const t = B(e, this.minRowHeight, this.maxRowHeight), n = this._createIRGridRow(this._rowManager.getNextRowId(), this.height, t);
+    const t = K(e, this.minRowHeight, this.maxRowHeight), n = this._createIRGridRow(this._rowManager.getNextRowId(), this.height, t);
     return this._rowManager.addRow(n), n.rowId;
   }
   _createBulkRows(e, t) {
@@ -8748,8 +8860,8 @@ class V extends Ms {
       throw new Error(`Out of index. maximum bottom values is ${this.getRowCount() - 1}. If you wanna clear all rows, please call clearRows()`);
     if (this._mergeHandler.checkConflictingInRows(e, t)) return !1;
     this._rowManager.runFuncEachRow((o) => {
-      for (const s of o.getCellGenerator())
-        s.isMerged && this._mergeHandler.removeMergeCell(s.row, s.col);
+      for (const r of o.getCellGenerator())
+        r.isMerged && this._mergeHandler.removeMergeCell(r.row, r.col);
     }, e, t + 1), this._rowManager.removeRows(e, t, n), this._scheduleManager.addTask("updateTop").addTask("updateRowId").addTask("virtualRender").addTask("resizeGridWrapperHeight").addTask("generateScrollBarClass").addTask("adjustSelection");
   }
   removeColumns(e, t) {
@@ -8763,8 +8875,8 @@ class V extends Ms {
     }), this._rowManager.removeColumns(e, t), this._colManager.removeColumns(e, t), this._gridStore.hook.emit("columnChanged", [e, t, "removeColumns"]), this._scheduleManager.addTask("updateColumnId").addTask("updateLeft").addTask("generateScrollBarClass").addTask("resizeGridWrapperWidth").addTask("adjustSelection").addTask("virtualRender"), e < this._colManager.freezedColumns && this._scheduleManager.addTask("updateRowsStickyLeft"), !0);
   }
   _addColumn(e = this._colHeaderInfo.defaultSize) {
-    const t = B(e, this.minColWidth, this.maxColWidth), n = this._colManager.addColumn(t);
-    return this._rowManager.addColumn((o) => this._createIRGridCell(o.rowId, n.columnId)), this._gridStore.hook.emit("columnChanged", [n.columnId, n.columnId, "addColumn"]), this._scheduleManager.addTask("resizeGridWrapperWidth").addTask("virtualRender"), n.columnId;
+    const t = K(e, this.minColWidth, this.maxColWidth), n = this._createIRGridColumn(this._colManager.length, this._colManager.columnsWidth, t);
+    return this._colManager.addColumn(n), this._rowManager.addColumn((o) => this._createIRGridCell(o.rowId, n.columnId)), this._gridStore.hook.emit("columnChanged", [n.columnId, n.columnId, "addColumn"]), this._scheduleManager.addTask("resizeGridWrapperWidth").addTask("virtualRender"), n.columnId;
   }
   addColumn(e) {
     return this._scheduleManager.addTask("generateScrollBarClass"), this._addColumn(e);
@@ -8780,13 +8892,13 @@ class V extends Ms {
     return this.insertRows(e, 1, t);
   }
   insertRows(e, t = 1, n = this._rowHeaderInfo.defaultSize) {
-    const o = this.getRowCount(), s = B(e, this.headerRows, o);
-    if (!this._mergeHandler.checkCanInsertRow(s)) return !1;
-    const i = B(n, this.minRowHeight, this.maxRowHeight);
-    if (s === o)
+    const o = this.getRowCount(), r = K(e, this.headerRows, o);
+    if (!this._mergeHandler.checkCanInsertRow(r)) return !1;
+    const i = K(n, this.minRowHeight, this.maxRowHeight);
+    if (r === o)
       return P(t).forEach(() => this.addRow(i)), !0;
-    const a = P(t).map((d) => this._createIRGridRow(s + d, 0, i));
-    return this._rowManager.insertRows(s, a), this._scheduleInsertRowTasks(), !0;
+    const a = P(t).map((d) => this._createIRGridRow(r + d, 0, i));
+    return this._rowManager.insertRows(r, a), this._scheduleInsertRowTasks(), !0;
   }
   _scheduleInsertRowTasks() {
     this._scheduleManager.addTask("updateTop").addTask("updateRowId").addTask("virtualRender").addTask("generateScrollBarClass").addTask("resizeGridWrapperHeight").addTask("adjustSelection");
@@ -8816,15 +8928,16 @@ class V extends Ms {
     return this.insertColumns(e, 1, t);
   }
   insertColumns(e, t = 1, n = this._colHeaderInfo.defaultSize) {
-    const o = this.getColCount(), s = B(e, this.headerColumns, o);
+    const o = this.getColCount(), r = K(e, this.headerColumns, o);
     if (!this._mergeHandler.checkCanInsertColumn(e)) return !1;
-    const i = B(n, this.minColWidth, this.maxColWidth);
-    if (s === o) {
-      for (let a = 0; a < t; a++)
+    const i = K(n, this.minColWidth, this.maxColWidth);
+    if (r === o) {
+      for (let d = 0; d < t; d++)
         this.addColumn(i);
       return !0;
     }
-    return this._colManager.insertColumns(e, t, i), this._rowManager.insertColumns(e, t, (a, d) => this._createIRGridCell(a, d)), this._gridStore.hook.emit("columnChanged", [e, e + t - 1, "insertColumns"]), this._scheduleManager.addTask("updateColumnId").addTask("generateScrollBarClass").addTask("updateLeft").addTask("resizeGridWrapperWidth").addTask("virtualRender").addTask("adjustSelection"), e < this._colManager.freezedColumns && this._scheduleManager.addTask("updateRowsStickyLeft"), !0;
+    const a = P(t).map((d) => this._createIRGridColumn(r + d, 0, i));
+    return this._colManager.insertColumns(e, a), this._rowManager.insertColumns(e, t, (d, c) => this._createIRGridCell(d, c)), this._gridStore.hook.emit("columnChanged", [e, e + t - 1, "insertColumns"]), this._scheduleManager.addTask("updateColumnId").addTask("generateScrollBarClass").addTask("updateLeft").addTask("resizeGridWrapperWidth").addTask("virtualRender").addTask("adjustSelection"), e < this._colManager.freezedColumns && this._scheduleManager.addTask("updateRowsStickyLeft"), !0;
   }
   /**
    * {@link autoSizeColumn}의 단일 열 버전이다.
@@ -8909,12 +9022,12 @@ class V extends Ms {
       "text/plain": ""
     };
     try {
-      const t = (await Cs.read()).flat();
+      const t = (await _r.read()).flat();
       for await (const n of t)
-        for (const o of ec)
-          e[o] === "" && n.types.includes(o) && (e[o] = await ws(await n.getType(o)));
+        for (const o of ic)
+          e[o] === "" && n.types.includes(o) && (e[o] = await Rr(await n.getType(o)));
     } catch (t) {
-      console.warn("pasteFromClipboard warning! it expects https protocol and clipboard permission.", t), e["ir-grid/cell"] = Es(Rt) ?? "";
+      console.warn("pasteFromClipboard warning! it expects https protocol and clipboard permission.", t), e["ir-grid/cell"] = Tr(St) ?? "";
     }
     return {
       getData(t) {
@@ -8936,7 +9049,7 @@ class V extends Ms {
     }
     this.paste(
       e,
-      pn(
+      wn(
         await this._createClipboardGetter()
       )
     );
@@ -8950,10 +9063,10 @@ class V extends Ms {
   paste(e, t) {
     if (t.length === 0)
       return void console.warn("No clipboard data to paste");
-    const n = ul(this, this._pasteOptions), o = n.getPastingRange(e, t), { rowSpan: s, colSpan: i } = this._pasteOptions;
-    if (s || i)
+    const n = pl(this, this._pasteOptions), o = n.getPastingRange(e, t), { rowSpan: r, colSpan: i } = this._pasteOptions;
+    if (r || i)
       for (const d of this._generator.getSelectionGenerator(o))
-        s && d.mergeInfo.rowSpan > 1 && this.splitCells(d.row, d.col), i && d.mergeInfo.colSpan > 1 && this.splitCells(d.row, d.col);
+        r && d.mergeInfo.rowSpan > 1 && this.splitCells(d.row, d.col), i && d.mergeInfo.colSpan > 1 && this.splitCells(d.row, d.col);
     const a = n.beforePastingList(o, t);
     a.length !== 0 && (this.onClipboardBeforePaste(o), n.pasteTask(a), this.onClipboardAfterPaste(o), this.select(o));
   }
@@ -9056,7 +9169,7 @@ class V extends Ms {
    * @returns
    */
   createFinder(e = {}) {
-    return Ta(this, e);
+    return Da(this, e);
   }
   /**
    * 지정한 열을 선택한다. {@link selectColumns}를 기반으로 호출한다.
@@ -9163,8 +9276,8 @@ class V extends Ms {
    * @param endRowId - 순서 정렬 범위에 해당하는 마지막 row index
    */
   sort(e, t, n, o) {
-    const s = Math.max(n ?? this.headerRows, this.headerRows), i = Math.min(o ?? this.getRowCount(), this.getRowCount());
-    this._rowManager.sort(e, t, s, i), this._scheduleManager.addTask("updateTop").addTask("updateRowId").addTask("virtualRender").addTask("adjustSelection");
+    const r = Math.max(n ?? this.headerRows, this.headerRows), i = Math.min(o ?? this.getRowCount(), this.getRowCount());
+    this._rowManager.sort(e, t, r, i), this._scheduleManager.addTask("updateTop").addTask("updateRowId").addTask("virtualRender").addTask("adjustSelection");
   }
   /**
    * 지정한 범위에 있는 병합(merge) 셀들을 분할한다.
@@ -9320,10 +9433,10 @@ class V extends Ms {
   isSelectedSingleCell() {
     const e = this.getSelection();
     if (!e) return !1;
-    const { top: t, left: n, bottom: o, right: s } = e;
-    if (t === o && n === s) return !0;
+    const { top: t, left: n, bottom: o, right: r } = e;
+    if (t === o && n === r) return !0;
     const i = this.getRow(t).getCell(n);
-    return o === i.bottom && s === i.right;
+    return o === i.bottom && r === i.right;
   }
   /**
    * @deprecated
@@ -9390,7 +9503,7 @@ class V extends Ms {
    * }
    * ```
    */
-  onEditCellDone(e, t, n, o, s, i) {
+  onEditCellDone(e, t, n, o, r, i) {
   }
   /**
    * 단일 셀을 선택하거나, 범위를 지정하여 선택할 때 호출된다.
@@ -9702,14 +9815,14 @@ class V extends Ms {
     if (!e.clipboardData) throw new Error("Invalid ClipboardEvent");
     const t = this.getSelection();
     if (!t) throw new Error("Detected copy without selection");
-    const n = this._gridRangeUtils.getCellMatrixByRange(t), { rowSpan: o, colSpan: s } = this._copyOptions, a = (this._copyOptions.skipFiltered ? n.filter(([d]) => !this.isFilteredRow(d.row)) : n).map((d) => d.map((c) => ({
+    const n = this._gridRangeUtils.getCellMatrixByRange(t), { rowSpan: o, colSpan: r } = this._copyOptions, a = (this._copyOptions.skipFiltered ? n.filter(([d]) => !this.isFilteredRow(d.row)) : n).map((d) => d.map((c) => ({
       text: this.onCopyCellText(c),
       cellVisible: c.mergeMain === void 0,
       rowSpan: o ? c.mergeInfo.rowSpan : 1,
-      colSpan: s ? c.mergeInfo.colSpan : 1,
+      colSpan: r ? c.mergeInfo.colSpan : 1,
       isFormatted: !1
     })));
-    mn(e.clipboardData, a), Jt(Rt, JSON.stringify(a)), this.focus(), this.onCopy(), e.preventDefault();
+    Cn(e.clipboardData, a), en(St, JSON.stringify(a)), this.focus(), this.onCopy(), e.preventDefault();
   }
   /**
    * 셀 복사 시 복사된 셀의 텍스트 값을 반환한다.
@@ -9744,7 +9857,7 @@ class V extends Ms {
     if (!e.clipboardData) throw new Error("Invalid ClipboardEvent");
     const t = this.getSelection();
     if (!t) throw new Error("it needs selection to paste");
-    const n = pn(e.clipboardData);
+    const n = wn(e.clipboardData);
     this.commandManager.doRecording("Paste", () => {
       this.paste(t, n);
     }), e.preventDefault();
@@ -9759,26 +9872,21 @@ class V extends Ms {
   onMultipleCellsNativeCopy(e, t) {
     if (!e.clipboardData) throw new Error("Invalid ClipboardEvent");
     if (t.length === 0) throw new Error("Detected copy without multi selection");
-    const { rowSpan: n, colSpan: o, skipFiltered: s } = this._copyOptions, i = [...t].sort((u, f) => u.row - f.row || u.col - f.col), a = /* @__PURE__ */ new Map();
-    for (const u of i) {
-      if (s && this.isFilteredRow(u.row)) continue;
-      const f = a.get(u.row) ?? /* @__PURE__ */ new Map();
-      a.set(u.row, f.set(u.col, u));
-    }
-    const d = [...a.keys()], c = Array.from(a.get(d[0]).keys()).join(",");
-    if (!d.every((u) => {
-      const f = a.get(u);
-      return f ? Array.from(f.keys()).join(",") === c : !1;
-    }))
-      return console.warn("Copy failed: selected cells must form a perfect rectangle."), !1;
-    const h = d.map((u) => Array.from(a.get(u).values()).map((g) => ({
-      text: this.onCopyCellText(g),
-      cellVisible: g.mergeMain === void 0,
-      rowSpan: n ? g.mergeInfo.rowSpan : 1,
-      colSpan: o ? g.mergeInfo.colSpan : 1,
-      isFormatted: !1
-    })));
-    return mn(e.clipboardData, h), Jt(Rt, JSON.stringify(h)), this.focus(), this.onCopy(), e.preventDefault(), !0;
+    const { rowSpan: n, colSpan: o, skipFiltered: r } = this._copyOptions;
+    r && (t = t.filter((d) => this.isFilteredRow(d.row) === !1));
+    const i = Or(t, (d) => d.row.toString());
+    if (!Wr(i))
+      return console.warn("Copy failed: selected cells must form a rectangle."), !1;
+    const a = Object.entries(i).map(([d, c]) => c.map(
+      (l) => ({
+        text: this.onCopyCellText(l),
+        cellVisible: l.mergeMain === void 0,
+        rowSpan: n ? l.mergeInfo.rowSpan : 1,
+        colSpan: o ? l.mergeInfo.colSpan : 1,
+        isFormatted: !1
+      })
+    ));
+    return Cn(e.clipboardData, a), en(St, JSON.stringify(a)), this.focus(), this.onCopy(), e.preventDefault(), !0;
   }
   /**
    * 지정된 두 행 범위를 서로 교환하는 {@link exchangeRows}가 발생할 때 호출된다.
@@ -9827,21 +9935,21 @@ class V extends Ms {
     if (!e.isConnected || !e.editable || !this.getCellVisible(e.row, e.col))
       return !1;
     const o = this._gridStore.gridTextarea;
-    o.onEditDone = (s, i, a, d, c, l) => {
-      this.onEditCellDone(s, i, a, d, c, l), this._gridContext.gridModeState.value.mode !== "idle" && this._gridContext.setIdle();
-    }, o.onEditKeyDown = (s, i, a, d) => this.onEditKeyDown(s, i, a, d), o.onEditInput = (s, i) => this.onEditInput(s, i, e), o.onDragEnd = () => this.__setEditMode(e), o.onEnterOnEdit = () => {
+    o.onEditDone = (r, i, a, d, c, l) => {
+      this.onEditCellDone(r, i, a, d, c, l), this._gridContext.gridModeState.value.mode !== "idle" && this._gridContext.setIdle();
+    }, o.onEditKeyDown = (r, i, a, d) => this.onEditKeyDown(r, i, a, d), o.onEditInput = (r, i) => this.onEditInput(r, i, e), o.onDragEnd = () => this.__setEditMode(e), o.onEnterOnEdit = () => {
       if (this.hook.emitSync("keyAction", [{}, "Enter"]) === !1) return;
-      let s = this._gridStore.cursorManager.getNextYBelow(e.row, e.col, 1), i = e.col;
-      if (e.row === s) {
+      let r = this._gridStore.cursorManager.getNextYBelow(e.row, e.col, 1), i = e.col;
+      if (e.row === r) {
         if (i = this._gridStore.cursorManager.getNextXRight(e.row, e.col, 1), e.col === i) return;
-        s = this._gridStore.cursorManager.getFirstActiveRow();
+        r = this._gridStore.cursorManager.getFirstActiveRow();
       }
-      this.scrollInView(s, i), this.selectCell(s, i), this.afterRender(() => this.doEditMode(this.cell(s, i), !1, !0));
+      this.scrollInView(r, i), this.selectCell(r, i), this.afterRender(() => this.doEditMode(this.cell(r, i), !1, !0));
     };
     try {
       return this.__setEditMode(e), this.activeCell !== e && this.selectCell(e.row, e.col), o.runEditMode(e, t, n), !0;
-    } catch (s) {
-      return console.error("IRGrid.doEditMode Error!", s), !1;
+    } catch (r) {
+      return console.error("IRGrid.doEditMode Error!", r), !1;
     }
   }
   /**
@@ -9893,7 +10001,7 @@ class V extends Ms {
     P(this._colHeaderInfo.colCount).forEach(() => this.addColumn(this._colHeaderInfo.defaultSize)), this._createBulkRows(this._colHeaderInfo.rowCount + this._bodyInfo.rowCount);
   }
   _initGridCellPadding() {
-    te(this.contextElement, {
+    ne(this.contextElement, {
       [W.cellTopPadding]: `${this._gridStore.getThemeValue("grid.paddingTop")}px`,
       [W.cellLeftPadding]: `${this._gridStore.getThemeValue("grid.paddingLeft")}px`,
       [W.cellBottomPadding]: `${this._gridStore.getThemeValue("grid.paddingBottom")}px`,
@@ -9923,154 +10031,164 @@ class V extends Ms {
     }), e === "col-header" ? Object.assign(n, { dropDisabled: !0 }, this._defaultColumnCellFormat[`col_header_${t}`]) : e === "row-header" ? Object.assign(n, { dropDisabled: !0 }, this._defaultColumnCellFormat[`row_header_${t}`]) : Object.assign(n, this._defaultColumnCellFormat[`body_${t}`]), n;
   }
   _createIRGridCell(e, t) {
-    const n = this._getCellType(e, t), o = n.endsWith("header") ? "th" : "td", s = this._getDefaultCellFormat(n, t), i = this._getCellRenderer(n, e, t, s), a = new Wl({
+    const n = this._getCellType(e, t), o = n.endsWith("header") ? "th" : "td", r = this._getDefaultCellFormat(n, t), i = this._getCellRenderer(n, e, t, r), a = new jl({
       row: e,
       col: t,
       tag: o,
       cellType: n,
       cellRenderer: i,
-      props: s
+      props: r
     });
     return a.onCheckReadonly = () => this.onCheckCellReadonly(a), this.onCreatingCell(a), a;
   }
   _createIRGridRow(e, t, n) {
-    const o = new Vl({
+    const o = new Yl({
       seq: this._rowSeq,
       grid: this,
       rowId: e,
       height: n,
       top: t,
-      rowType: e < this.headerRows ? "header" : "body"
+      rowType: e < this.headerRows ? "header" : "body",
+      minSize: this.minRowHeight,
+      maxSize: this.maxRowHeight
     });
-    return ++this._rowSeq, P(this.getColCount()).forEach((s) => {
-      o.addCell(this._createIRGridCell(e, s)), this.getColumnVisible(s) || o.setColumnVisible(s, !1);
+    return ++this._rowSeq, P(this.getColCount()).forEach((r) => {
+      o.addCell(this._createIRGridCell(e, r)), this.getColumnVisible(r) || o.setColumnVisible(r, !1);
     }), o;
   }
+  _createIRGridColumn(e, t, n) {
+    return new Tl({
+      columnId: e,
+      width: n,
+      left: t,
+      minSize: this.minColWidth,
+      maxSize: this.maxColWidth
+    });
+  }
 }
-K([
-  U()
-], V.prototype, "splitCells");
-K([
-  U()
-], V.prototype, "mergeCells");
-K([
-  U()
-], V.prototype, "setCellRenderer");
-K([
-  U()
-], V.prototype, "setColumnWidth");
-K([
-  U()
-], V.prototype, "setRowHeight");
-K([
-  U()
-], V.prototype, "setCell");
-K([
-  U()
-], V.prototype, "addRow");
-K([
-  U()
-], V.prototype, "removeRows");
-K([
-  U()
-], V.prototype, "removeColumns");
-K([
-  U()
-], V.prototype, "addColumn");
-K([
-  U()
-], V.prototype, "insertRows");
-K([
-  U()
-], V.prototype, "insertColumns");
-K([
-  U()
-], V.prototype, "clearCells");
-K([
-  U()
-], V.prototype, "setRowVisible");
-K([
-  U()
-], V.prototype, "setColumnVisible");
-K([
-  U()
-], V.prototype, "exchangeRows");
-K([
-  U()
-], V.prototype, "exchangeColumns");
-K([
-  U()
-], V.prototype, "moveRows");
-K([
-  U()
-], V.prototype, "moveColumns");
-const nc = /^[-+]?\d+(\.\d+)?$/, oc = /^([-+])?0*(\d+)(\.\d+?)?0*$/;
-function qc(r) {
-  if (!nc.test(r)) return r;
-  const e = oc.exec(r);
-  if (!e) return r;
-  const [t, n, o] = e.slice(1), s = [];
-  return t && t !== "+" && s.push(t), n && s.push(n.replace(/\B(?=(\d{3})+(?!\d))/g, ",")), o && s.push(o), s.join("");
+U([
+  j()
+], B.prototype, "splitCells");
+U([
+  j()
+], B.prototype, "mergeCells");
+U([
+  j()
+], B.prototype, "setCellRenderer");
+U([
+  j()
+], B.prototype, "setColumnWidth");
+U([
+  j()
+], B.prototype, "setRowHeight");
+U([
+  j()
+], B.prototype, "setCell");
+U([
+  j()
+], B.prototype, "addRow");
+U([
+  j()
+], B.prototype, "removeRows");
+U([
+  j()
+], B.prototype, "removeColumns");
+U([
+  j()
+], B.prototype, "addColumn");
+U([
+  j()
+], B.prototype, "insertRows");
+U([
+  j()
+], B.prototype, "insertColumns");
+U([
+  j()
+], B.prototype, "clearCells");
+U([
+  j()
+], B.prototype, "setRowVisible");
+U([
+  j()
+], B.prototype, "setColumnVisible");
+U([
+  j()
+], B.prototype, "exchangeRows");
+U([
+  j()
+], B.prototype, "exchangeColumns");
+U([
+  j()
+], B.prototype, "moveRows");
+U([
+  j()
+], B.prototype, "moveColumns");
+const ac = /^[-+]?\d+(\.\d+)?$/, cc = /^([-+])?0*(\d+)(\.\d+?)?0*$/;
+function ed(s) {
+  if (!ac.test(s)) return s;
+  const e = cc.exec(s);
+  if (!e) return s;
+  const [t, n, o] = e.slice(1), r = [];
+  return t && t !== "+" && r.push(t), n && r.push(n.replace(/\B(?=(\d{3})+(?!\d))/g, ",")), o && r.push(o), r.join("");
 }
-const Xc = /^-?(\d{1,3}([,]\d{3})*|\d+)(\.\d+)?$/, Yc = /^-?\d+(\.\d+)?$/;
+const td = /^-?(\d{1,3}([,]\d{3})*|\d+)(\.\d+)?$/, nd = /^-?\d+(\.\d+)?$/;
 export {
-  Xc as ALLOW_ONLY_CURRENCY_NUMBER_PATTERN,
-  Yc as ALLOW_ONLY_NUMBER_PATTERN,
-  Pc as CellDropPlugin,
-  Wc as ColumnFillPlugin,
-  oo as CustomCellRenderer,
-  Dc as DefaultKeyPlugin,
-  V as IRGrid,
-  yi as IRGridButtonRenderer,
-  Wl as IRGridCell,
-  wo as IRGridCellDropPlugin,
+  td as ALLOW_ONLY_CURRENCY_NUMBER_PATTERN,
+  nd as ALLOW_ONLY_NUMBER_PATTERN,
+  jc as CellDropPlugin,
+  Vc as ColumnFillPlugin,
+  so as CustomCellRenderer,
+  Bc as DefaultKeyPlugin,
+  B as IRGrid,
+  Mi as IRGridButtonRenderer,
+  jl as IRGridCell,
+  Ro as IRGridCellDropPlugin,
   Q as IRGridCellRenderer,
-  Kn as IRGridCheckboxRenderer,
-  da as IRGridColumnFillPlugin,
-  gi as IRGridDatePickerRenderer,
-  Ei as IRGridDefaultCellIconButtonRenderer,
-  At as IRGridDefaultCellRenderer,
-  po as IRGridDefaultKeyPlugin,
-  $c as IRGridExchangeByHeaderCellPlugin,
-  fo as IRGridMouseCellSelectorPlugin,
-  Vc as IRGridMoveColumnsPlugin,
-  Bc as IRGridMoveRowsPlugin,
-  Kc as IRGridMultiSelectCellPlugin,
-  Gc as IRGridOverflowPanelPlugin,
-  ma as IRGridPopoverPlugin,
-  wi as IRGridProgressRenderer,
-  to as IRGridRadioCellRenderer,
-  ho as IRGridResizerPlugin,
-  Vl as IRGridRow,
-  Oc as IRGridRowFilterCellRenderer,
-  Uc as IRGridRowFilterPlugin,
-  Mi as IRGridRowNoHeaderCellRenderer,
-  ia as IRGridRowSelectionPlugin,
-  hi as IRGridSelectCellRenderer,
-  ua as IRGridSingleCellDragPlugin,
-  jc as IRGridTablePlugin,
-  Ac as MouseCellSelectorPlugin,
-  zc as ResizerPlugin,
-  Fc as RowSelectionPlugin,
-  ce as STICKY_Z_INDEX,
-  Nc as SingleCellDragPlugin,
-  Wt as cellCompare,
-  fn as cellTextToNum,
-  no as createCellContent,
-  Ii as createCellContentWithIconButton,
-  Lc as createCustomRenderer,
-  ka as createIRGridColumnSortManager,
-  Hc as createInferenceSortHandler,
-  hn as numberCheckDefault,
-  qc as numberWithCommasFormatter,
-  kc as renderGridButton,
-  Ec as renderGridCellDefault,
-  Mc as renderGridCellIconButton,
-  bc as renderGridCheckbox,
-  yc as renderGridDatePicker,
-  vc as renderGridProgress,
-  Ic as renderGridRadio,
-  Sc as renderGridSelect,
-  Tc as renderRowNoHeaderCell
+  qn as IRGridCheckboxRenderer,
+  Ca as IRGridColumnFillPlugin,
+  _i as IRGridDatePickerRenderer,
+  zi as IRGridDefaultCellIconButtonRenderer,
+  Ft as IRGridDefaultCellRenderer,
+  wo as IRGridDefaultKeyPlugin,
+  Kc as IRGridExchangeByHeaderCellPlugin,
+  mo as IRGridMouseCellSelectorPlugin,
+  Xc as IRGridMoveColumnsPlugin,
+  qc as IRGridMoveRowsPlugin,
+  Qc as IRGridMultiSelectCellPlugin,
+  Yc as IRGridOverflowPanelPlugin,
+  Sa as IRGridPopoverPlugin,
+  bi as IRGridProgressRenderer,
+  no as IRGridRadioCellRenderer,
+  go as IRGridResizerPlugin,
+  Yl as IRGridRow,
+  Pc as IRGridRowFilterCellRenderer,
+  Jc as IRGridRowFilterPlugin,
+  Oi as IRGridRowNoHeaderCellRenderer,
+  fa as IRGridRowSelectionPlugin,
+  Ci as IRGridSelectCellRenderer,
+  wa as IRGridSingleCellDragPlugin,
+  Zc as IRGridTablePlugin,
+  $c as MouseCellSelectorPlugin,
+  Nc as ResizerPlugin,
+  Gc as RowSelectionPlugin,
+  de as STICKY_Z_INDEX,
+  Uc as SingleCellDragPlugin,
+  Nt as cellCompare,
+  mn as cellTextToNum,
+  oo as createCellContent,
+  Hi as createCellContentWithIconButton,
+  Fc as createCustomRenderer,
+  Ha as createIRGridColumnSortManager,
+  Wc as createInferenceSortHandler,
+  gn as numberCheckDefault,
+  ed as numberWithCommasFormatter,
+  Hc as renderGridButton,
+  Oc as renderGridCellDefault,
+  Ac as renderGridCellIconButton,
+  Ec as renderGridCheckbox,
+  Tc as renderGridDatePicker,
+  Lc as renderGridProgress,
+  zc as renderGridRadio,
+  Mc as renderGridSelect,
+  Dc as renderRowNoHeaderCell
 };
-//# sourceMappingURL=grid.js.map

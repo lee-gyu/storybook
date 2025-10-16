@@ -21,4 +21,3 @@ const d = /* @__PURE__ */ (() => {
   };
 })();
 o() && d(document.body);
-//# sourceMappingURL=_init-DbWaCNow.js.map
