@@ -351,6 +351,8 @@ export const IRIconClassList = [
     "ir-icon--unlock",
     "ir-icon--upload-to-cloud-colorful",
     "ir-icon--upload-to-cloud",
+    "ir-icon--zoom-in",
+    "ir-icon--zoom-out",
     "ir-icon--db-transfer",
     "ir-icon--db",
     "ir-icon--filtering",

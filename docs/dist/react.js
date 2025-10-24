@@ -1,5 +1,5 @@
-import "./chunks/_init-DbWaCNow.js";
-import { I as t } from "./chunks/index-DSAffz8Y.js";
+import "./chunks/_init-Cw3YhgG-.js";
+import { I as t } from "./chunks/index-D_WJ-fYM.js";
 const n = t;
 export {
   n as IRContextMenuAdapter

@@ -352,6 +352,8 @@
     --ir-icon-unlock: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M12%2025h36v26H12zm4%204v18h28V29zM12%2013a7%207%200%200%200-7%207v5H1v-5a11%2011%200%201%201%2022%200v5h-4v-5a7%207%200%200%200-7-7%22%20clip-rule%3D%22evenodd%22%2F%3E%3Cpath%20d%3D%22M32%2041v-6h-4v6z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-upload-to-cloud-colorful: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20fill%3D%22%230B94E0%22%20d%3D%22M42%2049.99H19a15%2015%200%200%201-4-29.42%2016%2016%200%200%201%2031%204.07%2013%2013%200%200%201-4%2025.35M30%2013.93a12.09%2012.09%200%200%200-11.61%208.83l-.32%201.17-1.19.23a11.06%2011.06%200%200%200%202.1%2021.91h23a9.05%209.05%200%200%200%201.64-18l-1.63-.3v-1.86A12.07%2012.07%200%200%200%2030%2013.92z%22%2F%3E%3Cpath%20fill%3D%22%2300C170%22%20d%3D%22M32%2031.49h-4v8.5h4z%22%2F%3E%3Cpath%20fill%3D%22%2300C170%22%20d%3D%22m30%2023.99-8%208h16z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-upload-to-cloud: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M42%2049.99H19a15%2015%200%200%201-4-29.42%2016%2016%200%200%201%2031%204.07%2013%2013%200%200%201-4%2025.35M30%2013.93a12.09%2012.09%200%200%200-11.61%208.83l-.32%201.17-1.19.23a11.06%2011.06%200%200%200%202.1%2021.91h23a9.05%209.05%200%200%200%201.64-18l-1.63-.3v-1.86A12.07%2012.07%200%200%200%2030%2013.92z%22%2F%3E%3Cpath%20d%3D%22M32%2031.49h-4v8.5h4z%22%2F%3E%3Cpath%20d%3D%22m30%2023.99-8%208h16z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-zoom-in: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22m52.41%2049.59-11.5-11.51a18.53%2018.53%200%201%200-2.83%202.83l11.51%2011.5zM26.5%2041A14.5%2014.5%200%201%201%2041%2026.5%2014.51%2014.51%200%200%201%2026.5%2041%22%2F%3E%3Cpath%20d%3D%22M28.5%2025h6v4h-6v6h-4v-6h-6v-4h6v-6h4z%22%2F%3E%3C%2Fsvg%3E);
+    --ir-icon-zoom-out: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22m52.41%2049.59-11.5-11.51a18.53%2018.53%200%201%200-2.83%202.83l11.51%2011.5zM26.5%2041A14.5%2014.5%200%201%201%2041%2026.5%2014.51%2014.51%200%200%201%2026.5%2041%22%2F%3E%3Cpath%20d%3D%22M18.5%2025h16v4h-16z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-db-transfer: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22m50.41%2021.59-2.82%202.82L51.17%2028H42v4h9.17l-3.55%203.55%202.83%202.83L58.83%2030zM38%2011H4v10h34zM38%2025H4v10h34zM38%2039H4v10h34z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-db: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M50%209H10v11h40zM50%2024H10v11h40zM50%2039H10v11h40z%22%2F%3E%3C%2Fsvg%3E);
     --ir-icon-filtering: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Cpath%20d%3D%22M25%2010H9v40h16zM13%2022v-8h8v8zm0%2012v-8h8v8zm0%2012v-8h8v8zM51%2010H35v40h16zM39%2022v-8h8v8zM28%2025v10l5-5z%22%2F%3E%3C%2Fsvg%3E);
@@ -1544,6 +1546,12 @@
 }
 .ir-icon--upload-to-cloud {
     --ir-icon-src: var(--ir-icon-upload-to-cloud);
+}
+.ir-icon--zoom-in {
+    --ir-icon-src: var(--ir-icon-zoom-in);
+}
+.ir-icon--zoom-out {
+    --ir-icon-src: var(--ir-icon-zoom-out);
 }
 .ir-icon--db-transfer {
     --ir-icon-src: var(--ir-icon-db-transfer);
