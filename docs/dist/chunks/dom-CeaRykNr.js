@@ -1,0 +1,1 @@
+function t(t,n,...r){const a=e(n,...r);return t.appendChild(a),a}function e(t,...e){const n=document.createElement(t);return e.forEach(t=>n.classList.add(t)),n}function n(t,e,n){let r=n;for(;r;){if(r.matches(t))return r;if(r.matches(e))break;r=r.parentElement}return null}export{t as a,e as b,n as c};
