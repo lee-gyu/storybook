@@ -1,0 +1,1 @@
+import{g as r,h as o}from"./pick-Bsa73A1h.js";function t(r){return null!==r&&"object"==typeof r||Array.isArray(r)}function n(s,f){const a=r(s),c=r(f),i=Array.isArray(s)?[]:{};for(const r of a)i[r]=s[r];for(const r of c)t(f[r])&&o(s,r)&&s[r]&&t(s[r])?i[r]=n(s[r],f[r]):i[r]=f[r];return i}export{n as m};
