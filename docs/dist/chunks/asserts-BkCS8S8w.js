@@ -1,0 +1,1 @@
+function r(r,o=/* @__PURE__ */new Error){if(!r)throw"string"==typeof o?new Error(o):o}export{r as t};

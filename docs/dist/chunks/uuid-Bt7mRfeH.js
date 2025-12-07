@@ -1,0 +1,1 @@
+import{t}from"./v4-C52Mn8oc.js";function r(){return t()}export{r as t};

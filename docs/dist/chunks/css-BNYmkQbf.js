@@ -1,0 +1,1 @@
+var r=/^var\((.+)\)$/;function t(t){const e=r.exec(t);if(e&&e.length>0)return e[1];throw new Error(`'${t}' is not custom-property name.`)}export{t};

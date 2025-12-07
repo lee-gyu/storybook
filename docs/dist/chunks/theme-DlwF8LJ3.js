@@ -1,1 +1,0 @@
-function e(){return document.documentElement.getAttribute("data-theme")??"light"}function t(e){var t,n;t="com.innorules.preference@theme",n=e,"undefined"!=typeof localStorage&&localStorage.setItem(t,n),document.documentElement.setAttribute("data-theme",e),window.dispatchEvent(new CustomEvent("theme-changed",{detail:e}))}export{e as g,t as s};
