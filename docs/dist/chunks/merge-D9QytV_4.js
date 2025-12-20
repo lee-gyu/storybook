@@ -1,1 +1,0 @@
-import{n as r,t as o}from"./pick-BRFss9JS.js";function t(r){return null!==r&&"object"==typeof r||Array.isArray(r)}function n(s,f){const a=o(s),c=o(f),i=Array.isArray(s)?[]:{};for(const r of a)i[r]=s[r];for(const o of c)t(f[o])&&r(s,o)&&s[o]&&t(s[o])?i[o]=n(s[o],f[o]):i[o]=f[o];return i}export{n as t};

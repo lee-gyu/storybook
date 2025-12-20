@@ -1,1 +1,0 @@
-function n(n){return Object.keys(n)}function t(n,t){return t in n}function r(r,o){const c={};for(const e of n(o))t(r,e)&&(c[e]=r[e]);return c}export{t as n,r,n as t};
