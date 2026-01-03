@@ -57,7 +57,8 @@ function appendScript( id, code )
 
 function clearIRComp()
 {
-    __IR_DEBUG__.getComponents().forEach( ( comp ) => comp.destroy() );
+    if (window.__IR_DEBUG__) window.__IR_DEBUG__.getComponents().forEach( ( comp ) => comp.destroy() );
+    if (window.__IR_COMMAND_SYSTEM__) window.__IR_COMMAND_SYSTEM__.clearCommands();
 }
 
 new ResizeObserver( () =>
