@@ -1,1 +1,1 @@
-import"./chunks/_init-BA7zlD3l.js";import{I as t}from"./chunks/context-menu-CTf7UmxR.js";const n=t;export{n as IRContextMenuAdapter};
+import"./chunks/_init-Bbyde7Bo.js";import{I as t}from"./chunks/context-menu-DrxMGMk4.js";const n=t;export{n as IRContextMenuAdapter};

@@ -1,0 +1,51 @@
+import{j as t}from"./jsx-runtime-u17CrQMm.js";import{D as o,a as n,L as i}from"./version-tag-ClN_pg-S.js";import"./iframe-DngeDzFe.js";import"./preload-helper-PPVm8Dsz.js";import"./index-Ch-xRImY.js";const a=`import { createTooltipContainer } from "@innorules/ir-style";
+
+const tooltipContainerList = [
+    createTooltipContainer( {
+        containerElement: document.getElementById( "container" ),
+        placement: "bottom",
+        offset: 15,
+    } ),
+    createTooltipContainer( {
+        containerElement: document.getElementById( "container2" ),
+        placement: "bottom",
+    } ),
+];
+
+btn.onclick = () =>
+{
+    tooltipContainerList.forEach( ( container ) => container.destroy() );
+};`,e=`#container2 {
+    height: 100px;
+    width: 100px;
+    background: lightgray;
+    margin-left: 30px;
+}
+`,r=`<button id="btn" class="button mb--sm">Tooltips Destroy</button>
+<div class="flex">
+
+    <div id="container" class="side-toolbar ml--3xl">
+        <button type="button" class="side-toolbar__button" data-ir-tooltip data-ir-tooltip-text="전체 체크"
+            data-ir-tooltip-placement="top">
+            <i class="side-toolbar__icon ir-icon ir-icon--check-all-rectangle"></i>
+        </button>
+        <button type="button" class="side-toolbar__button" data-ir-tooltip data-ir-tooltip-placement="right"
+            data-ir-tooltip-text="전체 해제">
+            <i class="side-toolbar__icon ir-icon ir-icon--uncheck-all-rectangle"></i>
+        </button>
+        <button type="button" class="side-toolbar__button" data-ir-tooltip data-ir-tooltip-placement="right"
+            data-ir-tooltip-text="행 삭제">
+            <i class="side-toolbar__icon ir-icon ir-icon--row-del2"></i>
+        </button>
+        <button type="button" class="side-toolbar__button" data-ir-tooltip data-ir-tooltip-text="복사">
+            <i class="side-toolbar__icon ir-icon ir-icon--copy"></i>
+        </button>
+        <button type="button" class="side-toolbar__button" data-ir-tooltip data-ir-tooltip-ref-mode="pointer"
+            data-ir-tooltip-placement="bottom" data-ir-tooltip-text="붙여넣기" data-ir-tooltip-interval="500">
+            <i class="side-toolbar__icon ir-icon ir-icon--paste"></i>
+        </button>
+    </div>
+    <div id="container2" class="p--xl" data-ir-tooltip data-ir-tooltip-text="parent" data-ir-tooltip-ref-mode="pointer">
+        <button class="button button--secondary" data-ir-tooltip data-ir-tooltip-text="child">tooltip</button>
+    </div>
+</div>`;function l(){return t.jsxs(o,{children:[t.jsx(n,{children:"createTooltipContainer"}),t.jsx("p",{children:"ContainerElement 내부의 data-ir-tooltip 속성이 있는 요소에 tooltip을 생성한다."}),t.jsx(i,{css:e,code:a,htmlRaw:r})]})}l.__docgenInfo={description:"",methods:[],displayName:"Container"};const m={title:"JS Utility/Tooltip"},u=["Container"];export{l as Container,u as __namedExportsOrder,m as default};
