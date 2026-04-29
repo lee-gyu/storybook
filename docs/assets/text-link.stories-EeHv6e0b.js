@@ -1,0 +1,4 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{a as t,o as n,s as r,t as i}from"./context-C6uFeUW4.js";import{t as a}from"./jsx-runtime-6sF1Ejqi.js";var o,s,c,l;e((()=>{i(),o=a(),s={title:`HTML/Text Link`},c=()=>(0,o.jsxs)(n,{children:[(0,o.jsx)(t,{children:`Text Link`}),(0,o.jsx)(r,{html:(0,o.jsx)(`a`,{className:`text-link`,href:`.`,target:`_blank`,children:`Text Link Style`})})]}),c.__docgenInfo={description:``,methods:[],displayName:`TextLink`},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => <Doc>
+        <DocTitle>Text Link</DocTitle>
+        <LiveEditor html={<a className="text-link" href="." target="_blank">Text Link Style</a>} />
+    </Doc>`,...c.parameters?.docs?.source}}},l=[`TextLink`]}))();export{c as TextLink,l as __namedExportsOrder,s as default};

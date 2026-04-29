@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-DdiN76Tm.js";var r=/* @__PURE__ */e({ENTRY_PARAMETER_KEY:()=>n,THEME_PREFERENCE_KEY:()=>E}),E="com.innorules.preference@theme",n="com.innorules.webapi@entry-script-parameters";export{E as n,r,n as t};

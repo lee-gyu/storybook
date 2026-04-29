@@ -1,1 +1,0 @@
-function t(e,n){if(e===n)return!0;if(null===e||null===n||"object"!=typeof e||"object"!=typeof n)return!1;const r=Object.keys(e),o=Object.keys(n);if(r.length!==o.length)return!1;for(const u of r)if(!o.includes(u)||!t(e[u],n[u]))return!1;return!0}const e=/* @__PURE__ */new WeakMap;function n(t,n){e.set(t,n)}function r(t){return e.get(t)}export{t as i,r,n as w};

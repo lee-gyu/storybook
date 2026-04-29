@@ -2,3 +2,5 @@ src/
 *.d.ts
 *.map
 *.zip
+
+.DS_Store
